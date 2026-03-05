@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PdfQualityRequest",
+  "type": "object",
+  "required": ["manuscript_path"],
+  "properties": {
+    "manuscript_path": {
+      "type": "string",
+      "description": "Path to the Markdown file to evaluate"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["general", "lastenheft", "tutorial", "api_docs"],
+      "default": "general",
+      "description": "Document scope — controls which required sections are checked"
+    },
+    "target_audience": {
+      "type": "string",
+      "enum": ["developer", "enduser", "manager"],
+      "default": "developer"
+    },
+    "max_fixes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50,
+      "default": 10,
+      "description": "Maximum number of fix items returned in fix_list"
+    },
+    "write_report": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, write a Markdown report to report_dir"
+    },
+    "report_dir": {
+      "type": "string",
+      "default": ".report/",
+      "description": "Directory where the written report is placed"
+    }
+  },
+  "additionalProperties": false
+}

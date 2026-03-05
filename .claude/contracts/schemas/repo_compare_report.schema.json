@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RepoCompareReport",
+  "type": "object",
+  "required": ["type", "left_root", "right_root", "added", "removed", "changed"],
+  "properties": {
+    "type": {"const": "repo_compare_report"},
+    "left_root": {"type": "string"},
+    "right_root": {"type": "string"},
+    "added": {"type": "array", "items": {"type": "string"}},
+    "removed": {"type": "array", "items": {"type": "string"}},
+    "changed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256_left", "sha256_right"],
+        "properties": {
+          "path": {"type": "string"},
+          "sha256_left": {"type": "string"},
+          "sha256_right": {"type": "string"},
+          "size_left": {"type": "integer", "minimum": 0},
+          "size_right": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "report_path": {"type": "string"}
+  }
+}

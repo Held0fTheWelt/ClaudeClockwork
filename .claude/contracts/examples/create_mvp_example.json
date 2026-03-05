@@ -1,0 +1,13 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "create_mvp_example_001",
+  "skill_id": "create_mvp",
+  "inputs": {
+    "trigger": "manual",
+    "trigger_ref": null,
+    "mvp_name": "Test MVP — Dry Run Example",
+    "domain": "testing",
+    "scope": ["test_skill", "qa_gate"],
+    "dry_run": true
+  }
+}

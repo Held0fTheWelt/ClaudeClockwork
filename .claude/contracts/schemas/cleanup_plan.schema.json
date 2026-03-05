@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CleanupPlan",
+  "type": "object",
+  "required": [
+    "type",
+    "root",
+    "created_at",
+    "operations"
+  ],
+  "properties": {
+    "type": {
+      "const": "cleanup_plan"
+    },
+    "root": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "op",
+          "src",
+          "dst"
+        ],
+        "properties": {
+          "op": {
+            "type": "string",
+            "enum": [
+              "move_to_archive",
+              "delete"
+            ]
+          },
+          "src": {
+            "type": "string"
+          },
+          "dst": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

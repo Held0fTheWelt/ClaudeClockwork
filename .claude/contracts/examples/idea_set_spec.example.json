@@ -1,0 +1,60 @@
+{
+  "type": "idea_set_spec",
+  "idea_set_id": "ideas-001",
+  "prompt": "Improve planning creativity without increasing token spend.",
+  "constraints": [
+    "tool-first",
+    "max 12 tasks"
+  ],
+  "ideas": [
+    {
+      "id": "I1",
+      "headline": "Creativity Burst skill (30 one-liners) + tool clustering",
+      "tag": "ideation"
+    },
+    {
+      "id": "I2",
+      "headline": "Plan mutation presets (cost-first, reliability-first)",
+      "tag": "planning"
+    },
+    {
+      "id": "I3",
+      "headline": "Hypothesis log with experiment budget",
+      "tag": "process"
+    },
+    {
+      "id": "I4",
+      "headline": "Prompt debt tracking for recurring failures",
+      "tag": "quality"
+    },
+    {
+      "id": "I5",
+      "headline": "Edge-case planning templates",
+      "tag": "planning"
+    }
+  ],
+  "clusters": [
+    {
+      "label": "planning",
+      "idea_ids": [
+        "I2",
+        "I5"
+      ]
+    },
+    {
+      "label": "process",
+      "idea_ids": [
+        "I3",
+        "I4"
+      ]
+    }
+  ],
+  "top_picks": [
+    {
+      "idea_id": "I1",
+      "reason": "Cheap breadth + deterministic narrowing",
+      "expected_value": "high",
+      "risk": "low"
+    }
+  ]
+}

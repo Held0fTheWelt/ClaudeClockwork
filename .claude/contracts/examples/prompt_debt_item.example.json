@@ -1,0 +1,12 @@
+{
+  "type": "prompt_debt_item",
+  "id": "pd-001",
+  "symptom": "Agent outputs did not match schema field names repeatedly.",
+  "repro": [
+    "Run MVP validation task",
+    "Observe schema validation failure twice"
+  ],
+  "suspected_root": "Contract not referenced in task instructions; missing explicit field list.",
+  "proposed_fix": "Update task template to include schema link + required fields checklist.",
+  "priority": "high"
+}

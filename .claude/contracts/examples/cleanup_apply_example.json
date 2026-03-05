@@ -1,0 +1,9 @@
+{
+  "skill_id": "cleanup_apply",
+  "inputs": {
+    "plan_path": "nonexistent_plan.json",
+    "root": ".",
+    "dry_run": true,
+    "allow_delete": false
+  }
+}

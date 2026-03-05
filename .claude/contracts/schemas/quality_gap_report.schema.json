@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QualityGapReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["doc_name", "score", "level", "top_gaps", "most_leverage_improvement"],
+  "properties": {
+    "doc_name": {"type": "string"},
+    "score": {"type": "integer", "minimum": 0, "maximum": 100},
+    "level": {"type": "string", "enum": ["release", "good", "usable", "rebuild"]},
+    "top_gaps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gap", "impact", "next_action"],
+        "properties": {
+          "gap": {"type": "string"},
+          "impact": {"type": "string", "enum": ["high", "medium", "low"]},
+          "next_action": {"type": "string"}
+        }
+      }
+    },
+    "most_leverage_improvement": {"type": "string"},
+    "iterations_recommended": {"type": "integer", "minimum": 0, "maximum": 2, "default": 1}
+  }
+}

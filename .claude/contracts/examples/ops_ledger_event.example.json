@@ -1,0 +1,9 @@
+{
+  "type": "ops_ledger_event",
+  "run_id": "2026-02-28",
+  "step": "qa_gate",
+  "agent": {"name": "Validation Agent", "department": "QA", "role": "validator"},
+  "models": {"oodle_tier": "O1", "claude_tier": "C0"},
+  "status": "ok",
+  "signals": {"error_class": "none", "drift_flag": false, "pack_bloat": false, "redundant_reread": false}
+}

@@ -1,0 +1,11 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "last-train-001",
+  "skill_id": "last_train",
+  "inputs": {
+    "report_path": "example_last_train_report.json",
+    "output_format": "markdown",
+    "write_summary": true,
+    "summary_dir": ".report/last_train"
+  }
+}

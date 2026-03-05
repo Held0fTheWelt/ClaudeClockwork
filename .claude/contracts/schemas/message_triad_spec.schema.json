@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MessageTriadSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "triad_id",
+    "source",
+    "fallback_policy"
+  ],
+  "properties": {
+    "type": {
+      "const": "message_triad_spec"
+    },
+    "triad_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "author",
+        "lang",
+        "text"
+      ],
+      "properties": {
+        "author": {
+          "enum": [
+            "user",
+            "system",
+            "agent"
+          ]
+        },
+        "lang": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "translation": {
+      "type": "object",
+      "properties": {
+        "lang": {
+          "const": "en"
+        },
+        "text": {
+          "type": "string"
+        },
+        "quality": {
+          "enum": [
+            "draft",
+            "verified"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "work_brief": {
+      "type": "object",
+      "properties": {
+        "lang": {
+          "const": "en"
+        },
+        "audience": {
+          "type": "object",
+          "required": [
+            "primary_agent"
+          ],
+          "properties": {
+            "primary_agent": {
+              "type": "string"
+            },
+            "secondary_agents": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "mode": {
+          "enum": [
+            "strict",
+            "balanced",
+            "creative"
+          ]
+        },
+        "budget": {
+          "type": "object",
+          "properties": {
+            "max_words": {
+              "type": "integer",
+              "minimum": 50,
+              "maximum": 1200
+            },
+            "allow_deep_oodle": {
+              "type": "boolean"
+            },
+            "no_llm": {
+              "type": "boolean"
+            },
+            "max_chars": {
+              "type": "integer",
+              "minimum": 50,
+              "maximum": 4000
+            }
+          },
+          "additionalProperties": false
+        },
+        "brief": {
+          "type": "object",
+          "properties": {
+            "goal": {
+              "type": "string"
+            },
+            "context": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 5
+            },
+            "constraints": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 5
+            },
+            "tasks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "acceptance": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "risks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 3
+            },
+            "evidence_required": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "context_pack": {
+      "type": "object",
+      "properties": {
+        "compactor_shortlist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "canonical_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fallback_policy": {
+      "type": "object",
+      "required": [
+        "fallback_order",
+        "when_to_escalate_context",
+        "max_reread_budget"
+      ],
+      "properties": {
+        "fallback_order": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "work_brief",
+              "translation",
+              "source"
+            ]
+          }
+        },
+        "when_to_escalate_context": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "max_reread_budget": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

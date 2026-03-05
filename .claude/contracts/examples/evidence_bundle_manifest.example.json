@@ -1,0 +1,9 @@
+{
+  "type": "evidence_bundle_manifest",
+  "run_dir": "validation_runs/2026-02-28",
+  "git_sha": "",
+  "items": [
+    {"path": "reports/qa_gate.json", "size": 1234, "sha256": "deadbeef"}
+  ],
+  "total_size": 1234
+}

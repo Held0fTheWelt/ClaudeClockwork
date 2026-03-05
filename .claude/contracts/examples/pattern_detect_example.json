@@ -1,0 +1,8 @@
+{
+  "root": "./",
+  "heuristics": [
+    "singleton",
+    "event_bus"
+  ],
+  "output_path": "docs/pattern_report.md"
+}

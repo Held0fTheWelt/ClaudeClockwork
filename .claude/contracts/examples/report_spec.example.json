@@ -1,0 +1,11 @@
+{
+  "type": "report_spec",
+  "run_id": "2026-02-28",
+  "status": "pass",
+  "artifacts": [
+    {"type": "report", "path": "reports/qa_gate.json"}
+  ],
+  "summary": "All good",
+  "next_actions": [],
+  "notes": ""
+}

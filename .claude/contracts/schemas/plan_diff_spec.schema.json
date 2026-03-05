@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlanDiffSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "base_plan_ref",
+    "changes",
+    "impact"
+  ],
+  "properties": {
+    "type": {
+      "const": "plan_diff_spec"
+    },
+    "base_plan_ref": {
+      "type": "string"
+    },
+    "changes": {
+      "type": "object",
+      "required": [
+        "add_tasks",
+        "remove_tasks",
+        "modify_tasks"
+      ],
+      "properties": {
+        "add_tasks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remove_tasks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "modify_tasks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "impact": {
+      "type": "object",
+      "required": [
+        "acceptance_changed",
+        "risk_changed",
+        "notes"
+      ],
+      "properties": {
+        "acceptance_changed": {
+          "type": "boolean"
+        },
+        "risk_changed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

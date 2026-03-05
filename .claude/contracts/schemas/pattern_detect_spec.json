@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "root"
+  ],
+  "properties": {
+    "root": {
+      "type": "string"
+    },
+    "heuristics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "max_findings": {
+      "type": "integer"
+    },
+    "output_path": {
+      "type": "string"
+    }
+  }
+}

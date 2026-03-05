@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PerformanceToggleReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "before",
+    "after",
+    "reason"
+  ],
+  "properties": {
+    "type": {
+      "const": "performance_toggle_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "before": {
+      "type": "object"
+    },
+    "after": {
+      "type": "object"
+    },
+    "reason": {
+      "type": "string"
+    }
+  }
+}

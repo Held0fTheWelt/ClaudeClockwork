@@ -1,0 +1,70 @@
+# .claude/eval/schedules.yaml (MVP24-D)
+# When and how eval runs execute. See Report 06.
+
+version: "1.0"
+
+schedules:
+  nightly:
+    description: "Core regression + budget compliance check"
+    cron: "0 2 * * *"
+    suites: ["core"]
+    budget:
+      max_tokens: 50000
+      max_cost_usd: 0.50
+      model_tier: "sonnet"
+    reporting:
+      output: ".llama_runtime/eval/reports/nightly_report.md"
+      notify_on: ["fail", "regression"]
+      retention_days: 30
+    rollback:
+      on_regression: true
+      snapshot_before: true
+
+  weekly_power:
+    description: "Full suite including stress + exploration"
+    cron: "0 4 * * 0"
+    suites: ["core", "stress", "exploration"]
+    budget:
+      max_tokens: 200000
+      max_cost_usd: 2.00
+      model_tier: "opus"
+    reporting:
+      output: ".llama_runtime/eval/reports/weekly_power_report.md"
+      notify_on: ["fail", "regression", "capability_change"]
+      retention_days: 90
+    rollback:
+      on_regression: true
+      snapshot_before: true
+    analysis:
+      capability_ladder_update: true
+
+  pre_release:
+    description: "Full validation before version bump"
+    trigger: "manual"
+    suites: ["core", "stress", "exploration"]
+    budget:
+      max_tokens: 500000
+      max_cost_usd: 5.00
+      model_tier: "opus"
+    gates:
+      min_core_pass_rate: 1.0
+      min_stress_pass_rate: 0.9
+      max_regression_score: 0.02
+      min_exploration_score: 0.5
+    reporting:
+      output: ".llama_runtime/eval/reports/release_report.md"
+      retention_days: 365
+
+  shadow:
+    description: "Shadow run of experimental config vs production"
+    trigger: "on_config_change"
+    suites: ["core"]
+    budget:
+      max_tokens: 100000
+      max_cost_usd: 1.00
+    comparison:
+      baseline: "production"
+      candidate: "experimental"
+      min_improvement: 0.05
+    reporting:
+      output: ".llama_runtime/shadow/latest_comparison.md"

@@ -1,0 +1,17 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "pdf-export-001",
+  "skill_id": "pdf_export",
+  "inputs": {
+    "project_root": ".",
+    "doc_files": [
+      "docs/README.md",
+      "docs/user/getting_started.md"
+    ],
+    "output_dir": "docs/_exports/pdf",
+    "naming_scheme": "flat_underscore",
+    "fallback_fmt": "html",
+    "mermaid": "embed_as_text",
+    "dry_run": true
+  }
+}

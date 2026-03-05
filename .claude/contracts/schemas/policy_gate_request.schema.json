@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PolicyGateRequest",
+  "type": "object",
+  "required": [
+    "type",
+    "request_id",
+    "requested_action",
+    "signals"
+  ],
+  "properties": {
+    "type": {
+      "const": "policy_gate_request"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "requested_action": {
+      "enum": [
+        "deep_oodle",
+        "creative_feedback",
+        "rebuild",
+        "experiment",
+        "no_llm_check"
+      ]
+    },
+    "signals": {
+      "type": "object",
+      "properties": {
+        "risk": {
+          "enum": [
+            "low",
+            "med",
+            "high",
+            "critical"
+          ]
+        },
+        "repeat_failures": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "drift_events": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "over_escalations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "explicit_deep_review": {
+          "type": "boolean"
+        },
+        "explicit_skill_scout": {
+          "type": "boolean"
+        },
+        "no_llm": {
+          "type": "boolean"
+        },
+        "experiments_requested": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

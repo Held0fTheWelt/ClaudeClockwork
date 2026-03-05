@@ -1,0 +1,76 @@
+version: "1.0"
+description: "Model escalation ladder — start cheap, upgrade only when needed"
+
+strategy: "start_low_escalate"
+# Start at rung 0 of each ladder, escalate on trigger
+
+ladders:
+  haiku:
+    default_rung: 0
+    rungs:
+      - id: 0
+        model_id: "claude-haiku-3"
+        input_usd_per_mtok: 0.25
+        output_usd_per_mtok: 1.25
+        max_tokens: 4096
+        timeout_seconds: 20
+      - id: 1
+        model_id: "claude-haiku-3-5-20241022"
+        input_usd_per_mtok: 0.80
+        output_usd_per_mtok: 4.00
+        max_tokens: 8192
+        timeout_seconds: 25
+      - id: 2
+        model_id: "claude-haiku-4-5-20251001"
+        input_usd_per_mtok: 1.00
+        output_usd_per_mtok: 5.00
+        max_tokens: 8192
+        timeout_seconds: 30
+
+  sonnet:
+    default_rung: 0
+    rungs:
+      - id: 0
+        model_id: "claude-sonnet-3-7-20250219"
+        input_usd_per_mtok: 3.00
+        output_usd_per_mtok: 15.00
+        max_tokens: 16384
+        timeout_seconds: 30
+      - id: 1
+        model_id: "claude-sonnet-4-20250514"
+        input_usd_per_mtok: 3.00
+        output_usd_per_mtok: 15.00
+        max_tokens: 16384
+        timeout_seconds: 35
+      - id: 2
+        model_id: "claude-sonnet-4-5-20250613"
+        input_usd_per_mtok: 3.00
+        output_usd_per_mtok: 15.00
+        max_tokens: 32768
+        timeout_seconds: 40
+      - id: 3
+        model_id: "claude-sonnet-4-6-20250930"
+        input_usd_per_mtok: 3.00
+        output_usd_per_mtok: 15.00
+        max_tokens: 32768
+        timeout_seconds: 45
+
+escalation_triggers:
+  overloaded:
+    enabled: true
+    http_status_codes: [429, 529, 503, 500]
+    error_patterns: ["overloaded", "rate_limit", "capacity"]
+  timeout:
+    enabled: true
+    # uses per-rung timeout_seconds
+  empty_response:
+    enabled: true
+    min_response_length: 5
+  poor_quality:
+    enabled: false  # requires external quality scorer
+    min_score: 0.6
+
+state:
+  persist_rung: true  # remember successful rung per task_type
+  state_file: ".llama_runtime/router_state.json"
+  reset_after_hours: 24  # try low rung again after 24h

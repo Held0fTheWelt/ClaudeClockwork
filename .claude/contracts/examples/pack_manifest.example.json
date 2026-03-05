@@ -1,0 +1,10 @@
+{
+  "type": "pack_manifest",
+  "run_id": "2026-02-28",
+  "pack_type": "docpack",
+  "items": [
+    {"kind": "file", "ref": "reports/qa_gate.json", "reason": "Gate result"}
+  ],
+  "size_estimate_kb": 12.5,
+  "notes": ""
+}

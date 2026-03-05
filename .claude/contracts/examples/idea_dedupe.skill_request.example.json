@@ -1,0 +1,18 @@
+{
+  "type": "skill_request_spec",
+  "skill_id": "idea_dedupe",
+  "request_id": "mvp16-dedupe-001",
+  "inputs": {
+    "ideas": [
+      "Implement caching layer",
+      "implement caching layer",
+      "Add unit tests",
+      "Add unit tests",
+      "Refactor the routing module",
+      "Refactor routing module",
+      "Write documentation"
+    ],
+    "method": "normalized",
+    "similarity_threshold": 0.8
+  }
+}

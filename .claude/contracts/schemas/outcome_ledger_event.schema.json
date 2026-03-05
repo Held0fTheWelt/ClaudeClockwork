@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OutcomeLedgerEvent",
+  "type": "object",
+  "required": [
+    "type",
+    "timestamp",
+    "task_type",
+    "route",
+    "outcome"
+  ],
+  "properties": {
+    "type": {
+      "const": "outcome_ledger_event"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "doer": {
+          "type": "string"
+        },
+        "verifier": {
+          "type": "string"
+        },
+        "relay": {
+          "type": "string"
+        },
+        "claude_tier": {
+          "type": "string"
+        },
+        "oodle_tier": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "outcome": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "blocked"
+          ]
+        },
+        "retries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "severity_max": {
+          "enum": [
+            "low",
+            "med",
+            "high",
+            "critical"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "evidence_ref": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

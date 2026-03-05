@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "root"
+  ],
+  "properties": {
+    "root": {
+      "type": "string"
+    },
+    "template_regex": {
+      "type": "string"
+    },
+    "include_ext": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output_path": {
+      "type": "string"
+    }
+  }
+}

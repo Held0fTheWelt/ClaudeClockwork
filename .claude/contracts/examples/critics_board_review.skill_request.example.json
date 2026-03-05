@@ -1,0 +1,13 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "critboard-001",
+  "skill_id": "critics_board_review",
+  "inputs": {
+    "run_id": "run-20260301-001",
+    "panels_path": ".claude-performance/reviews/run-CRITICS_EXAMPLE.json",
+    "output_dir": ".claude-performance/reports",
+    "export_prefix": "critics_run-20260301-001",
+    "print_cli": true,
+    "export_charts": true
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RepoCleanReport",
+  "type": "object",
+  "required": [
+    "type",
+    "root",
+    "generated_at",
+    "junk_artifacts",
+    "unreferenced_docs",
+    "duplicates",
+    "large_files",
+    "warnings",
+    "limitations"
+  ],
+  "properties": {
+    "type": {
+      "const": "repo_clean_report"
+    },
+    "root": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "junk_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "kind",
+          "reason",
+          "suggested_action",
+          "confidence"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "dir",
+              "file"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "suggested_action": {
+            "type": "string",
+            "enum": [
+              "delete",
+              "archive",
+              "ignore",
+              "review"
+            ]
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      }
+    },
+    "unreferenced_docs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "reason",
+          "confidence"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      }
+    },
+    "duplicates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sha256",
+          "paths"
+        ],
+        "properties": {
+          "sha256": {
+            "type": "string"
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "large_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "experiment_spec",
+  "id": "exp-001",
+  "budget": {
+    "max_experiments": 3,
+    "max_minutes_each": 5
+  },
+  "experiments": [
+    {
+      "id": "E1",
+      "hypothesis_id": "H1",
+      "steps": [
+        "Generate 30 one-line ideas",
+        "Run creativity_burst tool",
+        "Count clusters"
+      ],
+      "evidence": [
+        "experiments/E1/ideas.txt",
+        "experiments/E1/result.json"
+      ],
+      "pass_condition": "cluster_count >= 3"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "policy_gate_decision",
+  "request_id": "pg-001",
+  "requested_action": "deep_oodle",
+  "allowed": true,
+  "reason": "risk>=high",
+  "alternative": ""
+}

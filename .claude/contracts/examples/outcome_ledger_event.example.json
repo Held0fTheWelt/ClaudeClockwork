@@ -1,0 +1,23 @@
+{
+  "type": "outcome_ledger_event",
+  "timestamp": "2026-02-28T12:00:00Z",
+  "task_type": "qa_campaign",
+  "route": {
+    "doer": "Claude C0 bulk_doer",
+    "verifier": "Local O3 verifier",
+    "relay": "Claude C0 relay",
+    "claude_tier": "C0",
+    "oodle_tier": "O3"
+  },
+  "outcome": {
+    "status": "pass",
+    "retries": 0,
+    "severity_max": "low",
+    "notes": "All checks green"
+  },
+  "metrics": {
+    "over_escalations": 0,
+    "pack_bloat_events": 0
+  },
+  "evidence_ref": "validation_runs/2026-02-28/"
+}

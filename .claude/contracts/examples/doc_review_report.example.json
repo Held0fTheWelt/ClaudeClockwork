@@ -1,0 +1,13 @@
+{
+  "type": "doc_review_report",
+  "files_scanned": 1,
+  "findings": [
+    {
+      "severity": "warn",
+      "code": "missing_sections",
+      "message": "Missing sections: Troubleshooting",
+      "path": "Docs/Tutorials/01_Quickstart.md",
+      "line": 1
+    }
+  ]
+}

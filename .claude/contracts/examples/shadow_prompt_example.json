@@ -1,0 +1,8 @@
+{
+  "skill_id": "shadow_prompt",
+  "inputs": {
+    "report_path": "nonexistent_report.json",
+    "min_quality_score": 0.6,
+    "write_triage": false
+  }
+}

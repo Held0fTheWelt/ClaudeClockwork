@@ -1,0 +1,24 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "req-pdf-001",
+  "skill_id": "pdf_render",
+  "inputs": {
+    "project_root": ".",
+    "manuscript_path": "Docs/Documentation/NanoBanana_Lastentext.md",
+    "output_pdf_path": "Docs/References/NanoBanana_Lastentext.pdf",
+    "assets_root": "Docs/References/diagrams/NanoBanana_Lastentext",
+    "diagram_specs": [
+      {
+        "id": "system_overview",
+        "kind": "mermaid",
+        "source_path": "Docs/References/diagrams/NanoBanana_Lastentext/system_overview.mmd",
+        "format": "svg"
+      }
+    ],
+    "render_options": {
+      "page_size": "A4",
+      "toc": true,
+      "syntax_highlight": true
+    }
+  }
+}

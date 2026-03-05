@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TelemetryEvent",
+  "description": "Standard event logged by telemetry_writer for any agent/skill invocation",
+  "type": "object",
+  "required": ["ts", "run_id", "role", "model", "task"],
+  "properties": {
+    "ts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the event"
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Unique identifier for the run (used as JSONL filename stem)"
+    },
+    "role": {
+      "type": "string",
+      "description": "Agent role: team_lead|worker|critic|tester|judge|..."
+    },
+    "model": {
+      "type": "string",
+      "description": "Model ID used, e.g. claude-sonnet-4-6 or llama3.3:70b-instruct-q5_K_M"
+    },
+    "task": {
+      "type": "string",
+      "description": "Task type or skill name, e.g. code_review, implement_skill"
+    },
+    "phase": {
+      "type": "string",
+      "description": "Execution phase: plan|execute|review|critique|write|..."
+    },
+    "prompt_tokens": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of prompt/input tokens consumed"
+    },
+    "completion_tokens": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of completion/output tokens produced"
+    },
+    "total_tokens": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total tokens (prompt_tokens + completion_tokens)"
+    },
+    "estimated_cost_cents": {
+      "type": "number",
+      "description": "Estimated cost in US cents (optional; computed by budget_analyze if absent)"
+    },
+    "quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Optional normalized quality score [0.0–1.0] for this invocation"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Wall-clock duration of the invocation in milliseconds"
+    },
+    "escalation_level": {
+      "type": "string",
+      "enum": ["L0", "L1", "L2", "L3", "L4", "L5"],
+      "description": "Escalation gate level at which this event was authorized"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form human-readable notes about this event"
+    }
+  },
+  "additionalProperties": true
+}

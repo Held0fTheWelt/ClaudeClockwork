@@ -1,0 +1,20 @@
+{
+  "type": "plan_diff_spec",
+  "base_plan_ref": "plan_2026-02-28.json",
+  "changes": {
+    "add_tasks": [
+      "T9"
+    ],
+    "remove_tasks": [
+      "T3"
+    ],
+    "modify_tasks": [
+      "T2"
+    ]
+  },
+  "impact": {
+    "acceptance_changed": true,
+    "risk_changed": false,
+    "notes": "Added ideation step before planning."
+  }
+}

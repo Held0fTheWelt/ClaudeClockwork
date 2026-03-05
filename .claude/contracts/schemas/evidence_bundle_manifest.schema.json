@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceBundleManifest",
+  "type": "object",
+  "required": ["type", "run_dir", "items", "total_size"],
+  "properties": {
+    "type": {"const": "evidence_bundle_manifest"},
+    "run_dir": {"type": "string"},
+    "git_sha": {"type": "string"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "size", "sha256"],
+        "properties": {
+          "path": {"type": "string"},
+          "size": {"type": "number", "minimum": 0},
+          "sha256": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "total_size": {"type": "number", "minimum": 0}
+  },
+  "additionalProperties": false
+}

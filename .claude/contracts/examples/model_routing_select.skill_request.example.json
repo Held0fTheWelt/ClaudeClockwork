@@ -1,0 +1,13 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "route-001",
+  "skill_id": "model_routing_select",
+  "inputs": {
+    "run_id": "run-20260301-001",
+    "task": "DocForge + routing pack work",
+    "scope_report_path": ".report/routing/run-20260301-001/work_scope_report.json",
+    "routing_config_path": ".claude/config/model_routing.yaml",
+    "pricing_path": ".claude/config/anthropic_pricing_snapshot.json",
+    "stats_path": ".llama_runtime/brain/model_routing_stats.json"
+  }
+}

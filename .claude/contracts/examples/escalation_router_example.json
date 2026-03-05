@@ -1,0 +1,12 @@
+{
+  "skill_id": "escalation_router",
+  "request_id": "test-001",
+  "inputs": {
+    "ladder": "haiku",
+    "messages": [
+      {"role": "user", "content": "Say hello in one word"}
+    ],
+    "max_tokens": 50,
+    "dry_run": true
+  }
+}

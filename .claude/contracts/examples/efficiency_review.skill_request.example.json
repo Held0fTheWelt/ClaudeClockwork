@@ -1,0 +1,14 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "review-001",
+  "skill_id": "efficiency_review",
+  "inputs": {
+    "run_id": "run-20260301-001",
+    "budget_report_path": ".claude-performance/reports/budget_run-20260301-001_report.json",
+    "panels_path": ".claude-performance/reviews/run-EXAMPLE_panels.json",
+    "output_dir": ".claude-performance/reports",
+    "export_prefix": "review_run-20260301-001",
+    "print_cli": true,
+    "export_charts": true
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CleanupApplyRequest",
+  "description": "Inputs for the cleanup_apply skill (CCW-MVP13). Applies a JSON cleanup plan to the filesystem.",
+  "type": "object",
+  "required": ["plan_path"],
+  "properties": {
+    "plan_path": {
+      "type": "string",
+      "description": "Path or glob pattern to a JSON cleanup plan file. Plan format: {operations: [{action, source, dest}]}"
+    },
+    "plan": {
+      "type": "object",
+      "description": "Inline cleanup plan dict (alternative to plan_path). Takes precedence if both are supplied.",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["action", "source"],
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": ["move", "delete", "archive", "rename"]
+              },
+              "source": { "type": "string" },
+              "dest": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "root": {
+      "type": "string",
+      "default": ".",
+      "description": "Repository root for path resolution. Paths outside root are refused."
+    },
+    "dry_run": {
+      "type": "boolean",
+      "default": true,
+      "description": "When true (default), no filesystem changes are made."
+    },
+    "allow_delete": {
+      "type": "boolean",
+      "default": false,
+      "description": "When false (default), delete operations are skipped with a warning."
+    },
+    "on_conflict": {
+      "type": "string",
+      "enum": ["skip", "overwrite", "rename"],
+      "default": "skip",
+      "description": "Conflict resolution strategy when destination already exists."
+    },
+    "write_report": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, write a JSON report to report_dir."
+    },
+    "report_dir": {
+      "type": "string",
+      "default": ".llama_runtime/knowledge/writes/clean_reports",
+      "description": "Destination folder for written reports."
+    }
+  },
+  "additionalProperties": false
+}

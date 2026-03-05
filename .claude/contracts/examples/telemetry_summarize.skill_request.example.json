@@ -1,0 +1,11 @@
+{
+  "type": "skill_request_spec",
+  "skill_id": "telemetry_summarize",
+  "request_id": "mvp12-telemetry-summarize-001",
+  "inputs": {
+    "events_dir": ".claude-performance/events/",
+    "run_id_filter": null,
+    "group_by": ["role", "model"],
+    "top_n": 10
+  }
+}

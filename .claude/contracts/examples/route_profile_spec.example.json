@@ -1,0 +1,18 @@
+{
+  "type": "route_profile_spec",
+  "task_type": "qa_campaign",
+  "preferred_route": {
+    "doer": "Claude C0 bulk_doer",
+    "verifier": "Local O3 verifier",
+    "relay": "Claude C0 relay",
+    "notes": "Tool-first skills run before verifier."
+  },
+  "fallbacks": [
+    "Escalate verifier depth",
+    "Then escalate Claude to C1"
+  ],
+  "signals": [
+    "repeat_failures>=2",
+    "over_escalations>=1"
+  ]
+}

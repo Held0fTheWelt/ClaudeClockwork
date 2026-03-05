@@ -1,0 +1,8 @@
+{
+  "test_id": "golden_scan_001",
+  "skill_id": "scan",
+  "input": {"skill_id": "scan", "inputs": {"path": ".claude/tools/skills", "pattern": "*.py"}},
+  "expected": {"status": "ok", "outputs": {"status": "ok"}},
+  "match_fields": ["outputs.status"],
+  "description": "Scan skill returns ok status"
+}

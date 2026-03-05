@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CriticReport",
+  "type": "object",
+  "required": [
+    "type",
+    "run_id",
+    "severity",
+    "findings",
+    "recommendations"
+  ],
+  "properties": {
+    "type": {
+      "const": "critic_report"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "severity": {
+      "enum": [
+        "low",
+        "med",
+        "high",
+        "critical"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "routing_patch_suggestion": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

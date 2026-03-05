@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodeCleanRequest",
+  "description": "Inputs for the code_clean skill (CCW-MVP13). Scans Python files for quality issues without modifying the filesystem.",
+  "type": "object",
+  "properties": {
+    "root": {
+      "type": "string",
+      "default": ".",
+      "description": "Directory to scan recursively for .py files. Resolved to an absolute path at runtime."
+    },
+    "scan_only": {
+      "type": "boolean",
+      "default": true,
+      "description": "When true (default), no filesystem changes are made. Write mode is not yet implemented."
+    },
+    "emit_plan": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, add a 'plan' field to outputs with suggested remediation actions for each finding."
+    }
+  },
+  "additionalProperties": false
+}

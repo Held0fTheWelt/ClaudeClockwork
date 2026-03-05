@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ModelRoutingOutcome",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "run_id",
+    "task_type",
+    "model",
+    "success",
+    "quality_0_10",
+    "total_tokens"
+  ],
+  "properties": {
+    "type": {
+      "const": "model_routing_outcome"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "success": {
+      "type": "boolean"
+    },
+    "quality_0_10": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "total_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

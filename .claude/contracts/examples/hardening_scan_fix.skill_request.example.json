@@ -1,0 +1,19 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "hard-001",
+  "skill_id": "hardening_scan_fix",
+  "inputs": {
+    "root": ".",
+    "apply_fixes": false,
+    "scenarios": [
+      "scan_inconsistencies",
+      "purge_oodle_refs",
+      "validate_addon_boundaries",
+      "ensure_autodocs",
+      "enforce_src_origin_rule",
+      "validate_performance_budgeting"
+    ],
+    "brain_path": ".claude/brain/decisions.json",
+    "brain_log_path": ".claude/brain/decisions.jsonl"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "evlog-001",
+  "skill_id": "token_event_log",
+  "inputs": {
+    "run_id": "run-20260301-001",
+    "role": "Write",
+    "model": "llama3.3:70b-instruct-q5_K_M",
+    "task": "implement_budget_skill",
+    "phase": "write",
+    "prompt_tokens": 6500,
+    "completion_tokens": 4200,
+    "total_tokens": 10700,
+    "notes": "logged automatically by wrapper",
+    "events_file": ".claude-performance/events/run-20260301-001.jsonl"
+  }
+}

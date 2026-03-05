@@ -1,0 +1,16 @@
+{
+  "type": "feedback_request_spec",
+  "request_id": "fb-001",
+  "recipient_role": "personaler",
+  "feedback_mode": "balanced",
+  "budget": "tool_only",
+  "signals": [
+    "repeat_failures=0",
+    "risk=low"
+  ],
+  "evidence": {
+    "routing_spec": "validation_runs/DATE/specs/routing.json",
+    "ops_ledger_summary": "validation_runs/DATE/reports/ops_ledger_summary.json",
+    "quality_signal": "validation_runs/DATE/reports/quality_signal.json"
+  }
+}

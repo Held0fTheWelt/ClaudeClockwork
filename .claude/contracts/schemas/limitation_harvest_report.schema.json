@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LimitationHarvestReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "root",
+    "sources_scanned",
+    "expected_but_missing",
+    "limitations",
+    "non_goals",
+    "future_work",
+    "unimplemented_skills",
+    "warnings",
+    "limitations_of_scan"
+  ],
+  "properties": {
+    "type": {
+      "const": "limitation_harvest_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "root": {
+      "type": "string"
+    },
+    "sources_scanned": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_but_missing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "item",
+          "category",
+          "reason",
+          "confidence",
+          "evidence"
+        ],
+        "properties": {
+          "item": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "missing_capability",
+              "unimplemented_skill",
+              "doc_gap",
+              "inconsistency"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "snippet"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "snippet": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "text",
+          "evidence"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "snippet"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "snippet": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "text",
+          "evidence"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "snippet"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "snippet": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "future_work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "text",
+          "evidence"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "path",
+                "snippet"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "snippet": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "unimplemented_skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations_of_scan": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "code-clean-001",
+  "skill_id": "code_clean",
+  "inputs": {
+    "root": "src",
+    "scan_only": true,
+    "emit_plan": true
+  }
+}

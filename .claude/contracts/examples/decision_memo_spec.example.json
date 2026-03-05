@@ -1,0 +1,13 @@
+{
+  "type": "decision_memo_spec",
+  "memo_id": "memo-001",
+  "audience": "team_lead",
+  "bullets": [
+    "Outcome: PASS with 0 retries.",
+    "Cost: stayed at Claude C0; verifier O3 used once.",
+    "Recommendation: keep routing; add contract drift sentinel to daily checks."
+  ],
+  "links": [
+    "reports/FINAL_VALIDATION_SUMMARY.md"
+  ]
+}

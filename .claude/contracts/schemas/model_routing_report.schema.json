@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ModelRoutingReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "run_id",
+    "task",
+    "scope",
+    "decision",
+    "alternatives",
+    "stats_snapshot",
+    "notes"
+  ],
+  "properties": {
+    "type": {
+      "const": "model_routing_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "task": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "decision": {
+      "type": "object",
+      "required": [
+        "model",
+        "tier",
+        "reason",
+        "expected_cost_range_usd"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "tier": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "expected_cost_range_usd": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "model",
+          "expected_cost_range_usd"
+        ],
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "expected_cost_range_usd": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "stats_snapshot": {
+      "type": "object"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

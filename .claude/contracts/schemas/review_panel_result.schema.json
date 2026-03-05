@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReviewPanelResult",
+  "description": "Output of the review_panel skill — consolidated panel verdict with confidence and dissent tracking",
+  "type": "object",
+  "required": ["type", "task_ref", "final_verdict", "confidence", "individual_reviews", "dissenting", "recommendations", "status"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "review_panel_result"
+    },
+    "task_ref": {
+      "type": "string",
+      "description": "Echoed from the request — identifies the artifact under review"
+    },
+    "final_verdict": {
+      "type": "string",
+      "enum": ["pass", "warn", "fail"],
+      "description": "Consolidated panel verdict"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Fraction of reviewers agreeing with final_verdict (majority/unanimous) or normalized weighted score (weighted)"
+    },
+    "individual_reviews": {
+      "type": "array",
+      "description": "Normalized copy of each reviewer's input",
+      "items": {
+        "type": "object",
+        "required": ["reviewer", "role", "verdict", "score", "notes"],
+        "properties": {
+          "reviewer": {"type": "string"},
+          "role": {"type": "string", "enum": ["worker", "team_lead", "judge"]},
+          "verdict": {"type": "string", "enum": ["pass", "warn", "fail"]},
+          "score": {"type": "number", "minimum": 0, "maximum": 1},
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "dissenting": {
+      "type": "array",
+      "description": "Reviewer names whose individual verdict differs from final_verdict",
+      "items": {"type": "string"}
+    },
+    "recommendations": {
+      "type": "array",
+      "description": "Deduplicated notes collected from reviewers who voted warn or fail",
+      "items": {"type": "string"}
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "error"]
+    },
+    "error": {
+      "type": "string",
+      "description": "Human-readable error message; only present when status is error"
+    }
+  },
+  "additionalProperties": false
+}

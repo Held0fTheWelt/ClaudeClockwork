@@ -1,0 +1,16 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "codeclean-001",
+  "skill_id": "code_clean_scan",
+  "inputs": {
+    "root": ".",
+    "code_roots": [
+      ".claude/tools/skills"
+    ],
+    "entrypoints": [
+      ".claude/tools/skills/skill_runner.py"
+    ],
+    "write_reports": true,
+    "report_dir": ".llama_runtime/knowledge/writes/clean_reports"
+  }
+}

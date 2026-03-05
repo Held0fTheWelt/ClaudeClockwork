@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DecisionFeedbackSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "request_id",
+    "recipient_role",
+    "verdict",
+    "issues",
+    "recommendations"
+  ],
+  "properties": {
+    "type": {
+      "const": "decision_feedback_spec"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "recipient_role": {
+      "type": "string"
+    },
+    "verdict": {
+      "enum": [
+        "keep",
+        "adjust",
+        "escalate"
+      ]
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "severity",
+          "summary"
+        ],
+        "properties": {
+          "code": {
+            "enum": [
+              "over_escalation",
+              "pack_bloat",
+              "redundant_reread",
+              "drift",
+              "missing_skill",
+              "missing_role",
+              "schema_mismatch",
+              "unknown"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "low",
+              "med",
+              "high"
+            ]
+          },
+          "summary": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string"
+      }
+    },
+    "route_profile_patch": {
+      "type": "object",
+      "properties": {
+        "task_type": {
+          "type": "string"
+        },
+        "preferred_route": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

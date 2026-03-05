@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RedactionReport",
+  "type": "object",
+  "required": ["type", "input_dir", "output_dir", "files_copied", "total_hits", "redactions"],
+  "properties": {
+    "type": {"const": "redaction_report"},
+    "input_dir": {"type": "string"},
+    "output_dir": {"type": "string"},
+    "files_copied": {"type": "number", "minimum": 0},
+    "total_hits": {"type": "number", "minimum": 0},
+    "redactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["file", "hits"],
+        "properties": {
+          "file": {"type": "string"},
+          "hits": {"type": "number", "minimum": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

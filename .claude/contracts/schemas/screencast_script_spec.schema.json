@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ScreencastScriptSpec",
+  "type": "object",
+  "required": ["type", "path"],
+  "properties": {
+    "type": {"const": "screencast_script_spec"},
+    "project_root": {"type": "string"},
+    "path": {"type": "string", "minLength": 1},
+    "overwrite": {"type": "boolean"},
+    "dry_run": {"type": "boolean"},
+    "script_spec": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "audience": {"type": "string"},
+        "goal": {"type": "string"},
+        "duration": {"type": "string"},
+        "chapters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": {"type": "string"},
+              "title": {"type": "string"},
+              "on_screen": {"type": "string"},
+              "narration": {"type": "string"}
+            }
+          }
+        },
+        "notes": {"type": "string"}
+      }
+    },
+    "content": {"type": "string"}
+  }
+}

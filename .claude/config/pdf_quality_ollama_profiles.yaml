@@ -1,0 +1,36 @@
+# NanoBanana PDF Quality — Ollama role profiles
+# Adjust model names to match your local `ollama list`.
+
+roles:
+  explore:
+    model: "llama3.3:70b"
+    type: "architecture"
+    max_tokens_hint: 2500
+
+  write:
+    model: "qwen2.5:72b"
+    type: "draft"
+    max_tokens_hint: 4000
+
+  critic:
+    model: "phi4:14b"
+    type: "review"
+    max_tokens_hint: 2000
+
+  decide_gap:
+    model: "llama3.3:70b"
+    type: "brief"
+    max_tokens_hint: 1200
+
+outputs:
+  docs_root: "Docs"
+  documentation_dir: "Docs/Documentation"
+  tutorials_dir: "Docs/Tutorials"
+  references_dir: "Docs/References"
+  review_dir: "Docs/Review"
+
+render:
+  diagrams:
+    prefer: ["mermaid", "graphviz"]
+    mermaid_cli: "mmdc"   # optional; if not available, skip or require pre-rendered assets
+    graphviz_dot: "dot"  # optional

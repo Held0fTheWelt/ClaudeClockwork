@@ -1,0 +1,19 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "limharvest-001",
+  "skill_id": "limitation_harvest_scan",
+  "inputs": {
+    "root": ".",
+    "scan_roots": [
+      ".claude/skills",
+      ".claude/tasks",
+      ".claude/tools/skills",
+      ".claude/governance",
+      ".claude/policies"
+    ],
+    "max_files": 5000,
+    "max_snippet_chars": 220,
+    "write_reports": true,
+    "report_dir": ".llama_runtime/knowledge/writes/limitation_harvest"
+  }
+}

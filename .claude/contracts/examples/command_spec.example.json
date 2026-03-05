@@ -1,0 +1,14 @@
+{
+  "type": "command_spec",
+  "id": "pytest_quick",
+  "command": "pytest -q",
+  "cwd": ".",
+  "expected_exit_codes": [
+    0
+  ],
+  "timeout_seconds": 600,
+  "artifacts_expected": [
+    "validation_runs/DATE/logs/pytest.txt"
+  ],
+  "notes": "fast unit test run"
+}

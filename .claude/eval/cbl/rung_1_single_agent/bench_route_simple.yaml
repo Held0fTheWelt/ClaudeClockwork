@@ -1,0 +1,33 @@
+# CBL Rung 1 — benchmark: simple routing (MVP24-D)
+# Format: Report 08 §3. Other rung_1 benchmarks: bench_plan_simple, bench_execute_with_snapshot, bench_rollback, bench_report_generation
+
+id: "cbl_1_route_simple"
+rung: 1
+description: "Verify system correctly routes a simple implementation task"
+timeout_seconds: 30
+max_tokens: 2000
+
+input:
+  type: "task_spec"
+  payload:
+    goal: "Add a helper function to format ISO dates"
+    constraints: ["Use existing patterns", "Add unit test"]
+
+assertions:
+  - type: "agent_selected"
+    expected: "implementation"
+    weight: 40
+  - type: "escalation_level"
+    expected: "L0"
+    weight: 20
+  - type: "plan_steps"
+    min: 2
+    max: 5
+    weight: 20
+  - type: "token_budget"
+    max: 1500
+    weight: 20
+
+scoring:
+  pass_threshold: 70
+  excellent_threshold: 90

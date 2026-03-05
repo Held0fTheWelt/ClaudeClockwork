@@ -1,0 +1,21 @@
+{
+  "type": "evidence_selection_spec",
+  "selection_id": "es-001",
+  "requested_action": "deep_oodle",
+  "include": [
+    "validation_runs/DATE/specs/plan.json",
+    "validation_runs/DATE/reports/quality_signal.json"
+  ],
+  "snippets": [
+    {
+      "source": "validation_runs/DATE/logs/test.log",
+      "range": "tail:200",
+      "why": "error context"
+    }
+  ],
+  "exclude": [
+    "node_modules/",
+    "*.zip"
+  ],
+  "reason": "compact pack for deep reasoning"
+}

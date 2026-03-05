@@ -1,0 +1,13 @@
+{
+  "type": "route_autotune_suggestion",
+  "generated_at": "2026-02-28T12:10:00Z",
+  "suggestions": [
+    {
+      "task_type": "docs_only",
+      "change": "Use C0 doer + tool validators; disable verifier escalation unless failures repeat",
+      "reason": "Recent runs show no failures; verifier escalation wasted time",
+      "expected_savings": "high",
+      "risk": "low"
+    }
+  ]
+}

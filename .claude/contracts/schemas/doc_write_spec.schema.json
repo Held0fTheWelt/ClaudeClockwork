@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DocWriteSpec",
+  "type": "object",
+  "required": ["type", "files"],
+  "properties": {
+    "type": {"const": "doc_write_spec"},
+    "project_root": {"type": "string"},
+    "overwrite": {"type": "boolean"},
+    "dry_run": {"type": "boolean"},
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "content"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "content": {"type": "string"},
+          "doc_type": {"type": "string"},
+          "overwrite": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

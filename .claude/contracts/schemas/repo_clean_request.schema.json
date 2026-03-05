@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RepoCleanRequest",
+  "description": "Inputs for the repo_clean skill (CCW-MVP13). Scans the repository for clutter without modifying the filesystem.",
+  "type": "object",
+  "properties": {
+    "root": {
+      "type": "string",
+      "default": ".",
+      "description": "Directory to scan. Resolved to an absolute path at runtime."
+    },
+    "scan_only": {
+      "type": "boolean",
+      "default": true,
+      "description": "Must be set to false explicitly to allow any future write mode (not yet implemented). Effectively always scan-only."
+    },
+    "patterns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Additional glob patterns (applied to filenames) to flag as clutter, merged with the built-in defaults."
+    }
+  },
+  "additionalProperties": false
+}

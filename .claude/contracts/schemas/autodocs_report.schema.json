@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AutoDocsReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "skills_seen",
+    "written",
+    "updated",
+    "warnings",
+    "limitations"
+  ],
+  "properties": {
+    "type": {
+      "const": "autodocs_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "skills_seen": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "written": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "updated": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

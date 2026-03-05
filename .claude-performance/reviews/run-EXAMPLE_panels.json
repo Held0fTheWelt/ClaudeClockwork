@@ -1,0 +1,23 @@
+{
+  "run_id": "run-20260301-001",
+  "worker_oodle": {
+    "effort_0_10": 7.5,
+    "effectiveness_0_10": 8.0,
+    "notes": "(paste oodle worker analysis here)"
+  },
+  "worker_deepseek": {
+    "effort_0_10": 7.0,
+    "effectiveness_0_10": 7.8,
+    "notes": "(paste deepseek worker analysis here)"
+  },
+  "teamlead": {
+    "expected_effort_0_10": 5.0,
+    "self_compare": "I think I'd achieve this in ~5/10 effort.",
+    "notes": "(teamlead notes)"
+  },
+  "judge_oodle": {
+    "quality_0_10": 8.5,
+    "could_be_better": true,
+    "how": "(judge notes: where and how to improve)"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "SaveGame Pipeline",
+  "evidence_paths": [
+    "src/savegame.py"
+  ],
+  "output_path": "docs/mechanics/savegame.md"
+}

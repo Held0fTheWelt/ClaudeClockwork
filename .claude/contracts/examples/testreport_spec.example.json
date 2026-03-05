@@ -1,0 +1,9 @@
+{
+  "type": "testreport_spec",
+  "run_id": "2026-02-28",
+  "status": "pass",
+  "suite": "unit",
+  "failures": [],
+  "duration_s": 1.0,
+  "notes": ""
+}

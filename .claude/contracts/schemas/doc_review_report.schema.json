@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DocReviewReport",
+  "type": "object",
+  "required": ["type", "files_scanned", "findings"],
+  "properties": {
+    "type": {"const": "doc_review_report"},
+    "files_scanned": {"type": "integer", "minimum": 0},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "code", "message", "path", "line"],
+        "properties": {
+          "severity": {"enum": ["info", "warn", "error"]},
+          "code": {"type": "string"},
+          "message": {"type": "string"},
+          "path": {"type": "string"},
+          "line": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

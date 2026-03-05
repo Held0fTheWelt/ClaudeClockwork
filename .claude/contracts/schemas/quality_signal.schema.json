@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QualitySignal",
+  "type": "object",
+  "required": [
+    "type",
+    "run_id",
+    "error_count",
+    "severity_max",
+    "repeat_failures",
+    "confidence_drop",
+    "risk_flag",
+    "suggested_escalation"
+  ],
+  "properties": {
+    "type": {
+      "const": "quality_signal"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "error_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "severity_max": {
+      "enum": [
+        "none",
+        "low",
+        "med",
+        "high",
+        "critical"
+      ]
+    },
+    "repeat_failures": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "confidence_drop": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "risk_flag": {
+      "type": "boolean"
+    },
+    "suggested_escalation": {
+      "type": "object",
+      "required": [
+        "oodle",
+        "claude"
+      ],
+      "properties": {
+        "oodle": {
+          "enum": [
+            "none",
+            "O+1",
+            "O+2",
+            "O3"
+          ]
+        },
+        "claude": {
+          "enum": [
+            "none",
+            "C+1",
+            "C+2",
+            "C3"
+          ]
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "skill_id": "repo_clean",
+  "inputs": {"root": ".", "scan_only": true}
+}

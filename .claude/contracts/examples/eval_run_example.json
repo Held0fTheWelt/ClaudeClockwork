@@ -1,0 +1,1 @@
+{"skill_id": "eval_run", "inputs": {"golden_dir": ".claude/eval/golden", "compare_previous": true}}

@@ -1,0 +1,30 @@
+{
+  "skill_id": "review_panel",
+  "inputs": {
+    "task_ref": "mvp12-schema-review",
+    "consolidation": "majority",
+    "reviews": [
+      {
+        "reviewer": "alice",
+        "role": "worker",
+        "verdict": "pass",
+        "score": 0.9,
+        "notes": ""
+      },
+      {
+        "reviewer": "bob",
+        "role": "team_lead",
+        "verdict": "warn",
+        "score": 0.6,
+        "notes": "Missing edge-case tests for empty events_dir"
+      },
+      {
+        "reviewer": "carol",
+        "role": "judge",
+        "verdict": "pass",
+        "score": 0.8,
+        "notes": ""
+      }
+    ]
+  }
+}

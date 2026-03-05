@@ -1,0 +1,12 @@
+{
+  "type": "routing_spec",
+  "run_id": "2026-02-28",
+  "department": "core",
+  "risk": "low",
+  "trust": "inherit",
+  "oodle_tier": "O1",
+  "claude_tier": "C0",
+  "agents": ["Team Lead"],
+  "constraints": {},
+  "notes": ""
+}

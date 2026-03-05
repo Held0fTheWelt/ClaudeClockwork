@@ -1,0 +1,5 @@
+{
+  "left_root": "./snapshots/a",
+  "right_root": "./snapshots/b",
+  "output_path": "docs/mutation_report.md"
+}

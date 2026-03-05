@@ -1,0 +1,14 @@
+{
+  "type": "policy_gate_request",
+  "request_id": "pg-001",
+  "requested_action": "deep_oodle",
+  "signals": {
+    "risk": "high",
+    "repeat_failures": 0,
+    "drift_events": 0,
+    "over_escalations": 0,
+    "explicit_deep_review": false,
+    "no_llm": false,
+    "experiments_requested": 0
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "_comment": "Example showing a bandit routing decision for task_type='code_review'. The bandit selected claude-sonnet-4-6 (rung 0) with confidence 0.87 based on historical ledger data. source='bandit' means the ledger had enough entries (>= 10 globally and >= 5 per model) to trust the selection.",
+  "inputs": {
+    "task_type": "code_review",
+    "quality_threshold": 0.7,
+    "cost_cap": 0.05,
+    "epsilon": 0.1,
+    "ladder_name": "sonnet"
+  },
+  "outputs": {
+    "model_id": "claude-sonnet-4-6",
+    "rung": 0,
+    "confidence": 0.87,
+    "source": "bandit"
+  }
+}

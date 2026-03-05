@@ -1,0 +1,11 @@
+{
+  "type": "quality_signal",
+  "run_id": "2026-02-28",
+  "error_count": 0,
+  "severity_max": "none",
+  "repeat_failures": 0,
+  "confidence_drop": 0.0,
+  "risk_flag": false,
+  "suggested_escalation": {"oodle": "none", "claude": "none"},
+  "notes": ""
+}

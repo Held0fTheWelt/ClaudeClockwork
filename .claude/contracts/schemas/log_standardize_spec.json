@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "required": [
+    "root"
+  ],
+  "properties": {
+    "root": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "object"
+    },
+    "output_path": {
+      "type": "string"
+    }
+  }
+}

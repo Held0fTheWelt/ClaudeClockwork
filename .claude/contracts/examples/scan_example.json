@@ -1,0 +1,12 @@
+{
+  "input": {
+    "path": ".claude/tools/skills",
+    "pattern": "*.py"
+  },
+  "expected_output": {
+    "files": ["hello.py", "report.py", "scan.py"],
+    "count": 3,
+    "status": "ok"
+  },
+  "_note": "expected_output.files is illustrative; actual results depend on repo state."
+}

@@ -1,0 +1,15 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "route-out-001",
+  "skill_id": "model_routing_record_outcome",
+  "inputs": {
+    "run_id": "run-20260301-001",
+    "task_type": "docs+planning",
+    "model": "claude-haiku-3",
+    "success": true,
+    "quality_0_10": 8.2,
+    "total_tokens": 65200,
+    "stats_path": ".llama_runtime/brain/model_routing_stats.json",
+    "notes": "good enough, cheap"
+  }
+}

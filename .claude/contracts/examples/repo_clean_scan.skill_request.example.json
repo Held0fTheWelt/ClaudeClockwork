@@ -1,0 +1,54 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "clean-001",
+  "skill_id": "repo_clean_scan",
+  "inputs": {
+    "root": ".",
+    "entry_docs": [
+      ".claude/SYSTEM.md",
+      ".claude/skills.md",
+      ".claude/skills/registry.md",
+      ".claude/ROADMAP.md",
+      ".claude/ARCHITECTURE.md",
+      ".claude/MODEL_POLICY.md"
+    ],
+    "convention_roots": [
+      ".claude/agents/",
+      ".claude/contracts/",
+      ".claude/tools/",
+      ".claude/skills/"
+    ],
+    "exclude_dirs": [
+      ".git",
+      ".hg",
+      ".svn",
+      ".idea",
+      ".vscode",
+      ".venv",
+      "venv",
+      "node_modules"
+    ],
+    "junk_dir_names": [
+      "__pycache__",
+      ".pytest_cache",
+      ".mypy_cache",
+      ".ruff_cache",
+      "dist",
+      "build"
+    ],
+    "junk_file_globs": [
+      "*.pyc",
+      "*.pyo",
+      "*.tmp",
+      "*.log",
+      "*.bak",
+      "*.swp",
+      "*.swo",
+      ".DS_Store",
+      "Thumbs.db"
+    ],
+    "large_file_bytes": 5000000,
+    "write_reports": true,
+    "report_dir": ".llama_runtime/knowledge/writes/clean_reports"
+  }
+}

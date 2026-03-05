@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LastTrainSummary",
+  "description": "Output schema for the last_train skill (CCW-MVP14). Summarises a last_train_report.json produced by last_train_merge.",
+  "type": "object",
+  "required": [
+    "type",
+    "timeline",
+    "total_evolution_steps",
+    "total_loss_steps",
+    "total_mixed_steps",
+    "output_format",
+    "status"
+  ],
+  "properties": {
+    "type": {
+      "const": "last_train_summary"
+    },
+    "timeline": {
+      "type": "array",
+      "description": "Ordered list of training steps with their verdict and notes.",
+      "items": {
+        "type": "object",
+        "required": ["step", "verdict", "notes"],
+        "properties": {
+          "step": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Zero-based step index from the source report."
+          },
+          "verdict": {
+            "type": "string",
+            "enum": ["evolution", "loss", "mixed", "unknown"],
+            "description": "Classification verdict for this training step."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Confidence level and reasons from the underlying verdict object."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "combined_zip": {
+      "type": ["string", "null"],
+      "description": "Path to the combined zip file produced by last_train_merge, or null if not present."
+    },
+    "total_evolution_steps": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Count of steps classified as 'evolution'."
+    },
+    "total_loss_steps": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Count of steps classified as 'loss'."
+    },
+    "total_mixed_steps": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Count of steps classified as 'mixed'."
+    },
+    "output_format": {
+      "type": "string",
+      "enum": ["json", "markdown"],
+      "description": "Format used for the written summary file (if write_summary=true)."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "error"]
+    },
+    "written_to": {
+      "type": "string",
+      "description": "Absolute path of the written summary file when write_summary=true."
+    }
+  },
+  "additionalProperties": false
+}

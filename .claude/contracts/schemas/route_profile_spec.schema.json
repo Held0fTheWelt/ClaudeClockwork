@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouteProfileSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "task_type",
+    "preferred_route",
+    "fallbacks"
+  ],
+  "properties": {
+    "type": {
+      "const": "route_profile_spec"
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "preferred_route": {
+      "type": "object",
+      "required": [
+        "doer",
+        "verifier",
+        "relay"
+      ],
+      "properties": {
+        "doer": {
+          "type": "string"
+        },
+        "verifier": {
+          "type": "string"
+        },
+        "relay": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fallbacks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

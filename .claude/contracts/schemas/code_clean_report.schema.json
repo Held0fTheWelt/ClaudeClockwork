@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodeCleanReport",
+  "type": "object",
+  "required": [
+    "type",
+    "root",
+    "generated_at",
+    "orphan_modules",
+    "unregistered_modules",
+    "markers",
+    "warnings",
+    "limitations"
+  ],
+  "properties": {
+    "type": {
+      "const": "code_clean_report"
+    },
+    "root": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "orphan_modules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unregistered_modules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "markers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "kind",
+          "snippet"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "deprecated",
+              "todo",
+              "path_drift",
+              "placeholder",
+              "legacy",
+              "fixme"
+            ]
+          },
+          "snippet": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

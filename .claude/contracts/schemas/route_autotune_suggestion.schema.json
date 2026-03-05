@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouteAutotuneSuggestion",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "suggestions"
+  ],
+  "properties": {
+    "type": {
+      "const": "route_autotune_suggestion"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "suggestions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "task_type",
+          "change",
+          "reason",
+          "expected_savings",
+          "risk"
+        ],
+        "properties": {
+          "task_type": {
+            "type": "string"
+          },
+          "change": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "expected_savings": {
+            "enum": [
+              "low",
+              "med",
+              "high"
+            ]
+          },
+          "risk": {
+            "enum": [
+              "low",
+              "med",
+              "high"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

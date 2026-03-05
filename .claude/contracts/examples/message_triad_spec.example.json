@@ -1,0 +1,71 @@
+{
+  "type": "message_triad_spec",
+  "triad_id": "triad-001",
+  "source": {
+    "author": "user",
+    "lang": "de",
+    "text": "Ich m\u00f6chte einen \u00dcbersetzerskill..."
+  },
+  "translation": {
+    "lang": "en",
+    "text": "I want a translator skill...",
+    "quality": "draft"
+  },
+  "work_brief": {
+    "lang": "en",
+    "audience": {
+      "primary_agent": "personaler",
+      "secondary_agents": [
+        "content_packer"
+      ]
+    },
+    "mode": "balanced",
+    "budget": {
+      "max_words": 350,
+      "allow_deep_oodle": false,
+      "no_llm": false,
+      "max_chars": 900
+    },
+    "brief": {
+      "goal": "Introduce a Message Triad protocol for DE\u2192EN translation + compact work briefs.",
+      "context": [
+        "User messages are narrative German and cost tokens."
+      ],
+      "constraints": [
+        "Tool-first; avoid agent bloat",
+        "Fallback to original only if blocked"
+      ],
+      "tasks": [
+        "Add triad schema+example",
+        "Add triad build skill",
+        "Add tasks for translation+briefing"
+      ],
+      "acceptance": [
+        "Triad JSON validates against schema",
+        "Fallback policy is explicit"
+      ],
+      "risks": [
+        "Drift if references are missing"
+      ]
+    }
+  },
+  "context_pack": {
+    "compactor_shortlist": [
+      "Use work_brief first",
+      "Fallback to translation then source"
+    ]
+  },
+  "fallback_policy": {
+    "fallback_order": [
+      "work_brief",
+      "translation",
+      "source"
+    ],
+    "when_to_escalate_context": [
+      "blocked",
+      "ambiguity",
+      "repeat_failures>=2"
+    ],
+    "max_reread_budget": 1
+  }
+}

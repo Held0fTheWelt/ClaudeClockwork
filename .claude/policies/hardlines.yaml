@@ -1,0 +1,113 @@
+version: "1.0"
+# hardlines.yaml — Safety hardlines for OllamaCode Clockwork (CCW-MVP05)
+# These rules are enforced by the policy gate and skill runner.
+# Opt-in is required for all destructive actions.
+
+hardlines:
+
+  # -----------------------------------------------------------------------
+  # Destructive shell / git actions
+  # -----------------------------------------------------------------------
+  destructive_actions:
+    - pattern: "rm -rf"
+      policy: "DENY always"
+      reason: "Irreversible filesystem destruction; no legitimate automated use case."
+
+    - pattern: "git reset --hard"
+      policy: "REQUIRE L4 escalation + user confirmation"
+      reason: "Discards uncommitted work; must be explicitly authorized."
+
+    - pattern: "git push --force"
+      policy: "REQUIRE L5 user approval"
+      reason: "Force-push to remote rewrites shared history; prohibited on main/master without explicit approval."
+
+    - pattern: "git checkout ."
+      policy: "REQUIRE L4 escalation + user confirmation"
+      reason: "Discards all unstaged changes; equivalent to reset --hard on working tree."
+
+    - pattern: "git restore ."
+      policy: "REQUIRE L4 escalation + user confirmation"
+      reason: "Restores working tree to HEAD; discards all unstaged modifications."
+
+    - pattern: "git clean -f"
+      policy: "REQUIRE L4 escalation + user confirmation"
+      reason: "Removes untracked files; irreversible without a prior stash."
+
+    - pattern: "git branch -D"
+      policy: "REQUIRE L4 escalation + user confirmation"
+      reason: "Force-deletes a branch; may lose commits not merged elsewhere."
+
+    - pattern: "--no-verify"
+      policy: "DENY unless user explicitly overrides for task scope"
+      reason: "Skipping pre-commit hooks bypasses quality gates; not allowed by default."
+
+    - pattern: "--no-gpg-sign"
+      policy: "DENY unless user explicitly overrides for task scope"
+      reason: "Bypasses commit signing; breaks auditability."
+
+  # -----------------------------------------------------------------------
+  # Filesystem write roots
+  # -----------------------------------------------------------------------
+  output_roots:
+    # Roots where agents and tools MAY write runtime output
+    allowed_write_roots:
+      - ".report/"
+      - ".claude-performance/"
+      - ".llama_runtime/"
+      - "llamacode/"
+      - "tests/"
+      - "docs/"
+      - "qa_tests/"
+      - "src/"
+      - "memory/"
+      - "Docs/"
+      - "tasks/"
+
+    # Roots that are strictly READ-ONLY at runtime (no agent or tool writes here)
+    denied_write_roots:
+      - ".claude/"
+      - ".llama/"
+      - "quellen/"
+
+    # Note: denied_write_roots take precedence over allowed_write_roots.
+    # If a path matches both, DENY wins.
+
+  # -----------------------------------------------------------------------
+  # External provider opt-in
+  # -----------------------------------------------------------------------
+  external_providers:
+    require_explicit_optin: true
+    providers:
+      - name: "Claude API (subprocess/spawn)"
+        policy: "REQUIRE explicit user opt-in per task scope"
+        l_gate: "L5"
+      - name: "OpenAI / third-party LLM API"
+        policy: "REQUIRE explicit user opt-in per task scope"
+        l_gate: "L5"
+      - name: "Any outbound HTTP to non-localhost"
+        policy: "REQUIRE explicit user opt-in per task scope"
+        l_gate: "L4"
+
+  # -----------------------------------------------------------------------
+  # Commit / PR guards
+  # -----------------------------------------------------------------------
+  commit_guards:
+    - id: "no_secrets"
+      description: "Never commit .env files or files matching credential patterns"
+      policy: "DENY — run security_redactor first"
+    - id: "no_auto_commit"
+      description: "Commits are created only on explicit user request"
+      policy: "DENY autonomous commits"
+    - id: "no_force_push_main"
+      description: "Force push to main/master is prohibited"
+      policy: "DENY always on main/master; REQUIRE L5 on other protected branches"
+
+  # -----------------------------------------------------------------------
+  # Execution defaults
+  # -----------------------------------------------------------------------
+  defaults:
+    apply_mode: "dry_run"   # Default: never apply without explicit flag
+    dry_run_flag: "--apply"
+    ollama_freeze_on_unavailable: true   # L1+ tasks freeze if Ollama is unreachable
+    max_ollama_refinement_iterations: 2  # Maximum refinement loop iterations
+    small_first_model_routing: true      # Always start with smallest sufficient model

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PdfRenderInputs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project_root", "manuscript_path", "output_pdf_path"],
+  "properties": {
+    "project_root": {"type": "string"},
+    "manuscript_path": {"type": "string", "description": "Markdown manuscript file."},
+    "output_pdf_path": {"type": "string"},
+    "assets_root": {"type": "string", "default": "Docs/References/diagrams"},
+    "doc_meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "subtitle": {"type": "string"},
+        "version": {"type": "string"},
+        "date": {"type": "string"},
+        "author": {"type": "string"}
+      }
+    },
+    "diagram_specs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "source_path", "kind"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"type": "string", "enum": ["mermaid", "graphviz", "image"]},
+          "source_path": {"type": "string"},
+          "rendered_path": {"type": "string"},
+          "format": {"type": "string", "enum": ["svg", "png"], "default": "svg"}
+        }
+      }
+    },
+    "render_options": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "page_size": {"type": "string", "enum": ["A4", "LETTER"], "default": "A4"},
+        "toc": {"type": "boolean", "default": true},
+        "syntax_highlight": {"type": "boolean", "default": true}
+      }
+    }
+  }
+}

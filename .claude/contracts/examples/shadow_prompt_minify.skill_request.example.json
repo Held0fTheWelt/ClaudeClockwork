@@ -1,0 +1,19 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "shadow-001",
+  "skill_id": "shadow_prompt_minify",
+  "inputs": {
+    "source_docs": [
+      ".claude/SYSTEM.md",
+      ".claude/skills/registry.md",
+      ".claude/ARCHITECTURE.md",
+      ".claude/ROADMAP.md",
+      ".claude/MODEL_POLICY.md",
+      ".claude/skills/playbooks/cleaning.md",
+      ".claude/skills/playbooks/pdf_quality_docforge.md"
+    ],
+    "shadow_root": ".claude_shadow",
+    "max_chars_per_file": 6000,
+    "mode": "deterministic_minify"
+  }
+}

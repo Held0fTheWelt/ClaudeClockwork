@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpsLedgerSummary",
+  "type": "object",
+  "required": [
+    "type",
+    "run_id",
+    "overview",
+    "waste",
+    "capacity",
+    "quality",
+    "routing_recommendations"
+  ],
+  "properties": {
+    "type": {
+      "const": "ops_ledger_summary"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "object"
+    },
+    "waste": {
+      "type": "object"
+    },
+    "capacity": {
+      "type": "object"
+    },
+    "quality": {
+      "type": "object"
+    },
+    "routing_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

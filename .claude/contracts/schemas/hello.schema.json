@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HelloSkill",
+  "description": "Schema for the hello skill (MVP02). Accepts a name, returns a greeting message.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name to greet."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "output": {
+      "type": "object",
+      "required": ["message", "status"],
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "The greeting message."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ok", "fail"],
+          "description": "Execution status."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

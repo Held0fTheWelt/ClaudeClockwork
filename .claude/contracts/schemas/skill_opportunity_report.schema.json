@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillOpportunityReport",
+  "type": "object",
+  "required": [
+    "type",
+    "report_id",
+    "candidates"
+  ],
+  "properties": {
+    "type": {
+      "const": "skill_opportunity_report"
+    },
+    "report_id": {
+      "type": "string"
+    },
+    "candidates": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "trigger_pattern",
+          "expected_savings",
+          "risk",
+          "recommendation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "trigger_pattern": {
+            "type": "string"
+          },
+          "expected_savings": {
+            "enum": [
+              "low",
+              "med",
+              "high"
+            ]
+          },
+          "risk": {
+            "enum": [
+              "low",
+              "med",
+              "high"
+            ]
+          },
+          "recommendation": {
+            "enum": [
+              "observe_more",
+              "build_skill",
+              "build_later"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

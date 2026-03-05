@@ -1,0 +1,11 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "shadow-prompt-001",
+  "skill_id": "shadow_prompt",
+  "inputs": {
+    "report_path": "example_shadow_prompt_report.json",
+    "min_quality_score": 0.6,
+    "write_triage": true,
+    "triage_dir": ".report/shadow_prompt"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "repo_compare_report",
+  "left_root": "../ClaudeCode",
+  "right_root": "../LlamaCode",
+  "added": [".llama/skills/registry.md"],
+  "removed": [".claude/agents/legacy_agent.md"],
+  "changed": [
+    {
+      "path": ".claude/skills/registry.md",
+      "sha256_left": "<sha256>",
+      "sha256_right": "<sha256>",
+      "size_left": 1234,
+      "size_right": 1300
+    }
+  ],
+  "report_path": ".llama_runtime/knowledge/writes/compare_reports/repo_compare_YYYYMMDD_HHMMSS.md"
+}
