@@ -13,7 +13,7 @@
 | Area | Location |
 |------|----------|
 | Clockwork (agents, skills, governance) | `.claude/` |
-| Runtime state (ledgers, eval results, writes) | `.llama_runtime/` |
+| Runtime state (ledgers, eval results, writes) | `.llama_runtime/` (created; `eval/results/` pre-seeded) |
 | Reports | `.report/` |
 | Telemetry | `.claude-performance/` |
 

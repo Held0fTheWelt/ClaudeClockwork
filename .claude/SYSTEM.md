@@ -1,7 +1,7 @@
 # Agent Engineering System — Python Orchestrator
 
-> **Single Source of Truth** für alle Agents, Prozesse und Governance-Regeln.
-> Dieses Verzeichnis ersetzt vollständig `Docs/Rules/` (deprecated).
+> **Single Source of Truth** for all agents, processes, and governance rules.
+> This directory fully replaces `Docs/Rules/` (deprecated).
 
 ---
 
@@ -9,18 +9,17 @@
 
 **Clockwork-only:** `.claude/` contains methodology + deterministic tooling only. Project code/docs live outside this folder.
 
-Python Orchestrator ist eine Konsolenanwendung für autonome Ollama/Claude-Agenten-Orchestrierung.
-Das System implementiert das Governance-Framework aus `.claude/` in Python und kann autonom arbeiten.
-Bidirektionale Zusammenarbeit: Claude Code ruft die App via Bash, die App spawnt Claude-Subagenten via `claude`-CLI.
+The Python Orchestrator is a console application for autonomous Ollama/Claude agent orchestration.
+The system implements the governance framework from `.claude/` in Python and can operate autonomously.
+Bidirectional collaboration: Claude Code calls the app via Bash; the app spawns Claude sub-agents via the `claude` CLI.
 
 ___
 
-# Claude System — Llama Code (formerly Oodle Code) CMD
+# Claude System — Clockwork (formerly Llama Code / Oodle Code)
 
-This repository uses **Oodle-first governance**.
+This repository uses **Clockwork governance**.
 
 ## Start here
-- `OODLE.md` (product spec)
 - `ROADMAP.md` (milestones)
 - `ARCHITECTURE.md` (system design)
 - `MODEL_POLICY.md` (tiers + triggers)
@@ -44,8 +43,7 @@ Run tasks in `.claude/tasks/`:
 
 ---
 
-
-## System-Architektur
+## System Architecture
 
 ```
 Team Lead (Strategic)
@@ -65,65 +63,73 @@ Team Lead (Strategic)
 
 ---
 
-## Unterordner-Referenz
+## Subdirectory Reference
 
-| Verzeichnis | Inhalt |
+| Directory | Contents |
 |---|---|
-| `agents/` | Rollen-Definitionen: Team Lead, Designer, Specialists, Research |
+| `agents/` | Role definitions: Team Lead, Designer, Specialists, Research |
 | `agents/critics/` | Technical + Systemic Critic |
 | `governance/` | Execution Protocol, Decision Policy, Escalation, Review, Git Workflow, Workflow Triggers, Task Archival (BP-005), Document Placement (BP-006), Rule Discovery, Ollama Integration (10 files) |
-| `tools/` | `ollama_brief.py` — Lokales LLM Pre-Briefing für Agents |
-| `knowledge/` | Knowledge Architecture, Research Archive Template |
-| `performance/` | Performance Tracking, Log Template |
-| `python/` | Python-Architekturregeln, Projektmuster |
+| `tools/` | `ollama_brief.py` — local LLM pre-briefing for agents |
+| `knowledge/` | Knowledge architecture, research archive template |
+| `performance/` | Performance tracking, log template |
+| `python/` | Python architecture rules, project patterns |
 
 ---
 
-## Governance-Prinzipien
+## Governance Principles
 
-- Keine stillen Architekturänderungen.
-- Core-Entscheidungen erfordern User-Bestätigung.
-- Jede Major Task aktualisiert das Wissen.
-- Performance-Metriken werden protokolliert und reviewt.
-- Framework-Konsistenz wird vom Designer/Architecture Agent durchgesetzt.
+- No silent architecture changes.
+- Core decisions require user confirmation.
+- Every major task updates the knowledge base.
+- Performance metrics are logged and reviewed.
+- Framework consistency is enforced by the Designer/Architecture Agent.
 
 ---
 
-## Autonomie-Regeln
+## Autonomy Rules
 
-| Bereich | Autonomie |
+| Area | Autonomy |
 |---|---|
-| Implementierung | Autonom |
-| Architektur | Bestätigung erforderlich |
-| Framework-Änderungen | Designer-Review obligatorisch |
-| Eskalationsschwellen ändern | Systemic Critic + User |
+| Implementation | Autonomous |
+| Architecture | Confirmation required |
+| Framework changes | Designer review mandatory |
+| Changing escalation thresholds | Systemic Critic + User |
 
 ---
 
-## Docs/ Zielstruktur
+## Project Structure (`.project/`)
+
+Project-operational files for the current project live in `.project/`.
+When deploying Clockwork on another project, these move to that project's root.
 
 ```
-Docs/
-  TASKS.md                 ← Trigger-Referenz
-  Tasks/                   ← Aktive Tasks
-  Plans/                   ← Implementierungspläne
-  Review/                  ← Reviews + Qualitätsbewertungen
-  Critics/                 ← Critics-Outputs, Systemkritiken
-  References/              ← Architektur-Referenzen
-  Documentation/           ← Technische Docs
-  Tutorials/               ← Guides, How-Tos
+.project/
+  MEMORY.md                ← Cross-session knowledge (SSoT)
+  ARCHITECTURE.md          ← System design
+  ROADMAP.md               ← Milestones
+  MODEL_POLICY.md          ← Model tier overrides
+  QUALITY_TRACKING.md      ← Telemetry + stats
+  memory/                  ← Team Lead cross-session context files
+  Docs/
+    Plans/                 ← Task descriptions + implementation plans
+    Review/                ← Validation reports
+    Critics/               ← Critic outputs
+    Documentation/         ← Technical docs
+    References/            ← Archived reference documents
+    Tutorials/             ← Guides, How-Tos
 ```
 
-**Agent-Schreibrechte:**
+**Agent write permissions:**
 
-| Agent | Schreibrechte |
+| Agent | Write permissions |
 |---|---|
-| Documentation Agent | `Docs/Documentation/`, `Docs/Tutorials/` |
-| Librarian Agent | `Docs/References/`, `.claude/knowledge/` |
-| Collector Agent | Validierung quer über alle Docs/ |
-| Validation Agent | `Docs/Review/` |
-| Critics | `Docs/Critics/` |
-| Team Lead / Designer | `.claude/governance/`, `.claude/agents/`, `.claude/python/` |
+| Documentation Agent | `.project/Docs/Documentation/`, `.project/Docs/Tutorials/` |
+| Librarian Agent | `.project/Docs/References/`, `.claude/knowledge/` |
+| Collector Agent | Validation across all `.project/Docs/` |
+| Validation Agent | `.project/Docs/Review/` |
+| Critics | `.project/Docs/Critics/` |
+| Team Lead / Designer | `.claude/governance/`, `.claude/agents/`, `.claude/python/`, `.project/Docs/Plans/`, `.project/memory/` |
 
 ---
 
@@ -142,34 +148,34 @@ Docs/
 
 ## Operational defaults (v17.x)
 
-- **German narrative input**: build a **Message Triad** first (`MessageTriadSpec`), then work from `work_brief`.
-- **Fallback order**: work_brief → translation → source (original).
-- **Hard STOP**: if Drift Sentinel FAILs, stop and fix drift before proceeding.
-- **Policy**: use `policy_gatekeeper` to decide if deep_oodle / creative_feedback / rebuild / experiments are allowed.
-- **Deep reasoning**: only use Deep Oodle with a Deliberation Pack built by `deliberation_pack_build`.
+- **Message Triad input workflow:** build a `MessageTriadSpec` first (`tasks/input/000_BUILD_MESSAGE_TRIAD.md`), then work from `work_brief`.
+- **Fallback order:** work_brief → translation → source (original).
+- **Hard STOP:** if Drift Sentinel FAILs, stop and fix drift before proceeding.
+- **Policy:** use `policy_gatekeeper` to decide if deep reasoning / creative_feedback / rebuild / experiments are allowed.
+- **Deep reasoning:** only use Deep Oodle with a Deliberation Pack built by `deliberation_pack_build`.
 
 ## Operational defaults (v17.6 additions)
 
-- **PR-blocking QA**: run `qa_gate` before risky work (policy: `governance/qa_gate_policy.md`).
-- **Evidence bundles**: build `evidence_bundle_build` outputs for reproducible runs (policy: `governance/evidence_bundle_policy.md`).
-- **Security redaction**: redact evidence before sharing (`security_redactor`, policy: `governance/security_redaction_policy.md`).
-- **Budgeting**: use `budget_router` for deterministic tier selection (`governance/budgeting_policy.md`).
-- **Topology checks**: verify agent hierarchy with `team_topology_verify`.
-- **Docs SSoT**: verify backticked path references with `doc_ssot_resolver`.
-- **Release cut**: use `release_cut` to generate a deterministic evidence pack (no publishing).
+- **PR-blocking QA:** run `qa_gate` before risky work (policy: `governance/qa_gate_policy.md`).
+- **Evidence bundles:** build `evidence_bundle_build` outputs for reproducible runs (policy: `governance/evidence_bundle_policy.md`).
+- **Security redaction:** redact evidence before sharing (`security_redactor`, policy: `governance/security_redaction_policy.md`).
+- **Budgeting:** use `budget_router` for deterministic tier selection (`governance/budgeting_policy.md`).
+- **Topology checks:** verify agent hierarchy with `team_topology_verify`.
+- **Docs SSoT:** verify backticked path references with `doc_ssot_resolver`.
+- **Release cut:** use `release_cut` to generate a deterministic evidence pack (no publishing).
 
 ## Operational defaults (v17.7 additions)
 
-- **Docs tool-first**: persist documentation via `doc_write` / `tutorial_write` (diffs for review).
-- **Docs lint review**: run `doc_review` after doc updates to catch structural issues early.
-- **Baseline compare**: use `repo_compare` for Claude Code ↔ Llama Code deltas (writes a compare report).
-- **Docs pipeline**: follow `skills/playbooks/documentation_pipeline.md` for complete doc sets.
+- **Docs tool-first:** persist documentation via `doc_write` / `tutorial_write` (diffs for review).
+- **Docs lint review:** run `doc_review` after doc updates to catch structural issues early.
+- **Baseline compare:** use `repo_compare` for Claude Code ↔ Clockwork deltas (writes a compare report).
+- **Docs pipeline:** follow `skills/playbooks/documentation_pipeline.md` for complete doc sets.
 
 ## Conventions
 
-- **Product code origin:** all application/plugin source files MUST live under `src/` (see `policies/SRC_ORIGIN_RULE.md`).
+- **Product code origin:** application/plugin source files live in `claudeclockwork/` (see `policies/SRC_ORIGIN_RULE.md` — note: policy references `src/` which is a stale path; `claudeclockwork/` is the actual package).
 
 ## Performance Budgeting
 - Token budgeting is **enabled by default** (see `.claude/config/performance_budgeting.yaml`).
-- Toggle: `performance_toggle` (TeamLead may disable if too expensive).
+- Toggle: `performance_toggle` (Team Lead may disable if too expensive).
 - Export at end: `performance_finalize`.

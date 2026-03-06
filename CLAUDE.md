@@ -77,6 +77,21 @@ python3 -m pytest tests/ --cov=claudeclockwork
 
 **Project workspace:** `.project/` — documentation, plans, reviews, memory across sessions.
 
+### Skill Dispatch: Two Parallel Systems
+
+There are currently **two distinct skill dispatch paths**. They serve different skill sets and must not be confused:
+
+| System | Entry point | Skills covered | How it works |
+|--------|-------------|---------------|--------------|
+| **Legacy runner** | `python3 .claude/tools/skills/skill_runner.py <skill>` | 97 skills (full set) | Direct function dispatch — imports `<skill>.py` and calls `run(req)` |
+| **Manifest CLI** | `python3 -m claudeclockwork.cli --skill-id <skill>` | 34 skills (subset) | Registry discovers `manifest.json` files; uses `LegacySkillAdapter` to call the same `.py` files |
+
+**Key facts:**
+- 63 skills exist **only** in the legacy runner and are unreachable via the manifest CLI.
+- All 34 manifest skills currently delegate to legacy `.py` modules via `LegacySkillAdapter`; 4 have native implementations.
+- The manifest CLI is the forward path; the legacy runner is not deprecated but is the only route to the remaining 63 skills.
+- When adding a new skill, add it to `.claude/tools/skills/` first, then optionally wrap it with a `manifest.json` + `skill.py` in `.claude/skills/` to expose it via the CLI.
+
 ## Execution Protocol
 
 Always read in this order at session start:
