@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "plugin_schema",
+  "title": "Clockwork Plugin Manifest",
+  "description": "Schema for plugins/*/plugin.json",
+  "type": "object",
+  "required": ["name", "version", "description"],
+  "additionalProperties": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Plugin identifier — matches directory name.",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version string.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable name."
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence description.",
+      "minLength": 5
+    },
+    "enabled_by_default": {
+      "type": "boolean",
+      "default": true
+    },
+    "trust_level": {
+      "type": "string",
+      "enum": ["local", "sandboxed", "remote"],
+      "default": "local"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Permission strings required by this plugin."
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Capability identifiers provided by this plugin."
+    },
+    "requires_plugins": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Plugin IDs that must be enabled for this plugin to function."
+    },
+    "optional_plugins": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Plugin IDs that enhance but are not required."
+    },
+    "lifecycle": {
+      "type": "object",
+      "description": "Optional lifecycle hook module:function paths.",
+      "properties": {
+        "healthcheck": {"type": "string"},
+        "on_install": {"type": "string"},
+        "on_enable": {"type": "string"},
+        "on_disable": {"type": "string"}
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "properties": {
+        "core_min": {"type": "string"},
+        "core_max": {"type": "string"}
+      }
+    }
+  }
+}

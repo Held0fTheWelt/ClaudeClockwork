@@ -6,13 +6,13 @@
 
 ## Definition of Done
 
-- [ ] `plugins/*/plugin.json` files are discovered and loaded at executor build time
-- [ ] A skill declaring a plugin dependency fails cleanly if that plugin is disabled
-- [ ] `plugin_registry_export` reports real enable/disable state from disk
-- [ ] Enable/disable state persists across sessions (written to `registry/plugin_index.json`)
-- [ ] Lifecycle hooks (`healthcheck`) are callable from the CLI
-- [ ] Boot check passes with plugin system loaded
-- [ ] All existing tests pass; 4 new tests added
+- [X] `plugins/*/plugin.json` files are discovered and loaded at executor build time
+- [X] A skill declaring a plugin dependency fails cleanly if that plugin is disabled
+- [X] `plugin_registry_export` reports real enable/disable state from disk
+- [X] Enable/disable state persists across sessions (written to `registry/plugin_index.json`)
+- [X] Lifecycle hooks (`healthcheck`) are callable from the CLI
+- [X] Boot check passes with plugin system loaded
+- [X] All existing tests pass; 4 new tests added
 
 ---
 

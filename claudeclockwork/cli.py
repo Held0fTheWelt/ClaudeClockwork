@@ -1,12 +1,36 @@
 from __future__ import annotations
 
 import argparse
+import importlib
 import json
 from pathlib import Path
 
 from claudeclockwork.bridge import run_manifest_skill
 from claudeclockwork.core.executor.pipeline import ExecutionPipeline
-from claudeclockwork.runtime import build_executor, build_planner
+from claudeclockwork.runtime import build_executor, build_planner, build_plugin_registry
+
+
+def _run_plugin_healthcheck(plugin_id: str, project_root: Path) -> int:
+    registry = build_plugin_registry(project_root)
+    manifest = registry.get_manifest(plugin_id)
+    if manifest is None:
+        print(json.dumps({"status": "fail", "errors": [f"Unknown plugin: {plugin_id!r}"]}))
+        return 1
+    hook = manifest.lifecycle.get("healthcheck")
+    if not hook:
+        print(json.dumps({"status": "ok", "plugin": plugin_id, "detail": "no healthcheck hook declared"}))
+        return 0
+    try:
+        module_path, fn_name = hook.rsplit(":", 1)
+        module = importlib.import_module(module_path)
+        fn = getattr(module, fn_name)
+        result = fn()
+        ok = result is None or bool(result)
+        print(json.dumps({"status": "ok" if ok else "fail", "plugin": plugin_id, "detail": str(result)}))
+        return 0 if ok else 1
+    except Exception as exc:
+        print(json.dumps({"status": "fail", "plugin": plugin_id, "errors": [str(exc)]}))
+        return 1
 
 
 def main() -> int:
@@ -15,10 +39,15 @@ def main() -> int:
     parser.add_argument("--skill-id", default="")
     parser.add_argument("--user-input", default="")
     parser.add_argument("--inputs", default="{}", help="JSON object for skill inputs")
+    parser.add_argument("--plugin-healthcheck", default="", metavar="PLUGIN_ID",
+                        help="Run the healthcheck hook for the named plugin")
     args = parser.parse_args()
 
     project_root = Path(args.project_root).resolve()
     inputs = json.loads(args.inputs)
+
+    if args.plugin_healthcheck:
+        return _run_plugin_healthcheck(args.plugin_healthcheck, project_root)
 
     if args.skill_id:
         req = {"request_id": "cli", "skill_id": args.skill_id, "inputs": inputs}

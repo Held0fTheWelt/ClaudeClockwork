@@ -5,6 +5,9 @@ from pathlib import Path
 
 from claudeclockwork.core.executor.executor import SkillExecutor
 from claudeclockwork.core.planner.planner import Planner
+from claudeclockwork.core.plugin.dependency import PluginDependencyResolver
+from claudeclockwork.core.plugin.loader import PluginLoader
+from claudeclockwork.core.plugin.registry import PluginRegistry
 from claudeclockwork.core.registry.skill_registry import SkillRegistry
 from claudeclockwork.core.security.permissions import PermissionManager
 
@@ -20,6 +23,13 @@ def _load_permissions(project_root: Path) -> PermissionManager:
     return PermissionManager(set(cfg.get("allowed", [])), set(cfg.get("blocked", [])))
 
 
+def build_plugin_registry(project_root: str | Path) -> PluginRegistry:
+    project_root = Path(project_root).resolve()
+    manifests = PluginLoader().discover(project_root / "plugins")
+    state_path = project_root / "registry" / "plugin_index.json"
+    return PluginRegistry(manifests, state_path)
+
+
 def build_registry(
     project_root: str | Path,
     skills_roots: list[str | Path] | tuple[str | Path, ...] | None = None,
@@ -32,7 +42,13 @@ def build_registry(
 
 def build_executor(project_root: str | Path) -> SkillExecutor:
     project_root = Path(project_root).resolve()
-    return SkillExecutor(build_registry(project_root), _load_permissions(project_root))
+    plugin_registry = build_plugin_registry(project_root)
+    dependency_resolver = PluginDependencyResolver(plugin_registry)
+    return SkillExecutor(
+        build_registry(project_root),
+        _load_permissions(project_root),
+        dependency_resolver=dependency_resolver,
+    )
 
 
 def build_planner(project_root: str | Path) -> Planner:
