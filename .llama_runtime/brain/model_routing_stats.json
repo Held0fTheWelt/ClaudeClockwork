@@ -4,14 +4,14 @@
     "unknown": {
       "task_types": {
         "general": {
-          "attempts": 1,
+          "attempts": 19,
           "successes": 0,
-          "failures": 1,
+          "failures": 19,
           "avg_tokens": 0.0,
           "avg_quality": 0.0,
           "last_run_id": "run-unknown",
           "last_notes": "",
-          "updated_at": "2026-03-06T21:30:31Z"
+          "updated_at": "2026-03-06T22:14:16Z"
         }
       }
     }

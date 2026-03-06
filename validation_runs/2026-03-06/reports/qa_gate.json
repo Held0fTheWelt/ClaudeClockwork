@@ -49,7 +49,7 @@
       {
         "check_id": "VERSION_001",
         "status": "pass",
-        "message": "VERSION=17.7.8 is valid semver (at .claude/VERSION)",
+        "message": "VERSION=17.7.27 is valid semver (at .claude/VERSION)",
         "blocker": false
       },
       {

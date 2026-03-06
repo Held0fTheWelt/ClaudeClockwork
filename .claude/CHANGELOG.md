@@ -1,4 +1,4 @@
-<!-- current-version: 17.7.10 -->
+<!-- current-version: 17.7.28 -->
 # CHANGELOG
 
 Dieses Changelog ist der **Single Source of Truth** für Versionshinweise im `.claude/`-Clockwork.

@@ -4,6 +4,62 @@
   "skills": {
     "manifest": [
       {
+        "skill_id": "code_assimilate",
+        "category": "analysis",
+        "description": "Assimilate and summarise a code module or directory for agent context.",
+        "entrypoint": "skills.analysis.code_assimilate.skill:CodeAssimilateSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "limitation_harvest_scan",
+        "category": "analysis",
+        "description": "Scan the codebase for documented limitations and known issues.",
+        "entrypoint": "skills.analysis.limitation_harvest_scan.skill:LimitationHarvestScanSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "mechanic_explain",
+        "category": "analysis",
+        "description": "Explain how a skill or system component works in plain language.",
+        "entrypoint": "skills.analysis.mechanic_explain.skill:MechanicExplainSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "mutation_detect",
+        "category": "analysis",
+        "description": "Detect unintended mutations between two versions of a file or data structure.",
+        "entrypoint": "skills.analysis.mutation_detect.skill:MutationDetectSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "pattern_detect",
+        "category": "analysis",
+        "description": "Detect recurring patterns in a set of skill outputs or log entries.",
+        "entrypoint": "skills.analysis.pattern_detect.skill:PatternDetectSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "system_map",
+        "category": "analysis",
+        "description": "Build a dependency and interaction map for the current system.",
+        "entrypoint": "skills.analysis.system_map.skill:SystemMapSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "last_train",
+        "category": "archive",
+        "description": "Run the last-train knowledge consolidation pass.",
+        "entrypoint": "skills.archive.last_train.skill:LastTrainSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "last_train_merge",
+        "category": "archive",
+        "description": "Merge last-train output into the knowledge base.",
+        "entrypoint": "skills.archive.last_train_merge.skill:LastTrainMergeSkill",
+        "legacy_bridge": true
+      },
+      {
         "skill_id": "evidence_bundle_build",
         "category": "bundle",
         "description": "Build evidence bundles as a reusable artifact capability.",
@@ -67,6 +123,76 @@
         "legacy_bridge": true
       },
       {
+        "skill_id": "hello",
+        "category": "demo",
+        "description": "Hello-world demo skill.",
+        "entrypoint": "skills.demo.hello.skill:HelloSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "report",
+        "category": "demo",
+        "description": "Generate a simple status report (demo skill).",
+        "entrypoint": "skills.demo.report.skill:ReportSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "scan",
+        "category": "demo",
+        "description": "Scan the repository for a quick health summary (demo skill).",
+        "entrypoint": "skills.demo.scan.skill:ScanSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "autodocs_generate",
+        "category": "docs",
+        "description": "Auto-generate documentation from code, manifests, and inline comments.",
+        "entrypoint": "skills.docs.autodocs_generate.skill:AutodocsGenerateSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "copyright_standardize",
+        "category": "docs",
+        "description": "Standardise copyright headers across all source files.",
+        "entrypoint": "skills.docs.copyright_standardize.skill:CopyrightStandardizeSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "doc_review",
+        "category": "docs",
+        "description": "Review a document for completeness, accuracy, and policy compliance.",
+        "entrypoint": "skills.docs.doc_review.skill:DocReviewSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "doc_ssot_resolver",
+        "category": "docs",
+        "description": "Resolve conflicting SSoT references across documentation.",
+        "entrypoint": "skills.docs.doc_ssot_resolver.skill:DocSsotResolverSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "doc_write",
+        "category": "docs",
+        "description": "Write a new document from a structured brief.",
+        "entrypoint": "skills.docs.doc_write.skill:DocWriteSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "log_standardize",
+        "category": "docs",
+        "description": "Standardise log file format and line structure across the repository.",
+        "entrypoint": "skills.docs.log_standardize.skill:LogStandardizeSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "pdf_export",
+        "category": "docs",
+        "description": "Export a markdown document to a formatted PDF file.",
+        "entrypoint": "skills.docs.pdf_export.skill:PdfExportSkill",
+        "legacy_bridge": true
+      },
+      {
         "skill_id": "pdf_quality",
         "category": "docs",
         "description": "Score PDF quality and checklist compliance.",
@@ -92,6 +218,20 @@
         "category": "docs",
         "description": "Compare repositories or snapshots and summarize changes.",
         "entrypoint": "skills.docs.repo_compare.skill:RepoCompareSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "screencast_script",
+        "category": "docs",
+        "description": "Generate a screencast narration script from a feature description.",
+        "entrypoint": "skills.docs.screencast_script.skill:ScreencastScriptSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "tutorial_write",
+        "category": "docs",
+        "description": "Write a step-by-step tutorial for a skill or workflow.",
+        "entrypoint": "skills.docs.tutorial_write.skill:TutorialWriteSkill",
         "legacy_bridge": true
       },
       {
@@ -179,6 +319,27 @@
         "legacy_bridge": true
       },
       {
+        "skill_id": "critics_board_review",
+        "category": "misc",
+        "description": "Run a full critics board review for a plan or implementation.",
+        "entrypoint": "skills.misc.critics_board_review.skill:CriticsBoardReviewSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "exec_dryrun",
+        "category": "misc",
+        "description": "Dry-run an execution plan without applying any changes.",
+        "entrypoint": "skills.misc.exec_dryrun.skill:ExecDryrunSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "review_panel",
+        "category": "misc",
+        "description": "Convene a review panel for multi-perspective evaluation.",
+        "entrypoint": "skills.misc.review_panel.skill:ReviewPanelSkill",
+        "legacy_bridge": true
+      },
+      {
         "skill_id": "eval_run",
         "category": "ops",
         "description": "Execute the evaluation harness and summarize regressions.",
@@ -190,6 +351,13 @@
         "category": "ops",
         "description": "Create a release-cut package through the legacy release flow.",
         "entrypoint": "skills.ops.release_cut.skill:ReleaseCutSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "efficiency_review",
+        "category": "performance",
+        "description": "Review token efficiency and cost metrics for a set of skill runs.",
+        "entrypoint": "skills.performance.efficiency_review.skill:EfficiencyReviewSkill",
         "legacy_bridge": true
       },
       {
@@ -207,10 +375,101 @@
         "legacy_bridge": true
       },
       {
+        "skill_id": "prompt_debt_capture",
+        "category": "performance",
+        "description": "Capture prompt debt observations for future prompt engineering work.",
+        "entrypoint": "skills.performance.prompt_debt_capture.skill:PromptDebtCaptureSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "shadow_prompt",
+        "category": "performance",
+        "description": "Generate a shadow (minimised) prompt for a given skill or workflow.",
+        "entrypoint": "skills.performance.shadow_prompt.skill:ShadowPromptSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "shadow_prompt_minify",
+        "category": "performance",
+        "description": "Minify a shadow prompt to its smallest effective form.",
+        "entrypoint": "skills.performance.shadow_prompt_minify.skill:ShadowPromptMinifySkill",
+        "legacy_bridge": true
+      },
+      {
         "skill_id": "telemetry_summarize",
         "category": "performance",
         "description": "Summarize token usage and cost from telemetry event logs.",
         "entrypoint": "skills.performance.telemetry_summarize.skill:TelemetrySummarizeSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "token_event_log",
+        "category": "performance",
+        "description": "Log a token-usage event to the performance ledger.",
+        "entrypoint": "skills.performance.token_event_log.skill:TokenEventLogSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "create_mvp",
+        "category": "planning",
+        "description": "Scaffold a new MVP document from a goal description.",
+        "entrypoint": "skills.planning.create_mvp.skill:CreateMvpSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "creativity_burst",
+        "category": "planning",
+        "description": "Generate a rapid creative ideation burst for a given problem.",
+        "entrypoint": "skills.planning.creativity_burst.skill:CreativityBurstSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "decision_feedback",
+        "category": "planning",
+        "description": "Capture structured feedback on a decision for future reference.",
+        "entrypoint": "skills.planning.decision_feedback.skill:DecisionFeedbackSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "deliberation_pack_build",
+        "category": "planning",
+        "description": "Build a deliberation pack with options, tradeoffs, and recommendation.",
+        "entrypoint": "skills.planning.deliberation_pack_build.skill:DeliberationPackBuildSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "economics_regression",
+        "category": "planning",
+        "description": "Run cost/value regression analysis on a set of options.",
+        "entrypoint": "skills.planning.economics_regression.skill:EconomicsRegressionSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "edge_case_selector",
+        "category": "planning",
+        "description": "Identify and prioritise edge cases for a given feature or change.",
+        "entrypoint": "skills.planning.edge_case_selector.skill:EdgeCaseSelectorSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "hypothesis_builder",
+        "category": "planning",
+        "description": "Build a structured hypothesis from an observation and supporting evidence.",
+        "entrypoint": "skills.planning.hypothesis_builder.skill:HypothesisBuilderSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "idea_dedupe",
+        "category": "planning",
+        "description": "Deduplicate a list of ideas by semantic similarity.",
+        "entrypoint": "skills.planning.idea_dedupe.skill:IdeaDedupeSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "idea_scoring",
+        "category": "planning",
+        "description": "Score and rank ideas by feasibility, impact, and alignment.",
+        "entrypoint": "skills.planning.idea_scoring.skill:IdeaScoringSkill",
         "legacy_bridge": true
       },
       {
@@ -219,6 +478,48 @@
         "description": "Audit parity and produce MVP implementation backlog files.",
         "entrypoint": "skills.planning.parity_scan_and_mvp_planner.skill:ParityScanAndMvpPlannerSkill",
         "legacy_bridge": false
+      },
+      {
+        "skill_id": "plan_diff_apply",
+        "category": "planning",
+        "description": "Apply a structured diff to an existing plan document.",
+        "entrypoint": "skills.planning.plan_diff_apply.skill:PlanDiffApplySkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "plan_lint",
+        "category": "planning",
+        "description": "Lint a plan document for missing sections and policy violations.",
+        "entrypoint": "skills.planning.plan_lint.skill:PlanLintSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "plan_mutate",
+        "category": "planning",
+        "description": "Apply a targeted mutation to a plan section.",
+        "entrypoint": "skills.planning.plan_mutate.skill:PlanMutateSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "triad_build",
+        "category": "planning",
+        "description": "Build a message triad (work_brief, constraints, goal) from a raw task.",
+        "entrypoint": "skills.planning.triad_build.skill:TriadBuildSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "triad_ref_lint",
+        "category": "planning",
+        "description": "Lint a triad for reference consistency and completeness.",
+        "entrypoint": "skills.planning.triad_ref_lint.skill:TriadRefLintSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "work_scope_assess",
+        "category": "planning",
+        "description": "Assess the scope and complexity of a proposed work item.",
+        "entrypoint": "skills.planning.work_scope_assess.skill:WorkScopeAssessSkill",
+        "legacy_bridge": true
       },
       {
         "skill_id": "plugin_registry_export",
@@ -309,6 +610,69 @@
         "category": "qa",
         "description": "Validate agent hierarchy and team topology definitions.",
         "entrypoint": "skills.qa.team_topology_verify.skill:TeamTopologyVerifySkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "bandit_router_select",
+        "category": "routing",
+        "description": "Select the optimal model tier using multi-armed bandit routing logic.",
+        "entrypoint": "skills.routing.bandit_router_select.skill:BanditRouterSelectSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "budget_analyze",
+        "category": "routing",
+        "description": "Analyse token and cost budget consumption across recent runs.",
+        "entrypoint": "skills.routing.budget_analyze.skill:BudgetAnalyzeSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "budget_router",
+        "category": "routing",
+        "description": "Route tasks based on token budget and cost constraints.",
+        "entrypoint": "skills.routing.budget_router.skill:BudgetRouterSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "escalation_router",
+        "category": "routing",
+        "description": "Route escalations to the appropriate agent tier based on severity.",
+        "entrypoint": "skills.routing.escalation_router.skill:EscalationRouterSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "model_routing_record_outcome",
+        "category": "routing",
+        "description": "Record the outcome of a model routing decision for future tuning.",
+        "entrypoint": "skills.routing.model_routing_record_outcome.skill:ModelRoutingRecordOutcomeSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "model_routing_select",
+        "category": "routing",
+        "description": "Select the best model for a given task using the routing matrix.",
+        "entrypoint": "skills.routing.model_routing_select.skill:ModelRoutingSelectSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "route_autotune_suggest",
+        "category": "routing",
+        "description": "Suggest routing profile adjustments based on historical outcome data.",
+        "entrypoint": "skills.routing.route_autotune_suggest.skill:RouteAutotuneSuggestSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "route_profile_patch_pack",
+        "category": "routing",
+        "description": "Build a patch pack for updating a routing profile in bulk.",
+        "entrypoint": "skills.routing.route_profile_patch_pack.skill:RouteProfilePatchPackSkill",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "route_profile_update",
+        "category": "routing",
+        "description": "Write updated routing profile settings to the registry.",
+        "entrypoint": "skills.routing.route_profile_update.skill:RouteProfileUpdateSkill",
         "legacy_bridge": true
       },
       {

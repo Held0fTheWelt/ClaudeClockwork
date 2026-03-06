@@ -871,3 +871,327 @@ From **MVP09+**, MVP ordering and scope are intentionally parity-driven: the out
 - All skills listed in scope run end-to-end via skill_runner
 - Each skill has schema + example + .py
 - Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP35 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP36 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP37 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP38 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP39 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP40 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP41 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP42 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP43 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP44 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP45 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP46 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP47 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP48 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP49 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP50 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP51 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
+
+---
+
+# CCW-MVP52 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message

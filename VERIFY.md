@@ -76,3 +76,6 @@ The Zen of CodeClockwork:
 - Although never is often better than *right* now.
 - If the implementation is hard to explain, it's a bad idea.
 - If the implementation is easy to explain, it may be a good idea.
+
+Afterwards:
+- Check, if a new skill could be invented by what has been done, or done again.

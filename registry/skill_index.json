@@ -1,6 +1,134 @@
 {
-  "count": 45,
+  "count": 97,
   "skills": [
+    {
+      "name": "code_assimilate",
+      "category": "analysis",
+      "version": "1.0.0",
+      "entrypoint": "skills.analysis.code_assimilate.skill:CodeAssimilateSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "analysis",
+        "code",
+        "summary"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/analysis/code_assimilate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "limitation_harvest_scan",
+      "category": "analysis",
+      "version": "1.0.0",
+      "entrypoint": "skills.analysis.limitation_harvest_scan.skill:LimitationHarvestScanSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "analysis",
+        "limitations",
+        "scan"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/analysis/limitation_harvest_scan/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "mechanic_explain",
+      "category": "analysis",
+      "version": "1.0.0",
+      "entrypoint": "skills.analysis.mechanic_explain.skill:MechanicExplainSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "analysis",
+        "explanation",
+        "docs"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/analysis/mechanic_explain/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "mutation_detect",
+      "category": "analysis",
+      "version": "1.0.0",
+      "entrypoint": "skills.analysis.mutation_detect.skill:MutationDetectSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "analysis",
+        "mutation",
+        "diff"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/analysis/mutation_detect/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "pattern_detect",
+      "category": "analysis",
+      "version": "1.0.0",
+      "entrypoint": "skills.analysis.pattern_detect.skill:PatternDetectSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "analysis",
+        "patterns",
+        "detection"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/analysis/pattern_detect/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "system_map",
+      "category": "analysis",
+      "version": "1.0.0",
+      "entrypoint": "skills.analysis.system_map.skill:SystemMapSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "analysis",
+        "system-map",
+        "architecture"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/analysis/system_map/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "last_train",
+      "category": "archive",
+      "version": "1.0.0",
+      "entrypoint": "skills.archive.last_train.skill:LastTrainSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "archive",
+        "knowledge",
+        "consolidation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/archive/last_train/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "last_train_merge",
+      "category": "archive",
+      "version": "1.0.0",
+      "entrypoint": "skills.archive.last_train_merge.skill:LastTrainMergeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "archive",
+        "merge",
+        "knowledge"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/archive/last_train_merge/manifest.json",
+      "source_root": ".claude/skills"
+    },
     {
       "name": "evidence_bundle_build",
       "category": "bundle",
@@ -164,6 +292,163 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "hello",
+      "category": "demo",
+      "version": "1.0.0",
+      "entrypoint": "skills.demo.hello.skill:HelloSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "demo",
+        "hello"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/demo/hello/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "report",
+      "category": "demo",
+      "version": "1.0.0",
+      "entrypoint": "skills.demo.report.skill:ReportSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "demo",
+        "report"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/demo/report/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "scan",
+      "category": "demo",
+      "version": "1.0.0",
+      "entrypoint": "skills.demo.scan.skill:ScanSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "demo",
+        "scan"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/demo/scan/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "autodocs_generate",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.autodocs_generate.skill:AutodocsGenerateSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "generation",
+        "automation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/autodocs_generate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "copyright_standardize",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.copyright_standardize.skill:CopyrightStandardizeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "copyright",
+        "standardisation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/copyright_standardize/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "doc_review",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.doc_review.skill:DocReviewSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "review",
+        "qa"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/doc_review/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "doc_ssot_resolver",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.doc_ssot_resolver.skill:DocSsotResolverSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "ssot",
+        "resolver"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/doc_ssot_resolver/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "doc_write",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.doc_write.skill:DocWriteSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "writing",
+        "generation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/doc_write/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "log_standardize",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.log_standardize.skill:LogStandardizeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "logs",
+        "standardisation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/log_standardize/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "pdf_export",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.pdf_export.skill:PdfExportSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "pdf",
+        "export"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/pdf_export/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "pdf_quality",
       "category": "docs",
       "version": "0.1.0",
@@ -231,6 +516,38 @@
       ],
       "legacy_bridge": true,
       "manifest_path": ".claude/skills/docs/repo_compare/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "screencast_script",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.screencast_script.skill:ScreencastScriptSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "screencast",
+        "script"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/screencast_script/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "tutorial_write",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.tutorial_write.skill:TutorialWriteSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "tutorial",
+        "writing"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/tutorial_write/manifest.json",
       "source_root": ".claude/skills"
     },
     {
@@ -450,6 +767,54 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "critics_board_review",
+      "category": "misc",
+      "version": "1.0.0",
+      "entrypoint": "skills.misc.critics_board_review.skill:CriticsBoardReviewSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "misc",
+        "critics",
+        "review"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/misc/critics_board_review/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "exec_dryrun",
+      "category": "misc",
+      "version": "1.0.0",
+      "entrypoint": "skills.misc.exec_dryrun.skill:ExecDryrunSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "misc",
+        "dryrun",
+        "validation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/misc/exec_dryrun/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "review_panel",
+      "category": "misc",
+      "version": "1.0.0",
+      "entrypoint": "skills.misc.review_panel.skill:ReviewPanelSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "misc",
+        "review",
+        "panel"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/misc/review_panel/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "eval_run",
       "category": "ops",
       "version": "0.1.0",
@@ -486,6 +851,22 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "efficiency_review",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.efficiency_review.skill:EfficiencyReviewSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "performance",
+        "efficiency",
+        "review"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/efficiency_review/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "performance_finalize",
       "category": "performance",
       "version": "1.0.0",
@@ -518,6 +899,54 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "prompt_debt_capture",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.prompt_debt_capture.skill:PromptDebtCaptureSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "performance",
+        "prompt-debt",
+        "tracking"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/prompt_debt_capture/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "shadow_prompt",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.shadow_prompt.skill:ShadowPromptSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "performance",
+        "shadow-prompt",
+        "optimisation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/shadow_prompt/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "shadow_prompt_minify",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.shadow_prompt_minify.skill:ShadowPromptMinifySkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "performance",
+        "minification",
+        "prompt"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/shadow_prompt_minify/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "telemetry_summarize",
       "category": "performance",
       "version": "1.0.0",
@@ -531,6 +960,166 @@
       ],
       "legacy_bridge": true,
       "manifest_path": ".claude/skills/performance/telemetry_summarize/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "token_event_log",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.token_event_log.skill:TokenEventLogSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "performance",
+        "tokens",
+        "ledger"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/token_event_log/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "create_mvp",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.create_mvp.skill:CreateMvpSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "mvp",
+        "scaffold"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/create_mvp/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "creativity_burst",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.creativity_burst.skill:CreativityBurstSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "creativity",
+        "ideation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/creativity_burst/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "decision_feedback",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.decision_feedback.skill:DecisionFeedbackSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "decision",
+        "feedback"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/decision_feedback/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "deliberation_pack_build",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.deliberation_pack_build.skill:DeliberationPackBuildSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "deliberation",
+        "decision"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/deliberation_pack_build/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "economics_regression",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.economics_regression.skill:EconomicsRegressionSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "economics",
+        "analysis"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/economics_regression/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "edge_case_selector",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.edge_case_selector.skill:EdgeCaseSelectorSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "edge-cases",
+        "qa"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/edge_case_selector/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "hypothesis_builder",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.hypothesis_builder.skill:HypothesisBuilderSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "hypothesis",
+        "research"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/hypothesis_builder/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "idea_dedupe",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.idea_dedupe.skill:IdeaDedupeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "deduplication",
+        "ideas"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/idea_dedupe/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "idea_scoring",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.idea_scoring.skill:IdeaScoringSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "scoring",
+        "prioritisation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/idea_scoring/manifest.json",
       "source_root": ".claude/skills"
     },
     {
@@ -549,6 +1138,102 @@
       ],
       "legacy_bridge": false,
       "manifest_path": ".claude/skills/planning/parity_scan_and_mvp_planner/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "plan_diff_apply",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.plan_diff_apply.skill:PlanDiffApplySkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "diff",
+        "documents"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/plan_diff_apply/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "plan_lint",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.plan_lint.skill:PlanLintSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "lint",
+        "qa"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/plan_lint/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "plan_mutate",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.plan_mutate.skill:PlanMutateSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "mutation",
+        "documents"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/plan_mutate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "triad_build",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.triad_build.skill:TriadBuildSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "triad",
+        "message"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/triad_build/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "triad_ref_lint",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.triad_ref_lint.skill:TriadRefLintSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "lint",
+        "triad"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/triad_ref_lint/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "work_scope_assess",
+      "category": "planning",
+      "version": "1.0.0",
+      "entrypoint": "skills.planning.work_scope_assess.skill:WorkScopeAssessSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "planning",
+        "scope",
+        "assessment"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/work_scope_assess/manifest.json",
       "source_root": ".claude/skills"
     },
     {
@@ -777,6 +1462,149 @@
       ],
       "legacy_bridge": true,
       "manifest_path": ".claude/skills/qa/team_topology_verify/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "bandit_router_select",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.bandit_router_select.skill:BanditRouterSelectSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "bandit",
+        "model-selection"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/bandit_router_select/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "budget_analyze",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.budget_analyze.skill:BudgetAnalyzeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "budget",
+        "analytics",
+        "cost"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/budget_analyze/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "budget_router",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.budget_router.skill:BudgetRouterSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "budget",
+        "cost"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/budget_router/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "escalation_router",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.escalation_router.skill:EscalationRouterSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "escalation",
+        "agents"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/escalation_router/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "model_routing_record_outcome",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.model_routing_record_outcome.skill:ModelRoutingRecordOutcomeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "outcome",
+        "ledger"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/model_routing_record_outcome/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "model_routing_select",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.model_routing_select.skill:ModelRoutingSelectSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "model-selection"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/model_routing_select/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "route_autotune_suggest",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.route_autotune_suggest.skill:RouteAutotuneSuggestSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "autotune",
+        "optimization"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/route_autotune_suggest/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "route_profile_patch_pack",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.route_profile_patch_pack.skill:RouteProfilePatchPackSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "profile",
+        "patch"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/route_profile_patch_pack/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "route_profile_update",
+      "category": "routing",
+      "version": "1.0.0",
+      "entrypoint": "skills.routing.route_profile_update.skill:RouteProfileUpdateSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "routing",
+        "profile",
+        "config"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/routing/route_profile_update/manifest.json",
       "source_root": ".claude/skills"
     },
     {
