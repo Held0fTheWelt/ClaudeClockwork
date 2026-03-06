@@ -10,7 +10,7 @@ from claudeclockwork.core.registry.loader import SkillLoader
 from claudeclockwork.runtime import build_registry
 
 _ALLOWED_CATEGORIES = {
-    "analysis", "bundle", "cleanup", "demo", "docs", "evidence",
+    "analysis", "archive", "bundle", "cleanup", "demo", "docs", "evidence",
     "meta", "misc", "ops", "performance", "planning", "plugins",
     "qa", "routing", "security",
 }

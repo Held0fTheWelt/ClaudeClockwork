@@ -19,7 +19,7 @@
 | 5 | MCP Layer | **Complete** | [MVP_Phase5](../mvps/MVP_Phase5_MCPLayer.md) |
 | 6 | CI / Eval / Quality Gates | **Complete** | [MVP_Phase6](../mvps/MVP_Phase6_CIEvalGates.md) |
 | 7 | Wrapper Wave 4 (Legacy CLI Gap) | Planned | [MVP_Phase7](../mvps/MVP_Phase7_WrapperWave4.md) |
-| 8 | Code & Governance Hygiene | Planned | [MVP_Phase8](../mvps/MVP_Phase8_CodeHygiene.md) |
+| 8 | Code & Governance Hygiene | **Complete** | [MVP_Phase8](../mvps/MVP_Phase8_CodeHygiene.md) |
 | 9 | Test Hardening | Planned | [MVP_Phase9](../mvps/MVP_Phase9_TestHardening.md) |
 
 **Principle:** No big-bang rewrites. Each phase delivers a working, tested increment. Legacy runner stays operational throughout.

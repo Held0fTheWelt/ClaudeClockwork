@@ -170,6 +170,9 @@ Always read in this order at session start:
     Documentation/        # Technical docs
     References/           # Archived reference documents
     Tutorials/            # Guides
+
+Docs/                     # Legacy skill audit archive (read-only, pre-v18). Not part of active governance.
+                          # Active documentation lives in .project/Docs/.
 ```
 
 ### Agent Hierarchy

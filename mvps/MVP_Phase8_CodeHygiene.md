@@ -8,12 +8,12 @@
 
 ## Definition of Done
 
-- [ ] `oodle_tier` / `Oodle` do not appear as variable names or doc labels in any Python skill file
-- [ ] `llamacode` import stubs removed from `bandit_router_select.py` and `escalation_router.py`
-- [ ] `SRC_ORIGIN_RULE.md` replaced with a policy that matches the actual `claudeclockwork/` package layout
-- [ ] `INDEX.md` references only paths that exist
-- [ ] Root `Docs/` audit files either moved to `.project/Docs/References/` or documented as deliberately separate
-- [ ] All existing tests pass
+- [X] `oodle_tier` / `Oodle` do not appear as variable names or doc labels in any Python skill file
+- [X] `llamacode` import stubs removed from `bandit_router_select.py` and `escalation_router.py`
+- [X] `SRC_ORIGIN_RULE.md` replaced with a policy that matches the actual `claudeclockwork/` package layout
+- [X] `INDEX.md` references only paths that exist
+- [X] Root `Docs/` audit files either moved to `.project/Docs/References/` or documented as deliberately separate
+- [X] All existing tests pass
 
 ---
 
