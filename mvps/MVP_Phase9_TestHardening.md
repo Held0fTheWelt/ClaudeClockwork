@@ -8,11 +8,11 @@
 
 ## Definition of Done
 
-- [ ] `test_error_paths.py` — covers missing skill, invalid entrypoint, and malformed inputs
-- [ ] `test_permission_enforcement.py` — covers blocked permission rejection and allowed permission pass
-- [ ] `test_pipeline.py` — covers `ExecutionPipeline.run()` end-to-end path
-- [ ] `test_cli.py` — covers CLI argument parsing including `--skill-id`, `--inputs`, `--plugin-healthcheck`, unknown flag
-- [ ] All new tests pass; all 136 existing tests continue to pass
+- [X] `test_error_paths.py` — covers missing skill, invalid entrypoint, and malformed inputs
+- [X] `test_permission_enforcement.py` — covers blocked permission rejection and allowed permission pass
+- [X] `test_pipeline.py` — covers `ExecutionPipeline.run()` end-to-end path
+- [X] `test_cli.py` — covers CLI argument parsing including `--skill-id`, `--inputs`, `--plugin-healthcheck`, unknown flag
+- [X] All new tests pass; all 136 existing tests continue to pass
 
 ---
 
