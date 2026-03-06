@@ -387,6 +387,53 @@ python3 .claude/tools/skills/skill_runner.py doc_review '{"target_path": "docs/"
 
 ---
 
+## Planned / Not Yet Implemented Skills
+
+The following skills are planned in the MVP roadmap but not yet fully implemented:
+
+### Phase 14 — Native Skill Promotion (Legacy → Native)
+
+These skills exist as legacy implementations but need native `SkillBase` promotion:
+
+| Skill | Description | Status |
+|---|---|---|
+| `capability_map_build` | Build map of available capabilities | Legacy exists, native pending |
+| `skill_registry_search` | Search skills by keywords | Legacy exists, native pending |
+| `qa_gate` | PR-blocking QA checks | Legacy exists, native pending |
+| `eval_run` | Eval harness runner (D6.7 format) | Legacy exists, native pending |
+| `budget_router` | Deterministic cost/latency routing | Legacy exists, native pending |
+| `plan_lint` | Plan document linter | Legacy exists, native pending |
+
+**Goal:** Move from `LegacySkillAdapter` to proper `SkillBase` implementations in `claudeclockwork/core/`.
+
+### Phase 15 — Skill Discovery Wave (New Skills)
+
+These are entirely new skills that do not exist yet:
+
+| Skill | Category | Description |
+|---|---|---|
+| `git_summary` | ops | Structured git context (log, diff, blame) |
+| `test_run` | ops | Pytest wrapper with pass/fail/coverage results |
+| `skill_health` | ops | Consolidated health check across manifests |
+| `changelog_generate` | docs | Auto-generate CHANGELOG from git log |
+| `dependency_graph` | analysis | Map skill call dependencies |
+| `config_validate` | ops | Validate JSON/YAML config files |
+
+**Goal:** Close gaps in git-aware summarization, automated test execution, and config validation.
+
+### Other Planned Improvements
+
+| Item | Description | Phase |
+|---|---|---|
+| `doc_write` native | Structured output contract needed | Deferred |
+| `system_map` native | Structured output contract needed | Deferred |
+| MCP Server skills | Model Context Protocol integration | Phase 5 |
+| Plugin runtime | Hot-reload plugin system | Phase 4 |
+
+See `mvps/` directory for detailed phase documentation.
+
+---
+
 ## Contributing
 
 ### Adding a New Skill
