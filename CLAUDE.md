@@ -206,7 +206,7 @@ Trust modes: `inherit` (default, uses Pack), `verify` (adds Goal/Constraints), `
 
 ### Model Routing
 
-**Escalation order: Oodle tier first, then Claude tier.** Opus 4.6 (C4) is disabled by default.
+**Escalation order: Local Model tier first, then Claude tier.** Opus 4.6 (C4) is disabled by default.
 
 | Claude Tier | Model | Use case |
 |---|---|---|
@@ -216,7 +216,7 @@ Trust modes: `inherit` (default, uses Pack), `verify` (adds Goal/Constraints), `
 | C3 | Sonnet 4.6 | High-risk fixes, final arch decisions |
 | C4 | Opus 4.6 | Manual only |
 
-| Oodle Tier | Models | Use case |
+| Local Model Tier | Models | Use case |
 |---|---|---|
 | S (7-14b) | `qwen2.5-coder:14b`, `phi4:14b` (GPU) | Routing, reviews, architecture |
 | M (32-33b) | `qwen2.5-coder:32b` (CPU) | Implementation drafts |

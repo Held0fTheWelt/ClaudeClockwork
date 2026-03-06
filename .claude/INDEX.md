@@ -14,7 +14,7 @@ Expected output: one `[PASS]` / `[FAIL]` line per required path, then `Result: A
 
 **Output locations:**
 - Runtime reports → `.report/`
-- Generated artifacts / diffs → `.llama_runtime/knowledge/writes/`
+- Generated artifacts / runtime state → `.llama_runtime/`
 - Raw telemetry → `.claude-performance/`
 
 ---
@@ -33,7 +33,7 @@ Expected output: one `[PASS]` / `[FAIL]` line per required path, then `Result: A
 - `ROADMAP.md`
 - `MODEL_POLICY.md`
 - `skills.md`
-- `skills/registry.md` (unter `.claude/skills/`)
+- `skills/registry.md` (under `.claude/skills/`)
 - `CHANGELOG.md`
 
 ## Key directories
@@ -48,8 +48,8 @@ Expected output: one `[PASS]` / `[FAIL]` line per required path, then `Result: A
 See `addons/` for concise "what's included" pack docs (DocForge/PDF, Cleaning, Last-Train, Shadow Prompts).
 
 ## Where outputs go
-- `.llama_runtime/knowledge/writes/` — reports, diffs, generated artifacts
-- `_archive/` — archive-first cleanup targets
+- `.llama_runtime/` — runtime state, ledgers, eval results, generated artifacts
+- `.report/` — organized human-facing reports
 
 ## Development (ClaudeClockwork MVP list & milestones)
 - **`.claude-development/`** — canonical **ClaudeClockwork** MVP list (`Clockwork_MVP_Chain.md`), milestone plans, designs, audits. ClaudeClockwork only; LlamaCode is a separate framework with its own roadmap. Add new Clockwork MVPs only to the chain (see `.claude-development/MVP_RULE.md` and `.claude/governance/mvp_development_standard.md`).

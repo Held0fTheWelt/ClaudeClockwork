@@ -67,7 +67,7 @@ def run(req: dict) -> dict:
     ladder_name = str(inputs.get("ladder_name", "sonnet"))
 
     try:
-        from llamacode.core.bandit_router import BanditRouter  # type: ignore
+        from claudeclockwork.core.bandit_router import BanditRouter  # type: ignore
     except ImportError as exc:
         return {
             "type": "skill_result_spec",
@@ -77,7 +77,8 @@ def run(req: dict) -> dict:
             "outputs": {},
             "errors": [
                 f"Could not import BanditRouter: {exc}. "
-                "Ensure llamacode is on the Python path."
+                "BanditRouter has not yet been migrated to claudeclockwork. "
+                "This skill is planned for Phase 3 (Native Core Services)."
             ],
             "warnings": [],
             "metrics": {},

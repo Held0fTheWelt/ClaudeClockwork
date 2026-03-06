@@ -152,7 +152,7 @@ def run(req: dict) -> dict:
     # live path — import core and call the API
     # ------------------------------------------------------------------
     try:
-        from llamacode.core.escalation_router import (  # type: ignore
+        from claudeclockwork.core.escalation_router import (  # type: ignore
             EscalationRouter,
             AllRungsExhausted,
         )
@@ -165,7 +165,8 @@ def run(req: dict) -> dict:
             "outputs": {},
             "errors": [
                 f"Could not import EscalationRouter: {exc}. "
-                "Ensure llamacode is on the Python path and dependencies are installed."
+                "EscalationRouter has not yet been migrated to claudeclockwork. "
+                "This skill is planned for Phase 3 (Native Core Services)."
             ],
             "warnings": warnings,
             "metrics": {},

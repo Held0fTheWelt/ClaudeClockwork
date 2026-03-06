@@ -416,12 +416,12 @@ def check_addon_completeness(project_root: Path) -> CheckResult:
 def check_agent_registry_consistency(project_root: Path) -> CheckResult:
     """AGENT_001: ratio of .md agent files to registry.json entries is not extreme."""
     agents_dir = project_root / ".claude" / "agents"
-    registry_file = project_root / "llamacode" / "agents" / "registry.json"
+    registry_file = project_root / ".claude" / "agents" / "registry.json"
 
     if not registry_file.is_file():
         return CheckResult(
             "AGENT_001", "skip",
-            "llamacode/agents/registry.json not found — skipping agent registry consistency check", False
+            ".claude/agents/registry.json not found — skipping agent registry consistency check", False
         )
 
     # Count .md files recursively under .claude/agents/
