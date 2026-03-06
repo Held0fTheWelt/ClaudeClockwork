@@ -2,6 +2,7 @@
   "count": 2,
   "plugins": [
     {
+      "id": "filesystem",
       "name": "filesystem",
       "version": "0.1.0",
       "description": "Core local filesystem skills for ClaudeClockwork.",
@@ -14,9 +15,11 @@
         "local_io"
       ],
       "requires_plugins": [],
+      "enabled": true,
       "path": "plugins/filesystem/plugin.json"
     },
     {
+      "id": "git",
       "name": "git",
       "version": "0.1.0",
       "description": "Core Git and repository analysis plugin for ClaudeClockwork.",
@@ -30,6 +33,7 @@
       "requires_plugins": [
         "filesystem"
       ],
+      "enabled": true,
       "path": "plugins/git/plugin.json"
     }
   ]

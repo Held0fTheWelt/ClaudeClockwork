@@ -1,5 +1,5 @@
 {
-  "count": 34,
+  "count": 45,
   "skills": [
     {
       "name": "evidence_bundle_build",
@@ -15,7 +15,7 @@
         "evidence",
         "artifacts"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/bundle/evidence_bundle_build/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -177,7 +177,7 @@
         "quality",
         "checklist"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/docs/pdf_quality/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -200,6 +200,22 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "reference_fix",
+      "category": "docs",
+      "version": "1.0.0",
+      "entrypoint": "skills.docs.reference_fix.skill:ReferenceFixSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "docs",
+        "references",
+        "paths"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/reference_fix/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "repo_compare",
       "category": "docs",
       "version": "0.1.0",
@@ -218,6 +234,38 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "outcome_event_generate",
+      "category": "evidence",
+      "version": "1.0.0",
+      "entrypoint": "skills.evidence.outcome_event_generate.skill:OutcomeEventGenerateSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "evidence",
+        "events",
+        "artifacts"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/evidence/outcome_event_generate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "outcome_ledger_append",
+      "category": "evidence",
+      "version": "1.0.0",
+      "entrypoint": "skills.evidence.outcome_ledger_append.skill:OutcomeLedgerAppendSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "evidence",
+        "ledger",
+        "artifacts"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/evidence/outcome_ledger_append/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "capability_map_build",
       "category": "meta",
       "version": "0.1.0",
@@ -231,7 +279,7 @@
         "inventory",
         "map"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/meta/capability_map_build/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -362,7 +410,7 @@
         "search",
         "discovery"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/meta/skill_registry_search/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -381,8 +429,24 @@
         "forge",
         "generator"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/meta/skill_scaffold/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "clockwork_version_bump",
+      "category": "misc",
+      "version": "1.0.0",
+      "entrypoint": "skills.misc.clockwork_version_bump.skill:ClockworkVersionBumpSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "version",
+        "changelog",
+        "release"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/misc/clockwork_version_bump/manifest.json",
       "source_root": ".claude/skills"
     },
     {
@@ -399,7 +463,7 @@
         "testing",
         "golden"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/ops/eval_run/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -422,6 +486,54 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "performance_finalize",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.performance_finalize.skill:PerformanceFinalizeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "performance",
+        "report",
+        "export"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/performance_finalize/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "performance_toggle",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.performance_toggle.skill:PerformanceToggleSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "performance",
+        "budgeting",
+        "toggle"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/performance_toggle/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "telemetry_summarize",
+      "category": "performance",
+      "version": "1.0.0",
+      "entrypoint": "skills.performance.telemetry_summarize.skill:TelemetrySummarizeSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "telemetry",
+        "tokens",
+        "cost"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/performance/telemetry_summarize/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "parity_scan_and_mvp_planner",
       "category": "planning",
       "version": "0.1.0",
@@ -435,7 +547,7 @@
         "mvp",
         "planning"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/planning/parity_scan_and_mvp_planner/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -514,6 +626,54 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "determinism_proof",
+      "category": "qa",
+      "version": "1.0.0",
+      "entrypoint": "skills.qa.determinism_proof.skill:DeterminismProofSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "determinism",
+        "sha256",
+        "audit"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/determinism_proof/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "drift_semantic_check",
+      "category": "qa",
+      "version": "1.0.0",
+      "entrypoint": "skills.qa.drift_semantic_check.skill:DriftSemanticCheckSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "drift",
+        "semantic",
+        "cross-file"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/drift_semantic_check/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "hardening_scan_fix",
+      "category": "qa",
+      "version": "1.0.0",
+      "entrypoint": "skills.qa.hardening_scan_fix.skill:HardeningScanFixSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "security",
+        "hardening",
+        "scan"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/hardening_scan_fix/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "policy_gatekeeper",
       "category": "qa",
       "version": "0.1.0",
@@ -545,7 +705,7 @@
         "gate",
         "checks"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/qa/qa_gate/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -563,7 +723,7 @@
         "validation",
         "repo"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/qa/repo_validate/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -599,8 +759,24 @@
         "validation",
         "jsonschema"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/qa/spec_validate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "team_topology_verify",
+      "category": "qa",
+      "version": "1.0.0",
+      "entrypoint": "skills.qa.team_topology_verify.skill:TeamTopologyVerifySkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "agents",
+        "topology",
+        "hierarchy"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/team_topology_verify/manifest.json",
       "source_root": ".claude/skills"
     },
     {
@@ -617,7 +793,7 @@
         "security",
         "evidence"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/security/security_redactor/manifest.json",
       "source_root": ".claude/skills"
     }
