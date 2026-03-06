@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] `python3 -m claudeclockwork.mcp` starts a working STDIO MCP server
-- [ ] At least 3 native skills are callable as MCP Tools from an MCP client
-- [ ] Reference skills (`SKILL.md` assets) are accessible as MCP Resources
-- [ ] The core CLI (`claudeclockwork.cli`) works identically with MCP server stopped
-- [ ] All existing tests pass; 3 new MCP-specific tests added
+- [X] `python3 -m claudeclockwork.mcp` starts a working STDIO MCP server
+- [X] At least 3 native skills are callable as MCP Tools from an MCP client
+- [X] Reference skills (`SKILL.md` assets) are accessible as MCP Resources
+- [X] The core CLI (`claudeclockwork.cli`) works identically with MCP server stopped
+- [X] All existing tests pass; 18 new MCP-specific tests added
 
 ---
 
