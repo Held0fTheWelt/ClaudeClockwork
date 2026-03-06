@@ -1,4 +1,5 @@
 {
+  "id": "policy_gatekeeper",
   "name": "policy_gatekeeper",
   "version": "0.1.0",
   "category": "qa",

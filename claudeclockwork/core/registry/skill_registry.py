@@ -9,8 +9,14 @@ from claudeclockwork.core.registry.loader import SkillLoader
 
 
 class SkillRegistry:
-    def __init__(self, project_root: str | Path, skills_roots: list[str | Path] | tuple[str | Path, ...] | None = None) -> None:
+    def __init__(
+        self,
+        project_root: str | Path,
+        skills_roots: list[str | Path] | tuple[str | Path, ...] | None = None,
+        strict: bool = False,
+    ) -> None:
         self.project_root = Path(project_root).resolve()
+        self.strict = strict
         configured_roots = list(skills_roots or [".claude/skills", "skills"])
         self.skills_roots = [
             (self.project_root / root).resolve() if not Path(root).is_absolute() else Path(root).resolve()
@@ -18,6 +24,7 @@ class SkillRegistry:
         ]
         self._manifests: dict[str, SkillManifest] = {}
         self._classes: dict[str, type] = {}
+        self.validation_errors: list[dict] = []
         self._ensure_import_paths()
 
     def _ensure_import_paths(self) -> None:
@@ -26,15 +33,39 @@ class SkillRegistry:
             if candidate.exists() and candidate_str not in sys.path:
                 sys.path.insert(0, candidate_str)
 
+    def _validate_manifest_basic(self, manifest: SkillManifest, manifest_path: Path) -> list[dict]:
+        """Return a list of validation error dicts for a manifest. Empty list = valid."""
+        errors: list[dict] = []
+        for field in ("name", "version", "category", "description", "entrypoint"):
+            if not getattr(manifest, field, None):
+                errors.append({"skill": manifest.name, "field": field, "detail": f"missing or empty: {field}"})
+        return errors
+
     def rebuild(self) -> None:
         self._manifests.clear()
         self._classes.clear()
+        self.validation_errors.clear()
         for manifest_path in discover_manifest_paths(self.skills_roots):
             manifest = SkillLoader.load_manifest(manifest_path)
             manifest.metadata.setdefault("manifest_path", str(manifest_path.relative_to(self.project_root)))
             source_root = next((root for root in self.skills_roots if root in manifest_path.parents), None)
             if source_root is not None:
                 manifest.metadata.setdefault("source_root", str(source_root.relative_to(self.project_root)))
+
+            errors = self._validate_manifest_basic(manifest, manifest_path)
+            if errors:
+                self.validation_errors.extend(errors)
+                if self.strict:
+                    import warnings as _warnings
+                    _warnings.warn(
+                        f"Strict mode: rejecting invalid manifest {manifest.name!r}: {errors}",
+                        stacklevel=2,
+                    )
+                    continue
+                else:
+                    import sys as _sys
+                    print(f"[manifest_registry] WARNING: {manifest.name} has validation issues: {errors}", file=_sys.stderr)
+
             self._manifests[manifest.name] = manifest
             self._classes[manifest.name] = SkillLoader.load_skill_class(manifest.entrypoint)
 

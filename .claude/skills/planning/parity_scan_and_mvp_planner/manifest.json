@@ -1,4 +1,5 @@
 {
+  "id": "parity_scan_and_mvp_planner",
   "name": "parity_scan_and_mvp_planner",
   "version": "0.1.0",
   "category": "planning",

@@ -1337,6 +1337,7 @@
       ".claude/contracts/schemas/last_train_summary.schema.json",
       ".claude/contracts/schemas/limitation_harvest_report.schema.json",
       ".claude/contracts/schemas/log_standardize_spec.json",
+      ".claude/contracts/schemas/manifest_schema.json",
       ".claude/contracts/schemas/mechanic_explain_spec.json",
       ".claude/contracts/schemas/message_triad_spec.schema.json",
       ".claude/contracts/schemas/model_routing_outcome.schema.json",

@@ -1,4 +1,5 @@
 {
+  "id": "plugin_scaffold",
   "name": "plugin_scaffold",
   "version": "0.1.0",
   "category": "plugins",

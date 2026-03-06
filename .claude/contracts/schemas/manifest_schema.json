@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "manifest_schema",
+  "title": "Clockwork Skill Manifest",
+  "description": "Schema for .claude/skills/<category>/<skill_name>/manifest.json",
+  "type": "object",
+  "required": ["name", "version", "description", "category", "entrypoint"],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Machine-readable identifier — matches directory name. Defaults to name if omitted.",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Skill identifier — matches directory name and used as primary key throughout the registry.",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version string.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence human-readable description.",
+      "minLength": 10
+    },
+    "category": {
+      "type": "string",
+      "description": "Skill category — determines directory grouping and CLI filtering.",
+      "enum": [
+        "analysis",
+        "bundle",
+        "cleanup",
+        "demo",
+        "docs",
+        "evidence",
+        "meta",
+        "misc",
+        "ops",
+        "performance",
+        "planning",
+        "plugins",
+        "qa",
+        "routing",
+        "security"
+      ]
+    },
+    "entrypoint": {
+      "type": "string",
+      "description": "Python import path in module:ClassName format.",
+      "pattern": "^[a-zA-Z0-9_.]+:[A-Za-z][A-Za-z0-9_]+$"
+    },
+    "permissions": {
+      "type": "array",
+      "description": "Required permissions — must all exist in configs/permissions.json allowed list.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "repo:read",
+          "repo:write",
+          "contracts:read",
+          "registry:read",
+          "registry:write",
+          "bridge:legacy",
+          "docs:write",
+          "qa:run",
+          "bundle:build",
+          "evidence:write",
+          "security:redact",
+          "pdf:render",
+          "release:cut",
+          "fs:read",
+          "fs:write",
+          "git:read"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform searchable tags.",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "aliases": {
+      "type": "array",
+      "description": "Alternate skill IDs that resolve to this skill.",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the skill is active in the registry.",
+      "default": true
+    },
+    "trust_level": {
+      "type": "string",
+      "description": "Execution trust level.",
+      "enum": ["local", "sandboxed", "remote"],
+      "default": "local"
+    },
+    "inputs": {
+      "type": "object",
+      "description": "Input schema hint — not enforced at runtime."
+    },
+    "outputs": {
+      "type": "object",
+      "description": "Output schema hint — not enforced at runtime."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Freeform metadata — used for legacy_bridge key and source_root.",
+      "properties": {
+        "legacy_bridge": {
+          "description": "Legacy skill_id this manifest wraps, or false if native.",
+          "oneOf": [
+            {"type": "string"},
+            {"type": "boolean"}
+          ]
+        },
+        "source_root": {
+          "type": "string",
+          "description": "Relative path to the skills root directory."
+        }
+      }
+    }
+  }
+}

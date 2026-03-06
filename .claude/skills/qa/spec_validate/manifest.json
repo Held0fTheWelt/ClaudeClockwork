@@ -1,4 +1,5 @@
 {
+  "id": "spec_validate",
   "name": "spec_validate",
   "version": "0.1.0",
   "category": "qa",

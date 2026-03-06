@@ -1,4 +1,5 @@
 {
+  "id": "cleanup_plan_apply",
   "name": "cleanup_plan_apply",
   "version": "0.1.0",
   "category": "cleanup",

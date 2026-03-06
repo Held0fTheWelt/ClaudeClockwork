@@ -1,4 +1,5 @@
 {
+  "id": "repo_validate",
   "name": "repo_validate",
   "version": "0.1.0",
   "category": "qa",

@@ -20,8 +20,12 @@ def _load_permissions(project_root: Path) -> PermissionManager:
     return PermissionManager(set(cfg.get("allowed", [])), set(cfg.get("blocked", [])))
 
 
-def build_registry(project_root: str | Path, skills_roots: list[str | Path] | tuple[str | Path, ...] | None = None) -> SkillRegistry:
-    registry = SkillRegistry(project_root=project_root, skills_roots=skills_roots or DEFAULT_SKILL_ROOTS)
+def build_registry(
+    project_root: str | Path,
+    skills_roots: list[str | Path] | tuple[str | Path, ...] | None = None,
+    strict: bool = False,
+) -> SkillRegistry:
+    registry = SkillRegistry(project_root=project_root, skills_roots=skills_roots or DEFAULT_SKILL_ROOTS, strict=strict)
     registry.rebuild()
     return registry
 

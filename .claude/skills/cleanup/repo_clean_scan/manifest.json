@@ -1,4 +1,5 @@
 {
+  "id": "repo_clean_scan",
   "name": "repo_clean_scan",
   "version": "0.1.0",
   "category": "cleanup",

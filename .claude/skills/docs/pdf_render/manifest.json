@@ -1,4 +1,5 @@
 {
+  "id": "pdf_render",
   "name": "pdf_render",
   "version": "0.1.0",
   "category": "docs",

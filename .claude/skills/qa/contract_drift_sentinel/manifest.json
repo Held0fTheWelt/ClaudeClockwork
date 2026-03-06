@@ -1,4 +1,5 @@
 {
+  "id": "contract_drift_sentinel",
   "name": "contract_drift_sentinel",
   "version": "0.1.0",
   "category": "qa",

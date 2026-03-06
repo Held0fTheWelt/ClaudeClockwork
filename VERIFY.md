@@ -69,8 +69,7 @@ The Zen of CodeClockwork:
 - Readability counts.
 - Special cases aren't special enough to break the rules.
 - Although practicality beats purity.
-- Errors should never pass silently.
-- Unless explicitly silenced.
+- Errors should never pass silently unless explicitly silenced.
 - In the face of ambiguity, refuse the temptation to guess.
 - There should be one-- and preferably only one --obvious way to do it.
 - Now is better than never, unless you should really make a Task in the Roadmap.

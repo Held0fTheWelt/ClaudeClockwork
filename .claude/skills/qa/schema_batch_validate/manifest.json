@@ -1,4 +1,5 @@
 {
+  "id": "schema_batch_validate",
   "name": "schema_batch_validate",
   "version": "0.1.0",
   "category": "qa",

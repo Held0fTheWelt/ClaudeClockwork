@@ -86,6 +86,7 @@ def run(req: dict) -> dict:
 
     class_name = _class_name(skill_name)
     manifest = {
+        'id': skill_name,
         'name': skill_name,
         'version': '0.1.0',
         'category': category,

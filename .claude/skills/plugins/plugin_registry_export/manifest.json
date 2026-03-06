@@ -1,4 +1,5 @@
 {
+  "id": "plugin_registry_export",
   "name": "plugin_registry_export",
   "version": "0.1.0",
   "category": "plugins",

@@ -11,7 +11,7 @@
 | Phase | Name | Status | MVP |
 |-------|------|--------|-----|
 | 0 | Foundation & Cleanup | **Complete** | [MVP_Phase0](../mvps/MVP_Phase0_FoundationCleanup.md) |
-| 1 | Manifest Hardening | Planned | [MVP_Phase1](../mvps/MVP_Phase1_ManifestHardening.md) |
+| 1 | Manifest Hardening | **Complete** | [MVP_Phase1](../mvps/MVP_Phase1_ManifestHardening.md) |
 | 2 | Wrapper Wave 3 | Planned | [MVP_Phase2](../mvps/MVP_Phase2_WrapperWave3.md) |
 | 3 | Native Core Services | Planned | [MVP_Phase3](../mvps/MVP_Phase3_NativeCoreServices.md) |
 | 4 | Plugin Runtime | Planned | [MVP_Phase4](../mvps/MVP_Phase4_PluginRuntime.md) |

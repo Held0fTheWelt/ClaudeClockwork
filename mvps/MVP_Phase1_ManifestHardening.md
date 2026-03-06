@@ -6,12 +6,12 @@
 
 ## Definition of Done
 
-- [ ] All 34 manifests pass JSON schema validation
-- [ ] All 34 manifest entrypoints resolve without `ModuleNotFoundError`
-- [ ] `manifest_validate` checks schema + importability and returns detailed errors
-- [ ] `skill_scaffold` produces manifests that pass `manifest_validate` on first run
-- [ ] A new skill added via scaffold is immediately callable via the CLI
-- [ ] All existing tests pass; 2 new tests added
+- [X] All 34 manifests pass JSON schema validation
+- [X] All 34 manifest entrypoints resolve without `ModuleNotFoundError`
+- [X] `manifest_validate` checks schema + importability and returns detailed errors
+- [X] `skill_scaffold` produces manifests that pass `manifest_validate` on first run
+- [X] A new skill added via scaffold is immediately callable via the CLI
+- [X] All existing tests pass; 2 new tests added
 
 ---
 

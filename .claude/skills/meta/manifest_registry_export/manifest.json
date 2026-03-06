@@ -1,4 +1,5 @@
 {
+  "id": "manifest_registry_export",
   "name": "manifest_registry_export",
   "version": "0.1.0",
   "category": "meta",

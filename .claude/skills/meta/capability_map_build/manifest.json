@@ -1,4 +1,5 @@
 {
+  "id": "capability_map_build",
   "name": "capability_map_build",
   "version": "0.1.0",
   "category": "meta",
