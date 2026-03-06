@@ -4,9 +4,9 @@
 
 ## Primary Package
 
-- **`llamacode/`** — main runtime package (v6.5.0-MVP9+). Core modules: routing, plan execution, bandit router, escalation, skills, CLI.
-- **`oodle/`** — legacy/reference package (parallel structure); may be archived per roadmap.
-- **`src/`** — legacy stubs; product code origin policy: see `.claude/policies/SRC_ORIGIN_RULE.md`.
+- **`claudeclockwork/`** — main runtime package (v0.1.0). Core modules: CLI, runtime factory, legacy bridge, executor pipeline, skill registry, capability planner, permission security.
+
+> Note: `llamacode/`, `oodle/`, and `src/` referenced in older docs no longer exist. `claudeclockwork/` is the canonical package.
 
 ## Runtime Layout
 
@@ -19,6 +19,7 @@
 
 ## Key Subsystems
 
-- **Routing:** `llamacode/core/bandit_router.py`, `escalation_router.py`; config in `.claude/config/model_routing.yaml`.
-- **Skills:** `.claude/tools/skills/` (Python); definitions in `.claude/skills/`.
+- **Routing:** `claudeclockwork/core/planner/` + `core/security/`; model routing config in `.claude/config/model_routing.yaml`.
+- **Skills:** `.claude/tools/skills/` (94 legacy Python modules); manifest-based skills in `.claude/skills/` (34 skills, 30 via legacy adapter).
+- **Registry:** `claudeclockwork/core/registry/` — discovers `manifest.json` files, loads via importlib.
 - **Eval:** `.claude/eval/eval_runner.py`; results → `.llama_runtime/eval/results/`.

@@ -1,18 +1,18 @@
 # MEMORY.md — Cross-Session Context
 
-> Stabile Findings, Architektur-Entscheide, User-Präferenzen. SSoT für kontextübergreifendes Gedächtnis (Team Lead owned).  
-> Siehe auch: `.claude/knowledge/decisions.md` (Append-only Entscheidungslog).
+> Stable findings, architecture decisions, user preferences. SSoT for cross-session memory (Team Lead owned).
+> See also: `.claude/knowledge/decisions.md` (append-only decision log).
 
-## Verwendung
+## Usage
 
-- **Stabile Findings:** Erkenntnisse, die über Sessions hinweg gelten.
-- **Architektur-Entscheide:** Kurzreferenz zu getroffenen Architektur- und Policy-Entscheidungen (Details in `.claude/knowledge/decisions.md`).
-- **User-Präferenzen:** Projekt-spezifische Präferenzen (Sprache, Modell, Workflows).
+- **Stable Findings:** Findings that hold across sessions.
+- **Architecture Decisions:** Quick reference for architecture and policy decisions made (details in `.claude/knowledge/decisions.md`).
+- **User Preferences:** Project-specific preferences (language, model, workflows).
 
-## Aktuell
+## Current
 
-*(Einträge bei Bedarf ergänzen.)*
+*(Add entries as needed.)*
 
 ---
 
-*Zuletzt aktualisiert: 2026-03-05*
+*Last updated: 2026-03-06*

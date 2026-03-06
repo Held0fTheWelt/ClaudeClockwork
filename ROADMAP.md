@@ -1,23 +1,23 @@
 # Project Roadmap (Root)
 
-**Canonical roadmap.** Full detail: `.report/09_clockwork_roadmap_and_milestones.md` and M2 plan `.claude-development/milestones/M2_clockwork_audit_followup_plan_2026-03-02.md`.
+**Canonical roadmap for the skill-system migration:** `Docs/skill_system_audit_and_roadmap.md`.
 
-## Current State (2026-03-02)
+## Current State (2026-03-06)
 
 - **Version:** Clockwork 17.7.0 (`.claude/VERSION`)
-- **CBL Rung:** 1 (Single-Agent)
-- **Key gaps:** Runtime critics, full eval harness, capability policy, MAPE-K loop, knowledge graph
+- **Legacy Python skill modules:** 94
+- **Manifest-based skills:** 34
+- **Native full-system skills:** 6
+- **Wrapped legacy skills:** 28
+- **Reference SKILL.md assets:** 17
+- **Plugin skeletons:** 2
+- **Tests:** 5 passing
 
-## Phases
+## Immediate Focus
 
-| Phase | Goal | Timeline |
-|-------|------|----------|
-| **MVP-Next (Quality Foundation)** | CI gates, drift/regression critics, capability policy, eval harness | Weeks 1–4 |
-| **v1.0 (Adaptive Intelligence)** | Knowledge graph, MAPE-K, full critics, plugin runtime, CBL Rung 4 | Weeks 5–12 |
-| **v2.0 (Enterprise)** | Plugin API, audit chaining, evolution engine, CBL Rung 6–7 | Weeks 13–24 |
-
-## Immediate (M2 Week 1)
-
-- Clockwork invariant cleanup (V-001–V-006)
-- Root pointer files (this file, ARCHITECTURE.md, MODEL_POLICY.md)
-- Design: Runtime Critics, Capability Policy, Eval Harness Completion
+1. Manifest hardening
+2. Wrapper wave 3
+3. Native meta/QA services
+4. Plugin runtime
+5. MCP layer
+6. CI/eval gates
