@@ -1,0 +1,24 @@
+{
+  "id": "code_assimilate",
+  "name": "code_assimilate",
+  "version": "1.0.0",
+  "category": "analysis",
+  "description": "Assimilate and summarise a code module or directory for agent context.",
+  "entrypoint": "skills.analysis.code_assimilate.skill:CodeAssimilateSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "analysis",
+    "code",
+    "summary"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "code_assimilate"
+  }
+}

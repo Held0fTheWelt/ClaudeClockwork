@@ -1,0 +1,24 @@
+{
+  "id": "model_routing_record_outcome",
+  "name": "model_routing_record_outcome",
+  "version": "1.0.0",
+  "category": "routing",
+  "description": "Record the outcome of a model routing decision for future tuning.",
+  "entrypoint": "skills.routing.model_routing_record_outcome.skill:ModelRoutingRecordOutcomeSkill",
+  "permissions": [
+    "registry:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "routing",
+    "outcome",
+    "ledger"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "model_routing_record_outcome"
+  }
+}

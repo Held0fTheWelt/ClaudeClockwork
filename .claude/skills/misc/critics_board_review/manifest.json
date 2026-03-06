@@ -1,0 +1,24 @@
+{
+  "id": "critics_board_review",
+  "name": "critics_board_review",
+  "version": "1.0.0",
+  "category": "misc",
+  "description": "Run a full critics board review for a plan or implementation.",
+  "entrypoint": "skills.misc.critics_board_review.skill:CriticsBoardReviewSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "misc",
+    "critics",
+    "review"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "critics_board_review"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "triad_ref_lint",
+  "name": "triad_ref_lint",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Lint a triad for reference consistency and completeness.",
+  "entrypoint": "skills.planning.triad_ref_lint.skill:TriadRefLintSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "lint",
+    "triad"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "triad_ref_lint"
+  }
+}

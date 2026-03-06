@@ -1,0 +1,25 @@
+{
+  "id": "create_mvp",
+  "name": "create_mvp",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Scaffold a new MVP document from a goal description.",
+  "entrypoint": "skills.planning.create_mvp.skill:CreateMvpSkill",
+  "permissions": [
+    "docs:write",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "mvp",
+    "scaffold"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "create_mvp"
+  }
+}

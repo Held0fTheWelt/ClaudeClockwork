@@ -1,0 +1,23 @@
+{
+  "id": "scan",
+  "name": "scan",
+  "version": "1.0.0",
+  "category": "demo",
+  "description": "Scan the repository for a quick health summary (demo skill).",
+  "entrypoint": "skills.demo.scan.skill:ScanSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "demo",
+    "scan"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "scan"
+  }
+}

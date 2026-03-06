@@ -24,7 +24,9 @@ def run(req: dict) -> dict:
     ledger = _safe_load(ledger_path) if str(ledger_path) else {}
 
     claude_tier = routing.get("claude_tier") or routing.get("models",{}).get("claude_tier","")
-    oodle_tier = routing.get("oodle_tier") or routing.get("models",{}).get("oodle_tier","")
+    local_model_tier = (routing.get("local_model_tier") or routing.get("oodle_tier")
+                        or routing.get("models", {}).get("local_model_tier", "")
+                        or routing.get("models", {}).get("oodle_tier", ""))
     status = qsig.get("status") or qsig.get("run_status") or "pass"
     retries = qsig.get("retries", 0)
     severity = qsig.get("severity_max","low")
@@ -38,7 +40,7 @@ def run(req: dict) -> dict:
         "verifier": routing.get("verifier",""),
         "relay": routing.get("relay",""),
         "claude_tier": claude_tier,
-        "oodle_tier": oodle_tier
+        "local_model_tier": local_model_tier
       },
       "outcome":{
         "status": status if status in ("pass","fail","blocked") else "pass",

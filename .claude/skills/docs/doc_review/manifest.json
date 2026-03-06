@@ -1,0 +1,24 @@
+{
+  "id": "doc_review",
+  "name": "doc_review",
+  "version": "1.0.0",
+  "category": "docs",
+  "description": "Review a document for completeness, accuracy, and policy compliance.",
+  "entrypoint": "skills.docs.doc_review.skill:DocReviewSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "docs",
+    "review",
+    "qa"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "doc_review"
+  }
+}

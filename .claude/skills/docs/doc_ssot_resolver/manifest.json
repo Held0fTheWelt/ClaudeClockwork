@@ -1,0 +1,25 @@
+{
+  "id": "doc_ssot_resolver",
+  "name": "doc_ssot_resolver",
+  "version": "1.0.0",
+  "category": "docs",
+  "description": "Resolve conflicting SSoT references across documentation.",
+  "entrypoint": "skills.docs.doc_ssot_resolver.skill:DocSsotResolverSkill",
+  "permissions": [
+    "docs:write",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "docs",
+    "ssot",
+    "resolver"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "doc_ssot_resolver"
+  }
+}

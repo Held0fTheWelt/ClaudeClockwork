@@ -1,0 +1,24 @@
+{
+  "id": "hypothesis_builder",
+  "name": "hypothesis_builder",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Build a structured hypothesis from an observation and supporting evidence.",
+  "entrypoint": "skills.planning.hypothesis_builder.skill:HypothesisBuilderSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "hypothesis",
+    "research"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "hypothesis_builder"
+  }
+}

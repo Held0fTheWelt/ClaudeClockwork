@@ -1,0 +1,24 @@
+{
+  "id": "edge_case_selector",
+  "name": "edge_case_selector",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Identify and prioritise edge cases for a given feature or change.",
+  "entrypoint": "skills.planning.edge_case_selector.skill:EdgeCaseSelectorSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "edge-cases",
+    "qa"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "edge_case_selector"
+  }
+}

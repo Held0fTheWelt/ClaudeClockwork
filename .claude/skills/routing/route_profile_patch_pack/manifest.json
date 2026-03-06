@@ -1,0 +1,16 @@
+{
+  "id": "route_profile_patch_pack",
+  "name": "route_profile_patch_pack",
+  "version": "1.0.0",
+  "category": "routing",
+  "description": "Build a patch pack for updating a routing profile in bulk.",
+  "entrypoint": "skills.routing.route_profile_patch_pack.skill:RouteProfilePatchPackSkill",
+  "permissions": ["registry:write"],
+  "aliases": [],
+  "tags": ["routing","profile","patch"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {"legacy_bridge": "route_profile_patch_pack"}
+}

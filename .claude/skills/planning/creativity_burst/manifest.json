@@ -1,0 +1,24 @@
+{
+  "id": "creativity_burst",
+  "name": "creativity_burst",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Generate a rapid creative ideation burst for a given problem.",
+  "entrypoint": "skills.planning.creativity_burst.skill:CreativityBurstSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "creativity",
+    "ideation"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "creativity_burst"
+  }
+}

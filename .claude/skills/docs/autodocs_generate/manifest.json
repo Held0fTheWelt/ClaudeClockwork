@@ -1,0 +1,25 @@
+{
+  "id": "autodocs_generate",
+  "name": "autodocs_generate",
+  "version": "1.0.0",
+  "category": "docs",
+  "description": "Auto-generate documentation from code, manifests, and inline comments.",
+  "entrypoint": "skills.docs.autodocs_generate.skill:AutodocsGenerateSkill",
+  "permissions": [
+    "docs:write",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "docs",
+    "generation",
+    "automation"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "autodocs_generate"
+  }
+}

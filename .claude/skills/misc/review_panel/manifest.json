@@ -1,0 +1,24 @@
+{
+  "id": "review_panel",
+  "name": "review_panel",
+  "version": "1.0.0",
+  "category": "misc",
+  "description": "Convene a review panel for multi-perspective evaluation.",
+  "entrypoint": "skills.misc.review_panel.skill:ReviewPanelSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "misc",
+    "review",
+    "panel"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "review_panel"
+  }
+}

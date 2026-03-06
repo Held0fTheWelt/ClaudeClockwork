@@ -1,0 +1,25 @@
+{
+  "id": "last_train_merge",
+  "name": "last_train_merge",
+  "version": "1.0.0",
+  "category": "archive",
+  "description": "Merge last-train output into the knowledge base.",
+  "entrypoint": "skills.archive.last_train_merge.skill:LastTrainMergeSkill",
+  "permissions": [
+    "repo:write",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "archive",
+    "merge",
+    "knowledge"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "last_train_merge"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "exec_dryrun",
+  "name": "exec_dryrun",
+  "version": "1.0.0",
+  "category": "misc",
+  "description": "Dry-run an execution plan without applying any changes.",
+  "entrypoint": "skills.misc.exec_dryrun.skill:ExecDryrunSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "misc",
+    "dryrun",
+    "validation"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "exec_dryrun"
+  }
+}

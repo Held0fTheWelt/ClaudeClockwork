@@ -1,0 +1,25 @@
+{
+  "id": "plan_diff_apply",
+  "name": "plan_diff_apply",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Apply a structured diff to an existing plan document.",
+  "entrypoint": "skills.planning.plan_diff_apply.skill:PlanDiffApplySkill",
+  "permissions": [
+    "docs:write",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "diff",
+    "documents"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "plan_diff_apply"
+  }
+}

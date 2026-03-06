@@ -1,0 +1,24 @@
+{
+  "id": "doc_write",
+  "name": "doc_write",
+  "version": "1.0.0",
+  "category": "docs",
+  "description": "Write a new document from a structured brief.",
+  "entrypoint": "skills.docs.doc_write.skill:DocWriteSkill",
+  "permissions": [
+    "docs:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "docs",
+    "writing",
+    "generation"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "doc_write"
+  }
+}

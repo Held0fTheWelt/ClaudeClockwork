@@ -1,0 +1,24 @@
+{
+  "id": "budget_analyze",
+  "name": "budget_analyze",
+  "version": "1.0.0",
+  "category": "routing",
+  "description": "Analyse token and cost budget consumption across recent runs.",
+  "entrypoint": "skills.routing.budget_analyze.skill:BudgetAnalyzeSkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "budget",
+    "analytics",
+    "cost"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "budget_analyze"
+  }
+}

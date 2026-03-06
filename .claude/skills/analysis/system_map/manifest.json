@@ -1,0 +1,24 @@
+{
+  "id": "system_map",
+  "name": "system_map",
+  "version": "1.0.0",
+  "category": "analysis",
+  "description": "Build a dependency and interaction map for the current system.",
+  "entrypoint": "skills.analysis.system_map.skill:SystemMapSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "analysis",
+    "system-map",
+    "architecture"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "system_map"
+  }
+}

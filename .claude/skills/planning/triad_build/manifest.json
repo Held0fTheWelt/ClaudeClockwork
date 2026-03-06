@@ -1,0 +1,24 @@
+{
+  "id": "triad_build",
+  "name": "triad_build",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Build a message triad (work_brief, constraints, goal) from a raw task.",
+  "entrypoint": "skills.planning.triad_build.skill:TriadBuildSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "triad",
+    "message"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "triad_build"
+  }
+}

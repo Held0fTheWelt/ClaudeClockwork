@@ -1,0 +1,24 @@
+{
+  "id": "decision_feedback",
+  "name": "decision_feedback",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Capture structured feedback on a decision for future reference.",
+  "entrypoint": "skills.planning.decision_feedback.skill:DecisionFeedbackSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "decision",
+    "feedback"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "decision_feedback"
+  }
+}

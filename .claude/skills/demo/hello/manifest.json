@@ -1,0 +1,23 @@
+{
+  "id": "hello",
+  "name": "hello",
+  "version": "1.0.0",
+  "category": "demo",
+  "description": "Hello-world demo skill.",
+  "entrypoint": "skills.demo.hello.skill:HelloSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "demo",
+    "hello"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "hello"
+  }
+}

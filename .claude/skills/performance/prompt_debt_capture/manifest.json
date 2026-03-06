@@ -1,0 +1,24 @@
+{
+  "id": "prompt_debt_capture",
+  "name": "prompt_debt_capture",
+  "version": "1.0.0",
+  "category": "performance",
+  "description": "Capture prompt debt observations for future prompt engineering work.",
+  "entrypoint": "skills.performance.prompt_debt_capture.skill:PromptDebtCaptureSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "performance",
+    "prompt-debt",
+    "tracking"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "prompt_debt_capture"
+  }
+}

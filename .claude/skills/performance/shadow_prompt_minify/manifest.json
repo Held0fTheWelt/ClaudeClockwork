@@ -1,0 +1,24 @@
+{
+  "id": "shadow_prompt_minify",
+  "name": "shadow_prompt_minify",
+  "version": "1.0.0",
+  "category": "performance",
+  "description": "Minify a shadow prompt to its smallest effective form.",
+  "entrypoint": "skills.performance.shadow_prompt_minify.skill:ShadowPromptMinifySkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "performance",
+    "minification",
+    "prompt"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "shadow_prompt_minify"
+  }
+}

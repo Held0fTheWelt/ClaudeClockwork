@@ -1,0 +1,24 @@
+{
+  "id": "budget_router",
+  "name": "budget_router",
+  "version": "1.0.0",
+  "category": "routing",
+  "description": "Route tasks based on token budget and cost constraints.",
+  "entrypoint": "skills.routing.budget_router.skill:BudgetRouterSkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "routing",
+    "budget",
+    "cost"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "budget_router"
+  }
+}

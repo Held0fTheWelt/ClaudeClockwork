@@ -1,0 +1,24 @@
+{
+  "id": "idea_dedupe",
+  "name": "idea_dedupe",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Deduplicate a list of ideas by semantic similarity.",
+  "entrypoint": "skills.planning.idea_dedupe.skill:IdeaDedupeSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "deduplication",
+    "ideas"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "idea_dedupe"
+  }
+}

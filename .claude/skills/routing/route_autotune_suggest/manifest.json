@@ -1,0 +1,24 @@
+{
+  "id": "route_autotune_suggest",
+  "name": "route_autotune_suggest",
+  "version": "1.0.0",
+  "category": "routing",
+  "description": "Suggest routing profile adjustments based on historical outcome data.",
+  "entrypoint": "skills.routing.route_autotune_suggest.skill:RouteAutotuneSuggestSkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "routing",
+    "autotune",
+    "optimization"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "route_autotune_suggest"
+  }
+}

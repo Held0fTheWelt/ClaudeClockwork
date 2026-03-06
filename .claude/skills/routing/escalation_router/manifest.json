@@ -1,0 +1,24 @@
+{
+  "id": "escalation_router",
+  "name": "escalation_router",
+  "version": "1.0.0",
+  "category": "routing",
+  "description": "Route escalations to the appropriate agent tier based on severity.",
+  "entrypoint": "skills.routing.escalation_router.skill:EscalationRouterSkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "routing",
+    "escalation",
+    "agents"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "escalation_router"
+  }
+}

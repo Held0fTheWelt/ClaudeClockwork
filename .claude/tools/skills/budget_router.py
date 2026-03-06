@@ -15,7 +15,7 @@ def _clamp(n: int, lo: int, hi: int) -> int:
 
 @dataclass(frozen=True)
 class BudgetDecision:
-    oodle_tier: str
+    local_model_tier: str
     claude_tier: str
     allow_deep: bool
     allow_external: bool
@@ -70,7 +70,7 @@ def run(req: dict) -> dict:
         "status": "ok",
         "outputs": {
             "decision": {
-                "oodle_tier": d.oodle_tier,
+                "local_model_tier": d.local_model_tier,
                 "claude_tier": d.claude_tier,
                 "allow_deep": d.allow_deep,
                 "allow_external": d.allow_external,

@@ -1,0 +1,24 @@
+{
+  "id": "limitation_harvest_scan",
+  "name": "limitation_harvest_scan",
+  "version": "1.0.0",
+  "category": "analysis",
+  "description": "Scan the codebase for documented limitations and known issues.",
+  "entrypoint": "skills.analysis.limitation_harvest_scan.skill:LimitationHarvestScanSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "analysis",
+    "limitations",
+    "scan"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "limitation_harvest_scan"
+  }
+}

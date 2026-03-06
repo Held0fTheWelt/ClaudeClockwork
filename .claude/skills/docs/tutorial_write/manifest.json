@@ -1,0 +1,24 @@
+{
+  "id": "tutorial_write",
+  "name": "tutorial_write",
+  "version": "1.0.0",
+  "category": "docs",
+  "description": "Write a step-by-step tutorial for a skill or workflow.",
+  "entrypoint": "skills.docs.tutorial_write.skill:TutorialWriteSkill",
+  "permissions": [
+    "docs:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "docs",
+    "tutorial",
+    "writing"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "tutorial_write"
+  }
+}

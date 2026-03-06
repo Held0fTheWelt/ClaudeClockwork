@@ -1,0 +1,23 @@
+{
+  "id": "report",
+  "name": "report",
+  "version": "1.0.0",
+  "category": "demo",
+  "description": "Generate a simple status report (demo skill).",
+  "entrypoint": "skills.demo.report.skill:ReportSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "demo",
+    "report"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "report"
+  }
+}

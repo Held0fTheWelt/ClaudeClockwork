@@ -1,0 +1,24 @@
+{
+  "id": "work_scope_assess",
+  "name": "work_scope_assess",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Assess the scope and complexity of a proposed work item.",
+  "entrypoint": "skills.planning.work_scope_assess.skill:WorkScopeAssessSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "scope",
+    "assessment"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "work_scope_assess"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "idea_scoring",
+  "name": "idea_scoring",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Score and rank ideas by feasibility, impact, and alignment.",
+  "entrypoint": "skills.planning.idea_scoring.skill:IdeaScoringSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "scoring",
+    "prioritisation"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "idea_scoring"
+  }
+}

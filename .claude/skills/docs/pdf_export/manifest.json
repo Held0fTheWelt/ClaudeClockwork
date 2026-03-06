@@ -1,0 +1,25 @@
+{
+  "id": "pdf_export",
+  "name": "pdf_export",
+  "version": "1.0.0",
+  "category": "docs",
+  "description": "Export a markdown document to a formatted PDF file.",
+  "entrypoint": "skills.docs.pdf_export.skill:PdfExportSkill",
+  "permissions": [
+    "docs:write",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "docs",
+    "pdf",
+    "export"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "pdf_export"
+  }
+}

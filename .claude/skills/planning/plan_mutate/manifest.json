@@ -1,0 +1,25 @@
+{
+  "id": "plan_mutate",
+  "name": "plan_mutate",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Apply a targeted mutation to a plan section.",
+  "entrypoint": "skills.planning.plan_mutate.skill:PlanMutateSkill",
+  "permissions": [
+    "docs:write",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "mutation",
+    "documents"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "plan_mutate"
+  }
+}

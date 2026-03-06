@@ -1,0 +1,24 @@
+{
+  "id": "economics_regression",
+  "name": "economics_regression",
+  "version": "1.0.0",
+  "category": "planning",
+  "description": "Run cost/value regression analysis on a set of options.",
+  "entrypoint": "skills.planning.economics_regression.skill:EconomicsRegressionSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "planning",
+    "economics",
+    "analysis"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "economics_regression"
+  }
+}
