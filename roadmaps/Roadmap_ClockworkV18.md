@@ -1,8 +1,8 @@
 # Clockwork v18 Roadmap
 
 **Baseline:** v17.7.0 — 94 legacy skills, 34 manifest skills (28 adapters + 6 native), 5 passing tests
-**Current:** v18.0 — 45 manifest skills (34 adapters + 11 native), 136 passing tests, MCP layer, full plugin runtime, 7 CI gates
-**Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md · VERIFY audit 2026-03-06
+**Current:** v18.1 — 97 manifest skills (93 adapters + 4 native), 346 passing tests, MCP layer, full plugin runtime, 7 CI gates, dual-dispatch gap closed
+**Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md · VERIFY audit 2026-03-06 · NEW_MVPS.md
 **Updated:** 2026-03-06
 
 ---
@@ -18,9 +18,15 @@
 | 4 | Plugin Runtime | **Complete** | [MVP_Phase4](../mvps/MVP_Phase4_PluginRuntime.md) |
 | 5 | MCP Layer | **Complete** | [MVP_Phase5](../mvps/MVP_Phase5_MCPLayer.md) |
 | 6 | CI / Eval / Quality Gates | **Complete** | [MVP_Phase6](../mvps/MVP_Phase6_CIEvalGates.md) |
-| 7 | Wrapper Wave 4 (Legacy CLI Gap) | Planned | [MVP_Phase7](../mvps/MVP_Phase7_WrapperWave4.md) |
+| 7 | Wrapper Wave 4 (Legacy CLI Gap) | **Complete** | [MVP_Phase7](../mvps/MVP_Phase7_WrapperWave4.md) |
 | 8 | Code & Governance Hygiene | **Complete** | [MVP_Phase8](../mvps/MVP_Phase8_CodeHygiene.md) |
-| 9 | Test Hardening | Planned | [MVP_Phase9](../mvps/MVP_Phase9_TestHardening.md) |
+| 9 | Test Hardening | **Complete** | [MVP_Phase9](../mvps/MVP_Phase9_TestHardening.md) |
+| 10 | Compaction & Pluggability | Planned | [MVP_Phase10](../mvps/MVP_Phase10_Compaction.md) |
+| 11 | Legacy Doc Migration | Planned | [MVP_Phase11](../mvps/MVP_Phase11_LegacyDocMigration.md) |
+| 12 | Duplicate Elimination | Planned | [MVP_Phase12](../mvps/MVP_Phase12_DuplicateElimination.md) |
+| 13 | Greenfield Content Update | Planned | [MVP_Phase13](../mvps/MVP_Phase13_GreenfieldUpdate.md) |
+| 14 | Native Skill Promotion | Planned | [MVP_Phase14](../mvps/MVP_Phase14_NativeSkills.md) |
+| 15 | Skill Discovery Wave | Planned | [MVP_Phase15](../mvps/MVP_Phase15_SkillDiscovery.md) |
 
 **Principle:** No big-bang rewrites. Each phase delivers a working, tested increment. Legacy runner stays operational throughout.
 
