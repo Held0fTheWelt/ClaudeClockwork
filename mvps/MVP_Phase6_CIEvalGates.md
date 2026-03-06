@@ -6,12 +6,12 @@
 
 ## Definition of Done
 
-- [ ] All 7 gates pass on clean checkout
-- [ ] A manifest with a bad entrypoint fails the import lint gate
-- [ ] A skill removed from the registry is caught by the registry diff gate
-- [ ] Gates run in CI on every commit (GitHub Actions or equivalent)
-- [ ] `eval_run` stores results to `.llama_runtime/eval/results/` with per-run snapshots
-- [ ] All existing tests pass
+- [X] All 7 gates pass on clean checkout
+- [X] A manifest with a bad entrypoint fails the import lint gate
+- [X] A skill removed from the registry is caught by the registry diff gate
+- [X] Gates run in CI on every commit (GitHub Actions)
+- [X] `eval_run` stores results to `.llama_runtime/eval/results/` with per-run snapshots
+- [X] All existing tests pass (136 total)
 
 ---
 

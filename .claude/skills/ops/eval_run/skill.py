@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -23,35 +24,46 @@ def _load_yaml_simple(text: str) -> dict:
 
 
 def _run_test(test_def: dict, repo_root: Path) -> dict:
-    """Run a single eval test definition. Returns {name, status, detail}."""
+    """Run a single eval test definition. Returns {name, status, detail, ms}."""
     name = test_def.get("name", "unnamed")
     check = test_def.get("check", "")
     target = test_def.get("target", "")
+    t0 = time.monotonic()
 
     if check == "file_exists":
         path = (repo_root / target).resolve()
         ok = path.exists()
-        return {"name": name, "status": "pass" if ok else "fail", "detail": str(path)}
+        status = "pass" if ok else "fail"
+        detail = str(path)
 
-    if check == "file_contains":
+    elif check == "file_contains":
         path = (repo_root / target).resolve()
         needle = test_def.get("contains", "")
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
             ok = needle in text
-        except Exception as e:
-            return {"name": name, "status": "error", "detail": str(e)}
-        return {"name": name, "status": "pass" if ok else "fail", "detail": f"'{needle}' in {target}"}
+            status = "pass" if ok else "fail"
+            detail = f"'{needle}' in {target}"
+        except Exception as exc:
+            status = "error"
+            detail = str(exc)
 
-    if check == "json_valid":
+    elif check == "json_valid":
         path = (repo_root / target).resolve()
         try:
             json.loads(path.read_text(encoding="utf-8"))
-            return {"name": name, "status": "pass", "detail": str(path)}
-        except Exception as e:
-            return {"name": name, "status": "fail", "detail": str(e)}
+            status = "pass"
+            detail = str(path)
+        except Exception as exc:
+            status = "fail"
+            detail = str(exc)
 
-    return {"name": name, "status": "skip", "detail": f"unknown check type: {check!r}"}
+    else:
+        status = "skip"
+        detail = f"unknown check type: {check!r}"
+
+    ms = round((time.monotonic() - t0) * 1000, 1)
+    return {"name": name, "status": status, "detail": detail, "ms": ms}
 
 
 class EvalRunSkill(SkillBase):
@@ -60,14 +72,14 @@ class EvalRunSkill(SkillBase):
         results_dir = (repo_root / ".llama_runtime" / "eval" / "results").resolve()
         results_dir.mkdir(parents=True, exist_ok=True)
 
-        suite_filter = kwargs.get("suite")
+        suite = kwargs.get("suite", "default")
         eval_dir = repo_root / ".claude" / "eval"
 
         # Collect test definitions from YAML files
         tests: list[dict] = []
         if eval_dir.exists():
             for yaml_file in sorted(eval_dir.rglob("*.yaml")):
-                if suite_filter and suite_filter not in yaml_file.name:
+                if suite != "default" and suite not in yaml_file.name:
                     continue
                 try:
                     text = yaml_file.read_text(encoding="utf-8")
@@ -82,29 +94,61 @@ class EvalRunSkill(SkillBase):
                 except Exception:
                     continue
 
-        # Run tests
-        results = [_run_test(t, repo_root) for t in tests]
+        # Run tests with timing
+        t_suite_start = time.monotonic()
+        test_results = [_run_test(t, repo_root) for t in tests]
+        duration_ms = round((time.monotonic() - t_suite_start) * 1000, 1)
 
-        pass_count = sum(1 for r in results if r["status"] == "pass")
-        fail_count = sum(1 for r in results if r["status"] == "fail")
-        error_count = sum(1 for r in results if r["status"] == "error")
+        pass_count = sum(1 for r in test_results if r["status"] == "pass")
+        fail_count = sum(1 for r in test_results if r["status"] == "fail")
+        error_count = sum(1 for r in test_results if r["status"] == "error")
 
-        # Write results snapshot
+        # D6.7 — Write structured snapshot with run_id, suite, tests[]
+        run_id = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S")
         ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        snapshot = {
+            "run_id": run_id,
+            "suite": suite,
+            "pass_count": pass_count,
+            "fail_count": fail_count,
+            "error_count": error_count,
+            "duration_ms": duration_ms,
+            "tests": [
+                {"name": r["name"], "status": r["status"], "ms": r["ms"]}
+                for r in test_results
+            ],
+        }
         results_file = results_dir / f"eval_{ts}.json"
-        results_file.write_text(
-            json.dumps({"timestamp": ts, "results": results, "summary": {"pass": pass_count, "fail": fail_count}}, indent=2),
-            encoding="utf-8",
-        )
+        results_file.write_text(json.dumps(snapshot, indent=2), encoding="utf-8")
+
+        # Trend check: if last 5 runs exist, alert if any had failures
+        warnings: list[str] = []
+        all_runs = sorted(results_dir.glob("eval_*.json"))
+        if len(all_runs) >= 2:
+            recent = all_runs[-5:]
+            degraded = []
+            for run_path in recent[:-1]:  # exclude current
+                try:
+                    prev = json.loads(run_path.read_text(encoding="utf-8"))
+                    if prev.get("fail_count", 0) > 0 or prev.get("error_count", 0) > 0:
+                        degraded.append(run_path.name)
+                except Exception:
+                    pass
+            if degraded:
+                warnings.append(f"Recent runs with failures: {degraded}")
 
         return SkillResult(
             fail_count == 0 and error_count == 0,
             "eval_run",
             data={
-                "tests_run": len(results),
+                "run_id": run_id,
+                "suite": suite,
+                "tests_run": len(test_results),
                 "pass_count": pass_count,
                 "fail_count": fail_count,
                 "error_count": error_count,
+                "duration_ms": duration_ms,
                 "results_path": str(results_file),
             },
+            warnings=warnings,
         )
