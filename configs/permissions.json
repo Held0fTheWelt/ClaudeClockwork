@@ -1,0 +1,24 @@
+{
+  "allowed": [
+    "repo:read",
+    "repo:write",
+    "contracts:read",
+    "registry:read",
+    "registry:write",
+    "bridge:legacy",
+    "docs:write",
+    "qa:run",
+    "bundle:build",
+    "evidence:write",
+    "security:redact",
+    "pdf:render",
+    "release:cut",
+    "fs:read",
+    "fs:write",
+    "git:read"
+  ],
+  "blocked": [
+    "shell:admin",
+    "system:kill"
+  ]
+}

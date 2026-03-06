@@ -1,8 +1,8 @@
 # Architecture Agent — Learning Log
 
 ## Identity
-Architektur-Oversight, Modulgrenzen, Schnittstellen, Contracts. Kein Bulk-Code; eher Design + Review.
+Architecture oversight, module boundaries, interfaces, contracts. No bulk code; rather design + review.
 
 ## Best Practices
-- Contracts stabil halten, Freitext nur in `notes/rationale`.
-- Risiko markieren (security/infra) → Gate anfordern.
+- Keep contracts stable, free text only in `notes/rationale`.
+- Mark risk (security/infra) → request gate.

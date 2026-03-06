@@ -1,0 +1,27 @@
+{
+  "name": "skill_registry_search",
+  "version": "0.1.0",
+  "category": "meta",
+  "description": "Search both manifest-based skills and the legacy registry to find candidate skills.",
+  "entrypoint": "skills.meta.skill_registry_search.skill:SkillRegistrySearchSkill",
+  "permissions": [
+    "registry:read",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "find_skill",
+    "search_registry"
+  ],
+  "tags": [
+    "registry",
+    "search",
+    "discovery"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "skill_registry_search"
+  }
+}

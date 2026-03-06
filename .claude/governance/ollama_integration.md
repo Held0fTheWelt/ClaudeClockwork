@@ -1,83 +1,83 @@
 # Ollama Workload Integration
 
-## Kernprinzip
+## Core Principle
 
-Ollama übernimmt so viel Arbeit wie möglich — Claude Agents prüfen, korrigieren, und wenden Projektkontext an. Ziel: maximale Kostenreduktion bei Claude API-Tokens.
+Ollama handles as much work as possible — Claude Agents verify, correct, and apply project context. Goal: maximum cost reduction on Claude API tokens.
 
 ```
-Ollama (lokales Modell)
-  → Rohanalyse oder vollständiger Implementation-Draft
-  → kennt Python-APIs, kann Code generieren
+Ollama (local model)
+  → Raw analysis or complete implementation draft
+  → Knows Python APIs, can generate code
 
 Claude Agent (Sonnet)
-  → Qualitätskontrolle: passt das zu DIESEM Projekt?
-  → korrigiert Fehler (fehlende Type Hints, falsche Modul-Platzierung, falsches Pattern)
-  → wendet projekt-spezifische Patterns an die Ollama nicht kennt
-  → finaler commit-bereiter Code
+  → Quality control: does this fit THIS project?
+  → Corrects errors (missing type hints, wrong module placement, wrong pattern)
+  → Applies project-specific patterns that Ollama doesn't know
+  → Final commit-ready code
 ```
 
-**Effektive Aufgabenteilung:**
-- `brief` + `architecture` → Ollama: ~80% der Analyse. Claude: Verifikation + Entscheid.
-- `draft` → Ollama: ~60–70% des Codes. Claude: Review + Korrekturen + Projektkontext.
-- `review` → Ollama: vollständige Erst-Prüfung. Claude: Abnahme oder Eskalation.
+**Effective Task Division:**
+- `brief` + `architecture` → Ollama: ~80% of analysis. Claude: verification + decision.
+- `draft` → Ollama: ~60–70% of code. Claude: review + corrections + project context.
+- `review` → Ollama: complete initial check. Claude: acceptance or escalation.
 
 ---
 
-## Hardware-Routing
+## Hardware Routing
 
-| Gerät | VRAM/RAM | Modelle die passen | Optimale Nutzung |
+| Device | VRAM/RAM | Models that fit | Optimal usage |
 |---|---|---|---|
-| **RTX 3080** | 10 GB VRAM | ≤13B Q8 oder ≤30B Q4 | GPU-Inferenz (~760 GB/s Bandbreite) |
-| **CPU 7950X3D** | 64 GB DDR5 | bis ~50B Q8 oder 70B Q4 | Modelle die nicht in VRAM passen |
+| **RTX 3080** | 10 GB VRAM | ≤13B Q8 or ≤30B Q4 | GPU inference (~760 GB/s bandwidth) |
+| **CPU 7950X3D** | 64 GB DDR5 | up to ~50B Q8 or 70B Q4 | Models that don't fit in VRAM |
 
-**Kritische Regel: Hybrid = langsam.**
-Passt ein Modell nicht vollständig in den VRAM, muss Ollama Schichten zwischen RAM und VRAM aufteilen. Der PCIe-Transfer wird Engpass → kann langsamer sein als reines CPU.
+**Critical Rule: Hybrid = slow.**
+If a model doesn't fit completely in VRAM, Ollama must split layers between RAM and VRAM. PCIe transfer becomes bottleneck → can be slower than pure CPU.
 
 ```bash
-# Explizit CPU erzwingen (kein GPU-Hybrid):
+# Explicitly force CPU (no GPU hybrid):
 OLLAMA_NUM_GPU=0 ollama run qwen2.5-coder:32b
 
-# GPU forcieren (nur wenn Modell sicher reinpasst):
+# Force GPU (only if model definitely fits):
 OLLAMA_NUM_GPU=99 ollama run qwen2.5-coder:14b
 ```
 
 ---
 
-## Modell-Empfehlungen
+## Model Recommendations
 
-### Primäre Modelle (für die tägliche Arbeit)
+### Primary Models (for daily work)
 
-| Modell | Hardware | Task Types | Agent-Typ | Stärke |
+| Model | Hardware | Task Types | Agent Type | Strength |
 |---|---|---|---|---|
-| `qwen2.5:72b` / `llama3.3:70b` | CPU (64 GB RAM, Q4) | `brief`, `architecture` | **Infrastruktur** (Personaler, Diener, Tester) | Breites Reasoning für Shortlists + Routing |
-| `qwen2.5-coder:32b` | CPU (64 GB RAM) | `draft`, `brief` | **Implementation Agent** (≤33b) | Beste Code-Qualität, komplett in RAM |
-| `phi4:14b` | GPU (10 GB VRAM) | `architecture`, `brief` | Architecture/Critics (L2+) | Überragendes Reasoning für Architektur |
-| `qwen2.5-coder:14b` | GPU (10 GB VRAM) | `review`, `quick` | Review-Tasks | Schnell, gut für Code-Review |
+| `qwen2.5:72b` / `llama3.3:70b` | CPU (64 GB RAM, Q4) | `brief`, `architecture` | **Infrastructure** (Personaler, Servant, Tester) | Broad reasoning for shortlists + routing |
+| `qwen2.5-coder:32b` | CPU (64 GB RAM) | `draft`, `brief` | **Implementation Agent** (≤33b) | Best code quality, completely in RAM |
+| `phi4:14b` | GPU (10 GB VRAM) | `architecture`, `brief` | Architecture/Critics (L2+) | Superior reasoning for architecture |
+| `qwen2.5-coder:14b` | GPU (10 GB VRAM) | `review`, `quick` | Review tasks | Fast, good for code review |
 
-### Agent → Claude-Modell-Mapping (kanonisch)
+### Agent → Claude Model Mapping (Canonical)
 
-| Agent-Typ | Claude-Modell | Oodle-Modell |
+| Agent Type | Claude Model | Oodle Model |
 |---|---|---|
-| Infrastruktur (Personaler, Diener, Tester, Context Packer) | **Haiku** | **70b/72b** (CPU) |
+| Infrastructure (Personaler, Servant, Tester, Context Packer) | **Haiku** | **70b/72b** (CPU) |
 | Implementation Agent | **max. Sonnet 4.5** | **max. 33b** (qwen2.5-coder:32b, CPU) |
 | Architecture Agent (L2) | Sonnet | phi4:14b (GPU) |
 | Technical Critic (L3) | Sonnet | phi4:14b (GPU) |
 | Systemic Critic (L4) | Sonnet | phi4:14b (GPU) |
 
-### Optionale Ergänzungen
+### Optional Additions
 
-| Modell | Stärke | Wann nutzen |
+| Model | Strength | When to use |
 |---|---|---|
-| `qwen2.5-coder:7b` | Sehr schnell | Triviale Checks, L0-Tasks |
-| `deepseek-r1:14b` | Chain-of-Thought Reasoning | Komplexe Architektur-Entscheidungen |
-| `qwen2.5:32b` | Allgemeines Reasoning | Wenn Coder-Bias stört |
+| `qwen2.5-coder:7b` | Very fast | Trivial checks, L0 tasks |
+| `deepseek-r1:14b` | Chain-of-thought reasoning | Complex architecture decisions |
+| `qwen2.5:32b` | General reasoning | When coder bias interferes |
 
 ---
 
-## Tool-Aufruf
+## Tool Invocation
 
-**Importierbares Modul:** `<PROJECT_ROOT>/src/ollama_client.py`
-**Legacy Script:** `.claude/tools/ollama_brief.py`
+**Importable module:** `<PROJECT_ROOT>/src/ollama_client.py`
+**Legacy script:** `.claude/tools/ollama_brief.py`
 
 ```python
 from src.ollama_client import OllamaClient, OllamaUnavailableError
@@ -109,40 +109,40 @@ echo "task description" | python3 <PROJECT_ROOT>/.claude/tools/ollama_brief.py [
 
 ---
 
-## Agent-Entscheidungsprotokoll
+## Agent Decision Protocol
 
-### Nach Erhalt des Ollama-Outputs — Was prüft der Claude Agent?
+### After Receiving Ollama Output — What Does the Claude Agent Check?
 
-**Bei `brief` / `architecture`:**
+**For `brief` / `architecture`:**
 ```
-✓ Nennt das Briefing korrekte Python-Module? (z.B. ollama_client, nicht requests)
-✓ Ist die vorgeschlagene Modul-Platzierung korrekt?
-✓ Werden die Mandatory Patterns erwähnt? (OllamaFreeze, Type Hints, max 300 Zeilen)
-→ Accept: Briefing als Kontext verwenden
-→ Refine: Kontext ergänzen, nochmal senden (max. 2x)
-→ Skip: Ollama unavailable oder 2 Refinements ohne Verbesserung
-```
-
-**Bei `draft`:**
-```
-✓ Sind Type Hints auf allen public functions vorhanden?
-✓ PEP 8 eingehalten?
-✓ Keine hardcodierten Pfade? (alles über config.XYZ)
-✓ OllamaUnavailableError korrekt propagiert (nicht silent)?
-✓ Datei unter 300 Zeilen?
-→ Accept & Apply: Code direkt in Projekt-Dateien schreiben
-→ Correct & Apply: Fehler inline korrigieren, dann schreiben
-→ Reject: Struktur fundamental falsch (Layer-Verletzung) → manuell implementieren
+✓ Does the briefing name correct Python modules? (e.g., ollama_client, not requests)
+✓ Is the suggested module placement correct?
+✓ Are mandatory patterns mentioned? (OllamaFreeze, Type Hints, max 300 lines)
+→ Accept: Use briefing as context
+→ Refine: Add context, send again (max 2x)
+→ Skip: Ollama unavailable or 2 refinements without improvement
 ```
 
-**Bei `review`:**
+**For `draft`:**
 ```
-✓ Sind alle Critical-Issues valide (nicht false positives)?
-→ Accept: Review-Report als Grundlage für Validation Agent
-→ Correct: False positives entfernen, eigene Findings ergänzen
+✓ Are type hints on all public functions present?
+✓ PEP 8 followed?
+✓ No hardcoded paths? (everything via config.XYZ)
+✓ OllamaUnavailableError correctly propagated (not silent)?
+✓ File under 300 lines?
+→ Accept & Apply: Write code directly to project files
+→ Correct & Apply: Correct errors inline, then write
+→ Reject: Structure fundamentally wrong (layer violation) → implement manually
 ```
 
-### Refinement-Schleife (max. 2 Iterationen)
+**For `review`:**
+```
+✓ Are all critical issues valid (not false positives)?
+→ Accept: Use review report as basis for Validation Agent
+→ Correct: Remove false positives, add own findings
+```
+
+### Refinement Loop (max 2 iterations)
 
 ```python
 from src.ollama_client import OllamaClient
@@ -167,105 +167,105 @@ result = client.draft(
 
 ---
 
-## Wann welcher Task-Type
+## When Which Task Type
 
-| Situation | Ollama-Type | Modell | Erwartetes Claude-Delta |
+| Situation | Ollama Type | Model | Expected Claude Delta |
 |---|---|---|---|
-| Neue Python-Funktion implementieren (L1) | `draft` | `qwen2.5-coder:32b` | ~30–40% Korrekturen |
-| Architektur-Entscheid (L2) | `architecture` | `phi4:14b` | Verifikation, selten Korrekturen |
-| Code-Review vor Validation Agent | `review` | `qwen2.5-coder:14b` | False-Positive-Filter |
-| Schnelle technische Frage (L0) | `quick` | `qwen2.5-coder:7b` | Direkte Nutzung |
-| Komplexes System-Design (L3+) | `architecture` | `deepseek-r1:14b` | Tiefere Prüfung nötig |
+| Implement new Python function (L1) | `draft` | `qwen2.5-coder:32b` | ~30–40% corrections |
+| Architecture decision (L2) | `architecture` | `phi4:14b` | Verification, rarely corrections |
+| Code review before Validation Agent | `review` | `qwen2.5-coder:14b` | False positive filter |
+| Quick technical question (L0) | `quick` | `qwen2.5-coder:7b` | Direct use |
+| Complex system design (L3+) | `architecture` | `deepseek-r1:14b` | Deeper review needed |
 
 ---
 
-## Wann Ollama obligatorisch vs. optional vs. skip
+## When Ollama Is Mandatory vs. Optional vs. Skip
 
-| Eskalationslevel | Ollama aufrufen? | Type |
+| Escalation Level | Call Ollama? | Type |
 |---|---|---|
-| L0 — Minor, eine Datei | Nein — gar nicht aufrufen (Overhead > Nutzen) | — |
-| L1 — Multi-Datei, klare Grenzen | Optional — empfohlen bei >50 Zeilen Code | `brief` oder `draft` |
-| L2 — Architecture Review | Obligatorisch | `architecture` |
-| L3+ — Critic Review | Obligatorisch | `architecture` + ggf. `review` |
+| L0 — Minor, one file | No — don't call at all (overhead > benefit) | — |
+| L1 — Multi-file, clear boundaries | Optional — recommended for >50 lines of code | `brief` or `draft` |
+| L2 — Architecture Review | Mandatory | `architecture` |
+| L3+ — Critic Review | Mandatory | `architecture` + possibly `review` |
 
-> **Wichtig:** "Nein" bei L0 bedeutet: Ollama wird erst gar nicht aufgerufen.
-> Wird Ollama aufgerufen (L1+) und ist nicht erreichbar → immer FREEZE, nie stilles Weitermachen.
+> **Important:** "No" for L0 means: Ollama is not called at all.
+> If Ollama is called (L1+) and is not reachable → always FREEZE, never silent continue.
 
 ---
 
-## Ollama-Status prüfen
+## Check Ollama Status
 
 ```bash
-# Läuft Ollama? (empfohlen — funktioniert ohne PATH)
+# Is Ollama running? (recommended — works without PATH)
 curl -s http://localhost:11434/api/tags \
   | python3 -c "import sys,json; [print(m['name']) for m in json.load(sys.stdin)['models']]"
 
-# Oder: direkt über Binary
+# Or: directly via binary
 OLLAMA="/c/Users/YvesT/AppData/Local/Programs/Ollama/ollama.exe"
 "$OLLAMA" list
 ```
 
 ---
 
-## Freeze Protocol — Obligatorisch bei Ollama-Ausfall
+## Freeze Protocol — Mandatory on Ollama Failure
 
-**Ollama ist kein optionales Hilfsmittel — es ist die Workload-Basis.**
-Ein Freeze ist kein Vollstopp — es ist ein **partieller Hold**: nur der Agent, der Ollama benötigt, wartet.
+**Ollama is not an optional tool — it is the workload foundation.**
+A freeze is not a full stop — it is a **partial hold**: only the agent that needs Ollama waits.
 
-### Ablauf bei OllamaUnavailableError
+### Process on OllamaUnavailableError
 
 ```
-1. Betroffener Agent (der Ollama aufgerufen hat) → stoppt sofort
-   Kein Teilimplementieren ohne Briefing.
+1. Affected agent (who called Ollama) → stops immediately
+   No partial implementation without briefing.
 
-2. Parallel laufende Agents → arbeiten weiter, bewahren Ergebnisse auf
+2. Parallel running agents → continue working, preserve results
 
-3. Team Lead gibt FREEZE-Report aus:
+3. Team Lead outputs FREEZE report:
 
    ╔══════════════════════════════════════════════════════════╗
    ║  OLLAMA UNAVAILABLE — PARTIAL FREEZE                    ║
    ║                                                          ║
-   ║  Frozen:    [Agent + Aufgabe]                            ║
-   ║  Preserved: [Liste bereits erledigter Teilergebnisse]   ║
+   ║  Frozen:    [Agent + task]                              ║
+   ║  Preserved: [List of already completed partial results]  ║
    ║  Waiting:   Ollama restoration at localhost:11434        ║
    ║                                                          ║
    ║  Next steps:                                             ║
    ║  1. Start Ollama (Windows tray or app)                   ║
    ║  2. Test: python3 <PROJECT_ROOT>/src/main.py          ║
    ║           --task "test ollama"                           ║
-   ║  3. Resume — preservierte Ergebnisse werden übergeben   ║
+   ║  3. Resume — preserved results will be passed            ║
    ╚══════════════════════════════════════════════════════════╝
 
-4. Kein autonomer Retry — Agent wartet auf User-Signal "test ollama" / "resume"
+4. No autonomous retry — agent waits for user signal "test ollama" / "resume"
 ```
 
-### Resume nach Wiederherstellung
+### Resume After Restoration
 
 ```
 User: "test ollama" → PASS
-  → Team Lead übergibt preservierte Ergebnisse an frozen Agent
-  → Ollama-Briefing nachholen
-  → Task fortsetzen als wäre nichts gewesen
+  → Team Lead passes preserved results to frozen agent
+  → Catch up Ollama briefing
+  → Continue task as if nothing happened
 ```
 
-**Kein "Skip → weiter".** Der Freeze-Zustand bleibt bis Ollama operational ist.
+**No "skip → continue".** The freeze state remains until Ollama is operational.
 
 ---
 
-## test-ollama — Funktionstest
+## test-ollama — Health Check
 
 ```bash
 python3 <PROJECT_ROOT>/src/main.py --task "test ollama"
 ```
 
-**Was der Test prüft:**
-1. Ollama erreichbar unter `localhost:11434`
-2. Mindestens ein Modell installiert
-3. Inferenz liefert validen Python Output
-4. Ausgabe von: Modellname, tok/s, Output-Länge, Pass/Warn
+**What the test checks:**
+1. Ollama reachable at `localhost:11434`
+2. At least one model installed
+3. Inference delivers valid Python output
+4. Output of: model name, tok/s, output length, pass/warn
 
-**Exit-Codes (via test_ollama.py):**
-- `0` — PASS: Ollama operational, Agents dürfen starten
-- `1` — FAIL: Ollama nicht erreichbar
-- `2` — FAIL: Kein Modell installiert
-- `3` — FAIL: Inferenz fehlgeschlagen
+**Exit codes (via test_ollama.py):**
+- `0` — PASS: Ollama operational, agents may start
+- `1` — FAIL: Ollama not reachable
+- `2` — FAIL: No model installed
+- `3` — FAIL: Inference failed

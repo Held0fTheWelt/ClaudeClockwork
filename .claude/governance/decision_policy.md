@@ -1,131 +1,131 @@
 # Decision Policy
 
-## Entscheidungs-Hierarchie
+## Decision Hierarchy
 
-Jede Entscheidung fällt in eine von drei Kategorien: autonom, Review-pflichtig, oder User-Bestätigung erforderlich.
+Every decision falls into one of three categories: autonomous, review-required, or user confirmation required.
 
 ---
 
-## Autonome Entscheidungen (L0)
+## Autonomous Decisions (L0)
 
-Kein Review erforderlich. Specialist Agent entscheidet selbst.
+No review required. Specialist Agent decides independently.
 
-**Beispiele:**
-- Kleinere Refactors innerhalb einer Datei
-- Code-Formatierung, Kommentare
-- Dokumentations-Updates ohne inhaltliche Änderungen
-- Logging-Verbesserungen (keine API-Änderung)
-- Bugfixes mit klarer, isolierter Ursache
+**Examples:**
+- Minor refactors within a single file
+- Code formatting, comments
+- Documentation updates without content changes
+- Logging improvements (no API change)
+- Bugfixes with clearly isolated cause
 
-**Kennzeichen:** Änderung betrifft max. 1 Datei, keine öffentliche API, keine Laufzeit-Auswirkungen außerhalb der Datei.
+**Characteristics:** Change affects max 1 file, no public API, no runtime impact outside the file.
 
 ---
 
 ## Team Lead Review (L1)
 
-Team Lead prüft und kann autonom freigeben. Kein Architecture Agent oder User notwendig.
+Team Lead reviews and can approve autonomously. No Architecture Agent or User necessary.
 
-**Beispiele:**
-- Multi-Datei-Refactors (2–5 Dateien, klar abgegrenzt)
-- Neue private Methoden / interne Hilfsfunktionen
-- Moderate Refactors ohne API-Änderung
+**Examples:**
+- Multi-file refactors (2–5 files, clearly bounded)
+- New private methods / internal helper functions
+- Moderate refactors without API change
 
-**Kennzeichen:** Mehrere Dateien betroffen, aber keine öffentlichen Schnittstellen geändert.
+**Characteristics:** Multiple files affected, but no public interfaces changed.
 
 ---
 
 ## Architecture Agent Mandatory Review (L2)
 
-Architecture Agent muss vor Implementation freigeben.
+Architecture Agent must approve before implementation.
 
-**Beispiele:**
-- Neue Top-Level-Module in `src/` (neues Modul vs. Erweiterung?)
-- Neues Python-Package als Abhängigkeit (alles außerhalb stdlib)
-- Modul-Boundary-Änderungen in `src/`
-- Dependency-Richtungsänderungen (z.B. `config` soll `agents` importieren)
-- Öffentliche API-Änderungen an `orchestrator.py` oder `ollama_client.py`
+**Examples:**
+- New top-level modules in `src/` (new module vs. extension?)
+- New Python package as dependency (anything outside stdlib)
+- Module boundary changes in `src/`
+- Dependency direction changes (e.g., `config` should import `agents`)
+- Public API changes to `orchestrator.py` or `ollama_client.py`
 
-**Eskalations-Format:**
+**Escalation Format:**
 ```
-Problem:        [Was soll geändert werden und warum?]
-Optionen:       [Mindestens 2 Alternativen]
-Trade-offs:     [Pro/Contra für jede Option]
-Empfehlung:     [Welche Option wird empfohlen + Begründung]
+Problem:        [What should be changed and why?]
+Options:        [At least 2 alternatives]
+Trade-offs:     [Pro/Con for each option]
+Recommendation: [Which option is recommended + rationale]
 ```
 
 ---
 
 ## Technical Critic Mandatory Review (L3)
 
-Technical Critic gibt adversarielle Bewertung. Team Lead entscheidet danach.
+Technical Critic provides adversarial evaluation. Team Lead decides afterward.
 
-**Beispiele:**
-- Performance-kritische Pfade (Ollama-Client-Timeout-Handling)
-- subprocess-Pooling oder parallelisierte Agent-Spawns
-- Externe API-Integration (Claude-CLI-Interface-Änderungen)
-- Persistente Datenstruktur-Änderungen (Docs/-Schema, Config-Format-Änderungen)
+**Examples:**
+- Performance-critical paths (Ollama client timeout handling)
+- Subprocess pooling or parallelized agent spawns
+- External API integration (Claude CLI interface changes)
+- Persistent data structure changes (Docs/ schema, config format changes)
 
 ---
 
 ## Systemic Critic Mandatory Review (L4)
 
-Systemic Critic bewertet Langzeit-Komplexität. Team Lead entscheidet danach.
+Systemic Critic evaluates long-term complexity. Team Lead decides afterward.
 
-**Beispiele:**
-- Neue Agent-Typen hinzufügen
-- Governance-Regeln ändern
-- Self-Improvement-Zyklus verändern
-- Eskalationsschwellen anpassen
-- `.claude/` Systemstruktur reorganisieren
-
----
-
-## User-Bestätigung Erforderlich (L5)
-
-Keine autonome Entscheidung möglich. User entscheidet.
-
-**Beispiele:**
-- Orchestrator-Core-Redesign
-- Wechsel des LLM-Backends
-- Grundlegende Änderung des Workflow-Trigger-Systems
+**Examples:**
+- Adding new agent types
+- Changing governance rules
+- Modifying self-improvement cycle
+- Adjusting escalation thresholds
+- Reorganizing `.claude/` system structure
 
 ---
 
-## Konflikt-Resolution
+## User Confirmation Required (L5)
 
-Wenn Architecture Agent und Technical/Systemic Critic widersprechen:
+No autonomous decision possible. User decides.
+
+**Examples:**
+- Orchestrator core redesign
+- Switching LLM backend
+- Fundamental change to workflow trigger system
+
+---
+
+## Conflict Resolution
+
+When Architecture Agent and Technical/Systemic Critic disagree:
 
 ```
-1. Team Lead fasst Trade-offs zusammen
-2. Risk-Level kategorisieren (Low / Medium / High)
-3. Bei L3+: User trifft finale Entscheidung
-4. Entscheidung wird im Performance-Log dokumentiert
+1. Team Lead summarizes trade-offs
+2. Categorize risk level (Low / Medium / High)
+3. For L3+: User makes final decision
+4. Decision is documented in performance log
 ```
 
 ---
 
-## Eskalations-Vorlage
+## Escalation Template
 
 ```markdown
-## Eskalation: [Titel]
+## Escalation: [Title]
 **Level:** L2 / L3 / L4 / L5
-**Datum:** YYYY-MM-DD
-**Initiiert von:** [Agent]
+**Date:** YYYY-MM-DD
+**Initiated by:** [Agent]
 
 ### Problem
-[Was ist die Situation? Warum ist Entscheidung nötig?]
+[What is the situation? Why is a decision needed?]
 
-### Optionen
-**Option A:** [Beschreibung]
-**Option B:** [Beschreibung]
+### Options
+**Option A:** [Description]
+**Option B:** [Description]
 
 ### Trade-offs
-| Kriterium | Option A | Option B |
+| Criterion | Option A | Option B |
 |---|---|---|
-| Komplexität | | |
+| Complexity | | |
 | Performance | | |
-| Wartbarkeit | | |
+| Maintainability | | |
 
-### Empfehlung
-[Klare Empfehlung mit Begründung]
+### Recommendation
+[Clear recommendation with rationale]
 ```

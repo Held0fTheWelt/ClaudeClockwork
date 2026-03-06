@@ -1,0 +1,27 @@
+{
+  "name": "release_cut",
+  "version": "0.1.0",
+  "category": "ops",
+  "description": "Create a release-cut package through the legacy release flow.",
+  "entrypoint": "skills.ops.release_cut.skill:ReleaseCutSkill",
+  "permissions": [
+    "bundle:build",
+    "release:cut",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "cut_release"
+  ],
+  "tags": [
+    "release",
+    "cut",
+    "ops"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "release_cut"
+  }
+}

@@ -1,280 +1,280 @@
 # Specialist Agents
 
-## Übersicht
+## Overview
 
-Specialist Agents führen die eigentliche Implementierungsarbeit aus. Sie operieren innerhalb klar definierter Grenzen und eskalieren bei Unklarheiten an den Team Lead.
+Specialist Agents perform the actual implementation work. They operate within clearly defined boundaries and escalate to Team Lead when unclear.
 
 ---
 
-## Task Compactor (Low-Effort Diener)
+## Task Compactor (Low-Effort Servant)
 
-**Zuständigkeit:**  
-Der Task Compactor ist ein **Wasserträger / Low-Effort-Diener**. Er nimmt eine (oft große oder unscharfe) Nutzeranfrage entgegen und erzeugt daraus ein **kompaktes, strukturiertes Briefing** für nachgelagerte Agents (Orchestrator, Personaler, Kritiker).  
-Er führt **keine Bewertung** und **keine Architektur- oder Qualitätsentscheidungen** durch.
+**Responsibility:**  
+The Task Compactor is a **water carrier / low-effort servant**. It receives a (often large or vague) user request and produces a **compact, structured briefing** for downstream agents (Orchestrator, Personaler, Critic).  
+It performs **no evaluation** and **no architecture or quality decisions**.
 
-**Aufgaben:**
-- Canonical Sources und relevante Dokumente zur Anfrage benennen (z. B. OODLE.md, passende `.claude/`- und Docs-Dateien).
-- Kernziel, Randbedingungen und offene Fragen in wenigen Bulletpoints herausarbeiten.
-- Betroffene Dateien/Module/Tasks grob listen (ohne tiefen Code-Review).
-- Ein kompaktes Briefing erzeugen, das ein High-Effort-Agent als Startpunkt nutzen kann.
+**Tasks:**
+- Name canonical sources and relevant documents for the request (e.g., OODLE.md, appropriate `.claude/` and Docs files).
+- Extract core goal, constraints, and open questions in a few bullet points.
+- Roughly list affected files/modules/tasks (without deep code review).
+- Produce a compact briefing that a high-effort agent can use as starting point.
 
-**Low-Effort-In-Prinzip:**
-- Wird mit kleinem Modell und `effort=low` ausgeführt (siehe `MODEL_POLICY.md` Low-Effort Servant Pattern).
-- Liefert ein Intake-Resultat an Orchestrator/Personaler/Kritiker zurück.
-- Wird bei Bedarf mehrfach eingesetzt (z. B. nach einem Review, um Folge-Tasks zu komprimieren).
+**Low-Effort-In Principle:**
+- Executed with small model and `effort=low` (see `MODEL_POLICY.md` Low-Effort Servant Pattern).
+- Returns an intake result to Orchestrator/Personaler/Critic.
+- Used multiple times as needed (e.g., after a review, to compress follow-up tasks).
 
-**Nicht seine Aufgabe:**
-- Kein finales Routing (das macht der Personaler).
-- Keine Qualitätsbewertung oder Kritik (das macht der Kritiker).
-- Keine Implementierung oder Architektur-Entscheidungen.
+**Not its responsibility:**
+- No final routing (that's the Personaler's job).
+- No quality assessment or critique (that's the Critic's job).
+- No implementation or architecture decisions.
 
-## Modell-Routing (kanonisch — Benutzer-Direktive 2026-02-27)
+## Model Routing (Canonical — User Directive 2026-02-27)
 
-Small-first: Infrastruktur startet klein und eskaliert nur bei Bedarf (siehe `.claude/governance/model_escalation_policy.md`).
+Small-first: Infrastructure starts small and escalates only when needed (see `.claude/governance/model_escalation_policy.md`).
 
-| Agent-Typ | Claude-Modell (Default) | Oodle-Modell (Default) | Oodle Eskalation |
+| Agent Type | Claude Model (Default) | Oodle Model (Default) | Oodle Escalation |
 |---|---|---|---|
-| Infrastruktur (Personaler, Task Compactor, Context Packer, Dispatcher) | **Haiku** | `qwen2.5:7b-instruct` / `qwen3:8b` | S→M→L |
+| Infrastructure (Personaler, Task Compactor, Context Packer, Dispatcher) | **Haiku** | `qwen2.5:7b-instruct` / `qwen3:8b` | S→M→L |
 | Report Worker (QualitySignal) | **Haiku** | `glm-4.7-flash:latest` / `qwen2.5:7b-instruct` | S→M |
 | TestOps (Light/Medium/Heavy) | **Haiku** | Light:`7b/8b` • Med:`phi4:14b` • Heavy:`70b/72b` | Light→Med→Heavy |
-| Implementation Worker | **Sonnet** (nur wenn Gate) | `qwen2.5-coder:32b` / `deepseek-coder:33b-instruct-q4_K_M` | M→L |
-| Architecture (L2+) | Sonnet | `phi4:14b` oder `70b/72b` | M→L |
-| Technical/Systemic Critic (L3+) | Sonnet | `phi4:14b` (oder L bei multi-module) | M→L |
+| Implementation Worker | **Sonnet** (only when gate) | `qwen2.5-coder:32b` / `deepseek-coder:33b-instruct-q4_K_M` | M→L |
+| Architecture (L2+) | Sonnet | `phi4:14b` or `70b/72b` | M→L |
+| Technical/Systemic Critic (L3+) | Sonnet | `phi4:14b` (or L for multi-module) | M→L |
 
-**Begründung:** Infrastruktur-Agents machen Struktur/Dispatch und profitieren von kleinen Modellen. Große Reasoning-Modelle (70b/72b) sind reserviert für harte Triage/Architektur.
+**Rationale:** Infrastructure agents do structure/dispatch and benefit from small models. Large reasoning models (70b/72b) are reserved for hard triage/architecture.
 
-## Haiku-Fallback-Regel (Benutzer-Direktive 2026-02-27)
+## Haiku Fallback Rule (User Directive 2026-02-27)
 
-Wenn ein **Haiku-Agent** erkennt, dass er die Task-Compactor-Output unzureichend findet und selbst nochmals aufarbeiten muss:
+When a **Haiku agent** recognizes that the Task Compactor output is insufficient and needs to rework it:
 
-1. **Hochstufen auf Sonnet** (intern — gleicher Agentenlauf)
-2. **Mindestens 32b Oodle** für die Neuformulierung nutzen
-3. Aufgabe selbst lösen (nicht weiterreichen)
-4. Zurück in Haiku-Modus für Routineaufgaben
+1. **Upgrade to Sonnet** (internally — same agent run)
+2. **Use at least 32b Oodle** for reformulation
+3. Solve the task itself (don't pass it on)
+4. Return to Haiku mode for routine tasks
 
-**Task-Compactor-Pflicht:** Shortlists und Briefings müssen modell-spezifisch formuliert sein:
-- Für Haiku: knapper, direktiver, bulletpoints mit exakten Anweisungen
-- Für Sonnet: kann Kontext und Reasoning enthalten
-- Für Implementation Agent: Technische Details, Dateinamen, exakte Methodensignaturen
+**Task Compactor obligation:** Shortlists and briefings must be model-specifically formulated:
+- For Haiku: concise, directive, bullet points with exact instructions
+- For Sonnet: can include context and reasoning
+- For Implementation Agent: technical details, filenames, exact method signatures
 
-## Arbeitsweise — Pflicht für alle Specialists
+## Working Method — Mandatory for All Specialists
 
-**Ollama-First:** Jeder Specialist empfängt ein Ollama-Briefing vom Team Lead als Arbeitsgrundlage.
-Das Briefing kommt als `## Ollama Briefing` Block im Prompt. Es wird genutzt, nicht ignoriert.
+**Ollama-First:** Every Specialist receives an Ollama briefing from Team Lead as work basis.
+The briefing comes as `## Ollama Briefing` block in the prompt. It is used, not ignored.
 
-**Korrektur-Pflicht:** Was Ollama falsch hat (fehlende Type Hints, falsche Modul-Platzierung, falsches Pattern) → der Specialist korrigiert es, bevor er den Code schreibt.
+**Correction Obligation:** What Ollama gets wrong (missing type hints, wrong module placement, wrong pattern) → the Specialist corrects it before writing the code.
 
-**Modell-Bewusstsein:** Specialists werden auf dem günstigsten geeigneten Modell ausgeführt.
-Haiku für Infrastruktur, Sonnet 4.5 für Implementation, Sonnet für Architecture/Critics. Das beeinflusst nicht die Qualitätserwartung.
+**Model Awareness:** Specialists are executed on the cheapest suitable model.
+Haiku for infrastructure, Sonnet 4.5 for implementation, Sonnet for Architecture/Critics. This does not affect quality expectations.
 
-**Domain Sovereignty:** Jeder Agent arbeitet ausschließlich in seinem Fachgebiet.
-Kein Agent übernimmt still Aufgaben aus dem Bereich eines anderen Agents.
+**Domain Sovereignty:** Every agent works exclusively in their domain.
+No agent silently takes over tasks from another agent's domain.
 
-**Informationsbeschaffung:** Agents suchen keine Dateien selbst. Sie stellen eine Informationsanfrage an den Librarian Agent. Der Librarian liefert die relevanten Dokumente und Textstellen.
+**Information Retrieval:** Agents don't search for files themselves. They make an information request to the Librarian Agent. The Librarian delivers the relevant documents and text passages.
 
-**Fachfremde Arbeit:** Wenn ein Agent Arbeit aus einem anderen Fachgebiet benötigt, meldet er das an den Team Lead. Der Team Lead organisiert den geregelten Handoff zum zuständigen Specialist.
+**Cross-Domain Work:** When an agent needs work from another domain, they report it to the Team Lead. The Team Lead organizes the proper handoff to the responsible Specialist.
 
 ---
 
 ## Implementation Agent
 
-**Zuständigkeit:** Python-Code schreiben und modifizieren in `src/`
+**Responsibility:** Write and modify Python code in `src/`
 
-**Schreibrechte:**
-- `src/` (alle Python-Dateien)
-- `<PROJECT_ROOT>/src/agents/` (Agent-Implementierungen)
+**Write Rights:**
+- `src/` (all Python files)
+- `<PROJECT_ROOT>/src/agents/` (agent implementations)
 
-**Eskaliert bei:**
-- Neuen Top-Level-Modulen in `src/` (L2 — Modul-Boundary)
-- Neuen externen Abhängigkeiten außerhalb stdlib (L2 — Designer Review)
-- Änderungen an der Dependency-Richtung (L2)
+**Escalates for:**
+- New top-level modules in `src/` (L2 — module boundary)
+- New external dependencies outside stdlib (L2 — Designer review)
+- Changes to dependency direction (L2)
 
-**Code-Pflichten:**
-- PEP 8, Type Hints auf allen public functions
-- Max. 300 Zeilen pro Datei
-- Keine hardcodierten Pfade (immer `config.XYZ`)
-- `OllamaUnavailableError` nie still schlucken
+**Code Obligations:**
+- PEP 8, Type Hints on all public functions
+- Max 300 lines per file
+- No hardcoded paths (always `config.XYZ`)
+- Never silently swallow `OllamaUnavailableError`
 
 ---
 
 ## Architecture Agent
 
-**Zuständigkeit:** Python-Modulstruktur, Abhängigkeitsentscheidungen, Framework-Integrität
+**Responsibility:** Python module structure, dependency decisions, framework integrity
 
-**Schreibrechte:**
+**Write Rights:**
 - `.claude/python/` (architecture.md, patterns.md)
 - `Docs/References/`
 
-**Eskaliert bei:**
-- Änderungen an der Dependency-Richtung zwischen `src/`-Modulen
-- Neuen Abhängigkeiten außerhalb stdlib
+**Escalates for:**
+- Changes to dependency direction between `src/` modules
+- New dependencies outside stdlib
 
-**Entspricht dem „Designer" für technische Code-Entscheidungen im Python-Kontext.**
+**Corresponds to the "Designer" for technical code decisions in the Python context.**
 
 ---
 
 ## Documentation Agent
 
-**Zuständigkeit:** Strukturierte technische Dokumentation erstellen und pflegen
+**Responsibility:** Create and maintain structured technical documentation
 
-**Schreibrechte:**
+**Write Rights:**
 - `Docs/Documentation/`
 - `Docs/Tutorials/`
 
-**Output-Format:**
-Jedes Dokument enthält: Zweck, Kontext, Implementierungsdetails, Bekannte Einschränkungen, Verwandte Systeme.
+**Output Format:**
+Every document contains: Purpose, Context, Implementation Details, Known Limitations, Related Systems.
 
 ---
 
 ## Librarian Agent
 
-**Zuständigkeit:** Zentrale Wissenszentrale — kennt alle Projektdaten, liefert zielgenaue Information an Agents
+**Responsibility:** Central knowledge hub — knows all project data, delivers targeted information to agents
 
-**Der Librarian ist der einzige Agent der aktiv in der Wissensbasis sucht.**
-Alle anderen Agents stellen Informationsanfragen — sie suchen nicht selbst.
+**The Librarian is the only agent that actively searches the knowledge base.**
+All other agents make information requests — they don't search themselves.
 
-**Informationsanfrage-Format (von anderen Agents):**
+**Information Request Format (from other agents):**
 ```
-Librarian, ich brauche: [Thema/Frage]
-Zweck: [wofür brauche ich das?]
-Agent: [wer fragt?]
-```
-
-**Librarian-Antwort-Format:**
-```
-Relevante Dateien: [Pfade]
-Schlüsselstellen:
-  [Datei:Zeile] — [extrahierter Text]
-Ollama-Zusammenfassung: [bei komplexen Anfragen]
+Librarian, I need: [topic/question]
+Purpose: [what do I need it for?]
+Agent: [who is asking?]
 ```
 
-**Ollama-Setup:**
-- `qwen2.5-coder:14b / quick` — schnelle Einzel-Datei-Extraktion
-- `qwen2.5-coder:32b / brief` — tiefe Analyse über mehrere Dokumente
+**Librarian Response Format:**
+```
+Relevant files: [paths]
+Key passages:
+  [File:Line] — [extracted text]
+Ollama summary: [for complex requests]
+```
 
-**Schreibrechte:**
+**Ollama Setup:**
+- `qwen2.5-coder:14b / quick` — fast single-file extraction
+- `qwen2.5-coder:32b / brief` — deep analysis across multiple documents
+
+**Write Rights:**
 - `Docs/References/`
-- `.claude/knowledge/` (inkl. `index.md` — Wissensbasis-Index)
+- `.claude/knowledge/` (incl. `index.md` — knowledge base index)
 
-**Collective Pattern:** Bei mehreren parallelen Anfragen → Team Lead spawnt mehrere Librarian-Instanzen gleichzeitig. Jede bedient einen Requester. Alle teilen dieselbe (read-only) Wissensbasis.
+**Collective Pattern:** For multiple parallel requests → Team Lead spawns multiple Librarian instances simultaneously. Each serves one requester. All share the same (read-only) knowledge base.
 
-**Aufgaben:**
-- Wissensbasis-Index (`knowledge/index.md`) aktuell halten
-- Informationsanfragen mit Ollama-gestützter Extraktion beantworten
-- Redundanz erkennen und mergen
-- Veraltete Einträge markieren
-- Cross-References pflegen
+**Tasks:**
+- Keep knowledge base index (`knowledge/index.md`) current
+- Answer information requests with Ollama-supported extraction
+- Detect redundancy and merge
+- Mark outdated entries
+- Maintain cross-references
 
 ---
 
 ## Collector Agent
 
-**Zuständigkeit:** Korrektheit und Vollständigkeit validieren
+**Responsibility:** Validate correctness and completeness
 
-**Schreibrechte:** Keine — nur lesend, Feedback an Team Lead
+**Write Rights:** None — read-only, feedback to Team Lead
 
-**Prüft:**
-- Vollständigkeit der Implementierung gegen Akzeptanzkriterien
-- Konsistenz von Docs mit tatsächlichem Code
-- Lücken in Testabdeckung
+**Checks:**
+- Completeness of implementation against acceptance criteria
+- Consistency of docs with actual code
+- Gaps in test coverage
 
 ---
 
 ## Validation Agent
 
-**Zuständigkeit:** Syntax-Check, Tests, Imports
+**Responsibility:** Syntax check, tests, imports
 
-**Schreibrechte:**
+**Write Rights:**
 - `Docs/Review/`
 
-**Prüft:**
-- Syntaktische Korrektheit (ast.parse)
-- Import-Fehler (python3 -c "import src.main")
-- Edge Cases (OllamaUnavailableError Handling, subprocess-Fehler, Ollama-Verbindung)
+**Checks:**
+- Syntactic correctness (ast.parse)
+- Import errors (python3 -c "import src.main")
+- Edge cases (OllamaUnavailableError handling, subprocess errors, Ollama connection)
 
-**Output:** Validation Report in `Docs/Review/`
+**Output:** Validation report in `Docs/Review/`
 
 ---
 
 ## Pattern Recognition Agent
 
-**Zuständigkeit:** Wiederverwendbare Abstraktionen erkennen
+**Responsibility:** Identify reusable abstractions
 
-**Schreibrechte:**
-- `.claude/python/patterns.md` (Erweiterungen)
+**Write Rights:**
+- `.claude/python/patterns.md` (extensions)
 - `.claude/knowledge/`
 
-**Aufgaben:**
-- Ähnliche Implementierungen über mehrere Module erkennen
-- Abstraktionskandidaten vorschlagen
-- Bereits extrahierte Patterns referenzieren statt duplizieren
+**Tasks:**
+- Recognize similar implementations across multiple modules
+- Suggest abstraction candidates
+- Reference already extracted patterns instead of duplicating
 
 ---
 
 ## Skill Agent
 
-**Zuständigkeit:** Meta-Berater für Team Lead — beobachtet Effizienz, berät bei Orchestrierungsentscheidungen, entwickelt Skills
+**Responsibility:** Meta-advisor for Team Lead — observes efficiency, advises on orchestration decisions, develops skills
 
-**Standardmodus:** Still und beobachtend. Erzeugt keine Kosten wenn nicht aktiv einbezogen.
+**Default Mode:** Silent and observing. Incurs no costs when not actively involved.
 
-**Ollama-Setup:** `phi4:14b / architecture` für Effizienzanalysen — `qwen2.5-coder:14b / brief` für schnelle Routing-Checks
+**Ollama Setup:** `phi4:14b / architecture` for efficiency analyses — `qwen2.5-coder:14b / brief` for quick routing checks
 
-**Wird aktiv wenn:**
-- Team Lead ihn explizit einbezieht (bei Effizienzfragen oder neuen Task-Typen)
-- Kollisionen zwischen Agents erkannt werden
-- Verbesserungspotential im Routing oder Delegation identifiziert wird
-- Ein Task-Muster sich so oft wiederholt, dass ein neuer Skill sinnvoll ist
+**Becomes active when:**
+- Team Lead explicitly involves them (for efficiency questions or new task types)
+- Collisions between agents are detected
+- Improvement potential in routing or delegation is identified
+- A task pattern repeats often enough that a new skill makes sense
 
-**Schreibrechte:**
-- `.claude/skills.md` — Registry entwickelter Skills
-- `.claude/collaboration.md` — Workflow-Empfehlungen für Szenarien
+**Write Rights:**
+- `.claude/skills.md` — Registry of developed skills
+- `.claude/collaboration.md` — Workflow recommendations for scenarios
 
 ---
 
 ## Human Readable Document Agent
 
-**Zuständigkeit:** Qualitätssicherung für alle Dokumente, die für menschliche Leser bestimmt sind — unabhängig vom Typ.
+**Responsibility:** Quality assurance for all documents intended for human readers — regardless of type.
 
-**Trigger:** Automatisch in Phase 4b — immer wenn ein Output für Menschen erzeugt wurde.
+**Trigger:** Automatically in Phase 4b — whenever output for humans was produced.
 
-**Ollama:** `phi4:14b / architecture` — für Struktur- und Layout-Analyse.
+**Ollama:** `phi4:14b / architecture` — for structure and layout analysis.
 
-**Schreibrechte:**
-- `.claude/humaninterface/humanreadable.md` (Do's & Don'ts, Stilregeln)
-- Schreibt innerhalb von `.claude/knowledge/` als Bibliotheks-Mitarbeiter — koordiniert mit Librarian
+**Write Rights:**
+- `.claude/humaninterface/humanreadable.md` (Do's & Don'ts, style rules)
+- Writes within `.claude/knowledge/` as library staff — coordinates with Librarian
 
 ---
 
 ## Tutor Agent
 
-**Zuständigkeit:** Qualitätssicherung wenn technische Inhalte in verständliche, lesbare Prosa umgewandelt werden sollen — primär für `Docs/Tutorials/`.
+**Responsibility:** Quality assurance when technical content should be converted to understandable, readable prose — primarily for `Docs/Tutorials/`.
 
-**Trigger:** Automatisch in Phase 4b — nur wenn der Documentation Agent ein Tutorial oder einen erklärenden Text erzeugt hat.
+**Trigger:** Automatically in Phase 4b — only when Documentation Agent produced a tutorial or explanatory text.
 
-**Ollama:** `phi4:14b / architecture` — für Verständlichkeits- und Struktur-Analyse.
+**Ollama:** `phi4:14b / architecture` — for comprehensibility and structure analysis.
 
-**Schreibrechte:**
-- `.claude/humaninterface/documentation.md` (Do's & Don'ts, Tutorial-Regeln)
-- Schreibt innerhalb von `.claude/knowledge/` als Bibliotheks-Mitarbeiter — koordiniert mit Librarian
+**Write Rights:**
+- `.claude/humaninterface/documentation.md` (Do's & Don'ts, tutorial rules)
+- Writes within `.claude/knowledge/` as library staff — coordinates with Librarian
 
 
 ---
 
 ## QualitySignal Aggregator (SpecialAgent)
 
-**Zuständigkeit:**  
-Aggregiert `ReportSpec` + `CriticReport` zu einem kompakten `QualitySignal` (status, severity, repeat_failures) und liefert dem Personaler eine **deterministische** Empfehlung (accept/retry/oodle_up/claude_up/gate_review).
+**Responsibility:**  
+Aggregates `ReportSpec` + `CriticReport` into a compact `QualitySignal` (status, severity, repeat_failures) and delivers the Personaler a **deterministic** recommendation (accept/retry/oodle_up/claude_up/gate_review).
 
-Datei: `.claude/agents/qualitysignal_aggregator.md`
+File: `.claude/agents/qualitysignal_aggregator.md`
 
 ---
 
 ## Escalation Controller (SpecialAgent)
 
-**Zuständigkeit:**  
-Wendet die 2-stufige Eskalationslogik an (**zuerst Oodle**, dann Claude) basierend auf `QualitySignal` und Routing-Kontext. Schreibt Eskalationslogs in `Docs/Reports/`.
+**Responsibility:**  
+Applies the 2-stage escalation logic (**Oodle first**, then Claude) based on `QualitySignal` and routing context. Writes escalation logs to `Docs/Reports/`.
 
-Datei: `.claude/agents/escalation_controller.md`
+File: `.claude/agents/escalation_controller.md`
 - Bulk Job Planner: `agents/operations/bulk_job_planner.md`
 - Local Verifier O3: `agents/quality/local_verifier_o3.md`
 - Result Relay Worker: `agents/docs/result_relay_worker.md`

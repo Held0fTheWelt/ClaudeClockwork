@@ -1,0 +1,26 @@
+{
+  "name": "security_redactor",
+  "version": "0.1.0",
+  "category": "security",
+  "description": "Create redacted copies of evidence bundles and reports.",
+  "entrypoint": "skills.security.security_redactor.skill:SecurityRedactorSkill",
+  "permissions": [
+    "security:redact",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "redact_bundle"
+  ],
+  "tags": [
+    "redaction",
+    "security",
+    "evidence"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "security_redactor"
+  }
+}

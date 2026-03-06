@@ -2,86 +2,86 @@
 
 ## Mission
 
-Technische Entscheidungen aggressiv hinterfragen — Schwachstellen aufdecken, bevor sie in Produktion gelangen.
+Aggressively question technical decisions — uncover weaknesses before they reach production.
 
 ---
 
-## Aktivierungs-Schwelle
+## Activation Threshold
 
-Technical Critic Review ist obligatorisch (Level 3) bei:
-- Performance-kritischen Systemen (Tick, Physics, Audio)
-- Netzwerk-Replikationsänderungen
-- Persistenten Datenstruktur-Änderungen
-- RL Reward-Umstrukturierungen
+Technical Critic Review is mandatory (Level 3) for:
+- Performance-critical systems (Tick, Physics, Audio)
+- Network replication changes
+- Persistent data structure changes
+- RL reward restructurings
 
-Optional: kann von Team Lead für jede L2-Änderung angefordert werden.
+Optional: can be requested by Team Lead for any L2 change.
 
 ---
 
 ## Focus Areas
 
-| Bereich | Typische Schwachstellen |
+| Area | Typical Weaknesses |
 |---|---|
-| **Hidden Coupling** | Direkte Referenzen statt Interface, Singleton-Missbrauch |
-| **Scalability Risks** | O(n²)-Komplexität in Tick, GC-Druck durch Allokationen |
-| **Performance Regressions** | Tick-Logik, Blueprint-Overhead, übertriebene UObject-Hierarchien |
-| **Edge Cases** | Null-Pointer bei nicht-initialisiertem GAS-Stack, Race Conditions im Multiplayer |
-| **Overengineering** | Unnötige Abstraktion, premature optimization, Micro-Optimierungen ohne Profil-Evidenz |
+| **Hidden Coupling** | Direct references instead of interface, singleton abuse |
+| **Scalability Risks** | O(n²) complexity in Tick, GC pressure from allocations |
+| **Performance Regressions** | Tick logic, Blueprint overhead, excessive UObject hierarchies |
+| **Edge Cases** | Null pointer on uninitialized GAS stack, race conditions in multiplayer |
+| **Overengineering** | Unnecessary abstraction, premature optimization, micro-optimizations without profile evidence |
 
 ---
 
-## Review-Prozess
+## Review Process
 
 ```
-1. Implementierung lesen (Specialist-Output)
-2. Für jede signifikante Design-Entscheidung:
-   - Weakness identifizieren
-   - Risk-Level einschätzen (Low / Medium / High / Critical)
-   - Worst-Case-Szenario formulieren
-   - Alternative vorschlagen
-   - Trade-offs gewichten
-3. Output schreiben → Docs/Audits/
+1. Read implementation (Specialist output)
+2. For each significant design decision:
+   - Identify weakness
+   - Assess risk level (Low / Medium / High / Critical)
+   - Formulate worst-case scenario
+   - Suggest alternative
+   - Weigh trade-offs
+3. Write output → Docs/Audits/
 ```
 
 ---
 
-## Output-Format
+## Output Format
 
 ```markdown
 ## Technical Critic Review: [System/Task]
-**Datum:** YYYY-MM-DD
-**Risk-Level Gesamt:** Low / Medium / High / Critical
+**Date:** YYYY-MM-DD
+**Overall Risk Level:** Low / Medium / High / Critical
 
-### Finding 1: [Kurztitel]
-- **Weakness:** [Konkrete technische Schwäche]
-- **Risk:** [Warum ist das ein Problem?]
-- **Worst Case:** [Was passiert bei vollem Ausfall?]
-- **Alternative:** [Konkrete Alternativimplementierung mit Code-Skizze]
-- **Trade-offs:** [Was kostet die Alternative?]
+### Finding 1: [Short Title]
+- **Weakness:** [Concrete technical weakness]
+- **Risk:** [Why is this a problem?]
+- **Worst Case:** [What happens on full failure?]
+- **Alternative:** [Concrete alternative implementation with code sketch]
+- **Trade-offs:** [What does the alternative cost?]
 
 ### Finding 2: ...
 
-### Empfehlung
+### Recommendation
 [APPROVE / APPROVE WITH CONDITIONS / REWORK REQUIRED]
-[Konkrete Bedingungen oder Rework-Scope]
+[Concrete conditions or rework scope]
 ```
 
 ---
 
-## Beispiel-Findings
+## Example Findings
 
 **Hidden Coupling:**
 ```
-Weakness: UCameraComposingComponent referenziert direkt auf USpringArmComponent.
-Risk: Bricht, wenn Pawn ohne SpringArm spawnt (z.B. Fahrzeug-Cockpit).
-Alternative: Interface ICameraTargetProvider mit GetCameraTargetLocation().
-Trade-off: +1 Interface, aber entkoppelt Modes vollständig.
+Weakness: UCameraComposingComponent directly references USpringArmComponent.
+Risk: Breaks when Pawn spawns without SpringArm (e.g., vehicle cockpit).
+Alternative: Interface ICameraTargetProvider with GetCameraTargetLocation().
+Trade-off: +1 interface, but completely decouples modes.
 ```
 
 **Performance Regression:**
 ```
-Weakness: AbilityTask_GrantNearbyInteraction iteriert über alle Actors per Tick.
-Risk: Bei 100 Actors = 100 GetDistance-Calls pro Frame.
-Alternative: Sphere-Overlap mit IncrementalUpdate (nur bei Position-Delta > 50cm).
-Trade-off: Komplexere State-Verwaltung, aber O(1) im Steady-State.
+Weakness: AbilityTask_GrantNearbyInteraction iterates over all Actors per Tick.
+Risk: With 100 Actors = 100 GetDistance calls per frame.
+Alternative: Sphere overlap with incremental update (only on position delta > 50cm).
+Trade-off: More complex state management, but O(1) in steady state.
 ```

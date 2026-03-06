@@ -1,71 +1,71 @@
 # Performance Tracking
 
-## Zweck
+## Purpose
 
-Fortlaufende Messung der System-Effektivität — auf Agent-Ebene und auf System-Ebene.
+Continuous measurement of system effectiveness — at agent level and system level.
 
 ---
 
-## Per-Agent Metriken
+## Per-Agent Metrics
 
-| Metrik | Beschreibung | Gut | Schlecht |
+| Metric | Description | Good | Bad |
 |---|---|---|---|
-| Task Completion Success | Abschluss ohne Rework im 1. Versuch | >80% | <60% |
-| Error Rate | Fehler pro Task (Build-Fehler, Logic-Fehler) | <2 | >5 |
-| Rework Frequency | Wie oft muss derselbe Task zurückgegeben werden | 0–1 | >2 |
-| Estimation Accuracy | Geschätzte vs. tatsächliche Komplexität | ±1 Level | >±2 Level |
+| Task Completion Success | Completion without rework on 1st attempt | >80% | <60% |
+| Error Rate | Errors per task (build errors, logic errors) | <2 | >5 |
+| Rework Frequency | How often same task must be returned | 0–1 | >2 |
+| Estimation Accuracy | Estimated vs. actual complexity | ±1 level | >±2 level |
 
 ---
 
-## System-Level Metriken
+## System-Level Metrics
 
-| Metrik | Beschreibung |
+| Metric | Description |
 |---|---|
-| Knowledge Growth | Neue Patterns / Referenzen pro 10 Tasks |
-| Documentation Coverage | % der implementierten Systeme mit aktuellen Docs |
-| Refactor Frequency | Wie oft werden bereits abgeschlossene Tasks erneut angefasst |
-| Architecture Stability | Anzahl L5-Eskalationen pro Monat (weniger = besser) |
+| Knowledge Growth | New patterns / references per 10 tasks |
+| Documentation Coverage | % of implemented systems with current docs |
+| Refactor Frequency | How often already completed tasks are revisited |
+| Architecture Stability | Number of L5 escalations per month (less = better) |
 
 ---
 
-## Log-Format
+## Log Format
 
-Performance-Logs werden nach `performance/log_template.md` im Projektverzeichnis gespeichert.
-Datei-Namensschema: `Docs/Reviews/PerfLog_YYYY-MM-DD_[TaskName].md`
+Performance logs are saved according to `performance/log_template.md` in the project directory.
+File naming scheme: `Docs/Reviews/PerfLog_YYYY-MM-DD_[TaskName].md`
 
 ---
 
 ## Aggregation
 
-Nach je **10 abgeschlossenen Major Tasks** erstellt Team Lead einen Aggregations-Report:
+After every **10 completed major tasks**, Team Lead creates an aggregation report:
 
 ```markdown
 ## Performance Report: Tasks [N-M]
-**Zeitraum:** YYYY-MM-DD bis YYYY-MM-DD
+**Period:** YYYY-MM-DD to YYYY-MM-DD
 
-### Erfolgsraten
-- Completion ohne Rework: X%
-- Durchschnittliche Rework-Zyklen: Y
+### Success Rates
+- Completion without rework: X%
+- Average rework cycles: Y
 
-### Eskalations-Analyse
-- L0: N Tasks
-- L1: N Tasks
-- L2: N Tasks  [Designer involviert]
-- L3+: N Tasks [Critics involviert]
+### Escalation Analysis
+- L0: N tasks
+- L1: N tasks
+- L2: N tasks  [Designer involved]
+- L3+: N tasks [Critics involved]
 
-### Häufigste Probleme
-1. [Problem-Typ] — [N] mal aufgetreten
-2. [Problem-Typ] — [N] mal aufgetreten
+### Most Frequent Problems
+1. [Problem type] — occurred [N] times
+2. [Problem type] — occurred [N] times
 
-### Verbesserungs-Empfehlung
-[Konkrete Maßnahme mit Begründung]
+### Improvement Recommendation
+[Concrete measure with rationale]
 ```
 
 ---
 
-## Eskalation bei Performance-Degradation
+## Escalation on Performance Degradation
 
-Wenn innerhalb von 10 Tasks:
-- Rework-Frequency > 3 im Schnitt → Team Lead überprüft Task-Brief-Qualität
-- Estimation Accuracy > ±2 Level → Komplexitäts-Klassifikation überarbeiten
-- L3+ Eskalationen > 30% aller Tasks → Systemic Critic Überprüfung anfordern
+If within 10 tasks:
+- Rework Frequency > 3 on average → Team Lead reviews Task Brief quality
+- Estimation Accuracy > ±2 levels → revise complexity classification
+- L3+ escalations > 30% of all tasks → request Systemic Critic review

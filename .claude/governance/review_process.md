@@ -1,12 +1,12 @@
 # Review Process
 
-## Zweck
+## Purpose
 
-Der Review-Prozess stellt sicher, dass jede Implementierung korrekt, lesbar, dokumentiert und integrationskompatibel ist bevor sie als abgeschlossen gilt.
+The review process ensures that every implementation is correct, readable, documented, and integration-compatible before it's considered complete.
 
 ---
 
-## Standard Review-Schritte
+## Standard Review Steps
 
 ### 0. Hard QA Gate (PR-blocking)
 
@@ -15,88 +15,88 @@ Run the deterministic gate before human review:
 
 If the gate fails: **stop** and fix drift first.
 
-### 1. Korrektheit prüfen (Collector Agent)
+### 1. Check Correctness (Collector Agent)
 
 ```
-- Implementierung gegen alle Akzeptanzkriterien im Task Brief abgleichen
-- Vollständigkeit: Sind alle geforderten Funktionen vorhanden?
-- Korrektheit: Sind die Lösungen logisch korrekt?
-- Keine Regressions (bestehende Funktionalität unberührt)?
+- Compare implementation against all acceptance criteria in Task Brief
+- Completeness: Are all required functions present?
+- Correctness: Are the solutions logically correct?
+- No regressions (existing functionality untouched)?
 ```
 
-### 2. Lesbarkeit prüfen (Collector Agent)
+### 2. Check Readability (Collector Agent)
 
 ```
-- Naming: PEP 8 eingehalten? (snake_case, PascalCase, UPPER_SNAKE_CASE)
-- Struktur: Datei unter 300 Zeilen? (wenn nicht: Split prüfen)
-- Type Hints: Alle public functions annotiert?
-- Comments: Nur wo Logik nicht selbsterklärend ist?
-- Keine Copy-Paste-Überbleibsel in Logs/Kommentaren
+- Naming: PEP 8 followed? (snake_case, PascalCase, UPPER_SNAKE_CASE)
+- Structure: File under 300 lines? (if not: check for split)
+- Type hints: All public functions annotated?
+- Comments: Only where logic is not self-explanatory?
+- No copy-paste remnants in logs/comments
 ```
 
-### 3. Dokumentation prüfen (Validation Agent)
+### 3. Check Documentation (Validation Agent)
 
 ```
-- Technische Docs in Docs/Documentation/ aktuell?
-- Relevante Referenzen in Docs/References/ vorhanden?
-- MEMORY.md Update benötigt?
-- .claude/python/patterns.md Update benötigt?
+- Technical docs in Docs/Documentation/ current?
+- Relevant references in Docs/References/ present?
+- MEMORY.md update needed?
+- .claude/python/patterns.md update needed?
 ```
 
-### 4. Integration Impact prüfen (Validation Agent)
+### 4. Check Integration Impact (Validation Agent)
 
 ```
-- Syntax: ast.parse() erfolgreich?
-- Import-Fehler: python3 -c "import src.main" ohne Fehler?
-- OllamaUnavailableError korrekt propagiert (nicht silent)?
-- Subprocess-Fehler abgefangen an Modul-Grenzen?
-- Ollama-Verbindung: is_available() Guard vorhanden bei L1+?
+- Syntax: ast.parse() successful?
+- Import errors: python3 -c "import src.main" without errors?
+- OllamaUnavailableError correctly propagated (not silent)?
+- Subprocess errors caught at module boundaries?
+- Ollama connection: is_available() guard present for L1+?
 ```
 
-### 5. Freigabe oder Rückgabe
+### 5. Approval or Return
 
 ```
-APPROVED           → Phase 4 beginnt (Docs + Librarian)
-APPROVED WITH CONDITIONS → Implementation hat Conditions-Liste zu erfüllen
-REQUIRES REWORK    → Zurück zu Phase 1, neuer Review nach Rework
-BLOCKED            → Eskalation an Team Lead
+APPROVED           → Phase 4 begins (Docs + Librarian)
+APPROVED WITH CONDITIONS → Implementation has conditions list to fulfill
+REQUIRES REWORK    → Back to Phase 1, new review after rework
+BLOCKED            → Escalation to Team Lead
 ```
 
 ---
 
-## Review-Output Format
+## Review Output Format
 
 ```markdown
-## Review: [Task-Name / PR-Name]
-**Datum:** YYYY-MM-DD
-**Reviewer:** [Agent-Rolle]
+## Review: [Task Name / PR Name]
+**Date:** YYYY-MM-DD
+**Reviewer:** [Agent Role]
 **Status:** APPROVED / APPROVED WITH CONDITIONS / REQUIRES REWORK / BLOCKED
 
-### Korrektheit
-[Befunde]
+### Correctness
+[Findings]
 
-### Lesbarkeit
-[Befunde — PEP 8, Type Hints, Zeilenzahl]
+### Readability
+[Findings — PEP 8, Type Hints, Line Count]
 
-### Dokumentation
-[Befunde]
+### Documentation
+[Findings]
 
 ### Integration Impact
-[Befunde — Syntax-Status, Import-Status, OllamaUnavailableError-Handling]
+[Findings — Syntax Status, Import Status, OllamaUnavailableError Handling]
 
-### Conditions (wenn APPROVED WITH CONDITIONS)
+### Conditions (if APPROVED WITH CONDITIONS)
 - [ ] Condition 1
 - [ ] Condition 2
 
-### Rework-Scope (wenn REQUIRES REWORK)
-[Was muss geändert werden?]
+### Rework Scope (if REQUIRES REWORK)
+[What needs to be changed?]
 ```
 
 ---
 
-## Rework-Limit
+## Rework Limit
 
-Nach **2 Rework-Zyklen** auf demselben Task:
-- Team Lead wird obligatorisch eingeschaltet
-- Task wird neu bewertet (Komplexität unterschätzt?)
-- Ggf. Eskalation an Architecture Agent oder User
+After **2 rework cycles** on the same task:
+- Team Lead is mandatorily involved
+- Task is re-evaluated (complexity underestimated?)
+- Possibly escalation to Architecture Agent or User

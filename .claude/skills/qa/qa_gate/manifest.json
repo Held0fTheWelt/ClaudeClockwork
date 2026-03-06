@@ -1,0 +1,26 @@
+{
+  "name": "qa_gate",
+  "version": "0.1.0",
+  "category": "qa",
+  "description": "Run the existing QA gate through the new manifest system.",
+  "entrypoint": "skills.qa.qa_gate.skill:QaGateSkill",
+  "permissions": [
+    "qa:run",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "run_qa_gate"
+  ],
+  "tags": [
+    "qa",
+    "gate",
+    "checks"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "qa_gate"
+  }
+}

@@ -2,7 +2,7 @@
 
 This file is a **clockwork pointer** for Claude Code.
 
-Project-level canonical location (repo root):
-- <PROJECT_ROOT>/ARCHITECTURE.md
+Canonical location (this project):
+- `.project/ARCHITECTURE.md`
 
-If the repo does not contain this file, create it at the project level.
+When deploying Clockwork on another project, create `ARCHITECTURE.md` at that project's root.

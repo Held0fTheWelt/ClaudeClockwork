@@ -1,0 +1,27 @@
+{
+  "name": "evidence_router",
+  "version": "0.1.0",
+  "category": "bundle",
+  "description": "Route evidence tasks to the correct evidence workflow.",
+  "entrypoint": "skills.bundle.evidence_router.skill:EvidenceRouterSkill",
+  "permissions": [
+    "bundle:build",
+    "registry:read",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "route_evidence"
+  ],
+  "tags": [
+    "evidence",
+    "routing",
+    "bundle"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "evidence_router"
+  }
+}

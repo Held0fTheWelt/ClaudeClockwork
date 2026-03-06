@@ -1,55 +1,55 @@
-# Dokument-Platzierungskorrektur (BP-006)
+# Document Placement Correction (BP-006)
 
-> Dokumente, die vom Owner oder durch frühere Tasks falsch abgelegt wurden, werden von einem Team an den richtigen Ort verschoben — mit Rücksprache beim Owner.
-
----
-
-## Zweck
-
-- **Konsistenz:** Alle Dokumente liegen an den in Governance und File Ownership definierten Orten.
-- **Auffindbarkeit:** Falsche Ablage führt zu falschem Routing und verlorener Information.
-- **Owner-Rücksprache:** Ob im konkreten Fall immer so verfahren werden soll, wird mit dem Owner geklärt.
+> Documents incorrectly placed by the owner or through earlier tasks are moved to the correct location by a team — with owner consultation.
 
 ---
 
-## Wann greift BP-006?
+## Purpose
 
-- Ein Agent oder ein Review stellt fest: Ein Dokument liegt **nicht** am laut `file_ownership.md` und `workflow_triggers.md` (Dokument-Naming, Ablageorte) vorgesehenen Platz.
-- Beispiele: Referenz-Inhalt in `Docs/Plans/`, Plan in `Docs/Documentation/`, technische Doc in `Docs/References/` obwohl es Feature-Dokumentation ist.
-
----
-
-## Ablauf (Platzierungskorrektur)
-
-1. **Feststellung**
-   - Der feststellende Agent/Review dokumentiert: welche Datei, aktueller Ort, begründeter Zielort (inkl. Verweis auf `file_ownership.md` / Dokument-Naming).
-
-2. **Meldung an Team Lead**
-   - Team Lead wird informiert: "Dokument [Pfad] ist vermutlich falsch abgelegt; vorgeschlagener Zielort: [Ziel]."
-
-3. **Rücksprache mit Owner**
-   - **Owner** ist der laut `file_ownership.md` für den **Zielort** (oder Quellort) zuständige Agent bzw. der User (Product Owner), wenn das Dokument vom User stammt.
-   - Team Lead koordiniert Rücksprache:
-     - Soll das Dokument an den vorgeschlagenen Ort verschoben werden?
-     - Soll für vergleichbare Fälle künftig immer so verfahren werden? (Falls ja → ggf. Regel in Governance oder MEMORY.md festhalten.)
-
-4. **Verschiebung**
-   - Nach Freigabe führt der **Owner** des Zielorts die Verschiebung durch (Inhalt an neuen Ort, ggf. alte Datei entfernen oder als Verweis ersetzen).
-   - Cross-References und `.claude/knowledge/index.md` werden vom Librarian Agent angepasst.
-
-5. **Keine stille Verschiebung**
-   - Kein Agent verschiebt Dokumente ohne Meldung und ohne abgesprochene Freigabe. Sonst drohen Doppelungen, verlorene Verweise und Verletzung der File Ownership.
+- **Consistency:** All documents are in the locations defined by Governance and File Ownership.
+- **Discoverability:** Wrong placement leads to wrong routing and lost information.
+- **Owner Consultation:** Whether to always proceed this way in a specific case is clarified with the owner.
 
 ---
 
-## Ownership bei Verschiebung
+## When Does BP-006 Apply?
 
-- **Verschieben** darf nur, wer entweder Owner der Quell-Datei oder Owner des Zielorts ist (siehe `file_ownership.md`).
-- Wenn der feststellende Agent nicht Owner ist: Domain Handoff an Team Lead → Team Lead aktiviert den zuständigen Owner für die Verschiebung.
+- An agent or review determines: A document is **not** in the place designated by `file_ownership.md` and `workflow_triggers.md` (document naming, storage locations).
+- Examples: Reference content in `Docs/Plans/`, plan in `Docs/Documentation/`, technical doc in `Docs/References/` when it's feature documentation.
 
 ---
 
-## Dokumentation
+## Process (Placement Correction)
 
-- Signifikante Korrekturen (z. B. neues Standardvorgehen "immer so") in `<PROJECT_ROOT>/MEMORY.md` oder `.claude/knowledge/decisions.md` festhalten.
-- Kein separates Dokument pro Verschiebung nötig; bei Bedarf im Review oder in der Task-Liste vermerken.
+1. **Finding**
+   - The detecting agent/review documents: which file, current location, justified target location (incl. reference to `file_ownership.md` / document naming).
+
+2. **Report to Team Lead**
+   - Team Lead is informed: "Document [path] is probably incorrectly placed; suggested target location: [target]."
+
+3. **Owner Consultation**
+   - **Owner** is the agent responsible for the **target location** (or source location) according to `file_ownership.md`, or the user (Product Owner) if the document came from the user.
+   - Team Lead coordinates consultation:
+     - Should the document be moved to the suggested location?
+     - Should this approach always be used for comparable cases in the future? (If yes → possibly record rule in Governance or MEMORY.md.)
+
+4. **Move**
+   - After approval, the **owner** of the target location performs the move (content to new location, possibly remove old file or replace with reference).
+   - Cross-references and `.claude/knowledge/index.md` are adjusted by the Librarian Agent.
+
+5. **No Silent Moves**
+   - No agent moves documents without reporting and without agreed approval. Otherwise duplications, lost references, and file ownership violations occur.
+
+---
+
+## Ownership for Moves
+
+- **Moving** is only permitted for whoever is either owner of the source file or owner of the target location (see `file_ownership.md`).
+- If the detecting agent is not an owner: Domain Handoff to Team Lead → Team Lead activates the responsible owner for the move.
+
+---
+
+## Documentation
+
+- Record significant corrections (e.g., new standard approach "always this way") in `<PROJECT_ROOT>/MEMORY.md` or `.claude/knowledge/decisions.md`.
+- No separate document per move needed; note in review or task list if necessary.

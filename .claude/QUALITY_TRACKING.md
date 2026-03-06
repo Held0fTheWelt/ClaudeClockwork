@@ -2,7 +2,7 @@
 
 This file is a **clockwork pointer** for Claude Code.
 
-Project-level canonical location (repo root):
-- <PROJECT_ROOT>/QUALITY_TRACKING.md
+Canonical location (this project):
+- `.project/QUALITY_TRACKING.md`
 
-If the repo does not contain this file, create it at the project level.
+When deploying Clockwork on another project, create `QUALITY_TRACKING.md` at that project's root.

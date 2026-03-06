@@ -1,0 +1,36 @@
+{
+  "count": 2,
+  "plugins": [
+    {
+      "name": "filesystem",
+      "version": "0.1.0",
+      "description": "Core local filesystem skills for ClaudeClockwork.",
+      "permissions": [
+        "fs:read",
+        "fs:write"
+      ],
+      "capabilities": [
+        "filesystem",
+        "local_io"
+      ],
+      "requires_plugins": [],
+      "path": "plugins/filesystem/plugin.json"
+    },
+    {
+      "name": "git",
+      "version": "0.1.0",
+      "description": "Core Git and repository analysis plugin for ClaudeClockwork.",
+      "permissions": [
+        "git:read"
+      ],
+      "capabilities": [
+        "git",
+        "repo_analysis"
+      ],
+      "requires_plugins": [
+        "filesystem"
+      ],
+      "path": "plugins/git/plugin.json"
+    }
+  ]
+}

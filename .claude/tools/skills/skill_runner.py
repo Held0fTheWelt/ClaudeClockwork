@@ -15,6 +15,10 @@ from __future__ import annotations
 import argparse, json, sys
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from repo_validate import run as repo_validate
 from evidence_init import run as evidence_init
 from spec_validate import run as spec_validate
@@ -122,16 +126,16 @@ def _ensure_repo_root() -> None:
     """
     import os
     from pathlib import Path
+
     cwd = Path.cwd()
-    # if current directory already contains .claude, good
     if (cwd / ".claude").exists():
         return
-    # walk up to find a parent containing .claude
     for parent in [cwd] + list(cwd.parents):
         if (parent / ".claude").exists():
             os.chdir(parent)
             return
     raise RuntimeError("Repository root not found: `.claude/` not visible in current or parent directories.")
+
 from budget_analyze import run as budget_analyze
 from efficiency_review import run as efficiency_review
 from performance_toggle import run as performance_toggle
@@ -358,18 +362,35 @@ def main() -> int:
     skill_id = req.get("skill_id")
     fn = SKILLS.get(skill_id)
     if not fn:
-        res = {
-            "type": "skill_result_spec",
-            "request_id": req.get("request_id", ""),
-            "skill_id": skill_id or "",
-            "status": "fail",
-            "outputs": {},
-            "errors": [f"Unknown skill_id: {skill_id}"],
-            "warnings": [],
-            "metrics": {},
-        }
-        dump_json(res, Path(args.outfile) if args.outfile else None)
-        return 1
+        try:
+            from claudeclockwork.bridge import run_manifest_skill
+            bridged = run_manifest_skill(req, REPO_ROOT)
+        except Exception as exc:
+            bridged = {
+                "type": "skill_result_spec",
+                "request_id": req.get("request_id", ""),
+                "skill_id": skill_id or "",
+                "status": "fail",
+                "outputs": {},
+                "errors": [f"Manifest bridge failed: {exc}"],
+                "warnings": [],
+                "metrics": {},
+            }
+        if bridged is None:
+            res = {
+                "type": "skill_result_spec",
+                "request_id": req.get("request_id", ""),
+                "skill_id": skill_id or "",
+                "status": "fail",
+                "outputs": {},
+                "errors": [f"Unknown skill_id: {skill_id}"],
+                "warnings": [],
+                "metrics": {},
+            }
+            dump_json(res, Path(args.outfile) if args.outfile else None)
+            return 1
+        dump_json(bridged, Path(args.outfile) if args.outfile else None)
+        return 0 if bridged.get("status") == "ok" else 1
 
     res = fn(req)
     dump_json(res, Path(args.outfile) if args.outfile else None)

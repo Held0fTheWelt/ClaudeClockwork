@@ -1,0 +1,23 @@
+{
+  "name": "reference_skill_catalog",
+  "version": "0.1.0",
+  "category": "meta",
+  "description": "Catalog SKILL.md reference skills and execution manifests to support MCP/plugin planning.",
+  "entrypoint": "skills.meta.reference_skill_catalog.skill:ReferenceSkillCatalogSkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [
+    "catalog_reference_skills",
+    "reference_catalog"
+  ],
+  "tags": [
+    "reference",
+    "catalog",
+    "skills"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {}
+}

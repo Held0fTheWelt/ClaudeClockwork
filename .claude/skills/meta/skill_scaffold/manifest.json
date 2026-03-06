@@ -1,0 +1,26 @@
+{
+  "name": "skill_scaffold",
+  "version": "0.1.0",
+  "category": "meta",
+  "description": "Scaffold a new manifest-based skill package and optional legacy bridge notes.",
+  "entrypoint": "skills.meta.skill_scaffold.skill:SkillScaffoldSkill",
+  "permissions": [
+    "registry:write"
+  ],
+  "aliases": [
+    "new_skill",
+    "forge_skill"
+  ],
+  "tags": [
+    "scaffold",
+    "forge",
+    "generator"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "skill_scaffold"
+  }
+}

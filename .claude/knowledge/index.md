@@ -1,337 +1,328 @@
 # Knowledge Base Index — Python Orchestrator
 
-> Zentrale Wissensbasis für den Librarian Agent.
-> Agents fragen den Librarian — dieser Index ist die Grundlage für zielgenaue Lieferung.
-> Zuletzt aktualisiert: 2026-02-27
+> Central knowledge base for the Librarian Agent.
+> Agents query the Librarian — this index is the foundation for targeted delivery.
+> Last updated: 2026-02-27
 
 ---
 
-## Thematischer Index
+## Thematic Index
 
-### Agent-System & Governance
+### Agent System & Governance
 
-Dateien, die das `.claude/`-System, Rollen, Prozesse und Governance-Regeln beschreiben.
+Files describing the `.claude/` system, roles, processes, and governance rules.
 
-- `.claude/SYSTEM.md` — Einstiegspunkt, System-Architektur, Unterordner-Referenz
-- `.claude/collaboration.md` — Team-Komposition pro Szenario, Workload-Balancing
-- `.claude/governance/execution_protocol.md` — Vollständiger Ausführungsflow (Phase 0–5)
-- `.claude/governance/escalation_matrix.md` — L0–L5 Eskalationsschwellen
-- `.claude/governance/decision_policy.md` — Entscheidungs-Hierarchie mit Beispielen
-- `.claude/governance/review_process.md` — Standard Review-Schritte (Collector, Validation)
-- `.claude/governance/git_workflow.md` — Commit-Regeln, verbotene Aktionen, Branch-Strategie
-- `.claude/governance/ollama_integration.md` — Ollama Workload-System, Modelle, Task-Types
-- `.claude/governance/rule_discovery.md` — Wann/wie neue Regeln erkannt und dokumentiert werden
-- `.claude/governance/self_improvement.md` — Post-Task-Zyklus, Self-Improvement-Mechanismus
-- `.claude/governance/workflow_triggers.md` — Stichwörter (Task:, Review:, Implement:, Archive:, Critics:)
-- `.claude/governance/task_archival.md` — Task-Archivierung (BP-005): Ref + Documentation + Index
-- `.claude/governance/document_placement.md` — Dokument-Platzierungskorrektur (BP-006)
+- `.claude/SYSTEM.md` — Entry point, system architecture, subfolder reference
+- `.claude/collaboration.md` — Team composition per scenario, workload balancing
+- `.claude/governance/execution_protocol.md` — Complete execution flow (Phase 0–5)
+- `.claude/governance/escalation_matrix.md` — L0–L5 escalation thresholds
+- `.claude/governance/decision_policy.md` — Decision hierarchy with examples
+- `.claude/governance/review_process.md` — Standard review steps (Collector, Validation)
+- `.claude/governance/git_workflow.md` — Commit rules, forbidden actions, branch strategy
+- `.claude/governance/ollama_integration.md` — Ollama workload system, models, task types
+- `.claude/governance/rule_discovery.md` — When/how new rules are recognized and documented
+- `.claude/governance/self_improvement.md` — Post-task cycle, self-improvement mechanism
+- `.claude/governance/workflow_triggers.md` — Keywords (Task:, Review:, Implement:, Archive:, Critics:)
+- `.claude/governance/task_archival.md` — Task archival (BP-005): Ref + Documentation + Index
+- `.claude/governance/document_placement.md` — Document placement correction (BP-006)
 
-### Agent-Rollen (Definitionen)
+### Agent Roles (Definitions)
 
-- `.claude/agents/team_lead.md` — Rolle, Verantwortlichkeiten, Task-Brief-Format
-- `.claude/agents/designer.md` — Framework-Wächter, Architektur-Konsistenz
-- `.claude/agents/specialists.md` — Alle Specialist-Agents, Ollama-First-Pflicht
-- `.claude/agents/research.md` — Research Agent, Archivierungs-Workflow
-- `.claude/agents/critics/technical.md` — Technical Critic, L3-Aktivierungsschwelle
-- `.claude/agents/critics/systemic.md` — Systemic Critic, L4-Aktivierungsschwelle
+- `.claude/agents/team_lead.md` — Role, responsibilities, Task Brief format
+- `.claude/agents/designer.md` — Framework guardian, architecture consistency
+- `.claude/agents/specialists.md` — All Specialist agents, Ollama-First obligation
+- `.claude/agents/research.md` — Research Agent, archival workflow
+- `.claude/agents/critics/technical.md` — Technical Critic, L3 activation threshold
+- `.claude/agents/critics/systemic.md` — Systemic Critic, L4 activation threshold
 
-### Agent-Rollen (Learning Logs)
+### Agent Roles (Learning Logs)
 
-- `.claude/agents/learning/team_lead.md` — Best Practices, Routing-Entscheide
-- `.claude/agents/learning/implementation_agent.md` — Python-Patterns, OllamaUnavailableError, Imports
-- `.claude/agents/learning/architecture_agent.md` — Modul-Hierarchie, Dependency-Richtungen, Split-Regeln
-- `.claude/agents/learning/documentation_agent.md` — Source-First-Prinzip, Struktur
-- `.claude/agents/learning/librarian_agent.md` — Deduplizierung, Cross-References
-- `.claude/agents/learning/collector_agent.md` — Akzeptanzkriterien-Prüfung
-- `.claude/agents/learning/validation_agent.md` — Edge-Case-Tests, Extremwerte
-- `.claude/agents/learning/pattern_recognition_agent.md` — Pattern-Extraktion (mind. 2 Instanzen)
-- `.claude/agents/learning/skill_agent.md` — Meta-Beobachter, Routing-Schwächen
-- `.claude/agents/learning/critics/technical_critic.md` — Severity-System, Kritik-Philosophie
-- `.claude/agents/learning/critics/systemic_critic.md` — Langzeit-Risiken, Komplexitäts-Drift
+- `.claude/agents/learning/team_lead.md` — Best practices, routing decisions
+- `.claude/agents/learning/implementation_agent.md` — Python patterns, OllamaUnavailableError, imports
+- `.claude/agents/learning/architecture_agent.md` — Module hierarchy, dependency directions, split rules
+- `.claude/agents/learning/documentation_agent.md` — Source-first principle, structure
+- `.claude/agents/learning/librarian_agent.md` — Deduplication, cross-references
+- `.claude/agents/learning/collector_agent.md` — Acceptance criteria checking
+- `.claude/agents/learning/validation_agent.md` — Edge case tests, extreme values
+- `.claude/agents/learning/pattern_recognition_agent.md` — Pattern extraction (min. 2 instances)
+- `.claude/agents/learning/skill_agent.md` — Meta-observer, routing weaknesses
+- `.claude/agents/learning/critics/technical_critic.md` — Severity system, critique philosophy
+- `.claude/agents/learning/critics/systemic_critic.md` — Long-term risks, complexity drift
 
-### Python Projektmuster & Standards
+### Python Project Patterns & Standards
 
-- `.claude/python/architecture.md` — Python-Architektur-Pointer, Modul-Standards
-- `.claude/python/README.md` — Python-Subsystem-Übersicht
-- `.claude/agents/learning/implementation_agent.md` — Python-Implementierungs-Patterns
-- `.claude/agents/learning/architecture_agent.md` — Modul-Hierarchie, Split-Regeln
+- `.claude/python/architecture.md` — Python architecture pointer, module standards
+- `.claude/python/README.md` — Python subsystem overview
+- `.claude/agents/learning/implementation_agent.md` — Python implementation patterns
+- `.claude/agents/learning/architecture_agent.md` — Module hierarchy, split rules
 
-### Wissens-Infrastruktur
+### Knowledge Infrastructure
 
-- `.claude/knowledge/architecture.md` — Wissens-Taxonomie (Task/Reference/System Knowledge)
-- `.claude/knowledge/routing.md` — Agent+Modell-Mapping pro Task-Typ, Kompositions-Prinzip
-- `.claude/knowledge/decisions.md` — Append-only Entscheidungslog (Architektur- & Policy-Entscheide)
-- `.claude/knowledge/research_archive_template.md` — Template für Research-Archive-Einträge
-- `.claude/knowledge/index.md` — Dieser Index (Librarian Agent Primär-Referenz)
+- `.claude/knowledge/architecture.md` — Knowledge taxonomy (Task/Reference/System Knowledge)
+- `.claude/knowledge/routing.md` — Agent+model mapping per task type, composition principle
+- `.claude/knowledge/decisions.md` — Append-only decision log (architecture & policy decisions)
+- `.claude/knowledge/research_archive_template.md` — Template for research archive entries
+- `.claude/knowledge/index.md` — This index (Librarian Agent primary reference)
 
 ### Performance & Tracking
 
-- `.claude/performance/tracking.md` — Per-Agent Metriken, System-Metriken
-- `.claude/performance/log_template.md` — Template für Post-Task Performance-Logs
+- `.claude/performance/tracking.md` — Per-agent metrics, system metrics
+- `.claude/performance/log_template.md` — Template for post-task performance logs
 
-### Python-Subsysteme (Quellcode)
+### Python Subsystems (Deployment Target)
 
-> **Hinweis:** Diese Dateien liegen im **Projekt-Repository** (z. B. LlamaCode) unter `<PROJECT_ROOT>/src/`.
-> Im Ruleset-Archiv selbst sind sie ggf. nicht enthalten.
+> **Note:** These files don't exist in the Clockwork repo. They are created in the target project under `src/` when Clockwork is deployed there.
 
-- `<PROJECT_ROOT>/src/main.py` — Entry point, REPL, CLI args, stdin-pipe
-- `<PROJECT_ROOT>/src/orchestrator.py` — Team Lead Logik: classify, route, coordinate
-- `<PROJECT_ROOT>/src/workflow.py` — Trigger-Erkennung, Dok-Naming
-- `<PROJECT_ROOT>/src/ollama_client.py` — HTTP-Client gegen localhost:11434
-- `<PROJECT_ROOT>/src/claude_client.py` — Spawnt claude-CLI-Subprozesse
-- `<PROJECT_ROOT>/src/config.py` — Pfade, Modell-Präferenzen, Ollama-Endpoint
-- `<PROJECT_ROOT>/src/agents/base.py` — Basis-Agenten-Klasse
-- `<PROJECT_ROOT>/src/agents/implementation.py` — Implementation Agent
-- `<PROJECT_ROOT>/src/agents/documentation.py` — Documentation Agent
-- `<PROJECT_ROOT>/src/agents/validation.py` — Validation Agent
-- `<PROJECT_ROOT>/src/agents/librarian.py` — Librarian Agent
+- `src/main.py` — Entry point, REPL, CLI args, stdin pipe
+- `src/orchestrator.py` — Team Lead logic: classify, route, coordinate
+- `src/workflow.py` — Trigger recognition, doc naming
+- `src/ollama_client.py` — HTTP client against localhost:11434
+- `src/claude_client.py` — Spawns claude-CLI subprocesses
+- `src/config.py` — Paths, model preferences, Ollama endpoint
+- `src/agents/base.py` — Base agent class
+- `src/agents/implementation.py` — Implementation Agent
+- `src/agents/documentation.py` — Documentation Agent
+- `src/agents/validation.py` — Validation Agent
+- `src/agents/librarian.py` — Librarian Agent
 
-### Cross-Session-Gedächtnis
+### Cross-Session Memory
 
-- `<PROJECT_ROOT>/MEMORY.md` (falls im Projekt vorhanden) — Stabile Findings, Architektur-Entscheide, User-Präferenzen (aktuelle SSoT)
-- `<PROJECT_ROOT>/Docs/TASKS.md` (falls im Projekt vorhanden) — Trigger-Referenz für Workflow-Stichwörter
+- `.project/MEMORY.md` — Stable findings, architecture decisions, user preferences (current SSoT)
 
-### Aktive Tasks
+### Active Plans & Tasks
 
-- `<PROJECT_ROOT>/Docs/Tasks/` (falls im Projekt vorhanden) — Aktive Task-Beschreibungen
-
-### Oodle-Quellen (Product / Memory Mesh)
-
-Für Llama Code (formerly Oodle Code) CMD und Task-Kontext (z. B. `<PROJECT_ROOT>/.claude/tasks/<TASK_FILE>.md`):
-
-- `<PROJECT_ROOT>/quellen/oodle/oodle_memory_mesh_v1_protocol_hub_and_spoke.md` — Memory Mesh v1: Hub-and-Spoke-Protokoll, Event-Schema (JSONL), Node/Hub-Layout, Namespaces, Policies, deterministisches Replay, Sync (Push/Pull)
-- `<PROJECT_ROOT>/quellen/README.md` — Übersicht aller canonical Oodle-Quellen
+- `.project/Docs/Plans/` — Active task descriptions and plans
 
 ---
 
-## Vollständige Datei-Karte
+## Complete File Map
 
-| Datei | Zweck | Typische Requester | Themen-Tags |
+| File | Purpose | Typical Requesters | Topic Tags |
 |---|---|---|---|
-| `.claude/SYSTEM.md` | System-Einstiegspunkt, Unterordner-Referenz, Governance-Prinzipien | Alle Agents | agent-system, governance, einstieg |
-| `.claude/collaboration.md` | Team-Komposition pro Szenario, Ollama-Modell-Auswahl | Team Lead, Skill Agent | routing, team-komposition, ollama |
-| `.claude/governance/execution_protocol.md` | Phase-0-bis-5-Flow, Übergabe-Protokolle, Parallelisierung | Team Lead | governance, execution, flow |
-| `.claude/governance/escalation_matrix.md` | L0–L5 Eskalationsschwellen, schnelle Entscheidungsmatrix | Team Lead, alle Agents | governance, eskalation, entscheidung |
-| `.claude/governance/decision_policy.md` | Entscheidungs-Hierarchie mit konkreten Beispielen pro Level | Team Lead, Designer | governance, entscheidung, policy |
-| `.claude/governance/review_process.md` | Standard Review-Schritte: Korrektheit, Imports, Integration | Collector, Validation Agent | governance, review, qualität |
-| `.claude/governance/git_workflow.md` | Commit-Regeln, verbotene Aktionen, Branch-Strategie | Alle Agents | governance, git, version-control |
-| `.claude/governance/ollama_integration.md` | Modelle, Task-Types, Hardware-Setup, Freeze-Protokoll | Team Lead, alle Agents | ollama, modelle, workflow |
-| `.claude/governance/rule_discovery.md` | Wann neue Regeln erkannt werden, wie dokumentiert | Pattern Recognition Agent, Team Lead | governance, regeln, patterns |
-| `.claude/governance/self_improvement.md` | Post-Task-Analyse, Verbesserungs-Zyklus | Team Lead | governance, self-improvement, performance |
-| `.claude/governance/workflow_triggers.md` | Stichwörter: Task:, Review:, Implement:, Archive:, Critics:, Document: | Team Lead | governance, workflow, trigger |
-| `.claude/governance/task_archival.md` | BP-005: Task-Archivierung, Ref/Documentation/Index | Team Lead, Librarian, Documentation Agent | governance, archive, tasks |
-| `.claude/governance/document_placement.md` | BP-006: Dokument-Platzierungskorrektur, Owner-Rücksprache | Team Lead, alle Agents | governance, document-placement, ownership |
-| `.claude/governance/file_ownership.md` | Datei-Ownership-Regeln, Spawn-Prompt-Pflichtinhalt | Alle Agents | governance, ownership, spawn |
-| `.claude/governance/model_escalation_policy.md` | Small-first Routing, Oodle→Claude Eskalationsleiter, Trust Modes, QualitySignal | Team Lead, Personaler | governance, routing, escalation |
-| `.claude/agents/team_lead.md` | Rolle, Verantwortlichkeiten, Task-Brief-Format | Team Lead | agent-rollen, team-lead |
-| `.claude/agents/designer.md` | Framework-Wächter, L2-Review-Pflicht, Python-Modul-Hierarchie | Designer, Team Lead | agent-rollen, designer, architektur |
-| `.claude/agents/specialists.md` | Alle Specialist-Agents, Ollama-First-Pflicht | Specialist Agents | agent-rollen, specialists, ollama |
-| `.claude/agents/task_compactor.md` | Low-Effort Intake → TasklistSpec (Departments + Pack Hints) | Team Lead, Personaler | agent-rollen, intake, compact |
-| `.claude/agents/testops/testops_orchestrator.md` | TestOps Dispatch (light/medium/heavy) + Auto-Delegation | Team Lead, Tester | quality, testops, dispatch |
-| `.claude/agents/testops/testrunner_light.md` | Light Triage → FixPlanSpec | TestOps | quality, testops, triage |
-| `.claude/agents/testops/testrunner_medium.md` | Medium Triage → FixPlanSpec+Patch Strategy | TestOps | quality, testops, triage |
-| `.claude/agents/testops/testrunner_heavy.md` | Heavy Triage → Root Cause + Risk Notes | TestOps | quality, testops, reasoning |
-| `.claude/agents/workers/implementation_worker.md` | Standard Worker für Implementierung (Pack+Acceptance) | Team Lead | engineering, worker, implementation |
-| `.claude/agents/workers/report_worker.md` | Report+QualitySignal für Routing-Korrekturen | Team Lead, Personaler | docs, reporting, quality |
-| `.claude/agents/research.md` | Research Agent Workflow, Archivierungs-Pflicht | Research Agent | agent-rollen, research, archiv |
-| `.claude/agents/critics/technical.md` | Technical Critic Rolle, L3-Aktivierung | Technical Critic, Team Lead | critics, technical, performance |
-| `.claude/agents/critics/systemic.md` | Systemic Critic Rolle, L4-Aktivierung | Systemic Critic, Team Lead | critics, systemic, governance |
-| `.claude/agents/learning/team_lead.md` | Team Lead Best Practices, Routing-Lessons | Team Lead | learning, team-lead |
-| `.claude/agents/learning/implementation_agent.md` | Python-Patterns, OllamaUnavailableError, Import-Fehler | Implementation Agent | learning, python, implementation |
-| `.claude/agents/learning/architecture_agent.md` | Modul-Hierarchie, Dependency-Richtungen, Split-Schwelle | Architecture Agent, Designer | learning, architektur, module |
-| `.claude/agents/learning/documentation_agent.md` | Source-First, keine Vermutungen, Cross-References | Documentation Agent | learning, dokumentation |
-| `.claude/agents/learning/librarian_agent.md` | Deduplizierung, Retrieval-Optimierung, Merge-vor-Neu | Librarian Agent | learning, librarian, knowledge |
-| `.claude/agents/learning/collector_agent.md` | Akzeptanzkriterien-Prüfung, Konsistenz-Check | Collector Agent | learning, collector, validation |
-| `.claude/agents/learning/validation_agent.md` | Extremwerte, Edge-Cases, Report-Format | Validation Agent | learning, validation, testing |
-| `.claude/agents/learning/pattern_recognition_agent.md` | 2-Instanzen-Regel, Abstraktionskandidaten | Pattern Recognition Agent | learning, patterns, abstraktion |
-| `.claude/agents/learning/skill_agent.md` | Still beobachten, erst bei Muster eingreifen | Skill Agent | learning, skills, meta |
-| `.claude/agents/learning/critics/technical_critic.md` | Severity-System, Kritik-Philosophie | Technical Critic | learning, critics, technical |
-| `.claude/agents/learning/critics/systemic_critic.md` | Monate-Horizont, Komplexitäts-Drift, Dependency-Creep | Systemic Critic | learning, critics, systemic |
-| `.claude/knowledge/architecture.md` | Wissens-Taxonomie (3 Typen), Indexierungs-Regeln | Librarian Agent | knowledge, taxonomie |
-| `.claude/knowledge/routing.md` | Agent+Modell-Mapping, L0–L2+ Kompositions-Prinzip | Team Lead, Skill Agent | routing, modelle, agent-auswahl |
-| `.claude/knowledge/decisions.md` | Append-only Entscheidungslog: Architektur- & Policy-Entscheide | Team Lead | decisions, architektur, policy |
-| `.claude/knowledge/research_archive_template.md` | Template für Research-Archive-Einträge (RES-YYYY-NNN) | Research Agent, Librarian Agent | research, archiv, template |
-| `.claude/knowledge/index.md` | Dieser Index — vollständige Datei-Karte | Librarian Agent | index, knowledge, librarian |
-| `.claude/performance/tracking.md` | Per-Agent und System-Metriken, Gut/Schlecht-Schwellen | Team Lead, Skill Agent | performance, metriken |
-| `.claude/performance/log_template.md` | Performance-Log-Template für abgeschlossene Major Tasks | Team Lead | performance, log, template |
-| `<PROJECT_ROOT>/src/main.py` | Entry point: REPL, --task CLI, stdin-pipe | Implementation Agent | python, entry-point, repl |
-| `<PROJECT_ROOT>/src/orchestrator.py` | Task-Klassifikation L0–L5, Agent-Routing, Ollama-Guard | Implementation Agent, Architecture Agent | python, orchestration, routing |
-| `<PROJECT_ROOT>/src/workflow.py` | Trigger-Erkennung (Task:/Review:/ etc.), Dok-Naming, Docs/-Gerüst | Implementation Agent | python, workflow, trigger |
-| `<PROJECT_ROOT>/src/ollama_client.py` | HTTP-Client localhost:11434, 5 task_types, OllamaUnavailableError | Implementation Agent | python, ollama, client |
-| `<PROJECT_ROOT>/src/claude_client.py` | Spawnt claude-CLI-Subprozesse, self-contained Prompts | Implementation Agent | python, claude, subprocess |
-| `<PROJECT_ROOT>/src/config.py` | Pfade (PROJECT_ROOT, Docs/), Modell-Präferenzen, Ollama-Endpoint | Alle Agents | python, config, pfade |
-| `<PROJECT_ROOT>/src/agents/base.py` | Basis-Agenten-Klasse: run(), report() | Implementation Agent | python, agents, basis |
-| `<PROJECT_ROOT>/src/agents/implementation.py` | Implementation Agent: Python-Code schreiben/ändern | Implementation Agent | python, agents, implementation |
-| `<PROJECT_ROOT>/src/agents/documentation.py` | Documentation Agent: Docs/ erstellen/verbessern | Documentation Agent | python, agents, dokumentation |
-| `<PROJECT_ROOT>/src/agents/validation.py` | Validation Agent: Syntax-Check, Tests | Validation Agent | python, agents, validation |
-| `<PROJECT_ROOT>/src/agents/librarian.py` | Librarian Agent: Wissensbasis-Lookups | Librarian Agent | python, agents, librarian |
-| `<PROJECT_ROOT>/MEMORY.md` | Cross-Session-Gedächtnis: stabile Findings, User-Präferenzen | Alle Agents | memory, kontext, stable |
-| `<PROJECT_ROOT>/Docs/TASKS.md` | Trigger-Referenz Übersicht | Team Lead | trigger, workflow |
+| `.claude/SYSTEM.md` | System entry point, subfolder reference, governance principles | All agents | agent-system, governance, entry |
+| `.claude/collaboration.md` | Team composition per scenario, Ollama model selection | Team Lead, Skill Agent | routing, team-composition, ollama |
+| `.claude/governance/execution_protocol.md` | Phase 0-to-5 flow, handoff protocols, parallelization | Team Lead | governance, execution, flow |
+| `.claude/governance/escalation_matrix.md` | L0–L5 escalation thresholds, quick decision matrix | Team Lead, all agents | governance, escalation, decision |
+| `.claude/governance/decision_policy.md` | Decision hierarchy with concrete examples per level | Team Lead, Designer | governance, decision, policy |
+| `.claude/governance/review_process.md` | Standard review steps: correctness, imports, integration | Collector, Validation Agent | governance, review, quality |
+| `.claude/governance/git_workflow.md` | Commit rules, forbidden actions, branch strategy | All agents | governance, git, version-control |
+| `.claude/governance/ollama_integration.md` | Models, task types, hardware setup, freeze protocol | Team Lead, all agents | ollama, models, workflow |
+| `.claude/governance/rule_discovery.md` | When new rules are recognized, how documented | Pattern Recognition Agent, Team Lead | governance, rules, patterns |
+| `.claude/governance/self_improvement.md` | Post-task analysis, improvement cycle | Team Lead | governance, self-improvement, performance |
+| `.claude/governance/workflow_triggers.md` | Keywords: Task:, Review:, Implement:, Archive:, Critics:, Document: | Team Lead | governance, workflow, trigger |
+| `.claude/governance/task_archival.md` | BP-005: Task archival, Ref/Documentation/Index | Team Lead, Librarian, Documentation Agent | governance, archive, tasks |
+| `.claude/governance/document_placement.md` | BP-006: Document placement correction, owner consultation | Team Lead, all agents | governance, document-placement, ownership |
+| `.claude/governance/file_ownership.md` | File ownership rules, spawn prompt required content | All agents | governance, ownership, spawn |
+| `.claude/governance/model_escalation_policy.md` | Small-first routing, Oodle→Claude escalation ladder, trust modes, QualitySignal | Team Lead, Personaler | governance, routing, escalation |
+| `.claude/agents/team_lead.md` | Role, responsibilities, Task Brief format | Team Lead | agent-roles, team-lead |
+| `.claude/agents/designer.md` | Framework guardian, L2 review obligation, Python module hierarchy | Designer, Team Lead | agent-roles, designer, architecture |
+| `.claude/agents/specialists.md` | All Specialist agents, Ollama-First obligation | Specialist Agents | agent-roles, specialists, ollama |
+| `.claude/agents/task_compactor.md` | Low-effort intake → TasklistSpec (Departments + Pack Hints) | Team Lead, Personaler | agent-roles, intake, compact |
+| `.claude/agents/testops/testops_orchestrator.md` | TestOps dispatch (light/medium/heavy) + auto-delegation | Team Lead, Tester | quality, testops, dispatch |
+| `.claude/agents/testops/testrunner_light.md` | Light triage → FixPlanSpec | TestOps | quality, testops, triage |
+| `.claude/agents/testops/testrunner_medium.md` | Medium triage → FixPlanSpec+Patch Strategy | TestOps | quality, testops, triage |
+| `.claude/agents/testops/testrunner_heavy.md` | Heavy triage → Root Cause + Risk Notes | TestOps | quality, testops, reasoning |
+| `.claude/agents/workers/implementation_worker.md` | Standard worker for implementation (Pack+Acceptance) | Team Lead | engineering, worker, implementation |
+| `.claude/agents/workers/report_worker.md` | Report+QualitySignal for routing corrections | Team Lead, Personaler | docs, reporting, quality |
+| `.claude/agents/research.md` | Research Agent workflow, archival obligation | Research Agent | agent-roles, research, archive |
+| `.claude/agents/critics/technical.md` | Technical Critic role, L3 activation | Technical Critic, Team Lead | critics, technical, performance |
+| `.claude/agents/critics/systemic.md` | Systemic Critic role, L4 activation | Systemic Critic, Team Lead | critics, systemic, governance |
+| `.claude/agents/learning/team_lead.md` | Team Lead best practices, routing lessons | Team Lead | learning, team-lead |
+| `.claude/agents/learning/implementation_agent.md` | Python patterns, OllamaUnavailableError, import errors | Implementation Agent | learning, python, implementation |
+| `.claude/agents/learning/architecture_agent.md` | Module hierarchy, dependency directions, split threshold | Architecture Agent, Designer | learning, architecture, module |
+| `.claude/agents/learning/documentation_agent.md` | Source-first, no assumptions, cross-references | Documentation Agent | learning, documentation |
+| `.claude/agents/learning/librarian_agent.md` | Deduplication, retrieval optimization, merge-before-new | Librarian Agent | learning, librarian, knowledge |
+| `.claude/agents/learning/collector_agent.md` | Acceptance criteria checking, consistency check | Collector Agent | learning, collector, validation |
+| `.claude/agents/learning/validation_agent.md` | Extreme values, edge cases, report format | Validation Agent | learning, validation, testing |
+| `.claude/agents/learning/pattern_recognition_agent.md` | 2-instance rule, abstraction candidates | Pattern Recognition Agent | learning, patterns, abstraction |
+| `.claude/agents/learning/skill_agent.md` | Silent observation, only intervene on pattern | Skill Agent | learning, skills, meta |
+| `.claude/agents/learning/critics/technical_critic.md` | Severity system, critique philosophy | Technical Critic | learning, critics, technical |
+| `.claude/agents/learning/critics/systemic_critic.md` | Months horizon, complexity drift, dependency creep | Systemic Critic | learning, critics, systemic |
+| `.claude/knowledge/architecture.md` | Knowledge taxonomy (3 types), indexing rules | Librarian Agent | knowledge, taxonomy |
+| `.claude/knowledge/routing.md` | Agent+model mapping, L0–L2+ composition principle | Team Lead, Skill Agent | routing, models, agent-selection |
+| `.claude/knowledge/decisions.md` | Append-only decision log: architecture & policy decisions | Team Lead | decisions, architecture, policy |
+| `.claude/knowledge/research_archive_template.md` | Template for research archive entries (RES-YYYY-NNN) | Research Agent, Librarian Agent | research, archive, template |
+| `.claude/knowledge/index.md` | This index — complete file map | Librarian Agent | index, knowledge, librarian |
+| `.claude/performance/tracking.md` | Per-agent and system metrics, good/bad thresholds | Team Lead, Skill Agent | performance, metrics |
+| `.claude/performance/log_template.md` | Performance log template for completed major tasks | Team Lead | performance, log, template |
+| `src/main.py` | Entry point: REPL, --task CLI, stdin pipe | Implementation Agent | python, entry-point, repl |
+| `src/orchestrator.py` | Task classification L0–L5, agent routing, Ollama guard | Implementation Agent, Architecture Agent | python, orchestration, routing |
+| `src/workflow.py` | Trigger recognition (Task:/Review:/ etc.), doc naming, Docs/ scaffold | Implementation Agent | python, workflow, trigger |
+| `src/ollama_client.py` | HTTP client localhost:11434, 5 task_types, OllamaUnavailableError | Implementation Agent | python, ollama, client |
+| `src/claude_client.py` | Spawns claude-CLI subprocesses, self-contained prompts | Implementation Agent | python, claude, subprocess |
+| `src/config.py` | Paths (PROJECT_ROOT, Docs/), model preferences, Ollama endpoint | All agents | python, config, paths |
+| `src/agents/base.py` | Base agent class: run(), report() | Implementation Agent | python, agents, base |
+| `src/agents/implementation.py` | Implementation Agent: write/modify Python code | Implementation Agent | python, agents, implementation |
+| `src/agents/documentation.py` | Documentation Agent: create/improve Docs/ | Documentation Agent | python, agents, documentation |
+| `src/agents/validation.py` | Validation Agent: syntax check, tests | Validation Agent | python, agents, validation |
+| `src/agents/librarian.py` | Librarian Agent: knowledge base lookups | Librarian Agent | python, agents, librarian |
+| `.project/MEMORY.md` | Cross-session memory: stable findings, user preferences | All agents | memory, context, stable |
+| `.project/Docs/TASKS.md` | Trigger reference overview | Team Lead | trigger, workflow |
 
 ---
 
-## Themen → Dateien Mapping
+## Topic → File Mapping
 
-### "Ollama-Client / Freeze-Protokoll"
+### "Ollama Client / Freeze Protocol"
 
-Primäre Quellen:
-- `<PROJECT_ROOT>/src/ollama_client.py` — HTTP-Client, OllamaUnavailableError, task_types
-- `.claude/governance/ollama_integration.md` — Modelle, Hardware-Routing, Freeze-Protokoll
+Primary sources:
+- `src/ollama_client.py` — HTTP client, OllamaUnavailableError, task_types
+- `.claude/governance/ollama_integration.md` — Models, hardware routing, freeze protocol
 
-### "Orchestrator / Task-Klassifikation"
+### "Orchestrator / Task Classification"
 
-Primäre Quellen:
-- `<PROJECT_ROOT>/src/orchestrator.py` — Classify, route, coordinate
-- `.claude/governance/escalation_matrix.md` — L0–L5 Schwellen
-- `.claude/governance/decision_policy.md` — Wann welches Level
-- `.claude/knowledge/routing.md` — Agent+Modell-Mapping
+Primary sources:
+- `src/orchestrator.py` — Classify, route, coordinate
+- `.claude/governance/escalation_matrix.md` — L0–L5 thresholds
+- `.claude/governance/decision_policy.md` — When which level
+- `.claude/knowledge/routing.md` — Agent+model mapping
 
-### "Workflow-Trigger / Dok-Naming / Archivierung"
+### "Workflow Trigger / Doc Naming / Archival"
 
-Primäre Quellen:
-- `<PROJECT_ROOT>/src/workflow.py` — Trigger-Erkennung und Dispatch
-- `.claude/governance/workflow_triggers.md` — Stichwörter, Ablauf, Formate (inkl. Archive:)
-- `.claude/governance/task_archival.md` — BP-005 Archivierung nach Task-Abschluss
-- `.claude/governance/document_placement.md` — BP-006 Korrektur falscher Ablage
-- `<PROJECT_ROOT>/Docs/TASKS.md` (falls im Projekt vorhanden) — Trigger-Kurzreferenz
+Primary sources:
+- `src/workflow.py` — Trigger recognition and dispatch
+- `.claude/governance/workflow_triggers.md` — Keywords, process, formats (incl. Archive:)
+- `.claude/governance/task_archival.md` — BP-005 archival after task completion
+- `.claude/governance/document_placement.md` — BP-006 correction of wrong placement
+- `.project/Docs/TASKS.md` (if present in project) — Trigger quick reference
 
-### "Python-Module / Architektur"
+### "Python Modules / Architecture"
 
-Primäre Quellen:
-- `<PROJECT_ROOT>/src/config.py` — Pfade und Konstanten
+Primary sources:
+- `src/config.py` — Paths and constants
 
-### "Agent-Rollen / Governance"
+### "Agent Roles / Governance"
 
-Primäre Quellen:
-- `.claude/SYSTEM.md` — Überblick aller Rollen und Unterordner
-- `.claude/agents/team_lead.md` — Team Lead Rolle
-- `.claude/agents/designer.md` — Designer Rolle
-- `.claude/agents/specialists.md` — Alle Specialists
+Primary sources:
+- `.claude/SYSTEM.md` — Overview of all roles and subfolders
+- `.claude/agents/team_lead.md` — Team Lead role
+- `.claude/agents/designer.md` — Designer role
+- `.claude/agents/specialists.md` — All Specialists
 - `.claude/agents/research.md` — Research Agent
 - `.claude/agents/critics/technical.md` — Technical Critic
 - `.claude/agents/critics/systemic.md` — Systemic Critic
 
-Prozesse:
-- `.claude/governance/execution_protocol.md` — Vollständiger Flow
+Processes:
+- `.claude/governance/execution_protocol.md` — Complete flow
 - `.claude/governance/escalation_matrix.md` — L0–L5
-- `.claude/governance/decision_policy.md` — Wann wer entscheidet
+- `.claude/governance/decision_policy.md` — When who decides
 
-### "Python-Patterns / Best Practices"
+### "Python Patterns / Best Practices"
 
-Primäre Quellen:
+Primary sources:
 
-Learning Logs mit Beispielen:
-- `.claude/agents/learning/implementation_agent.md` — Python-Implementierungs-Patterns
-- `.claude/agents/learning/architecture_agent.md` — Architektur-Entscheide
+Learning logs with examples:
+- `.claude/agents/learning/implementation_agent.md` — Python implementation patterns
+- `.claude/agents/learning/architecture_agent.md` — Architecture decisions
 
-### "Routing / Modell-Auswahl"
+### "Routing / Model Selection"
 
-Primäre Quellen:
-- `.claude/knowledge/routing.md` — Task → Agent + Modell Mapping
-- `.claude/collaboration.md` — Szenarien: neue Python-Funktion, Architektur-Entscheid, etc.
-- `.claude/governance/ollama_integration.md` — Modelle: qwen2.5-coder:32b (CPU), phi4:14b (GPU), qwen2.5-coder:14b (GPU)
+Primary sources:
+- `.claude/knowledge/routing.md` — Task → Agent + Model mapping
+- `.claude/collaboration.md` — Scenarios: new Python function, architecture decision, etc.
+- `.claude/governance/ollama_integration.md` — Models: qwen2.5-coder:32b (CPU), phi4:14b (GPU), qwen2.5-coder:14b (GPU)
 
-Regeln:
-- `.claude/governance/execution_protocol.md` — Phase 0a Ollama Pre-Briefing
-- `.claude/agents/specialists.md` — Ollama-First-Pflicht
+Rules:
+- `.claude/governance/execution_protocol.md` — Phase 0a Ollama pre-briefing
+- `.claude/agents/specialists.md` — Ollama-First obligation
 
-### "Spawn-Prompt / Claude-CLI"
+### "Spawn Prompt / Claude CLI"
 
-Primäre Quellen:
-- `<PROJECT_ROOT>/src/claude_client.py` — Subprocess-Spawning
-- `.claude/governance/file_ownership.md` — Spawn-Prompt Pflichtinhalt
+Primary sources:
+- `src/claude_client.py` — Subprocess spawning
+- `.claude/governance/file_ownership.md` — Spawn prompt required content
 
 ### "Performance Tracking / Self-Improvement"
 
-Primäre Quellen:
-- `.claude/performance/tracking.md` — Metriken-Definitionen
-- `.claude/performance/log_template.md` — Log-Template
-- `.claude/governance/self_improvement.md` — Post-Task-Zyklus
+Primary sources:
+- `.claude/performance/tracking.md` — Metrics definitions
+- `.claude/performance/log_template.md` — Log template
+- `.claude/governance/self_improvement.md` — Post-task cycle
 
 ### "Review / Validation"
 
-Primäre Quellen:
-- `.claude/governance/review_process.md` — Standard Review-Schritte
-- `.claude/agents/learning/validation_agent.md` — Edge-Cases, Extremwerte
-- `.claude/agents/learning/collector_agent.md` — Akzeptanzkriterien-Prüfung
+Primary sources:
+- `.claude/governance/review_process.md` — Standard review steps
+- `.claude/agents/learning/validation_agent.md` — Edge cases, extreme values
+- `.claude/agents/learning/collector_agent.md` — Acceptance criteria checking
 
-### "Git / Branch-Workflow"
+### "Git / Branch Workflow"
 
-Primäre Quellen:
-- `.claude/governance/git_workflow.md` — Commit-Regeln, verbotene Aktionen
-
----
-
-## Wartungshinweise
-
-**Wann dieser Index aktualisiert werden muss:**
-- Neue `.md`-Datei in `.claude/` oder `<PROJECT_ROOT>/Docs/References/` / `<PROJECT_ROOT>/Docs/Plans/` angelegt
-- Neue `<PROJECT_ROOT>/src/`-Datei hinzugefügt
-- Bestehende Datei inhaltlich grundlegend geändert (neues Thema, neue Zuständigkeit)
-- Neuer Agent-Typ hinzugefügt
-
-**Wer aktualisiert:**
-- Librarian Agent — nach Abschluss jeder Task, die Knowledge-relevante Dateien erstellt oder ändert
-
-**Format-Regel:**
-- Tabellen-Spalten nicht kürzen — vollständige Pfade in Spalte 1
-- Themen-Tags in Spalte 4: Englisch oder Deutsch konsistent, lowercase, Bindestriche statt Leerzeichen
+Primary sources:
+- `.claude/governance/git_workflow.md` — Commit rules, forbidden actions
 
 ---
 
 ## Contracts & Schemas
 
-| Datei | Zweck | Typische Requester | Themen-Tags |
+| File | Purpose | Typical Requesters | Topic Tags |
 |---|---|---|---|
-| `.claude/contracts/SPEC_SHEET.md` | Kurzliste zentraler Specs, Trust Modes, Pipeline | Team Lead, alle Agents | contracts, specs |
-| `.claude/contracts/schemas/*.json` | Vollständige JSON-Schemas (~95 Dateien) | Implementation, Skill Runner | contracts, schemas |
+| `.claude/contracts/SPEC_SHEET.md` | Short list of central specs, trust modes, pipeline | Team Lead, all agents | contracts, specs |
+| `.claude/contracts/schemas/*.json` | Complete JSON schemas (~95 files) | Implementation, Skill Runner | contracts, schemas |
 
 ---
 
 ## Ops / Observability
 
-| Datei | Zweck | Typische Requester | Themen-Tags |
+| File | Purpose | Typical Requesters | Topic Tags |
 |---|---|---|---|
-| `.claude/agents/qualitysignal_aggregator.md` | QualitySignal-Aggregation | Team Lead, Personaler | ops, quality |
-| `.claude/agents/escalation_controller.md` | Eskalations-Steuerung | Team Lead | ops, escalation |
+| `.claude/agents/qualitysignal_aggregator.md` | QualitySignal aggregation | Team Lead, Personaler | ops, quality |
+| `.claude/agents/escalation_controller.md` | Escalation control | Team Lead | ops, escalation |
 | `.claude/agents/operations/department_lead_ops_ledger.md` | Ops Ledger (Department Lead) | Ops Agents | ops, ledger |
 | `.claude/agents/operations/skill_scout.md` | Skill Discovery | Team Lead, Meta Agent | skills, discovery |
-| `.claude/governance/routing_matrix.md` | Routing-Matrix | Team Lead | routing, ops |
-| `.claude/governance/skill_scout_triggers.md` | Skill-Scout-Trigger | Team Lead | skills, triggers |
-| `.claude/governance/planning_policy.md` | Planning-Policy | Team Lead, Planning | planning, governance |
-| `.claude/governance/experiment_budget.md` | Experiment-Budget | Team Lead | ops, experiment |
-| `.claude/governance/prompt_debt_policy.md` | Prompt-Debt-Policy | Documentation Agent | docs, prompt-debt |
-| `.claude/governance/deep_oodle_mode.md` | Deep-Oodle-Modus | Team Lead | ollama, routing |
-| `.claude/governance/feedback_policy.md` | Feedback-Policy | Team Lead, Report Worker | feedback, ops |
-| `.claude/governance/no_llm_mode.md` | No-LLM-Modus | Team Lead | governance, fallback |
-| `.claude/governance/policy_gatekeeper.md` | Policy-Gatekeeper | Team Lead | governance, policy |
-| `.claude/governance/paths_and_placeholders.md` | Pfade und Platzhalter | Alle Agents | paths, config |
-| `.claude/governance/naming_canon.md` | Namenskonventionen | Alle Agents | governance, naming |
-| `.claude/governance/artifacts_and_paths.md` | Artefakte und Pfade | Implementation Agent | artifacts, paths |
-| `.claude/governance/message_triad_protocol.md` | Message-Triad-Protokoll | Team Lead, Input Tasks | input, triad |
-| `.claude/governance/path_semantics.md` | Pfad-Semantik | Alle Agents | paths, governance |
-| `.claude/skills/registry.md` | Skill-Registry (Katalog aller Skills) | Skill Scout, Team Lead | skills, registry |
-| `.claude/skills/playbooks/` | Playbooks (z. B. qa_campaign, documentation_pipeline) | Team Lead, Agents | skills, playbooks |
-| `.claude/skills.md` | Pointer auf Registry + Playbooks | Alle Agents | skills, pointer |
-| `.claude/tools/menus/planning_policy_menu.py` | Planning-Policy-Menü | Team Lead | planning, tools |
-| `.claude/tools/menus/feedback_policy_menu.py` | Feedback-Policy-Menü | Team Lead | feedback, tools |
-| `.claude/tools/skills/edge_case_selector.py` | Edge-Case-Selector Skill | TestOps, Tester | skills, testing |
-| `.claude/tools/skills/decision_feedback.py` | Decision-Feedback Skill | Team Lead | skills, feedback |
-| `.claude/tools/skills/deliberation_pack_build.py` | Deliberation-Pack-Builder | Team Lead | skills, deliberation |
-| `.claude/tools/skills/outcome_event_generate.py` | Outcome-Event-Generator | Ops, Report Worker | skills, outcome |
-| `.claude/contracts/schemas/idea_set_spec.schema.json` | IdeaSetSpec Schema | Ideation Tasks | contracts, ideation |
-| `.claude/contracts/schemas/plan_diff_spec.schema.json` | PlanDiffSpec Schema | Planning | contracts, planning |
-| `.claude/contracts/schemas/deliberation_pack_spec.schema.json` | DeliberationPackSpec Schema | Team Lead | contracts, deliberation |
-| `.claude/contracts/schemas/message_triad_spec.schema.json` | MessageTriadSpec Schema | Input Tasks | contracts, triad |
-| `.claude/tasks/ideation/` | Ideation-Tasks | Team Lead | tasks, ideation |
-| `.claude/tasks/deep/` | Deep-Tasks | Team Lead | tasks, deep |
-| `.claude/tasks/ops/080_AUTOTUNE_POSTRUN.md` | Autotune Post-Run | Ops | tasks, autotune |
-| `.claude/tasks/ops/090_CONTRACT_DRIFT_SENTINEL.md` | Contract-Drift-Sentinel | Ops, QA | tasks, drift |
-| `.claude/tasks/ops/100_COMMAND_DRYRUN.md` | Command Dry-Run | Ops | tasks, dryrun |
-| `.claude/tasks/governance/010_POLICY_GATE_CHECK.md` | Policy-Gate-Check | Team Lead | tasks, governance |
-| `.claude/tasks/evidence/000_EVIDENCE_ROUTER.md` | Evidence-Router | Research, Evidence | tasks, evidence |
-| `.claude/tasks/routing/090_AUTOTUNE_PATCH_PACK.md` | Autotune-Patch-Pack | Ops, Routing | tasks, routing |
-| `.claude/tasks/runbook/000_ONE_BUTTON_RUNBOOK.md` | One-Button-Runbook | Ops | tasks, runbook |
-| `.claude/tasks/input/` | Input-/Triad-Tasks | Team Lead | tasks, input |
-| `.claude/tasks/input/030_TRIAD_LINT.md` | Triad-Lint | Input Pipeline | tasks, triad |
-| `.claude/knowledge/localAIs.md` | Lokale AI-Inventur (Ollama-Modelle etc.) | Team Lead, Routing | knowledge, ollama |
+| `.claude/governance/routing_matrix.md` | Routing matrix | Team Lead | routing, ops |
+| `.claude/governance/skill_scout_triggers.md` | Skill Scout triggers | Team Lead | skills, triggers |
+| `.claude/governance/planning_policy.md` | Planning policy | Team Lead, Planning | planning, governance |
+| `.claude/governance/experiment_budget.md` | Experiment budget | Team Lead | ops, experiment |
+| `.claude/governance/prompt_debt_policy.md` | Prompt debt policy | Documentation Agent | docs, prompt-debt |
+| `.claude/governance/deep_oodle_mode.md` | Deep Oodle mode | Team Lead | ollama, routing |
+| `.claude/governance/feedback_policy.md` | Feedback policy | Team Lead, Report Worker | feedback, ops |
+| `.claude/governance/no_llm_mode.md` | No-LLM mode | Team Lead | governance, fallback |
+| `.claude/governance/policy_gatekeeper.md` | Policy gatekeeper | Team Lead | governance, policy |
+| `.claude/governance/paths_and_placeholders.md` | Paths and placeholders | All agents | paths, config |
+| `.claude/governance/naming_canon.md` | Naming conventions | All agents | governance, naming |
+| `.claude/governance/artifacts_and_paths.md` | Artifacts and paths | Implementation Agent | artifacts, paths |
+| `.claude/governance/message_triad_protocol.md` | Message triad protocol | Team Lead, Input Tasks | input, triad |
+| `.claude/governance/path_semantics.md` | Path semantics | All agents | paths, governance |
+| `.claude/skills/registry.md` | Skill registry (catalog of all skills) | Skill Scout, Team Lead | skills, registry |
+| `.claude/skills/playbooks/` | Playbooks (e.g., qa_campaign, documentation_pipeline) | Team Lead, Agents | skills, playbooks |
+| `.claude/skills.md` | Pointer to registry + playbooks | All agents | skills, pointer |
+| `.claude/tools/menus/planning_policy_menu.py` | Planning policy menu | Team Lead | planning, tools |
+| `.claude/tools/menus/feedback_policy_menu.py` | Feedback policy menu | Team Lead | feedback, tools |
+| `.claude/tools/skills/edge_case_selector.py` | Edge case selector skill | TestOps, Tester | skills, testing |
+| `.claude/tools/skills/decision_feedback.py` | Decision feedback skill | Team Lead | skills, feedback |
+| `.claude/tools/skills/deliberation_pack_build.py` | Deliberation pack builder | Team Lead | skills, deliberation |
+| `.claude/tools/skills/outcome_event_generate.py` | Outcome event generator | Ops, Report Worker | skills, outcome |
+| `.claude/contracts/schemas/idea_set_spec.schema.json` | IdeaSetSpec schema | Ideation Tasks | contracts, ideation |
+| `.claude/contracts/schemas/plan_diff_spec.schema.json` | PlanDiffSpec schema | Planning | contracts, planning |
+| `.claude/contracts/schemas/deliberation_pack_spec.schema.json` | DeliberationPackSpec schema | Team Lead | contracts, deliberation |
+| `.claude/contracts/schemas/message_triad_spec.schema.json` | MessageTriadSpec schema | Input Tasks | contracts, triad |
+| `.claude/tasks/ideation/` | Ideation tasks | Team Lead | tasks, ideation |
+| `.claude/tasks/deep/` | Deep tasks | Team Lead | tasks, deep |
+| `.claude/tasks/ops/080_AUTOTUNE_POSTRUN.md` | Autotune post-run | Ops | tasks, autotune |
+| `.claude/tasks/ops/090_CONTRACT_DRIFT_SENTINEL.md` | Contract drift sentinel | Ops, QA | tasks, drift |
+| `.claude/tasks/ops/100_COMMAND_DRYRUN.md` | Command dry-run | Ops | tasks, dryrun |
+| `.claude/tasks/governance/010_POLICY_GATE_CHECK.md` | Policy gate check | Team Lead | tasks, governance |
+| `.claude/tasks/evidence/000_EVIDENCE_ROUTER.md` | Evidence router | Research, Evidence | tasks, evidence |
+| `.claude/tasks/routing/090_AUTOTUNE_PATCH_PACK.md` | Autotune patch pack | Ops, Routing | tasks, routing |
+| `.claude/tasks/runbook/000_ONE_BUTTON_RUNBOOK.md` | One-button runbook | Ops | tasks, runbook |
+| `.claude/tasks/input/` | Input/triad tasks | Team Lead | tasks, input |
+| `.claude/tasks/input/030_TRIAD_LINT.md` | Triad lint | Input Pipeline | tasks, triad |
+| `.claude/knowledge/localAIs.md` | Local AI inventory (Ollama models etc.) | Team Lead, Routing | knowledge, ollama |
+
+---
+
+## Maintenance Notes
+
+**When this index must be updated:**
+- New `.md` file created in `.claude/` or `.project/Docs/References/` / `.project/Docs/Plans/`
+- New `src/` file added in deployment project
+- Existing file fundamentally changed in content (new topic, new responsibility)
+- New agent type added
+
+**Who updates:**
+- Librarian Agent — after completion of every task that creates or changes knowledge-relevant files
+
+**Format rule:**
+- Don't shorten table columns — complete paths in column 1
+- Topic tags in column 4: English or German consistent, lowercase, hyphens instead of spaces

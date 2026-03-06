@@ -1,52 +1,27 @@
 #!/usr/bin/env python3
 """skill_registry_search
 
-Search skill registry + tools by keywords (meta).
+Search both the manifest-based registries (`.claude/skills/**/manifest.json`, `skills/**/manifest.json`)
+and the legacy `.claude/tools/skills/*.py` inventory.
 
-Interface: run(req: dict) -> SkillResultSpec
-- Reads req["inputs"]
-- Writes optional markdown to inputs["output_path"]
-
-Deterministic local-file tool. No network.
+This repurposes the original registry search skill so migration work can search
+across both systems during the transition period.
 """
 
 from __future__ import annotations
 
-import os
-import re
 import json
-import hashlib
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
 
-def _sha256_bytes(b: bytes) -> str:
-    h = hashlib.sha256()
-    h.update(b)
-    return h.hexdigest()
 
-def _read_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8", errors="replace")
+MANIFEST_ROOTS = ('.claude/skills', 'skills')
 
-def _write_text(path: Path, content: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
 
-def _list_files(root: Path, include_ext: Optional[List[str]] = None) -> List[Path]:
-    out: List[Path] = []
-    for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = [d for d in dirnames if d not in {'.git','.svn','.hg','__pycache__','.pytest_cache','node_modules','.venv'}]
-        for fn in filenames:
-            p = Path(dirpath) / fn
-            if include_ext and p.suffix.lower() not in include_ext:
-                continue
-            out.append(p)
-    return out
-
-def _ok(req: dict, outputs: dict, warnings: Optional[List[str]] = None, metrics: Optional[dict] = None) -> dict:
+def _ok(req: dict, outputs: dict, warnings: list[str] | None = None, metrics: dict | None = None) -> dict:
     return {
         "type": "skill_result_spec",
         "request_id": req.get("request_id", ""),
-        "skill_id": req.get("skill_id", ""),
+        "skill_id": req.get("skill_id", "skill_registry_search"),
         "status": "ok",
         "outputs": outputs,
         "errors": [],
@@ -54,65 +29,106 @@ def _ok(req: dict, outputs: dict, warnings: Optional[List[str]] = None, metrics:
         "metrics": metrics or {},
     }
 
-def _fail(req: dict, errors: List[str], warnings: Optional[List[str]] = None, metrics: Optional[dict] = None) -> dict:
+
+def _fail(req: dict, errors: list[str], warnings: list[str] | None = None, metrics: dict | None = None) -> dict:
     return {
         "type": "skill_result_spec",
         "request_id": req.get("request_id", ""),
-        "skill_id": req.get("skill_id", ""),
+        "skill_id": req.get("skill_id", "skill_registry_search"),
         "status": "fail",
         "outputs": {},
         "errors": errors,
         "warnings": warnings or [],
         "metrics": metrics or {},
     }
+
+
 def _find_repo_root(start: Path) -> Path:
     cur = start.resolve()
     for _ in range(25):
-        if (cur / ".claude").is_dir():
+        if (cur / '.claude').is_dir():
             return cur
         if cur.parent == cur:
             break
         cur = cur.parent
     return start.resolve()
 
+
+def _score(query_tokens: set[str], corpus: str) -> int:
+    corpus = corpus.lower()
+    phrase = ' '.join(sorted(query_tokens))
+    score = sum(1 for token in query_tokens if token in corpus)
+    return score + (2 if phrase and phrase in corpus else 0)
+
+
 def run(req: dict) -> dict:
-    try:
-        inputs=req.get("inputs", {})
-        repo_root = Path(inputs.get("repo_root") or _find_repo_root(Path.cwd())).resolve()
-        query = str(inputs.get("query") or "").strip()
-        if not query:
-            return _fail(req, ["inputs.query is required"])
-        max_results=int(inputs.get("max_results") or 25)
+    inputs = req.get('inputs', {})
+    repo_root = Path(inputs.get('repo_root') or _find_repo_root(Path.cwd())).resolve()
+    query = str(inputs.get('query') or '').strip().lower()
+    if not query:
+        return _fail(req, ['inputs.query is required'])
+    max_results = int(inputs.get('max_results') or 25)
+    query_tokens = {token for token in query.replace('_', ' ').split() if token}
 
-        registry_path = repo_root / ".claude" / "skills" / "registry.md"
-        tools_root = repo_root / ".claude" / "tools" / "skills"
+    manifest_hits: list[dict] = []
+    for root_name in MANIFEST_ROOTS:
+        manifest_root = repo_root / root_name
+        if not manifest_root.exists():
+            continue
+        for manifest_path in sorted(manifest_root.rglob('manifest.json')):
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+            except Exception:
+                continue
+            corpus = ' '.join([
+                manifest.get('name', ''),
+                manifest.get('description', ''),
+                manifest.get('category', ''),
+                *manifest.get('aliases', []),
+                *manifest.get('tags', []),
+            ])
+            score = _score(query_tokens, corpus)
+            if score <= 0:
+                continue
+            manifest_hits.append({
+                'score': score,
+                'name': manifest.get('name', manifest_path.parent.name),
+                'category': manifest.get('category', ''),
+                'description': manifest.get('description', ''),
+                'source': str(manifest_path.relative_to(repo_root)),
+                'source_root': root_name,
+                'type': 'manifest',
+            })
 
-        hay=""
-        if registry_path.exists():
-            hay += _read_text(registry_path) + "\n"
-        if tools_root.is_dir():
-            for fn in sorted([p.name for p in tools_root.glob("*.py")]):
-                hay += fn + "\n"
+    legacy_hits: list[dict] = []
+    for py_path in sorted((repo_root / '.claude' / 'tools' / 'skills').glob('*.py')):
+        if py_path.name in {'__init__.py', 'skill_runner.py'}:
+            continue
+        text = py_path.read_text(encoding='utf-8', errors='ignore')
+        first_line = next((line.strip(' #') for line in text.splitlines() if line.strip()), '')
+        corpus = f"{py_path.stem} {first_line}"
+        score = _score(query_tokens, corpus)
+        if score <= 0:
+            continue
+        legacy_hits.append({
+            'score': score,
+            'name': py_path.stem,
+            'description': first_line,
+            'source': str(py_path.relative_to(repo_root)),
+            'type': 'legacy',
+        })
 
-        qwords=[w.lower() for w in re.split(r"\W+", query) if w.strip()]
-        lines=hay.splitlines()
-        scored=[]
-        for ln in lines:
-            lnl=ln.lower()
-            score=sum(1 for w in qwords if w in lnl)
-            if score>0:
-                scored.append((score, ln.strip()))
-        scored.sort(key=lambda t: (-t[0], t[1]))
-        results=[ln for _,ln in scored[:max_results]]
+    manifest_hits.sort(key=lambda item: (-item['score'], item['name']))
+    legacy_hits.sort(key=lambda item: (-item['score'], item['name']))
 
-        tool_hits=[]
-        if tools_root.is_dir():
-            for p in tools_root.glob("*.py"):
-                base=p.stem.lower()
-                if any(w in base for w in qwords):
-                    tool_hits.append(p.name)
-
-        outputs={"repo_root": str(repo_root), "query": query, "results": results, "tool_hits": sorted(set(tool_hits))}
-        return _ok(req, outputs)
-    except Exception as e:
-        return _fail(req, [f"Unhandled error: {e!r}"])
+    outputs = {
+        'repo_root': str(repo_root),
+        'query': query,
+        'manifest_hits': manifest_hits[:max_results],
+        'legacy_hits': legacy_hits[:max_results],
+        'summary': {
+            'manifest_matches': len(manifest_hits),
+            'legacy_matches': len(legacy_hits),
+        },
+    }
+    return _ok(req, outputs, metrics=outputs['summary'])

@@ -1,103 +1,103 @@
 # File Ownership — Python Orchestrator Agent System
 
-> Jede Datei gehört genau einem Agent. Kein Agent darf Dateien eines anderen bearbeiten.
-> Cross-Domain-Änderungen gehen über Team Lead → Domain Handoff Protocol.
+> Every file belongs to exactly one agent. No agent may edit files owned by another.
+> Cross-domain changes go through Team Lead → Domain Handoff Protocol.
 
 ---
 
-## Ownership-Tabelle
+## Ownership Table
 
-| Pfad / Muster | Owner Agent | Schreibrecht |
+| Path / Pattern | Owner Agent | Write Rights |
 |---|---|---|
-| `.claude/agents/*.md` | Team Lead | Governance-Definitionen |
-| `.claude/agents/learning/team_lead.md` | Team Lead | Eigenes Learning Log |
-| `.claude/agents/learning/implementation_agent.md` | Implementation Agent | Eigenes Learning Log |
-| `.claude/agents/learning/documentation_agent.md` | Documentation Agent | Eigenes Learning Log |
-| `.claude/agents/learning/librarian_agent.md` | Librarian Agent | Eigenes Learning Log |
-| `.claude/agents/learning/collector_agent.md` | Collector Agent | Eigenes Learning Log |
-| `.claude/agents/learning/validation_agent.md` | Validation Agent | Eigenes Learning Log |
-| `.claude/agents/learning/pattern_recognition_agent.md` | Pattern Recognition Agent | Eigenes Learning Log |
-| `.claude/agents/learning/skill_agent.md` | Skill Agent | Eigenes Learning Log |
-| `.claude/agents/learning/critics/technical_critic.md` | Technical Critic | Eigenes Learning Log |
-| `.claude/agents/learning/critics/systemic_critic.md` | Systemic Critic | Eigenes Learning Log |
-| `.claude/agents/critics/*.md` | Team Lead / Architecture Agent | Critic-Definitionen |
-| `.claude/governance/*.md` | Team Lead | Governance-Protokolle |
-| `.claude/python/*.md` | Team Lead / Architecture Agent | Python-Standards |
-| `.claude/knowledge/index.md` | Librarian Agent | Wissensbasis-Index |
-| `.claude/knowledge/routing.md` | Skill Agent | Routing-Intelligence |
-| `.claude/knowledge/*.md` (sonstige) | Librarian Agent | Knowledge-Einträge |
-| `.claude/skills.md` | Skill Agent | Skills-Registry |
-| `.claude/collaboration.md` | Skill Agent | Collaboration-Szenarien |
+| `.claude/agents/*.md` | Team Lead | Governance definitions |
+| `.claude/agents/learning/team_lead.md` | Team Lead | Own learning log |
+| `.claude/agents/learning/implementation_agent.md` | Implementation Agent | Own learning log |
+| `.claude/agents/learning/documentation_agent.md` | Documentation Agent | Own learning log |
+| `.claude/agents/learning/librarian_agent.md` | Librarian Agent | Own learning log |
+| `.claude/agents/learning/collector_agent.md` | Collector Agent | Own learning log |
+| `.claude/agents/learning/validation_agent.md` | Validation Agent | Own learning log |
+| `.claude/agents/learning/pattern_recognition_agent.md` | Pattern Recognition Agent | Own learning log |
+| `.claude/agents/learning/skill_agent.md` | Skill Agent | Own learning log |
+| `.claude/agents/learning/critics/technical_critic.md` | Technical Critic | Own learning log |
+| `.claude/agents/learning/critics/systemic_critic.md` | Systemic Critic | Own learning log |
+| `.claude/agents/critics/*.md` | Team Lead / Architecture Agent | Critic definitions |
+| `.claude/governance/*.md` | Team Lead | Governance protocols |
+| `.claude/python/*.md` | Team Lead / Architecture Agent | Python standards |
+| `.claude/knowledge/index.md` | Librarian Agent | Knowledge base index |
+| `.claude/knowledge/routing.md` | Skill Agent | Routing intelligence |
+| `.claude/knowledge/*.md` (other) | Librarian Agent | Knowledge entries |
+| `.claude/skills.md` | Skill Agent | Skills registry |
+| `.claude/collaboration.md` | Skill Agent | Collaboration scenarios |
 | `.claude/tools/*.py` | Implementation Agent | Tooling |
-| `memory/*.md` | Team Lead | Cross-Session-Kontext |
-| `Docs/Documentation/` | Documentation Agent | Technische Docs |
-| `Docs/Tutorials/` | Documentation Agent | Guides |
-| `Docs/References/` | Librarian Agent | Referenz-Dokumente |
-| `Docs/Review/` | Validation Agent | Validation Reports |
-| `Docs/Critics/` | Technical Critic / Systemic Critic | Critic-Outputs |
-| `Docs/Plans/` | Team Lead | Pläne |
-| `src/` | Implementation Agent | Python-Implementierung |
-| `<PROJECT_ROOT>/src/agents/` | Implementation Agent | Agent-Implementierungen |
+| `.project/memory/*.md` | Team Lead | Cross-session context |
+| `.project/Docs/Documentation/` | Documentation Agent | Technical docs |
+| `.project/Docs/Tutorials/` | Documentation Agent | Guides |
+| `.project/Docs/References/` | Librarian Agent | Reference documents |
+| `.project/Docs/Review/` | Validation Agent | Validation reports |
+| `.project/Docs/Critics/` | Technical Critic / Systemic Critic | Critic outputs |
+| `.project/Docs/Plans/` | Team Lead | Plans |
+| `src/` (deployment target) | Implementation Agent | Python implementation |
+| `src/agents/` (deployment target) | Implementation Agent | Agent implementations |
 
 ---
 
-## Verletzungs-Protokoll
+## Violation Protocol
 
-Wenn ein Agent eine Datei außerhalb seiner Ownership bearbeiten muss:
+When an agent needs to edit a file outside their ownership:
 
 ```
-1. Agent meldet an Team Lead: "Ich brauche Änderung in [fremde Datei]"
-2. Team Lead aktiviert den zuständigen Owner-Agent via Domain Handoff
-3. Owner-Agent führt die Änderung durch
-4. Owner-Agent meldet Abschluss an Team Lead
+1. Agent reports to Team Lead: "I need a change in [foreign file]"
+2. Team Lead activates the responsible owner agent via Domain Handoff
+3. Owner agent makes the change
+4. Owner agent reports completion to Team Lead
 ```
 
-Keine stille Übernahme. Kein Editieren fremder Dateien — auch nicht "kurz mal schnell".
+No silent takeover. No editing foreign files — not even "just quickly".
 
 ---
 
-## Dokument-Platzierungskorrektur (BP-006)
+## Document Placement Correction (BP-006)
 
-Wenn ein Dokument am falschen Ort liegt (z. B. Referenz in `Docs/Plans/`, Plan in `Docs/Documentation/`):
-1. Feststellung an Team Lead melden (aktueller Ort, vorgeschlagener Zielort)
-2. Team Lead koordiniert Rücksprache mit Owner (User oder zuständiger Agent)
-3. Verschiebung führt nur der Owner des Zielorts (oder Quellorts) durch
-4. Keine stille Verschiebung ohne Freigabe
+When a document is in the wrong location (e.g., reference in `Docs/Plans/`, plan in `Docs/Documentation/`):
+1. Report finding to Team Lead (current location, suggested target location)
+2. Team Lead coordinates consultation with owner (user or responsible agent)
+3. Only the owner of the target location (or source location) performs the move
+4. No silent moves without approval
 
-Vollständiges Protokoll: `governance/document_placement.md`.
+Full protocol: `governance/document_placement.md`.
 
 ---
 
-## Spawn-Prompt Pflichtinhalt
+## Spawn Prompt Required Content
 
-Jeder Agent-Spawn über das Task-Tool muss enthalten:
+Every agent spawn via the Task tool must include:
 
 ```
-## Projekt-Kontext
-Python Orchestrator: Konsolenanwendung für autonome Ollama/Claude-Agenten-Orchestrierung.
-Modul-Hierarchie: main → orchestrator → agents/* → ollama_client/claude_client → config
-Dependency-Richtung: main → orchestrator → agents → clients (nie umgekehrt)
+## Project Context
+Python Orchestrator: Console application for autonomous Ollama/Claude agent orchestration.
+Module hierarchy: main → orchestrator → agents/* → ollama_client/claude_client → config
+Dependency direction: main → orchestrator → agents → clients (never reverse)
 Patterns: OllamaFreeze, SelfContainedSpawn, StructuredOutput, AvailabilityGuard
-PEP 8, Type Hints für alle public functions, max 300 Zeilen pro Datei.
+PEP 8, Type Hints for all public functions, max 300 lines per file.
 
-## Deine Rolle & Schreibrechte
-Rolle: [Agent-Name]
-Du darfst NUR folgende Dateien schreiben: [explizite Liste]
+## Your Role & Write Rights
+Role: [Agent Name]
+You may ONLY write to the following files: [explicit list]
 
 ## Governance
-- Nur eigene Dateien bearbeiten (file_ownership.md)
-- Lies Dateien zuerst vollständig vor dem Bearbeiten
-- Ollama-First bei L1+ (wenn relevant)
-- OllamaUnavailableError werfen, nie silent swallow
+- Only edit own files (file_ownership.md)
+- Read files completely before editing
+- Ollama-First for L1+ (if relevant)
+- Throw OllamaUnavailableError, never silent swallow
 
-## Aufgabe
-[Konkrete Aufgabe mit Akzeptanzkriterien]
+## Task
+[Concrete task with acceptance criteria]
 
-## Zu lesende Kontext-Dateien
-[Explizite Pfade]
+## Context Files to Read
+[Explicit paths]
 
-## Ollama Briefing (wenn vorhanden)
-[Output von ollama_client.py oder ollama_brief.py]
+## Ollama Briefing (if available)
+[Output from ollama_client.py or ollama_brief.py]
 ```
 
 # File Ownership (mirror)

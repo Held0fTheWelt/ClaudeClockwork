@@ -1,38 +1,38 @@
 # Contracts & Specs — Overview (v1)
 
-Diese Datei definiert die **verbindlichen Contracts** zwischen Orchestrator, SpecialAgents und Workern.
-Ziel: **kleiner Context**, **deterministisches Routing**, **reproduzierbare QA/Eskalation**.
+This file defines the **binding contracts** between Orchestrator, SpecialAgents, and Workers.
+Goal: **small context**, **deterministic routing**, **reproducible QA/escalation**.
 
-**Hinweis:** Dies ist eine **kuratierte Shortlist** der zentralen Pipeline-Specs. Die vollständige Menge aller Specs liegt in `.claude/contracts/schemas/` (derzeit ~95 JSON-Schema-Dateien). Für die komplette Liste siehe dieses Verzeichnis; SPEC_SHEET dient als Einstieg und Pipeline-Überblick.
+**Note:** This is a **curated shortlist** of the central pipeline specs. The complete set of all specs is in `.claude/contracts/schemas/` (currently ~95 JSON schema files). For the complete list, see that directory; SPEC_SHEET serves as entry point and pipeline overview.
 
-## Grundregeln
-- Jeder Agent arbeitet primär auf **Pack + Spec**, nicht auf der vollen Original-Nachricht.
-- Freitext ist erlaubt, aber nur in `notes` / `rationale`. Kernfelder bleiben maschinenlesbar.
-- Eskalation: **erst Oodle Tier erhöhen**, **danach Claude Tier erhöhen** (Opus 4.6 default OFF).
+## Core Rules
+- Every agent works primarily on **Pack + Spec**, not on the full original message.
+- Free text is allowed, but only in `notes` / `rationale`. Core fields remain machine-readable.
+- Escalation: **first increase Oodle tier**, **then increase Claude tier** (Opus 4.6 default OFF).
 
-## Spezifikationen (Shortlist)
-1. TasklistSpec — Output vom Task Compactor
-2. RoutingSpec — Output vom Personaler/Team_Lead
-3. PackManifest — Output vom Content Packer
-4. FixPlanSpec — Output vom TestRunner / Debug Worker
-5. TestReportSpec — Output vom Runner/TestOps
-6. ReportSpec — Output vom Report Worker
-7. QualitySignal — kompaktes Signal vom Report Worker
-8. CriticReport — Output vom Kritiker
-9. OpsLedgerEvent / OpsLedgerSummary — Output vom Ops Ledger (Department Lead)
+## Specifications (Shortlist)
+1. TasklistSpec — Output from Task Compactor
+2. RoutingSpec — Output from Personaler/Team_Lead
+3. PackManifest — Output from Content Packer
+4. FixPlanSpec — Output from TestRunner / Debug Worker
+5. TestReportSpec — Output from Runner/TestOps
+6. ReportSpec — Output from Report Worker
+7. QualitySignal — Compact signal from Report Worker
+8. CriticReport — Output from Critic
+9. OpsLedgerEvent / OpsLedgerSummary — Output from Ops Ledger (Department Lead)
 
-> JSON Schemas: **alle** in `.claude/contracts/schemas/` (~95 Dateien). Diese Shortlist deckt die Kern-Pipeline ab; weitere Schemas (Skills, Ops, Ideation, etc.) siehe Verzeichnis.
+> JSON Schemas: **all** in `.claude/contracts/schemas/` (~95 files). This shortlist covers the core pipeline; additional schemas (Skills, Ops, Ideation, etc.) see directory.
 
-## Tier-Notation
+## Tier Notation
 - Oodle: `O0|O1|O2|O3`
 - Claude: `C0|C1|C2|C3|C4`
 
 ## Trust Modes
-- `inherit`: vertraut TasklistSpec + Pack
-- `verify`: zusätzlich kleiner Goal/Constraints Snapshot
-- `rebuild`: liest Originalmessage (teuer)
+- `inherit`: trusts TasklistSpec + Pack
+- `verify`: additionally small Goal/Constraints snapshot
+- `rebuild`: reads original message (expensive)
 
-## Minimaler Pipeline-Fluss
+## Minimal Pipeline Flow
 `Message -> TasklistSpec -> RoutingSpec -> PackManifest (+Pack) -> WorkerResult -> ReportSpec/QualitySignal -> CriticReport (optional) -> OpsLedgerSummary`
 
 ## Additional specs (v17.6)

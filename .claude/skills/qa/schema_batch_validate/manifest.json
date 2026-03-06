@@ -1,0 +1,27 @@
+{
+  "name": "schema_batch_validate",
+  "version": "0.1.0",
+  "category": "qa",
+  "description": "Validate batches of schemas through the legacy validator.",
+  "entrypoint": "skills.qa.schema_batch_validate.skill:SchemaBatchValidateSkill",
+  "permissions": [
+    "qa:run",
+    "contracts:read",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "validate_schema_batch"
+  ],
+  "tags": [
+    "qa",
+    "schema",
+    "validation"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "schema_batch_validate"
+  }
+}

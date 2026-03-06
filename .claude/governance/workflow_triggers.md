@@ -3,196 +3,196 @@
 
 # Workflow Triggers
 
-Kleinste ausreichende Modell-Größe und minimaler Aufwand.
+Use the smallest sufficient model size and minimal effort.
 
-**L5-Eskalation an User** bei:
-- Externen Providern / API-Keys
-- Angeforderter Tool-Autonomie (automatisierte Bash-Ausführung)
-- Destruktiven Operationen oder großen Refactors
-- Anhaltendem Widerspruch nach Critic-Review
-- Core-Orchestrator-Redesign oder LLM-Backend-Wechsel
+**L5 escalation to user** required for:
+- External providers / API keys
+- Requested tool autonomy (automated bash execution)
+- Destructive operations or large refactors
+- Persistent disagreement after critic review
+- Core orchestrator redesign or LLM backend switch
 
-Für komplexe Coding-Tasks → `qwen2.5-coder:32b` (CPU); für Architektur → `phi4:14b` (GPU).
+For complex coding tasks → `qwen2.5-coder:32b` (CPU); for architecture → `phi4:14b` (GPU).
 
 
-## Trigger-Stichwörter
+## Trigger Keywords
 
-Der User löst Workflows durch diese Stichwörter aus:
+The user triggers workflows through these keywords:
 
-| Stichwort | Workflow | Erzeugt Dokument in |
+| Keyword | Workflow | Creates document in |
 |---|---|---|
-| **Task:** | Planerstellung | `Docs/Plans/Plan_<Name>.md` |
-| **Review:** | Review erstellen | `Docs/Review/Review_<Name>.md` |
-| **Critics:** | Grundsätzliche Kritik | `Docs/Critics/Critics_<Schweregrad>_<Name>.md` |
-| **Document:** | Dokumentation erzeugen/verbessern | `Docs/Documentation/` oder `Docs/References/` |
-| **Implement:** | Plan implementieren | Code-Änderungen |
-| **Archive:** | Task-Archivierung (BP-005) auslösen | Ref + Documentation + Index (nach Plan-Abschluss) |
-| **test ollama** | Ollama Funktionstest | (kein Dokument) |
+| **Task:** | Plan creation | `.project/Docs/Plans/Plan_<Name>.md` |
+| **Review:** | Review creation | `.project/Docs/Review/Review_<Name>.md` |
+| **Critics:** | Fundamental critique | `.project/Docs/Critics/Critics_<Severity>_<Name>.md` |
+| **Document:** | Create/improve documentation | `.project/Docs/Documentation/` or `.project/Docs/References/` |
+| **Implement:** | Implement plan | Code changes |
+| **Archive:** | Trigger task archival (BP-005) | Ref + Documentation + Index (after plan completion) |
+| **test ollama** | Ollama health check | (no document) |
 
-## Task: Workflow (Planerstellung)
+## Task: Workflow (Plan Creation)
 
-**Planungspflichtig wenn:** Architektur-Auswirkungen vorhanden:
-- Neue oder geänderte Komponenten, Plugins, Interfaces
-- Änderungen an Datenfluss, Abhängigkeiten oder Systemverhalten
-- Auswirkungen auf mehr als eine isolierte Stelle
+**Planning required when:** Architecture impact exists:
+- New or modified components, plugins, interfaces
+- Changes to data flow, dependencies, or system behavior
+- Impact on more than one isolated location
 
-**Kein Plan nötig bei:** Einzeiligen Fixes, Tippfehlern, reinen Konfigurationsänderungen ohne Architektureinfluss.
+**No plan needed for:** Single-line fixes, typos, pure config changes without architecture impact.
 
-**Ablauf:**
-1. Anforderung erfassen als `Task_<Name>.md` in `Docs/Plans/`
-2. Regelprüfung via .claude/SYSTEM.md — alle relevanten Dokumente konsultieren
-3. Rule Discovery — aktiv nach undokumentierten Regeln suchen
-4. Plan-Dokument erstellen
-5. User-Freigabe einholen
+**Process:**
+1. Capture requirement as `Task_<Name>.md` in `.project/Docs/Plans/`
+2. Rule check via .claude/SYSTEM.md — consult all relevant documents
+3. Rule Discovery — actively search for undocumented rules
+4. Create plan document
+5. Obtain user approval
 
-**Plan-Dokument Format:**
+**Plan Document Format:**
 ```
-# Plan: <Titel>
-## Ziel
-## Geprüfte Regeln
-## Betroffene Dateien
-## Implementierungsschritte
-## Neu entdeckte Regeln
-## Offene Fragen
+# Plan: <Title>
+## Goal
+## Checked Rules
+## Affected Files
+## Implementation Steps
+## Newly Discovered Rules
+## Open Questions
 ```
 
-Plan-Iteration: Dokument aktualisieren bis zur Implementierung (kein neues Dokument pro Iteration).
+Plan iteration: Update document until implementation (no new document per iteration).
 
 ## Review: Workflow
 
-**Review-Gegenstände:**
-- Plan (vor Implementierung) — ist der Plan regelkonform, vollständig, umsetzbar?
-- Implementierung (nach Task-Ausführung) — entspricht die Umsetzung dem Plan und den Regeln?
-- Komponente/Systemzustand — aktueller Zustand eines Teilsystems
+**Review subjects:**
+- Plan (before implementation) — is the plan rule-compliant, complete, feasible?
+- Implementation (after task execution) — does the implementation match the plan and rules?
+- Component/system state — current state of a subsystem
 
-**Ablauf:**
-1. Gegenstand bestimmen (Plan / Implementierung / Komponente)
-2. Referenz-Plan laden aus `Docs/Plans/` (falls vorhanden)
-3. Regelprüfung via .claude/SYSTEM.md
+**Process:**
+1. Determine subject (Plan / Implementation / Component)
+2. Load reference plan from `.project/Docs/Plans/` (if available)
+3. Rule check via .claude/SYSTEM.md
 4. Rule Discovery
-5. Review-Dokument in `Docs/Review/` ablegen
+5. Save review document in `.project/Docs/Review/`
 
-**Review-Dokument Format:**
+**Review Document Format:**
 ```
-# Review: <Titel>
-## Review-Gegenstand
-## Prüfergebnis
-### Regelkonformität
-### Plan-Abweichungen
-### Kritik
-## Bewertung
-- [ ] Regelkonform
-- [ ] Plankonform (falls zutreffend)
-- [ ] Keine offenen Mängel
-## Neu entdeckte Regeln
-## Empfehlung
+# Review: <Title>
+## Review Subject
+## Findings
+### Rule Compliance
+### Plan Deviations
+### Critique
+## Assessment
+- [ ] Rule-compliant
+- [ ] Plan-compliant (if applicable)
+- [ ] No open defects
+## Newly Discovered Rules
+## Recommendation
 ```
 
-**Rework-Zyklus:** Konkrete Punkte → Plan überarbeiten → neues Review → bis zur Freigabe.
+**Rework cycle:** Specific points → revise plan → new review → until approved.
 
 ## Critics: Workflow
 
-**Abgrenzung von Review:**
-- Review: "Entspricht das den Regeln?" → `Docs/Review/`
-- Critics: "Ist der Ansatz fundamental falsch?" → `Docs/Critics/`
+**Distinction from Review:**
+- Review: "Does this comply with the rules?" → `.project/Docs/Review/`
+- Critics: "Is the approach fundamentally wrong?" → `.project/Docs/Critics/`
 
-**Schweregrade:**
-- `Critics_Minor_` — Plan-Ebene: Designentscheidung hinterfragbar, kein strukturelles Problem
-- `Critics_Normal_` — Review-Ebene: konkretes Problem in Implementierung/Review erkannt
-- `Critics_Major_` — Systemebene: fundamental falsch angelegt, Neuausrichtung nötig
+**Severity levels:**
+- `Critics_Minor_` — Plan level: design decision questionable, no structural problem
+- `Critics_Normal_` — Review level: concrete problem identified in implementation/review
+- `Critics_Major_` — System level: fundamentally flawed, realignment needed
 
-**Critic-Dokument Format:**
+**Critic Document Format:**
 ```
-# Critic: <Fragestellung>
-## Untersuchungsgegenstand
-## Ist-Zustand
-## Grundsätzliche Kritik
-## Auswirkungen
-## Lösungsrichtung
-## Neu entdeckte Regeln
+# Critic: <Question>
+## Subject of Investigation
+## Current State
+## Fundamental Critique
+## Impact
+## Solution Direction
+## Newly Discovered Rules
 ```
 
-Critic-Dokumente sind Langzeit-Referenzen. Ein Critic kann neuen Task oder Regeländerung auslösen — aber nur auf User-Entscheidung.
+Critic documents are long-term references. A critic can trigger a new task or rule change — but only by user decision.
 
 ## Document: Workflow
 
-Dokumentation aus drei Quellen:
+Documentation from three sources:
 1. .claude/ System (SSoT)
-2. Bestehende Docs/
+2. Existing `.project/Docs/`
 3. Source Code
 
-Ablageorte:
-- Funktionalitäts-Dokumentation → `Docs/Documentation/`
-- Technische Definitionen → `Docs/Documentation/`
-- Referenzdokumente → `Docs/References/`
+Storage locations:
+- Functionality documentation → `.project/Docs/Documentation/`
+- Technical definitions → `.project/Docs/Documentation/`
+- Reference documents → `.project/Docs/References/`
 
 ## Implement: Workflow
 
-**Voraussetzungen:**
-- Plan-Dokument existiert in `Docs/Plans/Plan_<Name>.md`
-- Plan durch Review freigegeben ODER User bestätigt explizit
+**Prerequisites:**
+- Plan document exists in `Docs/Plans/Plan_<Name>.md`
+- Plan approved by review OR user explicitly confirms
 
-**Ablauf:**
-1. Plan laden
-2. Bestätigung einholen — Plan kurz zusammenfassen + explizit fragen ob implementieren
-3. Regelprüfung
-4. Rule Discovery während Implementation
-5. Implementierung ausführen
-6. Plan-Status aktualisieren
+**Process:**
+1. Load plan
+2. Obtain confirmation — briefly summarize plan + explicitly ask whether to implement
+3. Rule check
+4. Rule Discovery during implementation
+5. Execute implementation
+6. Update plan status
 
-Abweichungen vom Plan während der Implementierung sofort dokumentieren und User mitteilen.
+Document deviations from plan during implementation immediately and notify user.
 
-**Nach Abschluss:** Archivierung (BP-005) — Task als erledigt markieren, Ergebnisse in `Docs/References/`, `Docs/Documentation/` und `.claude/knowledge/index.md` hinterlegen. Siehe `governance/task_archival.md`.
+**After completion:** Archival (BP-005) — mark task as done, store results in `.project/Docs/References/`, `.project/Docs/Documentation/` and `.claude/knowledge/index.md`. See `governance/task_archival.md`.
 
 ## Archive: Workflow (BP-005)
 
-**Trigger:** Explizites Stichwort **Archive:** oder automatisch nach Implement-Abschluss (Plan `IMPLEMENTED`/`CLOSED`).
+**Trigger:** Explicit keyword **Archive:** or automatically after Implement completion (Plan `IMPLEMENTED`/`CLOSED`).
 
-**Zweck:** Abgeschlossene Task-Ergebnisse in Referenz- und Feature-Dokumente überführen, Knowledge-Index aktualisieren, Task aus aktiver Liste nehmen.
+**Purpose:** Transfer completed task results to reference and feature documents, update knowledge index, remove task from active list.
 
-**Ablauf:**
-1. Abgeschlossene Task/Plan identifizieren
-2. Team Lead koordiniert Librarian + Documentation Agent (über Domain Handoff)
-3. Librarian: Ref-Dokumente in `Docs/References/`, Index `.claude/knowledge/index.md` aktualisieren
-4. Documentation Agent: Feature-/Technik-Docs in `Docs/Documentation/` anlegen/aktualisieren
-5. Task in Task-Übersicht als erledigt markieren
+**Process:**
+1. Identify completed task/plan
+2. Team Lead coordinates Librarian + Documentation Agent (via Domain Handoff)
+3. Librarian: Ref documents to `.project/Docs/References/`, update Index `.claude/knowledge/index.md`
+4. Documentation Agent: Create/update feature/tech docs in `.project/Docs/Documentation/`
+5. Mark task as done in task overview
 
-Vollständiges Protokoll: `governance/task_archival.md`.
+Full protocol: `governance/task_archival.md`.
 
 ## test ollama — Workflow
 
-Führt einen Hello-World-Funktionstest für das lokale Ollama-System durch.
+Performs a hello-world health check for the local Ollama system.
 
-**Auslöser:** User gibt `test ollama` ein — typischerweise am Anfang einer Arbeitssession oder nach Ollama-Neustart.
+**Trigger:** User enters `test ollama` — typically at start of work session or after Ollama restart.
 
-**Ablauf:**
-1. Ausführen: `python3 src/main.py --task "test ollama"`
-   (alternativ direkt: `python3 .claude/tools/test_ollama.py`)
-2. Script prüft: Erreichbarkeit → Modellverfügbarkeit → Inferenz → Python Output-Qualität
-3. Bei PASS: Agent bestätigt "Ollama operational — bereit für Tasks"
-4. Bei FAIL: Agent gibt FREEZE-Report aus (s. ollama_integration.md § Freeze Protocol)
+**Process:**
+1. Execute: `python3 src/main.py --task "test ollama"`
+   (alternatively direct: `python3 .claude/tools/test_ollama.py`)
+2. Script checks: Reachability → Model availability → Inference → Python output quality
+3. On PASS: Agent confirms "Ollama operational — ready for tasks"
+4. On FAIL: Agent outputs FREEZE report (see ollama_integration.md § Freeze Protocol)
 
-**Kein Dokument wird erzeugt.** Der Test ist ein reiner Statuscheck.
+**No document is created.** The test is a pure status check.
 
 ---
 
-## Dokument-Naming-Konvention
+## Document Naming Convention
 
 ```
-<Präfix>_<ThemaOderFeatureName>.md
+<Prefix>_<TopicPascalCase>.md
 ```
 
-| Dokumenttyp | Präfix | Ablageort |
+| Document Type | Prefix | Storage Location |
 |---|---|---|
-| Task-Beschreibung | `Task_` | `Docs/Plans/` |
-| Plan | `Plan_` | `Docs/Plans/` |
-| Review | `Review_` | `Docs/Review/` |
-| Kritik (Minor) | `Critics_Minor_` | `Docs/Critics/` |
-| Kritik (Normal) | `Critics_Normal_` | `Docs/Critics/` |
-| Kritik (Major) | `Critics_Major_` | `Docs/Critics/` |
-| Referenz | `Ref_` | `Docs/References/` |
+| Task description | `Task_` | `.project/Docs/Plans/` |
+| Plan | `Plan_` | `.project/Docs/Plans/` |
+| Review | `Review_` | `.project/Docs/Review/` |
+| Critique (Minor) | `Critics_Minor_` | `.project/Docs/Critics/` |
+| Critique (Normal) | `Critics_Normal_` | `.project/Docs/Critics/` |
+| Critique (Major) | `Critics_Major_` | `.project/Docs/Critics/` |
+| Reference | `Ref_` | `.project/Docs/References/` |
 
-**Dokumentkette:** Zusammengehörige Docs teilen denselben Thema-Teil:
+**Document chain:** Related docs share the same topic part:
 ```
 Task_OllamaClient.md
 Plan_OllamaClient.md
@@ -200,5 +200,5 @@ Review_OllamaClient.md
 Critics_Normal_OllamaClient.md
 ```
 
-Thema-Teil in PascalCase. Mehrere Reviews/Critics zum selben Thema: Suffix ergänzen (z.B. `_PostImpl`).
-Bestehende Dokumente ohne Konvention: bei nächster Bearbeitung umbenennen.
+Topic part in PascalCase. Multiple reviews/critics for same topic: add suffix (e.g., `_PostImpl`).
+Existing documents without convention: rename on next edit.

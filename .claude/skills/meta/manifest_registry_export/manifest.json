@@ -1,0 +1,34 @@
+{
+  "name": "manifest_registry_export",
+  "version": "0.1.0",
+  "category": "meta",
+  "description": "Export the current manifest registry into registry/skill_index.json.",
+  "entrypoint": "skills.meta.manifest_registry_export.skill:ManifestRegistryExportSkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [
+    "export_registry",
+    "build_skill_index"
+  ],
+  "tags": [
+    "registry",
+    "manifest",
+    "index"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "output_path": {
+      "type": "string"
+    }
+  },
+  "outputs": {
+    "output_path": {
+      "type": "string"
+    },
+    "skill_count": {
+      "type": "integer"
+    }
+  }
+}

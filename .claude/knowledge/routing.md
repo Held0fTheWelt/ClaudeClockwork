@@ -1,71 +1,71 @@
 # Agent Routing Intelligence
 
-> Wächst über Zeit durch Erfahrungen aller Agents. Wird von Team Lead für Agent- und Modell-Auswahl genutzt.
-> Einträge werden nach abgeschlossenen Tasks ergänzt.
+> Grows over time through experiences of all agents. Used by Team Lead for agent and model selection.
+> Entries are added after completed tasks.
 
 ---
 
-## Kompositions-Prinzip
+## Composition Principle
 
-Agent-Rollen sind Orientierung. Team Lead wählt pro Task das kleinste präziseste Team:
-- L0: 1 Specialist (haiku) — kein QA nötig
-- L1: 1 Specialist (sonnet) + Collector wenn Risiko vorhanden
-- L2+: Specialist + Validation + ggf. Critic
-- Kein Agent wird aus Vollständigkeit hinzugezogen — nur bei echtem Nutzen
+Agent roles are guidance. Team Lead selects the smallest, most precise team per task:
+- L0: 1 Specialist (haiku) — no QA needed
+- L1: 1 Specialist (sonnet) + Collector if risk present
+- L2+: Specialist + Validation + possibly Critic
+- No agent is added for completeness — only with real benefit
 
 ---
 
-## Task → Agent + Modell Mapping
+## Task → Agent + Model Mapping
 
-| Task-Typ | Agent | Modell | Ollama-Type | Vorbedingungen |
+| Task Type | Agent | Model | Ollama Type | Prerequisites |
 |---|---|---|---|---|
-| Neue Python-Funktion/-Klasse (vollständig) | Implementation Agent | sonnet | `draft` | Ollama draft als Basis |
-| Single-file Bugfix (Python) | Implementation Agent | haiku | `quick` oder keins (L0) | — |
-| Ollama-Client-Änderung | Implementation Agent | sonnet | `draft` | architecture.md injizieren |
-| Neues Top-Level-Modul in `src/` | Architecture Agent | sonnet | `architecture` | Architecture Review L2 |
-| Technische Dokumentation | Documentation Agent | haiku | `brief` | Quellcode vorher gelesen |
-| Wissen indexieren / archivieren | Librarian Agent | haiku | — | Abgeschlossene Implementation als Input |
-| Korrektheit gegen Akzeptanzkriterien | Collector Agent | haiku | — | Task Brief mit Kriterien vorhanden |
-| Syntax / Import / Laufzeit Validation | Validation Agent | sonnet | `review` | Code fertig |
-| Pattern-Extraktion | Pattern Recognition Agent | sonnet | — | Mind. 2 ähnliche Implementierungen |
-| Architektur-Entscheid | Architecture Agent | sonnet | `architecture` | L2 Eskalation |
-| L3 Performance / subprocess-Pooling | Technical Critic | sonnet | `architecture` | Validation Report vorhanden |
-| Governance-Docs schreiben/updaten | Implementation Agent | sonnet | — | Klarer Content-Plan vorhanden |
-| Status-Checks (test ollama) | — | haiku | — | Nur Script-Ausführung nötig |
-| Effizienz-Analyse / Routing-Beratung | Skill Agent | sonnet | `architecture` (phi4:14b) oder `brief` (qwen2.5-coder:14b) | Letzte Tasks als Observationsbasis |
+| New Python function/class (complete) | Implementation Agent | sonnet | `draft` | Ollama draft as basis |
+| Single-file bugfix (Python) | Implementation Agent | haiku | `quick` or none (L0) | — |
+| Ollama client change | Implementation Agent | sonnet | `draft` | Inject architecture.md |
+| New top-level module in `src/` | Architecture Agent | sonnet | `architecture` | Architecture Review L2 |
+| Technical documentation | Documentation Agent | haiku | `brief` | Source code read first |
+| Index/archive knowledge | Librarian Agent | haiku | — | Completed implementation as input |
+| Correctness against acceptance criteria | Collector Agent | haiku | — | Task Brief with criteria present |
+| Syntax / import / runtime validation | Validation Agent | sonnet | `review` | Code complete |
+| Pattern extraction | Pattern Recognition Agent | sonnet | — | Min. 2 similar implementations |
+| Architecture decision | Architecture Agent | sonnet | `architecture` | L2 escalation |
+| L3 performance / subprocess pooling | Technical Critic | sonnet | `architecture` | Validation report present |
+| Write/update governance docs | Implementation Agent | sonnet | — | Clear content plan present |
+| Status checks (test ollama) | — | haiku | — | Only script execution needed |
+| Efficiency analysis / routing advice | Skill Agent | sonnet | `architecture` (phi4:14b) or `brief` (qwen2.5-coder:14b) | Recent tasks as observation basis |
 
 ---
 
-## Bekannte Routing-Anti-Patterns
+## Known Routing Anti-Patterns
 
-- **Implementation Agent für Architektur-Entscheide** → falsch: Architecture Agent
-- **haiku für neue Python-Klasse** → zu schwach für komplexe Implementation: sonnet + Ollama draft
-- **Specialist ohne Ollama-Briefing bei L1+** → verboten per execution_protocol.md
-- **Documentation Agent ohne Quellcode-Basis** → Docs werden ungenau
+- **Implementation Agent for architecture decisions** → wrong: Architecture Agent
+- **Haiku for new Python class** → too weak for complex implementation: sonnet + Ollama draft
+- **Specialist without Ollama briefing for L1+** → forbidden per execution_protocol.md
+- **Documentation Agent without source code basis** → docs become inaccurate
 
 ---
 
-## Domain-Kontext Injection Tabelle
+## Domain Context Injection Table
 
-| Domain-Erkennungsmerkmal | Kontext-Datei | Agent |
+| Domain Detection Feature | Context File | Agent |
 |---|---|---|
 | `OllamaClient`, `ollama_client`, Ollama HTTP | `<PROJECT_ROOT>/src/ollama_client.py` | Implementation Agent |
 | `ClaudeClient`, `claude_client`, subprocess spawn | `<PROJECT_ROOT>/src/claude_client.py` | Implementation Agent |
-| `Orchestrator`, `workflow`, Trigger-Erkennung | `<PROJECT_ROOT>/src/orchestrator.py` | Implementation Agent |
+| `Orchestrator`, `workflow`, trigger recognition | `<PROJECT_ROOT>/src/orchestrator.py` | Implementation Agent |
 | `config.DOCS_PATH`, `config.CLAUDE_PATH` | `<PROJECT_ROOT>/src/config.py` | Implementation Agent |
 | `BaseAgent`, `AgentResult`, `<PROJECT_ROOT>/src/agents/` | `<PROJECT_ROOT>/src/agents/base.py` | Implementation Agent |
-| Modul-Boundary, Dependency-Richtung | `.claude/python/architecture.md` | Architecture Agent |
-| Python-Patterns (Freeze, Spawn, Output) | `.claude/python/patterns.md` | Implementation Agent |
+| Module boundary, dependency direction | `.claude/python/architecture.md` | Architecture Agent |
+| Python patterns (Freeze, Spawn, Output) | `.claude/python/patterns.md` | Implementation Agent |
 
 ---
 
-## Routing-Kalibrierung (wächst über Zeit)
+## Routing Calibration (Grows Over Time)
 
-| Datum | Task-Typ | Gewählter Agent+Modell | Ergebnis | Notiz |
+| Date | Task Type | Chosen Agent+Model | Result | Note |
 |---|---|---|---|---|
-| 2026-02-26 | Governance-Docs erstellen (Learning System) | Implementation Agent + sonnet | Gut | Content vollständig vorgeplant → Agent nur ausführend |
-| 2026-02-26 | Status-Check (test ollama) | — haiku | Gut | Einfache Script-Ausführung, kein Reasoning nötig |
-| 2026-02-27 | Python Orchestrator Migration (vollständig) | Claude Code direkt | Gut | Komplexe Multifile-Migration, kein Subagent-Overhead nötig |
+| 2026-02-26 | Create governance docs (Learning System) | Implementation Agent + sonnet | Good | Content fully pre-planned → Agent only executing |
+| 2026-02-26 | Status check (test ollama) | — haiku | Good | Simple script execution, no reasoning needed |
+| 2026-02-27 | Python Orchestrator migration (complete) | Claude Code direct | Good | Complex multifile migration, no subagent overhead needed |
 
 
 ## operations.observability

@@ -1,0 +1,25 @@
+{
+  "name": "repo_validate",
+  "version": "0.1.0",
+  "category": "qa",
+  "description": "Validate repository consistency and pointer integrity.",
+  "entrypoint": "skills.qa.repo_validate.skill:RepoValidateSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [
+    "validate_repo"
+  ],
+  "tags": [
+    "qa",
+    "validation",
+    "repo"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "repo_validate"
+  }
+}

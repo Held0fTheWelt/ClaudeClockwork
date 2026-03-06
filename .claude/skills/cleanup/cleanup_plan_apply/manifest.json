@@ -1,0 +1,27 @@
+{
+  "name": "cleanup_plan_apply",
+  "version": "0.1.0",
+  "category": "cleanup",
+  "description": "Build and apply a cleanup plan using the legacy implementation.",
+  "entrypoint": "skills.cleanup.cleanup_plan_apply.skill:CleanupPlanApplySkill",
+  "permissions": [
+    "repo:read",
+    "repo:write",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "plan_and_apply_cleanup"
+  ],
+  "tags": [
+    "cleanup",
+    "plan",
+    "apply"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "cleanup_plan_apply"
+  }
+}

@@ -1,64 +1,64 @@
-# Task-Archivierung (BP-005)
+# Task Archival (BP-005)
 
-> Implementierte Tasks verschwinden aus der aktiven Liste; Ergebnisse landen in Referenzen, Feature-Docs und Knowledge-Index.
-> Gilt für Claude Code und alle Agent-Spawns nach Abschluss eines Plans.
-
----
-
-## Zweck
-
-- **Übersicht:** Aktive Task-Liste bleibt klein und aktuell.
-- **Auffindbarkeit:** Ergebnisse werden in Referenz- und Feature-Dokumenten sowie im Knowledge-Index verankert.
-- **Netzwerk:** Alle Agents können zukünftig auf die relevanten Informationen zugreifen.
+> Implemented tasks disappear from the active list; results go to references, feature docs, and knowledge index.
+> Applies to Claude Code and all agent spawns after completing a plan.
 
 ---
 
-## Wann greift BP-005?
+## Purpose
 
-- Plan-Status wurde auf `IMPLEMENTED` oder `CLOSED` gesetzt.
-- Die zugehörige Task-Beschreibung (falls in `Docs/Tasks/` oder `Docs/Plans/` als Task_* geführt) gilt als abgeschlossen.
-
----
-
-## Ablauf (Archivierungs-Phase)
-
-1. **Erledigt markieren**
-   - In der aktuellen Task-Übersicht (z. B. `<PROJECT_ROOT>/Docs/TASKS.md`, Task-Index in `.claude/knowledge/index.md` oder zentrale Task-Liste) den Task als erledigt kennzeichnen.
-   - Plan-Dokument: Status auf `IMPLEMENTED` oder `CLOSED` setzen (siehe Execution Protocol Schritt 8).
-
-2. **Archivierungs-Workflow anstoßen**
-   - Team Lead koordiniert die Archivierung.
-   - Beteiligte Agents (ohne direkte Agent-zu-Agent-Imports):
-     - **Librarian Agent:** Ergebnisse in passende Referenzdokumente überführen (`Docs/References/`, Namensschema `Ref_<Thema>.md`), Cross-References pflegen, `.claude/knowledge/index.md` aktualisieren.
-     - **Documentation Agent:** Feature- bzw. Funktionsbeschreibungen in `Docs/Documentation/` anlegen/aktualisieren, mit klaren Verknüpfungen zu Code und Referenzen.
-
-3. **Ablageorte**
-   - **Referenzwissen:** `Docs/References/Ref_<Thema>.md` — Architektur- und System-Referenzen.
-   - **Feature-/Technik-Docs:** `Docs/Documentation/` — Beschreibung der umgesetzten Features und technischen Details.
-   - **Knowledge-Index:** `.claude/knowledge/index.md` — neue oder geänderte Dateien eintragen, Themen-Tags und Vollständige Datei-Karte pflegen.
-
-4. **Neue Dokumenttypen**
-   - Sollen zusätzliche Dokumentklassen (z. B. neuer Ordner, neues Präfix) eingeführt werden, ist dies mit dem **Product Owner** (User) zu vereinbaren. Erst nach Freigabe anlegen und in Governance (z. B. `workflow_triggers.md`, `file_ownership.md`) dokumentieren.
+- **Overview:** Active task list stays small and current.
+- **Discoverability:** Results are anchored in reference and feature documents as well as the knowledge index.
+- **Network:** All agents can access the relevant information in the future.
 
 ---
 
-## Integration in den Execution Flow
+## When Does BP-005 Apply?
 
-- Die Phase **archive** in `execution_protocol.md` umfasst:
-  - Eintrag in `.claude/knowledge/decisions.md` (bereits definiert),
-  - **plus** die hier beschriebene Archivierung (Ergebnisse → Ref + Documentation + Index).
-- Optional kann ein expliziter Trigger **Archive:** in `workflow_triggers.md` genutzt werden, um eine reine Archivierungs-Task auszulösen (z. B. nachträglich für ältere abgeschlossene Tasks).
+- Plan status was set to `IMPLEMENTED` or `CLOSED`.
+- The associated task description (if maintained as Task_* in `Docs/Tasks/` or `Docs/Plans/`) is considered complete.
 
 ---
 
-## Verantwortlichkeiten (File Ownership)
+## Process (Archival Phase)
 
-| Aktion | Owner |
+1. **Mark as Done**
+   - In the current task overview (e.g., `<PROJECT_ROOT>/Docs/TASKS.md`, task index in `.claude/knowledge/index.md`, or central task list), mark the task as done.
+   - Plan document: Set status to `IMPLEMENTED` or `CLOSED` (see Execution Protocol Step 8).
+
+2. **Trigger Archival Workflow**
+   - Team Lead coordinates the archival.
+   - Involved agents (without direct agent-to-agent imports):
+     - **Librarian Agent:** Transfer results to appropriate reference documents (`Docs/References/`, naming scheme `Ref_<Topic>.md`), maintain cross-references, update `.claude/knowledge/index.md`.
+     - **Documentation Agent:** Create/update feature or function descriptions in `Docs/Documentation/`, with clear links to code and references.
+
+3. **Storage Locations**
+   - **Reference Knowledge:** `Docs/References/Ref_<Topic>.md` — Architecture and system references.
+   - **Feature/Tech Docs:** `Docs/Documentation/` — Description of implemented features and technical details.
+   - **Knowledge Index:** `.claude/knowledge/index.md` — Enter new or changed files, maintain topic tags and complete file map.
+
+4. **New Document Types**
+   - If additional document classes are to be introduced (e.g., new folder, new prefix), this must be agreed with the **Product Owner** (User). Only create and document in governance (e.g., `workflow_triggers.md`, `file_ownership.md`) after approval.
+
+---
+
+## Integration in Execution Flow
+
+- The **archive** phase in `execution_protocol.md` includes:
+  - Entry in `.claude/knowledge/decisions.md` (already defined),
+  - **plus** the archival described here (results → Ref + Documentation + Index).
+- Optionally, an explicit trigger **Archive:** in `workflow_triggers.md` can be used to trigger a pure archival task (e.g., retroactively for older completed tasks).
+
+---
+
+## Responsibilities (File Ownership)
+
+| Action | Owner |
 |--------|--------|
-| Task-Liste / Plan-Status aktualisieren | Team Lead |
-| `Docs/References/` anlegen/ändern | Librarian Agent |
-| `Docs/Documentation/` anlegen/ändern | Documentation Agent |
-| `.claude/knowledge/index.md` aktualisieren | Librarian Agent |
-| `.claude/knowledge/decisions.md` Eintrag | Team Lead |
+| Update task list / plan status | Team Lead |
+| Create/modify `Docs/References/` | Librarian Agent |
+| Create/modify `Docs/Documentation/` | Documentation Agent |
+| Update `.claude/knowledge/index.md` | Librarian Agent |
+| Entry in `.claude/knowledge/decisions.md` | Team Lead |
 
-Domain Handoff über Team Lead, wenn ein Agent Schreibrechte in einer anderen Domain benötigt (siehe `file_ownership.md`).
+Domain Handoff via Team Lead when an agent needs write rights in another domain (see `file_ownership.md`).

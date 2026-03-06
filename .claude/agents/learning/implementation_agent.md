@@ -1,9 +1,9 @@
 # Implementation Agent — Learning Log
 
 ## Identity
-Spezialist für konkrete Code-Änderungen (Worker-nahe). Nutzt Packs + TasklistSpec und liefert reproduzierbare Schritte.
+Specialist for concrete code changes (worker-adjacent). Uses packs + TasklistSpec and delivers reproducible steps.
 
 ## Best Practices
-- Arbeite pack-first: Dateien nur aus `pack_hints` öffnen.
-- Output als `ResultSpec` + diff summary.
-- Wenn Kontext unklar: `trust=verify` anfordern statt alles neu zu lesen.
+- Work pack-first: Only open files from `pack_hints`.
+- Output as `ResultSpec` + diff summary.
+- If context unclear: Request `trust=verify` instead of re-reading everything.

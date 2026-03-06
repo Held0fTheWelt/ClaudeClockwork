@@ -1,153 +1,153 @@
 # Model & Agent Escalation Policy
 
-**Ziel:** Token-/Kostenreduktion bei gleichbleibender Qualität durch *small-first* Routing, kontrollierte Eskalation und eine feste 3-Ebenen-Agenthierarchie.
+**Goal:** Token/cost reduction with consistent quality through *small-first* routing, controlled escalation, and a fixed 3-level agent hierarchy.
 
-Diese Policy ist die kanonische Referenz für:
+This policy is the canonical reference for:
 
-- **Stellschraube #1:** höheres/anderes **lokales Oodle-Modell**
-- **Stellschraube #2:** höheres **Claude-Modell**
+- **Control #1:** Higher/different **local Oodle model**
+- **Control #2:** Higher **Claude model**
 
 ---
 
-## 1) Agent Hierarchie (3 Ebenen)
+## 1) Agent Hierarchy (3 Levels)
 
 ### Orchestrator (Control Plane)
 - Intake → Routing → Budget → Dispatch → Merge → Gates → Archive
-- macht **keine** tiefe Implementierung
+- Does **no** deep implementation
 
 ### SpecialAgents (Departments)
-- liefern Capabilities, bauen Packs, normalisieren Ergebnisse
-- arbeiten mit **kleinem Kontext**
+- Deliver capabilities, build packs, normalize results
+- Work with **small context**
 
 ### Worker (Execution Plane)
-- schreiben Code/Reports, triagieren Tests, fixen Bugs
-- bekommen **Pack + TasklistSpec** (nicht die gesamte Ursprungskonversation)
+- Write code/reports, triage tests, fix bugs
+- Receive **Pack + TasklistSpec** (not the entire original conversation)
 
 ---
 
-## 2) Trust Modes (Context-Kosten kontrollieren)
+## 2) Trust Modes (Control Context Costs)
 
-Jeder Handoff trägt einen Trust Mode:
+Every handoff carries a trust mode:
 
-- `inherit`: Worker vertraut **TasklistSpec + Pack** (kein Full-Read)
-- `verify`: Worker bekommt zusätzlich **Goal/Constraints Extract** (10–20 Zeilen)
-- `rebuild`: Worker ignoriert TasklistSpec und baut Plan neu (teuer)
+- `inherit`: Worker trusts **TasklistSpec + Pack** (no full read)
+- `verify`: Worker additionally receives **Goal/Constraints Extract** (10–20 lines)
+- `rebuild`: Worker ignores TasklistSpec and builds plan anew (expensive)
 
 **Default:** `inherit`.
-`rebuild` nur bei `risk=high` oder `confidence < 0.5`.
+`rebuild` only for `risk=high` or `confidence < 0.5`.
 
 ---
 
-## 3) Contracts (Sinnhaftigkeit)
+## 3) Contracts (Utility)
 
-Contracts wirken nur dann „komisch“, wenn man sie als Overhead sieht. In Agent-Teams sind sie der **Context-Sparer**:
+Contracts only seem "weird" if you view them as overhead. In agent teams, they are the **context saver**:
 
-- **Deterministisch**: Merger/Gates können maschinell entscheiden
-- **Routing-fähig**: Personaler kann auf Feldern (risk/confidence/errors) routen
-- **Lernfähig**: Quality Tracking pro Modell/Agent/Task wird stabil
+- **Deterministic**: Merger/Gates can decide mechanically
+- **Routable**: Personaler can route on fields (risk/confidence/errors)
+- **Learnable**: Quality tracking per model/agent/task becomes stable
 
-Freitext ist erlaubt in `notes`/`rationale`, aber nicht als Ersatz für Kernfelder.
+Free text is allowed in `notes`/`rationale`, but not as a substitute for core fields.
 
 ---
 
-## 4) Eskalationsleiter (Oodle → Claude)
+## 4) Escalation Ladder (Oodle → Claude)
 
-### 4.1 Oodle Modell-Tiers (lokal)
+### 4.1 Oodle Model Tiers (Local)
 
-- **Tier S (small):** 7b–14b (Routing, Packing, Admin, schnelle Reviews)
-- **Tier M (medium):** 32b–33b (Implementation, konkrete Fixes)
+- **Tier S (small):** 7b–14b (Routing, Packing, Admin, quick reviews)
+- **Tier M (medium):** 32b–33b (Implementation, concrete fixes)
 - **Tier L (large):** 70b–72b (hard reasoning, multi-module triage)
 
-### 4.2 Claude Tiers (cloud)
+### 4.2 Claude Tiers (Cloud)
 
-- **Claude S:** Haiku (administrativ, dispatch, leichte Reviews)
-- **Claude M:** Sonnet (Plan/Review/Debug mittel)
-- **Claude L:** höchstes verfügbares Reasoning (nur Gate-getrieben)
+- **Claude S:** Haiku (administrative, dispatch, light reviews)
+- **Claude M:** Sonnet (Plan/Review/Debug medium)
+- **Claude L:** Highest available reasoning (gate-driven only)
 
-### 4.3 Regel: Erst Oodle, dann Claude
+### 4.3 Rule: Oodle First, Then Claude
 
-Wenn ein Ergebnis unzureichend ist, eskaliere in dieser Reihenfolge:
+When a result is insufficient, escalate in this order:
 
-1) **Oodle**: S → M → L (oder Modellfamilie wechseln, z. B. qwen → llama)
+1) **Oodle**: S → M → L (or switch model family, e.g., qwen → llama)
 2) **Claude**: Haiku → Sonnet → Higher
 
 ---
 
-## 5) Kritiker-Feedback Loop für den Personaler
+## 5) Critic Feedback Loop for the Personaler
 
-Der Personaler soll **zwischen** Durchläufen Signal bekommen, ob sein Routing gut war.
-Das passiert über den **Report Worker**, der eine Fehler-/Qualitätsdichte auswertet.
+The Personaler should get signal **between** runs on whether their routing was good.
+This happens via the **Report Worker**, which evaluates error/quality density.
 
-### 5.1 Report Worker liefert `QualitySignal`
+### 5.1 Report Worker Delivers `QualitySignal`
 
-- `error_count` (harte Fehler)
+- `error_count` (hard errors)
 - `warning_count`
-- `recurrence` (selbe Fehler wiederholt?)
-- `confidence_drop` (z. B. Reviewer unsicher)
+- `recurrence` (same errors repeated?)
+- `confidence_drop` (e.g., reviewer uncertain)
 - `recommend_escalation` (none|oodle|claude)
 
-### 5.2 Schwellen (Default)
+### 5.2 Thresholds (Default)
 
-- **Escalate Oodle** wenn:
-  - `error_count >= 3` **oder**
-  - `recurrence >= 2` **oder**
-  - `confidence_drop` stark
+- **Escalate Oodle** when:
+  - `error_count >= 3` **or**
+  - `recurrence >= 2` **or**
+  - `confidence_drop` strong
 
-- **Escalate Claude** wenn:
-  - Oodle Tier L bereits genutzt und weiterhin `error_count >= 2`
-  - oder `risk=high` Gate triggert
+- **Escalate Claude** when:
+  - Oodle Tier L already used and still `error_count >= 2`
+  - or `risk=high` gate triggers
 
-### 5.3 Kritiker als Korrektiv
+### 5.3 Critic as Corrective
 
-Wenn Report Worker `recommend_escalation != none` liefert, muss der Personaler:
+When Report Worker delivers `recommend_escalation != none`, the Personaler must:
 
-1) Kritiker-Report (technical/systemic) anfordern **oder** vorhandenen einlesen
-2) Routing-Entscheidung anpassen
-3) die Änderung im Routing-Dict begründen (`rationale`)
+1) Request critic report (technical/systemic) **or** read existing one
+2) Adjust routing decision
+3) Justify the change in routing dict (`rationale`)
 
 ---
 
-## 6) TestOps Sonderregel (kostenlos → mehr Durchläufe ok)
+## 6) TestOps Special Rule (Free → More Runs OK)
 
-Tests werden deterministisch ausgeführt. LLMs triagieren nur Logs und erstellen Fix-Pläne.
+Tests are executed deterministically. LLMs only triage logs and create fix plans.
 
-- Light → Medium → Heavy eskalieren (lokal)
-- erst bei wiederholtem Scheitern Claude eskalieren
+- Escalate Light → Medium → Heavy (locally)
+- Only escalate to Claude on repeated failure
 
 ---
 
 ## 7) Claude Tier Policy (Full Bandwidth, Cost-Aware)
 
-**Grundsatz:** *Small-first*, dann über unabhängige Verifikation absichern. Eskalation erfolgt **zuerst über Oodle**, erst danach über Claude.
+**Principle:** *Small-first*, then secure via independent verification. Escalation happens **first via Oodle**, only then via Claude.
 
 ### Claude Tiers (Cloud)
 
 - **C0 — Low-Level / Cheap:** Claude **4** / **4.1**
-  - Admin/Dispatch, Checklisten, “stumpfe” Tasklist-Abarbeitung, einfache Format-/Refactor-Routinen (wenn über Packs geführt).
+  - Admin/Dispatch, checklists, "dumb" tasklist execution, simple format/refactor routines (when guided via packs).
 - **C1 — Fast:** Claude **4.5 Haiku**
-  - Task Compaction, schnelle Reviews, kurze Rückfragen, “was ist kaputt?”-Triaging.
+  - Task compaction, quick reviews, short queries, "what's broken?" triaging.
 - **C2 — Precise:** Claude **4.5 Sonnet**
-  - Präzise Implementierung/Reviews, diff-basierte Korrekturen, schwierige Bugfixes.
-- **C3 — Critical Gate (sparsam):** Claude **4.6 Sonnet**
-  - Nur für *entscheidende* Stellen: High-Risk Fix, finale Architektur-Entscheidung, “last resort” Debug.
+  - Precise implementation/reviews, diff-based corrections, difficult bugfixes.
+- **C3 — Critical Gate (sparse):** Claude **4.6 Sonnet**
+  - Only for *decisive* points: high-risk fix, final architecture decision, "last resort" debug.
 - **C4 — Disabled by default:** **Opus 4.6**
-  - Zu teuer → nur manuell, außerhalb normaler Automationen.
+  - Too expensive → manual only, outside normal automations.
 
-### Eskalationsregel (Claude)
+### Escalation Rule (Claude)
 
-1. **C0 → C1** wenn Output unklar/inkonsistent, aber Risiko niedrig ist.
-2. **C1 → C2** wenn präzise Engineering-Arbeit nötig ist (Code-/Designqualität).
-3. **C2 → C3** nur wenn: wiederholtes Scheitern, High-Risk, Security/Determinismus/Governance Gate.
-4. **C4** nur manuell.
+1. **C0 → C1** when output unclear/inconsistent, but risk is low.
+2. **C1 → C2** when precise engineering work is needed (code/design quality).
+3. **C2 → C3** only when: repeated failure, high-risk, security/determinism/governance gate.
+4. **C4** manual only.
 
 ---
 
 ## 8) Pattern: Cheap Doer + Independent Verifier
 
-Wenn ein günstiger Agent (C0/C1 oder O0/O1) nur “ausführt”, **muss** ein unabhängiger Verifier prüfen:
+When a cheap agent (C0/C1 or O0/O1) only "executes", an independent verifier **must** check:
 
-- **Doer:** führt TasklistSpec aus, erstellt Diff/Artefakte
-- **Verifier:** prüft Diff/Tests/Logs (O2/O3 oder C2)
-- **Governor:** entscheidet Accept/Retry/Escalate (Critic / Governance Gate)
+- **Doer:** Executes TasklistSpec, creates diff/artifacts
+- **Verifier:** Checks diff/tests/logs (O2/O3 or C2)
+- **Governor:** Decides Accept/Retry/Escalate (Critic / Governance Gate)
 
-Dieses Pattern spart Kontext, weil der Doer nicht “denkt”, sondern arbeitet — und Qualität trotzdem gesichert wird.
+This pattern saves context because the doer doesn't "think", but works — and quality is still ensured.

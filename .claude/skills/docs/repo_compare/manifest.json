@@ -1,0 +1,26 @@
+{
+  "name": "repo_compare",
+  "version": "0.1.0",
+  "category": "docs",
+  "description": "Compare repositories or snapshots and summarize changes.",
+  "entrypoint": "skills.docs.repo_compare.skill:RepoCompareSkill",
+  "permissions": [
+    "repo:read",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "compare_repos"
+  ],
+  "tags": [
+    "compare",
+    "diff",
+    "audit"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "repo_compare"
+  }
+}

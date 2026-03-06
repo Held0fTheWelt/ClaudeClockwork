@@ -1,0 +1,23 @@
+{
+  "name": "plugin_scaffold",
+  "version": "0.1.0",
+  "category": "plugins",
+  "description": "Scaffold a plugin package with plugin.json and a starter README for ClaudeClockwork.",
+  "entrypoint": "skills.plugins.plugin_scaffold.skill:PluginScaffoldSkill",
+  "permissions": [
+    "registry:write"
+  ],
+  "aliases": [
+    "scaffold_plugin",
+    "create_plugin"
+  ],
+  "tags": [
+    "plugin",
+    "scaffold",
+    "extension"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {}
+}

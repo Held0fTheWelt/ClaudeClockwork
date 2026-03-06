@@ -1,0 +1,276 @@
+{
+  "skills": [
+    {
+      "name": "evidence_bundle_build",
+      "category": "bundle",
+      "version": "0.1.0",
+      "source": ".claude/skills/bundle/evidence_bundle_build/manifest.json",
+      "legacy_bridge": "evidence_bundle_build",
+      "status": "enabled"
+    },
+    {
+      "name": "evidence_init",
+      "category": "bundle",
+      "version": "0.1.0",
+      "source": ".claude/skills/bundle/evidence_init/manifest.json",
+      "legacy_bridge": "evidence_init",
+      "status": "enabled"
+    },
+    {
+      "name": "evidence_router",
+      "category": "bundle",
+      "version": "0.1.0",
+      "source": ".claude/skills/bundle/evidence_router/manifest.json",
+      "legacy_bridge": "evidence_router",
+      "status": "enabled"
+    },
+    {
+      "name": "cleanup_apply",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "source": ".claude/skills/cleanup/cleanup_apply/manifest.json",
+      "legacy_bridge": "cleanup_apply",
+      "status": "enabled"
+    },
+    {
+      "name": "cleanup_plan_apply",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "source": ".claude/skills/cleanup/cleanup_plan_apply/manifest.json",
+      "legacy_bridge": "cleanup_plan_apply",
+      "status": "enabled"
+    },
+    {
+      "name": "code_clean",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "source": ".claude/skills/cleanup/code_clean/manifest.json",
+      "legacy_bridge": "code_clean",
+      "status": "enabled"
+    },
+    {
+      "name": "code_clean_scan",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "source": ".claude/skills/cleanup/code_clean_scan/manifest.json",
+      "legacy_bridge": "code_clean_scan",
+      "status": "enabled"
+    },
+    {
+      "name": "repo_clean",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "source": ".claude/skills/cleanup/repo_clean/manifest.json",
+      "legacy_bridge": "repo_clean",
+      "status": "enabled"
+    },
+    {
+      "name": "repo_clean_scan",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "source": ".claude/skills/cleanup/repo_clean_scan/manifest.json",
+      "legacy_bridge": "repo_clean_scan",
+      "status": "enabled"
+    },
+    {
+      "name": "pdf_quality",
+      "category": "docs",
+      "version": "0.1.0",
+      "source": ".claude/skills/docs/pdf_quality/manifest.json",
+      "legacy_bridge": "pdf_quality",
+      "status": "enabled"
+    },
+    {
+      "name": "pdf_render",
+      "category": "docs",
+      "version": "0.1.0",
+      "source": ".claude/skills/docs/pdf_render/manifest.json",
+      "legacy_bridge": "pdf_render",
+      "status": "enabled"
+    },
+    {
+      "name": "repo_compare",
+      "category": "docs",
+      "version": "0.1.0",
+      "source": ".claude/skills/docs/repo_compare/manifest.json",
+      "legacy_bridge": "repo_compare",
+      "status": "enabled"
+    },
+    {
+      "name": "capability_map_build",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/capability_map_build/manifest.json",
+      "legacy_bridge": "capability_map_build",
+      "status": "enabled"
+    },
+    {
+      "name": "legacy_skill_inventory",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/legacy_skill_inventory/manifest.json",
+      "legacy_bridge": null,
+      "status": "enabled"
+    },
+    {
+      "name": "manifest_registry_export",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/manifest_registry_export/manifest.json",
+      "legacy_bridge": null,
+      "status": "enabled"
+    },
+    {
+      "name": "manifest_validate",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/manifest_validate/manifest.json",
+      "legacy_bridge": null,
+      "status": "enabled"
+    },
+    {
+      "name": "refactor_bridge_scan",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/refactor_bridge_scan/manifest.json",
+      "legacy_bridge": "refactor_bridge_scan",
+      "status": "enabled"
+    },
+    {
+      "name": "reference_skill_catalog",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/reference_skill_catalog/manifest.json",
+      "legacy_bridge": null,
+      "status": "enabled"
+    },
+    {
+      "name": "skill_gap_detect",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/skill_gap_detect/manifest.json",
+      "legacy_bridge": "skill_gap_detect",
+      "status": "enabled"
+    },
+    {
+      "name": "skill_registry_search",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/skill_registry_search/manifest.json",
+      "legacy_bridge": "skill_registry_search",
+      "status": "enabled"
+    },
+    {
+      "name": "skill_scaffold",
+      "category": "meta",
+      "version": "0.1.0",
+      "source": ".claude/skills/meta/skill_scaffold/manifest.json",
+      "legacy_bridge": "skill_scaffold",
+      "status": "enabled"
+    },
+    {
+      "name": "eval_run",
+      "category": "ops",
+      "version": "0.1.0",
+      "source": ".claude/skills/ops/eval_run/manifest.json",
+      "legacy_bridge": "eval_run",
+      "status": "enabled"
+    },
+    {
+      "name": "release_cut",
+      "category": "ops",
+      "version": "0.1.0",
+      "source": ".claude/skills/ops/release_cut/manifest.json",
+      "legacy_bridge": "release_cut",
+      "status": "enabled"
+    },
+    {
+      "name": "parity_scan_and_mvp_planner",
+      "category": "planning",
+      "version": "0.1.0",
+      "source": ".claude/skills/planning/parity_scan_and_mvp_planner/manifest.json",
+      "legacy_bridge": "parity_scan_and_mvp_planner",
+      "status": "enabled"
+    },
+    {
+      "name": "plugin_registry_export",
+      "category": "plugins",
+      "version": "0.1.0",
+      "source": ".claude/skills/plugins/plugin_registry_export/manifest.json",
+      "legacy_bridge": null,
+      "status": "enabled"
+    },
+    {
+      "name": "plugin_scaffold",
+      "category": "plugins",
+      "version": "0.1.0",
+      "source": ".claude/skills/plugins/plugin_scaffold/manifest.json",
+      "legacy_bridge": null,
+      "status": "enabled"
+    },
+    {
+      "name": "contract_drift_sentinel",
+      "category": "qa",
+      "version": "0.1.0",
+      "source": ".claude/skills/qa/contract_drift_sentinel/manifest.json",
+      "legacy_bridge": "contract_drift_sentinel",
+      "status": "enabled"
+    },
+    {
+      "name": "determinism_harness",
+      "category": "qa",
+      "version": "0.1.0",
+      "source": ".claude/skills/qa/determinism_harness/manifest.json",
+      "legacy_bridge": "determinism_harness",
+      "status": "enabled"
+    },
+    {
+      "name": "policy_gatekeeper",
+      "category": "qa",
+      "version": "0.1.0",
+      "source": ".claude/skills/qa/policy_gatekeeper/manifest.json",
+      "legacy_bridge": "policy_gatekeeper",
+      "status": "enabled"
+    },
+    {
+      "name": "qa_gate",
+      "category": "qa",
+      "version": "0.1.0",
+      "source": ".claude/skills/qa/qa_gate/manifest.json",
+      "legacy_bridge": "qa_gate",
+      "status": "enabled"
+    },
+    {
+      "name": "repo_validate",
+      "category": "qa",
+      "version": "0.1.0",
+      "source": ".claude/skills/qa/repo_validate/manifest.json",
+      "legacy_bridge": "repo_validate",
+      "status": "enabled"
+    },
+    {
+      "name": "schema_batch_validate",
+      "category": "qa",
+      "version": "0.1.0",
+      "source": ".claude/skills/qa/schema_batch_validate/manifest.json",
+      "legacy_bridge": "schema_batch_validate",
+      "status": "enabled"
+    },
+    {
+      "name": "spec_validate",
+      "category": "qa",
+      "version": "0.1.0",
+      "source": ".claude/skills/qa/spec_validate/manifest.json",
+      "legacy_bridge": "spec_validate",
+      "status": "enabled"
+    },
+    {
+      "name": "security_redactor",
+      "category": "security",
+      "version": "0.1.0",
+      "source": ".claude/skills/security/security_redactor/manifest.json",
+      "legacy_bridge": "security_redactor",
+      "status": "enabled"
+    }
+  ]
+}

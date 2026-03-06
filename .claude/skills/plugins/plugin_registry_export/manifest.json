@@ -1,0 +1,24 @@
+{
+  "name": "plugin_registry_export",
+  "version": "0.1.0",
+  "category": "plugins",
+  "description": "Export installed plugin metadata from plugins/*/plugin.json into registry/plugin_index.json.",
+  "entrypoint": "skills.plugins.plugin_registry_export.skill:PluginRegistryExportSkill",
+  "permissions": [
+    "registry:read",
+    "registry:write"
+  ],
+  "aliases": [
+    "export_plugins",
+    "build_plugin_index"
+  ],
+  "tags": [
+    "plugin",
+    "registry",
+    "index"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {}
+}

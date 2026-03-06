@@ -1,182 +1,181 @@
 # Collaboration Guide — Python Orchestrator Agent System
 
-> Szenario-spezifische Empfehlungen für Team-Komposition und Workload-Balancing.
-> Verwaltet vom Skill Agent. Referenz für Team Lead bei Orchestrierungsentscheidungen.
+> Scenario-specific recommendations for team composition and workload balancing.
+> Managed by the Skill Agent. Reference for Team Lead in orchestration decisions.
 
 ---
 
-## Wann welches Team zusammenstellen?
+## When to Assemble Which Team?
 
-### Szenario A: Neue Python-Funktion/-Klasse implementieren
+### Scenario A: Implement New Python Function/Class
 
 ```
 Ollama: qwen2.5-coder:32b / draft
 Implementation Agent: sonnet
-Collector: haiku (nur wenn >100 Zeilen oder externe Modul-Abhängigkeit)
-Validation: nur wenn Subprocess-Handling oder Ollama-Client-Änderung
+Collector: haiku (only if >100 lines or external module dependency)
+Validation: only if subprocess handling or Ollama client change
 ```
 
-Kein Architecture Agent, keine Critics nötig — es sei denn Modul-Boundary-Entscheid ist unklar.
+No Architecture Agent, no Critics needed — unless module boundary decision is unclear.
 
 ---
 
-### Szenario B: Python-Architektur-Entscheid (neues Modul vs. Erweiterung?)
+### Scenario B: Python Architecture Decision (New Module vs. Extension?)
 
 ```
 Ollama: phi4:14b / architecture
 Architecture Agent (Designer): sonnet
-Team Lead: Entscheid nach Architecture-Feedback
+Team Lead: Decision after architecture feedback
 ```
 
-Kein Specialist nötig bis Entscheid gefallen.
+No Specialist needed until decision is made.
 
 ---
 
-### Szenario C: Bugfix (Single-File, klar isoliert)
+### Scenario C: Bugfix (Single-File, Clearly Isolated)
 
 ```
-Kein Ollama (L0)
-Passender Specialist: haiku
-Kein QA
+No Ollama (L0)
+Appropriate Specialist: haiku
+No QA
 ```
 
-Schnellstmögliche Ausführung — kein Overhead.
+Fastest possible execution — no overhead.
 
 ---
 
-### Szenario D: Effizienz-Analyse des Teams
+### Scenario D: Team Efficiency Analysis
 
 ```
-Ollama: phi4:14b / architecture (Systemanalyse als Basis)
+Ollama: phi4:14b / architecture (system analysis as basis)
 Skill Agent: sonnet
-Input: Ollama-Briefing + letzte 3-5 Tasks + routing.md + learning logs
-Output: Empfehlung für Team Lead (collaboration.md Update)
+Input: Ollama briefing + last 3-5 tasks + routing.md + learning logs
+Output: Recommendation for Team Lead (collaboration.md update)
 ```
 
-Team Lead befragt Skill Agent wenn: gleicher Task-Typ mehrfach schlecht lief, Kosten unerwartet hoch, neue Task-Klasse aufgetaucht.
+Team Lead consults Skill Agent when: same task type fails repeatedly, costs unexpectedly high, new task class appears.
 
 ---
 
-### Szenario E: Kritische Review (L3+)
+### Scenario E: Critical Review (L3+)
 
 ```
-Ollama: phi4:14b / architecture (Vorab-Analyse)
+Ollama: phi4:14b / architecture (preliminary analysis)
 Technical Critic: sonnet
-Systemic Critic: sonnet (nur bei L4)
-Team Lead: Entscheid nach Critic-Inputs
+Systemic Critic: sonnet (only for L4)
+Team Lead: Decision after critic inputs
 ```
 
-Critics laufen parallel. Team Lead wartet auf beide bevor er entscheidet.
+Critics run in parallel. Team Lead waits for both before deciding.
 
 ---
 
-### Szenario F: Dokumentation nach Implementation (Phase 4a)
+### Scenario F: Documentation After Implementation (Phase 4a)
 
 ```
-Kein Ollama
+No Ollama
 Documentation Agent: haiku
-Librarian Agent: haiku (Index-Update)
+Librarian Agent: haiku (index update)
 ```
 
-Parallel ausführbar. Kein QA nötig. Löst automatisch Szenario J (Phase 4b) aus.
+Can run in parallel. No QA needed. Automatically triggers Scenario J (Phase 4b).
 
 ---
 
-### Szenario G: Informationsanfrage (Agent braucht Kontext)
+### Scenario G: Information Request (Agent Needs Context)
 
 ```
-Specialist → Team Lead: "Ich brauche Wissen über [Thema]"
-Librarian: haiku (Einzel-Datei) oder sonnet (Multi-Datei)
-Ollama: qwen2.5-coder:14b/quick oder qwen2.5-coder:32b/brief
-Output: Dateipfade + extrahierte Schlüsselstellen
-→ Team Lead übergibt Informationspaket an Specialist
+Specialist → Team Lead: "I need knowledge about [topic]"
+Librarian: haiku (single file) or sonnet (multi-file)
+Ollama: qwen2.5-coder:14b/quick or qwen2.5-coder:32b/brief
+Output: File paths + extracted key passages
+→ Team Lead passes information package to Specialist
 ```
 
-Kein Specialist sucht Dateien selbst — immer via Librarian.
+No Specialist searches files themselves — always via Librarian.
 
 ---
 
-### Szenario H: Parallele Librarian-Anfragen (Collective)
+### Scenario H: Parallel Librarian Requests (Collective)
 
 ```
-2+ Specialists brauchen gleichzeitig Informationen:
+2+ Specialists need information simultaneously:
 Team Lead → 2x Librarian (haiku, parallel via Task tool)
-Jeder Librarian bedient einen Requester
-Ergebnisse werden parallel zurückgeliefert
+Each Librarian serves one requester
+Results are delivered in parallel
 ```
 
-Spart Zeit — kein sequentielles Warten auf den Librarian.
+Saves time — no sequential waiting for the Librarian.
 
 ---
 
-### Szenario I: Domain Handoff (Orchestrator braucht Ollama-Client-Änderung)
+### Scenario I: Domain Handoff (Orchestrator Needs Ollama Client Change)
 
 ```
-Implementation Agent erkennt: "Hier brauche ich eine Änderung in ollama_client.py"
-Implementation Agent → Team Lead: Meldung
-Team Lead → Architecture Agent: Modul-Boundary-Entscheid
-Architecture Agent → Team Lead: Entscheid + Spezifikation
-Team Lead → Implementation Agent: Spezifikation als Kontext
-Implementation Agent: implementiert mit diesem Kontext
+Implementation Agent recognizes: "I need a change in ollama_client.py"
+Implementation Agent → Team Lead: Report
+Team Lead → Architecture Agent: Module boundary decision
+Architecture Agent → Team Lead: Decision + specification
+Team Lead → Implementation Agent: Specification as context
+Implementation Agent: Implements with this context
 ```
 
-Kein stilles Übernehmen — formaler Handoff über Team Lead.
+No silent takeover — formal handoff via Team Lead.
 
 ---
 
-### Szenario J: Human-Facing Docs QA (Phase 4b)
+### Scenario J: Human-Facing Docs QA (Phase 4b)
 
 ```
-Ollama: phi4:14b / architecture (für beide Agents vor Beginn)
+Ollama: phi4:14b / architecture (for both agents before start)
 Human Readable Document Agent: sonnet
-Tutor Agent: sonnet (nur wenn technische Inhalte → lesbare Prosa, d.h. Docs/Tutorials/)
+Tutor Agent: sonnet (only when technical content → readable prose, i.e., Docs/Tutorials/)
 ```
 
-**Trigger:** Automatisch nach Phase 4a (Szenario F) wenn Output für menschliche Leser bestimmt ist.
+**Trigger:** Automatically after Phase 4a (Scenario F) when output is intended for human readers.
 
 ---
 
-### Szenario K: Neuen Agent integrieren (Governance-Trinity-Update)
+### Scenario K: Integrate New Agent (Governance Trinity Update)
 
 ```
-Ollama: Keins (projektspezifisch)
-Implementation Agent: sonnet (alle drei Trinity-Dateien)
-Systemic Critic: sonnet (wenn L4 — neue Governance-Regel)
+Ollama: None (project-specific)
+Implementation Agent: sonnet (all three Trinity files)
+Systemic Critic: sonnet (if L4 — new governance rule)
 ```
 
-**Kritisch:** Niemals Teilupdates. `specialists.md` + `execution_protocol.md` + `MEMORY.md` sind eine untrennbare Einheit.
+**Critical:** Never partial updates. `specialists.md` + `execution_protocol.md` + `MEMORY.md` are an inseparable unit.
 
 ---
 
-## Warnsignale — Wann Skill Agent einbeziehen?
+## Warning Signs — When to Involve Skill Agent?
 
-| Signal | Ursache | Empfehlung |
+| Signal | Cause | Recommendation |
 |---|---|---|
-| Gleicher Task-Typ läuft 2x schlecht | Falsches Routing | Skill Agent analysieren lassen |
-| Haiku produziert unbrauchbare Outputs | Task war L1, nicht L0 | Modell-Schwelle anpassen |
-| Validation findet immer dieselben Fehler | Specialist-Learning-Log veraltet | Skill Agent + Pattern Recognition |
-| Team Lead unsicher welches Team | Neuer Task-Typ | Skill Agent für Ersteinschätzung |
-| Governance-Datei wurde isoliert geändert | Trinity-Regel verletzt | Sofort Trinity-Update nachziehen |
+| Same task type fails 2x | Wrong routing | Have Skill Agent analyze |
+| Haiku produces unusable outputs | Task was L1, not L0 | Adjust model threshold |
+| Validation always finds same errors | Specialist learning log outdated | Skill Agent + Pattern Recognition |
+| Team Lead unsure which team | New task type | Skill Agent for initial assessment |
+| Governance file was changed in isolation | Trinity rule violated | Immediately follow up with Trinity update |
 
 ---
 
-## Ressourcen-Faustregeln
+## Resource Rules of Thumb
 
-| Situation | Kosten-Niveau | Team |
+| Situation | Cost Level | Team |
 |---|---|---|
-| L0 Bugfix | Minimal | 1x haiku |
-| L1 Implementation | Niedrig | 1x sonnet + Ollama |
-| L2 Architektur | Mittel | Ollama + Architecture Agent + ggf. Specialist |
-| L3 Review | Hoch | Ollama + Specialist + Critics |
-| Governance-Trinity-Update | Niedrig-Mittel | 1x sonnet (Implementation Agent) |
-| Human-Facing Docs QA (Phase 4b) | Niedrig | 1-2x sonnet (parallel) |
-| Effizienz-Analyse | Einmalig | Skill Agent (sonnet) |
+| L0 bugfix | Minimal | 1x haiku |
+| L1 implementation | Low | 1x sonnet + Ollama |
+| L2 architecture | Medium | Ollama + Architecture Agent + possibly Specialist |
+| L3 review | High | Ollama + Specialist + Critics |
+| Governance Trinity update | Low-Medium | 1x sonnet (Implementation Agent) |
+| Human-Facing Docs QA (Phase 4b) | Low | 1-2x sonnet (parallel) |
+| Efficiency analysis | One-time | Skill Agent (sonnet) |
 
-## Operational defaults (v17.x)
+## Operational Defaults (v17.x)
 
-- **German narrative input**: build a **Message Triad** first (`MessageTriadSpec`), then work from `work_brief`.
+- **German narrative input**: Build a **Message Triad** first (`MessageTriadSpec`), then work from `work_brief`.
 - **Fallback order**: work_brief → translation → source (original).
-- **Hard STOP**: if Drift Sentinel FAILs, stop and fix drift before proceeding.
-- **Policy**: use `policy_gatekeeper` to decide if deep_oodle / creative_feedback / rebuild / experiments are allowed.
-- **Deep reasoning**: only use Deep Oodle with a Deliberation Pack built by `deliberation_pack_build`.
-
+- **Hard STOP**: If Drift Sentinel FAILs, stop and fix drift before proceeding.
+- **Policy**: Use `policy_gatekeeper` to decide if deep_oodle / creative_feedback / rebuild / experiments are allowed.
+- **Deep reasoning**: Only use Deep Oodle with a Deliberation Pack built by `deliberation_pack_build`.

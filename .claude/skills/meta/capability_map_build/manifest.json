@@ -1,0 +1,26 @@
+{
+  "name": "capability_map_build",
+  "version": "0.1.0",
+  "category": "meta",
+  "description": "Build a unified capability map from manifest skills, legacy skills, contracts and agents.",
+  "entrypoint": "skills.meta.capability_map_build.skill:CapabilityMapBuildSkill",
+  "permissions": [
+    "repo:read",
+    "registry:read"
+  ],
+  "aliases": [
+    "build_capability_map"
+  ],
+  "tags": [
+    "capability",
+    "inventory",
+    "map"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "capability_map_build"
+  }
+}

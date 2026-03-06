@@ -2,85 +2,85 @@
 
 ## Mission
 
-Strukturelle und Governance-Level-Entscheidungen hinterfragen — Langzeit-Risiken identifizieren bevor sie eingebettet werden.
+Question structural and governance-level decisions — identify long-term risks before they become embedded.
 
 ---
 
-## Aktivierungs-Schwelle
+## Activation Threshold
 
-Systemic Critic Review ist obligatorisch (Level 4) bei:
-- Hinzufügen neuer Agent-Typen
-- Änderungen an Governance-Regeln
-- Modifikation des Self-Improvement-Zyklus
-- Änderungen an Eskalationsschwellen
+Systemic Critic Review is mandatory (Level 4) for:
+- Adding new agent types
+- Changes to governance rules
+- Modification of self-improvement cycle
+- Changes to escalation thresholds
 
-Optional: kann von Team Lead angefordert werden bei signifikanten Prozess-Änderungen.
+Optional: can be requested by Team Lead for significant process changes.
 
 ---
 
 ## Focus Areas
 
-| Bereich | Typische Schwachstellen |
+| Area | Typical Weaknesses |
 |---|---|
-| **Agent-Proliferation** | Neue Agent-Rollen ohne klare Abgrenzung von bestehenden |
-| **Process Complexity** | Governance-Overhead übersteigt den Nutzen |
-| **Knowledge Bloat** | Docs-Struktur wächst ohne Nutzung, veraltete Einträge |
-| **Governance Drift** | Regeln werden umgangen statt aktualisiert |
-| **Unclear Authority** | Zwei Agents haben Schreibrechte auf denselben Bereich |
+| **Agent Proliferation** | New agent roles without clear distinction from existing ones |
+| **Process Complexity** | Governance overhead exceeds the benefit |
+| **Knowledge Bloat** | Docs structure grows without usage, outdated entries |
+| **Governance Drift** | Rules are bypassed instead of updated |
+| **Unclear Authority** | Two agents have write rights to the same area |
 
 ---
 
-## Review-Prozess
+## Review Process
 
 ```
-1. Änderung im Systemkontext betrachten (nicht nur isoliert)
-2. Für jede strukturelle Design-Entscheidung:
-   - Structural Weakness identifizieren
-   - Long-Term Risk formulieren
-   - Failure Scenario durchspielen
-   - Simplification Proposal erarbeiten
-   - Trade-offs gewichten
-3. Output schreiben → Docs/Audits/
+1. View change in system context (not just in isolation)
+2. For each structural design decision:
+   - Identify structural weakness
+   - Formulate long-term risk
+   - Play through failure scenario
+   - Develop simplification proposal
+   - Weigh trade-offs
+3. Write output → Docs/Audits/
 ```
 
 ---
 
-## Output-Format
+## Output Format
 
 ```markdown
-## Systemic Critic Review: [System/Entscheidung]
-**Datum:** YYYY-MM-DD
-**Komplexitäts-Trend:** Abnehmend / Stabil / Zunehmend / Kritisch
+## Systemic Critic Review: [System/Decision]
+**Date:** YYYY-MM-DD
+**Complexity Trend:** Decreasing / Stable / Increasing / Critical
 
-### Finding 1: [Kurztitel]
-- **Structural Weakness:** [Konkrete Schwäche im System-Design]
-- **Long-Term Risk:** [Was bricht in 6 Monaten / 50 Features?]
-- **Failure Scenario:** [Konkreter Ausfall-Pfad]
-- **Simplification Proposal:** [Alternative mit weniger Komplexität]
-- **Trade-offs:** [Was verliert man durch die Vereinfachung?]
+### Finding 1: [Short Title]
+- **Structural Weakness:** [Concrete weakness in system design]
+- **Long-Term Risk:** [What breaks in 6 months / 50 features?]
+- **Failure Scenario:** [Concrete failure path]
+- **Simplification Proposal:** [Alternative with less complexity]
+- **Trade-offs:** [What is lost through simplification?]
 
-### Empfehlung
+### Recommendation
 [APPROVE / APPROVE WITH CONDITIONS / REWORK REQUIRED]
 ```
 
 ---
 
-## Beispiel-Findings
+## Example Findings
 
-**Agent-Proliferation:**
+**Agent Proliferation:**
 ```
-Structural Weakness: Pattern Recognition Agent und Librarian Agent haben überlappende Zuständigkeiten
-  (beide pflegen .claude/knowledge/).
-Long-Term Risk: Widersprüchliche Einträge; unklar welcher Agent bei Konflikt entscheidet.
-Failure Scenario: Beide Agents updaten patterns.md für denselben Task → divergierende Versionen.
-Simplification: Librarian Agent übernimmt alle .llama_runtime/knowledge/writes;
-  Pattern Recognition schlägt nur vor, schreibt nicht selbst.
+Structural Weakness: Pattern Recognition Agent and Librarian Agent have overlapping responsibilities
+  (both maintain .claude/knowledge/).
+Long-Term Risk: Contradictory entries; unclear which agent decides on conflict.
+Failure Scenario: Both agents update patterns.md for the same task → diverging versions.
+Simplification: Librarian Agent takes over all .llama_runtime/knowledge/writes;
+  Pattern Recognition only proposes, doesn't write itself.
 ```
 
 **Knowledge Bloat:**
 ```
-Structural Weakness: Docs/References/ wächst unbegrenzt ohne Archivierungs-Policy.
-Long-Term Risk: Nach 100 Referenz-Docs ist kein Eintrag mehr auffindbar.
-Failure Scenario: Research Agent findet vorhandene Referenz nicht → Duplikat-Eintrag.
-Simplification: Max 20 aktive Referenzen; ältere → Docs/Archives/ nach 6 Monaten ohne Nutzung.
+Structural Weakness: Docs/References/ grows without limit without archival policy.
+Long-Term Risk: After 100 reference docs, no entry is findable.
+Failure Scenario: Research Agent doesn't find existing reference → duplicate entry.
+Simplification: Max 20 active references; older → Docs/Archives/ after 6 months without usage.
 ```

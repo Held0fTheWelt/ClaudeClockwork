@@ -1,90 +1,90 @@
 # Knowledge Architecture
 
-## Wissens-Taxonomie
+## Knowledge Taxonomy
 
-Alles Wissen im System ist in drei Typen eingeteilt:
+All knowledge in the system is classified into three types:
 
-| Typ | Ort | Lebensdauer |
+| Type | Location | Lifespan |
 |---|---|---|
-| **Task Knowledge** | `Docs/Tasks/`, `Docs/Plans/` | Task-Duration |
-| **Reference Knowledge** | `Docs/References/` | Projekt-Duration |
+| **Task Knowledge** | `Docs/Tasks/`, `Docs/Plans/` | Task duration |
+| **Reference Knowledge** | `Docs/References/` | Project duration |
 | **System Knowledge** | `.claude/` | Permanent |
 
 ---
 
-## Indexierungs-Regeln
+## Indexing Rules
 
 ```
-- Jeder Eintrag: getaggt nach Subsystem (Orchestration, Ollama, Claude-API, Workflow, Config, ...)
-- Verknüpfung durch Abhängigkeiten (z.B. Orchestrator → OllamaClient → Config)
-- Priorisiert nach Nutzungsfrequenz (häufig referenzierte Patterns → .claude/python/patterns.md)
+- Every entry: tagged by subsystem (Orchestration, Ollama, Claude-API, Workflow, Config, ...)
+- Linked by dependencies (e.g., Orchestrator → OllamaClient → Config)
+- Prioritized by usage frequency (frequently referenced patterns → .claude/python/patterns.md)
 ```
 
 ---
 
-## Librarian-Verantwortlichkeiten
+## Librarian Responsibilities
 
-| Aufgabe | Frequenz | Trigger |
+| Task | Frequency | Trigger |
 |---|---|---|
-| Redundanz erkennen + mergen | Post-Task | Wenn 2+ ähnliche Einträge existieren |
-| Veraltete Einträge markieren | Periodisch | Nach API-Änderung oder Modul-Umbau |
-| Cross-References pflegen | Post-Task | Wenn neues System dokumentiert |
-| Retrieval-Pfade optimieren | Quarterly | Bei Knowledge-Bloat-Warnung |
+| Detect redundancy + merge | Post-task | When 2+ similar entries exist |
+| Mark outdated entries | Periodically | After API change or module restructuring |
+| Maintain cross-references | Post-task | When new system documented |
+| Optimize retrieval paths | Quarterly | On knowledge bloat warning |
 
 ---
 
-## Wissens-Fluss
+## Knowledge Flow
 
 ```
-Implementierung
+Implementation
     ↓ (Pattern Recognition Agent)
-Patterns identifiziert
+Patterns identified
     ↓ (Librarian Agent)
-.claude/python/patterns.md ODER Docs/References/
+.claude/python/patterns.md OR Docs/References/
     ↓ (Documentation Agent)
-Docs/Documentation/ (detaillierte technische Dokumentation)
+Docs/Documentation/ (detailed technical documentation)
     ↓ (MEMORY.md Update)
-Stabile Erkenntnisse in MEMORY.md
+Stable insights in MEMORY.md
 ```
 
 ---
 
-## Retrieval-Strategie
+## Retrieval Strategy
 
-Wenn ein Agent Wissen sucht, folgt er dieser Reihenfolge:
+When an agent searches for knowledge, they follow this order:
 
-1. **MEMORY.md** — stabile, häufig benötigte Erkenntnisse
-2. **`.claude/python/patterns.md`** — projektspezifische Python-Muster
-3. **`Docs/References/`** — detaillierte System-Referenzen
-4. **`Docs/Documentation/`** — technische Implementierungsdetails
-5. **Source Code direkt** — wenn keine Dokumentation vorhanden
+1. **MEMORY.md** — stable, frequently needed insights
+2. **`.claude/python/patterns.md`** — project-specific Python patterns
+3. **`Docs/References/`** — detailed system references
+4. **`Docs/Documentation/`** — technical implementation details
+5. **Source code directly** — if no documentation available
 
 ---
 
-## Wissens-Subsystem-Tags
+## Knowledge Subsystem Tags
 
-| Tag | Beschreibung |
+| Tag | Description |
 |---|---|
-| `Orchestration` | `<PROJECT_ROOT>/src/orchestrator.py` — Task-Routing, Klassifikation |
-| `Ollama` | `<PROJECT_ROOT>/src/ollama_client.py` — LLM-Inferenz, Freeze-Protokoll |
-| `Claude-API` | `<PROJECT_ROOT>/src/claude_client.py` — Subagenten-Spawning |
-| `Workflow` | `<PROJECT_ROOT>/src/workflow.py` — Trigger-Erkennung, Dok-Naming |
-| `Config` | `<PROJECT_ROOT>/src/config.py` — Pfade, Modelle, Konstanten |
-| `Agents` | `<PROJECT_ROOT>/src/agents/` — Specialist-Implementierungen |
-| `Governance` | `.claude/governance/` — Prozessregeln |
-| `Architecture` | `.claude/python/architecture.md` — Modul-Hierarchie |
-| `Patterns` | `.claude/python/patterns.md` — Wiederverwendbare Patterns |
+| `Orchestration` | `<PROJECT_ROOT>/src/orchestrator.py` — Task routing, classification |
+| `Ollama` | `<PROJECT_ROOT>/src/ollama_client.py` — LLM inference, freeze protocol |
+| `Claude-API` | `<PROJECT_ROOT>/src/claude_client.py` — Subagent spawning |
+| `Workflow` | `<PROJECT_ROOT>/src/workflow.py` — Trigger recognition, doc naming |
+| `Config` | `<PROJECT_ROOT>/src/config.py` — Paths, models, constants |
+| `Agents` | `<PROJECT_ROOT>/src/agents/` — Specialist implementations |
+| `Governance` | `.claude/governance/` — Process rules |
+| `Architecture` | `.claude/python/architecture.md` — Module hierarchy |
+| `Patterns` | `.claude/python/patterns.md` — Reusable patterns |
 
 ---
 
-## Qualitäts-Schwellenwerte
+## Quality Thresholds
 
-Ein Knowledge-Eintrag wird als **veraltet** markiert wenn:
-- 3+ Monate seit letzter Nutzung
-- Modul das er beschreibt wurde umstrukturiert
-- API die er beschreibt wurde geändert
+A knowledge entry is marked as **outdated** when:
+- 3+ months since last usage
+- Module it describes was restructured
+- API it describes was changed
 
-Ein Knowledge-Eintrag wird **gelöscht** wenn:
-- Als veraltet markiert + kein Update in 30 Tagen
-- Vollständig durch einen anderen Eintrag abgedeckt
-- Beschreibt ein System das nicht mehr existiert
+A knowledge entry is **deleted** when:
+- Marked as outdated + no update in 30 days
+- Completely covered by another entry
+- Describes a system that no longer exists

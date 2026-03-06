@@ -1,0 +1,23 @@
+{
+  "name": "manifest_validate",
+  "version": "0.1.0",
+  "category": "meta",
+  "description": "Validate manifest-based skill packages for required fields and importability.",
+  "entrypoint": "skills.meta.manifest_validate.skill:ManifestValidateSkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [
+    "validate_manifests",
+    "manifest_check"
+  ],
+  "tags": [
+    "manifest",
+    "validation",
+    "registry"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {}
+}

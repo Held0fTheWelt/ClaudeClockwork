@@ -2,10 +2,10 @@
 
 This file is a **clockwork pointer** for Claude Code.
 
-Project-level canonical location (repo root):
-- <PROJECT_ROOT>/MODEL_POLICY.md
+Canonical location (this project):
+- `.project/MODEL_POLICY.md`
 
-If the repo does not contain this file, create it at the project level.
+When deploying Clockwork on another project, create `MODEL_POLICY.md` at that project's root.
 
 ## Conventions
 

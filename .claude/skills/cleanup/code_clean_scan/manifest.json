@@ -1,0 +1,26 @@
+{
+  "name": "code_clean_scan",
+  "version": "0.1.0",
+  "category": "cleanup",
+  "description": "Scan the codebase for cleanup opportunities.",
+  "entrypoint": "skills.cleanup.code_clean_scan.skill:CodeCleanScanSkill",
+  "permissions": [
+    "repo:read",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "scan_code_cleanup"
+  ],
+  "tags": [
+    "cleanup",
+    "code",
+    "scan"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "code_clean_scan"
+  }
+}

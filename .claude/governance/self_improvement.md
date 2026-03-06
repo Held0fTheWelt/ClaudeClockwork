@@ -1,91 +1,91 @@
 # Self-Improvement Cycle
 
-## Zweck
+## Purpose
 
-Nach jeder Major Task analysiert das System seine eigene Performance, identifiziert Ineffizienzen und implementiert Verbesserungen in Governance und Patterns.
+After every major task, the system analyzes its own performance, identifies inefficiencies, and implements improvements in governance and patterns.
 
 ---
 
-## Post-Task Zyklus
+## Post-Task Cycle
 
-### Schritt 1: Performance-Analyse (Team Lead)
-
-```
-- Performance-Log ausfüllen (performance/log_template.md)
-- Metriken mit vorherigen Tasks vergleichen
-- Auffälligkeiten identifizieren (Rework-Spitzen, Eskalations-Fehler)
-```
-
-### Schritt 2: Adversarielle Überprüfung (optional, aber empfohlen)
+### Step 1: Performance Analysis (Team Lead)
 
 ```
-- War die Eskalationslevel-Klassifikation korrekt?
-- Hat ein Agent seine Zuständigkeitsgrenzen überschritten?
-- Wurden Patterns dupliziert statt wiederverwendet?
+- Fill out performance log (performance/log_template.md)
+- Compare metrics with previous tasks
+- Identify anomalies (rework spikes, escalation errors)
 ```
 
-### Schritt 3: Ineffizienzen identifizieren
+### Step 2: Adversarial Review (Optional But Recommended)
 
 ```
-Häufige Quellen:
-- Unklare Akzeptanzkriterien → Task Brief verbessern
-- Fehlende Patterns in .claude/python/patterns.md → Pattern extrahieren
-- Falsche Eskalationslevel-Klassifikation → Decision Policy anpassen
-- Redundante Docs → Librarian Agent beauftragt mit Merge
+- Was the escalation level classification correct?
+- Did an agent exceed their responsibility boundaries?
+- Were patterns duplicated instead of reused?
 ```
 
-### Schritt 4: Verbesserungen implementieren
+### Step 3: Identify Inefficiencies
 
 ```
-Autonom (L0):
-- patterns.md erweitern
-- Performance-Log schreiben
-- Kleine Klarstellungen in Governance-Docs
+Common sources:
+- Unclear acceptance criteria → improve Task Brief
+- Missing patterns in .claude/python/patterns.md → extract pattern
+- Wrong escalation level classification → adjust Decision Policy
+- Redundant docs → task Librarian Agent with merge
+```
+
+### Step 4: Implement Improvements
+
+```
+Autonomous (L0):
+- Extend patterns.md
+- Write performance log
+- Small clarifications in governance docs
 
 Requires Review (L1-L2):
-- Neue Agent-Verantwortlichkeiten
-- Geänderte Review-Schritte
+- New agent responsibilities
+- Changed review steps
 
 Requires Critic (L4):
-- Governance-Regeländerungen
-- Eskalationsschwellen anpassen
+- Governance rule changes
+- Adjust escalation thresholds
 ```
 
-### Schritt 5: Dokumentation aktualisieren
+### Step 5: Update Documentation
 
 ```
-- .claude/python/patterns.md: neue Patterns
-- MEMORY.md: stabile Erkenntnisse
-- Docs/Documentation/: wenn Implementierungsdocs affected
-- .claude/governance/: wenn Prozess-Verbesserung
+- .claude/python/patterns.md: new patterns
+- MEMORY.md: stable insights
+- Docs/Documentation/: if implementation docs affected
+- .claude/governance/: if process improvement
 ```
 
-### Schritt 6: Agent-Regeln anpassen (wenn notwendig)
+### Step 6: Adjust Agent Rules (If Necessary)
 
 ```
-Nur bei nachgewiesenen strukturellen Problemen:
-- Verantwortlichkeits-Überlappungen bereinigen
-- Schwellenwerte justieren
-- Neue Agent-Rollen vorschlagen (→ L4 Eskalation!)
-```
-
----
-
-## Periodisches Review (alle 10 Major Tasks)
-
-```
-1. Agent-Effektivität bewerten (Welche Agents leisten am meisten?)
-2. Verantwortlichkeiten anpassen (Überlappungen eliminieren)
-3. Eskalationsschwellen verfeinern (zu oft? zu selten?)
-4. Knowledge-Archiv bereinigen (veraltete Einträge)
-5. Systemic Critic Gesamtbewertung anfordern
+Only for proven structural problems:
+- Clean up responsibility overlaps
+- Adjust thresholds
+- Propose new agent roles (→ L4 escalation!)
 ```
 
 ---
 
-## Anti-Patterns (was zu vermeiden ist)
+## Periodic Review (Every 10 Major Tasks)
 
-- **Governance-Creep**: Neue Regeln ohne Entfernen alter Regeln
-- **Agent-Proliferation**: Neue Agents für jede Spezialaufgabe
-- **Review-Theater**: Reviews die immer APPROVED liefern (kein adversarieller Wert)
-- **Knowledge-Silos**: Erkenntnisse nur in Agent-Memory, nicht in `.claude/`
+```
+1. Evaluate agent effectiveness (which agents perform best?)
+2. Adjust responsibilities (eliminate overlaps)
+3. Refine escalation thresholds (too often? too rarely?)
+4. Clean knowledge archive (outdated entries)
+5. Request Systemic Critic overall assessment
+```
+
+---
+
+## Anti-Patterns (What to Avoid)
+
+- **Governance Creep**: New rules without removing old rules
+- **Agent Proliferation**: New agents for every specialized task
+- **Review Theater**: Reviews that always deliver APPROVED (no adversarial value)
+- **Knowledge Silos**: Insights only in agent memory, not in `.claude/`

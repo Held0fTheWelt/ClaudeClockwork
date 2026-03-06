@@ -1,0 +1,23 @@
+{
+  "name": "legacy_skill_inventory",
+  "version": "0.1.0",
+  "category": "meta",
+  "description": "Inventory runnable legacy skills and summarize migration coverage against manifest-based skills.",
+  "entrypoint": "skills.meta.legacy_skill_inventory.skill:LegacySkillInventorySkill",
+  "permissions": [
+    "registry:read"
+  ],
+  "aliases": [
+    "inventory_legacy_skills",
+    "legacy_inventory"
+  ],
+  "tags": [
+    "legacy",
+    "inventory",
+    "migration"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {}
+}

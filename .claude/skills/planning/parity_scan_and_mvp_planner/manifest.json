@@ -1,0 +1,26 @@
+{
+  "name": "parity_scan_and_mvp_planner",
+  "version": "0.1.0",
+  "category": "planning",
+  "description": "Audit parity and produce MVP implementation backlog files.",
+  "entrypoint": "skills.planning.parity_scan_and_mvp_planner.skill:ParityScanAndMvpPlannerSkill",
+  "permissions": [
+    "repo:read",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "mvp_planner"
+  ],
+  "tags": [
+    "parity",
+    "mvp",
+    "planning"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "parity_scan_and_mvp_planner"
+  }
+}

@@ -1,0 +1,625 @@
+{
+  "count": 34,
+  "skills": [
+    {
+      "name": "evidence_bundle_build",
+      "category": "bundle",
+      "version": "0.1.0",
+      "entrypoint": "skills.bundle.evidence_bundle_build.skill:EvidenceBundleBuildSkill",
+      "enabled": true,
+      "aliases": [
+        "build_bundle"
+      ],
+      "tags": [
+        "bundle",
+        "evidence",
+        "artifacts"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/bundle/evidence_bundle_build/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "evidence_init",
+      "category": "bundle",
+      "version": "0.1.0",
+      "entrypoint": "skills.bundle.evidence_init.skill:EvidenceInitSkill",
+      "enabled": true,
+      "aliases": [
+        "init_evidence"
+      ],
+      "tags": [
+        "evidence",
+        "bundle",
+        "init"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/bundle/evidence_init/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "evidence_router",
+      "category": "bundle",
+      "version": "0.1.0",
+      "entrypoint": "skills.bundle.evidence_router.skill:EvidenceRouterSkill",
+      "enabled": true,
+      "aliases": [
+        "route_evidence"
+      ],
+      "tags": [
+        "evidence",
+        "routing",
+        "bundle"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/bundle/evidence_router/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "cleanup_apply",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "entrypoint": "skills.cleanup.cleanup_apply.skill:CleanupApplySkill",
+      "enabled": true,
+      "aliases": [
+        "apply_cleanup"
+      ],
+      "tags": [
+        "cleanup",
+        "apply",
+        "repo"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/cleanup/cleanup_apply/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "cleanup_plan_apply",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "entrypoint": "skills.cleanup.cleanup_plan_apply.skill:CleanupPlanApplySkill",
+      "enabled": true,
+      "aliases": [
+        "plan_and_apply_cleanup"
+      ],
+      "tags": [
+        "cleanup",
+        "plan",
+        "apply"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/cleanup/cleanup_plan_apply/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "code_clean",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "entrypoint": "skills.cleanup.code_clean.skill:CodeCleanSkill",
+      "enabled": true,
+      "aliases": [
+        "clean_code"
+      ],
+      "tags": [
+        "cleanup",
+        "code",
+        "format"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/cleanup/code_clean/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "code_clean_scan",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "entrypoint": "skills.cleanup.code_clean_scan.skill:CodeCleanScanSkill",
+      "enabled": true,
+      "aliases": [
+        "scan_code_cleanup"
+      ],
+      "tags": [
+        "cleanup",
+        "code",
+        "scan"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/cleanup/code_clean_scan/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "repo_clean",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "entrypoint": "skills.cleanup.repo_clean.skill:RepoCleanSkill",
+      "enabled": true,
+      "aliases": [
+        "clean_repo"
+      ],
+      "tags": [
+        "cleanup",
+        "repo",
+        "apply"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/cleanup/repo_clean/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "repo_clean_scan",
+      "category": "cleanup",
+      "version": "0.1.0",
+      "entrypoint": "skills.cleanup.repo_clean_scan.skill:RepoCleanScanSkill",
+      "enabled": true,
+      "aliases": [
+        "scan_repo_cleanup"
+      ],
+      "tags": [
+        "cleanup",
+        "repo",
+        "scan"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/cleanup/repo_clean_scan/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "pdf_quality",
+      "category": "docs",
+      "version": "0.1.0",
+      "entrypoint": "skills.docs.pdf_quality.skill:PdfQualitySkill",
+      "enabled": true,
+      "aliases": [
+        "check_pdf_quality"
+      ],
+      "tags": [
+        "pdf",
+        "quality",
+        "checklist"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/pdf_quality/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "pdf_render",
+      "category": "docs",
+      "version": "0.1.0",
+      "entrypoint": "skills.docs.pdf_render.skill:PdfRenderSkill",
+      "enabled": true,
+      "aliases": [
+        "render_pdf"
+      ],
+      "tags": [
+        "pdf",
+        "render",
+        "documentation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/pdf_render/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "repo_compare",
+      "category": "docs",
+      "version": "0.1.0",
+      "entrypoint": "skills.docs.repo_compare.skill:RepoCompareSkill",
+      "enabled": true,
+      "aliases": [
+        "compare_repos"
+      ],
+      "tags": [
+        "compare",
+        "diff",
+        "audit"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/docs/repo_compare/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "capability_map_build",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.capability_map_build.skill:CapabilityMapBuildSkill",
+      "enabled": true,
+      "aliases": [
+        "build_capability_map"
+      ],
+      "tags": [
+        "capability",
+        "inventory",
+        "map"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/meta/capability_map_build/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "legacy_skill_inventory",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.legacy_skill_inventory.skill:LegacySkillInventorySkill",
+      "enabled": true,
+      "aliases": [
+        "inventory_legacy_skills",
+        "legacy_inventory"
+      ],
+      "tags": [
+        "legacy",
+        "inventory",
+        "migration"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude/skills/meta/legacy_skill_inventory/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "manifest_registry_export",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.manifest_registry_export.skill:ManifestRegistryExportSkill",
+      "enabled": true,
+      "aliases": [
+        "export_registry",
+        "build_skill_index"
+      ],
+      "tags": [
+        "registry",
+        "manifest",
+        "index"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude/skills/meta/manifest_registry_export/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "manifest_validate",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.manifest_validate.skill:ManifestValidateSkill",
+      "enabled": true,
+      "aliases": [
+        "validate_manifests",
+        "manifest_check"
+      ],
+      "tags": [
+        "manifest",
+        "validation",
+        "registry"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude/skills/meta/manifest_validate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "refactor_bridge_scan",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.refactor_bridge_scan.skill:RefactorBridgeScanSkill",
+      "enabled": true,
+      "aliases": [
+        "bridge_scan"
+      ],
+      "tags": [
+        "migration",
+        "legacy",
+        "scan"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/meta/refactor_bridge_scan/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "reference_skill_catalog",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.reference_skill_catalog.skill:ReferenceSkillCatalogSkill",
+      "enabled": true,
+      "aliases": [
+        "catalog_reference_skills",
+        "reference_catalog"
+      ],
+      "tags": [
+        "reference",
+        "catalog",
+        "skills"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude/skills/meta/reference_skill_catalog/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "skill_gap_detect",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.skill_gap_detect.skill:SkillGapDetectSkill",
+      "enabled": true,
+      "aliases": [
+        "capability_gap"
+      ],
+      "tags": [
+        "gap",
+        "opportunity",
+        "planning"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/meta/skill_gap_detect/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "skill_registry_search",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.skill_registry_search.skill:SkillRegistrySearchSkill",
+      "enabled": true,
+      "aliases": [
+        "find_skill",
+        "search_registry"
+      ],
+      "tags": [
+        "registry",
+        "search",
+        "discovery"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/meta/skill_registry_search/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "skill_scaffold",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.skill_scaffold.skill:SkillScaffoldSkill",
+      "enabled": true,
+      "aliases": [
+        "new_skill",
+        "forge_skill"
+      ],
+      "tags": [
+        "scaffold",
+        "forge",
+        "generator"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/meta/skill_scaffold/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "eval_run",
+      "category": "ops",
+      "version": "0.1.0",
+      "entrypoint": "skills.ops.eval_run.skill:EvalRunSkill",
+      "enabled": true,
+      "aliases": [
+        "run_eval"
+      ],
+      "tags": [
+        "eval",
+        "testing",
+        "golden"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/ops/eval_run/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "release_cut",
+      "category": "ops",
+      "version": "0.1.0",
+      "entrypoint": "skills.ops.release_cut.skill:ReleaseCutSkill",
+      "enabled": true,
+      "aliases": [
+        "cut_release"
+      ],
+      "tags": [
+        "release",
+        "cut",
+        "ops"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/ops/release_cut/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "parity_scan_and_mvp_planner",
+      "category": "planning",
+      "version": "0.1.0",
+      "entrypoint": "skills.planning.parity_scan_and_mvp_planner.skill:ParityScanAndMvpPlannerSkill",
+      "enabled": true,
+      "aliases": [
+        "mvp_planner"
+      ],
+      "tags": [
+        "parity",
+        "mvp",
+        "planning"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/planning/parity_scan_and_mvp_planner/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "plugin_registry_export",
+      "category": "plugins",
+      "version": "0.1.0",
+      "entrypoint": "skills.plugins.plugin_registry_export.skill:PluginRegistryExportSkill",
+      "enabled": true,
+      "aliases": [
+        "export_plugins",
+        "build_plugin_index"
+      ],
+      "tags": [
+        "plugin",
+        "registry",
+        "index"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude/skills/plugins/plugin_registry_export/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "plugin_scaffold",
+      "category": "plugins",
+      "version": "0.1.0",
+      "entrypoint": "skills.plugins.plugin_scaffold.skill:PluginScaffoldSkill",
+      "enabled": true,
+      "aliases": [
+        "scaffold_plugin",
+        "create_plugin"
+      ],
+      "tags": [
+        "plugin",
+        "scaffold",
+        "extension"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude/skills/plugins/plugin_scaffold/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "contract_drift_sentinel",
+      "category": "qa",
+      "version": "0.1.0",
+      "entrypoint": "skills.qa.contract_drift_sentinel.skill:ContractDriftSentinelSkill",
+      "enabled": true,
+      "aliases": [
+        "check_contract_drift"
+      ],
+      "tags": [
+        "qa",
+        "contracts",
+        "drift"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/contract_drift_sentinel/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "determinism_harness",
+      "category": "qa",
+      "version": "0.1.0",
+      "entrypoint": "skills.qa.determinism_harness.skill:DeterminismHarnessSkill",
+      "enabled": true,
+      "aliases": [
+        "run_determinism_harness"
+      ],
+      "tags": [
+        "qa",
+        "determinism",
+        "harness"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/determinism_harness/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "policy_gatekeeper",
+      "category": "qa",
+      "version": "0.1.0",
+      "entrypoint": "skills.qa.policy_gatekeeper.skill:PolicyGatekeeperSkill",
+      "enabled": true,
+      "aliases": [
+        "gate_policy"
+      ],
+      "tags": [
+        "policy",
+        "gate",
+        "safety"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/policy_gatekeeper/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "qa_gate",
+      "category": "qa",
+      "version": "0.1.0",
+      "entrypoint": "skills.qa.qa_gate.skill:QaGateSkill",
+      "enabled": true,
+      "aliases": [
+        "run_qa_gate"
+      ],
+      "tags": [
+        "qa",
+        "gate",
+        "checks"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/qa_gate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "repo_validate",
+      "category": "qa",
+      "version": "0.1.0",
+      "entrypoint": "skills.qa.repo_validate.skill:RepoValidateSkill",
+      "enabled": true,
+      "aliases": [
+        "validate_repo"
+      ],
+      "tags": [
+        "qa",
+        "validation",
+        "repo"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/repo_validate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "schema_batch_validate",
+      "category": "qa",
+      "version": "0.1.0",
+      "entrypoint": "skills.qa.schema_batch_validate.skill:SchemaBatchValidateSkill",
+      "enabled": true,
+      "aliases": [
+        "validate_schema_batch"
+      ],
+      "tags": [
+        "qa",
+        "schema",
+        "validation"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/schema_batch_validate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "spec_validate",
+      "category": "qa",
+      "version": "0.1.0",
+      "entrypoint": "skills.qa.spec_validate.skill:SpecValidateSkill",
+      "enabled": true,
+      "aliases": [
+        "validate_schema"
+      ],
+      "tags": [
+        "schema",
+        "validation",
+        "jsonschema"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/qa/spec_validate/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
+      "name": "security_redactor",
+      "category": "security",
+      "version": "0.1.0",
+      "entrypoint": "skills.security.security_redactor.skill:SecurityRedactorSkill",
+      "enabled": true,
+      "aliases": [
+        "redact_bundle"
+      ],
+      "tags": [
+        "redaction",
+        "security",
+        "evidence"
+      ],
+      "legacy_bridge": true,
+      "manifest_path": ".claude/skills/security/security_redactor/manifest.json",
+      "source_root": ".claude/skills"
+    }
+  ]
+}

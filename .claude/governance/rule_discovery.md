@@ -1,49 +1,49 @@
 # Rule Discovery & Maintenance
 
-## Grundprinzip
+## Core Principle
 
-Die Regelbasis ist nie vollständig. Bei jedem Arbeitsschritt — insbesondere bei Task-Erstellung und Reviews — werden implizite, noch nicht dokumentierte Regeln aktiv identifiziert und in die Struktur einsortiert.
+The rule base is never complete. With every work step — especially during task creation and reviews — implicit, not yet documented rules are actively identified and sorted into the structure.
 
-## Wann wird eine neue Regel erkannt?
+## When Is a New Rule Recognized?
 
-Eine Regel gilt als erkennbar wenn mindestens eines zutrifft:
+A rule is considered recognizable when at least one of the following applies:
 
-- **Wiederholung** — Ein Muster tritt in mehreren Modulen oder Funktionen konsistent auf
-- **Konvention** — Code folgt einer einheitlichen Struktur, die nicht zufällig ist (Naming, Reihenfolge, Abhängigkeiten)
-- **Constraint** — Eine Einschränkung der Sprache, des Frameworks oder der Architektur erzwingt ein bestimmtes Vorgehen
-- **Fehlerquelle** — Ein Fehler tritt auf, dessen Ursache auf eine undokumentierte Regel zurückzuführen ist
-- **Abweichung** — Code weicht von dokumentierten Regeln ab und die Abweichung erweist sich als korrekt → bestehende Regel anpassen
-- **Architektur-Lücke** — Während der Arbeit wird sichtbar, dass die Architektur eine Regel impliziert, die noch nicht dokumentiert ist
+- **Repetition** — A pattern occurs consistently in multiple modules or functions
+- **Convention** — Code follows a uniform structure that is not coincidental (naming, order, dependencies)
+- **Constraint** — A limitation of the language, framework, or architecture enforces a specific approach
+- **Error Source** — An error occurs whose cause can be traced to an undocumented rule
+- **Deviation** — Code deviates from documented rules and the deviation proves correct → adjust existing rule
+- **Architecture Gap** — During work, it becomes visible that the architecture implies a rule that is not yet documented
 
-## Ablauf bei Entdeckung
+## Process on Discovery
 
-1. **Identifizieren** — Muster/Constraint/Konvention als noch nicht dokumentiert erkennen
-2. **Einordnen** — Prüfen in welches `.claude/`-Dokument die Regel thematisch gehört:
-   - Python-Patterns → `.claude/python/patterns.md`
-   - Architekturregeln → `.claude/python/architecture.md`
-   - Governance/Prozess → `.claude/governance/`
-   - Projektübergreifende Erkenntnisse → `MEMORY.md`
-3. **Einsortieren oder Anlegen** — In bestehendes Dokument einfügen ODER neues `.claude/`-Dokument anlegen
-4. **`.claude/SYSTEM.md` aktualisieren** — Bei neuem Dokument: Quick Links + Unterordner-Referenz erweitern
-5. **User informieren** — Kurz mitteilen welche Regel erkannt und wo eingetragen
-6. **In Plan/Review dokumentieren** — Unter "Neu entdeckte Regeln" vermerken
+1. **Identify** — Recognize pattern/constraint/convention as not yet documented
+2. **Classify** — Check which `.claude/` document the rule thematically belongs to:
+   - Python patterns → `.claude/python/patterns.md`
+   - Architecture rules → `.claude/python/architecture.md`
+   - Governance/process → `.claude/governance/`
+   - Cross-project insights → `MEMORY.md`
+3. **Insert or Create** — Insert into existing document OR create new `.claude/` document
+4. **Update `.claude/SYSTEM.md`** — For new document: extend quick links + subfolder reference
+5. **Inform User** — Briefly communicate which rule was recognized and where it was entered
+6. **Document in Plan/Review** — Note under "Newly Discovered Rules"
 
-## Qualitätskriterien für neue Regeln
+## Quality Criteria for New Rules
 
-- **Konkret** — Keine vagen Aussagen; nachprüfbare Regeln mit Beispielen oder Code-Snippets
-- **Belegt** — Bezug auf konkreten Code, Fehler oder Architektur-Eigenschaft die die Regel begründet
-- **Einsortiert** — Thematisch im richtigen Dokument, nicht als loses Anhängsel
-- **Widerspruchsfrei** — Gegen bestehende Regeln gegenprüfen; bei Widerspruch ältere Regel aktualisieren oder User fragen
+- **Concrete** — No vague statements; verifiable rules with examples or code snippets
+- **Substantiated** — Reference to specific code, error, or architecture property that justifies the rule
+- **Sorted** — Thematically in the correct document, not as a loose appendix
+- **Contradiction-Free** — Cross-check against existing rules; on contradiction, update older rule or ask user
 
-## Was NICHT aufgenommen wird
+## What Is NOT Included
 
-- Einmalige, projektspezifische Workarounds ohne Wiederholungspotenzial
-- Ungeprüfte Vermutungen über Patterns, die nur auf einer einzelnen Datei basieren
-- Informationen die bereits in `.claude/` oder `MEMORY.md` stehen
+- One-time, project-specific workarounds without repetition potential
+- Unverified assumptions about patterns based on only a single file
+- Information already in `.claude/` or `MEMORY.md`
 
-## Wann Rule Discovery obligatorisch ist
+## When Rule Discovery Is Mandatory
 
-- Bei jedem Task: Workflow (Planerstellung)
-- Bei jedem Review: Workflow
-- Bei jedem Document: Workflow
-- Bei jedem Implement: Workflow
+- For every Task: Workflow (plan creation)
+- For every Review: Workflow
+- For every Document: Workflow
+- For every Implement: Workflow

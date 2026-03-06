@@ -1,0 +1,1536 @@
+{
+  "type": "capability_map",
+  "project_root": "/mnt/d/ClaudeClockwork",
+  "skills": {
+    "manifest": [
+      {
+        "skill_id": "evidence_bundle_build",
+        "category": "bundle",
+        "description": "Build evidence bundles as a reusable artifact capability.",
+        "path": ".claude/skills/bundle/evidence_bundle_build/manifest.json",
+        "entrypoint": "skills.bundle.evidence_bundle_build.skill:EvidenceBundleBuildSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "evidence_init",
+        "category": "bundle",
+        "description": "Initialize an evidence bundle workspace.",
+        "path": ".claude/skills/bundle/evidence_init/manifest.json",
+        "entrypoint": "skills.bundle.evidence_init.skill:EvidenceInitSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "evidence_router",
+        "category": "bundle",
+        "description": "Route evidence tasks to the correct evidence workflow.",
+        "path": ".claude/skills/bundle/evidence_router/manifest.json",
+        "entrypoint": "skills.bundle.evidence_router.skill:EvidenceRouterSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "cleanup_apply",
+        "category": "cleanup",
+        "description": "Apply cleanup changes from an approved cleanup plan.",
+        "path": ".claude/skills/cleanup/cleanup_apply/manifest.json",
+        "entrypoint": "skills.cleanup.cleanup_apply.skill:CleanupApplySkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "cleanup_plan_apply",
+        "category": "cleanup",
+        "description": "Build and apply a cleanup plan using the legacy implementation.",
+        "path": ".claude/skills/cleanup/cleanup_plan_apply/manifest.json",
+        "entrypoint": "skills.cleanup.cleanup_plan_apply.skill:CleanupPlanApplySkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "code_clean",
+        "category": "cleanup",
+        "description": "Perform code cleanup through the legacy cleaner.",
+        "path": ".claude/skills/cleanup/code_clean/manifest.json",
+        "entrypoint": "skills.cleanup.code_clean.skill:CodeCleanSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "code_clean_scan",
+        "category": "cleanup",
+        "description": "Scan the codebase for cleanup opportunities.",
+        "path": ".claude/skills/cleanup/code_clean_scan/manifest.json",
+        "entrypoint": "skills.cleanup.code_clean_scan.skill:CodeCleanScanSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "repo_clean",
+        "category": "cleanup",
+        "description": "Perform repository cleanup through the legacy cleaner.",
+        "path": ".claude/skills/cleanup/repo_clean/manifest.json",
+        "entrypoint": "skills.cleanup.repo_clean.skill:RepoCleanSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "repo_clean_scan",
+        "category": "cleanup",
+        "description": "Scan the repository for cleanup opportunities.",
+        "path": ".claude/skills/cleanup/repo_clean_scan/manifest.json",
+        "entrypoint": "skills.cleanup.repo_clean_scan.skill:RepoCleanScanSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "pdf_quality",
+        "category": "docs",
+        "description": "Score PDF quality and checklist compliance.",
+        "path": ".claude/skills/docs/pdf_quality/manifest.json",
+        "entrypoint": "skills.docs.pdf_quality.skill:PdfQualitySkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "pdf_render",
+        "category": "docs",
+        "description": "Render PDFs from prepared markdown and diagram inputs.",
+        "path": ".claude/skills/docs/pdf_render/manifest.json",
+        "entrypoint": "skills.docs.pdf_render.skill:PdfRenderSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "repo_compare",
+        "category": "docs",
+        "description": "Compare repositories or snapshots and summarize changes.",
+        "path": ".claude/skills/docs/repo_compare/manifest.json",
+        "entrypoint": "skills.docs.repo_compare.skill:RepoCompareSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "capability_map_build",
+        "category": "meta",
+        "description": "Build a unified capability map from manifest skills, legacy skills, contracts and agents.",
+        "path": ".claude/skills/meta/capability_map_build/manifest.json",
+        "entrypoint": "skills.meta.capability_map_build.skill:CapabilityMapBuildSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "legacy_skill_inventory",
+        "category": "meta",
+        "description": "Inventory runnable legacy skills and summarize migration coverage against manifest-based skills.",
+        "path": ".claude/skills/meta/legacy_skill_inventory/manifest.json",
+        "entrypoint": "skills.meta.legacy_skill_inventory.skill:LegacySkillInventorySkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": false
+      },
+      {
+        "skill_id": "manifest_registry_export",
+        "category": "meta",
+        "description": "Export the current manifest registry into registry/skill_index.json.",
+        "path": ".claude/skills/meta/manifest_registry_export/manifest.json",
+        "entrypoint": "skills.meta.manifest_registry_export.skill:ManifestRegistryExportSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": false
+      },
+      {
+        "skill_id": "manifest_validate",
+        "category": "meta",
+        "description": "Validate manifest-based skill packages for required fields and importability.",
+        "path": ".claude/skills/meta/manifest_validate/manifest.json",
+        "entrypoint": "skills.meta.manifest_validate.skill:ManifestValidateSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": false
+      },
+      {
+        "skill_id": "refactor_bridge_scan",
+        "category": "meta",
+        "description": "Scan the repo for legacy bridge markers and migration hotspots.",
+        "path": ".claude/skills/meta/refactor_bridge_scan/manifest.json",
+        "entrypoint": "skills.meta.refactor_bridge_scan.skill:RefactorBridgeScanSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "reference_skill_catalog",
+        "category": "meta",
+        "description": "Catalog SKILL.md reference skills and execution manifests to support MCP/plugin planning.",
+        "path": ".claude/skills/meta/reference_skill_catalog/manifest.json",
+        "entrypoint": "skills.meta.reference_skill_catalog.skill:ReferenceSkillCatalogSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": false
+      },
+      {
+        "skill_id": "skill_gap_detect",
+        "category": "meta",
+        "description": "Detect capability gaps and suggest the next manifest-based skill to add.",
+        "path": ".claude/skills/meta/skill_gap_detect/manifest.json",
+        "entrypoint": "skills.meta.skill_gap_detect.skill:SkillGapDetectSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "skill_registry_search",
+        "category": "meta",
+        "description": "Search both manifest-based skills and the legacy registry to find candidate skills.",
+        "path": ".claude/skills/meta/skill_registry_search/manifest.json",
+        "entrypoint": "skills.meta.skill_registry_search.skill:SkillRegistrySearchSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "skill_scaffold",
+        "category": "meta",
+        "description": "Scaffold a new manifest-based skill package and optional legacy bridge notes.",
+        "path": ".claude/skills/meta/skill_scaffold/manifest.json",
+        "entrypoint": "skills.meta.skill_scaffold.skill:SkillScaffoldSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "eval_run",
+        "category": "ops",
+        "description": "Execute the evaluation harness and summarize regressions.",
+        "path": ".claude/skills/ops/eval_run/manifest.json",
+        "entrypoint": "skills.ops.eval_run.skill:EvalRunSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "release_cut",
+        "category": "ops",
+        "description": "Create a release-cut package through the legacy release flow.",
+        "path": ".claude/skills/ops/release_cut/manifest.json",
+        "entrypoint": "skills.ops.release_cut.skill:ReleaseCutSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "parity_scan_and_mvp_planner",
+        "category": "planning",
+        "description": "Audit parity and produce MVP implementation backlog files.",
+        "path": ".claude/skills/planning/parity_scan_and_mvp_planner/manifest.json",
+        "entrypoint": "skills.planning.parity_scan_and_mvp_planner.skill:ParityScanAndMvpPlannerSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "plugin_registry_export",
+        "category": "plugins",
+        "description": "Export installed plugin metadata from plugins/*/plugin.json into registry/plugin_index.json.",
+        "path": ".claude/skills/plugins/plugin_registry_export/manifest.json",
+        "entrypoint": "skills.plugins.plugin_registry_export.skill:PluginRegistryExportSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": false
+      },
+      {
+        "skill_id": "plugin_scaffold",
+        "category": "plugins",
+        "description": "Scaffold a plugin package with plugin.json and a starter README for ClaudeClockwork.",
+        "path": ".claude/skills/plugins/plugin_scaffold/manifest.json",
+        "entrypoint": "skills.plugins.plugin_scaffold.skill:PluginScaffoldSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": false
+      },
+      {
+        "skill_id": "contract_drift_sentinel",
+        "category": "qa",
+        "description": "Detect contract drift between docs, schemas and implementation.",
+        "path": ".claude/skills/qa/contract_drift_sentinel/manifest.json",
+        "entrypoint": "skills.qa.contract_drift_sentinel.skill:ContractDriftSentinelSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "determinism_harness",
+        "category": "qa",
+        "description": "Run the determinism harness to compare repeated runs.",
+        "path": ".claude/skills/qa/determinism_harness/manifest.json",
+        "entrypoint": "skills.qa.determinism_harness.skill:DeterminismHarnessSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "policy_gatekeeper",
+        "category": "qa",
+        "description": "Run deterministic policy checks before risky operations.",
+        "path": ".claude/skills/qa/policy_gatekeeper/manifest.json",
+        "entrypoint": "skills.qa.policy_gatekeeper.skill:PolicyGatekeeperSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "qa_gate",
+        "category": "qa",
+        "description": "Run the existing QA gate through the new manifest system.",
+        "path": ".claude/skills/qa/qa_gate/manifest.json",
+        "entrypoint": "skills.qa.qa_gate.skill:QaGateSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "repo_validate",
+        "category": "qa",
+        "description": "Validate repository consistency and pointer integrity.",
+        "path": ".claude/skills/qa/repo_validate/manifest.json",
+        "entrypoint": "skills.qa.repo_validate.skill:RepoValidateSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "schema_batch_validate",
+        "category": "qa",
+        "description": "Validate batches of schemas through the legacy validator.",
+        "path": ".claude/skills/qa/schema_batch_validate/manifest.json",
+        "entrypoint": "skills.qa.schema_batch_validate.skill:SchemaBatchValidateSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "spec_validate",
+        "category": "qa",
+        "description": "Validate JSON examples against JSON Schema documents.",
+        "path": ".claude/skills/qa/spec_validate/manifest.json",
+        "entrypoint": "skills.qa.spec_validate.skill:SpecValidateSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "security_redactor",
+        "category": "security",
+        "description": "Create redacted copies of evidence bundles and reports.",
+        "path": ".claude/skills/security/security_redactor/manifest.json",
+        "entrypoint": "skills.security.security_redactor.skill:SecurityRedactorSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      }
+    ],
+    "legacy": [
+      {
+        "skill_id": "autodocs_generate",
+        "path": ".claude/tools/skills/autodocs_generate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "bandit_router_select",
+        "path": ".claude/tools/skills/bandit_router_select.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "budget_analyze",
+        "path": ".claude/tools/skills/budget_analyze.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "budget_router",
+        "path": ".claude/tools/skills/budget_router.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "capability_map_build",
+        "path": ".claude/tools/skills/capability_map_build.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "cleanup_apply",
+        "path": ".claude/tools/skills/cleanup_apply.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "cleanup_plan_apply",
+        "path": ".claude/tools/skills/cleanup_plan_apply.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "clockwork_version_bump",
+        "path": ".claude/tools/skills/clockwork_version_bump.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "code_assimilate",
+        "path": ".claude/tools/skills/code_assimilate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "code_clean",
+        "path": ".claude/tools/skills/code_clean.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "code_clean_scan",
+        "path": ".claude/tools/skills/code_clean_scan.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "contract_drift_sentinel",
+        "path": ".claude/tools/skills/contract_drift_sentinel.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "copyright_standardize",
+        "path": ".claude/tools/skills/copyright_standardize.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "create_mvp",
+        "path": ".claude/tools/skills/create_mvp.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "creativity_burst",
+        "path": ".claude/tools/skills/creativity_burst.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "critics_board_review",
+        "path": ".claude/tools/skills/critics_board_review.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "decision_feedback",
+        "path": ".claude/tools/skills/decision_feedback.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "deliberation_pack_build",
+        "path": ".claude/tools/skills/deliberation_pack_build.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "determinism_harness",
+        "path": ".claude/tools/skills/determinism_harness.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "determinism_proof",
+        "path": ".claude/tools/skills/determinism_proof.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "doc_review",
+        "path": ".claude/tools/skills/doc_review.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "doc_ssot_resolver",
+        "path": ".claude/tools/skills/doc_ssot_resolver.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "doc_write",
+        "path": ".claude/tools/skills/doc_write.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "drift_semantic_check",
+        "path": ".claude/tools/skills/drift_semantic_check.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "economics_regression",
+        "path": ".claude/tools/skills/economics_regression.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "edge_case_selector",
+        "path": ".claude/tools/skills/edge_case_selector.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "efficiency_review",
+        "path": ".claude/tools/skills/efficiency_review.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "escalation_router",
+        "path": ".claude/tools/skills/escalation_router.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "eval_run",
+        "path": ".claude/tools/skills/eval_run.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "evidence_bundle_build",
+        "path": ".claude/tools/skills/evidence_bundle_build.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "evidence_init",
+        "path": ".claude/tools/skills/evidence_init.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "evidence_router",
+        "path": ".claude/tools/skills/evidence_router.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "exec_dryrun",
+        "path": ".claude/tools/skills/exec_dryrun.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "hardening_scan_fix",
+        "path": ".claude/tools/skills/hardening_scan_fix.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "hello",
+        "path": ".claude/tools/skills/hello.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "hypothesis_builder",
+        "path": ".claude/tools/skills/hypothesis_builder.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "idea_dedupe",
+        "path": ".claude/tools/skills/idea_dedupe.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "idea_scoring",
+        "path": ".claude/tools/skills/idea_scoring.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "last_train",
+        "path": ".claude/tools/skills/last_train.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "last_train_merge",
+        "path": ".claude/tools/skills/last_train_merge.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "limitation_harvest_scan",
+        "path": ".claude/tools/skills/limitation_harvest_scan.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "log_standardize",
+        "path": ".claude/tools/skills/log_standardize.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "mechanic_explain",
+        "path": ".claude/tools/skills/mechanic_explain.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "model_routing_record_outcome",
+        "path": ".claude/tools/skills/model_routing_record_outcome.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "model_routing_select",
+        "path": ".claude/tools/skills/model_routing_select.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "mutation_detect",
+        "path": ".claude/tools/skills/mutation_detect.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "outcome_event_generate",
+        "path": ".claude/tools/skills/outcome_event_generate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "outcome_ledger_append",
+        "path": ".claude/tools/skills/outcome_ledger_append.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "parity_scan_and_mvp_planner",
+        "path": ".claude/tools/skills/parity_scan_and_mvp_planner.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "pattern_detect",
+        "path": ".claude/tools/skills/pattern_detect.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "pdf_export",
+        "path": ".claude/tools/skills/pdf_export.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "pdf_quality",
+        "path": ".claude/tools/skills/pdf_quality.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "pdf_render",
+        "path": ".claude/tools/skills/pdf_render.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "performance_finalize",
+        "path": ".claude/tools/skills/performance_finalize.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "performance_toggle",
+        "path": ".claude/tools/skills/performance_toggle.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "plan_diff_apply",
+        "path": ".claude/tools/skills/plan_diff_apply.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "plan_lint",
+        "path": ".claude/tools/skills/plan_lint.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "plan_mutate",
+        "path": ".claude/tools/skills/plan_mutate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "policy_gatekeeper",
+        "path": ".claude/tools/skills/policy_gatekeeper.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "prompt_debt_capture",
+        "path": ".claude/tools/skills/prompt_debt_capture.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "qa_gate",
+        "path": ".claude/tools/skills/qa_gate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "refactor_bridge_scan",
+        "path": ".claude/tools/skills/refactor_bridge_scan.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "reference_fix",
+        "path": ".claude/tools/skills/reference_fix.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "release_cut",
+        "path": ".claude/tools/skills/release_cut.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "repo_clean",
+        "path": ".claude/tools/skills/repo_clean.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "repo_clean_scan",
+        "path": ".claude/tools/skills/repo_clean_scan.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "repo_compare",
+        "path": ".claude/tools/skills/repo_compare.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "repo_validate",
+        "path": ".claude/tools/skills/repo_validate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "report",
+        "path": ".claude/tools/skills/report.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "review_panel",
+        "path": ".claude/tools/skills/review_panel.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "route_autotune_suggest",
+        "path": ".claude/tools/skills/route_autotune_suggest.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "route_profile_patch_pack",
+        "path": ".claude/tools/skills/route_profile_patch_pack.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "route_profile_update",
+        "path": ".claude/tools/skills/route_profile_update.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "scan",
+        "path": ".claude/tools/skills/scan.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "schema_batch_validate",
+        "path": ".claude/tools/skills/schema_batch_validate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "screencast_script",
+        "path": ".claude/tools/skills/screencast_script.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "security_redactor",
+        "path": ".claude/tools/skills/security_redactor.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "shadow_prompt",
+        "path": ".claude/tools/skills/shadow_prompt.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "shadow_prompt_minify",
+        "path": ".claude/tools/skills/shadow_prompt_minify.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "skill_gap_detect",
+        "path": ".claude/tools/skills/skill_gap_detect.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "skill_registry_search",
+        "path": ".claude/tools/skills/skill_registry_search.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "skill_scaffold",
+        "path": ".claude/tools/skills/skill_scaffold.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "spec_validate",
+        "path": ".claude/tools/skills/spec_validate.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "system_map",
+        "path": ".claude/tools/skills/system_map.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "team_topology_verify",
+        "path": ".claude/tools/skills/team_topology_verify.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "telemetry_summarize",
+        "path": ".claude/tools/skills/telemetry_summarize.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "token_event_log",
+        "path": ".claude/tools/skills/token_event_log.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "triad_build",
+        "path": ".claude/tools/skills/triad_build.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "triad_ref_lint",
+        "path": ".claude/tools/skills/triad_ref_lint.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "tutorial_write",
+        "path": ".claude/tools/skills/tutorial_write.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      },
+      {
+        "skill_id": "work_scope_assess",
+        "path": ".claude/tools/skills/work_scope_assess.py",
+        "hint": "!/usr/bin/env python3",
+        "system": "legacy"
+      }
+    ],
+    "reference_docs": [
+      {
+        "skill_id": "algorithmic-art",
+        "path": ".claude/skills/algorithmic-art/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "brand-guidelines",
+        "path": ".claude/skills/brand-guidelines/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "canvas-design",
+        "path": ".claude/skills/canvas-design/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "claude-api",
+        "path": ".claude/skills/claude-api/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "doc-coauthoring",
+        "path": ".claude/skills/doc-coauthoring/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "docx",
+        "path": ".claude/skills/docx/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "frontend-design",
+        "path": ".claude/skills/frontend-design/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "internal-comms",
+        "path": ".claude/skills/internal-comms/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "mcp-builder",
+        "path": ".claude/skills/mcp-builder/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "pdf",
+        "path": ".claude/skills/pdf/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "pptx",
+        "path": ".claude/skills/pptx/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "skill-creator",
+        "path": ".claude/skills/skill-creator/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "slack-gif-creator",
+        "path": ".claude/skills/slack-gif-creator/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "theme-factory",
+        "path": ".claude/skills/theme-factory/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "web-artifacts-builder",
+        "path": ".claude/skills/web-artifacts-builder/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "webapp-testing",
+        "path": ".claude/skills/webapp-testing/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      },
+      {
+        "skill_id": "xlsx",
+        "path": ".claude/skills/xlsx/SKILL.md",
+        "system": "reference_doc",
+        "source_root": ".claude/skills"
+      }
+    ]
+  },
+  "agents": [
+    {
+      "agent": "README",
+      "path": ".claude/agents/README.md"
+    },
+    {
+      "agent": "ROUTING_STUB",
+      "path": ".claude/agents/ROUTING_STUB.md"
+    },
+    {
+      "agent": "WORKER_README",
+      "path": ".claude/agents/WORKER_README.md"
+    },
+    {
+      "agent": "code_assimilator",
+      "path": ".claude/agents/analysis/code_assimilator.md"
+    },
+    {
+      "agent": "copyright_linter",
+      "path": ".claude/agents/analysis/copyright_linter.md"
+    },
+    {
+      "agent": "logging_linter",
+      "path": ".claude/agents/analysis/logging_linter.md"
+    },
+    {
+      "agent": "mechanic_analyzer",
+      "path": ".claude/agents/analysis/mechanic_analyzer.md"
+    },
+    {
+      "agent": "mutation_analyst",
+      "path": ".claude/agents/analysis/mutation_analyst.md"
+    },
+    {
+      "agent": "pattern_miner",
+      "path": ".claude/agents/analysis/pattern_miner.md"
+    },
+    {
+      "agent": "reference_fixer",
+      "path": ".claude/agents/analysis/reference_fixer.md"
+    },
+    {
+      "agent": "system_mapper",
+      "path": ".claude/agents/analysis/system_mapper.md"
+    },
+    {
+      "agent": "context_packer",
+      "path": ".claude/agents/context_packer.md"
+    },
+    {
+      "agent": "critic_dispatcher",
+      "path": ".claude/agents/critic_dispatcher.md"
+    },
+    {
+      "agent": "README",
+      "path": ".claude/agents/critics/README.md"
+    },
+    {
+      "agent": "creative",
+      "path": ".claude/agents/critics/creative.md"
+    },
+    {
+      "agent": "legal",
+      "path": ".claude/agents/critics/legal.md"
+    },
+    {
+      "agent": "methodical",
+      "path": ".claude/agents/critics/methodical.md"
+    },
+    {
+      "agent": "moral",
+      "path": ".claude/agents/critics/moral.md"
+    },
+    {
+      "agent": "security",
+      "path": ".claude/agents/critics/security.md"
+    },
+    {
+      "agent": "systemic",
+      "path": ".claude/agents/critics/systemic.md"
+    },
+    {
+      "agent": "technical",
+      "path": ".claude/agents/critics/technical.md"
+    },
+    {
+      "agent": "designer",
+      "path": ".claude/agents/designer.md"
+    },
+    {
+      "agent": "api_doc_writer",
+      "path": ".claude/agents/docs/api_doc_writer.md"
+    },
+    {
+      "agent": "architecture_writer",
+      "path": ".claude/agents/docs/architecture_writer.md"
+    },
+    {
+      "agent": "diagram_spec_author",
+      "path": ".claude/agents/docs/diagram_spec_author.md"
+    },
+    {
+      "agent": "doc_orchestrator",
+      "path": ".claude/agents/docs/doc_orchestrator.md"
+    },
+    {
+      "agent": "doc_reviewer",
+      "path": ".claude/agents/docs/doc_reviewer.md"
+    },
+    {
+      "agent": "documentation_writer",
+      "path": ".claude/agents/docs/documentation_writer.md"
+    },
+    {
+      "agent": "faq_synthesizer",
+      "path": ".claude/agents/docs/faq_synthesizer.md"
+    },
+    {
+      "agent": "glossary_curator",
+      "path": ".claude/agents/docs/glossary_curator.md"
+    },
+    {
+      "agent": "release_notes_editor",
+      "path": ".claude/agents/docs/release_notes_editor.md"
+    },
+    {
+      "agent": "repo_comparator",
+      "path": ".claude/agents/docs/repo_comparator.md"
+    },
+    {
+      "agent": "result_relay_worker",
+      "path": ".claude/agents/docs/result_relay_worker.md"
+    },
+    {
+      "agent": "screencast_script_writer",
+      "path": ".claude/agents/docs/screencast_script_writer.md"
+    },
+    {
+      "agent": "security_policy_writer",
+      "path": ".claude/agents/docs/security_policy_writer.md"
+    },
+    {
+      "agent": "tutorial_author",
+      "path": ".claude/agents/docs/tutorial_author.md"
+    },
+    {
+      "agent": "escalation_controller",
+      "path": ".claude/agents/escalation_controller.md"
+    },
+    {
+      "agent": "architecture_agent",
+      "path": ".claude/agents/learning/architecture_agent.md"
+    },
+    {
+      "agent": "collector_agent",
+      "path": ".claude/agents/learning/collector_agent.md"
+    },
+    {
+      "agent": "systemic_critic",
+      "path": ".claude/agents/learning/critics/systemic_critic.md"
+    },
+    {
+      "agent": "technical_critic",
+      "path": ".claude/agents/learning/critics/technical_critic.md"
+    },
+    {
+      "agent": "documentation_agent",
+      "path": ".claude/agents/learning/documentation_agent.md"
+    },
+    {
+      "agent": "implementation_agent",
+      "path": ".claude/agents/learning/implementation_agent.md"
+    },
+    {
+      "agent": "librarian_agent",
+      "path": ".claude/agents/learning/librarian_agent.md"
+    },
+    {
+      "agent": "pattern_recognition_agent",
+      "path": ".claude/agents/learning/pattern_recognition_agent.md"
+    },
+    {
+      "agent": "skill_agent",
+      "path": ".claude/agents/learning/skill_agent.md"
+    },
+    {
+      "agent": "team_lead",
+      "path": ".claude/agents/learning/team_lead.md"
+    },
+    {
+      "agent": "validation_agent",
+      "path": ".claude/agents/learning/validation_agent.md"
+    },
+    {
+      "agent": "librarian",
+      "path": ".claude/agents/librarian.md"
+    },
+    {
+      "agent": "skill_forge",
+      "path": ".claude/agents/meta/skill_forge.md"
+    },
+    {
+      "agent": "skill_navigator",
+      "path": ".claude/agents/meta/skill_navigator.md"
+    },
+    {
+      "agent": "skill_scout",
+      "path": ".claude/agents/meta/skill_scout.md"
+    },
+    {
+      "agent": "bulk_job_planner",
+      "path": ".claude/agents/operations/bulk_job_planner.md"
+    },
+    {
+      "agent": "department_lead_ops_ledger",
+      "path": ".claude/agents/operations/department_lead_ops_ledger.md"
+    },
+    {
+      "agent": "skill_planning_agent",
+      "path": ".claude/agents/operations/skill_planning_agent.md"
+    },
+    {
+      "agent": "skill_scout",
+      "path": ".claude/agents/operations/skill_scout.md"
+    },
+    {
+      "agent": "translator_local_oodle",
+      "path": ".claude/agents/operations/translator_local_oodle.md"
+    },
+    {
+      "agent": "work_brief_editor",
+      "path": ".claude/agents/operations/work_brief_editor.md"
+    },
+    {
+      "agent": "personaler",
+      "path": ".claude/agents/personaler.md"
+    },
+    {
+      "agent": "batch_schema_validator",
+      "path": ".claude/agents/quality/batch_schema_validator.md"
+    },
+    {
+      "agent": "local_verifier_o3",
+      "path": ".claude/agents/quality/local_verifier_o3.md"
+    },
+    {
+      "agent": "qualitysignal_aggregator",
+      "path": ".claude/agents/qualitysignal_aggregator.md"
+    },
+    {
+      "agent": "research",
+      "path": ".claude/agents/research.md"
+    },
+    {
+      "agent": "skill_dispatcher",
+      "path": ".claude/agents/skill_dispatcher.md"
+    },
+    {
+      "agent": "specialists",
+      "path": ".claude/agents/specialists.md"
+    },
+    {
+      "agent": "task_compactor",
+      "path": ".claude/agents/task_compactor.md"
+    },
+    {
+      "agent": "team_lead",
+      "path": ".claude/agents/team_lead.md"
+    },
+    {
+      "agent": "tester",
+      "path": ".claude/agents/tester.md"
+    },
+    {
+      "agent": "testops_orchestrator",
+      "path": ".claude/agents/testops/testops_orchestrator.md"
+    },
+    {
+      "agent": "testrunner_heavy",
+      "path": ".claude/agents/testops/testrunner_heavy.md"
+    },
+    {
+      "agent": "testrunner_light",
+      "path": ".claude/agents/testops/testrunner_light.md"
+    },
+    {
+      "agent": "testrunner_medium",
+      "path": ".claude/agents/testops/testrunner_medium.md"
+    },
+    {
+      "agent": "implementation_worker",
+      "path": ".claude/agents/workers/implementation_worker.md"
+    },
+    {
+      "agent": "report_worker",
+      "path": ".claude/agents/workers/report_worker.md"
+    }
+  ],
+  "contracts": {
+    "schemas": [
+      ".claude/contracts/schemas/autodocs_report.schema.json",
+      ".claude/contracts/schemas/bandit_routing_decision.schema.json",
+      ".claude/contracts/schemas/budget_event.schema.json",
+      ".claude/contracts/schemas/budget_report.schema.json",
+      ".claude/contracts/schemas/capability_map.schema.json",
+      ".claude/contracts/schemas/cleanup_apply_report.schema.json",
+      ".claude/contracts/schemas/cleanup_apply_request.schema.json",
+      ".claude/contracts/schemas/cleanup_plan.schema.json",
+      ".claude/contracts/schemas/clockwork_version_bump.schema.json",
+      ".claude/contracts/schemas/code_assimilate_spec.json",
+      ".claude/contracts/schemas/code_clean_report.schema.json",
+      ".claude/contracts/schemas/code_clean_request.schema.json",
+      ".claude/contracts/schemas/command_spec.schema.json",
+      ".claude/contracts/schemas/copyright_standardize_spec.json",
+      ".claude/contracts/schemas/create_mvp.schema.json",
+      ".claude/contracts/schemas/critic_report.schema.json",
+      ".claude/contracts/schemas/critic_result.schema.json",
+      ".claude/contracts/schemas/critics_panels.schema.json",
+      ".claude/contracts/schemas/decision_feedback_spec.schema.json",
+      ".claude/contracts/schemas/decision_memo_spec.schema.json",
+      ".claude/contracts/schemas/deliberation_pack_spec.schema.json",
+      ".claude/contracts/schemas/doc_review_report.schema.json",
+      ".claude/contracts/schemas/doc_write_spec.schema.json",
+      ".claude/contracts/schemas/efficiency_review.schema.json",
+      ".claude/contracts/schemas/escalation_router.schema.json",
+      ".claude/contracts/schemas/eval_run.schema.json",
+      ".claude/contracts/schemas/evidence_bundle_manifest.schema.json",
+      ".claude/contracts/schemas/evidence_selection_spec.schema.json",
+      ".claude/contracts/schemas/experiment_spec.schema.json",
+      ".claude/contracts/schemas/feedback_request_spec.schema.json",
+      ".claude/contracts/schemas/fixplan_spec.schema.json",
+      ".claude/contracts/schemas/hardening_report.schema.json",
+      ".claude/contracts/schemas/hello.schema.json",
+      ".claude/contracts/schemas/hypothesis_spec.schema.json",
+      ".claude/contracts/schemas/idea_dedupe_spec.schema.json",
+      ".claude/contracts/schemas/idea_set_spec.schema.json",
+      ".claude/contracts/schemas/last_train_report.schema.json",
+      ".claude/contracts/schemas/last_train_summary.schema.json",
+      ".claude/contracts/schemas/limitation_harvest_report.schema.json",
+      ".claude/contracts/schemas/log_standardize_spec.json",
+      ".claude/contracts/schemas/mechanic_explain_spec.json",
+      ".claude/contracts/schemas/message_triad_spec.schema.json",
+      ".claude/contracts/schemas/model_routing_outcome.schema.json",
+      ".claude/contracts/schemas/model_routing_report.schema.json",
+      ".claude/contracts/schemas/mutation_detect_spec.json",
+      ".claude/contracts/schemas/ops_ledger_event.schema.json",
+      ".claude/contracts/schemas/ops_ledger_summary.schema.json",
+      ".claude/contracts/schemas/outcome_ledger_event.schema.json",
+      ".claude/contracts/schemas/pack_manifest.schema.json",
+      ".claude/contracts/schemas/parity_scan_and_mvp_planner.schema.json",
+      ".claude/contracts/schemas/pattern_detect_spec.json",
+      ".claude/contracts/schemas/pdf_export_request.schema.json",
+      ".claude/contracts/schemas/pdf_quality_request.schema.json",
+      ".claude/contracts/schemas/pdf_render_inputs.schema.json",
+      ".claude/contracts/schemas/pdf_render_outputs.schema.json",
+      ".claude/contracts/schemas/performance_config.schema.json",
+      ".claude/contracts/schemas/performance_toggle_report.schema.json",
+      ".claude/contracts/schemas/plan_diff_spec.schema.json",
+      ".claude/contracts/schemas/plan_spec.schema.json",
+      ".claude/contracts/schemas/policy_gate_decision.schema.json",
+      ".claude/contracts/schemas/policy_gate_request.schema.json",
+      ".claude/contracts/schemas/prompt_debt_item.schema.json",
+      ".claude/contracts/schemas/qa_gate_request.schema.json",
+      ".claude/contracts/schemas/quality_gap_report.schema.json",
+      ".claude/contracts/schemas/quality_signal.schema.json",
+      ".claude/contracts/schemas/redaction_report.schema.json",
+      ".claude/contracts/schemas/reference_fix_spec.json",
+      ".claude/contracts/schemas/repo_clean_report.schema.json",
+      ".claude/contracts/schemas/repo_clean_request.schema.json",
+      ".claude/contracts/schemas/repo_compare_report.schema.json",
+      ".claude/contracts/schemas/report.schema.json",
+      ".claude/contracts/schemas/report_spec.schema.json",
+      ".claude/contracts/schemas/review_panel_request.schema.json",
+      ".claude/contracts/schemas/review_panel_result.schema.json",
+      ".claude/contracts/schemas/route_autotune_suggestion.schema.json",
+      ".claude/contracts/schemas/route_profile_spec.schema.json",
+      ".claude/contracts/schemas/routing_spec.schema.json",
+      ".claude/contracts/schemas/scan.schema.json",
+      ".claude/contracts/schemas/screencast_script_spec.schema.json",
+      ".claude/contracts/schemas/shadow_prompt_report.schema.json",
+      ".claude/contracts/schemas/shadow_prompt_triage.schema.json",
+      ".claude/contracts/schemas/skill_gap_detect_spec.json",
+      ".claude/contracts/schemas/skill_opportunity_report.schema.json",
+      ".claude/contracts/schemas/skill_registry_search_spec.json",
+      ".claude/contracts/schemas/skill_request_spec.schema.json",
+      ".claude/contracts/schemas/skill_result_spec.schema.json",
+      ".claude/contracts/schemas/skill_scaffold_spec.json",
+      ".claude/contracts/schemas/system_map_spec.json",
+      ".claude/contracts/schemas/tasklist_spec.schema.json",
+      ".claude/contracts/schemas/telemetry_event.schema.json",
+      ".claude/contracts/schemas/telemetry_summary.schema.json",
+      ".claude/contracts/schemas/testreport_spec.schema.json",
+      ".claude/contracts/schemas/token_event_log_request.schema.json",
+      ".claude/contracts/schemas/tutorial_write_spec.schema.json",
+      ".claude/contracts/schemas/work_scope_report.schema.json"
+    ],
+    "examples": [
+      ".claude/contracts/examples/autodocs_generate.skill_request.example.json",
+      ".claude/contracts/examples/bandit_routing_decision.example.json",
+      ".claude/contracts/examples/budget_analyze.skill_request.example.json",
+      ".claude/contracts/examples/capability_map.example.json",
+      ".claude/contracts/examples/cleanup_apply.skill_request.example.json",
+      ".claude/contracts/examples/cleanup_apply_example.json",
+      ".claude/contracts/examples/cleanup_plan_apply.skill_request.example.json",
+      ".claude/contracts/examples/clockwork_version_bump_example.json",
+      ".claude/contracts/examples/code_assimilate_example.json",
+      ".claude/contracts/examples/code_clean.skill_request.example.json",
+      ".claude/contracts/examples/code_clean_example.json",
+      ".claude/contracts/examples/code_clean_scan.skill_request.example.json",
+      ".claude/contracts/examples/command_spec.example.json",
+      ".claude/contracts/examples/copyright_standardize_example.json",
+      ".claude/contracts/examples/create_mvp_example.json",
+      ".claude/contracts/examples/critic_report.example.json",
+      ".claude/contracts/examples/critics_board_review.skill_request.example.json",
+      ".claude/contracts/examples/decision_feedback_spec.example.json",
+      ".claude/contracts/examples/decision_memo_spec.example.json",
+      ".claude/contracts/examples/deliberation_pack_spec.example.json",
+      ".claude/contracts/examples/doc_review_report.example.json",
+      ".claude/contracts/examples/doc_write_spec.example.json",
+      ".claude/contracts/examples/efficiency_review.skill_request.example.json",
+      ".claude/contracts/examples/escalation_router_example.json",
+      ".claude/contracts/examples/eval_run_example.json",
+      ".claude/contracts/examples/evidence_bundle_manifest.example.json",
+      ".claude/contracts/examples/evidence_selection_spec.example.json",
+      ".claude/contracts/examples/experiment_spec.example.json",
+      ".claude/contracts/examples/feedback_request_spec.example.json",
+      ".claude/contracts/examples/fixplan_spec.example.json",
+      ".claude/contracts/examples/hardening_scan_fix.skill_request.example.json",
+      ".claude/contracts/examples/hello_example.json",
+      ".claude/contracts/examples/hypothesis_spec.example.json",
+      ".claude/contracts/examples/idea_dedupe.skill_request.example.json",
+      ".claude/contracts/examples/idea_set_spec.example.json",
+      ".claude/contracts/examples/last_train.skill_request.example.json",
+      ".claude/contracts/examples/last_train_example.json",
+      ".claude/contracts/examples/last_train_merge.skill_request.example.json",
+      ".claude/contracts/examples/limitation_harvest_scan.skill_request.example.json",
+      ".claude/contracts/examples/log_standardize_example.json",
+      ".claude/contracts/examples/mechanic_explain_example.json",
+      ".claude/contracts/examples/message_triad_spec.example.json",
+      ".claude/contracts/examples/model_routing_record_outcome.skill_request.example.json",
+      ".claude/contracts/examples/model_routing_select.skill_request.example.json",
+      ".claude/contracts/examples/mutation_detect_example.json",
+      ".claude/contracts/examples/ops_ledger_event.example.json",
+      ".claude/contracts/examples/ops_ledger_summary.example.json",
+      ".claude/contracts/examples/outcome_ledger_event.example.json",
+      ".claude/contracts/examples/pack_manifest.example.json",
+      ".claude/contracts/examples/parity_scan_and_mvp_planner_example.json",
+      ".claude/contracts/examples/pattern_detect_example.json",
+      ".claude/contracts/examples/pdf_export.skill_request.example.json",
+      ".claude/contracts/examples/pdf_export_example.json",
+      ".claude/contracts/examples/pdf_quality.skill_request.example.json",
+      ".claude/contracts/examples/pdf_quality_example.json",
+      ".claude/contracts/examples/pdf_render.skill_request.example.json",
+      ".claude/contracts/examples/performance_finalize.skill_request.example.json",
+      ".claude/contracts/examples/performance_toggle.skill_request.example.json",
+      ".claude/contracts/examples/plan_diff_spec.example.json",
+      ".claude/contracts/examples/plan_spec.example.json",
+      ".claude/contracts/examples/policy_gate_decision.example.json",
+      ".claude/contracts/examples/policy_gate_request.example.json",
+      ".claude/contracts/examples/prompt_debt_item.example.json",
+      ".claude/contracts/examples/qa_gate_example.json",
+      ".claude/contracts/examples/quality_gap_report.example.json",
+      ".claude/contracts/examples/quality_signal.example.json",
+      ".claude/contracts/examples/redaction_report.example.json",
+      ".claude/contracts/examples/reference_fix_example.json",
+      ".claude/contracts/examples/repo_clean.skill_request.example.json",
+      ".claude/contracts/examples/repo_clean_example.json",
+      ".claude/contracts/examples/repo_clean_scan.skill_request.example.json",
+      ".claude/contracts/examples/repo_compare_report.example.json",
+      ".claude/contracts/examples/report_example.json",
+      ".claude/contracts/examples/report_spec.example.json",
+      ".claude/contracts/examples/review_panel.skill_request.example.json",
+      ".claude/contracts/examples/review_panel_example.json",
+      ".claude/contracts/examples/route_autotune_suggestion.example.json",
+      ".claude/contracts/examples/route_profile_spec.example.json",
+      ".claude/contracts/examples/routing_spec.example.json",
+      ".claude/contracts/examples/scan_example.json",
+      ".claude/contracts/examples/screencast_script_spec.example.json",
+      ".claude/contracts/examples/shadow_prompt.skill_request.example.json",
+      ".claude/contracts/examples/shadow_prompt_example.json",
+      ".claude/contracts/examples/shadow_prompt_minify.skill_request.example.json",
+      ".claude/contracts/examples/skill_gap_detect_example.json",
+      ".claude/contracts/examples/skill_opportunity_report.example.json",
+      ".claude/contracts/examples/skill_registry_search_example.json",
+      ".claude/contracts/examples/skill_request_spec.example.json",
+      ".claude/contracts/examples/skill_result_spec.example.json",
+      ".claude/contracts/examples/skill_scaffold_example.json",
+      ".claude/contracts/examples/system_map_example.json",
+      ".claude/contracts/examples/tasklist_spec.example.json",
+      ".claude/contracts/examples/telemetry_event_example.json",
+      ".claude/contracts/examples/telemetry_summarize.skill_request.example.json",
+      ".claude/contracts/examples/telemetry_summarize_example.json",
+      ".claude/contracts/examples/testreport_spec.example.json",
+      ".claude/contracts/examples/token_event_log.skill_request.example.json",
+      ".claude/contracts/examples/tutorial_write_spec.example.json",
+      ".claude/contracts/examples/work_scope_assess.skill_request.example.json"
+    ]
+  },
+  "governance": [
+    ".claude/governance/LEGACY_POLICY.md",
+    ".claude/governance/artifacts_and_paths.md",
+    ".claude/governance/budgeting_policy.md",
+    ".claude/governance/capability_map_policy.md",
+    ".claude/governance/decision_policy.md",
+    ".claude/governance/deep_oodle_mode.md",
+    ".claude/governance/derived_copy_header_template.md",
+    ".claude/governance/document_placement.md",
+    ".claude/governance/escalation_matrix.md",
+    ".claude/governance/evidence_bundle_policy.md",
+    ".claude/governance/execution_protocol.md",
+    ".claude/governance/experiment_budget.md",
+    ".claude/governance/feedback_policy.md",
+    ".claude/governance/file_ownership.md",
+    ".claude/governance/git_workflow.md",
+    ".claude/governance/legacy_purge_report.md",
+    ".claude/governance/message_triad_protocol.md",
+    ".claude/governance/model_escalation_policy.md",
+    ".claude/governance/mvp_development_standard.md",
+    ".claude/governance/naming_canon.md",
+    ".claude/governance/no_llm_mode.md",
+    ".claude/governance/ollama_integration.md",
+    ".claude/governance/path_semantics.md",
+    ".claude/governance/paths_and_placeholders.md",
+    ".claude/governance/planning_policy.md",
+    ".claude/governance/policy_gatekeeper.md",
+    ".claude/governance/prompt_debt_policy.md",
+    ".claude/governance/qa_gate_policy.md",
+    ".claude/governance/review_process.md",
+    ".claude/governance/routing_matrix.md",
+    ".claude/governance/rule_discovery.md",
+    ".claude/governance/security_redaction_policy.md",
+    ".claude/governance/self_improvement.md",
+    ".claude/governance/skill_scout_triggers.md",
+    ".claude/governance/task_archival.md",
+    ".claude/governance/workflow_triggers.md"
+  ]
+}

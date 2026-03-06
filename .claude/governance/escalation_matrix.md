@@ -1,6 +1,6 @@
 # Escalation Matrix
 
-Definiert strikte Governance-Grenzen zwischen Team Lead, Architecture Agent und Critics.
+Defines strict governance boundaries between Team Lead, Architecture Agent, and Critics.
 
 ---
 
@@ -9,90 +9,90 @@ Definiert strikte Governance-Grenzen zwischen Team Lead, Architecture Agent und 
 **Handled by:** Specialist Agents
 **No escalation required.**
 
-Beispiele:
-- Minor Feature Additions (neue private Methode, neue Log-Zeile)
-- Documentation Updates
-- Non-structural Refactors (Umbenennung intern, Formatierung)
-- Bugfixes mit klarer isolierter Ursache
+Examples:
+- Minor feature additions (new private method, new log line)
+- Documentation updates
+- Non-structural refactors (internal renaming, formatting)
+- Bugfixes with clearly isolated cause
 
 ---
 
 ## Level 1 — Team Lead Review
 
 **Required for:**
-- Multi-Modul-Änderungen (2–5 Dateien, klar abgegrenzt)
-- Moderate Refactors ohne API-Änderung
+- Multi-module changes (2–5 files, clearly bounded)
+- Moderate refactors without API change
 
-Team Lead kann ohne Architecture Agent freigeben.
+Team Lead can approve without Architecture Agent.
 
 ---
 
 ## Level 2 — Architecture Agent Mandatory Review
 
 **Required for:**
-- Framework-Regeländerungen
-- Modul-Boundary-Änderungen (Was geht in welches Modul)
-- Dependency-Richtungsänderungen
-- Neue Python-Package-Abhängigkeiten (außerhalb stdlib)
-- Neue Top-Level-Module in `src/`
-- Öffentliche API-Änderungen die andere Module betreffen
+- Framework rule changes
+- Module boundary changes (what goes in which module)
+- Dependency direction changes
+- New Python package dependencies (outside stdlib)
+- New top-level modules in `src/`
+- Public API changes affecting other modules
 
-**Architecture Agent Approval erforderlich vor Implementation.**
+**Architecture Agent approval required before implementation.**
 
 ---
 
 ## Level 3 — Technical Critic Mandatory Review
 
 **Required for:**
-- Performance-kritische Pfade (Ollama-Client-Timeout-Handling, subprocess-Pooling)
-- Externe API-Integration (Claude-CLI-Interface-Änderungen)
-- Persistente Datenstruktur-Änderungen (Docs/-Schema, Config-Format)
+- Performance-critical paths (Ollama client timeout handling, subprocess pooling)
+- External API integration (Claude CLI interface changes)
+- Persistent data structure changes (Docs/ schema, config format)
 
-**Critic gibt adversarielle Bewertung → Team Lead entscheidet.**
+**Critic provides adversarial evaluation → Team Lead decides.**
 
 ---
 
 ## Level 4 — Systemic Critic Mandatory Review
 
 **Required for:**
-- Neue Agent-Typen hinzufügen
-- Governance-Regeln ändern
-- Self-Improvement-Zyklus modifizieren
-- Eskalationsschwellen anpassen
+- Adding new agent types
+- Changing governance rules
+- Modifying self-improvement cycle
+- Adjusting escalation thresholds
 
-**Systemic Critic bewertet Langzeit-Komplexität → Team Lead entscheidet.**
+**Systemic Critic evaluates long-term complexity → Team Lead decides.**
 
 ---
 
 ## Level 5 — User Confirmation Required
 
 **Required for:**
-- Orchestrator-Core-Redesign (fundamentale Umstrukturierung von `src/`)
-- Wechsel des LLM-Backends (Ollama durch anderes System ersetzen)
-- Grundlegende Änderung des Workflow-Trigger-Systems
+- Orchestrator core redesign (fundamental restructuring of `src/`)
+- Switching LLM backend (replacing Ollama with another system)
+- Fundamental change to workflow trigger system
 
-**Keine autonome Entscheidung erlaubt.**
-
----
-
-## Konflikt-Resolution
-
-Wenn Architecture Agent und Critic widersprechen:
-
-1. Team Lead fasst Trade-offs zusammen
-2. Risk-Level kategorisieren (Low / Medium / High)
-3. User trifft finale Entscheidung für L3+ Konflikte
-4. Entscheidung in Performance-Log dokumentieren
+**No autonomous decision allowed.**
 
 ---
 
-## Schnell-Referenz
+## Conflict Resolution
 
-| Situation | Level | Wer entscheidet |
+When Architecture Agent and Critic disagree:
+
+1. Team Lead summarizes trade-offs
+2. Categorize risk level (Low / Medium / High)
+3. User makes final decision for L3+ conflicts
+4. Document decision in performance log
+
+---
+
+## Quick Reference
+
+| Situation | Level | Who decides |
 |---|---|---|
-| Bugfix in einer Datei | 0 | Specialist |
-| Multi-Datei Refactor | 1 | Team Lead |
-| Neues Python-Package als Abhängigkeit | 2 | Architecture Agent |
-| Ollama-Client-Timeout-Handling | 3 | Technical Critic → Team Lead |
-| Governance-Regel ändern | 4 | Systemic Critic → Team Lead |
-| Core-Orchestrator-Redesign | 5 | User |
+| Bugfix in one file | 0 | Specialist |
+| Multi-file refactor | 1 | Team Lead |
+| New Python package as dependency | 2 | Architecture Agent |
+| Ollama client timeout handling | 3 | Technical Critic → Team Lead |
+| Change governance rule | 4 | Systemic Critic → Team Lead |
+| Core orchestrator redesign | 5 | User |

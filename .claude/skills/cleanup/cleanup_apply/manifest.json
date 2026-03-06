@@ -1,0 +1,27 @@
+{
+  "name": "cleanup_apply",
+  "version": "0.1.0",
+  "category": "cleanup",
+  "description": "Apply cleanup changes from an approved cleanup plan.",
+  "entrypoint": "skills.cleanup.cleanup_apply.skill:CleanupApplySkill",
+  "permissions": [
+    "repo:read",
+    "repo:write",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "apply_cleanup"
+  ],
+  "tags": [
+    "cleanup",
+    "apply",
+    "repo"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "cleanup_apply"
+  }
+}

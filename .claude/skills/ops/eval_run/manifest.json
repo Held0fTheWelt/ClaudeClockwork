@@ -1,0 +1,26 @@
+{
+  "name": "eval_run",
+  "version": "0.1.0",
+  "category": "ops",
+  "description": "Execute the evaluation harness and summarize regressions.",
+  "entrypoint": "skills.ops.eval_run.skill:EvalRunSkill",
+  "permissions": [
+    "qa:run",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "run_eval"
+  ],
+  "tags": [
+    "eval",
+    "testing",
+    "golden"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "eval_run"
+  }
+}

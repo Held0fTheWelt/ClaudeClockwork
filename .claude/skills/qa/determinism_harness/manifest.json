@@ -1,0 +1,26 @@
+{
+  "name": "determinism_harness",
+  "version": "0.1.0",
+  "category": "qa",
+  "description": "Run the determinism harness to compare repeated runs.",
+  "entrypoint": "skills.qa.determinism_harness.skill:DeterminismHarnessSkill",
+  "permissions": [
+    "qa:run",
+    "bridge:legacy"
+  ],
+  "aliases": [
+    "run_determinism_harness"
+  ],
+  "tags": [
+    "qa",
+    "determinism",
+    "harness"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "determinism_harness"
+  }
+}

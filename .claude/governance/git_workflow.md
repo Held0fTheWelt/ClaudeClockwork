@@ -2,35 +2,35 @@
 
 ## Commits
 
-- Commits nur auf explizite User-Anfrage erstellen
-- Commit-Message via HEREDOC formatieren
-- Co-Author-Zeile: `Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>`
-- Immer NEUE Commits erstellen — niemals amenden (außer explizit angefragt)
-- Bei Pre-Commit-Hook-Fehler: Fix, re-stage, NEUER Commit (kein Amend — Amend würde vorherigen Commit modifizieren)
-- Spezifische Dateien stagen statt `git add -A` oder `git add .` (verhindert versehentliches Committen sensibler Dateien)
-- Keine sensiblen Dateien committen (.env, credentials) — User warnen wenn explizit angefragt
+- Create commits only on explicit user request
+- Format commit message via HEREDOC
+- Co-author line: `Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>`
+- Always create NEW commits — never amend (unless explicitly requested)
+- On pre-commit hook error: Fix, re-stage, NEW commit (no amend — amend would modify previous commit)
+- Stage specific files instead of `git add -A` or `git add .` (prevents accidentally committing sensitive files)
+- Don't commit sensitive files (.env, credentials) — warn user if explicitly requested
 
-## Verbotene Aktionen (ohne explizite Anfrage)
+## Forbidden Actions (Without Explicit Request)
 
-- `push --force` — niemals auf main/deve/master; User warnen wenn angefragt
+- `push --force` — never on main/deve/master; warn user if requested
 - `reset --hard`
 - `checkout .` / `restore .` / `clean -f`
 - `branch -D`
-- `--no-verify` / `--no-gpg-sign` (Hooks nicht überspringen)
-- Interaktive Flags (`-i`) bei rebase, add etc.
-- `--no-edit` bei rebase
-- Git Config ändern
+- `--no-verify` / `--no-gpg-sign` (don't skip hooks)
+- Interactive flags (`-i`) on rebase, add, etc.
+- `--no-edit` on rebase
+- Change git config
 
 ## Push
 
-- Nicht automatisch pushen — nur auf explizite Anfrage
-- Einmalige Zustimmung gilt nicht als generelle Autorisierung für künftige Pushes
+- Don't push automatically — only on explicit request
+- One-time consent does not count as general authorization for future pushes
 
 ## Pull Requests
 
-- `gh pr create` mit HEREDOC-Body
-- Titel unter 70 Zeichen
-- Body-Format:
+- `gh pr create` with HEREDOC body
+- Title under 70 characters
+- Body format:
   ```
   ## Summary
   <1-3 bullet points>
@@ -40,18 +40,18 @@
 
   Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
   ```
-- Vor PR-Erstellung: git status, git diff, git log analysieren
+- Before PR creation: analyze git status, git diff, git log
 
-## Destruktive Aktionen
+## Destructive Actions
 
-Immer User-Bestätigung einholen vor:
-- Dateien oder Branches löschen
-- Force-Push, reset --hard
-- Aktionen die für andere sichtbar sind (Push, PR, Issues kommentieren, Releases)
+Always obtain user confirmation before:
+- Deleting files or branches
+- Force-push, reset --hard
+- Actions visible to others (push, PR, commenting on issues, releases)
 
-## Unbekannter State
+## Unknown State
 
-Bei unbekannten Dateien, Branches oder Konfiguration: erst untersuchen, dann handeln.
-- Merge-Konflikte: lösen statt verwerfen
-- Lock-Files: Prozess untersuchen statt löschen
-- Unbekannte Branches: nicht löschen ohne Nachfrage
+For unknown files, branches, or configuration: investigate first, then act.
+- Merge conflicts: resolve instead of discarding
+- Lock files: investigate process instead of deleting
+- Unknown branches: don't delete without asking

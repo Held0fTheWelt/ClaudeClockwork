@@ -1,6 +1,6 @@
 # Decisions Log — Python Orchestrator
 
-> Append-only. Kurze, datierte Einträge. Langzeit-Referenz für Architektur- und Policy-Entscheidungen.
+> Append-only. Short, dated entries. Long-term reference for architecture and policy decisions.
 > Owner: Team Lead (via file_ownership.md)
 
 ---
@@ -8,44 +8,44 @@
 ## Template
 
 ```
-- Datum:       YYYY-MM-DD
-- Entscheidung: [Was wurde entschieden]
-- Kontext:     [Warum war die Entscheidung nötig]
-- Optionen:    [Mindestens 2 Alternativen]
-- Begründung:  [Warum diese Option]
-- Follow-ups:  [Konsequenzen, nächste Schritte]
+- Date:        YYYY-MM-DD
+- Decision:    [What was decided]
+- Context:     [Why was the decision necessary]
+- Options:     [At least 2 alternatives]
+- Rationale:   [Why this option]
+- Follow-ups:  [Consequences, next steps]
 ```
 
 ---
 
-## 2026-02-27 — Migration von WarCollection UE5 auf Python Orchestrator
+## 2026-02-27 — Migration from WarCollection UE5 to Python Orchestrator
 
-- Datum: 2026-02-27
-- Entscheidung: Vollständige Migration des `.claude/`-Systems von einem UE5-Game-Projekt auf den Python Orchestrator.
-- Kontext: Das vorherige System war auf Unreal Engine ausgerichtet (`.claude/unreal/`). Das neue Projekt ist eine Python-Konsolenanwendung für autonome Ollama/Claude-Agenten-Orchestrierung.
-- Optionen: (A) Bestehendes System anpassen, (B) Vollständige Neuerstellung der `.claude/`-Governance.
-- Begründung: Option B — zu viel UE5-spezifische Logik, die nicht übertragbar ist.
-- Follow-ups: `src/`-Verzeichnis aufgebaut (main, orchestrator, workflow, ollama_client, claude_client, config, agents/).
-
----
-
-## 2026-02-27 — stdlib-only als Constraint
-
-- Datum: 2026-02-27
-- Entscheidung: Keine externen Python-Abhängigkeiten. Nur Python stdlib.
-- Kontext: Einfache Installierbarkeit, kein virtualenv-Overhead, maximale Portabilität.
-- Optionen: (A) requests + pydantic, (B) stdlib only (urllib, subprocess, json, pathlib).
-- Begründung: Option B — der Overhead von externen Paketen überwiegt den Nutzen für diesen Use Case.
-- Follow-ups: requirements.txt dokumentiert stdlib-only. Bei L2-Eskalation Architecture Agent einbeziehen wenn externe Pakete benötigt werden.
+- Date: 2026-02-27
+- Decision: Complete migration of the `.claude/` system from a UE5 game project to the Python Orchestrator.
+- Context: The previous system was oriented toward Unreal Engine (`.claude/unreal/`). The new project is a Python console application for autonomous Ollama/Claude agent orchestration.
+- Options: (A) Adapt existing system, (B) Complete recreation of `.claude/` governance.
+- Rationale: Option B — too much UE5-specific logic that is not transferable.
+- Follow-ups: Built `src/` directory (main, orchestrator, workflow, ollama_client, claude_client, config, agents/).
 
 ---
 
-## 2026-02-27 — Oodle-Konzepte in Python Orchestrator adoptiert
+## 2026-02-27 — stdlib-only as Constraint
 
-- Datum: 2026-02-27
-- Entscheidung: Selektive Adoption von Llama Code (formerly Oodle Code) CMD Konzepten in die .claude/ Governance.
-- Kontext: OODLE.md / `.claude/`-System enthält ausgereifte Konzepte für Routing, Context-Budget, Quality-Tracking.
-- Adoptiert: decisions.md-Pattern, Execution-Phasen (intake|plan|build|validate|review|docs|archive), L5-Gate-Trigger-Liste, Minimal-Kontext-Prinzip.
-- Nicht adoptiert: YAML-Runtime-Storage (.llama_runtime/writes/), externes Provider-Management, volles Enterprise-Agent-Tree.
-- Begründung: Python Orchestrator ist Ollama-first/local-first. Oodle-Runtime-Infra zu aufwändig für aktuellen Scope.
-- Follow-ups: YAML-getriebenes Routing in orchestrator._classify() als L2-Task einplanen.
+- Date: 2026-02-27
+- Decision: No external Python dependencies. Only Python stdlib.
+- Context: Easy installability, no virtualenv overhead, maximum portability.
+- Options: (A) requests + pydantic, (B) stdlib only (urllib, subprocess, json, pathlib).
+- Rationale: Option B — the overhead of external packages outweighs the benefit for this use case.
+- Follow-ups: requirements.txt documents stdlib-only. For L2 escalation, involve Architecture Agent if external packages are needed.
+
+---
+
+## 2026-02-27 — Oodle Concepts Adopted in Python Orchestrator
+
+- Date: 2026-02-27
+- Decision: Selective adoption of Llama Code (formerly Oodle Code) CMD concepts into .claude/ governance.
+- Context: OODLE.md / `.claude/` system contains mature concepts for routing, context budget, quality tracking.
+- Adopted: decisions.md pattern, execution phases (intake|plan|build|validate|review|docs|archive), L5 gate trigger list, minimal context principle.
+- Not adopted: YAML runtime storage (.llama_runtime/writes/), external provider management, full enterprise agent tree.
+- Rationale: Python Orchestrator is Ollama-first/local-first. Oodle runtime infra too complex for current scope.
+- Follow-ups: Plan YAML-driven routing in orchestrator._classify() as L2 task.
