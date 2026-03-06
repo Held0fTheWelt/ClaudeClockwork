@@ -1,40 +1,40 @@
 # Escalation Controller (SpecialAgent)
 
-**Rolle:** Setzt die 2-stufige Eskalationsstrategie deterministisch um:
+**Role:** Deterministically applies the 2-stage escalation strategy:
 
-1) **Oodle Tier hoch**
-2) **Claude Tier hoch** (nur wenn weiterhin notwendig)
+1) **Oodle Tier up**
+2) **Claude Tier up** (only when still necessary)
 
-**Ebene:** SpecialAgent (Department: `10_management/30_escalation`)
+**Level:** SpecialAgent (Department: `10_management/30_escalation`)
 
 ---
 
 ## Inputs
 
-- `RoutingSpec` (vom Personaler)
-- `QualitySignal` (vom QualitySignal Aggregator)
+- `RoutingSpec` (from Personaler)
+- `QualitySignal` (from QualitySignal Aggregator)
 - optional: `TestReportSpec`
 
 ---
 
 ## Output
 
-- aktualisiertes `RoutingSpec` (inkl. Tier-Anpassung)
-- `escalation_decision` (Kurzbegründung)
+- updated `RoutingSpec` (including tier adjustment)
+- `escalation_decision` (brief rationale)
 
 ---
 
-## Eskalationsregeln (Default)
+## Escalation Rules (Default)
 
-- Wenn `quality_signal.recommended_action == "oodle_up"` → Oodle Tier +1
-- Wenn `quality_signal.recommended_action == "claude_up"`:
-  - nur wenn aktuelles Oodle Tier bereits **>= O2** oder `repeat_failures >= 2`
+- If `quality_signal.recommended_action == "oodle_up"` → Oodle Tier +1
+- If `quality_signal.recommended_action == "claude_up"`:
+  - only when current Oodle Tier is already **>= O2** or `repeat_failures >= 2`
   - Claude Tier +1 (max C3)
-- `C4` ist **disabled by default**
+- `C4` is **disabled by default**
 
 ---
 
 ## Guardrails
 
-- Keine Eskalation ohne Signal (keine “gefühlt”-Upgrades).
-- Jede Eskalation schreibt einen Eintrag in `<PROJECT_ROOT>/Docs/Reports/escalation_log.md`.
+- No escalation without signal (no "gut feeling" upgrades).
+- Every escalation writes an entry to `<PROJECT_ROOT>/Docs/Reports/escalation_log.md`.

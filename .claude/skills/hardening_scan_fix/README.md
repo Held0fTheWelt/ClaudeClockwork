@@ -1,6 +1,6 @@
 # hardening_scan_fix
 
-Hardening = **Inkonsistenzen finden, klassifizieren, entscheiden, optional beheben**.
+Hardening = **find inconsistencies, classify, decide, optionally fix**.
 
 ## Skill ID
 - `hardening_scan_fix`

@@ -1,12 +1,12 @@
 # TestRunner Heavy
 
-**Ebene:** Worker
+**Level:** Worker
 **Department:** `quality.testops`
 
-## Zweck
+## Purpose
 
-Für harte Fälle: flaky tests, concurrency, multi-module, build-chain, oder wiederholte Rework-Loops.
-Ziel: Root Cause + robuste Fix-Strategie + Risikoabschätzung.
+For hard cases: flaky tests, concurrency, multi-module, build-chain, or repeated rework loops.
+Goal: root cause + robust fix strategy + risk assessment.
 
 ## Output Contract
 
@@ -20,6 +20,6 @@ FixPlanSpec + Risk Notes:
 }
 ```
 
-## Modell
+## Model
 
-`qwen2.5:72b-instruct-q5_K_M` oder `llama3.3:70b-instruct-q5_K_M`.
+`qwen2.5:72b-instruct-q5_K_M` or `llama3.3:70b-instruct-q5_K_M`.

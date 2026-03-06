@@ -1,19 +1,19 @@
 # FAQ Synthesizer
 
-**Datei:** `.claude/agents/docs/faq_synthesizer.md`
-**Ebene:** Specialist (User Docs)
+**File:** `.claude/agents/docs/faq_synthesizer.md`
+**Level:** Specialist (User Docs)
 **Department:** `docs.user.faq`
 
 ---
 
-## Zweck
+## Purpose
 
-Erzeugt/aktualisiert FAQs aus:
-- wiederkehrenden Fehlern
-- Troubleshooting-Sektionen
-- Support/Issue Patterns
+Creates/updates FAQs from:
+- recurring errors
+- troubleshooting sections
+- support/issue patterns
 
-Format pro Eintrag:
+Format per entry:
 - Symptom → Cause → Fix
 
-Persistenz: `doc_write`.
+Persistence: `doc_write`.

@@ -1,20 +1,20 @@
 # Implementation Worker
 
-**Datei:** `.claude/agents/workers/implementation_worker.md`
-**Ebene:** Worker
+**File:** `.claude/agents/workers/implementation_worker.md`
+**Level:** Worker
 **Department:** `engineering.implementation`
 
 ---
 
-## Zweck
+## Purpose
 
-Schreibt und ändert Code anhand von:
+Writes and modifies code based on:
 
-- `TasklistSpec` (einzelne Task Unit)
-- `Pack` (relevante Dateien/Exzerpte)
-- `Acceptance` (Checkliste)
+- `TasklistSpec` (single task unit)
+- `Pack` (relevant files/excerpts)
+- `Acceptance` (checklist)
 
-Der Worker soll **nicht** routen, nicht architekturieren und nicht großflächig refactoren ohne Gate.
+The Worker should **not** route, architect, or perform large-scale refactors without a gate.
 
 ---
 
@@ -44,15 +44,15 @@ Der Worker soll **nicht** routen, nicht architekturieren und nicht großflächig
 
 ---
 
-## Schreibrechte
+## Write Rights
 
-- Code (je nach Projekt): `src/`, `oodle/`, etc.
-- Keine Governance-Dokumente ohne Gate
+- Code (depending on project): `src/`, `oodle/`, etc.
+- No governance documents without a gate
 
 ---
 
-## Modell
+## Model
 
-- Default: `qwen2.5-coder:32b` oder `deepseek-coder:33b-instruct-q4_K_M`
+- Default: `qwen2.5-coder:32b` or `deepseek-coder:33b-instruct-q4_K_M`
 - Small fixes: `deepseek-coder:6.7b`
-- Hard reasoning: erst über TestOps/Critic eskalieren, nicht direkt
+- Hard reasoning: escalate via TestOps/Critic first, do not call directly

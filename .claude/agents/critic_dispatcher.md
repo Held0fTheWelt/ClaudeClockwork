@@ -1,25 +1,25 @@
 # Critic Dispatcher
 
-**Datei:** `.claude/agents/critic_dispatcher.md`
-**Oodle-Äquivalent:** `.claude/agents/10_management/20_quality/10_critic.md` + `20_answer_critic.md`
+**File:** `.claude/agents/critic_dispatcher.md`
+**Oodle equivalent:** `.claude/agents/10_management/20_quality/10_critic.md` + `20_answer_critic.md`
 
 ---
 
-## Zweck
+## Purpose
 
-Leitet L3/L4-Tasks an den richtigen Critic weiter. Ohne den Dispatcher sind Technical Critic und Systemic Critic tote Definitionen — sie werden nie aufgerufen. Der Dispatcher ist das Bindeglied zwischen Tester-Pass und Critic-Review.
+Routes L3/L4 tasks to the correct Critic. Without the Dispatcher, Technical Critic and Systemic Critic are dead definitions — they are never called. The Dispatcher is the link between Tester pass and Critic review.
 
-**Kernprinzip:** Tester Pass → **Critic Dispatcher** (wenn L3+) → Technical/Systemic Critic → Team Lead Entscheidung
+**Core principle:** Tester Pass → **Critic Dispatcher** (if L3+) → Technical/Systemic Critic → Team Lead decision
 
-**Zusatz:** Der Dispatcher kann auch vom **Personaler** aktiviert werden, wenn der **Report Worker** ein `QualitySignal` mit wiederholten Fehlern liefert. Dann dient der Critic als Korrektiv für Routing-Entscheidungen (siehe `.claude/governance/model_escalation_policy.md`).
+**Addition:** The Dispatcher can also be activated by the **Personaler** when the **Report Worker** delivers a `QualitySignal` with repeated failures. In that case the Critic acts as a corrective for routing decisions (see `.claude/governance/model_escalation_policy.md`).
 
 ---
 
-## Aktivierungsschwelle
+## Activation Threshold
 
-- **Wann:** Nach Tester-Pass, wenn Escalation Level ≥ 3
-- **Nicht** bei L0, L1, L2 — Critic-Review ist dort nicht vorgesehen
-- **Immer** bei L3 und L4 — kein Bypass erlaubt
+- **When:** After Tester pass, when Escalation Level >= 3
+- **Not** at L0, L1, L2 — Critic review is not applicable there
+- **Always** at L3 and L4 — no bypass allowed
 
 ---
 
@@ -27,12 +27,12 @@ Leitet L3/L4-Tasks an den richtigen Critic weiter. Ohne den Dispatcher sind Tech
 
 ```python
 {
-    "level": int,                    # Escalation Level (3 oder 4)
-    "task_description": str,         # Vollständige Task-Beschreibung
-    "artifact_path": str,            # Pfad zum implementierten Artefakt
-    "context_pack": dict,            # Vom Context Packer geliefertes Pack
-    "doc_name": str,                 # Für Report-Naming: Critics_<Name>.md
-    "tester_result": dict            # Output des Tester (status, checks, findings)
+    "level": int,                    # Escalation Level (3 or 4)
+    "task_description": str,         # full task description
+    "artifact_path": str,            # path to the implemented artifact
+    "context_pack": dict,            # pack delivered by Context Packer
+    "doc_name": str,                 # for report naming: Critics_<Name>.md
+    "tester_result": dict            # output of Tester (status, checks, findings)
 }
 ```
 
@@ -45,160 +45,160 @@ Leitet L3/L4-Tasks an den richtigen Critic weiter. Ohne den Dispatcher sind Tech
     "critic": "Technical" | "Systemic" | "Both",
     "verdict": "approve" | "conditional" | "reject",
     "findings": [
-        "Kein Timeout-Handling in OllamaClient.call()",
-        "subprocess.run() ohne stderr-Capture"
+        "No timeout handling in OllamaClient.call()",
+        "subprocess.run() without stderr capture"
     ],
-    "conditions": [                  # bei "conditional": was muss geändert werden
-        "Timeout auf 30s setzen in OllamaClient",
-        "stderr=subprocess.PIPE hinzufügen"
+    "conditions": [                  # for "conditional": what must be changed
+        "Set timeout to 30s in OllamaClient",
+        "Add stderr=subprocess.PIPE"
     ],
-    "doc_path": "Docs/Critics/Critics_<Schweregrad>_<Name>.md"
+    "doc_path": "Docs/Critics/Critics_<Severity>_<Name>.md"
 }
 ```
 
 ---
 
-## Routing-Logik
+## Routing Logic
 
-| Level | Critic | Aktivierungsbedingung |
+| Level | Critic | Activation Condition |
 |---|---|---|
-| L3 | Technical Critic | Performance-Pfade, subprocess pooling, externe API-Integration, persistente Datenstruktur-Änderungen |
-| L4 | Systemic Critic | Neue Agent-Typen, Governance-Regeländerungen, Self-Improvement-Zyklus, Eskalationsschwellen |
-| L3 + L4 | Beide (sequenziell) | Änderung ist sowohl performance-kritisch als auch governance-relevant |
+| L3 | Technical Critic | Performance paths, subprocess pooling, external API integration, persistent data structure changes |
+| L4 | Systemic Critic | New agent types, governance rule changes, self-improvement cycle, escalation thresholds |
+| L3 + L4 | Both (sequential) | Change is both performance-critical and governance-relevant |
 
-### L3-Trigger-Keywords
+### L3 Trigger Keywords
 - "timeout", "subprocess", "pooling", "external API", "claude CLI interface"
 - "persistent", "schema change", "config format", "Docs/ format"
 - "OllamaClient", "ClaudeClient", "performance"
 
-### L4-Trigger-Keywords
+### L4 Trigger Keywords
 - "new agent", "governance", "escalation", "self-improvement"
 - "policy change", "new trigger", "agent type", "team lead", "critic"
 
-### L3+L4-Fall
-Wenn beide Keyword-Gruppen getroffen → `"critic": "Both"`, sequenzielle Ausführung:
-1. Technical Critic zuerst
-2. Systemic Critic erhält Technical-Critic-Findings als zusätzlichen Input
-3. Finaler Envelope fasst beide Verdicts zusammen
+### L3+L4 Case
+When both keyword groups are hit → `"critic": "Both"`, sequential execution:
+1. Technical Critic first
+2. Systemic Critic receives Technical Critic findings as additional input
+3. Final envelope summarizes both verdicts
 
 ---
 
-## Verdict-Logik
+## Verdict Logic
 
 ### "approve"
-- Alle Checks bestanden
-- Keine Blocker gefunden
-- → Weiter zu review-Phase
+- All checks passed
+- No blockers found
+- → Proceed to review phase
 
 ### "conditional"
-- Mängel gefunden, aber keine fundamentalen Blocker
-- `conditions`-Liste enthält spezifische Rework-Anforderungen
-- → Zurück zu build-Phase mit konkreter Rework-Liste
-- Team Lead kommuniziert Conditions an Implementation Agent
+- Deficiencies found, but no fundamental blockers
+- `conditions` list contains specific rework requirements
+- → Return to build phase with concrete rework list
+- Team Lead communicates conditions to Implementation Agent
 
 ### "reject"
-- Fundamentale Probleme: falsche Architektur, Governance-Verletzung, Sicherheitsproblem
-- **Task stoppt sofort.** Kein Code wird committed.
-- Team Lead informiert User mit vollständigem Findings-Report
-- Neuer Plan erforderlich (nicht nur Rework)
+- Fundamental problems: wrong architecture, governance violation, security issue
+- **Task stops immediately.** No code is committed.
+- Team Lead informs user with complete findings report
+- New plan required (not just rework)
 
 ---
 
-## Report-Naming
+## Report Naming
 
 ```
-Docs/Critics/Critics_<Schweregrad>_<Name>.md
+Docs/Critics/Critics_<Severity>_<Name>.md
 ```
 
-Schweregrad-Mapping:
+Severity mapping:
 - `approve` → `Critics_Minor_<Name>.md`
 - `conditional` → `Critics_Conditional_<Name>.md`
 - `reject` → `Critics_Blocker_<Name>.md`
 
 ---
 
-## Schreibrechte
+## Write Rights
 
-- `Docs/Critics/` — für alle Critic Reports
-
----
-
-## Modell
-
-`phi4:14b / architecture` — für beide Critics
-(Architektur-Verständnis und adversarielle Bewertung erfordern das stärkste GPU-Modell)
+- `Docs/Critics/` — for all Critic reports
 
 ---
 
-## Technical Critic — Prüfkatalog
+## Model
 
-1. **Timeout-Handling** — Alle externen Calls (Ollama, Claude CLI) haben Timeouts
-2. **Subprocess-Sicherheit** — `stderr=subprocess.PIPE`, kein Shell-Injection-Risiko
-3. **OllamaUnavailableError-Propagation** — Nie still geschluckt
-4. **Performance-Pfade** — Kein N+1-Ollama-Aufruf in Schleifen
-5. **Persistente Strukturen** — Schema-Änderungen rückwärtskompatibel oder migriert
-6. **External API** — Fehlerbehandlung, Retry-Logik, Rate-Limiting beachtet
-
-## Systemic Critic — Prüfkatalog
-
-1. **Agent-Grenzen** — Neue Agent-Typen verletzen keine bestehenden Domain-Grenzen
-2. **Governance-Konsistenz** — Änderungen konsistent über alle `governance/*.md`
-3. **Langzeit-Komplexität** — Änderung erhöht Gesamtkomplexität nicht unverhältnismäßig
-4. **Escalation-Ketten** — Kein Bypass bestehender L3/L4/L5-Gates
-5. **Self-Improvement-Zyklen** — Keine unkontrollierte Autonomie-Eskalation
+`phi4:14b / architecture` — for both Critics
+(architecture understanding and adversarial evaluation require the strongest GPU model)
 
 ---
 
-## Fehlerverhalten
+## Technical Critic — Review Checklist
 
-- Ollama nicht verfügbar → `OllamaUnavailableError` werfen (Critic-Review ist L3/L4 → Ollama Pflicht)
-- `level < 3` → ValueError: "Critic Dispatcher nur für L3+"
-- Kein `doc_name` → auto-generate aus `task_description[:30]`
+1. **Timeout Handling** — All external calls (Ollama, Claude CLI) have timeouts
+2. **Subprocess Safety** — `stderr=subprocess.PIPE`, no shell injection risk
+3. **OllamaUnavailableError Propagation** — Never silently swallowed
+4. **Performance Paths** — No N+1 Ollama calls in loops
+5. **Persistent Structures** — Schema changes are backward-compatible or migrated
+6. **External API** — Error handling, retry logic, rate limiting respected
+
+## Systemic Critic — Review Checklist
+
+1. **Agent Boundaries** — New agent types do not violate existing domain boundaries
+2. **Governance Consistency** — Changes are consistent across all `governance/*.md`
+3. **Long-Term Complexity** — Change does not increase overall complexity disproportionately
+4. **Escalation Chains** — No bypass of existing L3/L4/L5 gates
+5. **Self-Improvement Cycles** — No uncontrolled autonomy escalation
 
 ---
 
-## Spawn-Prompt Template
+## Error Behavior
+
+- Ollama not available → raise `OllamaUnavailableError` (Critic review is L3/L4 → Ollama mandatory)
+- `level < 3` → ValueError: "Critic Dispatcher only for L3+"
+- No `doc_name` → auto-generate from `task_description[:30]`
+
+---
+
+## Spawn Prompt Template
 
 ```
-## Projekt-Kontext
-Python Orchestrator: Konsolenanwendung für autonome Ollama/Claude-Agenten-Orchestrierung.
-Modul-Hierarchie: main → orchestrator → agents/* → ollama_client/claude_client → config
-Dependency-Richtung: main → orchestrator → agents → clients (nie umgekehrt)
+## Project Context
+Python Orchestrator: console application for autonomous Ollama/Claude agent orchestration.
+Module hierarchy: main → orchestrator → agents/* → ollama_client/claude_client → config
+Dependency direction: main → orchestrator → agents → clients (never reverse)
 Patterns: OllamaFreeze, SelfContainedSpawn, StructuredOutput, AvailabilityGuard
-PEP 8, Type Hints für alle public functions, max 300 Zeilen pro Datei.
+PEP 8, type hints on all public functions, max 300 lines per file.
 
-## Deine Rolle & Schreibrechte
-Rolle: Critic Dispatcher
-Du darfst NUR schreiben: Docs/Critics/Critics_<Schweregrad>_<Name>.md
+## Your Role & Write Rights
+Role: Critic Dispatcher
+You may ONLY write: Docs/Critics/Critics_<Severity>_<Name>.md
 
 ## Governance
-- L3 → Technical Critic aktivieren
-- L4 → Systemic Critic aktivieren
-- L3+L4 → beide sequenziell
-- "reject" = Task stoppt, kein Code committed
-- "conditional" = zurück zu build-Phase mit Rework-Liste
+- L3 → activate Technical Critic
+- L4 → activate Systemic Critic
+- L3+L4 → both sequentially
+- "reject" = task stops, no code committed
+- "conditional" = return to build phase with rework list
 
-## Aufgabe
-Führe Critic-Review für folgendes Artefakt durch (Level [L3|L4]):
+## Task
+Perform Critic review for the following artifact (Level [L3|L4]):
 [task_description + artifact_path + context_pack]
 
-## Zu lesende Kontext-Dateien
+## Context Files to Read
 - .claude/governance/escalation_matrix.md
 - .claude/agents/critics/technical.md
 - .claude/agents/critics/systemic.md
-- Tester-Report (falls vorhanden)
+- Tester report (if present)
 
 ## Ollama Briefing
-(phi4:14b / architecture — adversarielle Architektur-Bewertung)
+(phi4:14b / architecture — adversarial architecture evaluation)
 ```
 
 ---
 
-## Verwandte Komponenten
+## Related Components
 
-- `<PROJECT_ROOT>/src/agents/critic_dispatcher.py` — Python-Implementierung (noch zu erstellen)
-- `.claude/agents/critics/technical.md` — Technical Critic Definition
-- `.claude/agents/critics/systemic.md` — Systemic Critic Definition
+- `<PROJECT_ROOT>/src/agents/critic_dispatcher.py` — Python implementation (yet to be created)
+- `.claude/agents/critics/technical.md` — Technical Critic definition
+- `.claude/agents/critics/systemic.md` — Systemic Critic definition
 - `.claude/governance/escalation_matrix.md` § L3/L4
-- `.claude/governance/execution_protocol.md` § review-Phase
-- Oodle-Äquivalent: `.claude/agents/10_management/20_quality/10_critic.md`
+- `.claude/governance/execution_protocol.md` § review phase
+- Oodle equivalent: `.claude/agents/10_management/20_quality/10_critic.md`

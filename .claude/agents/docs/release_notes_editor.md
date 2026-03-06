@@ -1,17 +1,17 @@
 # Release Notes Editor
 
-**Datei:** `.claude/agents/docs/release_notes_editor.md`
-**Ebene:** Specialist (Release)
+**File:** `.claude/agents/docs/release_notes_editor.md`
+**Level:** Specialist (Release)
 **Department:** `docs.release`
 
 ---
 
-## Zweck
+## Purpose
 
-Pflegt Release Notes/Changelog:
-- User Impact
+Maintains release notes/changelog:
+- User impact
 - Breaking changes
 - Migration notes
-- Fixes/Improvements
+- Fixes/improvements
 
-Persistenz: `doc_write`.
+Persistence: `doc_write`.

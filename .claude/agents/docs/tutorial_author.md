@@ -1,42 +1,42 @@
 # Tutorial Author
 
-**Datei:** `.claude/agents/docs/tutorial_author.md`
-**Ebene:** Specialist (Docs)
+**File:** `.claude/agents/docs/tutorial_author.md`
+**Level:** Specialist (Docs)
 **Department:** `docs.tutorials`
 
 ---
 
-## Zweck
+## Purpose
 
-Erstellt Tutorials, die **wirklich ausführbar** sind:
-- kurze Quickstart-Route
-- vollständige Walkthrough-Route
-- Verifikation
-- Troubleshooting
-- Next steps
+Creates tutorials that are **actually executable**:
+- short quickstart route
+- full walkthrough route
+- verification
+- troubleshooting
+- next steps
 
-Persistenz erfolgt über den Skill `tutorial_write` (Spec → Markdown, Diff).
+Persistence is via the `tutorial_write` skill (spec → Markdown, diff).
 
 ---
 
 ## Inputs
 
-- Zielgruppe + Kontext
-- konkreter Goal-State (“User erreicht X”)
-- Prerequisites
-- Schritte (Actions + Expected)
+- Target audience + context
+- concrete goal state ("user reaches X")
+- prerequisites
+- steps (actions + expected results)
 
 ---
 
 ## Outputs
 
-- `tutorial_spec` (strukturierte Daten)
-- `SkillRequestSpec` an `tutorial_write`
-- ggf. Ergänzungen im `FAQ.md` (als Candidates)
+- `tutorial_spec` (structured data)
+- `SkillRequestSpec` for `tutorial_write`
+- optional: additions to `FAQ.md` (as candidates)
 
 ---
 
-## Modell
+## Model
 
 - Default: `C0`
-- Wenn es sehr technisch wird: `C1`
+- When very technical: `C1`

@@ -1,67 +1,67 @@
 # Rubric: PDF Quality (DocForge)
 
-Diese Rubrik wird von **Critic** und **DecideGap** genutzt.
+This rubric is used by **Critic** and **DecideGap**.
 
 ## Scoring (0–100)
 
 ### 1) Coverage (0–25)
-- Deckt das Dokument den definierten Scope vollständig ab?
-- Sind Annahmen und Non-Goals explizit?
+- Does the document fully cover the defined scope?
+- Are assumptions and non-goals explicit?
 
 ### 2) Structure & Navigation (0–20)
-- Klare Gliederung, sinnvolle Überschriften, Inhaltsverzeichnis (wenn >3 Seiten).
-- Konsistente Terminologie.
+- Clear structure, meaningful headings, table of contents (if >3 pages).
+- Consistent terminology.
 
 ### 3) Clarity & Readability (0–20)
-- Kurze Absätze, klare Sätze, aktive Formulierungen.
-- Zielgruppe getroffen (Einsteiger vs. Expert).
+- Short paragraphs, clear sentences, active phrasing.
+- Appropriate audience level (beginner vs. expert).
 
 ### 4) Correctness & Consistency (0–15)
-- Keine internen Widersprüche.
-- Pfade/Begriffe stimmen mit SSoT/Governance überein.
+- No internal contradictions.
+- Paths/terms align with SSoT/Governance.
 
 ### 5) Visuals (0–15)
-- Mindestens 1 sinnvolles Diagramm pro Kernthema.
-- Diagramme sind lesbar (Schriftgröße, Kontrast, Legenden).
+- At least 1 meaningful diagram per core topic.
+- Diagrams are readable (font size, contrast, legends).
 
 ### 6) Actionability (0–5)
-- Konkrete Next Steps, Beispiele, Checklisten, API-Usage.
+- Concrete next steps, examples, checklists, API usage.
 
 ## Quality Levels
-- **90–100:** Release-tauglich (nur kosmetische Änderungen).
-- **75–89:** Gut, aber 1–3 größere Lücken.
-- **55–74:** Nutzbar, aber mehrere strukturelle/inhaltliche Lücken.
-- **<55:** Neuaufbau/Scope-Klärung nötig.
+- **90–100:** Release-ready (cosmetic changes only).
+- **75–89:** Good, but 1–3 larger gaps.
+- **55–74:** Usable, but several structural/content gaps.
+- **<55:** Requires rebuild / scope clarification.
 
-## Critic Output (Pflichtformat)
+## Critic Output (Required Format)
 
 - Score (0–100)
-- Top 10 Fixes (priorisiert)
-- 1 “Most Leverage Improvement” (der eine Schritt, der am meisten bringt)
-- Diagramm-Feedback (wenn relevant)
+- Top 10 Fixes (prioritized)
+- 1 "Most Leverage Improvement" (the single step with the highest impact)
+- Diagram feedback (if relevant)
 
 
-## Erwartungsfallen, Nicht-Ziele, Zukunft (Pflicht)
+## Expectation Traps, Non-goals, Future Work (Required)
 
-Ein wirklich gutes Dokument macht **explizit**, was viele sofort erwarten würden – aber (noch) nicht vorhanden ist.
+A truly good document makes **explicit** what many would immediately expect — but which is not (yet) present.
 
-**Pflicht-Sektionen (je nach Dokumenttyp):**
-- **Limitierungen & Grenzen (Stand heute)**
-- **Was es ausdrücklich NICHT ist (Non-Goals / Nicht-Ziele)**
-- **Was viele erwarten würden, aber (noch) nicht implementiert ist (Expectation Traps)**
-- **Was denkbar ist (Future Work / Möglichkeiten), aber derzeit nicht Teil des Systems**
+**Required sections (depending on document type):**
+- **Limitations & Constraints (as of today)**
+- **What it explicitly is NOT (Non-goals)**
+- **What many would expect but is not (yet) implemented (Expectation Traps)**
+- **What is conceivable (Future Work / Possibilities) but currently not part of the system**
 
 **Scoring (0–5):**
-- 0: fehlt komplett
-- 3: vorhanden, aber generisch / ohne konkrete Beispiele
-- 5: konkret, testbar, mit klaren Aussagen + Auswirkungen (z. B. Sicherheit/Performance/Scope)
+- 0: missing entirely
+- 3: present, but generic / without concrete examples
+- 5: concrete, testable, with clear statements + impacts (e.g. security/performance/scope)
 
 
 
 ## Limitation Harvest Coverage (0–5)
 
-Bewertet, ob das Dokument die deterministisch geharvesteten Punkte (Expected-but-missing, Nicht-Ziele, Future Work) abdeckt.
+Assesses whether the document covers the deterministically harvested points (expected-but-missing, non-goals, future work).
 
-- 0: Harvest ignoriert
-- 3: teilweise übernommen, ohne Auswirkungen/Beispiele
-- 5: vollständig und konkret, inkl. Auswirkungen + klare Abgrenzungen
+- 0: harvest ignored
+- 3: partially incorporated, without impacts/examples
+- 5: complete and concrete, including impacts + clear boundaries

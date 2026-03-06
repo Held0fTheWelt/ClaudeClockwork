@@ -1,9 +1,9 @@
-# Tutorial: <Titel>
+# Tutorial: <Title>
 
-**Ziel:** <Was kann der Leser danach?>
-**Dauer:** <10–30 min>
+**Goal:** <What can the reader do afterwards?>
+**Duration:** <10–30 min>
 
-## 1. Voraussetzungen
+## 1. Prerequisites
 - ...
 
 ## 2. Setup
@@ -11,39 +11,39 @@
 # ...
 ```
 
-## Limitierungen & Grenzen (Stand heute)
-- Was naheliegend klingt, aber (noch) nicht implementiert ist
-- Bekannte Lücken / TODOs
-- Technische Grenzen (Performance, Plattformen, Abhängigkeiten)
-- Sicherheits-/Compliance-Grenzen
+## Limitations & Constraints (as of today)
+- What sounds obvious but is not (yet) implemented
+- Known gaps / TODOs
+- Technical constraints (performance, platforms, dependencies)
+- Security/compliance constraints
 
 
-## Erwartungsfallen (Was man sofort erwartet, aber (noch) nicht da ist)
-- Beispiel: X klingt naheliegend, ist aber aktuell nicht implementiert, weil …
-- Auswirkungen: Was bedeutet das für Nutzer / Integratoren?
+## Expectation Traps (What people would immediately expect but is not yet present)
+- Example: X sounds obvious, but is currently not implemented because …
+- Impact: What does this mean for users / integrators?
 
-## Nicht-Ziele (Was es ausdrücklich NICHT ist)
-- Klarstellung: Dieses System ist **nicht** …
-- Nicht geplant (kurz- bis mittelfristig): …
+## Non-goals (What this explicitly is NOT)
+- Clarification: This system is **not** …
+- Not planned (short to medium term): …
 
-## Denkbar / Future Work (Was möglich wäre)
-- Mögliche Erweiterungen (ohne Verpflichtung): …
-- Welche Voraussetzungen wären nötig (Tech/Team/Policy)?
+## Conceivable / Future Work (What would be possible)
+- Possible extensions (without commitment): …
+- What prerequisites would be needed (tech/team/policy)?
 
-## 3. Schritt-für-Schritt
-### Schritt 1 — ...
-- Erklärung
+## 3. Step-by-step
+### Step 1 — ...
+- Explanation
 - Code/Command
 
-### Schritt 2 — ...
+### Step 2 — ...
 - ...
 
-## 4. Ergebnis prüfen
-- Erwartete Outputs
+## 4. Verify the result
+- Expected outputs
 - Checks
 
-## 5. Variationen
+## 5. Variations
 - ...
 
-## 6. Nächste Schritte
+## 6. Next Steps
 - ...

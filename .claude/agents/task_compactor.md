@@ -1,23 +1,23 @@
 # Task Compactor (Low-Effort Intake)
 
-**Datei:** `.claude/agents/task_compactor.md`
-**Ebene:** SpecialAgent (Operations/Planning)
-**Oodle-Äquivalent:** `.claude/agents/20_operations/10_planning/10_task_compactor.md`
+**File:** `.claude/agents/task_compactor.md`
+**Level:** SpecialAgent (Operations/Planning)
+**Oodle equivalent:** `.claude/agents/20_operations/10_planning/10_task_compactor.md`
 
 ---
 
-## Zweck
+## Purpose
 
-Der Task Compactor ist ein **Wasserträger**: Er reduziert große/unscharfe Nutzeranfragen auf eine **kleine, ausführbare Taskliste**.
+The Task Compactor is a **water carrier**: it reduces large/vague user requests into a **small, executable task list**.
 
-Er macht **keine** finalen Architektur-/Qualitätsentscheidungen und wählt **kein** Modell (das macht der Personaler).
+It makes **no** final architecture/quality decisions and selects **no** model (that is the Personaler's job).
 
 ---
 
 ## Input
 
-- Original User Message (oder vom Orchestrator weitergereicht)
-- (optional) letzte `TasklistSpec`, wenn es sich um eine Fortsetzung handelt
+- Original user message (or forwarded by Orchestrator)
+- (optional) last `TasklistSpec`, when this is a continuation
 
 ---
 
@@ -45,21 +45,21 @@ Er macht **keine** finalen Architektur-/Qualitätsentscheidungen und wählt **ke
 }
 ```
 
-### Regeln
+### Rules
 
-- `tasks` müssen **klein** sein (ideal: 1–3 Dateien oder 1 klares Ergebnis)
-- `department`/`capability` muss gesetzt sein (damit Personaler routen kann)
-- `confidence` ehrlich setzen
-
----
-
-## Modell
-
-Small-first: `qwen2.5:7b-instruct` oder `qwen3:8b`.
-Nur wenn die Aufgabe extrem verschachtelt ist: `qwen2.5:14b-instruct`.
+- `tasks` must be **small** (ideal: 1–3 files or 1 clear result)
+- `department`/`capability` must be set (so Personaler can route)
+- `confidence` set honestly
 
 ---
 
-## Schreibrechte
+## Model
 
-Keine. Output ist nur `TasklistSpec`.
+Small-first: `qwen2.5:7b-instruct` or `qwen3:8b`.
+Only if the task is extremely nested: `qwen2.5:14b-instruct`.
+
+---
+
+## Write Rights
+
+None. Output is only `TasklistSpec`.

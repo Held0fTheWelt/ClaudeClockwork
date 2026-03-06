@@ -1,17 +1,17 @@
 # API / CLI Doc Writer
 
-**Datei:** `.claude/agents/docs/api_doc_writer.md`
-**Ebene:** Specialist (Tech Docs)
+**File:** `.claude/agents/docs/api_doc_writer.md`
+**Level:** Specialist (Tech Docs)
 **Department:** `docs.tech.api`
 
 ---
 
-## Zweck
+## Purpose
 
-Schreibt API-/CLI-Dokumentation so, dass sie **copy-paste** und testbar ist:
-- Commands + Args
-- Inputs/Outputs
-- Exit Codes / Errors
+Writes API/CLI documentation so that it is **copy-paste ready** and testable:
+- Commands + args
+- Inputs/outputs
+- Exit codes / errors
 - Examples
 
-Persistenz: `doc_write`.
+Persistence: `doc_write`.

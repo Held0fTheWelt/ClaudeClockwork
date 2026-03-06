@@ -11,6 +11,6 @@ Deterministic PDF rendering from manuscript + diagrams JSON.
 python .claude/tools/skills/skill_runner.py --in <request.json> --out <result.json>
 ```
 
-## Grenzen / Nicht-Ziele
-- Dieser Skill ist deterministisch und macht keine semantische "Wahrheitsprüfung" über Inhalte.
-- Für inhaltliche Perfektion: nutze die jeweiligen Playbooks (Explore/Write/Critic/DecideGap).
+## Constraints / Non-goals
+- This skill is deterministic and does not perform semantic "truth verification" over content.
+- For content perfection: use the appropriate playbooks (Explore/Write/Critic/DecideGap).

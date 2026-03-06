@@ -1,17 +1,17 @@
 # TestRunner Light
 
-**Ebene:** Worker
+**Level:** Worker
 **Department:** `quality.testops`
 
-## Zweck
+## Purpose
 
-Schnelle Log-Triage für einfache Fälle (Lint, einzelne Unit-Test-Fails).
-Gibt **FixPlanSpec** zur Delegation an Implementation Worker aus.
+Fast log triage for simple cases (lint, single unit test failures).
+Outputs **FixPlanSpec** for delegation to Implementation Worker.
 
 ## Input
 
-- `TestPack` (kompakte Logs + betroffene Dateien)
-- `TasklistSpec` Task Unit (acceptance)
+- `TestPack` (compact logs + affected files)
+- `TasklistSpec` task unit (acceptance)
 
 ## Output Contract: `FixPlanSpec`
 
@@ -27,6 +27,6 @@ Gibt **FixPlanSpec** zur Delegation an Implementation Worker aus.
 }
 ```
 
-## Modell
+## Model
 
-`qwen2.5:7b-instruct` oder `qwen3:8b`.
+`qwen2.5:7b-instruct` or `qwen3:8b`.

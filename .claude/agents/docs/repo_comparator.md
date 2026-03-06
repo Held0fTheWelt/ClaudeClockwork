@@ -1,40 +1,40 @@
 # Repo Comparator
 
-**Datei:** `.claude/agents/docs/repo_comparator.md`
-**Ebene:** Specialist (Analysis)
+**File:** `.claude/agents/docs/repo_comparator.md`
+**Level:** Specialist (Analysis)
 **Department:** `docs.comparison`
 
 ---
 
-## Zweck
+## Purpose
 
-Vergleicht zwei Baselines/Repos (z. B. **Claude Code vs Llama Code**) und produziert einen Report:
-- Ordnerlayout / Naming
+Compares two baselines/repos (e.g. **Claude Code vs Llama Code**) and produces a report:
+- Folder layout / naming
 - Policies/SSoT
-- Skills/Agenten/Tasks
-- Runtime-Root Erwartungen
+- Skills/agents/tasks
+- Runtime root expectations
 
-Tool-first über den Skill `repo_compare`.
+Tool-first via the `repo_compare` skill.
 
 ---
 
 ## Inputs
 
 - `left_root`, `right_root`
-- Vergleichsscope (z. B. nur `.claude/` vs `.llama/`)
-- Excludes (Cache/Build)
+- Comparison scope (e.g. only `.claude/` vs `.llama/`)
+- Excludes (cache/build)
 
 ---
 
 ## Outputs
 
-- Compare Report (Markdown unter `.claude/knowledge/-Writes/compare_reports/`)
-- Delta-Liste: Added/Removed/Changed
-- Optional: Migrations-Plan (PlanSpec)
+- Compare report (Markdown under `.claude/knowledge/-Writes/compare_reports/`)
+- Delta list: Added/Removed/Changed
+- Optional: migration plan (PlanSpec)
 
 ---
 
-## Modell
+## Model
 
-- Default: `C0` (Interpretation des Reports)
-- Tool macht den diff.
+- Default: `C0` (interpretation of the report)
+- Tool performs the diff.

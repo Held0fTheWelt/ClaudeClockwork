@@ -1,34 +1,34 @@
-# <Projektname> — First Steps
+# <Project Name> — First Steps
 
 **Version:** <vX.Y>
-**Datum:** <YYYY-MM-DD>
+**Date:** <YYYY-MM-DD>
 
-## 1. Was ist das?
-- 2–3 Sätze.
+## 1. What is this?
+- 2–3 sentences.
 
-## 2. Voraussetzungen
+## 2. Prerequisites
 - OS
 - Tools
-- (optional) Ollama Modelle
+- (optional) Ollama models
 
-## Limitierungen & Grenzen (Stand heute)
-- Was naheliegend klingt, aber (noch) nicht implementiert ist
-- Bekannte Lücken / TODOs
-- Technische Grenzen (Performance, Plattformen, Abhängigkeiten)
-- Sicherheits-/Compliance-Grenzen
+## Limitations & Constraints (as of today)
+- What sounds obvious but is not (yet) implemented
+- Known gaps / TODOs
+- Technical constraints (performance, platforms, dependencies)
+- Security/compliance constraints
 
 
-## Erwartungsfallen (Was man sofort erwartet, aber (noch) nicht da ist)
-- Beispiel: X klingt naheliegend, ist aber aktuell nicht implementiert, weil …
-- Auswirkungen: Was bedeutet das für Nutzer / Integratoren?
+## Expectation Traps (What people would immediately expect but is not yet present)
+- Example: X sounds obvious, but is currently not implemented because …
+- Impact: What does this mean for users / integrators?
 
-## Nicht-Ziele (Was es ausdrücklich NICHT ist)
-- Klarstellung: Dieses System ist **nicht** …
-- Nicht geplant (kurz- bis mittelfristig): …
+## Non-goals (What this explicitly is NOT)
+- Clarification: This system is **not** …
+- Not planned (short to medium term): …
 
-## Denkbar / Future Work (Was möglich wäre)
-- Mögliche Erweiterungen (ohne Verpflichtung): …
-- Welche Voraussetzungen wären nötig (Tech/Team/Policy)?
+## Conceivable / Future Work (What would be possible)
+- Possible extensions (without commitment): …
+- What prerequisites would be needed (tech/team/policy)?
 
 ## 3. Installation
 ```bash
@@ -42,13 +42,13 @@ python -m venv .venv
 python -m src.main --help
 ```
 
-## 5. Typische Workflows
+## 5. Typical Workflows
 - Workflow A
 - Workflow B
 
 ## 6. Troubleshooting
-- Häufige Fehler & Fix
+- Common errors & fix
 
-## 7. Nächste Schritte
-- Link zu Tutorials
-- Link zur API Reference
+## 7. Next Steps
+- Link to tutorials
+- Link to API reference

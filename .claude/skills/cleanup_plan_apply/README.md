@@ -22,7 +22,7 @@ python .claude/tools/skills/skill_runner.py --in <request.json> --out <result.js
 ## Outputs
 Describe output files and write locations here.
 
-## Grenzen / Nicht-Ziele
-- Deterministisch: keine semantische "Wahrheitsprüfung" über Inhalte.
-- Kann Kandidatenlisten liefern, aber nicht beweisen, dass etwas obsolet ist.
-- Wenn LLM-Verfeinerung nötig ist: nutze das passende Playbook (Explore/Write/Critic/DecideGap).
+## Constraints / Non-Goals
+- Deterministic: no semantic "truth verification" of content.
+- Can produce candidate lists, but cannot prove that something is obsolete.
+- If LLM refinement is needed: use the appropriate playbook (Explore/Write/Critic/DecideGap).

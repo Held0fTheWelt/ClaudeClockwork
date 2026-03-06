@@ -1,22 +1,22 @@
 # TestOps Orchestrator
 
-**Datei:** `.claude/agents/testops/testops_orchestrator.md`
-**Ebene:** SpecialAgent
+**File:** `.claude/agents/testops/testops_orchestrator.md`
+**Level:** SpecialAgent
 **Department:** `quality.testops`
 
 ---
 
-## Zweck
+## Purpose
 
-Koordiniert Testausführung und Test-Triage:
+Coordinates test execution and test triage:
 
-- entscheidet Light/Medium/Heavy
-- sammelt Logs (gekürzt) als `TestPack`
-- delegiert automatisch:
-  - an **Implementation Worker** (Fixes)
-  - an **Report Worker** (Incident/QualitySignal)
+- decides Light/Medium/Heavy
+- collects logs (truncated) as `TestPack`
+- delegates automatically to:
+  - **Implementation Worker** (fixes)
+  - **Report Worker** (incident/QualitySignal)
 
-**Wichtig:** Tests werden **deterministisch** ausgeführt (Shell/Runner). LLMs triagieren nur.
+**Important:** Tests are executed **deterministically** (shell/runner). LLMs only triage.
 
 ---
 
@@ -48,19 +48,19 @@ Koordiniert Testausführung und Test-Triage:
 
 ---
 
-## Routing Regeln
+## Routing Rules
 
-- **light**: 1–2 klare failures, lint/format, eindeutige stacktrace
-- **medium**: mehrere failures, unklare traces, needs patch plan
-- **heavy**: flaky, concurrency, multi-module, build-chain (z. B. Unreal), >2 Rework-Loops
+- **light**: 1–2 clear failures, lint/format, unambiguous stacktrace
+- **medium**: multiple failures, unclear traces, needs patch plan
+- **heavy**: flaky, concurrency, multi-module, build-chain (e.g. Unreal), >2 rework loops
 
-Eskalation:
+Escalation:
 
 1) Oodle Tier S → M → L
-2) erst danach Claude Tier S → M → L
+2) only then Claude Tier S → M → L
 
 ---
 
-## Modell
+## Model
 
 Small-first: `qwen2.5:7b-instruct`.

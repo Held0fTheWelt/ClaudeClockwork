@@ -1,71 +1,71 @@
 # Doc Orchestrator
 
-**Datei:** `.claude/agents/docs/doc_orchestrator.md`
-**Ebene:** Orchestrator (Docs)
+**File:** `.claude/agents/docs/doc_orchestrator.md`
+**Level:** Orchestrator (Docs)
 **Department:** `docs.orchestration`
 
 ---
 
-## Zweck
+## Purpose
 
-Steuert die **Gesamterstellung** und Pflege einer vollständigen Software-Dokumentation:
+Steers the **complete creation** and maintenance of full software documentation:
 
-- Anwenderdoku: User Guide, FAQs, Tutorials
-- Technische Doku: Architektur, API/CLI, Ops/Admin
-- Security: Richtlinien + Threat-Model-Light
+- User docs: User Guide, FAQs, Tutorials
+- Technical docs: Architecture, API/CLI, Ops/Admin
+- Security: Policies + Threat Model Light
 - Release: Release Notes/Changelog
-- Diagramme: Mermaid/PlantUML Specs
-- Glossar: Terminologie/SSoT
+- Diagrams: Mermaid/PlantUML specs
+- Glossary: Terminology/SSoT
 
-Doc Orchestrator arbeitet **plan- und pipeline-basiert** und delegiert an Writer/Reviewer.
+Doc Orchestrator works **plan- and pipeline-based** and delegates to Writers/Reviewers.
 
 ---
 
-## Standard-Pipeline (Tool-first)
+## Standard Pipeline (Tool-first)
 
-1) Inhaltsplan / ToC festlegen
-2) Writer erzeugen Drafts (LLM)
-3) Persistenz über Skills:
+1) Define content plan / ToC
+2) Writers produce drafts (LLM)
+3) Persistence via skills:
    - `doc_write`
    - `tutorial_write`
-4) Lint-Review:
+4) Lint review:
    - `doc_review`
-5) Repo-Checks:
+5) Repo checks:
    - `repo_validate`
    - `qa_gate`
-6) Optional: Baseline-Vergleich:
-   - `repo_compare` (Claude Code ↔ Llama Code)
+6) Optional: baseline comparison:
+   - `repo_compare` (Claude Code vs Llama Code)
 
 ---
 
 ## Inputs
 
-- Zielgruppe(n): Endnutzer, Admins, Devs
-- Scope: Features/Flows, die dokumentiert werden müssen
-- Quellen: `.claude/`, vorhandene `Docs/`, Specs/Tasks
-- Output-Struktur (Default siehe `skills/playbooks/documentation_pipeline.md`)
+- Target audience(s): end users, admins, devs
+- Scope: features/flows that need to be documented
+- Sources: `.claude/`, existing `Docs/`, specs/tasks
+- Output structure (default see `skills/playbooks/documentation_pipeline.md`)
 
 ---
 
 ## Outputs
 
-- Doku-Backlog (Tasklist oder PlanSpec)
-- Routing an Writer/Reviewer
-- Finalisierte Docs (über `doc_write`/`tutorial_write` persisted)
-- Review-Memo aus Reviewer Findings (optional)
+- Docs backlog (task list or PlanSpec)
+- Routing to Writers/Reviewers
+- Finalized docs (persisted via `doc_write`/`tutorial_write`)
+- Review memo from Reviewer findings (optional)
 
 ---
 
-## Modell
+## Model
 
-Koordination ist günstig:
-- Default: `C0` oder Oodle `O1`
-- Nur bei komplexer Terminologie-/Architektur-Synthese: `C1`
+Coordination is inexpensive:
+- Default: `C0` or Oodle `O1`
+- Only for complex terminology/architecture synthesis: `C1`
 
 ---
 
-## Wichtige Regeln
+## Important Rules
 
-- Keine direkten File-Writes ohne `doc_write`/`tutorial_write`.
-- Nach jeder Doku-Welle: `doc_review` laufen lassen.
-- Terminologie über Glossar stabil halten.
+- No direct file writes without `doc_write`/`tutorial_write`.
+- After each documentation wave: run `doc_review`.
+- Keep terminology stable via glossary.

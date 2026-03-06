@@ -1,23 +1,23 @@
 # Context Packer
 
-**Datei:** `.claude/agents/context_packer.md`
-**Oodle-Äquivalent:** `.claude/agents/20_operations/30_transport/40_context_packer.md`
+**File:** `.claude/agents/context_packer.md`
+**Oodle equivalent:** `.claude/agents/20_operations/30_transport/40_context_packer.md`
 
 ---
 
-## Zweck
+## Purpose
 
-Baut minimale, gezielte Context-Packs für Specialist Agents. Kein Agent darf das gesamte Repository lesen — er bekommt nur was er braucht. Verhindert Token-Verschwendung und hält Spawn-Prompts fokussiert.
+Builds minimal, targeted context packs for Specialist Agents. No agent may read the entire repository — it receives only what it needs. Prevents token waste and keeps spawn prompts focused.
 
-**Kernprinzip (aus Execution Protocol):** "Minimal-Kontext-Prinzip: Jeder Agent bekommt nur was er braucht. Librarian baut Context-Packs."
+**Core principle (from Execution Protocol):** "Minimal-Context Principle: Every agent receives only what it needs. Librarian builds context packs."
 
 ---
 
-## Aktivierungsschwelle
+## Activation Threshold
 
-- **Wann:** Nach Routing-Entscheidung (Personaler), vor Agent-Spawn (L1+)
-- **Nicht** bei L0 — kein Spawn, kein Pack nötig
-- Wird von Team Lead aufgerufen, bevor ein Specialist Agent gespawnt wird
+- **When:** After routing decision (Personaler), before agent spawn (L1+)
+- **Not** at L0 — no spawn, no pack needed
+- Called by Team Lead before a Specialist Agent is spawned
 
 ---
 
@@ -25,11 +25,11 @@ Baut minimale, gezielte Context-Packs für Specialist Agents. Kein Agent darf da
 
 ```python
 {
-    "target_agent": str,             # z.B. "Implementation Agent"
-    "task_description": str,         # Freitext-Beschreibung der Aufgabe
-    "level": int,                    # Escalation Level (beeinflusst Budget)
-    "affected_files": list[str],     # optional — vom Team Lead / Librarian geliefert
-    "task_type": str                 # aus Personaler-Output: brief|draft|architecture|review|quick
+    "target_agent": str,             # e.g. "Implementation Agent"
+    "task_description": str,         # free-text description of the task
+    "level": int,                    # Escalation Level (influences budget)
+    "affected_files": list[str],     # optional — provided by Team Lead / Librarian
+    "task_type": str                 # from Personaler output: brief|draft|architecture|review|quick
 }
 ```
 
@@ -39,51 +39,51 @@ Baut minimale, gezielte Context-Packs für Specialist Agents. Kein Agent darf da
 
 ```python
 {
-    "files": ["src/orchestrator.py", "src/config.py"],        # Vollständige Dateien
-    "excerpts": {"src/ollama_client.py": "lines 60-90"},      # Nur relevante Abschnitte
-    "patterns": [".claude/python/patterns.md sections 1-3"],  # Pattern-Referenzen
-    "max_chars": 8000                                          # Budget-Limit
+    "files": ["src/orchestrator.py", "src/config.py"],        # complete files
+    "excerpts": {"src/ollama_client.py": "lines 60-90"},      # relevant sections only
+    "patterns": [".claude/python/patterns.md sections 1-3"],  # pattern references
+    "max_chars": 8000                                          # budget limit
 }
 ```
 
 ---
 
-## Pack-Regeln nach Ziel-Agent
+## Pack Rules by Target Agent
 
-| Ziel-Agent | Standard-Pack |
+| Target Agent | Default Pack |
 |---|---|
-| Implementation Agent | Ziel-Datei + `<PROJECT_ROOT>/src/config.py` + `.claude/python/patterns.md` |
-| Documentation Agent | Betroffene `Docs/` + `.claude/SYSTEM.md` Struktur |
-| Validation Agent | Zu prüfende Datei + `.claude/python/patterns.md` + `governance/review_process.md` |
-| Librarian Agent | `.claude/knowledge/index.md` + betroffener Themenbereich |
-| Technical Critic | Vollständige betroffene Dateien + `governance/escalation_matrix.md` |
-| Systemic Critic | Vollständige betroffene Dateien + alle `governance/*.md` |
-| Architecture Agent | Betroffene Module + `governance/escalation_matrix.md` + `.claude/python/architecture.md` |
+| Implementation Agent | Target file + `<PROJECT_ROOT>/src/config.py` + `.claude/python/patterns.md` |
+| Documentation Agent | Affected `Docs/` + `.claude/SYSTEM.md` structure |
+| Validation Agent | File to review + `.claude/python/patterns.md` + `governance/review_process.md` |
+| Librarian Agent | `.claude/knowledge/index.md` + affected topic area |
+| Technical Critic | Complete affected files + `governance/escalation_matrix.md` |
+| Systemic Critic | Complete affected files + all `governance/*.md` |
+| Architecture Agent | Affected modules + `governance/escalation_matrix.md` + `.claude/python/architecture.md` |
 
 ---
 
-## Budget-Limits nach Context-Typ
+## Budget Limits by Context Type
 
-| Context-Typ | max_chars |
+| Context Type | max_chars |
 |---|---|
 | Standard (L1 Implementation) | 8000 |
 | Critic (L3/L4) | 12000 |
-| Librarian, Dokumentation | 6000 |
+| Librarian, Documentation | 6000 |
 | Quick (L0 edge cases) | 3000 |
 
-Budget wird eingehalten durch:
-1. Vollständige Dateien zuerst (wichtigste zuerst)
-2. Bei Überschreitung: Excerpts statt vollständige Dateien
-3. Bei weiterer Überschreitung: Librarian um Zusammenfassung bitten
+Budget is maintained by:
+1. Complete files first (most important first)
+2. If exceeded: excerpts instead of complete files
+3. If further exceeded: ask Librarian for summary
 
 ---
 
-## Ausführungsmodell
+## Execution Model
 
-**Der Context Packer wird von Team Lead aufgerufen:**
+**The Context Packer is called by Team Lead:**
 
 ```python
-# Beispiel-Aufruf in orchestrator.py
+# Example call in orchestrator.py
 context_pack = context_packer.build(
     target_agent="Implementation Agent",
     task_description=task_description,
@@ -91,64 +91,64 @@ context_pack = context_packer.build(
     affected_files=["src/workflow.py"],
     task_type=routing["task_type"]
 )
-# context_pack wird in den Spawn-Prompt eingebaut
+# context_pack is embedded in the spawn prompt
 ```
 
-**Modell:** `qwen2.5-coder:14b / quick`
-(schnelle Pack-Assemblierung, kein hoher Kontext nötig)
+**Model:** `qwen2.5-coder:14b / quick`
+(fast pack assembly, no large context needed)
 
 ---
 
-## Schreibrechte
+## Write Rights
 
-**Keine.** Der Context Packer ist read-only — er gibt ein Context-Pack-Dict zurück.
-
----
-
-## Fehlerverhalten
-
-- Datei nicht gefunden → Librarian um Alternativ-Pfad bitten, nicht still ignorieren
-- Budget überschritten → Excerpts priorisieren, dann Librarian-Zusammenfassung
-- target_agent unbekannt → Standard-Pack (config.py + patterns.md) + Warnung
+**None.** The Context Packer is read-only — it returns a context pack dict.
 
 ---
 
-## Spawn-Prompt Template
+## Error Behavior
 
-Wenn der Context Packer als eigenständiger Claude-Subagent gespawnt wird:
+- File not found → ask Librarian for alternative path, do not silently ignore
+- Budget exceeded → prioritize excerpts, then Librarian summary
+- target_agent unknown → default pack (config.py + patterns.md) + warning
+
+---
+
+## Spawn Prompt Template
+
+When the Context Packer is spawned as a standalone Claude subagent:
 
 ```
-## Projekt-Kontext
-Python Orchestrator: Konsolenanwendung für autonome Ollama/Claude-Agenten-Orchestrierung.
-Modul-Hierarchie: main → orchestrator → agents/* → ollama_client/claude_client → config
-Dependency-Richtung: main → orchestrator → agents → clients (nie umgekehrt)
+## Project Context
+Python Orchestrator: console application for autonomous Ollama/Claude agent orchestration.
+Module hierarchy: main → orchestrator → agents/* → ollama_client/claude_client → config
+Dependency direction: main → orchestrator → agents → clients (never reverse)
 
-## Deine Rolle & Schreibrechte
-Rolle: Context Packer
-Du darfst KEINE Dateien schreiben — du gibst ausschließlich ein Context-Pack-Dict zurück.
+## Your Role & Write Rights
+Role: Context Packer
+You may NOT write any files — you exclusively return a context pack dict.
 
 ## Governance
-- Minimal-Kontext-Prinzip: Jeder Agent bekommt nur was er braucht
-- Budget einhalten: max_chars je nach Ziel-Agent
-- Bei Überschreitung: Excerpts, dann Librarian
+- Minimal-context principle: every agent receives only what it needs
+- Respect budget: max_chars depending on target agent
+- If exceeded: excerpts, then Librarian
 
-## Aufgabe
-Erstelle ein Context-Pack für folgenden Ziel-Agent und Task:
-[Ziel-Agent + Task-Beschreibung + betroffene Dateien]
+## Task
+Create a context pack for the following target agent and task:
+[target agent + task description + affected files]
 
-## Zu lesende Kontext-Dateien
-- .claude/agents/specialists.md (Pack-Regeln)
+## Context Files to Read
+- .claude/agents/specialists.md (pack rules)
 - .claude/python/patterns.md
 
 ## Ollama Briefing
-(kein Briefing — Context Packer nutzt qwen2.5-coder:14b / quick)
+(no briefing — Context Packer uses qwen2.5-coder:14b / quick)
 ```
 
 ---
 
-## Verwandte Komponenten
+## Related Components
 
-- `<PROJECT_ROOT>/src/agents/context_packer.py` — Python-Implementierung (noch zu erstellen)
-- `.claude/agents/librarian.md` → Fallback bei Budget-Überschreitung
-- `.claude/governance/execution_protocol.md` § Minimal-Kontext-Prinzip
-- Oodle-Äquivalent: `.claude/agents/20_operations/30_transport/40_context_packer.md`
+- `<PROJECT_ROOT>/src/agents/context_packer.py` — Python implementation (yet to be created)
+- `.claude/agents/librarian.md` → fallback when budget is exceeded
+- `.claude/governance/execution_protocol.md` § Minimal-Context Principle
+- Oodle equivalent: `.claude/agents/20_operations/30_transport/40_context_packer.md`

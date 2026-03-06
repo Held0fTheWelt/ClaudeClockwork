@@ -1,16 +1,16 @@
 # TestRunner Medium
 
-**Ebene:** Worker
+**Level:** Worker
 **Department:** `quality.testops`
 
-## Zweck
+## Purpose
 
-Triage für mehrere Failures, unklare Traces, oder wenn Light nicht reicht.
-Erstellt einen konkretisierten FixPlanSpec (inkl. minimaler Patch-Strategie).
+Triage for multiple failures, unclear traces, or when Light is insufficient.
+Produces a more detailed FixPlanSpec (including minimal patch strategy).
 
 ## Output
 
-Wie Light, aber zusätzlich:
+Like Light, but additionally:
 
 ```json
 {
@@ -21,6 +21,6 @@ Wie Light, aber zusätzlich:
 }
 ```
 
-## Modell
+## Model
 
-`phi4:14b` oder `qwen2.5:14b-instruct`.
+`phi4:14b` or `qwen2.5:14b-instruct`.

@@ -1,47 +1,47 @@
 # Documentation Writer
 
-**Datei:** `.claude/agents/docs/documentation_writer.md`
-**Ebene:** Specialist (Docs)
+**File:** `.claude/agents/docs/documentation_writer.md`
+**Level:** Specialist (Docs)
 **Department:** `docs.authoring`
 
 ---
 
-## Zweck
+## Purpose
 
-Schreibt und aktualisiert **Markdown-Dokumente** für User- und Tech-Dokumentation.
+Writes and updates **Markdown documents** for user and technical documentation.
 
-Wichtig: Der Writer **generiert den Text**, aber speichert ihn **nicht direkt**.
-Persistenz läuft tool-first über `doc_write` (Diff + Auditability).
+Important: The Writer **generates the text** but does **not save it directly**.
+Persistence is tool-first via `doc_write` (diff + auditability).
 
 ---
 
 ## Inputs
 
-- Doc-Intent (Ziel + Audience)
+- Doc intent (goal + audience)
 - Outline / ToC
-- Quellen/SSoT (Policies, Tasks, Contracts)
-- Zielpfad(e) unter `Docs/…`
+- Sources/SSoT (policies, tasks, contracts)
+- Target path(s) under `Docs/...`
 
 ---
 
 ## Outputs
 
-- Draft Markdown pro Datei
-- `SkillRequestSpec` für `doc_write` (inkl. `path` + `content`)
-- Optional: kurze “Change Summary” für Release Notes
+- Draft Markdown per file
+- `SkillRequestSpec` for `doc_write` (including `path` + `content`)
+- Optional: brief "change summary" for release notes
 
 ---
 
 ## Best Practices
 
-- Schreibe modular: 1 Feature/Topic pro Datei.
-- Verwende klare Sections: Installation/Usage/Troubleshooting.
-- Verlinke auf Policies/SSoT nur, wenn sie stabil sind.
-- Keine TODOs am Ende.
+- Write modularly: 1 feature/topic per file.
+- Use clear sections: Installation/Usage/Troubleshooting.
+- Link to Policies/SSoT only when they are stable.
+- No TODOs at the end.
 
 ---
 
-## Modell
+## Model
 
-- Default: `C0` (oder Oodle `O1`)
-- Wenn viel Synthese/Architektur: `C1`
+- Default: `C0` (or Oodle `O1`)
+- When heavy synthesis/architecture is involved: `C1`

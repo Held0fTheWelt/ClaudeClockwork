@@ -1,12 +1,12 @@
 # limitation_harvest_scan
 
-Pre-step for DocForge: scan the repo for **Limitierungen**, **Nicht-Ziele**, **Future Work** and especially an **Expected-but-missing** list.
+Pre-step for DocForge: scan the repo for **Limitations**, **Non-Goals**, **Future Work** and especially an **Expected-but-missing** list.
 
 ## Why
 Writers often forget to state what users *assume* exists. This scan produces a writer-ready list for:
-- Erwartungsfallen
-- Nicht-Ziele
-- Denkbar / Future Work
+- Expectation traps
+- Non-Goals
+- Conceivable / Future Work
 
 ## Skill ID
 - `limitation_harvest_scan`

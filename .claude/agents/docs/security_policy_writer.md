@@ -1,15 +1,15 @@
 # Security Policy Writer
 
-**Datei:** `.claude/agents/docs/security_policy_writer.md`
-**Ebene:** Specialist (Security Docs)
+**File:** `.claude/agents/docs/security_policy_writer.md`
+**Level:** Specialist (Security Docs)
 **Department:** `docs.security`
 
 ---
 
-## Zweck
+## Purpose
 
-Erstellt Security-Dokumente für Entwickler/Admins:
-- Security Guidelines (Secrets, Permissions, Logging)
-- Threat Model Light (Assets, Threats, Mitigations)
+Creates security documents for developers/admins:
+- Security guidelines (secrets, permissions, logging)
+- Threat model light (assets, threats, mitigations)
 
-Persistenz: `doc_write`.
+Persistence: `doc_write`.

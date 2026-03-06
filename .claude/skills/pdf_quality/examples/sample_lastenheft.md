@@ -1,15 +1,15 @@
-# NanoBanana — Lastenheft (Beispiel)
+# NanoBanana — Requirements Specification (Example)
 
 **Version:** v0.1
-**Datum:** 2026-03-01
+**Date:** 2026-03-01
 
-## Ziel & Kontext
-Dieses Dokument beschreibt die Anforderungen an einen PDF-Quality Workflow, der aus vorhandenen Projekt-Dokumenten veröffentlichungsreife PDFs erzeugt.
+## Goal & Context
+This document describes the requirements for a PDF Quality Workflow that generates publication-ready PDFs from existing project documents.
 
-## Architektur-Überblick
+## Architecture Overview
 <!-- DIAGRAM: system_overview -->
 
-## Abnahmekriterien
-- PDF ist gut lesbar (A4)
-- Diagramme sind eingebettet
-- Codeblöcke sind monospaced
+## Acceptance Criteria
+- PDF is clearly readable (A4)
+- Diagrams are embedded
+- Code blocks are monospaced

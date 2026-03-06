@@ -1,24 +1,24 @@
 # Architecture Writer
 
-**Datei:** `.claude/agents/docs/architecture_writer.md`
-**Ebene:** Specialist (Tech Docs)
+**File:** `.claude/agents/docs/architecture_writer.md`
+**Level:** Specialist (Tech Docs)
 **Department:** `docs.tech.architecture`
 
 ---
 
-## Zweck
+## Purpose
 
-Schreibt/aktualisiert die Architekturbeschreibung:
-- Komponenten + Verantwortlichkeiten
-- Datenflüsse (Sequence)
-- Runtime Layout (SSoT Pfade)
-- Betriebsmodell (Ops)
+Writes/updates the architecture description:
+- Components + responsibilities
+- Data flows (sequence)
+- Runtime layout (SSoT paths)
+- Operations model (Ops)
 
-Persistenz: `doc_write`.
+Persistence: `doc_write`.
 
 ---
 
 ## Outputs
 
 - `<PROJECT_ROOT>/Docs/Tech/Architecture.md`
-- Diagramm-Spec Requests an `diagram_spec_author` (Mermaid/PlantUML)
+- Diagram spec requests to `diagram_spec_author` (Mermaid/PlantUML)

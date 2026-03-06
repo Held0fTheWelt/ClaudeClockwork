@@ -64,4 +64,4 @@ Rule: exhaust Oodle tiers before escalating to Claude.
 - Full matrix: `.claude/governance/routing_matrix.md`
 - Escalation thresholds: `.claude/governance/model_escalation_policy.md`
 - Level definitions: `.claude/governance/escalation_matrix.md`
-- Department/capability mapping: `.claude/agents/personaler.md` § Routing-Regeln
+- Department/capability mapping: `.claude/agents/personaler.md` § Routing Rules

@@ -1,13 +1,13 @@
-# <Projektname> — Lastenheft
+# <Project Name> — Requirements Specification
 
 **Version:** <vX.Y>
-**Datum:** <YYYY-MM-DD>
-**Owner:** <Name/Rolle>
+**Date:** <YYYY-MM-DD>
+**Owner:** <Name/Role>
 
-## 1. Ziel & Kontext
+## 1. Goal & Context
 - Problem
-- Zielsetzung
-- Zielgruppe
+- Objective
+- Target audience
 
 ## 2. Scope
 ### 2.1 In Scope
@@ -16,55 +16,55 @@
 ### 2.2 Out of Scope / Non-Goals
 - ...
 
-## Limitierungen & Grenzen (Stand heute)
-- Was naheliegend klingt, aber (noch) nicht implementiert ist
-- Bekannte Lücken / TODOs
-- Technische Grenzen (Performance, Plattformen, Abhängigkeiten)
-- Sicherheits-/Compliance-Grenzen
+## Limitations & Constraints (as of today)
+- What sounds obvious but is not (yet) implemented
+- Known gaps / TODOs
+- Technical constraints (performance, platforms, dependencies)
+- Security/compliance constraints
 
 
-## Erwartungsfallen (Was man sofort erwartet, aber (noch) nicht da ist)
-- Beispiel: X klingt naheliegend, ist aber aktuell nicht implementiert, weil …
-- Auswirkungen: Was bedeutet das für Nutzer / Integratoren?
+## Expectation Traps (What people would immediately expect but is not yet present)
+- Example: X sounds obvious, but is currently not implemented because …
+- Impact: What does this mean for users / integrators?
 
-## Nicht-Ziele (Was es ausdrücklich NICHT ist)
-- Klarstellung: Dieses System ist **nicht** …
-- Nicht geplant (kurz- bis mittelfristig): …
+## Non-goals (What this explicitly is NOT)
+- Clarification: This system is **not** …
+- Not planned (short to medium term): …
 
-## Denkbar / Future Work (Was möglich wäre)
-- Mögliche Erweiterungen (ohne Verpflichtung): …
-- Welche Voraussetzungen wären nötig (Tech/Team/Policy)?
+## Conceivable / Future Work (What would be possible)
+- Possible extensions (without commitment): …
+- What prerequisites would be needed (tech/team/policy)?
 
-## 3. Stakeholder & Rollen
+## 3. Stakeholders & Roles
 - ...
 
-## 4. Funktionale Anforderungen
-| ID | Anforderung | Priorität | Akzeptanzkriterium |
+## 4. Functional Requirements
+| ID | Requirement | Priority | Acceptance Criterion |
 |---:|---|---|---|
 | FR-001 | ... | Must/Should/Could | ... |
 
-## 5. Nicht-funktionale Anforderungen
+## 5. Non-functional Requirements
 - Performance
 - Security/Privacy
 - Maintainability
 
-## 6. Schnittstellen (High-Level)
-- Externe Systeme
-- Datenflüsse
+## 6. Interfaces (High-Level)
+- External systems
+- Data flows
 
-## 7. Architektur-Überblick (Leserfreundlich)
-- Komponenten
-- Verantwortlichkeiten
+## 7. Architecture Overview (Reader-friendly)
+- Components
+- Responsibilities
 
-> Diagramm: Systemübersicht (Mermaid)
+> Diagram: System overview (Mermaid)
 
-## 8. Risiken & Annahmen
+## 8. Risks & Assumptions
 - ...
 
-## 9. Abnahmekriterien
+## 9. Acceptance Criteria
 - ...
 
-## 10. First Steps (Projektstart)
-- Repo-Struktur
+## 10. First Steps (Project start)
+- Repo structure
 - Build/Run
-- Minimaler Smoke-Test
+- Minimal smoke test

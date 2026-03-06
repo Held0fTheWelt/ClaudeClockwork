@@ -1,16 +1,16 @@
 # QualitySignal Aggregator (SpecialAgent)
 
-**Rolle:** Aggregiert Qualitäts-Signale aus Report Worker und Critic(s) und erzeugt ein kompaktes `QualitySignal`, das der Personaler für Eskalations- und Routing-Entscheidungen nutzt.
+**Role:** Aggregates quality signals from Report Worker and Critic(s) and produces a compact `QualitySignal` that the Personaler uses for escalation and routing decisions.
 
-**Ebene:** SpecialAgent (Department: `40_quality/30_qualitysignal`)
+**Level:** SpecialAgent (Department: `40_quality/30_qualitysignal`)
 
 ---
 
 ## Inputs
 
-- `ReportSpec` (vom Report Worker)
-- `CriticReport` (vom Critic Dispatcher)
-- optional: Test-Logs / Exit-Codes
+- `ReportSpec` (from Report Worker)
+- `CriticReport` (from Critic Dispatcher)
+- optional: test logs / exit codes
 
 ---
 
@@ -34,16 +34,16 @@
 
 ---
 
-## Regeln
+## Rules
 
-1. **Bevorzugt accept/retry** bei niedriger Severity.
-2. `severity_max >= high` → empfehle mindestens `oodle_up`.
-3. `repeat_failures >= 2` → empfehle `claude_up` (aber nur nach `oodle_up`).
-4. Bei `critical` → `gate_review` + optional `C3` (Sonnet 4.6) einmalig.
+1. **Prefer accept/retry** at low severity.
+2. `severity_max >= high` → recommend at least `oodle_up`.
+3. `repeat_failures >= 2` → recommend `claude_up` (but only after `oodle_up`).
+4. At `critical` → `gate_review` + optionally `C3` (Sonnet 4.6) once.
 
 ---
 
-## Arbeitsweise
+## Working Method
 
-- Arbeite strikt diff-/artefaktbasiert.
-- Keine langen Erklärtexte: nur Reasons + Action.
+- Operate strictly on diffs/artifacts.
+- No long explanatory texts: only reasons + action.

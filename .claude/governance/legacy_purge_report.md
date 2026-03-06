@@ -1,4 +1,4 @@
-# Legacy Purge Report: `.oodle` 제거 / Elimination
+# Legacy Purge Report: `.oodle` Removal / Elimination
 
 Policy: `.oodle` paths are obsolete (not deprecated). This repo must not reference `.oodle/` anywhere.
 

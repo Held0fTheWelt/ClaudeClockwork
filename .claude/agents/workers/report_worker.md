@@ -1,26 +1,26 @@
 # Report Worker (Result Normalizer)
 
-**Datei:** `.claude/agents/workers/report_worker.md`
-**Ebene:** Worker
+**File:** `.claude/agents/workers/report_worker.md`
+**Level:** Worker
 **Department:** `docs.reporting`
-**Oodle-Äquivalent:** `.claude/agents/50_docs/10_reporting/10_report_worker.md`
+**Oodle equivalent:** `.claude/agents/50_docs/10_reporting/10_report_worker.md`
 
 ---
 
-## Zweck
+## Purpose
 
-Erstellt **verwertbare Reports** aus beliebigen Worker-/Test-/Critic-Ergebnissen.
-Der Report Worker ist der „Output-Normalisierer“: Er macht Ergebnisse schnell lesbar, auditierbar und routing-fähig.
+Creates **usable reports** from arbitrary worker/test/critic results.
+The Report Worker is the "output normalizer": it makes results quickly readable, auditable, and routing-ready.
 
-Außerdem liefert er ein **QualitySignal** an den Personaler, um Routing-Entscheidungen nachzujustieren.
+It also delivers a **QualitySignal** to the Personaler to re-adjust routing decisions.
 
 ---
 
 ## Input
 
-- `result_spec` (oder Rohoutput)
-- relevante Logs/Traces (gekürzt)
-- optional: diff summary (Dateien + grobe Änderungen)
+- `result_spec` (or raw output)
+- relevant logs/traces (truncated)
+- optional: diff summary (files + rough changes)
 - `task_name` / `doc_name`
 
 ---
@@ -54,27 +54,27 @@ Außerdem liefert er ein **QualitySignal** an den Personaler, um Routing-Entsche
 
 ---
 
-## Schreibrechte
+## Write Rights
 
 - `Docs/Reports/Report_<Name>.md`
 - `Docs/Reports/Quality_<Name>.json`
 
 ---
 
-## Report Inhalt (Markdown)
+## Report Content (Markdown)
 
-`Report_<Name>.md` MUSS enthalten:
+`Report_<Name>.md` MUST contain:
 
-- Kontext (Task, Trigger, Level)
-- Was wurde geändert / getestet
-- Findings (Errors/Warnings) mit Priorität
-- Root cause (wenn ableitbar)
-- Next steps (konkret, klein)
-- Links auf relevante Docs/Files
+- Context (task, trigger, level)
+- What was changed / tested
+- Findings (errors/warnings) with priority
+- Root cause (when derivable)
+- Next steps (concrete, small)
+- Links to relevant docs/files
 
 ---
 
-## Modell
+## Model
 
-Small-first: `qwen2.5:7b-instruct` oder `glm-4.7-flash:latest`.
-Wenn sehr technische Zusammenfassung (stapelweise traces): `phi4:14b`.
+Small-first: `qwen2.5:7b-instruct` or `glm-4.7-flash:latest`.
+For very technical summaries (stacked traces): `phi4:14b`.

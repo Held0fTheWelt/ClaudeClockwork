@@ -1,6 +1,6 @@
-# NanoBanana — First Steps (Beispiel)
+# NanoBanana — First Steps (Example)
 
 ## Quickstart
-1) Erzeuge `Docs/Documentation/demo.md`
-2) Erzeuge ein Diagramm `Docs/References/diagrams/demo/system_overview.mmd`
-3) Rendere PDF über `pdf_render`
+1) Create `Docs/Documentation/demo.md`
+2) Create a diagram `Docs/References/diagrams/demo/system_overview.mmd`
+3) Render PDF via `pdf_render`

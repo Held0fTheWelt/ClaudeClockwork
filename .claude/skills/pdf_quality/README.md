@@ -1,28 +1,28 @@
 # Skill: NanoBanana PDF Quality (DocForge)
 
-Ziel: Aus vorhandenen Projekt-Dokumenten (Specs/Runbooks/Tasks/Notes) entstehen **lesbare, druckfähige PDFs** mit **passenden Grafiken und Schemata**.
+Goal: From existing project documents (Specs/Runbooks/Tasks/Notes), produce **readable, print-ready PDFs** with **appropriate diagrams and schemas**.
 
-Dieses Skill-Pack ist für **Claude Clockwork** gedacht:
-- **LLM-Teil (nicht deterministisch):** Explore/Write/Critic/DecideGap erzeugen `manuscript.md` + Diagramm-Quellen.
-- **Tool-Teil (deterministisch):** `pdf_render` rendert ein PDF aus Manuskript + Diagramm-Assets.
+This skill pack is designed for **Claude Clockwork**:
+- **LLM part (non-deterministic):** Explore/Write/Critic/DecideGap generate `manuscript.md` + diagram sources.
+- **Tool part (deterministic):** `pdf_render` renders a PDF from the manuscript + diagram assets.
 
-> Wichtig: In Clockwork sind Skills tool-first. Dieses Paket liefert die **Spezifikation, Rubrik, Templates und Tasks**, damit die Implementierung im Projekt-Repo sauber umgesetzt werden kann.
+> Important: In Clockwork, skills are tool-first. This package provides the **specification, rubric, templates, and tasks** so that implementation in the project repo can be done cleanly.
 
-## Ergebnis-Artefakte (Standard)
+## Output Artifacts (Standard)
 
-Ausgabe-Orte (empfohlen):
-- Manuskript (Quelle): `Docs/Documentation/<doc_name>.md`
+Output locations (recommended):
+- Manuscript (source): `Docs/Documentation/<doc_name>.md`
 - PDF: `Docs/References/<doc_name>.pdf`
-- Diagramme (Quellen): `Docs/References/diagrams/<doc_name>/*.mmd` (oder `.dot`)
-- Diagramme (Assets): `Docs/References/diagrams/<doc_name>/*.svg` (oder `.png`)
+- Diagrams (sources): `Docs/References/diagrams/<doc_name>/*.mmd` (or `.dot`)
+- Diagrams (assets): `Docs/References/diagrams/<doc_name>/*.svg` (or `.png`)
 
-## Minimaler Workflow
+## Minimal Workflow
 
-1) **Explore**: Quellen sammeln, Zielgruppe/Scope klären, Outline bauen.
-2) **Write**: Manuskript in einem Template erzeugen.
-3) **Critic**: Rubrik anwenden, konkrete Fixliste (max 10 Items).
-4) **DecideGap**: Quality Gap Report erzeugen (Score + „nächster großer Schritt“).
-5) **Render**: `pdf_render` Skill ausführen.
+1) **Explore**: Collect sources, clarify audience/scope, build outline.
+2) **Write**: Generate manuscript using a template.
+3) **Critic**: Apply rubric, produce concrete fix list (max 10 items).
+4) **DecideGap**: Generate Quality Gap Report (Score + "next major step").
+5) **Render**: Execute `pdf_render` skill.
 
 Details: `skills/playbooks/pdf_quality_docforge.md`
 
@@ -33,15 +33,15 @@ Details: `skills/playbooks/pdf_quality_docforge.md`
 - `templates/tutorial.template.md`
 - `templates/api_reference.template.md`
 
-## Deterministischer Skill
+## Deterministic Skill
 
-- Skill-ID: `pdf_render`
+- Skill ID: `pdf_render`
 - Contract: `contracts/schemas/pdf_render_inputs.schema.json`
 - Example Request: `contracts/examples/pdf_render.skill_request.example.json`
 
-## Beispiele
+## Examples
 
-Siehe `skills/pdf_quality/examples/`:
+See `skills/pdf_quality/examples/`:
 - `sample_lastenheft.md`
 - `sample_first_steps.md`
 - `sample_diagrams.mmd`
