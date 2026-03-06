@@ -4,15 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repository Is
 
-**Clockwork** — a meta-governance and tooling layer for multi-agent Claude/Ollama orchestration. The `.claude/` directory is the system core: it defines agent roles, governance protocols, skill runners, and JSON contracts. Application code lives under `src/` (project-level, not yet present in the clockwork layer itself).
+**Clockwork** — a meta-governance and tooling layer for multi-agent Claude/Ollama orchestration. The `.claude/` directory is the system core (agent roles, governance protocols, skill runners, JSON contracts). The `.project/` directory holds project-operational files for working on Clockwork itself. When deploying Clockwork on another project, `.project/` contents move to that project's root.
 
 ## Commands
 
+### System Tools
+
 ```bash
 # Test Ollama availability (run at start of session or after Ollama restart)
-python3 src/main.py --task "test ollama"
-
-# Alternative direct test
 python3 .claude/tools/test_ollama.py
 
 # Check Ollama status manually
@@ -21,27 +20,79 @@ curl -s http://localhost:11434/api/tags | python3 -c "import sys,json; [print(m[
 # Run a skill tool
 python3 .claude/tools/skills/skill_runner.py <skill_name> [args]
 
-# Ollama briefing via legacy script
+# Ollama briefing
 echo "task description" | python3 .claude/tools/ollama_brief.py [model] [type]
 # Types: brief | draft | architecture | review | quick
 ```
+
+## Development
+
+### Setup & Verification
+
+```bash
+# Verify complete environment setup (boot check)
+python3 .claude/tools/boot_check.py
+
+# Test Ollama availability (optional, needed only for L2+ tasks)
+python3 .claude/tools/test_ollama.py
+```
+
+### Running the CLI
+
+```bash
+# Show help
+python3 -m claudeclockwork.cli --help
+
+# Run a skill through the manifest system
+python3 -m claudeclockwork.cli --skill-id <skill_name> --inputs '{...}'
+
+# Example: build capability map
+python3 -m claudeclockwork.cli --skill-id capability_map_build --inputs '{}'
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+python3 -m pytest tests/ -v
+
+# Run a specific test
+python3 -m pytest tests/test_full_skill_system_smoke.py::test_registry_discovers_manifest_skills -v
+
+# Run with coverage
+python3 -m pytest tests/ --cov=claudeclockwork
+```
+
+### Code Structure
+
+**Main package:** `claudeclockwork/` — contains CLI entry point (`cli.py`), runtime builder (`runtime.py`), manifest bridge (`bridge.py`), and core modules:
+- `core/base` — foundational types and interfaces
+- `core/executor` — execution pipeline and task runners
+- `core/planner` — planning and routing logic
+- `core/registry` — skill registry discovery
+- `core/models` — data models and contracts
+- `core/security` — security validation
+
+**System core:** `.claude/` (never deploy as application code) — agent definitions, governance rules, skill implementations, JSON schemas, and Ollama integration tools.
+
+**Project workspace:** `.project/` — documentation, plans, reviews, memory across sessions.
 
 ## Execution Protocol
 
 Always read in this order at session start:
 1. `CLAUDE.md` + `.claude/SYSTEM.md` — project identity and module hierarchy
-2. `MEMORY.md` (project root) — stable cross-session knowledge
+2. `.project/MEMORY.md` — stable cross-session knowledge
 3. `.claude/governance/workflow_triggers.md` — trigger routing and document naming
 
 ### Workflow Trigger Keywords
 
 | Keyword | Workflow | Document output |
 |---|---|---|
-| **Task:** | Plan creation | `Docs/Plans/Plan_<Name>.md` |
-| **Review:** | Review creation | `Docs/Review/Review_<Name>.md` |
-| **Critics:** | Fundamental critique | `Docs/Critics/Critics_<Severity>_<Name>.md` |
+| **Task:** | Plan creation | `.project/Docs/Plans/Plan_<Name>.md` |
+| **Review:** | Review creation | `.project/Docs/Review/Review_<Name>.md` |
+| **Critics:** | Fundamental critique | `.project/Docs/Critics/Critics_<Severity>_<Name>.md` |
 | **Implement:** | Execute a plan | Code changes |
-| **Archive:** | Archive completed task (BP-005) | `Docs/References/`, `Docs/Documentation/`, `.claude/knowledge/index.md` |
+| **Archive:** | Archive completed task (BP-005) | `.project/Docs/References/`, `.project/Docs/Documentation/`, `.claude/knowledge/index.md` |
 | **test ollama** | Ollama health check | (no document) |
 
 ### Escalation Levels
@@ -62,7 +113,7 @@ Always read in this order at session start:
 ### Directory Structure
 
 ```
-.claude/                  # Clockwork system core (SSoT)
+.claude/                  # Clockwork system core (SSoT) — never deploy-target
   agents/                 # Agent role definitions
     critics/              # Technical + Systemic critic definitions
     learning/             # Per-agent learning logs
@@ -74,7 +125,7 @@ Always read in this order at session start:
     meta/                 # Skill discovery + forge agents
     quality/              # Batch validator, local verifier
   contracts/              # JSON schemas + SPEC_SHEET.md (SSoT for data contracts)
-    schemas/              # JSON Schema files for all inter-agent specs
+    schemas/              # ~95 JSON Schema files for all inter-agent specs
   governance/             # Execution protocol, routing matrix, policies
   tasks/                  # Task templates organized by domain
     input/                # Message triad building
@@ -84,17 +135,26 @@ Always read in this order at session start:
     skills/               # Skill-specific task files
   tools/                  # Deterministic Python tools + skill runners
     skills/               # Individual skill scripts (one per skill)
+  skills/                 # Skill documentation (registry, playbooks, per-skill READMEs)
+    playbooks/            # Multi-skill campaign playbooks
   knowledge/              # Librarian-managed knowledge base + index
   python/                 # Python architecture + pattern standards
-src/                      # Application code (project-level, owner: Implementation Agent)
-Docs/                     # Living documentation
-  Plans/                  # Active task plans
-  Review/                 # Validation reports
-  Critics/                # Critic outputs
-  Documentation/          # Technical docs
-  References/             # Archived reference documents
-  Tutorials/              # Guides
-memory/                   # Cross-session context (Team Lead owned)
+  config/                 # YAML/JSON config (pricing, budgeting, routing)
+
+.project/                 # Project-operational files (this project = Clockwork dev)
+  MEMORY.md               # Cross-session knowledge (SSoT — read first each session)
+  ARCHITECTURE.md         # System design for this project
+  ROADMAP.md              # Active milestones
+  MODEL_POLICY.md         # Model tier overrides
+  QUALITY_TRACKING.md     # Telemetry + stats
+  memory/                 # Team Lead cross-session context files
+  Docs/
+    Plans/                # Task descriptions + implementation plans
+    Review/               # Validation reports
+    Critics/              # Critic outputs
+    Documentation/        # Technical docs
+    References/           # Archived reference documents
+    Tutorials/            # Guides
 ```
 
 ### Agent Hierarchy
@@ -102,11 +162,11 @@ memory/                   # Cross-session context (Team Lead owned)
 ```
 Orchestrator (Team Lead)  — routes, orchestrates, never implements directly
 ├── SpecialAgents (Departments) — build packs, normalize results, small context
-│   ├── Implementation Agent (src/ owner)
+│   ├── Implementation Agent (src/ owner on deployment target)
 │   ├── Architecture Agent / Designer
-│   ├── Documentation Agent (Docs/Documentation/, Docs/Tutorials/)
-│   ├── Librarian Agent (Docs/References/, .claude/knowledge/)
-│   ├── Validation Agent (Docs/Review/)
+│   ├── Documentation Agent (.project/Docs/Documentation/, Tutorials/)
+│   ├── Librarian Agent (.project/Docs/References/, .claude/knowledge/)
+│   ├── Validation Agent (.project/Docs/Review/)
 │   └── Critics: Technical (L3) + Systemic (L4)
 └── Workers (Execution Plane) — receive Pack + TasklistSpec, not full conversation
 ```
@@ -151,11 +211,10 @@ Hardware: RTX 3080 (10 GB VRAM) for ≤14b GPU models; 7950X3D / 64 GB DDR5 for 
 
 ## Key Governance Rules
 
-- **All application/plugin source files must live under `src/`** (SRC_ORIGIN_RULE).
 - **No silent architecture changes.** Core decisions require user confirmation.
 - **File ownership is strict.** No agent edits another agent's files — use Domain Handoff via Team Lead.
 - **Team Lead does not write code or files directly** — delegates all implementation via Task tool.
-- **Governance Trinity:** `specialists.md` + `execution_protocol.md` + `MEMORY.md` must always be updated together when a new agent is integrated.
+- **Governance Trinity:** `specialists.md` + `execution_protocol.md` + `.project/MEMORY.md` must always be updated together when a new agent is integrated.
 - **German narrative input workflow:** build a `MessageTriadSpec` first (`.claude/tasks/input/000_BUILD_MESSAGE_TRIAD.md`), then work from `work_brief`.
 - **Drift Sentinel hard stop:** if `contract_drift_sentinel` FAILs, stop and fix before proceeding.
 - **QA gate** before risky work: `.claude/tasks/qa/000_RUN_QA_GATE.md`.
@@ -169,11 +228,11 @@ Hardware: RTX 3080 (10 GB VRAM) for ≤14b GPU models; 7950X3D / 64 GB DDR5 for 
 
 | Type | Prefix | Location |
 |---|---|---|
-| Plan | `Plan_` | `Docs/Plans/` |
-| Review | `Review_` | `Docs/Review/` |
-| Critic (minor) | `Critics_Minor_` | `Docs/Critics/` |
-| Critic (normal) | `Critics_Normal_` | `Docs/Critics/` |
-| Critic (major) | `Critics_Major_` | `Docs/Critics/` |
-| Reference | `Ref_` | `Docs/References/` |
+| Plan | `Plan_` | `.project/Docs/Plans/` |
+| Review | `Review_` | `.project/Docs/Review/` |
+| Critic (minor) | `Critics_Minor_` | `.project/Docs/Critics/` |
+| Critic (normal) | `Critics_Normal_` | `.project/Docs/Critics/` |
+| Critic (major) | `Critics_Major_` | `.project/Docs/Critics/` |
+| Reference | `Ref_` | `.project/Docs/References/` |
 
 Related documents share the same topic part: `Plan_OllamaClient.md`, `Review_OllamaClient.md`, `Critics_Normal_OllamaClient.md`.
