@@ -1,6 +1,7 @@
 # Clockwork v18 Roadmap
 
 **Baseline:** v17.7.0 — 94 legacy skills, 34 manifest skills (28 adapters + 6 native), 5 passing tests
+**Current:** v18.0 — 45 manifest skills (34 adapters + 11 native), 136 passing tests, MCP layer, full plugin runtime, 7 CI gates
 **Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md · VERIFY audit 2026-03-06
 **Updated:** 2026-03-06
 
@@ -15,8 +16,11 @@
 | 2 | Wrapper Wave 3 | **Complete** | [MVP_Phase2](../mvps/MVP_Phase2_WrapperWave3.md) |
 | 3 | Native Core Services | **Complete** | [MVP_Phase3](../mvps/MVP_Phase3_NativeCoreServices.md) |
 | 4 | Plugin Runtime | **Complete** | [MVP_Phase4](../mvps/MVP_Phase4_PluginRuntime.md) |
-| 5 | MCP Layer | Planned | [MVP_Phase5](../mvps/MVP_Phase5_MCPLayer.md) |
-| 6 | CI / Eval / Quality Gates | Planned | [MVP_Phase6](../mvps/MVP_Phase6_CIEvalGates.md) |
+| 5 | MCP Layer | **Complete** | [MVP_Phase5](../mvps/MVP_Phase5_MCPLayer.md) |
+| 6 | CI / Eval / Quality Gates | **Complete** | [MVP_Phase6](../mvps/MVP_Phase6_CIEvalGates.md) |
+| 7 | Wrapper Wave 4 (Legacy CLI Gap) | Planned | [MVP_Phase7](../mvps/MVP_Phase7_WrapperWave4.md) |
+| 8 | Code & Governance Hygiene | Planned | [MVP_Phase8](../mvps/MVP_Phase8_CodeHygiene.md) |
+| 9 | Test Hardening | Planned | [MVP_Phase9](../mvps/MVP_Phase9_TestHardening.md) |
 
 **Principle:** No big-bang rewrites. Each phase delivers a working, tested increment. Legacy runner stays operational throughout.
 
