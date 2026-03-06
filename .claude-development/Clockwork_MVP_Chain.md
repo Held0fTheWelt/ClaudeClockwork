@@ -853,3 +853,21 @@ From **MVP09+**, MVP ordering and scope are intentionally parity-driven: the out
 
 ## Acceptance
 - Shadow run against baseline; comparison report; promotion decision by rules.
+
+---
+
+# CCW-MVP34 — General Enhancement
+**Goal:** Implement capabilities in the **general** domain as identified by trigger `manual`.
+
+## Deliverables
+
+- Scope (skill IDs / capability gaps addressed):
+  - (none specified)
+- Schema, example, and Python implementation for each new skill
+- Registry entries added to `skills/registry.md`
+- `SKILLS` dispatch entries added to `skill_runner.py`
+
+## Acceptance
+- All skills listed in scope run end-to-end via skill_runner
+- Each skill has schema + example + .py
+- Smoke test for each skill returns `status: ok` or `status: error` with clear message
