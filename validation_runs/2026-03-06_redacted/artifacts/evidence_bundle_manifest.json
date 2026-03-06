@@ -1,0 +1,28 @@
+{
+  "type": "evidence_bundle_manifest",
+  "run_dir": "/mnt/d/ClaudeClockwork/validation_runs/2026-03-06",
+  "git_sha": "ad0f70aeaae155d6e2b90715753e5b2774dffad6",
+  "items": [
+    {
+      "path": "artifacts/evidence_bundle.zip",
+      "size": 1274,
+      "sha256": "1f8512244b8f4dc58800cc9d1433e70675bc6027b9819629d5e70790cee742fd"
+    },
+    {
+      "path": "artifacts/evidence_bundle_manifest.json",
+      "size": 356,
+      "sha256": "f339cbc21e66cc88bde7bb9a55bf98fc951732172ba75f0028827fe5a7dfeca0"
+    },
+    {
+      "path": "reports/pack_manifest.json",
+      "size": 525,
+      "sha256": "8c8852e5c640017deb56128f00f3532922614beb7834c63f2c9aec22873e3d5f"
+    },
+    {
+      "path": "reports/qa_gate.json",
+      "size": 2766,
+      "sha256": "99855feb343831cf7a32cce5e2b5cf57696e9d73aa48f06c0926ff3dd545f728"
+    }
+  ],
+  "total_size": 4921
+}

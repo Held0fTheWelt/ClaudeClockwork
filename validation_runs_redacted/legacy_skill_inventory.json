@@ -1,0 +1,465 @@
+{
+  "legacy_total": 91,
+  "wrapped_total": 28,
+  "unwrapped_total": 63,
+  "coverage_ratio": 0.3077,
+  "wrapped": [
+    {
+      "name": "capability_map_build",
+      "wrapped": true,
+      "path": ".claude/tools/skills/capability_map_build.py"
+    },
+    {
+      "name": "cleanup_apply",
+      "wrapped": true,
+      "path": ".claude/tools/skills/cleanup_apply.py"
+    },
+    {
+      "name": "cleanup_plan_apply",
+      "wrapped": true,
+      "path": ".claude/tools/skills/cleanup_plan_apply.py"
+    },
+    {
+      "name": "code_clean",
+      "wrapped": true,
+      "path": ".claude/tools/skills/code_clean.py"
+    },
+    {
+      "name": "code_clean_scan",
+      "wrapped": true,
+      "path": ".claude/tools/skills/code_clean_scan.py"
+    },
+    {
+      "name": "contract_drift_sentinel",
+      "wrapped": true,
+      "path": ".claude/tools/skills/contract_drift_sentinel.py"
+    },
+    {
+      "name": "determinism_harness",
+      "wrapped": true,
+      "path": ".claude/tools/skills/determinism_harness.py"
+    },
+    {
+      "name": "eval_run",
+      "wrapped": true,
+      "path": ".claude/tools/skills/eval_run.py"
+    },
+    {
+      "name": "evidence_bundle_build",
+      "wrapped": true,
+      "path": ".claude/tools/skills/evidence_bundle_build.py"
+    },
+    {
+      "name": "evidence_init",
+      "wrapped": true,
+      "path": ".claude/tools/skills/evidence_init.py"
+    },
+    {
+      "name": "evidence_router",
+      "wrapped": true,
+      "path": ".claude/tools/skills/evidence_router.py"
+    },
+    {
+      "name": "parity_scan_and_mvp_planner",
+      "wrapped": true,
+      "path": ".claude/tools/skills/parity_scan_and_mvp_planner.py"
+    },
+    {
+      "name": "pdf_quality",
+      "wrapped": true,
+      "path": ".claude/tools/skills/pdf_quality.py"
+    },
+    {
+      "name": "pdf_render",
+      "wrapped": true,
+      "path": ".claude/tools/skills/pdf_render.py"
+    },
+    {
+      "name": "policy_gatekeeper",
+      "wrapped": true,
+      "path": ".claude/tools/skills/policy_gatekeeper.py"
+    },
+    {
+      "name": "qa_gate",
+      "wrapped": true,
+      "path": ".claude/tools/skills/qa_gate.py"
+    },
+    {
+      "name": "refactor_bridge_scan",
+      "wrapped": true,
+      "path": ".claude/tools/skills/refactor_bridge_scan.py"
+    },
+    {
+      "name": "release_cut",
+      "wrapped": true,
+      "path": ".claude/tools/skills/release_cut.py"
+    },
+    {
+      "name": "repo_clean",
+      "wrapped": true,
+      "path": ".claude/tools/skills/repo_clean.py"
+    },
+    {
+      "name": "repo_clean_scan",
+      "wrapped": true,
+      "path": ".claude/tools/skills/repo_clean_scan.py"
+    },
+    {
+      "name": "repo_compare",
+      "wrapped": true,
+      "path": ".claude/tools/skills/repo_compare.py"
+    },
+    {
+      "name": "repo_validate",
+      "wrapped": true,
+      "path": ".claude/tools/skills/repo_validate.py"
+    },
+    {
+      "name": "schema_batch_validate",
+      "wrapped": true,
+      "path": ".claude/tools/skills/schema_batch_validate.py"
+    },
+    {
+      "name": "security_redactor",
+      "wrapped": true,
+      "path": ".claude/tools/skills/security_redactor.py"
+    },
+    {
+      "name": "skill_gap_detect",
+      "wrapped": true,
+      "path": ".claude/tools/skills/skill_gap_detect.py"
+    },
+    {
+      "name": "skill_registry_search",
+      "wrapped": true,
+      "path": ".claude/tools/skills/skill_registry_search.py"
+    },
+    {
+      "name": "skill_scaffold",
+      "wrapped": true,
+      "path": ".claude/tools/skills/skill_scaffold.py"
+    },
+    {
+      "name": "spec_validate",
+      "wrapped": true,
+      "path": ".claude/tools/skills/spec_validate.py"
+    }
+  ],
+  "unwrapped": [
+    {
+      "name": "autodocs_generate",
+      "wrapped": false,
+      "path": ".claude/tools/skills/autodocs_generate.py"
+    },
+    {
+      "name": "bandit_router_select",
+      "wrapped": false,
+      "path": ".claude/tools/skills/bandit_router_select.py"
+    },
+    {
+      "name": "budget_analyze",
+      "wrapped": false,
+      "path": ".claude/tools/skills/budget_analyze.py"
+    },
+    {
+      "name": "budget_router",
+      "wrapped": false,
+      "path": ".claude/tools/skills/budget_router.py"
+    },
+    {
+      "name": "clockwork_version_bump",
+      "wrapped": false,
+      "path": ".claude/tools/skills/clockwork_version_bump.py"
+    },
+    {
+      "name": "code_assimilate",
+      "wrapped": false,
+      "path": ".claude/tools/skills/code_assimilate.py"
+    },
+    {
+      "name": "copyright_standardize",
+      "wrapped": false,
+      "path": ".claude/tools/skills/copyright_standardize.py"
+    },
+    {
+      "name": "create_mvp",
+      "wrapped": false,
+      "path": ".claude/tools/skills/create_mvp.py"
+    },
+    {
+      "name": "creativity_burst",
+      "wrapped": false,
+      "path": ".claude/tools/skills/creativity_burst.py"
+    },
+    {
+      "name": "critics_board_review",
+      "wrapped": false,
+      "path": ".claude/tools/skills/critics_board_review.py"
+    },
+    {
+      "name": "decision_feedback",
+      "wrapped": false,
+      "path": ".claude/tools/skills/decision_feedback.py"
+    },
+    {
+      "name": "deliberation_pack_build",
+      "wrapped": false,
+      "path": ".claude/tools/skills/deliberation_pack_build.py"
+    },
+    {
+      "name": "determinism_proof",
+      "wrapped": false,
+      "path": ".claude/tools/skills/determinism_proof.py"
+    },
+    {
+      "name": "doc_review",
+      "wrapped": false,
+      "path": ".claude/tools/skills/doc_review.py"
+    },
+    {
+      "name": "doc_ssot_resolver",
+      "wrapped": false,
+      "path": ".claude/tools/skills/doc_ssot_resolver.py"
+    },
+    {
+      "name": "doc_write",
+      "wrapped": false,
+      "path": ".claude/tools/skills/doc_write.py"
+    },
+    {
+      "name": "drift_semantic_check",
+      "wrapped": false,
+      "path": ".claude/tools/skills/drift_semantic_check.py"
+    },
+    {
+      "name": "economics_regression",
+      "wrapped": false,
+      "path": ".claude/tools/skills/economics_regression.py"
+    },
+    {
+      "name": "edge_case_selector",
+      "wrapped": false,
+      "path": ".claude/tools/skills/edge_case_selector.py"
+    },
+    {
+      "name": "efficiency_review",
+      "wrapped": false,
+      "path": ".claude/tools/skills/efficiency_review.py"
+    },
+    {
+      "name": "escalation_router",
+      "wrapped": false,
+      "path": ".claude/tools/skills/escalation_router.py"
+    },
+    {
+      "name": "exec_dryrun",
+      "wrapped": false,
+      "path": ".claude/tools/skills/exec_dryrun.py"
+    },
+    {
+      "name": "hardening_scan_fix",
+      "wrapped": false,
+      "path": ".claude/tools/skills/hardening_scan_fix.py"
+    },
+    {
+      "name": "hello",
+      "wrapped": false,
+      "path": ".claude/tools/skills/hello.py"
+    },
+    {
+      "name": "hypothesis_builder",
+      "wrapped": false,
+      "path": ".claude/tools/skills/hypothesis_builder.py"
+    },
+    {
+      "name": "idea_dedupe",
+      "wrapped": false,
+      "path": ".claude/tools/skills/idea_dedupe.py"
+    },
+    {
+      "name": "idea_scoring",
+      "wrapped": false,
+      "path": ".claude/tools/skills/idea_scoring.py"
+    },
+    {
+      "name": "last_train",
+      "wrapped": false,
+      "path": ".claude/tools/skills/last_train.py"
+    },
+    {
+      "name": "last_train_merge",
+      "wrapped": false,
+      "path": ".claude/tools/skills/last_train_merge.py"
+    },
+    {
+      "name": "limitation_harvest_scan",
+      "wrapped": false,
+      "path": ".claude/tools/skills/limitation_harvest_scan.py"
+    },
+    {
+      "name": "log_standardize",
+      "wrapped": false,
+      "path": ".claude/tools/skills/log_standardize.py"
+    },
+    {
+      "name": "mechanic_explain",
+      "wrapped": false,
+      "path": ".claude/tools/skills/mechanic_explain.py"
+    },
+    {
+      "name": "model_routing_record_outcome",
+      "wrapped": false,
+      "path": ".claude/tools/skills/model_routing_record_outcome.py"
+    },
+    {
+      "name": "model_routing_select",
+      "wrapped": false,
+      "path": ".claude/tools/skills/model_routing_select.py"
+    },
+    {
+      "name": "mutation_detect",
+      "wrapped": false,
+      "path": ".claude/tools/skills/mutation_detect.py"
+    },
+    {
+      "name": "outcome_event_generate",
+      "wrapped": false,
+      "path": ".claude/tools/skills/outcome_event_generate.py"
+    },
+    {
+      "name": "outcome_ledger_append",
+      "wrapped": false,
+      "path": ".claude/tools/skills/outcome_ledger_append.py"
+    },
+    {
+      "name": "pattern_detect",
+      "wrapped": false,
+      "path": ".claude/tools/skills/pattern_detect.py"
+    },
+    {
+      "name": "pdf_export",
+      "wrapped": false,
+      "path": ".claude/tools/skills/pdf_export.py"
+    },
+    {
+      "name": "performance_finalize",
+      "wrapped": false,
+      "path": ".claude/tools/skills/performance_finalize.py"
+    },
+    {
+      "name": "performance_toggle",
+      "wrapped": false,
+      "path": ".claude/tools/skills/performance_toggle.py"
+    },
+    {
+      "name": "plan_diff_apply",
+      "wrapped": false,
+      "path": ".claude/tools/skills/plan_diff_apply.py"
+    },
+    {
+      "name": "plan_lint",
+      "wrapped": false,
+      "path": ".claude/tools/skills/plan_lint.py"
+    },
+    {
+      "name": "plan_mutate",
+      "wrapped": false,
+      "path": ".claude/tools/skills/plan_mutate.py"
+    },
+    {
+      "name": "prompt_debt_capture",
+      "wrapped": false,
+      "path": ".claude/tools/skills/prompt_debt_capture.py"
+    },
+    {
+      "name": "reference_fix",
+      "wrapped": false,
+      "path": ".claude/tools/skills/reference_fix.py"
+    },
+    {
+      "name": "report",
+      "wrapped": false,
+      "path": ".claude/tools/skills/report.py"
+    },
+    {
+      "name": "review_panel",
+      "wrapped": false,
+      "path": ".claude/tools/skills/review_panel.py"
+    },
+    {
+      "name": "route_autotune_suggest",
+      "wrapped": false,
+      "path": ".claude/tools/skills/route_autotune_suggest.py"
+    },
+    {
+      "name": "route_profile_patch_pack",
+      "wrapped": false,
+      "path": ".claude/tools/skills/route_profile_patch_pack.py"
+    },
+    {
+      "name": "route_profile_update",
+      "wrapped": false,
+      "path": ".claude/tools/skills/route_profile_update.py"
+    },
+    {
+      "name": "scan",
+      "wrapped": false,
+      "path": ".claude/tools/skills/scan.py"
+    },
+    {
+      "name": "screencast_script",
+      "wrapped": false,
+      "path": ".claude/tools/skills/screencast_script.py"
+    },
+    {
+      "name": "shadow_prompt",
+      "wrapped": false,
+      "path": ".claude/tools/skills/shadow_prompt.py"
+    },
+    {
+      "name": "shadow_prompt_minify",
+      "wrapped": false,
+      "path": ".claude/tools/skills/shadow_prompt_minify.py"
+    },
+    {
+      "name": "system_map",
+      "wrapped": false,
+      "path": ".claude/tools/skills/system_map.py"
+    },
+    {
+      "name": "team_topology_verify",
+      "wrapped": false,
+      "path": ".claude/tools/skills/team_topology_verify.py"
+    },
+    {
+      "name": "telemetry_summarize",
+      "wrapped": false,
+      "path": ".claude/tools/skills/telemetry_summarize.py"
+    },
+    {
+      "name": "token_event_log",
+      "wrapped": false,
+      "path": ".claude/tools/skills/token_event_log.py"
+    },
+    {
+      "name": "triad_build",
+      "wrapped": false,
+      "path": ".claude/tools/skills/triad_build.py"
+    },
+    {
+      "name": "triad_ref_lint",
+      "wrapped": false,
+      "path": ".claude/tools/skills/triad_ref_lint.py"
+    },
+    {
+      "name": "tutorial_write",
+      "wrapped": false,
+      "path": ".claude/tools/skills/tutorial_write.py"
+    },
+    {
+      "name": "work_scope_assess",
+      "wrapped": false,
+      "path": ".claude/tools/skills/work_scope_assess.py"
+    }
+  ]
+}
