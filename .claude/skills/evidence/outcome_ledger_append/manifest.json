@@ -1,0 +1,25 @@
+{
+  "id": "outcome_ledger_append",
+  "name": "outcome_ledger_append",
+  "version": "1.0.0",
+  "category": "evidence",
+  "description": "Append an outcome event to the persistent outcome ledger.",
+  "entrypoint": "skills.evidence.outcome_ledger_append.skill:OutcomeLedgerAppendSkill",
+  "permissions": [
+    "evidence:write",
+    "fs:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "evidence",
+    "ledger",
+    "artifacts"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "outcome_ledger_append"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "outcome_event_generate",
+  "name": "outcome_event_generate",
+  "version": "1.0.0",
+  "category": "evidence",
+  "description": "Generate structured outcome event records from skill execution.",
+  "entrypoint": "skills.evidence.outcome_event_generate.skill:OutcomeEventGenerateSkill",
+  "permissions": [
+    "evidence:write",
+    "fs:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "evidence",
+    "events",
+    "artifacts"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "outcome_event_generate"
+  }
+}

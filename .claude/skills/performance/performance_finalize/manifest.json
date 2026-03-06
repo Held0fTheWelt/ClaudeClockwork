@@ -1,0 +1,25 @@
+{
+  "id": "performance_finalize",
+  "name": "performance_finalize",
+  "version": "1.0.0",
+  "category": "performance",
+  "description": "Export and persist the current session performance report.",
+  "entrypoint": "skills.performance.performance_finalize.skill:PerformanceFinalizeSkill",
+  "permissions": [
+    "repo:read",
+    "fs:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "performance",
+    "report",
+    "export"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "performance_finalize"
+  }
+}

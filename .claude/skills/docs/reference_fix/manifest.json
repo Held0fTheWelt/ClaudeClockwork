@@ -1,0 +1,26 @@
+{
+  "id": "reference_fix",
+  "name": "reference_fix",
+  "version": "1.0.0",
+  "category": "docs",
+  "description": "Fix broken backtick path references in documentation files.",
+  "entrypoint": "skills.docs.reference_fix.skill:ReferenceFixSkill",
+  "permissions": [
+    "docs:write",
+    "repo:read",
+    "repo:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "docs",
+    "references",
+    "paths"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "reference_fix"
+  }
+}

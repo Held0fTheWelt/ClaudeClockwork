@@ -1,0 +1,25 @@
+{
+  "id": "team_topology_verify",
+  "name": "team_topology_verify",
+  "version": "1.0.0",
+  "category": "qa",
+  "description": "Validate agent hierarchy and team topology definitions.",
+  "entrypoint": "skills.qa.team_topology_verify.skill:TeamTopologyVerifySkill",
+  "permissions": [
+    "qa:run",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "agents",
+    "topology",
+    "hierarchy"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "team_topology_verify"
+  }
+}

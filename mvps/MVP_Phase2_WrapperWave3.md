@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] All 11 skills callable via `python3 -m claudeclockwork.cli --skill-id <skill>`
-- [ ] All 11 manifests pass `manifest_validate` (schema + entrypoint)
-- [ ] `capability_map_build` reports 45 manifest skills
-- [ ] Each new skill has at least one test asserting real output (not just `status == "ok"`)
-- [ ] All existing tests pass
+- [X] All 11 skills callable via `python3 -m claudeclockwork.cli --skill-id <skill>`
+- [X] All 11 manifests pass `manifest_validate` (schema + entrypoint)
+- [X] `capability_map_build` reports 45 manifest skills
+- [X] Each new skill has at least one test asserting real output (not just `status == "ok"`)
+- [X] All existing tests pass
 
 ---
 

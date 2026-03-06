@@ -114,11 +114,41 @@
         "legacy_bridge": true
       },
       {
+        "skill_id": "reference_fix",
+        "category": "docs",
+        "description": "Fix broken backtick path references in documentation files.",
+        "path": ".claude/skills/docs/reference_fix/manifest.json",
+        "entrypoint": "skills.docs.reference_fix.skill:ReferenceFixSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
         "skill_id": "repo_compare",
         "category": "docs",
         "description": "Compare repositories or snapshots and summarize changes.",
         "path": ".claude/skills/docs/repo_compare/manifest.json",
         "entrypoint": "skills.docs.repo_compare.skill:RepoCompareSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "outcome_event_generate",
+        "category": "evidence",
+        "description": "Generate structured outcome event records from skill execution.",
+        "path": ".claude/skills/evidence/outcome_event_generate/manifest.json",
+        "entrypoint": "skills.evidence.outcome_event_generate.skill:OutcomeEventGenerateSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "outcome_ledger_append",
+        "category": "evidence",
+        "description": "Append an outcome event to the persistent outcome ledger.",
+        "path": ".claude/skills/evidence/outcome_ledger_append/manifest.json",
+        "entrypoint": "skills.evidence.outcome_ledger_append.skill:OutcomeLedgerAppendSkill",
         "system": "manifest",
         "source_root": ".claude/skills",
         "legacy_bridge": true
@@ -214,6 +244,16 @@
         "legacy_bridge": true
       },
       {
+        "skill_id": "clockwork_version_bump",
+        "category": "misc",
+        "description": "Bump the Clockwork version string and update the changelog.",
+        "path": ".claude/skills/misc/clockwork_version_bump/manifest.json",
+        "entrypoint": "skills.misc.clockwork_version_bump.skill:ClockworkVersionBumpSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
         "skill_id": "eval_run",
         "category": "ops",
         "description": "Execute the evaluation harness and summarize regressions.",
@@ -229,6 +269,36 @@
         "description": "Create a release-cut package through the legacy release flow.",
         "path": ".claude/skills/ops/release_cut/manifest.json",
         "entrypoint": "skills.ops.release_cut.skill:ReleaseCutSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "performance_finalize",
+        "category": "performance",
+        "description": "Export and persist the current session performance report.",
+        "path": ".claude/skills/performance/performance_finalize/manifest.json",
+        "entrypoint": "skills.performance.performance_finalize.skill:PerformanceFinalizeSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "performance_toggle",
+        "category": "performance",
+        "description": "Enable or disable the token budgeting performance layer.",
+        "path": ".claude/skills/performance/performance_toggle/manifest.json",
+        "entrypoint": "skills.performance.performance_toggle.skill:PerformanceToggleSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "telemetry_summarize",
+        "category": "performance",
+        "description": "Summarize token usage and cost from telemetry event logs.",
+        "path": ".claude/skills/performance/telemetry_summarize/manifest.json",
+        "entrypoint": "skills.performance.telemetry_summarize.skill:TelemetrySummarizeSkill",
         "system": "manifest",
         "source_root": ".claude/skills",
         "legacy_bridge": true
@@ -284,6 +354,36 @@
         "legacy_bridge": true
       },
       {
+        "skill_id": "determinism_proof",
+        "category": "qa",
+        "description": "Verify determinism of skill outputs via SHA-256 digest chains.",
+        "path": ".claude/skills/qa/determinism_proof/manifest.json",
+        "entrypoint": "skills.qa.determinism_proof.skill:DeterminismProofSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "drift_semantic_check",
+        "category": "qa",
+        "description": "Detect semantic drift across related files in the repository.",
+        "path": ".claude/skills/qa/drift_semantic_check/manifest.json",
+        "entrypoint": "skills.qa.drift_semantic_check.skill:DriftSemanticCheckSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "hardening_scan_fix",
+        "category": "qa",
+        "description": "Scan codebase for security anti-patterns and emit fix suggestions.",
+        "path": ".claude/skills/qa/hardening_scan_fix/manifest.json",
+        "entrypoint": "skills.qa.hardening_scan_fix.skill:HardeningScanFixSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
         "skill_id": "policy_gatekeeper",
         "category": "qa",
         "description": "Run deterministic policy checks before risky operations.",
@@ -329,6 +429,16 @@
         "description": "Validate JSON examples against JSON Schema documents.",
         "path": ".claude/skills/qa/spec_validate/manifest.json",
         "entrypoint": "skills.qa.spec_validate.skill:SpecValidateSkill",
+        "system": "manifest",
+        "source_root": ".claude/skills",
+        "legacy_bridge": true
+      },
+      {
+        "skill_id": "team_topology_verify",
+        "category": "qa",
+        "description": "Validate agent hierarchy and team topology definitions.",
+        "path": ".claude/skills/qa/team_topology_verify/manifest.json",
+        "entrypoint": "skills.qa.team_topology_verify.skill:TeamTopologyVerifySkill",
         "system": "manifest",
         "source_root": ".claude/skills",
         "legacy_bridge": true

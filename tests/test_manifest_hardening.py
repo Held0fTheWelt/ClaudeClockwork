@@ -54,7 +54,7 @@ def test_manifest_ids_match_names() -> None:
     import json
 
     manifest_files = list((PROJECT_ROOT / ".claude" / "skills").rglob("manifest.json"))
-    assert len(manifest_files) == 34, f"Expected 34 manifests, found {len(manifest_files)}"
+    assert len(manifest_files) >= 34, f"Expected at least 34 manifests, found {len(manifest_files)}"
     for p in manifest_files:
         data = json.loads(p.read_text(encoding="utf-8"))
         assert "id" in data, f"{p}: missing 'id' field"

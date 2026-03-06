@@ -1,0 +1,24 @@
+{
+  "id": "telemetry_summarize",
+  "name": "telemetry_summarize",
+  "version": "1.0.0",
+  "category": "performance",
+  "description": "Summarize token usage and cost from telemetry event logs.",
+  "entrypoint": "skills.performance.telemetry_summarize.skill:TelemetrySummarizeSkill",
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "telemetry",
+    "tokens",
+    "cost"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "telemetry_summarize"
+  }
+}

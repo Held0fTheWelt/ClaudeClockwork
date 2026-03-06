@@ -1,0 +1,25 @@
+{
+  "id": "clockwork_version_bump",
+  "name": "clockwork_version_bump",
+  "version": "1.0.0",
+  "category": "misc",
+  "description": "Bump the Clockwork version string and update the changelog.",
+  "entrypoint": "skills.misc.clockwork_version_bump.skill:ClockworkVersionBumpSkill",
+  "permissions": [
+    "repo:read",
+    "repo:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "version",
+    "changelog",
+    "release"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "clockwork_version_bump"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "hardening_scan_fix",
+  "name": "hardening_scan_fix",
+  "version": "1.0.0",
+  "category": "qa",
+  "description": "Scan codebase for security anti-patterns and emit fix suggestions.",
+  "entrypoint": "skills.qa.hardening_scan_fix.skill:HardeningScanFixSkill",
+  "permissions": [
+    "qa:run",
+    "fs:read",
+    "repo:write"
+  ],
+  "aliases": [],
+  "tags": [
+    "security",
+    "hardening",
+    "scan"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "hardening_scan_fix"
+  }
+}

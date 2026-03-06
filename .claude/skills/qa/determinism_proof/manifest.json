@@ -1,0 +1,25 @@
+{
+  "id": "determinism_proof",
+  "name": "determinism_proof",
+  "version": "1.0.0",
+  "category": "qa",
+  "description": "Verify determinism of skill outputs via SHA-256 digest chains.",
+  "entrypoint": "skills.qa.determinism_proof.skill:DeterminismProofSkill",
+  "permissions": [
+    "qa:run",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "determinism",
+    "sha256",
+    "audit"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "determinism_proof"
+  }
+}

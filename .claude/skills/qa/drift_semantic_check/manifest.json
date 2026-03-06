@@ -1,0 +1,25 @@
+{
+  "id": "drift_semantic_check",
+  "name": "drift_semantic_check",
+  "version": "1.0.0",
+  "category": "qa",
+  "description": "Detect semantic drift across related files in the repository.",
+  "entrypoint": "skills.qa.drift_semantic_check.skill:DriftSemanticCheckSkill",
+  "permissions": [
+    "qa:run",
+    "repo:read"
+  ],
+  "aliases": [],
+  "tags": [
+    "drift",
+    "semantic",
+    "cross-file"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {},
+  "outputs": {},
+  "metadata": {
+    "legacy_bridge": "drift_semantic_check"
+  }
+}
