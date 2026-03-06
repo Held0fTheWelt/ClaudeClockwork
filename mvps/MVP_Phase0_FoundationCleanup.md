@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] All English-language policy checks pass (no German in active project-facing files)
-- [ ] `manifest_validate` can import each manifest's entrypoint without error
-- [ ] "Oodle Tier" naming replaced with "Local Model Tier" everywhere
-- [ ] Boot check passes on clean checkout
-- [ ] All 5 existing tests still pass
+- [X] All English-language policy checks pass (no German in active project-facing files)
+- [X] `manifest_validate` can import each manifest's entrypoint without error
+- [X] "Oodle Tier" naming replaced with "Local Model Tier" everywhere
+- [X] Boot check passes on clean checkout
+- [X] All 5 existing tests still pass
 
 ---
 
