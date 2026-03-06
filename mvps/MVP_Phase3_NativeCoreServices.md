@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] 11 listed skills have native `skill.py` implementations (no `LegacySkillAdapter`)
-- [ ] Each native skill is importable from `claudeclockwork.*` without side effects
-- [ ] Each native skill has unit tests for core logic (not just integration smoke)
-- [ ] `skill_runner.py` legacy equivalents remain functional (no regression)
-- [ ] All existing tests pass; ≥8 new tests added
+- [X] 11 listed skills have native `skill.py` implementations (no `LegacySkillAdapter`)
+- [X] Each native skill is importable from `claudeclockwork.*` without side effects
+- [X] Each native skill has unit tests for core logic (not just integration smoke)
+- [X] `skill_runner.py` legacy equivalents remain functional (no regression)
+- [X] All existing tests pass; ≥8 new tests added
 
 ---
 

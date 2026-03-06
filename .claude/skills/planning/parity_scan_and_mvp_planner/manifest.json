@@ -22,6 +22,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "parity_scan_and_mvp_planner"
+    "legacy_bridge": false
   }
 }

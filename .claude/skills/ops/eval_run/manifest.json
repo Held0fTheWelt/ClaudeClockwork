@@ -22,6 +22,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "eval_run"
+    "legacy_bridge": false
   }
 }

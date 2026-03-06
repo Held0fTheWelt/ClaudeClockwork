@@ -22,6 +22,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "pdf_quality"
+    "legacy_bridge": false
   }
 }
