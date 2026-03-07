@@ -8,12 +8,12 @@
 
 ## Definition of Done
 
-- [ ] A feedback capture mechanism exists (manual rating + reason codes)
-- [ ] Router profiles can be updated offline from historical runs
-- [ ] Training job produces a new profile snapshot deterministically
-- [ ] Guardrails prevent unsafe/banned choices regardless of training
-- [ ] Regression gates apply to trained profiles
-- [ ] All existing tests pass
+- [x] A feedback capture mechanism exists (manual rating + reason codes)
+- [x] Router profiles can be updated offline from historical runs
+- [x] Training job produces a new profile snapshot deterministically
+- [x] Guardrails prevent unsafe/banned choices regardless of training
+- [x] Regression gates apply to trained profiles
+- [x] All existing tests pass
 
 ---
 
