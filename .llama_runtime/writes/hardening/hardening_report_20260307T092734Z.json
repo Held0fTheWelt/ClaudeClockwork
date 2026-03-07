@@ -1,0 +1,3161 @@
+{
+  "type": "hardening_report",
+  "generated_at": "2026-03-07T09:27:34Z",
+  "scenarios": [
+    "scan_inconsistencies"
+  ],
+  "findings": [
+    {
+      "kind": "legacy_oodle_ref",
+      "path": ".claude/CHANGELOG.md",
+      "details": "Contains obsolete .oodle path reference.",
+      "severity": "error"
+    },
+    {
+      "kind": "legacy_oodle_ref",
+      "path": ".claude/governance/LEGACY_POLICY.md",
+      "details": "Contains obsolete .oodle path reference.",
+      "severity": "error"
+    },
+    {
+      "kind": "legacy_oodle_ref",
+      "path": ".claude/governance/legacy_purge_report.md",
+      "details": "Contains obsolete .oodle path reference.",
+      "severity": "error"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/code_assimilate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/code_assimilate/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/limitation_harvest_scan/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/limitation_harvest_scan/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/mechanic_explain/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/mechanic_explain/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/mutation_detect/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/mutation_detect/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/pattern_detect/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/pattern_detect/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/system_map/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/system_map/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/analysis/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/archive/last_train/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/archive/last_train/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/archive/last_train_merge/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/archive/last_train_merge/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/archive/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_bundle_build/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_bundle_build/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_bundle_build/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_bundle_build/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_init/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_init/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_router/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/evidence_router/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/bundle/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/cleanup_apply/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/cleanup_apply/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/cleanup_plan_apply/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/cleanup_plan_apply/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/code_clean/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/code_clean/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/code_clean_scan/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/code_clean_scan/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/repo_clean/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/repo_clean/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/repo_clean_scan/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/cleanup/repo_clean_scan/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/demo/hello/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/demo/hello/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/demo/report/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/demo/report/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/demo/scan/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/demo/scan/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/demo/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/autodocs_generate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/autodocs_generate/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/copyright_standardize/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/copyright_standardize/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/doc_review/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/doc_review/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/doc_ssot_resolver/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/doc_ssot_resolver/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/doc_write/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/doc_write/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/log_standardize/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/log_standardize/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_export/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_export/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_quality/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_quality/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_quality/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_quality/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_render/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_render/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_render/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/pdf_render/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/reference_fix/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/reference_fix/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/repo_compare/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/repo_compare/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/repo_compare/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/repo_compare/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/screencast_script/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/screencast_script/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/tutorial_write/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/tutorial_write/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/docs/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/evidence/outcome_event_generate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/evidence/outcome_event_generate/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/evidence/outcome_ledger_append/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/evidence/outcome_ledger_append/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/evidence/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "legacy_oodle_ref",
+      "path": ".claude/skills/hardening_scan_fix/README.md",
+      "details": "Contains obsolete .oodle path reference.",
+      "severity": "error"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/capability_map_build/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/capability_map_build/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/capability_map_build/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/capability_map_build/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/dead_file_scan/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/dead_file_scan/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/legacy_skill_inventory/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/legacy_skill_inventory/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/manifest_registry_export/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/manifest_registry_export/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/manifest_registry_export/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/manifest_registry_export/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/manifest_validate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/manifest_validate/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/refactor_bridge_scan/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/refactor_bridge_scan/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/refactor_bridge_scan/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/refactor_bridge_scan/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/reference_skill_catalog/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/reference_skill_catalog/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_gap_detect/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_gap_detect/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_gap_detect/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_gap_detect/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_registry_search/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_registry_search/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_registry_search/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_registry_search/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_scaffold/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_scaffold/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_scaffold/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/skill_scaffold/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/meta/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/clockwork_version_bump/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/clockwork_version_bump/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/critics_board_review/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/critics_board_review/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/exec_dryrun/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/exec_dryrun/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/review_panel/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/review_panel/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/misc/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/eval_run/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/eval_run/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/eval_run/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/eval_run/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/release_cut/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/release_cut/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/ops/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/efficiency_review/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/efficiency_review/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/performance_finalize/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/performance_finalize/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/performance_toggle/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/performance_toggle/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/prompt_debt_capture/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/prompt_debt_capture/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/shadow_prompt/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/shadow_prompt/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/shadow_prompt_minify/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/shadow_prompt_minify/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/telemetry_summarize/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/telemetry_summarize/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/token_event_log/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/token_event_log/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/performance/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/create_mvp/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/create_mvp/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/creativity_burst/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/creativity_burst/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/decision_feedback/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/decision_feedback/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/deliberation_pack_build/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/deliberation_pack_build/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/economics_regression/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/economics_regression/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/edge_case_selector/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/edge_case_selector/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/hypothesis_builder/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/hypothesis_builder/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/idea_dedupe/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/idea_dedupe/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/idea_scoring/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/idea_scoring/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/parity_scan_and_mvp_planner/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/parity_scan_and_mvp_planner/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/parity_scan_and_mvp_planner/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/parity_scan_and_mvp_planner/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/plan_diff_apply/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/plan_diff_apply/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/plan_lint/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/plan_lint/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/plan_mutate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/plan_mutate/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/triad_build/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/triad_build/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/triad_ref_lint/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/triad_ref_lint/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/work_scope_assess/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/work_scope_assess/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/planning/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/plugins/plugin_registry_export/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/plugins/plugin_registry_export/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/plugins/plugin_scaffold/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/plugins/plugin_scaffold/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/contract_drift_sentinel/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/contract_drift_sentinel/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/determinism_harness/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/determinism_harness/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/determinism_proof/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/determinism_proof/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/drift_semantic_check/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/drift_semantic_check/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/hardening_scan_fix/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/hardening_scan_fix/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/policy_gatekeeper/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/policy_gatekeeper/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/policy_gatekeeper/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/policy_gatekeeper/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/qa_gate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/qa_gate/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/qa_gate/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/qa_gate/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/repo_validate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/repo_validate/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/repo_validate/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/repo_validate/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/schema_batch_validate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/schema_batch_validate/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/spec_validate/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/spec_validate/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/spec_validate/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/spec_validate/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/team_topology_verify/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/team_topology_verify/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/qa/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/bandit_router_select/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/bandit_router_select/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/budget_analyze/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/budget_analyze/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/budget_router/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/budget_router/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/escalation_router/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/escalation_router/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/model_routing_record_outcome/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/model_routing_record_outcome/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/model_routing_select/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/model_routing_select/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/route_autotune_suggest/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/route_autotune_suggest/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/route_profile_patch_pack/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/route_profile_patch_pack/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/route_profile_update/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/route_profile_update/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/routing/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/security/security_redactor/__pycache__/skill.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/security/security_redactor/__pycache__/skill.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/security/security_redactor/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/security/security_redactor/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/security/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/security/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/skills/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "legacy_oodle_ref",
+      "path": ".claude/tools/skills/hardening_scan_fix.py",
+      "details": "Contains obsolete .oodle path reference.",
+      "severity": "error"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/autodocs_generate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/autodocs_generate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/bandit_router_select.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/bandit_router_select.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/budget_analyze.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/budget_analyze.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/budget_router.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/budget_router.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/capability_map_build.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/capability_map_build.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/cleanup_apply.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/cleanup_apply.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/cleanup_plan_apply.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/cleanup_plan_apply.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/clockwork_version_bump.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/clockwork_version_bump.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/code_assimilate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/code_assimilate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/code_clean.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/code_clean.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/code_clean_scan.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/code_clean_scan.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/contract_drift_sentinel.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/contract_drift_sentinel.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/copyright_standardize.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/copyright_standardize.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/create_mvp.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/create_mvp.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/creativity_burst.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/creativity_burst.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/critics_board_review.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/critics_board_review.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/decision_feedback.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/decision_feedback.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/deliberation_pack_build.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/deliberation_pack_build.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/determinism_harness.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/determinism_harness.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/determinism_proof.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/determinism_proof.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/doc_review.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/doc_review.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/doc_ssot_resolver.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/doc_ssot_resolver.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/doc_write.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/doc_write.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/drift_semantic_check.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/drift_semantic_check.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/economics_regression.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/economics_regression.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/edge_case_selector.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/edge_case_selector.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/efficiency_review.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/efficiency_review.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/escalation_router.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/escalation_router.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/eval_run.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/evidence_bundle_build.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/evidence_bundle_build.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/evidence_init.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/evidence_init.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/evidence_router.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/evidence_router.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/exec_dryrun.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/exec_dryrun.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/hardening_scan_fix.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/hardening_scan_fix.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/hello.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/hello.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/hypothesis_builder.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/hypothesis_builder.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/idea_dedupe.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/idea_dedupe.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/idea_scoring.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/idea_scoring.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/last_train.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/last_train.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/last_train_merge.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/last_train_merge.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/limitation_harvest_scan.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/limitation_harvest_scan.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/log_standardize.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/log_standardize.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/mechanic_explain.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/mechanic_explain.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/model_routing_record_outcome.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/model_routing_record_outcome.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/model_routing_select.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/model_routing_select.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/mutation_detect.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/mutation_detect.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/outcome_event_generate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/outcome_event_generate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/outcome_ledger_append.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/outcome_ledger_append.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/parity_scan_and_mvp_planner.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/parity_scan_and_mvp_planner.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pattern_detect.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pattern_detect.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pdf_export.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pdf_export.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pdf_quality.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pdf_quality.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pdf_render.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/pdf_render.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/performance_finalize.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/performance_finalize.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/performance_toggle.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/performance_toggle.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/plan_diff_apply.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/plan_diff_apply.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/plan_lint.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/plan_lint.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/plan_mutate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/plan_mutate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/policy_gatekeeper.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/policy_gatekeeper.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/prompt_debt_capture.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/prompt_debt_capture.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/qa_gate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/qa_gate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/refactor_bridge_scan.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/refactor_bridge_scan.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/reference_fix.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/reference_fix.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/release_cut.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/release_cut.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/report.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/report.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_clean.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_clean.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_clean_scan.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_clean_scan.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_compare.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_compare.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_validate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/repo_validate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/review_panel.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/review_panel.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/route_autotune_suggest.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/route_autotune_suggest.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/route_profile_patch_pack.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/route_profile_patch_pack.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/route_profile_update.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/route_profile_update.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/scan.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/scan.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/schema_batch_validate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/schema_batch_validate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/screencast_script.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/screencast_script.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/security_redactor.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/security_redactor.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/shadow_prompt.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/shadow_prompt.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/shadow_prompt_minify.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/shadow_prompt_minify.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/skill_gap_detect.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/skill_gap_detect.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/skill_registry_search.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/skill_registry_search.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/skill_scaffold.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/skill_scaffold.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/spec_validate.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/spec_validate.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/system_map.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/system_map.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/team_topology_verify.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/team_topology_verify.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/telemetry_summarize.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/telemetry_summarize.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/token_event_log.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/token_event_log.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/triad_build.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/triad_build.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/triad_ref_lint.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/triad_ref_lint.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/tutorial_write.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/tutorial_write.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/work_scope_assess.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/work_scope_assess.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/_event_logger.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/_event_logger.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/_report_publish.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": ".claude/tools/skills/__pycache__/_report_publish.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "legacy_oodle_ref",
+      "path": ".claude-development/designs/B-013_adaptive_router_v1_design.md",
+      "details": "Contains obsolete .oodle path reference.",
+      "severity": "error"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/base/__pycache__/skill_base.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/base/__pycache__/skill_base.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/base/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/base/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/executor/__pycache__/executor.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/executor/__pycache__/executor.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/executor/__pycache__/pipeline.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/executor/__pycache__/pipeline.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/executor/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/executor/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/execution_context.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/execution_context.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/skill_manifest.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/skill_manifest.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/skill_result.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/skill_result.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/models/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/planner/__pycache__/capability_matcher.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/planner/__pycache__/capability_matcher.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/planner/__pycache__/planner.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/planner/__pycache__/planner.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/planner/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/planner/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/plugin/__pycache__/dependency.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/plugin/__pycache__/loader.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/plugin/__pycache__/models.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/plugin/__pycache__/registry.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/plugin/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/discovery.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/discovery.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/loader.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/loader.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/skill_registry.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/skill_registry.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/registry/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/security/__pycache__/permissions.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/security/__pycache__/permissions.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/security/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/security/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/core/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/legacy/__pycache__/adapter.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/legacy/__pycache__/adapter.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/legacy/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/legacy/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/mcp/__pycache__/client.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/mcp/__pycache__/server.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/mcp/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/bridge.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/bridge.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/cli.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/cli.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/runtime.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/runtime.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/__init__.cpython-310.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "claudeclockwork/__pycache__/__init__.cpython-313.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/conftest.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/conftest.cpython-313-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_cli.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_dead_file_scan.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_error_paths.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_full_skill_system_extensions.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_full_skill_system_extensions.cpython-313-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_full_skill_system_smoke.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_full_skill_system_smoke.cpython-313-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_gates.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_manifest_hardening.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_mcp_server.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_native_skills.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_native_skills_phase14.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_permission_enforcement.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_pipeline.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_plugin_runtime.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_registry_search.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_wrapper_wave3.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "junk_in_repo",
+      "path": "tests/__pycache__/test_wrapper_wave4.cpython-310-pytest-9.0.2.pyc",
+      "details": "Cache artifact present in tree (should be cleaned before archiving).",
+      "severity": "warn"
+    },
+    {
+      "kind": "registry_without_tool",
+      "path": ".claude/skills/registry.md",
+      "details": "Registry lists skills without tool implementation: ['clockwork_changelog_entry']",
+      "severity": "warn"
+    },
+    {
+      "kind": "tool_without_registry",
+      "path": ".claude/tools/skills",
+      "details": "Tools exist without registry entry: ['__init__', '_event_logger', '_report_publish', 'bandit_router_select']",
+      "severity": "warn"
+    }
+  ],
+  "fixes": [],
+  "brain_updates": [],
+  "warnings": [],
+  "limitations": [
+    "Hardening is still heuristic; it can detect drift patterns but cannot guarantee perfect correctness.",
+    "Apply mode edits files; always review a report first.",
+    "Some inconsistencies are design choices; keep decisions in the brain store to avoid flip-flopping."
+  ]
+}

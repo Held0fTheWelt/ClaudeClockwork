@@ -1,5 +1,5 @@
 {
-  "count": 97,
+  "count": 98,
   "skills": [
     {
       "name": "code_assimilate",
@@ -601,6 +601,26 @@
       "source_root": ".claude/skills"
     },
     {
+      "name": "dead_file_scan",
+      "category": "meta",
+      "version": "0.1.0",
+      "entrypoint": "skills.meta.dead_file_scan.skill:DeadFileScanSkill",
+      "enabled": true,
+      "aliases": [
+        "orphan_scan",
+        "file_lifecycle_scan"
+      ],
+      "tags": [
+        "lifecycle",
+        "hygiene",
+        "orphan",
+        "scan"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude/skills/meta/dead_file_scan/manifest.json",
+      "source_root": ".claude/skills"
+    },
+    {
       "name": "legacy_skill_inventory",
       "category": "meta",
       "version": "0.1.0",
@@ -1168,7 +1188,7 @@
         "lint",
         "qa"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/planning/plan_lint/manifest.json",
       "source_root": ".claude/skills"
     },
@@ -1508,7 +1528,7 @@
         "budget",
         "cost"
       ],
-      "legacy_bridge": true,
+      "legacy_bridge": false,
       "manifest_path": ".claude/skills/routing/budget_router/manifest.json",
       "source_root": ".claude/skills"
     },

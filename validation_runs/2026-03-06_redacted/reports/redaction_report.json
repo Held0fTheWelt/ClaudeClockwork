@@ -1,8 +1,0 @@
-{
-  "type": "redaction_report",
-  "input_dir": "/mnt/d/ClaudeClockwork/validation_runs/2026-03-06",
-  "output_dir": "/mnt/d/ClaudeClockwork/validation_runs/2026-03-06_redacted",
-  "files_copied": 4,
-  "total_hits": 0,
-  "redactions": []
-}
