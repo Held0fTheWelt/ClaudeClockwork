@@ -1,3 +1,17 @@
+# ClaudeClockwork Legacy Development Archive
+
+> **ARCHIVED — Read-only as of Clockwork v18.**
+> This directory contains historical development artifacts for Clockwork up to and including v17.x.
+> Do not add new content here.
+>
+> Active locations:
+> - MVP plans → `mvps/`
+> - Roadmaps → `roadmaps/`
+> - Design decisions → `.claude/knowledge/`
+> - Governance standards → `.claude/governance/`
+
+---
+
 # Clockwork Development (.claude-development)
 
 **Canonical location for all ClaudeClockwork MVPs and development artifacts.**

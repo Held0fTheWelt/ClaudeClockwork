@@ -158,6 +158,10 @@ Always read in this order at session start:
                           # permissions.json moved here from root configs/ in Phase 10
   DEPLOY.md               # Deployment guide — what to copy, what to install, what to exclude
 
+.claude-development/    # Legacy development archive (Clockwork v17 and earlier). Read-only.
+                        # Active MVPs → mvps/. Active roadmaps → roadmaps/.
+                        # Design records indexed in .claude/knowledge/index.md.
+
 .project/                 # Project-operational files (this project = Clockwork dev)
   MEMORY.md               # Cross-session knowledge (SSoT — read first each session)
   ARCHITECTURE.md         # System design for this project

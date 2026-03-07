@@ -326,3 +326,21 @@ Primary sources:
 **Format rule:**
 - Don't shorten table columns — complete paths in column 1
 - Topic tags in column 4: English or German consistent, lowercase, hyphens instead of spaces
+
+---
+
+## Legacy Design Records
+
+Historical architecture decision records and spec documents from Clockwork v17 and earlier. These are indexed here for discoverability; all files are read-only in `.claude-development/`. Cross-reference: `mvps/archive/MVP_Chain_Legacy.md`.
+
+| File | Description | Status |
+|------|-------------|--------|
+| `.claude-development/designs/adr_capability_enforcement.md` | ADR: capability enforcement model for agent permissions | Superseded by `.claude/contracts/schemas/` |
+| `.claude-development/designs/adr_runtime_critics_integration.md` | ADR: runtime integration of Technical and Systemic critics | Active reference |
+| `.claude-development/designs/B-010_runtime_critics_design.md` | Design: runtime critics pipeline (B-010 chain item) | Legacy |
+| `.claude-development/designs/B-013_adaptive_router_v1_design.md` | Design: adaptive model router v1 (B-013 chain item) | Superseded by bandit router |
+| `.claude-development/designs/capabilities_spec.yaml` | Spec: capability names and permission scopes | Legacy — see `.claude/contracts/schemas/` |
+| `.claude-development/designs/command_allowlist_spec.yaml` | Spec: allowed shell commands per agent role | Legacy |
+| `.claude-development/designs/critic_gates_spec.yaml` | Spec: critic gate thresholds and escalation rules | Legacy — see `.claude/governance/` |
+| `.claude-development/designs/eval_shadow_ab_cbl_spec.md` | Spec: shadow A/B evaluation and CBL eval design | Active reference for `.claude/eval/` |
+| `.claude-development/designs/per_agent_capability_matrix.md` | Matrix: per-agent capability assignments | Legacy — see `.claude/agents/` |

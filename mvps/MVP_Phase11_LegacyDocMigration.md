@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] `.claude-development/README.md` updated to clearly state this is a legacy archive (read-only after Clockwork v18)
-- [ ] `Clockwork_MVP_Chain.md` summarized/indexed in `mvps/archive/MVP_Chain_Legacy.md` with a pointer back to `.claude-development/`
-- [ ] `.claude-development/designs/` ADRs and spec docs indexed in `.claude/knowledge/index.md` under "Legacy Designs"
-- [ ] `.claude-development/milestones/index.md` content merged into `roadmaps/` archive
-- [ ] `MVP_RULE.md` in `.claude-development/` reconciled with `.claude/governance/mvp_development_standard.md` — one canonical version
-- [ ] `CLAUDE.md` updated: `.claude-development/` section notes it is legacy archive only
-- [ ] All existing tests pass (no source code changes)
+- [X] `.claude-development/README.md` updated to clearly state this is a legacy archive (read-only after Clockwork v18)
+- [X] `Clockwork_MVP_Chain.md` summarized/indexed in `mvps/archive/MVP_Chain_Legacy.md` with a pointer back to `.claude-development/`
+- [X] `.claude-development/designs/` ADRs and spec docs indexed in `.claude/knowledge/index.md` under "Legacy Designs"
+- [X] `.claude-development/milestones/index.md` content merged into `roadmaps/` archive
+- [X] `MVP_RULE.md` in `.claude-development/` reconciled with `.claude/governance/mvp_development_standard.md` — one canonical version
+- [X] `CLAUDE.md` updated: `.claude-development/` section notes it is legacy archive only
+- [X] All existing tests pass (no source code changes)
 
 ---
 
