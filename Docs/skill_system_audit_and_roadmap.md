@@ -1,5 +1,7 @@
 # Skill System Audit and Roadmap
 
+**Current phase list and inventory:** See `roadmaps/Roadmap_ClockworkV18.md` and `mvps/MVP_Phase*.md`. This document is legacy audit context; counts below may be outdated.
+
 ## Aktueller Ist-Zustand nach erneuter Prüfung
 
 Die erneuerte ZIP enthält jetzt **drei parallele Schichten**, die sauber gegeneinander abgegrenzt werden müssen:

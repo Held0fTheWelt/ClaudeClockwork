@@ -1,22 +1,17 @@
-# Clockwork Milestone Index
+# Clockwork Milestone Index (Legacy)
 
-**Canonical MVP list:** [../Clockwork_MVP_Chain.md](../Clockwork_MVP_Chain.md) — all MVP definitions live there.
+**Canonical phase list:** `mvps/MVP_Phase*.md` — active MVP phases live there.
+**Canonical roadmap:** `roadmaps/Roadmap_ClockworkV18.md`.
 
-Milestone plans here define execution order (sequence, weeks); goals and deliverables are defined in the chain.
+This index is frozen as legacy. M1/M2 plan file links have been removed (files not present); see `roadmaps/` and `mvps/` for current planning.
 
-## Active milestones
+## Legacy milestones
 
-| ID | Name | Status | Plan file |
-|----|------|--------|-----------|
-| M0 | MVP chain bootstrap | done | — |
-| M1 | Parity follow-up (MVP08+) | done | [M1_parity_followup_plan_2026-03-02.md](M1_parity_followup_plan_2026-03-02.md) |
-| M2 | Clockwork audit follow-up (MVP22–MVP33) | in progress | [M2_clockwork_audit_followup_plan_2026-03-02.md](M2_clockwork_audit_followup_plan_2026-03-02.md) |
-
-## Adding a milestone plan
-
-1. Create `milestones/M<N>_<name>_<YYYY-MM-DD>.md`
-2. Add a row to the table above
-3. In the plan reference only MVP IDs from the chain; add new MVP text in **Clockwork_MVP_Chain.md** (see [../MVP_RULE.md](../MVP_RULE.md))
+| ID | Name | Status |
+|----|------|--------|
+| M0 | MVP chain bootstrap | done |
+| M1 | Parity follow-up (MVP08+) | done |
+| M2 | Clockwork audit follow-up | in progress |
 
 ## Links
 

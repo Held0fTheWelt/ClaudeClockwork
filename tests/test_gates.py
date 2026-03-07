@@ -188,3 +188,33 @@ def test_eval_run_writes_snapshot() -> None:
     for key in ("run_id", "pass_count", "fail_count", "tests"):
         assert key in snapshot, f"eval_run snapshot missing key {key!r}: {list(snapshot.keys())}"
     assert isinstance(snapshot["tests"], list)
+
+
+# ---------------------------------------------------------------------------
+# D18 — Planning Drift Gate (Phase 18)
+# ---------------------------------------------------------------------------
+
+def test_planning_drift_scan_clean_repo() -> None:
+    """planning_drift_scan must pass on a clean repo (version convergence, milestone links, roadmap)."""
+    from claudeclockwork.core.gates import run_planning_drift_scan
+
+    result = run_planning_drift_scan(ROOT)
+    assert result.get("pass") is True, (
+        f"planning_drift_scan failed: {result.get('errors')}"
+    )
+
+
+def test_planning_drift_version_mismatch_fails() -> None:
+    """A version mismatch between .claude/VERSION and root VERSION must cause drift scan to fail."""
+    from claudeclockwork.core.gates.planning_drift import run_planning_drift_scan, _check_version_convergence
+    from pathlib import Path
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        (root / ".claude").mkdir(parents=True)
+        (root / ".claude" / "VERSION").write_text("1.0.0", encoding="utf-8")
+        (root / "VERSION").write_text("2.0.0", encoding="utf-8")
+        ok, errors = _check_version_convergence(root)
+        assert ok is False
+        assert any("mismatch" in e.lower() or "1.0.0" in e for e in errors)

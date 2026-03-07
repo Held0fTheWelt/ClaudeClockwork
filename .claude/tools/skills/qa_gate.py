@@ -210,6 +210,26 @@ def check_pointers(project_root: Path) -> CheckResult:
     )
 
 
+def check_planning_drift(project_root: Path) -> CheckResult:
+    """DRIFT_001: planning_drift_scan — version convergence, milestone links, roadmap phase files."""
+    try:
+        from claudeclockwork.core.gates import run_planning_drift_scan
+    except ImportError:
+        return CheckResult(
+            "DRIFT_001", "fail",
+            "planning_drift_scan unavailable (claudeclockwork.core.gates not importable)", True
+        )
+    result = run_planning_drift_scan(project_root)
+    if result.get("pass"):
+        return CheckResult(
+            "DRIFT_001", "pass",
+            "planning drift scan passed (version, milestone links, roadmap phases)", False
+        )
+    errors = result.get("errors", [])
+    msg = "; ".join(errors[:3]) if errors else "planning drift detected"
+    return CheckResult("DRIFT_001", "fail", msg, True)
+
+
 def check_version(project_root: Path) -> CheckResult:
     """.claude/VERSION file exists and is semver."""
     version_file = project_root / ".claude" / "VERSION"
@@ -477,6 +497,7 @@ CHECKS = [
     ("COVERAGE_001","skill_runner.py dispatch coverage vs .py files",              check_skill_dispatch_coverage),
     ("ADDON_001",   "addon pack skills have .py implementations",                  check_addon_completeness),
     ("AGENT_001",   "agent registry not far behind methodology .md count",         check_agent_registry_consistency),
+    ("DRIFT_001",   "planning drift scan (version, milestone links, roadmap)",     check_planning_drift),
 ]
 
 ALL_CHECK_IDS = [c[0] for c in CHECKS]

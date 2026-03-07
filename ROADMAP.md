@@ -1,10 +1,11 @@
 # Project Roadmap (Root)
 
-**Canonical roadmap for the skill-system migration:** `Docs/skill_system_audit_and_roadmap.md`.
+**Canonical planning SSoT:** `roadmaps/Roadmap_ClockworkV18.md` and `mvps/MVP_Phase*.md`.  
+Legacy audit doc: `Docs/skill_system_audit_and_roadmap.md`.
 
-## Current State (2026-03-06)
+## Current State (2026-03-07)
 
-- **Version:** Clockwork 17.7.0 (`.claude/VERSION`)
+- **Version:** Clockwork 17.7.43 (canonical: `.claude/VERSION`)
 - **Legacy Python skill modules:** 94
 - **Manifest-based skills:** 34
 - **Native full-system skills:** 6
@@ -12,6 +13,7 @@
 - **Reference SKILL.md assets:** 17
 - **Plugin skeletons:** 2
 - **Tests:** 5 passing
+- **Phases:** 0–17 complete; Phase 18+ in `mvps/`
 
 ## Immediate Focus
 

@@ -1,6 +1,12 @@
 # MVP Status Tracker
 
-_Last updated: 2026-03-02_
+_Last updated: 2026-03-07_
+
+## Phase roadmap mapping (SSoT)
+
+- **Canonical roadmap:** `roadmaps/Roadmap_ClockworkV18.md`
+- **Phase definitions:** `mvps/MVP_Phase<N>_*.md` (Phase 0..latest)
+- **Drift guard:** `planning_drift_scan` in `claudeclockwork.core.gates`; integrated into `qa_gate` as DRIFT_001
 
 | MVP | Name | Status |
 |---|---|---|
