@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] Job queue exists
-- [ ] Priorities + fairness implemented
-- [ ] Backpressure exists
-- [ ] Queue telemetry exists
-- [ ] Tests cover ordering/fairness/backpressure
-- [ ] All existing tests pass
+- [x] Job queue exists
+- [x] Priorities + fairness implemented
+- [x] Backpressure exists
+- [x] Queue telemetry exists
+- [x] Tests cover ordering/fairness/backpressure
+- [x] All existing tests pass
 
 ---
