@@ -8,16 +8,16 @@
 
 ## Definition of Done
 
-- [ ] Federated workspace config exists (multiple workspaces/projects)
-- [ ] Orchestrator can:
+- [x] Federated workspace config exists (multiple workspaces/projects)
+- [x] Orchestrator can:
   - select project/workspace
   - run a work graph
   - export incident bundle
   - import bundle into another project (as an artifact, not as paths)
-- [ ] Global boundary enforcement prevents cross-repo writes
-- [ ] Cross-project linking uses bundle ids + versions only
-- [ ] Tests cover federation switching + boundary enforcement + bundle import
-- [ ] All existing tests pass
+- [x] Global boundary enforcement prevents cross-repo writes
+- [x] Cross-project linking uses bundle ids + versions only
+- [x] Tests cover federation switching + boundary enforcement + bundle import
+- [x] All existing tests pass
 
 ---
 
