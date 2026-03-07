@@ -8,14 +8,14 @@
 
 ## Definition of Done
 
-- [ ] Batch engine exists to convert skills in batches (e.g. 50 at a time)
-- [ ] Each batch run produces:
+- [x] Batch engine exists to convert skills in batches (e.g. 50 at a time)
+- [x] Each batch run produces:
   - conversion report (what changed)
   - validation report (tests/qa gates)
   - rollback map for failed conversions
-- [ ] Rollback is automatic when gates fail
-- [ ] A deprecation plan exists for the legacy adapter layer
-- [ ] All existing tests pass
+- [x] Rollback is automatic when gates fail
+- [x] A deprecation plan exists for the legacy adapter layer
+- [x] All existing tests pass
 
 ---
 
