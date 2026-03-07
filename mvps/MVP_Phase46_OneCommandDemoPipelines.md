@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] 3 demo pipelines exist and run end-to-end locally
-- [ ] Each demo has a work graph + README + expected outputs
-- [ ] Demos are deterministic (seeded, stubbed)
-- [ ] CI runs at least one demo in smoke mode
-- [ ] All existing tests pass
+- [x] 3 demo pipelines exist and run end-to-end locally
+- [x] Each demo has a work graph + README + expected outputs
+- [x] Demos are deterministic (seeded, stubbed)
+- [x] CI runs at least one demo in smoke mode
+- [x] All existing tests pass
 
 ---
 

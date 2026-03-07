@@ -45,9 +45,4 @@ These supplement the chain; they do not replace it.
 
 ## Phase MVP files (`mvps/`)
 
-Phase specs (e.g. `mvps/MVP_Phase44_StablePublicSurface.md`) use a **Definition of Done** section. When a DoD item is implemented, mark it with a **blue [x]** so completion is visible at a glance:
-
-- **Implemented:** `- <span style="color:#2563eb">**[x]**</span>`
-- **Not yet:** `- [ ]`
-
-Apply this convention when implementing or closing any phase (Phases 44–61 and beyond). See `.project/MEMORY.md` (User Preferences).
+Phase specs (e.g. `mvps/MVP_Phase44_StablePublicSurface.md`) use a **Definition of Done** section. When a DoD item is implemented, mark it with `- [x]`; unimplemented items stay `- [ ]`. **Template:** the DoD section must look exactly like in `mvps/MVP_Phase30_WorkGraphEngine.md` and `mvps/MVP_Phase31_LearningLayer.md` (plain list, same layout). Apply when implementing or closing any phase. See `.project/MEMORY.md` (User Preferences).

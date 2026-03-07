@@ -6,12 +6,12 @@
 
 ## Definition of Done
 
-- <span style="color:#2563eb">**[x]**</span> Docs index links to all major guides
-- <span style="color:#2563eb">**[x]**</span> Runbooks exist (install/upgrade, workers+CAS, work graphs, plugins, incidents/exports)
-- <span style="color:#2563eb">**[x]**</span> Troubleshooting organized by error codes
-- <span style="color:#2563eb">**[x]**</span> Link-lint reports zero broken internal links
-- <span style="color:#2563eb">**[x]**</span> Docs are deterministic (no “handwave” steps)
-- <span style="color:#2563eb">**[x]**</span> All existing tests pass
+- [x] Docs index links to all major guides
+- [x] Runbooks exist (install/upgrade, workers+CAS, work graphs, plugins, incidents/exports)
+- [x] Troubleshooting organized by error codes
+- [x] Link-lint reports zero broken internal links
+- [x] Docs are deterministic (no “handwave” steps)
+- [x] All existing tests pass
 
 ---
 

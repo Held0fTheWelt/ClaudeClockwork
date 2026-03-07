@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    { "id": "gate", "type": "gate_check", "inputs": {}, "config": {} },
+    { "id": "step", "type": "skill_call", "inputs": {}, "config": {} }
+  ],
+  "edges": [
+    { "from_node": "gate", "to_node": "step", "artifact_key": "ok" }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "type": "budget_report",
-  "generated_at": "2026-03-07T22:14:03Z",
+  "generated_at": "2026-03-07T22:31:56Z",
   "run_id": "run-unknown",
   "inputs": {
     "events_sources": [
@@ -12,7 +12,7 @@
     "pricing_path": "D:\\ClaudeClockwork\\.claude\\config\\anthropic_pricing_snapshot.json"
   },
   "totals": {
-    "events": 76,
+    "events": 91,
     "total_tokens": 0,
     "prompt_tokens": 0,
     "completion_tokens": 0,
@@ -64,15 +64,15 @@
   "artifacts": {
     "report_json": "D:\\ClaudeClockwork\\.claude-performance\\reports\\budget_run-unknown_report.json",
     "report_md": "D:\\ClaudeClockwork\\.claude-performance\\reports\\budget_run-unknown_report.md",
-    "report_json_timestamped": "D:\\ClaudeClockwork\\.claude-performance\\reports\\budget_run-unknown_report_20260307T221403Z.json",
-    "report_md_timestamped": "D:\\ClaudeClockwork\\.claude-performance\\reports\\budget_run-unknown_report_20260307T221403Z.md",
+    "report_json_timestamped": "D:\\ClaudeClockwork\\.claude-performance\\reports\\budget_run-unknown_report_20260307T223156Z.json",
+    "report_md_timestamped": "D:\\ClaudeClockwork\\.claude-performance\\reports\\budget_run-unknown_report_20260307T223156Z.md",
     "charts": [
-      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T221403Z_tokens_by_role.png",
-      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T221403Z_tokens_by_model.png",
-      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T221403Z_tokens_by_task.png",
-      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T221403Z_cost_by_role.png",
-      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T221403Z_cost_by_model.png",
-      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T221403Z_cost_by_task.png"
+      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T223156Z_tokens_by_role.png",
+      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T223156Z_tokens_by_model.png",
+      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T223156Z_tokens_by_task.png",
+      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T223156Z_cost_by_role.png",
+      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T223156Z_cost_by_model.png",
+      "D:\\ClaudeClockwork\\.claude-performance\\reports\\charts\\budget_run-unknown_20260307T223156Z_cost_by_task.png"
     ]
   },
   "limitations": [
