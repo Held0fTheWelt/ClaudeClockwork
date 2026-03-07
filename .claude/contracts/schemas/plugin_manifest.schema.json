@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PluginManifest",
+  "description": "Phase 29 — Plugin extension manifest contract.",
+  "type": "object",
+  "required": ["id", "name", "version"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "clockwork_compat": {
+      "type": "string",
+      "description": "Version range e.g. >=17.0,<19"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Provided: skills, agents, critics, tools"
+    },
+    "permissions": { "type": "array", "items": { "type": "string" } },
+    "requires_plugins": { "type": "array", "items": { "type": "string" } },
+    "optional_plugins": { "type": "array", "items": { "type": "string" } },
+    "file_access": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Declared file access patterns"
+    },
+    "external_runners": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "enabled_by_default": { "type": "boolean" },
+    "trust_level": { "type": "string" },
+    "lifecycle": { "type": "object" }
+  },
+  "additionalProperties": true
+}

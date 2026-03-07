@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] Plugin manifest contract exists (schema + docs)
-- [ ] Plugin discovery and loader exist (repo-local plugin directory)
-- [ ] Compatibility checks exist (Clockwork version range)
-- [ ] Plugin validation exists (capabilities, schemas, allowlists)
-- [ ] Example plugin included (hello plugin with a simple skill/critic)
-- [ ] Tests cover: load, reject incompatible, reject unsafe
-- [ ] All existing tests pass
+- [x] Plugin manifest contract exists (schema + docs)
+- [x] Plugin discovery and loader exist (repo-local plugin directory)
+- [x] Compatibility checks exist (Clockwork version range)
+- [x] Plugin validation exists (capabilities, schemas, allowlists)
+- [x] Example plugin included (hello plugin with a simple skill/critic)
+- [x] Tests cover: load, reject incompatible, reject unsafe
+- [x] All existing tests pass
 
 ---
 
