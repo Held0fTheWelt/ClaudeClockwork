@@ -29,10 +29,17 @@ def build_index(project_root: Path | str, clockwork_version: str = "17.0", stric
             plug_dir = manifest_file.parent
             allowed, _ = is_allowlisted(pid, plug_dir, root, strict=strict)
             compat, _ = is_compatible(data.get("clockwork_compat"), clockwork_version)
+            cert = {"tier": "experimental"}
+            try:
+                from claudeclockwork.plugins.certification import run_certification
+                cert = run_certification(plug_dir, root)
+            except Exception:
+                pass
             index.append({
                 "id": pid,
                 "allowed": allowed,
                 "compatible": compat,
                 "last_test": None,
+                "certification_tier": cert.get("tier", "experimental"),
             })
     return index

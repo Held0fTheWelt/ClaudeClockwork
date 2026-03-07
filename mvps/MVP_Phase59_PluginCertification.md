@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] Tier definitions documented
-- [ ] Certification runner exists
-- [ ] Registry includes certification status
-- [ ] Per-project minimum tier enforceable
-- [ ] Tests cover deterministic tier assignment
-- [ ] All existing tests pass
+- [x] Tier definitions documented
+- [x] Certification runner exists
+- [x] Registry includes certification status
+- [x] Per-project minimum tier enforceable
+- [x] Tests cover deterministic tier assignment
+- [x] All existing tests pass
 
 ---
