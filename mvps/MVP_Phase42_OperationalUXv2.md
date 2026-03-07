@@ -8,17 +8,17 @@
 
 ## Definition of Done
 
-- [ ] Incident view exists: “why did this run fail?”
-- [ ] Drilldowns exist: node timeline, worker timeline, tool timeline
-- [ ] Dashboards exist (CLI-first):
+- [x] Incident view exists: “why did this run fail?”
+- [x] Drilldowns exist: node timeline, worker timeline, tool timeline
+- [x] Dashboards exist (CLI-first):
   - last N runs
   - top failures
   - regressions since last release
   - cache hit rate
   - cost burn by budget profile
-- [ ] Incident bundle export integrates (Phase 23/32)
-- [ ] Output is deterministic and stable-ordered
-- [ ] All existing tests pass
+- [x] Incident bundle export integrates (Phase 23/32)
+- [x] Output is deterministic and stable-ordered
+- [x] All existing tests pass
 
 ---
 
