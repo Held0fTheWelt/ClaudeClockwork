@@ -28,7 +28,7 @@
 | 14 | Native Skill Promotion | **Complete** | [MVP_Phase14](../mvps/MVP_Phase14_NativeSkills.md) |
 | 15 | Obsolete Data Prune | **Complete** | [MVP_Phase15](../mvps/MVP_Phase15_ObsoleteDataPrune.md) |
 | 16 | Skill Discovery Wave | **Complete** | [MVP_Phase16](../mvps/MVP_Phase16_SkillDiscovery.md) |
-| 17 | Adapter Elimination | Planned | [MVP_Phase17](../mvps/MVP_Phase17_AdapterElimination.md) |
+| 17 | Adapter Elimination | **Complete** | [MVP_Phase17](../mvps/MVP_Phase17_AdapterElimination.md) |
 
 **Principle:** No big-bang rewrites. Each phase delivers a working, tested increment. Legacy runner stays operational throughout.
 

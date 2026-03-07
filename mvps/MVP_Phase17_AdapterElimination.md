@@ -18,8 +18,8 @@
 - [x] No `from claudeclockwork.legacy.adapter import LegacySkillAdapter` in `.claude/skills/` (inline pattern only)
 - [x] `tests/test_adapter_elimination.py` — 3 tests verifying the adapter is gone and all skills are native
 - [x] All pre-existing tests continue to pass
-- [ ] `skill_health` returns `unhealthy == 0` (no broken entrypoints or missing bridges)
-- [ ] Roadmap updated: Phase 17 = this phase
+- [x] `skill_health` returns `unhealthy == 0` (no broken entrypoints or missing bridges)
+- [x] Roadmap updated: Phase 17 = Complete in `roadmaps/Roadmap_ClockworkV18.md`; root `ROADMAP.md` inventory updated (104 manifest, 104 native, 0 adapters)
 
 ---
 
