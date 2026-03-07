@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] Multi-project graph contract exists
-- [ ] Orchestrator runs cross-project graphs safely
-- [ ] Failures produce project-scoped incident bundles
-- [ ] Tests cover handoff + boundaries
-- [ ] All existing tests pass
+- [x] Multi-project graph contract exists
+- [x] Orchestrator runs cross-project graphs safely
+- [x] Failures produce project-scoped incident bundles
+- [x] Tests cover handoff + boundaries
+- [x] All existing tests pass
 
 ---
