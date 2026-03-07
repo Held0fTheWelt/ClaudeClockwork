@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] Autopilot policy contract exists
-- [ ] Action engine exists + logs to telemetry
-- [ ] Integrates with gates/incidents
-- [ ] Tests cover mitigation paths
-- [ ] All existing tests pass
+- [x] Autopilot policy contract exists
+- [x] Action engine exists + logs to telemetry
+- [x] Integrates with gates/incidents
+- [x] Tests cover mitigation paths
+- [x] All existing tests pass
 
 ---
