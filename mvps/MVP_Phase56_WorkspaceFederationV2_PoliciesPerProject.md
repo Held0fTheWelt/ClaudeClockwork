@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] Policy resolver exists (precedence rules)
-- [ ] Per-project budgets/limits supported
-- [ ] Per-project plugin security policy supported
-- [ ] Tests cover precedence and enforcement
-- [ ] All existing tests pass
+- [x] Policy resolver exists (precedence rules)
+- [x] Per-project budgets/limits supported
+- [x] Per-project plugin security policy supported
+- [x] Tests cover precedence and enforcement
+- [x] All existing tests pass
 
 ---
