@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] CAS exists under runtime root (or configurable location)
-- [ ] Artifacts are stored and referenced by content hash
-- [ ] Node outputs can be reused across runs when inputs + params + tool versions match
-- [ ] CAS includes integrity verification (hash checks)
-- [ ] Eviction policy exists (quota-based) and is deterministic
-- [ ] Tests cover: put/get, hash integrity, reuse, eviction
-- [ ] All existing tests pass
+- [x] CAS exists under runtime root (or configurable location)
+- [x] Artifacts are stored and referenced by content hash
+- [x] Node outputs can be reused across runs when inputs + params + tool versions match
+- [x] CAS includes integrity verification (hash checks)
+- [x] Eviction policy exists (quota-based) and is deterministic
+- [x] Tests cover: put/get, hash integrity, reuse, eviction
+- [x] All existing tests pass
 
 ---
 
