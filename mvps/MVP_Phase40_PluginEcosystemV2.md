@@ -8,15 +8,15 @@
 
 ## Definition of Done
 
-- [ ] Plugin signing or hash allowlist mechanism exists (deterministic, repo-local)
-- [ ] Compatibility matrix exists (Clockwork version ↔ plugin versions)
-- [ ] Plugin validation requires a minimal test harness (smoke + policy compliance)
-- [ ] Plugin loader rejects:
+- [x] Plugin signing or hash allowlist mechanism exists (deterministic, repo-local)
+- [x] Compatibility matrix exists (Clockwork version ↔ plugin versions)
+- [x] Plugin validation requires a minimal test harness (smoke + policy compliance)
+- [x] Plugin loader rejects:
   - incompatible versions
   - unsigned/unallowlisted plugins (in strict mode)
   - missing tests
-- [ ] Documentation exists for publishing and validating plugins
-- [ ] All existing tests pass
+- [x] Documentation exists for publishing and validating plugins
+- [x] All existing tests pass
 
 ---
 

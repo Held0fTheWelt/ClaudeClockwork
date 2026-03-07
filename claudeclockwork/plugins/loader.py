@@ -76,3 +76,39 @@ class PluginLoader:
                     continue
                 results.append(data)
         return results
+
+    def discover_strict(
+        self,
+        require_allowlist: bool = True,
+        require_tests: bool = True,
+    ) -> list[dict[str, Any]]:
+        """Discover plugins; reject incompatible, unallowlisted (if require_allowlist), missing tests (if require_tests)."""
+        from claudeclockwork.plugins.signing import is_allowlisted
+        from claudeclockwork.plugins.test_harness import has_smoke_test
+        results = []
+        for base in ["plugins", ".clockwork_plugins"]:
+            plug_root = self._root / base
+            if not plug_root.is_dir():
+                continue
+            for manifest_file in sorted(plug_root.glob("*/plugin.json")):
+                try:
+                    data = json.loads(manifest_file.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    continue
+                if "id" not in data:
+                    data["id"] = manifest_file.parent.name
+                ok, _ = _validate_schema(data, self._schema_path)
+                if not ok:
+                    continue
+                if not _compatible(data.get("clockwork_compat"), self._version):
+                    continue
+                plug_dir = manifest_file.parent
+                pid = data.get("id", "")
+                if require_allowlist:
+                    allowed, _ = is_allowlisted(pid, plug_dir, self._root, strict=True)
+                    if not allowed:
+                        continue
+                if require_tests and not has_smoke_test(data, plug_dir):
+                    continue
+                results.append(data)
+        return results
