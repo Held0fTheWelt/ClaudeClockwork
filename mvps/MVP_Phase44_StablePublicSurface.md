@@ -8,14 +8,14 @@
 
 ## Definition of Done
 
-- [ ] CLI contract document exists (stable vs experimental commands)
-- [ ] Public Python API boundaries are defined (public modules vs internal)
-- [ ] SemVer rules are documented and enforced by gates
-- [ ] Deprecation framework exists (warn → block → remove)
-- [ ] Compatibility tests exist for:
+- <span style="color:#2563eb">**[x]**</span> CLI contract document exists (stable vs experimental commands)
+- <span style="color:#2563eb">**[x]**</span> Public Python API boundaries are defined (public modules vs internal)
+- <span style="color:#2563eb">**[x]**</span> SemVer rules are documented and enforced by gates
+- <span style="color:#2563eb">**[x]**</span> Deprecation framework exists (warn → block → remove)
+- <span style="color:#2563eb">**[x]**</span> Compatibility tests exist for:
   - CLI flags/outputs
   - config schema versions
-- [ ] All existing tests pass
+- <span style="color:#2563eb">**[x]**</span> All existing tests pass
 
 ---
 

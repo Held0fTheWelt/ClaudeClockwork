@@ -30,6 +30,9 @@
 - **No big-bang rewrites.** Incremental phases: manifest hardening → wrapper waves → native rewrites → plugin runtime → MCP → CI gates.
 - **Quality standard:** Run `qa_gate` + full test suite after each significant phase. Review output goes to `.project/Docs/Review/`.
 - **Roadmap lives in `/roadmaps/`.** MVP descriptions live in `/mvps/`.
+- **Definition of Done (DoD) marking:** For phase MVP files in `mvps/`, every **implemented** DoD item is marked with a blue **[x]** using:  
+  `- <span style="color:#2563eb">**[x]**</span> …`  
+  Unimplemented items stay `- [ ]`. Apply when closing a phase or updating an MVP after implementation.
 
 ---
 

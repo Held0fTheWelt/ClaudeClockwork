@@ -40,3 +40,14 @@ These supplement the chain; they do not replace it.
 - One readable, complete MVP list.
 - No scattered definitions.
 - Single source of truth: "What is MVP X?" → open the chain.
+
+---
+
+## Phase MVP files (`mvps/`)
+
+Phase specs (e.g. `mvps/MVP_Phase44_StablePublicSurface.md`) use a **Definition of Done** section. When a DoD item is implemented, mark it with a **blue [x]** so completion is visible at a glance:
+
+- **Implemented:** `- <span style="color:#2563eb">**[x]**</span>`
+- **Not yet:** `- [ ]`
+
+Apply this convention when implementing or closing any phase (Phases 44–61 and beyond). See `.project/MEMORY.md` (User Preferences).
