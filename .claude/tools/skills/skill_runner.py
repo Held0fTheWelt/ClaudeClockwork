@@ -117,6 +117,7 @@ from idea_dedupe import run as idea_dedupe
 
 # MVP18 adaptive routing skill
 from bandit_router_select import run as bandit_router_select
+from clockwork_changelog_entry import run as clockwork_changelog_entry
 
 
 def _ensure_repo_root() -> None:
@@ -254,6 +255,7 @@ SKILLS = {
 
     # MVP18 adaptive routing
     "bandit_router_select": bandit_router_select,
+    "clockwork_changelog_entry": clockwork_changelog_entry,
 }
 
 def load_json(path: Path | None) -> dict:

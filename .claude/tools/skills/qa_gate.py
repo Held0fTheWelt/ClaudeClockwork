@@ -20,6 +20,26 @@ import sys
 from collections import namedtuple
 from pathlib import Path
 
+# Ensure repo root is in sys.path BEFORE any claudeclockwork imports
+def _setup_import_path():
+    """Add repo root to sys.path if not already present."""
+    try:
+        repo_root = Path(__file__).resolve().parent.parent.parent  # .claude/tools/skills -> root
+        if str(repo_root) not in sys.path:
+            sys.path.insert(0, str(repo_root))
+        # Also try to verify the import works
+        import claudeclockwork  # noqa: F401
+    except Exception as exc:
+        # If import fails, try to diagnose and add more paths
+        try:
+            cwd = Path.cwd()
+            if str(cwd) not in sys.path:
+                sys.path.insert(0, str(cwd))
+        except Exception:
+            pass
+
+_setup_import_path()
+
 # ---------------------------------------------------------------------------
 # Types
 # ---------------------------------------------------------------------------
