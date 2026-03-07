@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] Path jail enforcement exists for runtime writes/reads (deny-by-default outside allowed roots)
-- [ ] External runner invocations are sandboxed (structured argv only, no shell; optional OS sandbox)
-- [ ] Secret handling is centralized (redaction + allowlist; no accidental logging)
-- [ ] “Unsafe mode” exists only as an explicit local override (clearly logged; blocked in CI)
-- [ ] Escape attempts are detected and fail deterministic gates
-- [ ] Tests cover sandbox policy, path jail, and unsafe-mode blocking in CI
-- [ ] All existing tests pass
+- [x] Path jail enforcement exists for runtime writes/reads (deny-by-default outside allowed roots)
+- [x] External runner invocations are sandboxed (structured argv only, no shell; optional OS sandbox)
+- [x] Secret handling is centralized (redaction + allowlist; no accidental logging)
+- [x] “Unsafe mode” exists only as an explicit local override (clearly logged; blocked in CI)
+- [x] Escape attempts are detected and fail deterministic gates
+- [x] Tests cover sandbox policy, path jail, and unsafe-mode blocking in CI
+- [x] All existing tests pass
 
 ---
 

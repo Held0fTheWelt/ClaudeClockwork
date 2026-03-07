@@ -8,14 +8,14 @@
 
 ## Definition of Done
 
-- [ ] Telemetry schema is standardized (events/spans)
-- [ ] Failure taxonomy exists (typed errors with reason codes)
-- [ ] CLI summaries exist:
+- [x] Telemetry schema is standardized (events/spans)
+- [x] Failure taxonomy exists (typed errors with reason codes)
+- [x] CLI summaries exist:
   - “top failures last N runs”
   - “regressions since last release”
-- [ ] Incident bundle exporter exists (redacted, subset of evidence)
-- [ ] Tests cover telemetry parsing + summary generation
-- [ ] All existing tests pass
+- [x] Incident bundle exporter exists (redacted, subset of evidence)
+- [x] Tests cover telemetry parsing + summary generation
+- [x] All existing tests pass
 
 ---
 

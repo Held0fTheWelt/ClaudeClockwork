@@ -1,5 +1,5 @@
 {
-  "count": 104,
+  "count": 109,
   "skills": [
     {
       "name": "code_assimilate",
@@ -618,6 +618,83 @@
       ],
       "legacy_bridge": false,
       "manifest_path": ".claude\\skills\\evidence\\outcome_ledger_append\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "kb.explain",
+      "category": "kb",
+      "version": "1.0.0",
+      "entrypoint": "skills.kb.explain.skill:KbExplainSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "kb",
+        "explain"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\kb\\explain\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "kb.search",
+      "category": "kb",
+      "version": "1.0.0",
+      "entrypoint": "skills.kb.search.skill:KbSearchSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "kb",
+        "search"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\kb\\search\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "audio_asr",
+      "category": "localai",
+      "version": "0.1.0",
+      "entrypoint": "skills.localai.audio_asr.skill:AudioAsrSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "localai",
+        "asr",
+        "audio"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\localai\\audio_asr\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "embed_text",
+      "category": "localai",
+      "version": "0.1.0",
+      "entrypoint": "skills.localai.embed_text.skill:EmbedTextSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "localai",
+        "embed"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\localai\\embed_text\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "localai_run",
+      "category": "localai",
+      "version": "0.1.0",
+      "entrypoint": "skills.localai.localai_run.skill:LocalaiRunSkill",
+      "enabled": true,
+      "aliases": [],
+      "tags": [
+        "localai",
+        "embed",
+        "asr"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\localai\\localai_run\\manifest.json",
       "source_root": ".claude\\skills"
     },
     {

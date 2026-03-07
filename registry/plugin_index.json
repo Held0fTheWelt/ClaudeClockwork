@@ -1,6 +1,21 @@
 {
-  "count": 2,
+  "count": 3,
   "plugins": [
+    {
+      "id": "example_hello",
+      "name": "Example Hello",
+      "version": "0.1.0",
+      "description": "Phase 29 example plugin with a simple skill.",
+      "permissions": [
+        "repo:read"
+      ],
+      "capabilities": [
+        "skill"
+      ],
+      "requires_plugins": [],
+      "enabled": true,
+      "path": "plugins/example_hello/plugin.json"
+    },
     {
       "id": "filesystem",
       "name": "filesystem",
