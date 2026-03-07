@@ -8,15 +8,15 @@
 
 ## Definition of Done
 
-- [ ] A supported installation path exists (pick at least one):
+- [x] A supported installation path exists (pick at least one):
   - `pipx install ...` OR
   - `pip install ...` OR
   - single-file `bootstrap.py` that creates a venv and installs dependencies
-- [ ] First-run wizard exists (creates runtime root, validates versions, checks optional deps)
-- [ ] Deterministic environment check command exists (`env_check`)
-- [ ] Documentation exists: install, upgrade, uninstall
-- [ ] CI verifies packaging artifacts (build + smoke install)
-- [ ] All existing tests pass
+- [x] First-run wizard exists (creates runtime root, validates versions, checks optional deps)
+- [x] Deterministic environment check command exists (`env_check`)
+- [x] Documentation exists: install, upgrade, uninstall
+- [x] CI verifies packaging artifacts (build + smoke install)
+- [x] All existing tests pass
 
 ---
 

@@ -1,3 +1,4 @@
+"""Phase 28 — CLI package: main entry, first-run, env-check."""
 from __future__ import annotations
 
 import argparse
@@ -41,10 +42,24 @@ def main() -> int:
     parser.add_argument("--inputs", default="{}", help="JSON object for skill inputs")
     parser.add_argument("--plugin-healthcheck", default="", metavar="PLUGIN_ID",
                         help="Run the healthcheck hook for the named plugin")
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
+    subparsers.add_parser("first-run", help="Create runtime root, validate (Phase 28)")
+    subparsers.add_parser("env-check", help="Verify environment (Phase 28)")
     args = parser.parse_args()
 
     project_root = Path(args.project_root).resolve()
     inputs = json.loads(args.inputs)
+
+    if args.command == "first-run":
+        from claudeclockwork.cli.first_run import run_first_run
+        result = run_first_run(project_root)
+        print(json.dumps(result, indent=2))
+        return 0
+    if args.command == "env-check":
+        from claudeclockwork.cli.env_check import run_env_check
+        code, errors, info = run_env_check(project_root)
+        print(json.dumps({"ok": code == 0, "errors": errors, "info": info}, indent=2))
+        return code
 
     if args.plugin_healthcheck:
         return _run_plugin_healthcheck(args.plugin_healthcheck, project_root)
@@ -64,5 +79,4 @@ def main() -> int:
     return 0 if result.get("status") == "ok" else 1
 
 
-if __name__ == "__main__":
-    raise SystemExit(main())
+__all__ = ["main"]
