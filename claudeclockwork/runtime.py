@@ -16,7 +16,7 @@ DEFAULT_SKILL_ROOTS = [".claude/skills", "skills"]
 
 
 def _load_permissions(project_root: Path) -> PermissionManager:
-    cfg_path = project_root / "configs" / "permissions.json"
+    cfg_path = project_root / ".claude" / "config" / "permissions.json"
     if not cfg_path.exists():
         return PermissionManager()
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))

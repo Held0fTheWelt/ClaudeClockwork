@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] `configs/permissions.json` moved into `.claude/config/permissions.json`; all references updated
-- [ ] `.claude/config/` is the single location for all Clockwork config (no root-level `configs/` directory)
-- [ ] `.claude/DEPLOY.md` created — documents exactly what a consuming project copies and what `claudeclockwork` package version to install
-- [ ] Non-deployable root directories marked with `_DO_NOT_DEPLOY` sentinels or documented in `.claude/DEPLOY.md` exclusion list: `mvps/`, `roadmaps/`, `Docs/`, `.claude-development/`, `validation_runs/`, `validation_runs_redacted/`, `scripts/`, `memory/`, `tests/`
-- [ ] `CLAUDE.md` updated to reflect new config location and deploy boundary
-- [ ] `configs/permissions.json` reference in `tests/test_gates.py` updated to `.claude/config/permissions.json`
-- [ ] All existing tests pass
+- [X] `configs/permissions.json` moved into `.claude/config/permissions.json`; all references updated
+- [X] `.claude/config/` is the single location for all Clockwork config (no root-level `configs/` directory)
+- [X] `.claude/DEPLOY.md` created — documents exactly what a consuming project copies and what `claudeclockwork` package version to install
+- [X] Non-deployable root directories marked with `_DO_NOT_DEPLOY` sentinels or documented in `.claude/DEPLOY.md` exclusion list: `mvps/`, `roadmaps/`, `Docs/`, `.claude-development/`, `validation_runs/`, `validation_runs_redacted/`, `scripts/`, `memory/`, `tests/`
+- [X] `CLAUDE.md` updated to reflect new config location and deploy boundary
+- [X] `configs/permissions.json` reference in `tests/test_gates.py` updated to `.claude/config/permissions.json`
+- [X] All existing tests pass
 
 ---
 

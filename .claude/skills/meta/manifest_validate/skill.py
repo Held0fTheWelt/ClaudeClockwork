@@ -19,7 +19,7 @@ _REQUIRED_FIELDS = ["name", "version", "description", "category", "entrypoint"]
 
 
 def _load_allowed_permissions(repo_root: Path) -> set[str]:
-    cfg = repo_root / "configs" / "permissions.json"
+    cfg = repo_root / ".claude" / "config" / "permissions.json"
     if cfg.exists():
         data = json.loads(cfg.read_text(encoding="utf-8"))
         return set(data.get("allowed", []))

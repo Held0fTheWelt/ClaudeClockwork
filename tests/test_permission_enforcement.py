@@ -32,7 +32,7 @@ def test_permission_manager_default_allows_everything() -> None:
 
 
 def test_load_permissions_from_config() -> None:
-    # configs/permissions.json blocks shell:admin and system:kill
+    # .claude/config/permissions.json blocks shell:admin and system:kill
     mgr = _load_permissions(ROOT)
     assert mgr.is_allowed("shell:admin") is False
     assert mgr.is_allowed("system:kill") is False

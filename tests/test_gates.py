@@ -54,9 +54,9 @@ def test_import_lint() -> None:
 # ---------------------------------------------------------------------------
 
 def test_permission_lint() -> None:
-    """All manifest permissions must be declared in configs/permissions.json."""
-    cfg_path = ROOT / "configs" / "permissions.json"
-    assert cfg_path.exists(), f"configs/permissions.json not found at {cfg_path}"
+    """All manifest permissions must be declared in .claude/config/permissions.json."""
+    cfg_path = ROOT / ".claude" / "config" / "permissions.json"
+    assert cfg_path.exists(), f".claude/config/permissions.json not found at {cfg_path}"
     allowed = set(json.loads(cfg_path.read_text(encoding="utf-8")).get("allowed", []))
 
     registry = build_registry(ROOT)

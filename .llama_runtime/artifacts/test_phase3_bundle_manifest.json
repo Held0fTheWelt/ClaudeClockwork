@@ -1,7 +1,7 @@
 {
   "type": "evidence_bundle_manifest",
   "bundle_name": "test_phase3_bundle",
-  "git_sha": "a1a5c633a9e21026c9eea8380ebd0f4b8379785a",
+  "git_sha": "565ace606b3e23aac0c9924495081b7ece79be85",
   "manifest_hash": "2047e1b380f47ec06792993f075b688073fe2b7e4ccfe15cf4a924d749e9f3a6",
   "artifact_count": 1,
   "items": [

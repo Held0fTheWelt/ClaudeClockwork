@@ -32,6 +32,7 @@
       "description": "Skill category — determines directory grouping and CLI filtering.",
       "enum": [
         "analysis",
+        "archive",
         "bundle",
         "cleanup",
         "demo",
@@ -55,7 +56,7 @@
     },
     "permissions": {
       "type": "array",
-      "description": "Required permissions — must all exist in configs/permissions.json allowed list.",
+      "description": "Required permissions — must all exist in .claude/config/permissions.json allowed list.",
       "items": {
         "type": "string",
         "enum": [

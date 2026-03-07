@@ -154,7 +154,9 @@ Always read in this order at session start:
     playbooks/            # Multi-skill campaign playbooks
   knowledge/              # Librarian-managed knowledge base + index
   python/                 # Python architecture + pattern standards
-  config/                 # YAML/JSON config (pricing, budgeting, routing)
+  config/                 # YAML/JSON config (permissions, pricing, budgeting, routing)
+                          # permissions.json moved here from root configs/ in Phase 10
+  DEPLOY.md               # Deployment guide — what to copy, what to install, what to exclude
 
 .project/                 # Project-operational files (this project = Clockwork dev)
   MEMORY.md               # Cross-session knowledge (SSoT — read first each session)
@@ -237,6 +239,15 @@ Hardware: RTX 3080 (10 GB VRAM) for ≤14b GPU models; 7950X3D / 64 GB DDR5 for 
 - **Drift Sentinel hard stop:** if `contract_drift_sentinel` FAILs, stop and fix before proceeding.
 - **QA gate** before risky work: `.claude/tasks/qa/000_RUN_QA_GATE.md`.
 - **Token budgeting** is enabled by default (`.claude/config/performance_budgeting.yaml`). Finalize with `performance_finalize` skill.
+
+## Deployment Boundary
+
+The deployable unit of Clockwork is **`.claude/` + `pip install claudeclockwork`**. See `.claude/DEPLOY.md` for the full guide.
+
+Root-level directories that are **Clockwork-development-only** and must NOT be copied to consuming projects:
+`mvps/`, `roadmaps/`, `tests/`, `Docs/`, `.claude-development/`, `scripts/`, `validation_runs/`, `memory/`
+
+Config that was previously at `configs/permissions.json` is now at `.claude/config/permissions.json` (Phase 10).
 
 ## Document Naming Convention
 
