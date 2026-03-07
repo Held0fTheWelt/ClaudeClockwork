@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] Work Graph spec exists (node types, edges, artifacts)
-- [ ] Minimal DAG runner exists with deterministic scheduling
-- [ ] Node outputs are cached (hash-based) under runtime root
-- [ ] Failure reporting shows the exact failed node and reason
-- [ ] CLI can run a graph and resume from cache
-- [ ] Tests cover: ordering, caching, resume, failure reporting
-- [ ] All existing tests pass
+- [x] Work Graph spec exists (node types, edges, artifacts)
+- [x] Minimal DAG runner exists with deterministic scheduling
+- [x] Node outputs are cached (hash-based) under runtime root
+- [x] Failure reporting shows the exact failed node and reason
+- [x] CLI can run a graph and resume from cache
+- [x] Tests cover: ordering, caching, resume, failure reporting
+- [x] All existing tests pass
 
 ---
 

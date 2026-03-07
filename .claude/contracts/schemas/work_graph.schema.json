@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkGraph",
+  "description": "Phase 30 — DAG of nodes (skill_call, agent_run, gate_check, export_bundle).",
+  "type": "object",
+  "required": ["nodes"],
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "enum": ["skill_call", "agent_run", "gate_check", "export_bundle"] },
+          "inputs": { "type": "object" },
+          "config": { "type": "object" }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from_node": { "type": "string" },
+          "to_node": { "type": "string" },
+          "artifact_key": { "type": "string" }
+        }
+      }
+    }
+  }
+}
