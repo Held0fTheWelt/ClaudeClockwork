@@ -10,7 +10,7 @@
 - [X] A manifest with a bad entrypoint fails the import lint gate
 - [X] A skill removed from the registry is caught by the registry diff gate
 - [X] Gates run in CI on every commit (GitHub Actions)
-- [X] `eval_run` stores results to `.llama_runtime/eval/results/` with per-run snapshots
+- [X] `eval_run` stores results to `.clockwork_runtime/eval/results/` with per-run snapshots
 - [X] All existing tests pass (136 total)
 
 ---
@@ -105,13 +105,13 @@ Skills that require mandatory inputs must declare `"smoke_inputs": {...}` in the
 **What:** `capability_map_build` output must not change silently between commits.
 
 **Implementation:**
-1. Store a baseline snapshot: `.llama_runtime/eval/baselines/capability_map.json`
+1. Store a baseline snapshot: `.clockwork_runtime/eval/baselines/capability_map.json`
 2. On each CI run, generate current snapshot and diff against baseline
 3. Gate fails if skill count drops or any previously-present skill disappears
 
 ```python
 def test_registry_export_diff():
-    baseline_path = Path(".llama_runtime/eval/baselines/capability_map.json")
+    baseline_path = Path(".clockwork_runtime/eval/baselines/capability_map.json")
     if not baseline_path.exists():
         pytest.skip("No baseline — run: python3 scripts/update_baselines.py")
     import json
@@ -139,7 +139,7 @@ Same pattern as D6.5 but for `plugin_registry_export` output.
 
 ### D6.7 — Eval Run Integration
 
-**What:** `eval_run` skill writes structured results to `.llama_runtime/eval/results/<timestamp>.json` for historical comparison.
+**What:** `eval_run` skill writes structured results to `.clockwork_runtime/eval/results/<timestamp>.json` for historical comparison.
 
 Each result record:
 ```json
@@ -188,7 +188,7 @@ jobs:
 - Phase 1 (manifest hardening) — gates rely on `strict=True` registry mode
 - Phase 2–3 (skill coverage) — smoke gate only meaningful with ≥45 skills
 - Phase 4 (plugin runtime) — plugin diff gate requires live plugin registry
-- `.llama_runtime/eval/baselines/` directory must be seeded before diff gates activate
+- `.clockwork_runtime/eval/baselines/` directory must be seeded before diff gates activate
 
 ## Notes
 

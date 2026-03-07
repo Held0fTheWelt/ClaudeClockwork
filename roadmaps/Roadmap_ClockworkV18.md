@@ -91,7 +91,7 @@
 - [x] `MEMORY.md` translated to English
 - [x] `.claude/SYSTEM.md` translated to English
 - [x] Skill dispatch split documented in `CLAUDE.md`
-- [x] `.llama_runtime/eval/results/` created
+- [x] `.clockwork_runtime/eval/results/` created
 
 ---
 
@@ -260,8 +260,8 @@
 
 - `pytest` test suite covering all gates above
 - CI config (GitHub Actions or equivalent) running gate suite on every commit
-- `eval_run` skill integrated with `.llama_runtime/eval/results/` for per-run snapshots
-- Registry export stored in `.llama_runtime/` as baseline for diff gate
+- `eval_run` skill integrated with `.clockwork_runtime/eval/results/` for per-run snapshots
+- Registry export stored in `.clockwork_runtime/` as baseline for diff gate
 
 ### Acceptance criteria
 
