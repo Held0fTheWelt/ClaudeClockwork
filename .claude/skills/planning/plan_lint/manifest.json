@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "plan_lint"
+    "legacy_bridge": false
   }
 }

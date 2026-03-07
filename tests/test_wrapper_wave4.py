@@ -66,7 +66,11 @@ def test_wave4_skill_in_registry(skill_id: str) -> None:
     registry = build_registry(ROOT)
     manifest = registry.get_manifest(skill_id)
     assert manifest is not None, f"{skill_id} not found in registry"
-    assert manifest.metadata.get("legacy_bridge") == skill_id
+    legacy_bridge = manifest.metadata.get("legacy_bridge")
+    # Promoted native skills have legacy_bridge=False; remaining adapters have legacy_bridge=skill_id
+    assert legacy_bridge == skill_id or legacy_bridge is False, (
+        f"{skill_id}: expected legacy_bridge={skill_id!r} or False, got {legacy_bridge!r}"
+    )
 
 
 @pytest.mark.parametrize("skill_id", _WAVE4_SKILLS)
@@ -97,16 +101,15 @@ def test_wave4_manifests_pass_validate() -> None:
 
 
 def test_budget_router_oodle_renamed() -> None:
-    """budget_router output must use 'local_model_tier', not 'oodle_tier'."""
+    """budget_router output must use native format (no legacy 'oodle_tier' key)."""
     result = run_manifest_skill(
         {"request_id": "wave4", "skill_id": "budget_router",
          "inputs": {"complexity": 2, "risk": 2, "urgency": 2, "mode": "balanced"}},
         ROOT,
     )
     assert result is not None
-    if result.get("status") == "ok":
-        decision = result.get("outputs", {}).get("decision", {})
-        assert "local_model_tier" in decision, (
-            f"Expected 'local_model_tier' in decision, got keys: {list(decision.keys())}"
-        )
-        assert "oodle_tier" not in decision, "Stale 'oodle_tier' key still present"
+    assert result.get("status") == "ok"
+    outputs = result.get("outputs", {})
+    # Native promoted: new output format uses tier/model/rationale/escalation_level
+    assert "oodle_tier" not in outputs, "Stale 'oodle_tier' key must not appear"
+    assert "tier" in outputs, f"Native budget_router must have 'tier' key, got: {list(outputs.keys())}"
