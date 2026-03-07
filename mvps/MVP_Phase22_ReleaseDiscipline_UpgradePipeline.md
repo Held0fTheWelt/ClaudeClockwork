@@ -8,15 +8,15 @@
 
 ## Definition of Done
 
-- [ ] A single canonical version source is chosen and documented
-- [ ] All secondary version markers are derived from the canonical source (or removed)
-- [ ] Release notes generation exists (deterministic, repo-local)
-- [ ] `release_check` gate fails on:
+- [x] A single canonical version source is chosen and documented
+- [x] All secondary version markers are derived from the canonical source (or removed)
+- [x] Release notes generation exists (deterministic, repo-local)
+- [x] `release_check` gate fails on:
   - missing changelog entry for a version bump
   - mismatched version markers
   - missing migration notes when required
-- [ ] A short “Upgrade Playbook” exists
-- [ ] All existing tests pass
+- [x] A short “Upgrade Playbook” exists
+- [x] All existing tests pass
 
 ---
 

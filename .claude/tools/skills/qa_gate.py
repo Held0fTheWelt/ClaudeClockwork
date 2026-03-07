@@ -230,6 +230,26 @@ def check_planning_drift(project_root: Path) -> CheckResult:
     return CheckResult("DRIFT_001", "fail", msg, True)
 
 
+def check_release(project_root: Path) -> CheckResult:
+    """RELEASE_001: release_check — version drift, changelog entry for current version (Phase 22)."""
+    try:
+        from claudeclockwork.core.gates import run_release_check
+    except ImportError:
+        return CheckResult(
+            "RELEASE_001", "fail",
+            "run_release_check unavailable (claudeclockwork.core.gates not importable)", True
+        )
+    result = run_release_check(project_root)
+    if result.get("pass"):
+        return CheckResult(
+            "RELEASE_001", "pass",
+            "release check passed (version convergence, changelog entry)", False
+        )
+    errors = result.get("errors", [])
+    msg = "; ".join(errors[:3]) if errors else "release check failed"
+    return CheckResult("RELEASE_001", "fail", msg, True)
+
+
 def check_version(project_root: Path) -> CheckResult:
     """.claude/VERSION file exists and is semver."""
     version_file = project_root / ".claude" / "VERSION"
@@ -498,6 +518,7 @@ CHECKS = [
     ("ADDON_001",   "addon pack skills have .py implementations",                  check_addon_completeness),
     ("AGENT_001",   "agent registry not far behind methodology .md count",         check_agent_registry_consistency),
     ("DRIFT_001",   "planning drift scan (version, milestone links, roadmap)",     check_planning_drift),
+    ("RELEASE_001", "release check (version drift, changelog for current version)", check_release),
 ]
 
 ALL_CHECK_IDS = [c[0] for c in CHECKS]
