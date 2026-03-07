@@ -1,5 +1,5 @@
 # Budget Report — run-unknown
-- Generated: `2026-03-07T22:07:15Z`
+- Generated: `2026-03-07T22:04:33Z`
 - Events: **0**
 - Tokens: total **0**, prompt **0**, completion **0**
 - Estimated cost: **$0.0000** (pricing: `D:\ClaudeClockwork\.claude\config\anthropic_pricing_snapshot.json`)
@@ -32,12 +32,12 @@
 |---|---:|
 
 ## Charts
-- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220715Z_tokens_by_role.png`
-- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220715Z_tokens_by_model.png`
-- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220715Z_tokens_by_task.png`
-- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220715Z_cost_by_role.png`
-- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220715Z_cost_by_model.png`
-- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220715Z_cost_by_task.png`
+- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220433Z_tokens_by_role.png`
+- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220433Z_tokens_by_model.png`
+- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220433Z_tokens_by_task.png`
+- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220433Z_cost_by_role.png`
+- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220433Z_cost_by_model.png`
+- `D:\ClaudeClockwork\.claude-performance\reports\charts\budget_run-unknown_20260307T220433Z_cost_by_task.png`
 
 ## Limitations
 - Requires token events to be logged (JSONL/JSON). Without logging, it cannot infer costs.
