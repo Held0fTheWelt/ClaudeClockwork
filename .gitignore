@@ -10,3 +10,8 @@ build/
 .venv/
 venv/
 node_modules/
+
+# Transient output directories — never commit (file_lifecycle.md)
+validation_runs/
+validation_runs_redacted/
+*.pyc

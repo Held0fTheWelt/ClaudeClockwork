@@ -1,7 +1,7 @@
 # Clockwork v18 Roadmap
 
 **Baseline:** v17.7.0 — 94 legacy skills, 34 manifest skills (28 adapters + 6 native), 5 passing tests
-**Current:** v18.1 — 97 manifest skills (93 adapters + 4 native), 346 passing tests, MCP layer, full plugin runtime, 7 CI gates, dual-dispatch gap closed
+**Current:** v18.2 — 98 manifest skills (93 adapters + 5 native), 352 passing tests, MCP layer, full plugin runtime, 7 CI gates, file lifecycle enforced
 **Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md · VERIFY audit 2026-03-06 · NEW_MVPS.md
 **Updated:** 2026-03-06
 
@@ -26,7 +26,7 @@
 | 12 | Duplicate Elimination | **Complete** | [MVP_Phase12](../mvps/MVP_Phase12_DuplicateElimination.md) |
 | 13 | Greenfield Content Update | **Complete** | [MVP_Phase13](../mvps/MVP_Phase13_GreenfieldUpdate.md) |
 | 14 | Native Skill Promotion | **Complete** | [MVP_Phase14](../mvps/MVP_Phase14_NativeSkills.md) |
-| 15 | Obsolete Data Prune | Planned | [MVP_Phase15](../mvps/MVP_Phase15_ObsoleteDataPrune.md) |
+| 15 | Obsolete Data Prune | **Complete** | [MVP_Phase15](../mvps/MVP_Phase15_ObsoleteDataPrune.md) |
 | 16 | Skill Discovery Wave | Planned | [MVP_Phase16](../mvps/MVP_Phase16_SkillDiscovery.md) |
 
 **Principle:** No big-bang rewrites. Each phase delivers a working, tested increment. Legacy runner stays operational throughout.

@@ -10,13 +10,13 @@
 
 ## Definition of Done
 
-- [ ] Full scan of repo completed: every file classified as `active`, `superseded`, or `orphaned`
-- [ ] All `superseded` files deleted or explicitly converted to pointer stubs
-- [ ] All `orphaned` files deleted (no exceptions without explicit justification recorded in `CLAUDE.md`)
-- [ ] `.claude/governance/file_lifecycle.md` created — the permanent rule preventing re-accumulation
-- [ ] `dead_file_scan` skill created — manifest-registered skill that automates future orphan detection
-- [ ] `tests/test_dead_file_scan.py` — 6 tests verifying scan behavior
-- [ ] Roadmap updated: Phase 15 = this phase; Phase 16 = Skill Discovery Wave
+- [x] Full scan of repo completed: every file classified as `active`, `superseded`, or `orphaned`
+- [x] All `superseded` files deleted or explicitly converted to pointer stubs
+- [x] All `orphaned` files deleted (no exceptions without explicit justification recorded in `CLAUDE.md`)
+- [x] `.claude/governance/file_lifecycle.md` created — the permanent rule preventing re-accumulation
+- [x] `dead_file_scan` skill created — manifest-registered skill that automates future orphan detection
+- [x] `tests/test_dead_file_scan.py` — 6 tests verifying scan behavior
+- [x] Roadmap updated: Phase 15 = this phase; Phase 16 = Skill Discovery Wave
 
 ---
 
