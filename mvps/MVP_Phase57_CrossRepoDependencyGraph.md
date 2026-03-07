@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] Deterministic graph generation exists
-- [ ] Impact analysis CLI exists
-- [ ] Boundary-respecting builder exists
-- [ ] Tests cover stability
-- [ ] All existing tests pass
+- [x] Deterministic graph generation exists
+- [x] Impact analysis CLI exists
+- [x] Boundary-respecting builder exists
+- [x] Tests cover stability
+- [x] All existing tests pass
 
 ---

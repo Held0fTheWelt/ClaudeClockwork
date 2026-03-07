@@ -55,6 +55,9 @@ def main() -> int:
     ops_sub.add_parser("budget", help="Show budget profile")
     ops_sub.add_parser("cache", help="Cache stats")
     ops_sub.add_parser("tui", help="Optional minimal TUI")
+    ops_sub.add_parser("graph", help="Dependency graph (Phase 57)")
+    impact_p = ops_sub.add_parser("impact", help="Impact analysis")
+    impact_p.add_argument("--node", default="root", help="Node id")
     args = parser.parse_args()
 
     project_root = Path(args.project_root).resolve()
@@ -94,8 +97,16 @@ def main() -> int:
             out = run_ops_budget(project_root)
         elif oc == "cache":
             out = run_ops_cache(project_root)
+        elif oc == "graph":
+            from claudeclockwork.workspace.dependency_graph import build_dependency_graph
+            out = build_dependency_graph(project_root)
+        elif oc == "impact":
+            from claudeclockwork.workspace.dependency_graph import build_dependency_graph, impact_analysis
+            g = build_dependency_graph(project_root)
+            node = getattr(args, "node", "root")
+            out = {"node": node, "downstream": impact_analysis(g, node)}
         else:
-            print(json.dumps({"error": "unknown ops command", "usage": "ops bundles|plugins|budget|cache|tui"}))
+            print(json.dumps({"error": "unknown ops command", "usage": "ops bundles|plugins|budget|cache|tui|graph|impact"}))
             return 1
         print(json.dumps(out, indent=2))
         return 0
