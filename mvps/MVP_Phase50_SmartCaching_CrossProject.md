@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] Cross-project reuse only via imported bundles
-- [ ] Pinning exists
-- [ ] Provenance metadata exists
-- [ ] Poisoning protection exists
-- [ ] Tests cover pinning/reuse/poisoning rejection
-- [ ] All existing tests pass
+- [x] Cross-project reuse only via imported bundles
+- [x] Pinning exists
+- [x] Provenance metadata exists
+- [x] Poisoning protection exists
+- [x] Tests cover pinning/reuse/poisoning rejection
+- [x] All existing tests pass
 
 ---
