@@ -1,0 +1,23 @@
+{
+  "id": "audio_asr",
+  "name": "audio_asr",
+  "version": "0.1.0",
+  "category": "localai",
+  "description": "Local speech-to-text (audio.asr). Returns contract-shaped result; dependency_missing when whisper not installed.",
+  "entrypoint": "skills.localai.audio_asr.skill:AudioAsrSkill",
+  "permissions": ["repo:read"],
+  "tags": ["localai", "asr", "audio"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "path": {"type": "string", "optional": true},
+    "audio_path": {"type": "string", "optional": true}
+  },
+  "outputs": {
+    "status": {"type": "string"},
+    "capability": {"type": "string"},
+    "outputs": {"type": "object"},
+    "errors": {"type": "array"}
+  },
+  "metadata": {"legacy_bridge": false}
+}

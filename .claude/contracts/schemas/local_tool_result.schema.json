@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LocalToolResult",
+  "description": "Stable response shape for local non-LLM tools (embed, ASR, vision).",
+  "type": "object",
+  "required": ["status", "capability"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["ok", "error"]
+    },
+    "capability": {
+      "type": "string",
+      "description": "e.g. embed.text, audio.asr"
+    },
+    "tool_id": {
+      "type": "string",
+      "description": "Optional runner/model id"
+    },
+    "model_id": {
+      "type": "string",
+      "description": "Optional model id when applicable"
+    },
+    "inputs": {
+      "type": "object",
+      "description": "Echo of validated inputs (paths/params)"
+    },
+    "outputs": {
+      "type": "object",
+      "description": "JSON result and/or artifact paths"
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "latency_ms": {"type": "number"},
+        "device": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code"],
+        "properties": {
+          "code": {"type": "string"},
+          "message": {"type": "string"}
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

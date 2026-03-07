@@ -10,17 +10,17 @@
 
 ## Definition of Done
 
-- [ ] Tool contract schema added (JSON Schema): `local_tool_result.schema.json`
-- [ ] Model/tool registry format added (YAML/JSON): `localai_registry.yaml`
-- [ ] Minimal local runtime implemented (native Python module + optional CLI wrapper)
-- [ ] At least 2 capabilities wired end-to-end:
+- [x] Tool contract schema added (JSON Schema): `local_tool_result.schema.json`
+- [x] Model/tool registry format added (YAML/JSON): `localai_registry.yaml` (in `.claude/config/`)
+- [x] Minimal local runtime implemented (native Python module + optional CLI wrapper)
+- [x] At least 2 capabilities wired end-to-end:
   - `embed.text` (local embeddings)
   - `audio.asr` (local speech-to-text)
   *(Vision optional as third capability)*
-- [ ] Thin manifest skills added under `.claude/skills/localai/*` with native implementations
-- [ ] Deterministic failure mode: if a tool dependency is missing, return a structured error (no crash)
-- [ ] Minimal tests added (mocked runners): contract validation + “missing dependency returns structured error”
-- [ ] All existing tests pass
+- [x] Thin manifest skills added under `.claude/skills/localai/*` with native implementations
+- [x] Deterministic failure mode: if a tool dependency is missing, return a structured error (no crash)
+- [x] Minimal tests added (mocked runners): contract validation + “missing dependency returns structured error”
+- [x] All existing tests pass
 
 ---
 

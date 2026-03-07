@@ -1,0 +1,23 @@
+{
+  "id": "localai_run",
+  "name": "localai_run",
+  "version": "0.1.0",
+  "category": "localai",
+  "description": "Run a LocalAI capability by id (embed.text, audio.asr). Returns contract-shaped result.",
+  "entrypoint": "skills.localai.localai_run.skill:LocalaiRunSkill",
+  "permissions": ["repo:read"],
+  "tags": ["localai", "embed", "asr"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "capability": {"type": "string"},
+    "inputs": {"type": "object", "optional": true}
+  },
+  "outputs": {
+    "status": {"type": "string"},
+    "capability": {"type": "string"},
+    "outputs": {"type": "object"},
+    "errors": {"type": "array"}
+  },
+  "metadata": {"legacy_bridge": false}
+}

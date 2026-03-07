@@ -1,0 +1,23 @@
+{
+  "id": "embed_text",
+  "name": "embed_text",
+  "version": "0.1.0",
+  "category": "localai",
+  "description": "Local text embeddings (embed.text). Returns contract-shaped result; dependency_missing when sentence_transformers not installed.",
+  "entrypoint": "skills.localai.embed_text.skill:EmbedTextSkill",
+  "permissions": ["repo:read"],
+  "tags": ["localai", "embed"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "text": {"type": "string", "optional": true},
+    "input": {"type": "string", "optional": true}
+  },
+  "outputs": {
+    "status": {"type": "string"},
+    "capability": {"type": "string"},
+    "outputs": {"type": "object"},
+    "errors": {"type": "array"}
+  },
+  "metadata": {"legacy_bridge": false}
+}
