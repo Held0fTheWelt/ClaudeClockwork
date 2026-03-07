@@ -12,7 +12,7 @@ import pytest
 
 from claudeclockwork.bridge import run_manifest_skill
 from claudeclockwork.runtime import build_registry
-from claudeclockwork.legacy.adapter import LegacySkillAdapter
+from claudeclockwork.core.base.skill_base import SkillBase
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -32,14 +32,14 @@ def test_dead_file_scan_in_registry() -> None:
 
 
 def test_dead_file_scan_is_native() -> None:
-    """dead_file_scan must not be a LegacySkillAdapter subclass."""
+    """dead_file_scan must be a native SkillBase implementation."""
     registry = _registry()
     # Force class load by building registry with strict=True
     registry_strict = build_registry(ROOT, strict=True)
     cls = registry_strict._classes.get("dead_file_scan")
     assert cls is not None, "dead_file_scan class not loaded"
-    assert not issubclass(cls, LegacySkillAdapter), (
-        f"dead_file_scan must be native SkillBase, not LegacySkillAdapter; got {cls}"
+    assert issubclass(cls, SkillBase), (
+        f"dead_file_scan must be native SkillBase; got {cls}"
     )
 
 
