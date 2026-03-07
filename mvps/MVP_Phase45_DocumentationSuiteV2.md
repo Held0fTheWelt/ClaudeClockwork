@@ -6,12 +6,12 @@
 
 ## Definition of Done
 
-- [ ] Docs index links to all major guides
-- [ ] Runbooks exist (install/upgrade, workers+CAS, work graphs, plugins, incidents/exports)
-- [ ] Troubleshooting organized by error codes
-- [ ] Link-lint reports zero broken internal links
-- [ ] Docs are deterministic (no “handwave” steps)
-- [ ] All existing tests pass
+- <span style="color:#2563eb">**[x]**</span> Docs index links to all major guides
+- <span style="color:#2563eb">**[x]**</span> Runbooks exist (install/upgrade, workers+CAS, work graphs, plugins, incidents/exports)
+- <span style="color:#2563eb">**[x]**</span> Troubleshooting organized by error codes
+- <span style="color:#2563eb">**[x]**</span> Link-lint reports zero broken internal links
+- <span style="color:#2563eb">**[x]**</span> Docs are deterministic (no “handwave” steps)
+- <span style="color:#2563eb">**[x]**</span> All existing tests pass
 
 ---
 

@@ -218,3 +218,12 @@ def test_planning_drift_version_mismatch_fails() -> None:
         ok, errors = _check_version_convergence(root)
         assert ok is False
         assert any("mismatch" in e.lower() or "1.0.0" in e for e in errors)
+
+
+def test_docs_gate_passes() -> None:
+    """Docs gate: required docs exist and INDEX.md links are valid."""
+    from claudeclockwork.core.gates.docs_gate import run_docs_gate
+    result = run_docs_gate(ROOT)
+    assert result.get("pass") is True, (
+        f"docs_gate failed: {result.get('errors')}"
+    )
