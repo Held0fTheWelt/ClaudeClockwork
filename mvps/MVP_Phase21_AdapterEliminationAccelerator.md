@@ -10,14 +10,14 @@
 
 ## Definition of Done
 
-- [ ] All manifest skills explicitly include `metadata.legacy_bridge` (true/false; no missing fields)
-- [ ] A deterministic migration tool exists: `scripts/adapter_migrate.py`
-- [ ] The tool can convert a selected list of skills (e.g. 10) from adapter to native wrapper deterministically
-- [ ] Converted skills do not subclass a legacy adapter base class
-- [ ] Tests added for:
+- [x] All manifest skills explicitly include `metadata.legacy_bridge` (true/false; no missing fields)
+- [x] A deterministic migration tool exists: `scripts/adapter_migrate.py`
+- [x] The tool can convert a selected list of skills (e.g. 10) from adapter to native wrapper deterministically (Phase 17 promote_to_native; no adapters remain)
+- [x] Converted skills do not subclass a legacy adapter base class
+- [x] Tests added for:
   - metadata normalization
   - conversion smoke run for a small batch
-- [ ] All existing tests pass
+- [x] All existing tests pass
 
 ---
 
