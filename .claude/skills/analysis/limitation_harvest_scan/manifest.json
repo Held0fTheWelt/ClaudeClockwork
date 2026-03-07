@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "limitation_harvest_scan"
+    "legacy_bridge": false
   }
 }

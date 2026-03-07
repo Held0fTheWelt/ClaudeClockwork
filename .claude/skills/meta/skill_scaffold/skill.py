@@ -57,15 +57,55 @@ class SkillScaffoldSkill(SkillBase):
             "trust_level": "local",
             "inputs": {},
             "outputs": {},
-            "metadata": {"legacy_bridge": legacy_bridge, "source_root": root_rel},
+            "metadata": {"legacy_bridge": False, "source_root": root_rel},
         }
 
         if legacy_bridge:
+            # Phase 17: inline delegation (no LegacySkillAdapter)
             skill_body = (
-                f"from __future__ import annotations\n\n"
-                f"from claudeclockwork.legacy.adapter import LegacySkillAdapter\n\n\n"
-                f"class {cls}(LegacySkillAdapter):\n"
-                f'    legacy_skill_id = "{skill_name}"\n'
+                "from __future__ import annotations\n\n"
+                "import os\nimport sys\nfrom pathlib import Path\n\n"
+                "from claudeclockwork.core.base.skill_base import SkillBase\n"
+                "from claudeclockwork.core.models.execution_context import ExecutionContext\n"
+                "from claudeclockwork.core.models.skill_result import SkillResult\n\n\n"
+                f"class {cls}(SkillBase):\n"
+                f'    _LEGACY_ID = "{skill_name}"\n\n'
+                "    def run(self, context: ExecutionContext, **kwargs) -> SkillResult:\n"
+                "        repo_root = Path(context.working_directory).resolve()\n"
+                '        skills_root = repo_root / ".claude" / "tools" / "skills"\n'
+                "        if str(skills_root) not in sys.path:\n"
+                "            sys.path.insert(0, str(skills_root))\n"
+                "        try:\n"
+                "            module = __import__(self._LEGACY_ID)\n"
+                "        except Exception as exc:\n"
+                '            return SkillResult(False, self._LEGACY_ID, error=f"Legacy import failed: {exc}")\n'
+                "        req = {\n"
+                '            "type": "skill_request_spec",\n'
+                "            \"request_id\": context.request_id,\n"
+                "            \"skill_id\": self._LEGACY_ID,\n"
+                "            \"inputs\": kwargs,\n"
+                "        }\n"
+                "        old_cwd = Path.cwd()\n"
+                "        try:\n"
+                "            os.chdir(repo_root)\n"
+                "            result = module.run(req)\n"
+                "        except Exception as exc:\n"
+                '            return SkillResult(False, self._LEGACY_ID, error=f"Legacy execution failed: {exc}")\n'
+                "        finally:\n"
+                "            os.chdir(old_cwd)\n"
+                "        status = result.get(\"status\") == \"ok\"\n"
+                "        outputs = result.get(\"outputs\", {})\n"
+                "        errors = result.get(\"errors\", [])\n"
+                "        warnings = result.get(\"warnings\", [])\n"
+                "        metrics = result.get(\"metrics\", {})\n"
+                "        return SkillResult(\n"
+                "            success=status,\n"
+                "            skill_name=self._LEGACY_ID,\n"
+                "            data=outputs,\n"
+                "            error=(\"; \".join(errors) if errors else None),\n"
+                "            warnings=warnings,\n"
+                "            metadata=metrics,\n"
+                "        )\n"
             )
         else:
             skill_body = (

@@ -31,5 +31,6 @@
     "skill_count": {
       "type": "integer"
     }
-  }
+  },
+  "metadata": {"legacy_bridge": false}
 }

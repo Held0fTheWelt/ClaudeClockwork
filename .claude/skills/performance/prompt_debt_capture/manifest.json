@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "prompt_debt_capture"
+    "legacy_bridge": false
   }
 }

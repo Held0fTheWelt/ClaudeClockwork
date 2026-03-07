@@ -20,6 +20,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "autodocs_generate"
+    "legacy_bridge": false
   }
 }

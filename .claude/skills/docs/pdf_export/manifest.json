@@ -20,6 +20,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "pdf_export"
+    "legacy_bridge": false
   }
 }

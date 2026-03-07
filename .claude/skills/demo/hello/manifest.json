@@ -18,6 +18,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "hello"
+    "legacy_bridge": false
   }
 }

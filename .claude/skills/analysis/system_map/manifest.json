@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "system_map"
+    "legacy_bridge": false
   }
 }

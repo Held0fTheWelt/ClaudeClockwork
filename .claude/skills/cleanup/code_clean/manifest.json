@@ -23,6 +23,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "code_clean"
+    "legacy_bridge": false
   }
 }

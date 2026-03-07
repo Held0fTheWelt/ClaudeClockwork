@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "pattern_detect"
+    "legacy_bridge": false
   }
 }

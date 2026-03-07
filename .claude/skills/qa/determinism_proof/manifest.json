@@ -20,6 +20,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "determinism_proof"
+    "legacy_bridge": false
   }
 }

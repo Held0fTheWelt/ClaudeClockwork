@@ -15,8 +15,8 @@ from pathlib import Path
 import pytest
 
 from claudeclockwork.bridge import run_manifest_skill
-from claudeclockwork.legacy.adapter import LegacySkillAdapter
 from claudeclockwork.runtime import build_registry
+from claudeclockwork.core.base.skill_base import SkillBase
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -31,10 +31,11 @@ def _run(skill_id: str, inputs: dict | None = None) -> dict:
 
 
 def _is_native(skill_id: str) -> bool:
+    """Phase 17: all skills are native (SkillBase)."""
     registry = build_registry(ROOT)
     cls = registry._classes.get(skill_id)
     assert cls is not None, f"{skill_id} not found in registry"
-    return not issubclass(cls, LegacySkillAdapter)
+    return issubclass(cls, SkillBase)
 
 
 # ---------------------------------------------------------------------------

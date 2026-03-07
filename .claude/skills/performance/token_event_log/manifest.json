@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "token_event_log"
+    "legacy_bridge": false
   }
 }

@@ -21,6 +21,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "hardening_scan_fix"
+    "legacy_bridge": false
   }
 }

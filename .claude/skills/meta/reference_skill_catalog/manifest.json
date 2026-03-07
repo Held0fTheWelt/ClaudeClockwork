@@ -20,5 +20,6 @@
   "enabled": true,
   "trust_level": "local",
   "inputs": {},
-  "outputs": {}
+  "outputs": {},
+  "metadata": {"legacy_bridge": false}
 }

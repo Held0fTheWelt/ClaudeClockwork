@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "exec_dryrun"
+    "legacy_bridge": false
   }
 }

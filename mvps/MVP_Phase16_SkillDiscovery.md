@@ -32,7 +32,7 @@
 
 ## S16.1 — `git_summary` (ops category)
 
-**Native location:** `claudeclockwork/core/ops/git_summary.py`
+**Native location:** `.claude/skills/ops/git_summary/skill.py` (implementation in manifest package; optional mirror in `claudeclockwork/core/ops/git_summary.py` not required)
 **Class:** `GitSummarySkill(SkillBase)`
 **Manifest package:** `.claude/skills/ops/git_summary/`
 

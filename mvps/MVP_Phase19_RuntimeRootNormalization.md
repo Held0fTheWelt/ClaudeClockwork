@@ -10,12 +10,12 @@
 
 ## Definition of Done
 
-- [ ] New runtime root created: `.clockwork_runtime/` with a documented sub-structure
-- [ ] Automated migration script added (moves `.llama_runtime/` -> `.clockwork_runtime/` and updates references)
-- [ ] `.gitignore` updated to ignore `.clockwork_runtime/` (and legacy `.llama_runtime/` for safety)
-- [ ] All references to `.llama_runtime/` removed from repo docs/code/tests (except migration notes)
-- [ ] Runtime outputs currently under `.report/` relocated to runtime root OR explicitly categorized (curated vs runtime)
-- [ ] All existing tests pass
+- [x] New runtime root created: `.clockwork_runtime/` with a documented sub-structure (README + subdirs)
+- [x] Automated migration script added: `scripts/migrate_runtime_root.py` (copies `.llama_runtime/` → `.clockwork_runtime/`)
+- [x] `.gitignore` updated to ignore `.clockwork_runtime/` and `.llama_runtime/`
+- [x] All references to `.llama_runtime/` removed from repo docs/code/tests (except migration script comment)
+- [x] Report vs runtime policy documented: `Docs/report_vs_runtime_policy.md` (curated `.report/` vs runtime `.clockwork_runtime/`)
+- [x] All existing tests pass
 
 ---
 

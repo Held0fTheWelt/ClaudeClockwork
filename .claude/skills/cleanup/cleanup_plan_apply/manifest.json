@@ -23,6 +23,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "cleanup_plan_apply"
+    "legacy_bridge": false
   }
 }

@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "last_train"
+    "legacy_bridge": false
   }
 }

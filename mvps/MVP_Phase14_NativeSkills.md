@@ -8,15 +8,15 @@
 
 ## Definition of Done
 
-- [ ] `capability_map_build` has a native implementation in `claudeclockwork/core/ops/capability_map_build.py`
-- [ ] `skill_registry_search` has a native implementation in `claudeclockwork/core/ops/skill_registry_search.py`
-- [ ] `qa_gate` has a native implementation in `claudeclockwork/core/ops/qa_gate.py`
-- [ ] `eval_run` has a native implementation in `claudeclockwork/core/ops/eval_run.py` (D6.7 format)
-- [ ] `budget_router` has a native implementation in `claudeclockwork/core/routing/budget_router_native.py`
-- [ ] `plan_lint` has a native implementation in `claudeclockwork/core/planning/plan_lint.py`
-- [ ] Each native skill: manifest entrypoint updated to point to native class; `LegacySkillAdapter` no longer used for these 6 skills
-- [ ] Legacy `.py` files retained (`skill_runner.py` still works)
-- [ ] All existing tests pass; 24 new native skill tests added in `tests/test_native_skills_phase14.py`
+- [x] `capability_map_build` has a native implementation (`.claude/skills/meta/capability_map_build/skill.py` — `CapabilityMapBuildSkill`)
+- [x] `skill_registry_search` has a native implementation (`.claude/skills/meta/skill_registry_search/skill.py` — `SkillRegistrySearchSkill`)
+- [x] `qa_gate` has a native implementation (`.claude/skills/qa/qa_gate/skill.py` — `QaGateSkill`)
+- [x] `eval_run` has a native implementation (`.claude/skills/ops/eval_run/skill.py` — `EvalRunSkill`, D6.7 format)
+- [x] `budget_router` has a native implementation (`.claude/skills/routing/budget_router/skill.py` — `BudgetRouterSkill`)
+- [x] `plan_lint` has a native implementation (`.claude/skills/planning/plan_lint/skill.py` — `PlanLintSkill`)
+- [x] Each native skill: manifest entrypoint updated to point to native class; `LegacySkillAdapter` no longer used for these 6 skills
+- [x] Legacy `.py` files retained (`skill_runner.py` still works)
+- [x] All existing tests pass; 24 new native skill tests added in `tests/test_native_skills_phase14.py`
 
 ---
 

@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "mechanic_explain"
+    "legacy_bridge": false
   }
 }

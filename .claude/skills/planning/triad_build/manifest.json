@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "triad_build"
+    "legacy_bridge": false
   }
 }

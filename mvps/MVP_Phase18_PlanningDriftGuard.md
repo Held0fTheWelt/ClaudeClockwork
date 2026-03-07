@@ -12,13 +12,13 @@
 
 ## Definition of Done
 
-- [ ] Root `ROADMAP.md` updated to reflect the current phase reality (Phase0..latest) and correct inventory numbers
-- [ ] `Docs/skill_system_audit_and_roadmap.md` updated (or replaced) so its counts and phase narrative match the repo
-- [ ] `.claude/development/MVP_STATUS.md` updated (date + cross-links + drift notes)
-- [ ] `.claude-development/milestones/index.md` has no dead links (either restore plan files or remove/replace references)
-- [ ] New deterministic drift checker added: `planning_drift_scan` (native skill or gate helper)
-- [ ] `qa_gate` (or CI gates) extended to fail when drift is detected
-- [ ] All existing tests pass
+- [x] Root `ROADMAP.md` updated to reflect the current phase reality (Phase0..latest) and correct inventory numbers
+- [x] `Docs/skill_system_audit_and_roadmap.md` updated (header points to canonical roadmap + mvps)
+- [x] `.claude/development/MVP_STATUS.md` updated (date + cross-links + Phase roadmap mapping)
+- [x] `.claude-development/milestones/index.md` has no dead links (frozen as legacy; M1/M2 plan file links removed)
+- [x] New deterministic drift checker added: `planning_drift_scan` in `claudeclockwork.core.gates`
+- [x] `qa_gate` extended with DRIFT_001 to fail when drift is detected
+- [x] All existing tests pass
 
 ---
 

@@ -20,6 +20,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "plan_diff_apply"
+    "legacy_bridge": false
   }
 }

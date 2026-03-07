@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "telemetry_summarize"
+    "legacy_bridge": false
   }
 }

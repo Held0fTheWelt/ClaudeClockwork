@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "model_routing_record_outcome"
+    "legacy_bridge": false
   }
 }

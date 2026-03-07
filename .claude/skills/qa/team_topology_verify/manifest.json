@@ -20,6 +20,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "team_topology_verify"
+    "legacy_bridge": false
   }
 }

@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "review_panel"
+    "legacy_bridge": false
   }
 }

@@ -1,5 +1,5 @@
 {
-  "count": 98,
+  "count": 104,
   "skills": [
     {
       "name": "code_assimilate",
@@ -13,9 +13,28 @@
         "code",
         "summary"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/analysis/code_assimilate/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\analysis\\code_assimilate\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "dependency_graph",
+      "category": "analysis",
+      "version": "0.1.0",
+      "entrypoint": "skills.analysis.dependency_graph.skill:DependencyGraphSkill",
+      "enabled": true,
+      "aliases": [
+        "skill_dependency_graph"
+      ],
+      "tags": [
+        "dependency",
+        "graph",
+        "analysis",
+        "skills"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\analysis\\dependency_graph\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "limitation_harvest_scan",
@@ -29,9 +48,9 @@
         "limitations",
         "scan"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/analysis/limitation_harvest_scan/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\analysis\\limitation_harvest_scan\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "mechanic_explain",
@@ -45,9 +64,9 @@
         "explanation",
         "docs"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/analysis/mechanic_explain/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\analysis\\mechanic_explain\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "mutation_detect",
@@ -61,9 +80,9 @@
         "mutation",
         "diff"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/analysis/mutation_detect/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\analysis\\mutation_detect\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "pattern_detect",
@@ -77,9 +96,9 @@
         "patterns",
         "detection"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/analysis/pattern_detect/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\analysis\\pattern_detect\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "system_map",
@@ -93,9 +112,9 @@
         "system-map",
         "architecture"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/analysis/system_map/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\analysis\\system_map\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "last_train",
@@ -109,9 +128,9 @@
         "knowledge",
         "consolidation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/archive/last_train/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\archive\\last_train\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "last_train_merge",
@@ -125,9 +144,9 @@
         "merge",
         "knowledge"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/archive/last_train_merge/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\archive\\last_train_merge\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "evidence_bundle_build",
@@ -144,8 +163,8 @@
         "artifacts"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/bundle/evidence_bundle_build/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\bundle\\evidence_bundle_build\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "evidence_init",
@@ -161,9 +180,9 @@
         "bundle",
         "init"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/bundle/evidence_init/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\bundle\\evidence_init\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "evidence_router",
@@ -179,9 +198,9 @@
         "routing",
         "bundle"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/bundle/evidence_router/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\bundle\\evidence_router\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "cleanup_apply",
@@ -197,9 +216,9 @@
         "apply",
         "repo"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/cleanup/cleanup_apply/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\cleanup\\cleanup_apply\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "cleanup_plan_apply",
@@ -215,9 +234,9 @@
         "plan",
         "apply"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/cleanup/cleanup_plan_apply/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\cleanup\\cleanup_plan_apply\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "code_clean",
@@ -233,9 +252,9 @@
         "code",
         "format"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/cleanup/code_clean/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\cleanup\\code_clean\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "code_clean_scan",
@@ -251,9 +270,9 @@
         "code",
         "scan"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/cleanup/code_clean_scan/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\cleanup\\code_clean_scan\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "repo_clean",
@@ -269,9 +288,9 @@
         "repo",
         "apply"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/cleanup/repo_clean/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\cleanup\\repo_clean\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "repo_clean_scan",
@@ -287,9 +306,9 @@
         "repo",
         "scan"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/cleanup/repo_clean_scan/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\cleanup\\repo_clean_scan\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "hello",
@@ -302,9 +321,9 @@
         "demo",
         "hello"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/demo/hello/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\demo\\hello\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "report",
@@ -317,9 +336,9 @@
         "demo",
         "report"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/demo/report/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\demo\\report\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "scan",
@@ -332,9 +351,9 @@
         "demo",
         "scan"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/demo/scan/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\demo\\scan\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "autodocs_generate",
@@ -348,9 +367,28 @@
         "generation",
         "automation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/autodocs_generate/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\autodocs_generate\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "changelog_generate",
+      "category": "docs",
+      "version": "0.1.0",
+      "entrypoint": "skills.docs.changelog_generate.skill:ChangelogGenerateSkill",
+      "enabled": true,
+      "aliases": [
+        "generate_changelog"
+      ],
+      "tags": [
+        "changelog",
+        "git",
+        "docs",
+        "release"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\changelog_generate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "copyright_standardize",
@@ -364,9 +402,9 @@
         "copyright",
         "standardisation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/copyright_standardize/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\copyright_standardize\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "doc_review",
@@ -380,9 +418,9 @@
         "review",
         "qa"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/doc_review/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\doc_review\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "doc_ssot_resolver",
@@ -396,9 +434,9 @@
         "ssot",
         "resolver"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/doc_ssot_resolver/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\doc_ssot_resolver\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "doc_write",
@@ -412,9 +450,9 @@
         "writing",
         "generation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/doc_write/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\doc_write\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "log_standardize",
@@ -428,9 +466,9 @@
         "logs",
         "standardisation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/log_standardize/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\log_standardize\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "pdf_export",
@@ -444,9 +482,9 @@
         "pdf",
         "export"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/pdf_export/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\pdf_export\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "pdf_quality",
@@ -463,8 +501,8 @@
         "checklist"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/docs/pdf_quality/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\docs\\pdf_quality\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "pdf_render",
@@ -480,9 +518,9 @@
         "render",
         "documentation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/pdf_render/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\pdf_render\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "reference_fix",
@@ -496,9 +534,9 @@
         "references",
         "paths"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/reference_fix/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\reference_fix\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "repo_compare",
@@ -514,9 +552,9 @@
         "diff",
         "audit"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/repo_compare/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\repo_compare\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "screencast_script",
@@ -530,9 +568,9 @@
         "screencast",
         "script"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/screencast_script/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\screencast_script\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "tutorial_write",
@@ -546,9 +584,9 @@
         "tutorial",
         "writing"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/docs/tutorial_write/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\docs\\tutorial_write\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "outcome_event_generate",
@@ -562,9 +600,9 @@
         "events",
         "artifacts"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/evidence/outcome_event_generate/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\evidence\\outcome_event_generate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "outcome_ledger_append",
@@ -578,9 +616,9 @@
         "ledger",
         "artifacts"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/evidence/outcome_ledger_append/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\evidence\\outcome_ledger_append\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "capability_map_build",
@@ -597,8 +635,8 @@
         "map"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/capability_map_build/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\capability_map_build\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "dead_file_scan",
@@ -617,8 +655,8 @@
         "scan"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/dead_file_scan/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\dead_file_scan\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "legacy_skill_inventory",
@@ -636,8 +674,8 @@
         "migration"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/legacy_skill_inventory/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\legacy_skill_inventory\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "manifest_registry_export",
@@ -655,8 +693,8 @@
         "index"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/manifest_registry_export/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\manifest_registry_export\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "manifest_validate",
@@ -674,8 +712,8 @@
         "registry"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/manifest_validate/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\manifest_validate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "refactor_bridge_scan",
@@ -691,9 +729,9 @@
         "legacy",
         "scan"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/meta/refactor_bridge_scan/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\meta\\refactor_bridge_scan\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "reference_skill_catalog",
@@ -711,8 +749,8 @@
         "skills"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/reference_skill_catalog/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\reference_skill_catalog\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "skill_gap_detect",
@@ -728,9 +766,9 @@
         "opportunity",
         "planning"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/meta/skill_gap_detect/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\meta\\skill_gap_detect\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "skill_registry_search",
@@ -748,8 +786,8 @@
         "discovery"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/skill_registry_search/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\skill_registry_search\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "skill_scaffold",
@@ -767,8 +805,8 @@
         "generator"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/meta/skill_scaffold/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\meta\\skill_scaffold\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "clockwork_version_bump",
@@ -782,9 +820,9 @@
         "changelog",
         "release"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/misc/clockwork_version_bump/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\misc\\clockwork_version_bump\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "critics_board_review",
@@ -798,9 +836,9 @@
         "critics",
         "review"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/misc/critics_board_review/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\misc\\critics_board_review\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "exec_dryrun",
@@ -814,9 +852,9 @@
         "dryrun",
         "validation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/misc/exec_dryrun/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\misc\\exec_dryrun\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "review_panel",
@@ -830,9 +868,29 @@
         "review",
         "panel"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/misc/review_panel/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\misc\\review_panel\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "config_validate",
+      "category": "ops",
+      "version": "0.1.0",
+      "entrypoint": "skills.ops.config_validate.skill:ConfigValidateSkill",
+      "enabled": true,
+      "aliases": [
+        "validate_configs"
+      ],
+      "tags": [
+        "config",
+        "validation",
+        "json",
+        "yaml",
+        "ops"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\ops\\config_validate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "eval_run",
@@ -849,8 +907,27 @@
         "golden"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/ops/eval_run/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\ops\\eval_run\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "git_summary",
+      "category": "ops",
+      "version": "0.1.0",
+      "entrypoint": "skills.ops.git_summary.skill:GitSummarySkill",
+      "enabled": true,
+      "aliases": [
+        "git_log_summary"
+      ],
+      "tags": [
+        "git",
+        "history",
+        "diff",
+        "ops"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\ops\\git_summary\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "release_cut",
@@ -866,9 +943,48 @@
         "cut",
         "ops"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/ops/release_cut/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\ops\\release_cut\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "skill_health",
+      "category": "ops",
+      "version": "0.1.0",
+      "entrypoint": "skills.ops.skill_health.skill:SkillHealthSkill",
+      "enabled": true,
+      "aliases": [
+        "manifest_health_check"
+      ],
+      "tags": [
+        "health",
+        "manifest",
+        "qa",
+        "ops"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\ops\\skill_health\\manifest.json",
+      "source_root": ".claude\\skills"
+    },
+    {
+      "name": "test_run",
+      "category": "ops",
+      "version": "0.1.0",
+      "entrypoint": "skills.ops.test_run.skill:TestRunSkill",
+      "enabled": true,
+      "aliases": [
+        "run_tests",
+        "pytest_run"
+      ],
+      "tags": [
+        "test",
+        "pytest",
+        "qa",
+        "ops"
+      ],
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\ops\\test_run\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "efficiency_review",
@@ -882,9 +998,9 @@
         "efficiency",
         "review"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/efficiency_review/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\efficiency_review\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "performance_finalize",
@@ -898,9 +1014,9 @@
         "report",
         "export"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/performance_finalize/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\performance_finalize\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "performance_toggle",
@@ -914,9 +1030,9 @@
         "budgeting",
         "toggle"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/performance_toggle/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\performance_toggle\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "prompt_debt_capture",
@@ -930,9 +1046,9 @@
         "prompt-debt",
         "tracking"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/prompt_debt_capture/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\prompt_debt_capture\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "shadow_prompt",
@@ -946,9 +1062,9 @@
         "shadow-prompt",
         "optimisation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/shadow_prompt/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\shadow_prompt\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "shadow_prompt_minify",
@@ -962,9 +1078,9 @@
         "minification",
         "prompt"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/shadow_prompt_minify/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\shadow_prompt_minify\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "telemetry_summarize",
@@ -978,9 +1094,9 @@
         "tokens",
         "cost"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/telemetry_summarize/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\telemetry_summarize\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "token_event_log",
@@ -994,9 +1110,9 @@
         "tokens",
         "ledger"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/performance/token_event_log/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\performance\\token_event_log\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "create_mvp",
@@ -1010,9 +1126,9 @@
         "mvp",
         "scaffold"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/create_mvp/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\create_mvp\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "creativity_burst",
@@ -1026,9 +1142,9 @@
         "creativity",
         "ideation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/creativity_burst/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\creativity_burst\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "decision_feedback",
@@ -1042,9 +1158,9 @@
         "decision",
         "feedback"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/decision_feedback/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\decision_feedback\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "deliberation_pack_build",
@@ -1058,9 +1174,9 @@
         "deliberation",
         "decision"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/deliberation_pack_build/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\deliberation_pack_build\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "economics_regression",
@@ -1074,9 +1190,9 @@
         "economics",
         "analysis"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/economics_regression/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\economics_regression\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "edge_case_selector",
@@ -1090,9 +1206,9 @@
         "edge-cases",
         "qa"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/edge_case_selector/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\edge_case_selector\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "hypothesis_builder",
@@ -1106,9 +1222,9 @@
         "hypothesis",
         "research"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/hypothesis_builder/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\hypothesis_builder\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "idea_dedupe",
@@ -1122,9 +1238,9 @@
         "deduplication",
         "ideas"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/idea_dedupe/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\idea_dedupe\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "idea_scoring",
@@ -1138,9 +1254,9 @@
         "scoring",
         "prioritisation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/idea_scoring/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\idea_scoring\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "parity_scan_and_mvp_planner",
@@ -1157,8 +1273,8 @@
         "planning"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/planning/parity_scan_and_mvp_planner/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\planning\\parity_scan_and_mvp_planner\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "plan_diff_apply",
@@ -1172,9 +1288,9 @@
         "diff",
         "documents"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/plan_diff_apply/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\plan_diff_apply\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "plan_lint",
@@ -1189,8 +1305,8 @@
         "qa"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/planning/plan_lint/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\planning\\plan_lint\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "plan_mutate",
@@ -1204,9 +1320,9 @@
         "mutation",
         "documents"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/plan_mutate/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\plan_mutate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "triad_build",
@@ -1220,9 +1336,9 @@
         "triad",
         "message"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/triad_build/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\triad_build\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "triad_ref_lint",
@@ -1236,9 +1352,9 @@
         "lint",
         "triad"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/triad_ref_lint/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\triad_ref_lint\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "work_scope_assess",
@@ -1252,9 +1368,9 @@
         "scope",
         "assessment"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/planning/work_scope_assess/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\planning\\work_scope_assess\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "plugin_registry_export",
@@ -1272,8 +1388,8 @@
         "index"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/plugins/plugin_registry_export/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\plugins\\plugin_registry_export\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "plugin_scaffold",
@@ -1291,8 +1407,8 @@
         "extension"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/plugins/plugin_scaffold/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\plugins\\plugin_scaffold\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "contract_drift_sentinel",
@@ -1308,9 +1424,9 @@
         "contracts",
         "drift"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/contract_drift_sentinel/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\contract_drift_sentinel\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "determinism_harness",
@@ -1326,9 +1442,9 @@
         "determinism",
         "harness"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/determinism_harness/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\determinism_harness\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "determinism_proof",
@@ -1342,9 +1458,9 @@
         "sha256",
         "audit"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/determinism_proof/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\determinism_proof\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "drift_semantic_check",
@@ -1358,9 +1474,9 @@
         "semantic",
         "cross-file"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/drift_semantic_check/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\drift_semantic_check\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "hardening_scan_fix",
@@ -1374,9 +1490,9 @@
         "hardening",
         "scan"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/hardening_scan_fix/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\hardening_scan_fix\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "policy_gatekeeper",
@@ -1392,9 +1508,9 @@
         "gate",
         "safety"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/policy_gatekeeper/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\policy_gatekeeper\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "qa_gate",
@@ -1411,8 +1527,8 @@
         "checks"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/qa/qa_gate/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\qa\\qa_gate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "repo_validate",
@@ -1429,8 +1545,8 @@
         "repo"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/qa/repo_validate/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\qa\\repo_validate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "schema_batch_validate",
@@ -1446,9 +1562,9 @@
         "schema",
         "validation"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/schema_batch_validate/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\schema_batch_validate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "spec_validate",
@@ -1465,8 +1581,8 @@
         "jsonschema"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/qa/spec_validate/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\qa\\spec_validate\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "team_topology_verify",
@@ -1480,9 +1596,9 @@
         "topology",
         "hierarchy"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/qa/team_topology_verify/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\qa\\team_topology_verify\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "bandit_router_select",
@@ -1496,9 +1612,9 @@
         "bandit",
         "model-selection"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/bandit_router_select/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\bandit_router_select\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "budget_analyze",
@@ -1512,9 +1628,9 @@
         "analytics",
         "cost"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/budget_analyze/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\budget_analyze\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "budget_router",
@@ -1529,8 +1645,8 @@
         "cost"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/routing/budget_router/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\routing\\budget_router\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "escalation_router",
@@ -1544,9 +1660,9 @@
         "escalation",
         "agents"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/escalation_router/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\escalation_router\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "model_routing_record_outcome",
@@ -1560,9 +1676,9 @@
         "outcome",
         "ledger"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/model_routing_record_outcome/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\model_routing_record_outcome\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "model_routing_select",
@@ -1575,9 +1691,9 @@
         "routing",
         "model-selection"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/model_routing_select/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\model_routing_select\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "route_autotune_suggest",
@@ -1591,9 +1707,9 @@
         "autotune",
         "optimization"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/route_autotune_suggest/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\route_autotune_suggest\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "route_profile_patch_pack",
@@ -1607,9 +1723,9 @@
         "profile",
         "patch"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/route_profile_patch_pack/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\route_profile_patch_pack\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "route_profile_update",
@@ -1623,9 +1739,9 @@
         "profile",
         "config"
       ],
-      "legacy_bridge": true,
-      "manifest_path": ".claude/skills/routing/route_profile_update/manifest.json",
-      "source_root": ".claude/skills"
+      "legacy_bridge": false,
+      "manifest_path": ".claude\\skills\\routing\\route_profile_update\\manifest.json",
+      "source_root": ".claude\\skills"
     },
     {
       "name": "security_redactor",
@@ -1642,8 +1758,8 @@
         "evidence"
       ],
       "legacy_bridge": false,
-      "manifest_path": ".claude/skills/security/security_redactor/manifest.json",
-      "source_root": ".claude/skills"
+      "manifest_path": ".claude\\skills\\security\\security_redactor\\manifest.json",
+      "source_root": ".claude\\skills"
     }
   ]
 }

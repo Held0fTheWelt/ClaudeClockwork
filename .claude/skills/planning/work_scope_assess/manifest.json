@@ -19,6 +19,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "work_scope_assess"
+    "legacy_bridge": false
   }
 }

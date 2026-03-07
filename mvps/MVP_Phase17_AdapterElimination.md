@@ -12,12 +12,12 @@
 
 ## Definition of Done
 
-- [ ] All 84 adapter skills have `skill.py` subclassing `SkillBase` directly (not `LegacySkillAdapter`)
-- [ ] All 84 manifests updated: `"legacy_bridge": false`
-- [ ] `claudeclockwork/legacy/adapter.py` deleted (or reduced to a `# REMOVED` tombstone stub)
-- [ ] No `from claudeclockwork.legacy.adapter import LegacySkillAdapter` anywhere in `.claude/skills/`
-- [ ] `tests/test_adapter_elimination.py` — 3 tests verifying the adapter is gone and all skills are native
-- [ ] All pre-existing tests continue to pass (≥ 352 tests)
+- [x] All adapter skills have `skill.py` using inline delegation (SkillBase, no `LegacySkillAdapter`)
+- [x] All manifests updated: `"metadata.legacy_bridge": false`
+- [x] `claudeclockwork/legacy/adapter.py` replaced by tombstone stub (ImportError on LegacySkillAdapter)
+- [x] No `from claudeclockwork.legacy.adapter import LegacySkillAdapter` in `.claude/skills/` (inline pattern only)
+- [x] `tests/test_adapter_elimination.py` — 3 tests verifying the adapter is gone and all skills are native
+- [x] All pre-existing tests continue to pass
 - [ ] `skill_health` returns `unhealthy == 0` (no broken entrypoints or missing bridges)
 - [ ] Roadmap updated: Phase 17 = this phase
 

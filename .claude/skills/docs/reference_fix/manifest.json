@@ -21,6 +21,6 @@
   "inputs": {},
   "outputs": {},
   "metadata": {
-    "legacy_bridge": "reference_fix"
+    "legacy_bridge": false
   }
 }
