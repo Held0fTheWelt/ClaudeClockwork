@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] CLI commands: search/info/install/update/uninstall
-- [ ] Strict mode policies per project exist
-- [ ] Install/update hooks validate hash/sign + tests
-- [ ] Tests cover flows deterministically
-- [ ] All existing tests pass
+- [x] CLI commands: search/info/install/update/uninstall
+- [x] Strict mode policies per project exist
+- [x] Install/update hooks validate hash/sign + tests
+- [x] Tests cover flows deterministically
+- [x] All existing tests pass
 
 ---

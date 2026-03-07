@@ -58,6 +58,20 @@ def main() -> int:
     ops_sub.add_parser("graph", help="Dependency graph (Phase 57)")
     impact_p = ops_sub.add_parser("impact", help="Impact analysis")
     impact_p.add_argument("--node", default="root", help="Node id")
+    plugin_p = subparsers.add_parser("plugin", help="Marketplace UX (Phase 61)")
+    plugin_sub = plugin_p.add_subparsers(dest="plugin_command")
+    search_p = plugin_sub.add_parser("search", help="Search plugins")
+    search_p.add_argument("--query", default="")
+    info_p = plugin_sub.add_parser("info", help="Plugin info")
+    info_p.add_argument("plugin_id", nargs="?", default="")
+    install_p = plugin_sub.add_parser("install", help="Install plugin")
+    install_p.add_argument("plugin_id", nargs="?", default="")
+    install_p.add_argument("--bundle", default="")
+    update_p = plugin_sub.add_parser("update", help="Update plugin")
+    update_p.add_argument("plugin_id", nargs="?", default="")
+    update_p.add_argument("--bundle", default="")
+    uninstall_p = plugin_sub.add_parser("uninstall", help="Uninstall plugin")
+    uninstall_p.add_argument("plugin_id", nargs="?", default="")
     args = parser.parse_args()
 
     project_root = Path(args.project_root).resolve()
@@ -82,6 +96,28 @@ def main() -> int:
         result = run_migrations(cfg_path, reg, target_version=2, dry_run=not getattr(args, "apply", False))
         print(json.dumps(result, indent=2))
         return 0 if not result.get("error") else 1
+
+    if args.command == "plugin":
+        from claudeclockwork.cli.plugin_marketplace import plugin_search, plugin_info, plugin_install, plugin_update, plugin_uninstall
+        pc = getattr(args, "plugin_command", None)
+        pid = getattr(args, "plugin_id", "") or ""
+        if pc == "search":
+            out = plugin_search(project_root, getattr(args, "query", "") or "")
+        elif pc == "info":
+            out = plugin_info(project_root, pid)
+        elif pc == "install":
+            bundle = getattr(args, "bundle", "") or ""
+            out = plugin_install(project_root, pid, bundle) if pid and bundle else {"ok": False, "errors": ["plugin_id and --bundle required"]}
+        elif pc == "update":
+            bundle = getattr(args, "bundle", "") or ""
+            out = plugin_update(project_root, pid, bundle) if pid and bundle else {"ok": False, "errors": ["plugin_id and --bundle required"]}
+        elif pc == "uninstall":
+            out = plugin_uninstall(project_root, pid)
+        else:
+            print(json.dumps({"error": "unknown plugin command", "usage": "plugin search|info|install|update|uninstall"}))
+            return 1
+        print(json.dumps(out, indent=2))
+        return 0
 
     if args.command == "ops":
         from claudeclockwork.cli.ops import run_ops_bundles, run_ops_plugins, run_ops_budget, run_ops_cache
