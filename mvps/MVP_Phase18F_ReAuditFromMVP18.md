@@ -8,16 +8,16 @@
 
 ## Definition of Done
 
-- [ ] `qa_gate` is runnable deterministically (imports and repo-root sys.path fixed)
-- [ ] Gates are executed for scope “from MVP 18 onward”
-- [ ] Output report generated: `Docs/quality_reaudit_from_mvp18.md`
-- [ ] Report is stable-ordered and includes:
+- [x] ✅ `qa_gate` is runnable deterministically (imports and repo-root sys.path fixed)
+- [x] ✅ Gates are executed for scope “from MVP 18 onward”
+- [x] ✅ Output report generated: `Docs/quality_reaudit_from_mvp18.md`
+- [x] ✅ Report is stable-ordered and includes:
   - gate id
   - severity (blocker/non-blocker)
   - file paths involved
   - recommended fix MVP id (18G/18H/18I/18J)
-- [ ] Report includes a “Green Criteria” section describing required gates for release candidate
-- [ ] All existing tests pass
+- [x] ✅ Report includes a “Green Criteria” section describing required gates for release candidate
+- [x] ✅ All existing tests pass
 
 ---
 

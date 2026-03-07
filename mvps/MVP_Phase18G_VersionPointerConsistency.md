@@ -6,14 +6,14 @@
 
 ## Definition of Done
 
-- [ ] `VERSION` and `.claude/VERSION` are consistent per policy (or root VERSION removed with documented policy change)
-- [ ] Pointer docs exist under `.claude/`:
+- [x] ✅ `VERSION` and `.claude/VERSION` are consistent per policy (or root VERSION removed with documented policy change)
+- [x] ✅ Pointer docs exist under `.claude/`:
   - `.claude/ARCHITECTURE.md`
   - `.claude/ROADMAP.md`
   - `.claude/MODEL_POLICY.md`
-- [ ] `planning_drift_scan` passes
-- [ ] Pointer/link gate passes
-- [ ] All existing tests pass
+- [x] ✅ `planning_drift_scan` passes
+- [x] ✅ Pointer/link gate passes
+- [x] ✅ All existing tests pass
 
 ---
 

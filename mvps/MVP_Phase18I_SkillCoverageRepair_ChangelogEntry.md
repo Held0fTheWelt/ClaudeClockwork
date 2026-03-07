@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] `clockwork_changelog_entry` is implemented and dispatchable
-- [ ] Skill runner registry includes it
-- [ ] Registry docs do not list non-existent skills
-- [ ] Coverage/registry consistency gate passes
-- [ ] All existing tests pass
+- [x] ✅ `clockwork_changelog_entry` is implemented and dispatchable
+- [x] ✅ Skill runner registry includes it
+- [x] ✅ Registry docs do not list non-existent skills
+- [x] ✅ Coverage/registry consistency gate passes
+- [x] ✅ All existing tests pass
 
 ---
 

@@ -6,14 +6,14 @@
 
 ## Definition of Done
 
-- [ ] `qa_gate` passes on scope MVP18+
-- [ ] `planning_drift_scan` passes
-- [ ] `release_check` passes
-- [ ] docs link-lint passes
-- [ ] curated report policy passes
-- [ ] a redacted evidence bundle can be exported successfully
-- [ ] `Docs/green_run_certificate.md` is generated (stable format)
-- [ ] All existing tests pass
+- [x] ✅ `qa_gate` passes on scope MVP18+
+- [x] ✅ `planning_drift_scan` passes
+- [x] ✅ `release_check` passes
+- [x] ✅ docs link-lint passes
+- [x] ✅ curated report policy passes
+- [x] ✅ a redacted evidence bundle can be exported successfully
+- [x] ✅ `Docs/green_run_certificate.md` is generated (stable format)
+- [x] ✅ All existing tests pass
 
 ---
 

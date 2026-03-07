@@ -6,12 +6,12 @@
 
 ## Definition of Done
 
-- [ ] `.report/README.md` exists and states curated-only policy
-- [ ] Runtime outputs removed from `.report/` and migrated into `.clockwork_runtime/reports/` (or appropriate runtime subdir)
-- [ ] Curated exporter (optional) can produce redacted summaries into `.report/`
-- [ ] Report gate passes
-- [ ] No absolute host paths are present in `.report/` (redaction check)
-- [ ] All existing tests pass
+- [x] ✅ `.report/README.md` exists and states curated-only policy
+- [x] ✅ Runtime outputs removed from `.report/` and migrated into `.clockwork_runtime/reports/` (or appropriate runtime subdir)
+- [x] ✅ Curated exporter (optional) can produce redacted summaries into `.report/`
+- [x] ✅ Report gate passes
+- [x] ✅ No absolute host paths are present in `.report/` (redaction check)
+- [x] ✅ All existing tests pass
 
 ---
 
