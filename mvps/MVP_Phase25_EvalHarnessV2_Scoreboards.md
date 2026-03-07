@@ -8,11 +8,11 @@
 
 ## Definition of Done
 
-- [ ] Golden suites exist for at least 2 capabilities (e.g. embeddings + ASR)
-- [ ] Scoreboard generator exists (JSON + Markdown summary)
-- [ ] Trend tracking exists (p50/p95 latency, failure rates, quality proxies)
-- [ ] CI gate blocks defined regressions (threshold-based)
-- [ ] All existing tests pass
+- [x] Golden suites exist for at least 2 capabilities (e.g. embeddings + ASR)
+- [x] Scoreboard generator exists (JSON + Markdown summary)
+- [x] Trend tracking exists (p50/p95 latency, failure rates, quality proxies)
+- [x] CI gate blocks defined regressions (threshold-based)
+- [x] All existing tests pass
 
 ---
 
