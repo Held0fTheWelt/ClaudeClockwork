@@ -12,12 +12,12 @@
 
 ## Definition of Done
 
-- [ ] Cost model exists (time, GPU minutes, memory hints)
-- [ ] Cache-aware planning exists (prefer nodes with existing CAS inputs/outputs)
-- [ ] Worker-aware scheduling exists (choose worker based on capability + load + locality)
-- [ ] Budget profiles enforce constraints deterministically
-- [ ] Regression gates exist for cost/perf (latency and cost budgets)
-- [ ] All existing tests pass
+- [x] Cost model exists (time, GPU minutes, memory hints)
+- [x] Cache-aware planning exists (prefer nodes with existing CAS inputs/outputs)
+- [x] Worker-aware scheduling exists (choose worker based on capability + load + locality)
+- [x] Budget profiles enforce constraints deterministically
+- [x] Regression gates exist for cost/perf (latency and cost budgets)
+- [x] All existing tests pass
 
 ---
 
