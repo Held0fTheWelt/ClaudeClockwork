@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] Cost telemetry schema + collection exists
-- [ ] Offline calibration job exists (deterministic)
-- [ ] Validation compares predicted vs observed
-- [ ] Cost regression gate exists
-- [ ] All existing tests pass
+- [x] Cost telemetry schema + collection exists
+- [x] Offline calibration job exists (deterministic)
+- [x] Validation compares predicted vs observed
+- [x] Cost regression gate exists
+- [x] All existing tests pass
 
 ---
