@@ -6,9 +6,9 @@
 
 ## Definition of Done
 
-- [ ] Unit/integration/e2e structure exists
-- [ ] Deterministic stubs exist
-- [ ] PR vs nightly strategy implemented
-- [ ] All existing tests pass
+- [x] Unit/integration/e2e structure exists
+- [x] Deterministic stubs exist
+- [x] PR vs nightly strategy implemented
+- [x] All existing tests pass
 
 ---

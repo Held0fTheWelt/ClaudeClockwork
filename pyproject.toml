@@ -28,3 +28,11 @@ clockwork = "claudeclockwork.cli:main"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["claudeclockwork*"]
+
+[tool.pytest.ini_options]
+markers = [
+    "unit: fast unit tests (no I/O), run on every PR",
+    "integration: multi-component tests, run on PR or nightly",
+    "e2e: end-to-end pipeline/CLI, run on nightly",
+]
+testpaths = ["tests"]
