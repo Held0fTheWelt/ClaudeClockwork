@@ -8,12 +8,12 @@
 
 ## Definition of Done
 
-- [ ] A Capability Policy extension exists for LocalAI tool invocations
-- [ ] All LocalAI capabilities have parameter schemas and validation
-- [ ] Strict allowlists for external command execution exist (no arbitrary shell)
-- [ ] Resource limits enforced (timeouts, max file size, concurrency)
-- [ ] Complete audit log for tool invocations exists (runtime root)
-- [ ] All existing tests pass
+- [x] A Capability Policy extension exists for LocalAI tool invocations
+- [x] All LocalAI capabilities have parameter schemas and validation
+- [x] Strict allowlists for external command execution exist (no arbitrary shell)
+- [x] Resource limits enforced (timeouts, max file size, concurrency)
+- [x] Complete audit log for tool invocations exists (runtime root)
+- [x] All existing tests pass
 
 ---
 
