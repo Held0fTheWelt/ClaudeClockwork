@@ -236,6 +236,7 @@ Hardware: RTX 3080 (10 GB VRAM) for ≤14b GPU models; 7950X3D / 64 GB DDR5 for 
 ## Key Governance Rules
 
 - **No silent architecture changes.** Core decisions require user confirmation.
+- **File lifecycle is enforced.** A file that has lost its context — replaced, superseded, orphaned, or duplicate — must not exist. See `.claude/governance/file_lifecycle.md`. Run `dead_file_scan` before each phase.
 - **File ownership is strict.** No agent edits another agent's files — use Domain Handoff via Team Lead.
 - **Team Lead does not write code or files directly** — delegates all implementation via Task tool.
 - **Governance Trinity:** `specialists.md` + `execution_protocol.md` + `.project/MEMORY.md` must always be updated together when a new agent is integrated.
