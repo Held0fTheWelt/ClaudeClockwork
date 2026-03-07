@@ -8,15 +8,15 @@
 
 ## Definition of Done
 
-- [ ] Project indexer exists (docs, manifests, contracts, runbooks)
-- [ ] Local embeddings + vector index exist (per project) OR keyword index fallback
-- [ ] Query tools exist:
+- [x] Project indexer exists (docs, manifests, contracts, runbooks)
+- [x] Local embeddings + vector index exist (per project) OR keyword index fallback
+- [x] Query tools exist:
   - `kb.search`
   - `kb.explain` (returns citations to files/paths)
-- [ ] Index updates are incremental and deterministic
-- [ ] Governance: indexer respects boundaries and ignores runtime artifacts by default
-- [ ] Tests cover indexing + retrieval determinism
-- [ ] All existing tests pass
+- [x] Index updates are incremental and deterministic
+- [x] Governance: indexer respects boundaries and ignores runtime artifacts by default
+- [x] Tests cover indexing + retrieval determinism
+- [x] All existing tests pass
 
 ---
 
