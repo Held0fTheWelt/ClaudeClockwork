@@ -8,15 +8,15 @@
 
 ## Definition of Done
 
-- [ ] Workspace concept exists (config + discovery)
-- [ ] Each project has:
+- [x] Workspace concept exists (config + discovery)
+- [x] Each project has:
   - its own runtime root
   - its own router profiles
   - its own telemetry streams
-- [ ] Cross-project references are via exported bundles (Phase 23), not file paths
-- [ ] Boundary enforcement prevents writes outside the active project root
-- [ ] Tests cover: workspace switching + boundary enforcement
-- [ ] All existing tests pass
+- [x] Cross-project references are via exported bundles (Phase 23), not file paths
+- [x] Boundary enforcement prevents writes outside the active project root
+- [x] Tests cover: workspace switching + boundary enforcement
+- [x] All existing tests pass
 
 ---
 
