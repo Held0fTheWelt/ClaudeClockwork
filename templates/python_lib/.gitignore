@@ -1,0 +1,6 @@
+.clockwork_runtime/
+__pycache__/
+*.pyc
+.eggs/
+dist/
+*.egg-info/

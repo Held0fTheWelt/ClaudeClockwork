@@ -8,17 +8,17 @@
 
 ## Definition of Done
 
-- [ ] `clockwork new` (or equivalent) creates a new project from templates
-- [ ] Workspace dashboard exists (CLI/TUI) showing:
+- [x] `clockwork new` (or equivalent) creates a new project from templates
+- [x] Workspace dashboard exists (CLI/TUI) showing:
   - active project
   - runtime root
   - recent runs + failures
   - current version
-- [ ] Guardrails exist: clear warnings before modifying non-active project
-- [ ] Workspace import wizard exists for existing repos (minimal)
-- [ ] Documentation exists (templates, dashboard, import)
-- [ ] Tests cover template creation + workspace switching guardrails
-- [ ] All existing tests pass
+- [x] Guardrails exist: clear warnings before modifying non-active project
+- [x] Workspace import wizard exists for existing repos (minimal)
+- [x] Documentation exists (templates, dashboard, import)
+- [x] Tests cover template creation + workspace switching guardrails
+- [x] All existing tests pass
 
 ---
 
