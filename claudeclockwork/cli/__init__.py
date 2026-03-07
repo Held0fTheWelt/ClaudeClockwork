@@ -48,6 +48,13 @@ def main() -> int:
     migrate_p = subparsers.add_parser("migrate", help="Config/schema migration (Phase 54)")
     migrate_p.add_argument("--dry-run", action="store_true", help="Do not write")
     migrate_p.add_argument("--apply", action="store_true", help="Write migrated config")
+    ops_p = subparsers.add_parser("ops", help="Operator toolkit (Phase 55)")
+    ops_sub = ops_p.add_subparsers(dest="ops_command")
+    ops_sub.add_parser("bundles", help="List imported bundles")
+    ops_sub.add_parser("plugins", help="List plugins")
+    ops_sub.add_parser("budget", help="Show budget profile")
+    ops_sub.add_parser("cache", help="Cache stats")
+    ops_sub.add_parser("tui", help="Optional minimal TUI")
     args = parser.parse_args()
 
     project_root = Path(args.project_root).resolve()
@@ -72,6 +79,26 @@ def main() -> int:
         result = run_migrations(cfg_path, reg, target_version=2, dry_run=not getattr(args, "apply", False))
         print(json.dumps(result, indent=2))
         return 0 if not result.get("error") else 1
+
+    if args.command == "ops":
+        from claudeclockwork.cli.ops import run_ops_bundles, run_ops_plugins, run_ops_budget, run_ops_cache
+        oc = getattr(args, "ops_command", None)
+        if oc == "tui":
+            print(json.dumps({"tui": "optional", "status": "not_implemented"}))
+            return 0
+        if oc == "bundles":
+            out = run_ops_bundles(project_root)
+        elif oc == "plugins":
+            out = run_ops_plugins(project_root)
+        elif oc == "budget":
+            out = run_ops_budget(project_root)
+        elif oc == "cache":
+            out = run_ops_cache(project_root)
+        else:
+            print(json.dumps({"error": "unknown ops command", "usage": "ops bundles|plugins|budget|cache|tui"}))
+            return 1
+        print(json.dumps(out, indent=2))
+        return 0
 
     if args.plugin_healthcheck:
         return _run_plugin_healthcheck(args.plugin_healthcheck, project_root)

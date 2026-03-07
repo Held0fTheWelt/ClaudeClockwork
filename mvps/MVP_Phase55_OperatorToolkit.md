@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] `clockwork ops ...` command set exists
-- [ ] Quick actions integrated (bundles, plugins, budget, cache)
-- [ ] Optional minimal TUI exists
-- [ ] Tests cover ops commands deterministically
-- [ ] All existing tests pass
+- [x] `clockwork ops ...` command set exists
+- [x] Quick actions integrated (bundles, plugins, budget, cache)
+- [x] Optional minimal TUI exists
+- [x] Tests cover ops commands deterministically
+- [x] All existing tests pass
 
 ---
