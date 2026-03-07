@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] Network transport exists (HTTP OK)
-- [ ] Token auth exists (MVP)
-- [ ] Heartbeat + capability advertisement exists
-- [ ] Dispatcher selects and dispatches deterministically (stubbed)
-- [ ] Tests use deterministic network stubs
-- [ ] All existing tests pass
+- [x] Network transport exists (HTTP OK)
+- [x] Token auth exists (MVP)
+- [x] Heartbeat + capability advertisement exists
+- [x] Dispatcher selects and dispatches deterministically (stubbed)
+- [x] Tests use deterministic network stubs
+- [x] All existing tests pass
 
 ---
