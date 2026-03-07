@@ -12,12 +12,12 @@ based on task features, budget, and learned success profiles.
 
 ## Definition of Done
 
-- [ ] Router v3 supports multi-armed bandit selection for model/tool choices
-- [ ] Budget toggle exists (fast/cheap vs strong/accurate) and affects decisions deterministically
-- [ ] Feature extraction exists (task size, modality, risk)
-- [ ] Feedback loop updates profiles from eval + manual rating
-- [ ] Router decisions are explainable (returns a rationale payload)
-- [ ] All existing tests pass
+- [x] Router v3 supports multi-armed bandit selection for model/tool choices
+- [x] Budget toggle exists (fast/cheap vs strong/accurate) and affects decisions deterministically
+- [x] Feature extraction exists (task size, modality, risk)
+- [x] Feedback loop updates profiles from eval + manual rating
+- [x] Router decisions are explainable (returns a rationale payload)
+- [x] All existing tests pass
 
 ---
 
