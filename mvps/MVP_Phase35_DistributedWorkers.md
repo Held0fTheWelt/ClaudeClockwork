@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] Worker protocol exists (job envelope schema + signed/hashed payload)
-- [ ] A local “worker runner” exists (same host) to validate protocol end-to-end
-- [ ] Artifact shipping exists via bundles (redacted where required)
-- [ ] Idempotency keys prevent duplicate execution
-- [ ] Retry/timeout semantics are deterministic
-- [ ] Tests cover: envelope validation, idempotency, retry, artifact upload/download
-- [ ] All existing tests pass
+- [x] Worker protocol exists (job envelope schema + signed/hashed payload)
+- [x] A local “worker runner” exists (same host) to validate protocol end-to-end
+- [x] Artifact shipping exists via bundles (redacted where required)
+- [x] Idempotency keys prevent duplicate execution
+- [x] Retry/timeout semantics are deterministic
+- [x] Tests cover: envelope validation, idempotency, retry, artifact upload/download
+- [x] All existing tests pass
 
 ---
 
