@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] Registry index format exists
-- [ ] Publish workflow exists (test → sign/hash → index update)
-- [ ] Bundle validator exists
-- [ ] Docs exist for authors/operators
-- [ ] CI validates plugin submission bundles deterministically
-- [ ] All existing tests pass
+- [x] Registry index format exists
+- [x] Publish workflow exists (test → sign/hash → index update)
+- [x] Bundle validator exists
+- [x] Docs exist for authors/operators
+- [x] CI validates plugin submission bundles deterministically
+- [x] All existing tests pass
 
 ---
