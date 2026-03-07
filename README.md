@@ -48,10 +48,10 @@ Ollama is recommended for L2+ tasks (architecture decisions, new modules). If un
 ### 3. Run a Skill
 
 ```bash
-# Legacy runner (97 skills)
+# Legacy runner (97+ skills in .claude/tools/skills/)
 python3 .claude/tools/skills/skill_runner.py <skill_name> [args]
 
-# Manifest CLI (34 skills with registry discovery)
+# Manifest CLI (104 manifest skills, registry discovery)
 python3 -m claudeclockwork.cli --skill-id <skill_name> --inputs '{}'
 ```
 
@@ -205,8 +205,8 @@ Clockwork includes **90+ deterministic skills** — tool-first micro-workflows t
 
 | System | Entry Point | Skills | Description |
 |---|---|---|---|
-| Legacy Runner | `python3 .claude/tools/skills/skill_runner.py <skill>` | 97 | Direct function dispatch |
-| Manifest CLI | `python3 -m claudeclockwork.cli --skill-id <skill>` | 34 | Registry-discovered manifests |
+| Legacy Runner | `python3 .claude/tools/skills/skill_runner.py <skill>` | 97+ | Direct function dispatch |
+| Manifest CLI | `python3 -m claudeclockwork.cli --skill-id <skill>` | 104 | Registry-discovered manifests |
 
 ---
 
@@ -266,24 +266,28 @@ All inter-agent communication uses typed JSON specs (~95 schemas in `.claude/con
 
 Clockwork development follows a phased MVP approach:
 
-| Phase | Focus |
-|---|---|
-| 0 | Foundation Cleanup |
-| 1 | Manifest Hardening |
-| 2 | Wrapper Wave 3 |
-| 3 | Native Core Services |
-| 4 | Plugin Runtime |
-| 5 | MCP Layer |
-| 6 | CI Eval Gates |
-| 7 | Wrapper Wave 4 |
-| 8 | Code Hygiene |
-| 9 | Test Hardening |
-| 10 | Compaction |
-| 11 | Legacy Doc Migration |
-| 12 | Duplicate Elimination |
-| 13-15 | Greenfield, Native Skills, Skill Discovery |
+| Phase | Focus | Description |
+|---|---|---|
+| 0 | Foundation Cleanup | Base repo and tooling cleanup |
+| 1 | Manifest Hardening | Manifest validation and consistency |
+| 2 | Wrapper Wave 3 | CLI/runtime wrapper improvements |
+| 3 | Native Core Services | SkillBase, ExecutionContext, core models |
+| 4 | Plugin Runtime | Hot-reload plugin system |
+| 5 | MCP Layer | Model Context Protocol integration |
+| 6 | CI Eval Gates | Eval format (D6.7), baseline gates |
+| 7 | Wrapper Wave 4 | Further wrapper and dispatch improvements |
+| 8 | Code Hygiene | Cleanup scans, markers, orphans |
+| 9 | Test Hardening | Test coverage and stability |
+| 10 | Compaction | Plan/document compaction |
+| 11 | Legacy Doc Migration | Docs/ → .project/Docs/ migration |
+| 12 | Duplicate Elimination | Remove duplicate artifacts |
+| 13 | Greenfield Update | Greenfield project alignment |
+| 14 | Native Skills | Promote 6 high-value skills to native SkillBase |
+| 15 | Obsolete Data Prune | Remove superseded/orphaned files; `dead_file_scan` skill; `file_lifecycle` governance |
+| 16 | Skill Discovery Wave | 6 new native skills: git_summary, test_run, skill_health, changelog_generate, dependency_graph, config_validate |
+| 17 | Adapter Elimination | Promote all 84 LegacySkillAdapter skills to native; remove LegacySkillAdapter entirely |
 
-See `mvps/` directory for detailed phase documentation.
+See `mvps/` directory for detailed phase documentation. Phases 15 and 16 are complete; Phase 17 is in progress.
 
 ---
 
@@ -389,37 +393,39 @@ python3 .claude/tools/skills/skill_runner.py doc_review '{"target_path": "docs/"
 
 ## Planned / Not Yet Implemented Skills
 
-The following skills are planned in the MVP roadmap but not yet fully implemented:
+### Phase 17 — Adapter Elimination (Current Focus)
 
-### Phase 14 — Native Skill Promotion (Legacy → Native)
+**Goal:** Promote all 84 remaining `LegacySkillAdapter` skills to native `SkillBase` implementations and remove the `LegacySkillAdapter` class entirely.
 
-These skills exist as legacy implementations but need native `SkillBase` promotion:
-
-| Skill | Description | Status |
+| Metric | Baseline (v18.3) | Target (v19.0) |
 |---|---|---|
-| `capability_map_build` | Build map of available capabilities | Legacy exists, native pending |
-| `skill_registry_search` | Search skills by keywords | Legacy exists, native pending |
-| `qa_gate` | PR-blocking QA checks | Legacy exists, native pending |
-| `eval_run` | Eval harness runner (D6.7 format) | Legacy exists, native pending |
-| `budget_router` | Deterministic cost/latency routing | Legacy exists, native pending |
-| `plan_lint` | Plan document linter | Legacy exists, native pending |
+| Manifest skills | 104 | 104 |
+| Native (SkillBase) | 20 | 104 |
+| Legacy adapters | 84 | 0 |
 
-**Goal:** Move from `LegacySkillAdapter` to proper `SkillBase` implementations in `claudeclockwork/core/`.
+**Definition of done:** Every manifest skill subclasses `SkillBase` directly; `legacy_bridge: false` in all manifests; `claudeclockwork/legacy/adapter.py` removed; `skill_health` returns zero unhealthy skills.
 
-### Phase 15 — Skill Discovery Wave (New Skills)
+See [mvps/MVP_Phase17_AdapterElimination.md](mvps/MVP_Phase17_AdapterElimination.md) for migration pattern and file list.
 
-These are entirely new skills that do not exist yet:
+### Phase 14 — Native Skill Promotion (Partial)
 
-| Skill | Category | Description |
-|---|---|---|
-| `git_summary` | ops | Structured git context (log, diff, blame) |
-| `test_run` | ops | Pytest wrapper with pass/fail/coverage results |
-| `skill_health` | ops | Consolidated health check across manifests |
-| `changelog_generate` | docs | Auto-generate CHANGELOG from git log |
-| `dependency_graph` | analysis | Map skill call dependencies |
-| `config_validate` | ops | Validate JSON/YAML config files |
+These skills may still use `LegacySkillAdapter`; Phase 14 promoted 6 to native. Remaining legacy-backed skills are migrated in Phase 17.
 
-**Goal:** Close gaps in git-aware summarization, automated test execution, and config validation.
+| Skill | Description |
+|---|---|
+| `capability_map_build` | Build map of available capabilities |
+| `skill_registry_search` | Search skills by keywords |
+| `qa_gate` | PR-blocking QA checks |
+| `eval_run` | Eval harness runner (D6.7 format) |
+| `budget_router` | Deterministic cost/latency routing |
+| `plan_lint` | Plan document linter |
+
+### Completed Phases (Skills Added)
+
+| Phase | Skills / outcome |
+|---|---|
+| **15 — Obsolete Data Prune** | `dead_file_scan` (orphan/superseded detection); governance rule `.claude/governance/file_lifecycle.md` |
+| **16 — Skill Discovery** | `git_summary`, `test_run`, `skill_health`, `changelog_generate`, `dependency_graph`, `config_validate` (all native) |
 
 ### Other Planned Improvements
 
