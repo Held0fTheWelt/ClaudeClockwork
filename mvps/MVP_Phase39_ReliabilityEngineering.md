@@ -8,13 +8,13 @@
 
 ## Definition of Done
 
-- [ ] Reliability test suite exists and runs deterministically in CI
-- [ ] Chaos scenarios exist (timeouts, worker kill, CAS corruption, network stub failures)
-- [ ] Recovery strategies exist (retry policies, fallback to local worker, cache bypass)
-- [ ] End-to-end rollback works for a failed work graph run (snapshot + restore)
-- [ ] SLO thresholds are defined and enforced (failure rate, p95 latency budgets)
-- [ ] Incident bundles capture enough info to reproduce (redacted)
-- [ ] All existing tests pass
+- [x] Reliability test suite exists and runs deterministically in CI
+- [x] Chaos scenarios exist (timeouts, worker kill, CAS corruption, network stub failures)
+- [x] Recovery strategies exist (retry policies, fallback to local worker, cache bypass)
+- [x] End-to-end rollback works for a failed work graph run (snapshot + restore)
+- [x] SLO thresholds are defined and enforced (failure rate, p95 latency budgets)
+- [x] Incident bundles capture enough info to reproduce (redacted)
+- [x] All existing tests pass
 
 ---
 
