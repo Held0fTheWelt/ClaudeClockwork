@@ -2,7 +2,7 @@
 
 **Baseline:** v17.7.0 — 94 legacy skills, 34 manifest skills (28 adapters + 6 native), 5 passing tests
 **Current:** v18.3 — 104 manifest skills (93 adapters + 11 native), 376 passing tests, MCP layer, full plugin runtime, 7 CI gates, file lifecycle enforced
-**Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md · VERIFY audit 2026-03-06 · NEW_MVPS.md
+**Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md
 **Updated:** 2026-03-07
 
 ---
@@ -50,7 +50,7 @@
 
 63 legacy skills have **no manifest** and are **only reachable via `skill_runner.py`**, not via `python3 -m claudeclockwork.cli`. Migration is tracked in `Docs/skill_system_legacy_migration_matrix.md`.
 
-### Known drift (from VERIFY 2026-03-06)
+### Known drift (audit 2026-03-06)
 
 | ID | Issue | Blocking? |
 |----|-------|-----------|
@@ -77,7 +77,7 @@
 | Rename "Oodle Tier" → "Local Model Tier" in governance + skill code | High | Implementation Agent |
 | Update `.claude/INDEX.md` stale path references | Medium | Documentation Agent |
 | Remove stale `llamacode` import attempts in `bandit_router_select.py`, `escalation_router.py` | Medium | Implementation Agent |
-| Populate `.project/MEMORY.md` with findings from VERIFY audit | Medium | Team Lead |
+| Populate `.project/MEMORY.md` with findings from 2026-03-06 audit | Medium | Team Lead |
 | Clarify `Docs/` vs `.project/Docs/` — consolidate or document split | Low | Team Lead |
 | Remove or update `SRC_ORIGIN_RULE.md` to match actual `claudeclockwork/` package | Low | Implementation Agent |
 

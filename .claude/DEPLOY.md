@@ -75,7 +75,6 @@ The following directories and files exist only for Clockwork development and mus
 | `claudeclockwork/` | Install via pip — do not copy raw source |
 | `CLAUDE.md` | Replace with a project-specific version |
 | `NEW_MVPS.md` | Clockwork planning artifact |
-| `VERIFY.md` | Clockwork audit output |
 
 ---
 

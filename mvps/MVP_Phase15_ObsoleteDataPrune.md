@@ -30,7 +30,7 @@
 | `mvps/archive/MVP_Chain_Legacy.md` | Check if any sections are still live or all content is indexed |
 | `roadmaps/archive/` | Verify every file is a pointer stub, not a live document |
 | `.claude-development/` | Verify ARCHIVED header is present; no file has a live CLAUDE.md reference |
-| Root-level stale files | `NEW_MVPS.md`, `VERIFY.md`, `SRC_ORIGIN_RULE.md` — verify if superseded |
+| Root-level stale files | `NEW_MVPS.md`, `VERIFY.md`, `SRC_ORIGIN_RULE.md` — deleted (superseded) |
 | `.claude/governance/deep_oodle_mode.md` | Oodle naming is retired; verify if entire file is stale |
 | `.claude/governance/no_llm_mode.md` | Check if still referenced or purely historical |
 | `validation_runs/` | Transient outputs — delete all contents (keep directory); never commit |

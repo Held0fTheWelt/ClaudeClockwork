@@ -28,7 +28,7 @@
 
 - **Project language:** English-only. All project-facing artifacts (code, manifests, docs, agent definitions, governance, skill READMEs) must be in English.
 - **No big-bang rewrites.** Incremental phases: manifest hardening → wrapper waves → native rewrites → plugin runtime → MCP → CI gates.
-- **VERIFY.md is the quality standard.** Run after each significant phase. Output goes to `.project/Docs/Review/`.
+- **Quality standard:** Run `qa_gate` + full test suite after each significant phase. Review output goes to `.project/Docs/Review/`.
 - **Roadmap lives in `/roadmaps/`.** MVP descriptions live in `/mvps/`.
 
 ---
