@@ -23,7 +23,7 @@
 | 9 | Test Hardening | **Complete** | [MVP_Phase9](../mvps/MVP_Phase9_TestHardening.md) |
 | 10 | Compaction & Pluggability | **Complete** | [MVP_Phase10](../mvps/MVP_Phase10_Compaction.md) |
 | 11 | Legacy Doc Migration | **Complete** | [MVP_Phase11](../mvps/MVP_Phase11_LegacyDocMigration.md) |
-| 12 | Duplicate Elimination | Planned | [MVP_Phase12](../mvps/MVP_Phase12_DuplicateElimination.md) |
+| 12 | Duplicate Elimination | **Complete** | [MVP_Phase12](../mvps/MVP_Phase12_DuplicateElimination.md) |
 | 13 | Greenfield Content Update | **Complete** | [MVP_Phase13](../mvps/MVP_Phase13_GreenfieldUpdate.md) |
 | 14 | Native Skill Promotion | Planned | [MVP_Phase14](../mvps/MVP_Phase14_NativeSkills.md) |
 | 15 | Skill Discovery Wave | Planned | [MVP_Phase15](../mvps/MVP_Phase15_SkillDiscovery.md) |

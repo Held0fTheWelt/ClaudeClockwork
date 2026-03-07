@@ -13,14 +13,14 @@
 
 ## Definition of Done
 
-- [ ] `.claude/ARCHITECTURE.md` pointer deleted; root `ARCHITECTURE.md` is the single architecture reference
-- [ ] `.claude/ROADMAP.md` pointer deleted; root `ROADMAP.md` is the single roadmap reference
-- [ ] `.claude/MODEL_POLICY.md` pointer deleted; content merged into root `MODEL_POLICY.md`; root is canonical
-- [ ] `.claude/MEMORY.md` pointer deleted; `.project/MEMORY.md` is canonical; root `MEMORY.md` deleted (stub adds no value)
-- [ ] `.claude/QUALITY_TRACKING.md` pointer deleted; `.project/QUALITY_TRACKING.md` is canonical; root `QUALITY_TRACKING.md` deleted (stub adds no value)
-- [ ] `.claude/INDEX.md` updated — remove references to deleted pointer files
-- [ ] `CLAUDE.md` updated — "Execution Protocol: read in this order" section updated to remove `.claude/` pointer files
-- [ ] All existing tests pass
+- [X] `.claude/ARCHITECTURE.md` pointer deleted; root `ARCHITECTURE.md` is the single architecture reference
+- [X] `.claude/ROADMAP.md` pointer deleted; root `ROADMAP.md` is the single roadmap reference
+- [X] `.claude/MODEL_POLICY.md` pointer deleted; content merged into root `MODEL_POLICY.md`; root is canonical
+- [X] `.claude/MEMORY.md` pointer deleted; `.project/MEMORY.md` is canonical; root `MEMORY.md` deleted (stub adds no value)
+- [X] `.claude/QUALITY_TRACKING.md` pointer deleted; `.project/QUALITY_TRACKING.md` is canonical; root `QUALITY_TRACKING.md` deleted (stub adds no value)
+- [X] `.claude/INDEX.md` updated — remove references to deleted pointer files
+- [X] `CLAUDE.md` updated — "Execution Protocol: read in this order" section updated to remove `.claude/` pointer files
+- [X] All existing tests pass
 
 ---
 
