@@ -46,7 +46,7 @@ def run(req: dict) -> dict:
     scope_path = Path(inputs.get("scope_report_path","")).resolve()
     routing_cfg_path = Path(inputs.get("routing_config_path",".claude/config/model_routing.yaml")).resolve()
     pricing_path = Path(inputs.get("pricing_path",".claude/config/anthropic_pricing_snapshot.json")).resolve()
-    stats_path = Path(inputs.get("stats_path",".llama_runtime/brain/model_routing_stats.json")).resolve()
+    stats_path = Path(inputs.get("stats_path",".clockwork_runtime/brain/model_routing_stats.json")).resolve()
 
     if not scope_path.exists():
         return {"type":"skill_result_spec","request_id":req.get("request_id",""),"skill_id":"model_routing_select",

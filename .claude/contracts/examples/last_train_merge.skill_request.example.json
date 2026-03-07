@@ -8,7 +8,7 @@
       "artifacts/ClaudeClockwork_v17_7_dotclaude_only_AddOns_MetaForge_PATCHED.zip",
       "artifacts/ClaudeClockwork_v17_7_dotclaude_only_AddOns_MetaForge_PDFQuality_CleaningSkills_PATCHED.zip"
     ],
-    "root_out_dir": ".llama_runtime/knowledge/writes/last_train",
+    "root_out_dir": ".clockwork_runtime/knowledge/writes/last_train",
     "combined_zip_name": "combined_last_train.zip",
     "ignore_globs": [
       "**/__pycache__/**",

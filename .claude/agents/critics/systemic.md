@@ -73,7 +73,7 @@ Structural Weakness: Pattern Recognition Agent and Librarian Agent have overlapp
   (both maintain .claude/knowledge/).
 Long-Term Risk: Contradictory entries; unclear which agent decides on conflict.
 Failure Scenario: Both agents update patterns.md for the same task → diverging versions.
-Simplification: Librarian Agent takes over all .llama_runtime/knowledge/writes;
+Simplification: Librarian Agent takes over all .clockwork_runtime/knowledge/writes;
   Pattern Recognition only proposes, doesn't write itself.
 ```
 

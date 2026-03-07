@@ -81,7 +81,7 @@ def run(req: dict) -> dict:
     allow_delete = bool(inputs.get("allow_delete", False))
     on_conflict = str(inputs.get("on_conflict", "skip")).lower()  # skip|overwrite|rename
     write_report = bool(inputs.get("write_report", True))
-    report_dir = (root / (inputs.get("report_dir") or ".llama_runtime/knowledge/writes/clean_reports")).resolve()
+    report_dir = (root / (inputs.get("report_dir") or ".clockwork_runtime/knowledge/writes/clean_reports")).resolve()
 
     ops = plan_obj.get("operations", []) or []
     results = []

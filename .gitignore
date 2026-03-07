@@ -15,3 +15,7 @@ node_modules/
 validation_runs/
 validation_runs_redacted/
 *.pyc
+
+# Runtime roots (Phase 19+)
+.clockwork_runtime/
+.llama_runtime/

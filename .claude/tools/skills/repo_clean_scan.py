@@ -166,7 +166,7 @@ def run(req: dict) -> dict:
     ]
     large_file_bytes = int(inputs.get("large_file_bytes", 5_000_000))
     write_reports = bool(inputs.get("write_reports", False))
-    report_dir = Path(inputs.get("report_dir", ".llama_runtime/knowledge/writes/clean_reports")).resolve()
+    report_dir = Path(inputs.get("report_dir", ".clockwork_runtime/knowledge/writes/clean_reports")).resolve()
 
     warnings: list[str] = []
     reachable_md, debug = _build_reachability(root, entry_docs, convention_roots, exclude_dirs)

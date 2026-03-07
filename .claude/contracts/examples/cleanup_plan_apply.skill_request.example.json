@@ -3,12 +3,12 @@
   "request_id": "apply-001",
   "skill_id": "cleanup_plan_apply",
   "inputs": {
-    "plan_path": ".llama_runtime/knowledge/writes/clean_reports/cleanup_plan_*.json",
+    "plan_path": ".clockwork_runtime/knowledge/writes/clean_reports/cleanup_plan_*.json",
     "root": ".",
     "dry_run": true,
     "allow_delete": false,
     "on_conflict": "skip",
     "write_report": true,
-    "report_dir": ".llama_runtime/knowledge/writes/clean_reports"
+    "report_dir": ".clockwork_runtime/knowledge/writes/clean_reports"
   }
 }

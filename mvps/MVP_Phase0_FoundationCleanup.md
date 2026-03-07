@@ -113,7 +113,7 @@ Files:
 **File:** `.claude/INDEX.md`
 
 **Stale references to fix:**
-- `.llama_runtime/knowledge/writes/` → update to reflect `.llama_runtime/` layout
+- `.clockwork_runtime/knowledge/writes/` → update to reflect `.clockwork_runtime/` layout
 - `skills/registry.md` path implication → correct to `registry/skill_index.json`
 
 ---

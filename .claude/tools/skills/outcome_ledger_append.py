@@ -11,7 +11,7 @@ def run(req: dict) -> dict:
                 "skill_id":"outcome_ledger_append","status":"fail","outputs":{},
                 "metrics":{}, "errors":["inputs.event must be an outcome_ledger_event"], "warnings":[]}
 
-    out = Path(inputs.get("out",".llama_runtime/knowledge/outcome_ledger.jsonl"))
+    out = Path(inputs.get("out",".clockwork_runtime/knowledge/outcome_ledger.jsonl"))
     out.parent.mkdir(parents=True, exist_ok=True)
     out.open("a", encoding="utf-8").write(json.dumps(event, ensure_ascii=False) + "\n")
     return {"type":"skill_result_spec","request_id":req.get("request_id",""),

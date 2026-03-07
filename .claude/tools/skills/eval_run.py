@@ -6,7 +6,7 @@ Runs golden tests via eval_runner logic and returns a SkillResultSpec.
 
 Usage (via skill_runner):
     req["inputs"]["golden_dir"]       — path to golden test fixtures (default: .claude/eval/golden)
-    req["inputs"]["output_dir"]       — path to write results (default: .llama_runtime/eval/results)
+    req["inputs"]["output_dir"]       — path to write results (default: .clockwork_runtime/eval/results)
     req["inputs"]["skills_dir"]       — path to skill .py files (default: .claude/tools/skills)
     req["inputs"]["compare_previous"] — bool, compare against previous run (default: true)
 
@@ -75,7 +75,7 @@ def run(req: dict) -> dict:
     repo_root = _find_repo_root()
 
     golden_dir_raw = inputs.get("golden_dir", ".claude/eval/golden")
-    output_dir_raw = inputs.get("output_dir", ".llama_runtime/eval/results")
+    output_dir_raw = inputs.get("output_dir", ".clockwork_runtime/eval/results")
     skills_dir_raw = inputs.get("skills_dir", ".claude/tools/skills")
     compare_previous: bool = bool(inputs.get("compare_previous", True))
 

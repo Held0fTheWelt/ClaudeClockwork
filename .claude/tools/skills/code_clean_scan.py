@@ -20,7 +20,7 @@ MARKER_RX = [
     ("todo", re.compile(r"(?i)\btodo\b")),
     ("fixme", re.compile(r"(?i)\bfixme\b")),
 ]
-PATH_DRIFT_RX = re.compile(r"(?i)\.claude/|\.llama_runtime/validation_runs|\.claude_runtime|\.claude/\.claude")
+PATH_DRIFT_RX = re.compile(r"(?i)\.claude/|\.clockwork_runtime/validation_runs|\.claude_runtime|\.claude/\.claude")
 
 def _parse_imports(py_path: Path) -> set[str]:
     try:
@@ -72,7 +72,7 @@ def run(req: dict) -> dict:
     code_roots = [ (root / p).resolve() for p in (inputs.get("code_roots") or [".claude/tools/skills"]) ]
     entrypoints = [ (root / p).resolve() for p in (inputs.get("entrypoints") or [".claude/tools/skills/skill_runner.py"]) ]
     write_reports = bool(inputs.get("write_reports", False))
-    report_dir = (root / (inputs.get("report_dir") or ".llama_runtime/knowledge/writes/clean_reports")).resolve()
+    report_dir = (root / (inputs.get("report_dir") or ".clockwork_runtime/knowledge/writes/clean_reports")).resolve()
 
     # Map local module stems
     module_files: dict[str, Path] = {}

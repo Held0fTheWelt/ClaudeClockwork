@@ -9,4 +9,4 @@ Provide a deterministic hardening pass that finds inconsistencies and can apply 
 - Must maintain a brain store (decisions + log) to keep policy decisions stable
 
 ## Outputs
-- hardening report under `.llama_runtime/knowledge/writes/hardening/`
+- hardening report under `.clockwork_runtime/knowledge/writes/hardening/`

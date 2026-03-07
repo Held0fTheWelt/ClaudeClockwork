@@ -14,4 +14,4 @@ Benchmark tasks that define unlock criteria for each CBL rung. See Report 08 and
 
 ## Running CBL benchmarks
 
-Implementation (MVP25/MVP30) will provide a runner that loads benchmarks from this tree, executes them, and records results to `.llama_runtime/cbl/` for progression tracking.
+Implementation (MVP25/MVP30) will provide a runner that loads benchmarks from this tree, executes them, and records results to `.clockwork_runtime/cbl/` for progression tracking.

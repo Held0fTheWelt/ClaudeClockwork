@@ -60,8 +60,8 @@ def run(req: dict) -> dict:
     apply_fixes = bool(inputs.get("apply_fixes", False))
     scenarios = inputs.get("scenarios") or ["scan_inconsistencies"]
 
-    brain_path = (root / (inputs.get("brain_path") or ".llama_runtime/brain/decisions.json")).resolve()
-    brain_log_path = (root / (inputs.get("brain_log_path") or ".llama_runtime/brain/decisions.jsonl")).resolve()
+    brain_path = (root / (inputs.get("brain_path") or ".clockwork_runtime/brain/decisions.json")).resolve()
+    brain_log_path = (root / (inputs.get("brain_log_path") or ".clockwork_runtime/brain/decisions.jsonl")).resolve()
 
     findings = []
     fixes = []
@@ -85,7 +85,7 @@ def run(req: dict) -> dict:
             if not p.is_file():
                 continue
             rel = p.relative_to(root).as_posix()
-            if rel.startswith(".llama_runtime/writes/") or rel.startswith(".llama_runtime/knowledge/writes/") or rel.startswith(".claude/knowledge/-Writes/") or rel.startswith(".claude/_archive/"):
+            if rel.startswith(".clockwork_runtime/writes/") or rel.startswith(".clockwork_runtime/knowledge/writes/") or rel.startswith(".claude/knowledge/-Writes/") or rel.startswith(".claude/_archive/"):
                 continue
             if _is_junk(rel):
                 findings.append({"kind":"junk_in_repo","path":rel,"details":"Cache artifact present in tree (should be cleaned before archiving).","severity":"warn"})
@@ -113,14 +113,14 @@ def run(req: dict) -> dict:
     if "purge_oodle_refs" in scenarios:
         decide("legacy_policy.oodle", "purge_all", "User requested complete elimination of .oodle references.")
         repl = {
-            ".oodle/runtime": ".llama_runtime/writes",
+            ".oodle/runtime": ".clockwork_runtime/writes",
             ".oodle/": ".claude/",
         }
         for p in root.rglob("*"):
             if not p.is_file():
                 continue
             rel = p.relative_to(root).as_posix()
-            if rel.startswith(".llama_runtime/writes/") or rel.startswith(".llama_runtime/knowledge/writes/") or rel.startswith(".claude/knowledge/-Writes/") or rel.startswith(".claude/_archive/"):
+            if rel.startswith(".clockwork_runtime/writes/") or rel.startswith(".clockwork_runtime/knowledge/writes/") or rel.startswith(".claude/knowledge/-Writes/") or rel.startswith(".claude/_archive/"):
                 continue
             if p.suffix.lower() not in TEXT_EXT:
                 continue
@@ -246,7 +246,7 @@ def run(req: dict) -> dict:
         "limitations": DEFAULT_LIMITATIONS
     }
 
-    out_dir = root/".llama_runtime/writes/hardening"
+    out_dir = root/".clockwork_runtime/writes/hardening"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir/f"hardening_report_{now.replace(':','').replace('-','')}.json"
     out_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")

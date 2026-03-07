@@ -46,6 +46,6 @@
 - Decision: Selective adoption of Llama Code (formerly Oodle Code) CMD concepts into .claude/ governance.
 - Context: OODLE.md / `.claude/` system contains mature concepts for routing, context budget, quality tracking.
 - Adopted: decisions.md pattern, execution phases (intake|plan|build|validate|review|docs|archive), L5 gate trigger list, minimal context principle.
-- Not adopted: YAML runtime storage (.llama_runtime/writes/), external provider management, full enterprise agent tree.
+- Not adopted: YAML runtime storage (.clockwork_runtime/writes/), external provider management, full enterprise agent tree.
 - Rationale: Python Orchestrator is Ollama-first/local-first. Oodle runtime infra too complex for current scope.
 - Follow-ups: Plan YAML-driven routing in orchestrator._classify() as L2 task.

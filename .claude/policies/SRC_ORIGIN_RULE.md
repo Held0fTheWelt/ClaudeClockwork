@@ -14,7 +14,7 @@ All generated **application code** and **plugin/application files** that represe
 ## Non-goals
 
 - This rule does NOT apply to the Clockwork control plane itself (agent definitions, governance docs, JSON schemas under `.claude/`).
-- Reports, evidence, generated docs, and performance telemetry belong under `.llama_runtime/` or `.claude-performance/`.
+- Reports, evidence, generated docs, and performance telemetry belong under `.clockwork_runtime/` or `.claude-performance/`.
 - Test code lives under `tests/`.
 
 ## Why

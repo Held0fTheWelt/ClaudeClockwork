@@ -49,6 +49,6 @@
     ],
     "large_file_bytes": 5000000,
     "write_reports": true,
-    "report_dir": ".llama_runtime/knowledge/writes/clean_reports"
+    "report_dir": ".clockwork_runtime/knowledge/writes/clean_reports"
   }
 }

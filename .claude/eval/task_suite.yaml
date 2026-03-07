@@ -55,7 +55,7 @@ suites:
           skill_id: "eval_run"
           inputs:
             golden_dir: ".claude/eval/golden"
-            output_dir: ".llama_runtime/eval/results"
+            output_dir: ".clockwork_runtime/eval/results"
             compare_previous: true
         expected:
           pass_count_min: 1

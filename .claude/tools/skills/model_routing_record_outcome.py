@@ -24,7 +24,7 @@ def run(req: dict) -> dict:
     quality = float(inputs.get("quality_0_10", 0.0))
     total_tokens = int(inputs.get("total_tokens", 0))
     notes = str(inputs.get("notes",""))
-    stats_path = Path(inputs.get("stats_path",".llama_runtime/brain/model_routing_stats.json")).resolve()
+    stats_path = Path(inputs.get("stats_path",".clockwork_runtime/brain/model_routing_stats.json")).resolve()
 
     stats = _load(stats_path)
     m = stats.setdefault("models", {}).setdefault(model, {})

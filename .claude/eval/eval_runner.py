@@ -6,7 +6,7 @@ Standalone script. No external dependencies; stdlib only.
 
 Usage:
     python3 .claude/eval/eval_runner.py
-    python3 .claude/eval/eval_runner.py --golden-dir .claude/eval/golden --results-dir .llama_runtime/eval/results
+    python3 .claude/eval/eval_runner.py --golden-dir .claude/eval/golden --results-dir .clockwork_runtime/eval/results
 
 Exit codes:
     0 — all tests pass, no regressions
@@ -279,8 +279,8 @@ def main() -> int:
     )
     parser.add_argument(
         "--results-dir",
-        default=".llama_runtime/eval/results",
-        help="Directory to write run result files (default: .llama_runtime/eval/results)",
+        default=".clockwork_runtime/eval/results",
+        help="Directory to write run result files (default: .clockwork_runtime/eval/results)",
     )
     parser.add_argument(
         "--skills-dir",

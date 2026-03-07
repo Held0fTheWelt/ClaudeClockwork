@@ -121,7 +121,7 @@ def run(req: dict) -> dict:
     max_files = int(inputs.get("max_files", 5000))
     max_snip = int(inputs.get("max_snippet_chars", 220))
     write_reports = bool(inputs.get("write_reports", True))
-    report_dir = (root / (inputs.get("report_dir") or ".llama_runtime/knowledge/writes/limitation_harvest")).resolve()
+    report_dir = (root / (inputs.get("report_dir") or ".clockwork_runtime/knowledge/writes/limitation_harvest")).resolve()
 
     warnings = []
     sources = []

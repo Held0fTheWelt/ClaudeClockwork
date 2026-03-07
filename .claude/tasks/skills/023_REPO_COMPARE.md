@@ -19,4 +19,4 @@ Ziel: Zwei Repos/Folders deterministisch vergleichen und einen Report erzeugen.
 }
 ```
 
-Der Report wird standardmäßig unter `.llama_runtime/knowledge/writes/compare_reports/` geschrieben.
+Der Report wird standardmäßig unter `.clockwork_runtime/knowledge/writes/compare_reports/` geschrieben.

@@ -20,7 +20,7 @@ Inputs:
     allow_delete (bool) — default False; when False, delete operations are skipped with a warning
     on_conflict  (str)  — "skip"|"overwrite"|"rename"; default "skip"
     write_report (bool) — default False; when True, write report JSON to report_dir
-    report_dir   (str)  — destination folder for reports; default ".llama_runtime/knowledge/writes/clean_reports"
+    report_dir   (str)  — destination folder for reports; default ".clockwork_runtime/knowledge/writes/clean_reports"
 
 Output (skill_result_spec):
     {
@@ -121,7 +121,7 @@ def run(req: dict) -> dict:
     allow_delete: bool = bool(inputs.get("allow_delete", False))
     on_conflict: str = str(inputs.get("on_conflict", "skip")).lower()
     write_report: bool = bool(inputs.get("write_report", False))
-    report_dir: Path = (root / (inputs.get("report_dir") or ".llama_runtime/knowledge/writes/clean_reports")).resolve()
+    report_dir: Path = (root / (inputs.get("report_dir") or ".clockwork_runtime/knowledge/writes/clean_reports")).resolve()
 
     warnings: list[str] = []
 

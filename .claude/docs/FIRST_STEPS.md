@@ -20,8 +20,8 @@ Set `"skill": "<skill_id>"` in the input JSON to select the skill.
 |-------------------|------------------------------------|
 | Skill run reports | `.report/`                         |
 | Performance logs  | `.claude-performance/`             |
-| Evidence bundles  | `.llama_runtime/validation_runs/`  |
-| Audit log         | `.llama_runtime/runtime/audit.log` |
+| Evidence bundles  | `.clockwork_runtime/validation_runs/`  |
+| Audit log         | `.clockwork_runtime/runtime/audit.log` |
 
 ## 4. Find an agent
 

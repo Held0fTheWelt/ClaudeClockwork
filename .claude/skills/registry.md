@@ -168,7 +168,7 @@ Deterministic doc lint review:
 ### 42) repo_compare
 Deterministic folder diff tool:
 - added/removed/changed (sha256)
-- optional markdown report written under `.llama_runtime/knowledge/writes/compare_reports/`
+- optional markdown report written under `.clockwork_runtime/knowledge/writes/compare_reports/`
 - intended for comparing Claude Code ↔ Llama Code baselines
 
 ### 43) screencast_script

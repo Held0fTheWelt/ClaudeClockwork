@@ -90,7 +90,7 @@ Outputs: `pass` (bool), `gate_results` (dict per sub-gate)
 ### `evidence_bundle_build`
 
 **Current:** `LegacySkillAdapter`
-**Native:** Collect specified artifacts into a signed bundle (SHA256 manifest), write to `.llama_runtime/`
+**Native:** Collect specified artifacts into a signed bundle (SHA256 manifest), write to `.clockwork_runtime/`
 
 Inputs: `artifacts` (list of paths), `bundle_name`
 Outputs: `bundle_path`, `manifest_hash`, `artifact_count`
@@ -113,7 +113,7 @@ Outputs: `unwrapped_count`, `wrap_candidates` (list with priority), `parity_perc
 ### `eval_run`
 
 **Current:** `LegacySkillAdapter`
-**Native:** Load eval suite from `.claude/eval/`, run each test, write results to `.llama_runtime/eval/results/`
+**Native:** Load eval suite from `.claude/eval/`, run each test, write results to `.clockwork_runtime/eval/results/`
 
 Inputs: `suite` (optional — runs all if omitted)
 Outputs: `pass_count`, `fail_count`, `results_path`

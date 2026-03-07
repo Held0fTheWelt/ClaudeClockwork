@@ -10,7 +10,7 @@ def run(req: dict) -> dict:
         return {"type":"skill_result_spec","request_id":req.get("request_id",""),
                 "skill_id":"route_profile_update","status":"fail","outputs":{},
                 "metrics":{}, "errors":["inputs.profile must be a route_profile_spec"], "warnings":[]}
-    out = inputs.get("out",".llama_runtime/knowledge/route_profiles.json")
+    out = inputs.get("out",".clockwork_runtime/knowledge/route_profiles.json")
     p = Path(out)
     p.parent.mkdir(parents=True, exist_ok=True)
     existing=[]

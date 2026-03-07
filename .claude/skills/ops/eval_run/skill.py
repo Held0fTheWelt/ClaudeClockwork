@@ -69,7 +69,7 @@ def _run_test(test_def: dict, repo_root: Path) -> dict:
 class EvalRunSkill(SkillBase):
     def run(self, context: ExecutionContext, **kwargs) -> SkillResult:
         repo_root = Path(context.working_directory).resolve()
-        results_dir = (repo_root / ".llama_runtime" / "eval" / "results").resolve()
+        results_dir = (repo_root / ".clockwork_runtime" / "eval" / "results").resolve()
         results_dir.mkdir(parents=True, exist_ok=True)
 
         suite = kwargs.get("suite", "default")

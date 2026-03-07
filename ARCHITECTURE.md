@@ -28,7 +28,7 @@ Clockwork is a meta-governance system for multi-agent Claude/Ollama orchestratio
 | Area | Location |
 |------|----------|
 | Clockwork (agents, skills, governance) | `.claude/` |
-| Runtime state (ledgers, eval results, writes) | `.llama_runtime/` (created; `eval/results/` pre-seeded) |
+| Runtime state (ledgers, eval results, writes) | `.clockwork_runtime/` (created; `eval/results/` pre-seeded) |
 | Reports | `.report/` |
 | Telemetry | `.claude-performance/` |
 
@@ -37,4 +37,4 @@ Clockwork is a meta-governance system for multi-agent Claude/Ollama orchestratio
 - **Routing:** `claudeclockwork/core/planner/` + `core/security/`; model routing config in `.claude/config/model_routing.yaml`.
 - **Skills:** `.claude/tools/skills/` (94 legacy Python modules); manifest-based skills in `.claude/skills/` (34 skills, 30 via legacy adapter).
 - **Registry:** `claudeclockwork/core/registry/` — discovers `manifest.json` files, loads via importlib.
-- **Eval:** `.claude/eval/eval_runner.py`; results → `.llama_runtime/eval/results/`.
+- **Eval:** `.claude/eval/eval_runner.py`; results → `.clockwork_runtime/eval/results/`.

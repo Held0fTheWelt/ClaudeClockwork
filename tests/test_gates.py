@@ -17,7 +17,7 @@ from claudeclockwork.runtime import build_registry, build_plugin_registry
 from claudeclockwork.core.registry.loader import SkillLoader
 
 ROOT = Path(__file__).resolve().parents[1]
-BASELINES_DIR = ROOT / ".llama_runtime" / "eval" / "baselines"
+BASELINES_DIR = ROOT / ".clockwork_runtime" / "eval" / "baselines"
 
 
 # ---------------------------------------------------------------------------
@@ -167,8 +167,8 @@ def test_plugin_index_diff() -> None:
 # ---------------------------------------------------------------------------
 
 def test_eval_run_writes_snapshot() -> None:
-    """eval_run must write a timestamped JSON snapshot to .llama_runtime/eval/results/."""
-    results_dir = ROOT / ".llama_runtime" / "eval" / "results"
+    """eval_run must write a timestamped JSON snapshot to .clockwork_runtime/eval/results/."""
+    results_dir = ROOT / ".clockwork_runtime" / "eval" / "results"
 
     result = run_manifest_skill(
         {"request_id": "gate", "skill_id": "eval_run", "inputs": {}},

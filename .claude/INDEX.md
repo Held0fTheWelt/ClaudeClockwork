@@ -14,7 +14,7 @@ Expected output: one `[PASS]` / `[FAIL]` line per required path, then `Result: A
 
 **Output locations:**
 - Runtime reports → `.report/`
-- Generated artifacts / runtime state → `.llama_runtime/`
+- Generated artifacts / runtime state → `.clockwork_runtime/`
 - Raw telemetry → `.claude-performance/`
 
 ---
@@ -48,7 +48,7 @@ Expected output: one `[PASS]` / `[FAIL]` line per required path, then `Result: A
 See `addons/` for concise "what's included" pack docs (DocForge/PDF, Cleaning, Last-Train, Shadow Prompts).
 
 ## Where outputs go
-- `.llama_runtime/` — runtime state, ledgers, eval results, generated artifacts
+- `.clockwork_runtime/` — runtime state, ledgers, eval results, generated artifacts
 - `.report/` — organized human-facing reports
 
 ## Development (ClaudeClockwork MVP list & milestones)

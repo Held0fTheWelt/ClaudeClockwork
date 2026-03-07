@@ -38,7 +38,7 @@ class EvidenceBundleBuildSkill(SkillBase):
         bundle_name = str(kwargs.get("bundle_name") or "evidence_bundle")
         run_dir = kwargs.get("run_dir")
 
-        out_dir = (repo_root / ".llama_runtime" / "artifacts").resolve()
+        out_dir = (repo_root / ".clockwork_runtime" / "artifacts").resolve()
         out_dir.mkdir(parents=True, exist_ok=True)
         out_zip = out_dir / f"{bundle_name}.zip"
         out_manifest_path = out_dir / f"{bundle_name}_manifest.json"

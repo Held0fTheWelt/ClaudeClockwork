@@ -90,7 +90,7 @@ Return per-gate pass/fail with detail strings. Aggregate pass = all 7 pass.
 **Native location:** `claudeclockwork/core/ops/eval_run.py`
 **Class:** `EvalRunSkill(SkillBase)`
 
-**Logic:** Load a test suite YAML from `.claude/eval/`; run each test case; write a D6.7 snapshot to `.llama_runtime/eval/results/<run_id>.json`. Return structured result.
+**Logic:** Load a test suite YAML from `.claude/eval/`; run each test case; write a D6.7 snapshot to `.clockwork_runtime/eval/results/<run_id>.json`. Return structured result.
 
 **Inputs:** `suite` (str, optional — run all suites if omitted), `dry_run` (bool, default false)
 **Outputs:** `run_id` (str), `pass_count` (int), `fail_count` (int), `duration_ms` (float), `results_path` (str), `tests` (list of `{name, status, detail}`)

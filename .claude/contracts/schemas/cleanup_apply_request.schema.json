@@ -58,7 +58,7 @@
     },
     "report_dir": {
       "type": "string",
-      "default": ".llama_runtime/knowledge/writes/clean_reports",
+      "default": ".clockwork_runtime/knowledge/writes/clean_reports",
       "description": "Destination folder for written reports."
     }
   },

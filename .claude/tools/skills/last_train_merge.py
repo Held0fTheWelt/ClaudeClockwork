@@ -161,7 +161,7 @@ def run(req: dict) -> dict:
             "metrics": {}
         }
 
-    root_out_dir = Path(inputs.get("root_out_dir", ".llama_runtime/knowledge/writes/last_train")).resolve()
+    root_out_dir = Path(inputs.get("root_out_dir", ".clockwork_runtime/knowledge/writes/last_train")).resolve()
     combined_zip_name = inputs.get("combined_zip_name", "combined_last_train.zip")
     ignore_globs = inputs.get("ignore_globs") or DEFAULT_IGNORE
     critical_paths = inputs.get("critical_paths") or [

@@ -13,7 +13,7 @@ schedules:
       max_cost_usd: 0.50
       model_tier: "sonnet"
     reporting:
-      output: ".llama_runtime/eval/reports/nightly_report.md"
+      output: ".clockwork_runtime/eval/reports/nightly_report.md"
       notify_on: ["fail", "regression"]
       retention_days: 30
     rollback:
@@ -29,7 +29,7 @@ schedules:
       max_cost_usd: 2.00
       model_tier: "opus"
     reporting:
-      output: ".llama_runtime/eval/reports/weekly_power_report.md"
+      output: ".clockwork_runtime/eval/reports/weekly_power_report.md"
       notify_on: ["fail", "regression", "capability_change"]
       retention_days: 90
     rollback:
@@ -52,7 +52,7 @@ schedules:
       max_regression_score: 0.02
       min_exploration_score: 0.5
     reporting:
-      output: ".llama_runtime/eval/reports/release_report.md"
+      output: ".clockwork_runtime/eval/reports/release_report.md"
       retention_days: 365
 
   shadow:
@@ -67,4 +67,4 @@ schedules:
       candidate: "experimental"
       min_improvement: 0.05
     reporting:
-      output: ".llama_runtime/shadow/latest_comparison.md"
+      output: ".clockwork_runtime/shadow/latest_comparison.md"

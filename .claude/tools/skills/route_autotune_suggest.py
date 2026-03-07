@@ -17,7 +17,7 @@ def _read_jsonl(p: Path) -> list[dict]:
 
 def run(req: dict) -> dict:
     inputs = req.get("inputs", {})
-    ledger_path = Path(inputs.get("ledger",".llama_runtime/knowledge/outcome_ledger.jsonl"))
+    ledger_path = Path(inputs.get("ledger",".clockwork_runtime/knowledge/outcome_ledger.jsonl"))
     events = _read_jsonl(ledger_path)
     # Simple heuristic suggestions: if task_type has many passes with no retries and claude tier > C0 sometimes -> suggest cap.
     by_type = defaultdict(list)

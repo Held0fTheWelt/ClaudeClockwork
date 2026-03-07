@@ -6,7 +6,7 @@
 - `model_routing_record_outcome`
 
 ## Brain store
-- `.llama_runtime/brain/model_routing_stats.json`
+- `.clockwork_runtime/brain/model_routing_stats.json`
 
 ## Outputs
 - `.report/routing/<run_id>/`

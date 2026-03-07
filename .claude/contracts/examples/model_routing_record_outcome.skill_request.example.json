@@ -9,7 +9,7 @@
     "success": true,
     "quality_0_10": 8.2,
     "total_tokens": 65200,
-    "stats_path": ".llama_runtime/brain/model_routing_stats.json",
+    "stats_path": ".clockwork_runtime/brain/model_routing_stats.json",
     "notes": "good enough, cheap"
   }
 }

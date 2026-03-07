@@ -21,7 +21,7 @@ Make regressions visible. Each run of the eval harness:
 │   └── qa_gate_golden.json
 ```
 
-Results are written to **`.llama_runtime/eval/results/`** by default (not under `.claude/`).
+Results are written to **`.clockwork_runtime/eval/results/`** by default (not under `.claude/`).
 
 ## How to run
 
@@ -36,7 +36,7 @@ With explicit paths:
 ```bash
 python3 .claude/eval/eval_runner.py \
   --golden-dir .claude/eval/golden \
-  --results-dir .llama_runtime/eval/results \
+  --results-dir .clockwork_runtime/eval/results \
   --skills-dir .claude/tools/skills
 ```
 

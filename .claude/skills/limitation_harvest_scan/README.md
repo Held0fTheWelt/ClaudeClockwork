@@ -15,4 +15,4 @@ Writers often forget to state what users *assume* exists. This scan produces a w
 See `.claude/contracts/examples/limitation_harvest_scan.skill_request.example.json`.
 
 ## Outputs
-- JSON + Markdown report under `.llama_runtime/knowledge/writes/limitation_harvest/`
+- JSON + Markdown report under `.clockwork_runtime/knowledge/writes/limitation_harvest/`

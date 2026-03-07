@@ -11,7 +11,7 @@ This tool compares two directory trees and reports:
 - changed files (sha256)
 - size deltas
 
-It can also emit a Markdown report into `.llama_runtime/knowledge/writes/compare_reports/`.
+It can also emit a Markdown report into `.clockwork_runtime/knowledge/writes/compare_reports/`.
 """
 
 from __future__ import annotations
@@ -120,7 +120,7 @@ def run(req: dict) -> dict:
     report_path = inputs.get("report_path")
     if not isinstance(report_path, str) or not report_path.strip():
         ts = datetime.datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-        report_path = f".llama_runtime/knowledge/writes/compare_reports/repo_compare_{ts}.md"
+        report_path = f".clockwork_runtime/knowledge/writes/compare_reports/repo_compare_{ts}.md"
 
     report_abs = (project_root / report_path).resolve() if not Path(report_path).is_absolute() else Path(report_path).resolve()
 

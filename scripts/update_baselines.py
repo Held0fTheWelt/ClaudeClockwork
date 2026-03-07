@@ -4,7 +4,7 @@ Seed / refresh baseline snapshots for the Phase 6 diff gates.
 
 Run this after adding skills or plugins, then commit the updated baselines:
     python3 scripts/update_baselines.py
-    git add .llama_runtime/eval/baselines/
+    git add .clockwork_runtime/eval/baselines/
     git commit -m "chore: update gate baselines"
 """
 
@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / ".claude"))
 
-BASELINES_DIR = ROOT / ".llama_runtime" / "eval" / "baselines"
+BASELINES_DIR = ROOT / ".clockwork_runtime" / "eval" / "baselines"
 BASELINES_DIR.mkdir(parents=True, exist_ok=True)
 
 from claudeclockwork.bridge import run_manifest_skill
@@ -74,4 +74,4 @@ if __name__ == "__main__":
     print("Seeding Phase 6 gate baselines...")
     update_capability_map_baseline()
     update_plugin_index_baseline()
-    print("Done. Commit .llama_runtime/eval/baselines/ to lock the baseline.")
+    print("Done. Commit .clockwork_runtime/eval/baselines/ to lock the baseline.")

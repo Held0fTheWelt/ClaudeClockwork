@@ -124,7 +124,7 @@ Describe output files and write locations here.
         "limitations": DEFAULT_LIMITATIONS,
     }
 
-    out_dir = root / ".llama_runtime/knowledge/writes/autodocs"
+    out_dir = root / ".clockwork_runtime/knowledge/writes/autodocs"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"autodocs_report_{now.replace(':','').replace('-','')}.json"
     out_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")

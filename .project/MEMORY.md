@@ -18,7 +18,7 @@
 
 - `claudeclockwork/` is the canonical Python package (not `llamacode/`, `oodle/`, or `src/`). References to those names are stale and being removed.
 - "Oodle Tier" renamed to "Local Model Tier" throughout docs and governance. Python variable names (`oodle_tier` in skill code) are deferred to Phase 3 as part of native rewrites.
-- `.llama_runtime/` is the declared location for runtime state, eval results, and generated artifacts. Directory created in Phase 0; was missing before.
+- `.clockwork_runtime/` is the canonical runtime root for state, eval results, and generated artifacts (Phase 19). Legacy `.llama_runtime/` was renamed; use `scripts/migrate_runtime_root.py` to copy existing data.
 - `.report/` is the canonical location for human-facing reports. Directory created in Phase 0.
 - Root `Docs/` (skill audit files) and `.project/Docs/` (plans/reviews/critics) are separate concerns. `.project/Docs/` is the SSoT per governance. Root `Docs/` holds audit artefacts — not actively referenced from governance.
 

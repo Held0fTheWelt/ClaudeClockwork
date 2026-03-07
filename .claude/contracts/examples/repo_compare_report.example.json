@@ -13,5 +13,5 @@
       "size_right": 1300
     }
   ],
-  "report_path": ".llama_runtime/knowledge/writes/compare_reports/repo_compare_YYYYMMDD_HHMMSS.md"
+  "report_path": ".clockwork_runtime/knowledge/writes/compare_reports/repo_compare_YYYYMMDD_HHMMSS.md"
 }

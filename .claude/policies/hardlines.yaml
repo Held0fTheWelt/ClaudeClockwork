@@ -53,7 +53,7 @@ hardlines:
     allowed_write_roots:
       - ".report/"
       - ".claude-performance/"
-      - ".llama_runtime/"
+      - ".clockwork_runtime/"
       - "llamacode/"
       - "tests/"
       - "docs/"

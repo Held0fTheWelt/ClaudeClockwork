@@ -12,7 +12,7 @@ Goal: always choose the **cheapest model that is likely good enough**, while lea
 ## Deterministic skills (core automation)
 1) `work_scope_assess` → `.report/routing/<run_id>/work_scope_report.json`
 2) `model_routing_select` → model selection report + alternatives
-3) After execution: `model_routing_record_outcome` updates `.llama_runtime/brain/model_routing_stats.json`
+3) After execution: `model_routing_record_outcome` updates `.clockwork_runtime/brain/model_routing_stats.json`
 
 ## Inputs the Personaler should consider
 - scope tier (low/medium/high)
@@ -30,4 +30,4 @@ Goal: always choose the **cheapest model that is likely good enough**, while lea
 
 ## Storage
 - Decisions + reports: `.report/routing/<run_id>/`
-- Long-term stats: `.llama_runtime/brain/model_routing_stats.json`
+- Long-term stats: `.clockwork_runtime/brain/model_routing_stats.json`

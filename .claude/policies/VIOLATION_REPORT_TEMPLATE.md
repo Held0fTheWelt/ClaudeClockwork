@@ -100,7 +100,7 @@ File completed reports under `.report/violations/` using the naming convention:
 
 ## Remediation
 
-**Action taken:** Agent redirected cache write to `.llama_runtime/cache/ollama_response.json` (allowed write root). No functional change to output.
+**Action taken:** Agent redirected cache write to `.clockwork_runtime/cache/ollama_response.json` (allowed write root). No functional change to output.
 **Fix verified by:** `qa_tests/test_no_claude_dependency.py` — PASS
 **Follow-up required:** no
 

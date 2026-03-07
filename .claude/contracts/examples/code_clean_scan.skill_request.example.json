@@ -11,6 +11,6 @@
       ".claude/tools/skills/skill_runner.py"
     ],
     "write_reports": true,
-    "report_dir": ".llama_runtime/knowledge/writes/clean_reports"
+    "report_dir": ".clockwork_runtime/knowledge/writes/clean_reports"
   }
 }
