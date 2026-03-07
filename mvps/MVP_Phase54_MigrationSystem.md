@@ -6,11 +6,11 @@
 
 ## Definition of Done
 
-- [ ] Schema version fields present
-- [ ] Migration registry + engine exist
-- [ ] `migrate` CLI exists with dry-run/apply
-- [ ] Release integration exists
-- [ ] Tests cover multiple migrations
-- [ ] All existing tests pass
+- [x] Schema version fields present
+- [x] Migration registry + engine exist
+- [x] `migrate` CLI exists with dry-run/apply
+- [x] Release integration exists
+- [x] Tests cover multiple migrations
+- [x] All existing tests pass
 
 ---

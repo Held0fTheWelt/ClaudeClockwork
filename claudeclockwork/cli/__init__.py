@@ -45,6 +45,9 @@ def main() -> int:
     subparsers = parser.add_subparsers(dest="command", help="Commands")
     subparsers.add_parser("first-run", help="Create runtime root, validate (Phase 28)")
     subparsers.add_parser("env-check", help="Verify environment (Phase 28)")
+    migrate_p = subparsers.add_parser("migrate", help="Config/schema migration (Phase 54)")
+    migrate_p.add_argument("--dry-run", action="store_true", help="Do not write")
+    migrate_p.add_argument("--apply", action="store_true", help="Write migrated config")
     args = parser.parse_args()
 
     project_root = Path(args.project_root).resolve()
@@ -60,6 +63,15 @@ def main() -> int:
         code, errors, info = run_env_check(project_root)
         print(json.dumps({"ok": code == 0, "errors": errors, "info": info}, indent=2))
         return code
+
+    if args.command == "migrate":
+        from claudeclockwork.migrations.engine import MigrationRegistry, run_migrations
+        reg = MigrationRegistry()
+        reg.register(1, 2, lambda d: {**d, "schema_version": 2, "migrated_v1": True})
+        cfg_path = project_root / ".clockwork_runtime" / "config.json"
+        result = run_migrations(cfg_path, reg, target_version=2, dry_run=not getattr(args, "apply", False))
+        print(json.dumps(result, indent=2))
+        return 0 if not result.get("error") else 1
 
     if args.plugin_healthcheck:
         return _run_plugin_healthcheck(args.plugin_healthcheck, project_root)
