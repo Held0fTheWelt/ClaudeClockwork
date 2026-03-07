@@ -18,15 +18,15 @@
 
 ## Definition of Done
 
-- [ ] `git_summary` implemented (native, `claudeclockwork/core/ops/git_summary.py`)
-- [ ] `test_run` implemented (native, `claudeclockwork/core/ops/test_run.py`)
-- [ ] `skill_health` implemented (native, `claudeclockwork/core/ops/skill_health.py`)
-- [ ] `changelog_generate` implemented (native, `claudeclockwork/core/ops/changelog_generate.py`)
-- [ ] `dependency_graph` implemented (native, `claudeclockwork/core/analysis/dependency_graph.py`)
-- [ ] `config_validate` implemented (native, `claudeclockwork/core/ops/config_validate.py`)
-- [ ] Each skill has a full manifest package: `manifest.json`, `skill.py`, `__init__.py` in `.claude/skills/<category>/<skill_id>/`
-- [ ] `tests/test_skill_discovery_phase16.py` — 4 tests per skill = 24 tests
-- [ ] Total manifest skills reported by `capability_map_build` is ≥ 103 (97 existing + 6 new)
+- [x] `git_summary` implemented (native, `.claude/skills/ops/git_summary/skill.py`)
+- [x] `test_run` implemented (native, `.claude/skills/ops/test_run/skill.py`)
+- [x] `skill_health` implemented (native, `.claude/skills/ops/skill_health/skill.py`)
+- [x] `changelog_generate` implemented (native, `.claude/skills/docs/changelog_generate/skill.py`)
+- [x] `dependency_graph` implemented (native, `.claude/skills/analysis/dependency_graph/skill.py`)
+- [x] `config_validate` implemented (native, `.claude/skills/ops/config_validate/skill.py`)
+- [x] Each skill has a full manifest package: `manifest.json`, `skill.py`, `__init__.py` in `.claude/skills/<category>/<skill_id>/`
+- [x] `tests/test_skill_discovery_phase16.py` — 4 tests per skill = 24 tests (all passing)
+- [x] Total manifest skills reported by registry is ≥ 103 (104 actual)
 
 ---
 

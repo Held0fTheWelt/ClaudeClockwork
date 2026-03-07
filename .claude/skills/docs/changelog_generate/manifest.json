@@ -1,0 +1,25 @@
+{
+  "id": "changelog_generate",
+  "name": "changelog_generate",
+  "version": "0.1.0",
+  "category": "docs",
+  "description": "Generate a structured CHANGELOG entry from git log, classifying commits by conventional commit prefixes. Optionally writes to a file.",
+  "entrypoint": "skills.docs.changelog_generate.skill:ChangelogGenerateSkill",
+  "permissions": ["repo:read", "docs:write", "git:read"],
+  "aliases": ["generate_changelog"],
+  "tags": ["changelog", "git", "docs", "release"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "since_tag": {"type": "string", "optional": true},
+    "max_commits": {"type": "integer", "optional": true, "default": 20},
+    "output_path": {"type": "string", "optional": true},
+    "version_label": {"type": "string", "optional": true, "default": "Unreleased"}
+  },
+  "outputs": {
+    "entries": {"type": "array"},
+    "changelog_text": {"type": "string"},
+    "written": {"type": "boolean"}
+  },
+  "metadata": {"legacy_bridge": false}
+}
