@@ -8,12 +8,12 @@
 
 ## Definition of Done
 
-- [ ] A canonical evidence layout exists under the runtime root (Phase 19)
-- [ ] A deterministic exporter creates a redacted bundle (zip) under `redacted_exports/`
-- [ ] Redaction rules exist and are tested (paths, secrets, tokens, PII-like patterns)
-- [ ] Export bundles include a manifest describing contents + hashes
-- [ ] A gate prevents “unredacted export” in CI (or marks it as unsafe)
-- [ ] All existing tests pass
+- [x] A canonical evidence layout exists under the runtime root (Phase 19)
+- [x] A deterministic exporter creates a redacted bundle (zip) under `redacted_exports/`
+- [x] Redaction rules exist and are tested (paths, secrets, tokens, PII-like patterns)
+- [x] Export bundles include a manifest describing contents + hashes
+- [x] A gate prevents “unredacted export” in CI (or marks it as unsafe)
+- [x] All existing tests pass
 
 ---
 
