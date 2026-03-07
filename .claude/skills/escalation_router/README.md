@@ -3,7 +3,7 @@
 **Pack:** `unclassified`
 
 ## Purpose
-Cheapest-first model routing with automatic escalation (wraps `llamacode/core/escalation_router.py`).
+Cheapest-first model routing with automatic escalation (wraps `.claude/tools/skills/escalation_router.py`; claudeclockwork native: planned Phase 3).
 - Input: `{"ladder": "haiku"|"sonnet", "messages": [...], "max_tokens": int, "dry_run": bool}`
 - Output: `{"model_used": str, "rung": int, "content": str, "escalated": bool, "escalation_reason": str|null}`
 - Escalates on HTTP 429/529/503/500, timeout, or empty response

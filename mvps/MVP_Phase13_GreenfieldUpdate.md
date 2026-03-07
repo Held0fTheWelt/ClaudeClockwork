@@ -15,13 +15,13 @@
 
 ## Definition of Done
 
-- [ ] `.claude/docs/ARCHITECTURE_STUB.md` rewritten: `llamacode/` replaced with `claudeclockwork/`, `oodle` CLI replaced with `python -m claudeclockwork.cli`
-- [ ] `.claude/docs/API_STUB.md` rewritten: all `oodle`/`llamacode` references replaced with `claudeclockwork` equivalents
-- [ ] `.claude/development/MVP_STATUS.md` updated: `llamacode/core/*` paths updated or annotated as "implemented in `claudeclockwork/`"
-- [ ] `.claude/skills/escalation_router.md` updated: `llamacode/core/escalation_router.py` reference removed; replaced with accurate implementation note
-- [ ] `.claude/skills/registry.md` updated: stale `llamacode/` references removed or corrected to `claudeclockwork/core/`
-- [ ] `grep -r "llamacode\|oodle_tier\|from oodle" .claude/docs/ .claude/development/ .claude/skills/` returns zero results in these specific subdirectories (historical references in `.claude-development/` are excluded — those are an archived read-only record)
-- [ ] All existing tests pass
+- [X] `.claude/docs/ARCHITECTURE_STUB.md` rewritten: `llamacode/` replaced with `claudeclockwork/`, `oodle` CLI replaced with `python -m claudeclockwork.cli`
+- [X] `.claude/docs/API_STUB.md` rewritten: all `oodle`/`llamacode` references replaced with `claudeclockwork` equivalents
+- [X] `.claude/development/MVP_STATUS.md` updated: `llamacode/core/*` paths updated or annotated as "implemented in `claudeclockwork/`"
+- [X] `.claude/skills/escalation_router.md` updated: `llamacode/core/escalation_router.py` reference removed; replaced with accurate implementation note
+- [X] `.claude/skills/registry.md` updated: stale `llamacode/` references removed or corrected to `claudeclockwork/core/`
+- [X] `grep -r "llamacode\|oodle_tier\|from oodle" .claude/docs/ .claude/development/ .claude/skills/` returns zero results in these specific subdirectories (historical references in `.claude-development/` are excluded — those are an archived read-only record)
+- [X] All existing tests pass
 
 ---
 

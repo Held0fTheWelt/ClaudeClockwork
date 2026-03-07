@@ -69,8 +69,8 @@ _Last updated: 2026-03-02_
 ## MVP09 — Delivered (2026-03-02)
 
 - `.claude/config/model_escalation_ladder.yaml` — haiku (3-rung) and sonnet (4-rung) escalation ladders with trigger config and 24 h state reset
-- `llamacode/core/escalation_router.py` — `EscalationRouter` class; detects overload/timeout/empty-response triggers, persists winning rung to `.llama_runtime/router_state.json`
-- `llamacode/core/escalation_router_demo.py` — demo script; supports `--dry-run` (no API calls) and live mode
+- `.claude/tools/skills/escalation_router.py` — `EscalationRouter` class; detects overload/timeout/empty-response triggers, persists winning rung to `.llama_runtime/router_state.json` (core implementation planned — Phase 3: Native Core Services)
+- `.claude/tools/skills/escalation_router_demo.py` — demo script; supports `--dry-run` (no API calls) and live mode (core implementation planned — Phase 3: Native Core Services)
 - `.claude/skills/escalation_router.md` — skill definition with I/O spec, usage example, and triggers table
 - `.claude/config/model_routing.yaml` — converted to valid YAML; added companion pointer to `model_escalation_ladder.yaml`
 
@@ -163,7 +163,7 @@ _Last updated: 2026-03-02_
 
 ## MVP18 — Delivered (2026-03-02)
 
-- `llamacode/core/bandit_router.py` — `BanditRouter` class; epsilon-greedy bandit that reads `.llama_runtime/knowledge/outcome_ledger.jsonl`; falls back to static YAML or hardcoded defaults when ledger is too small (<10 entries globally); `select(task_type, quality_threshold, cost_cap)` returns `{model_id, rung, confidence, source}`; stdlib only (json, pathlib, random, statistics, sys)
+- `.claude/tools/skills/bandit_router_select.py` — `BanditRouter` class; epsilon-greedy bandit that reads `.llama_runtime/knowledge/outcome_ledger.jsonl`; falls back to static YAML or hardcoded defaults when ledger is too small (<10 entries globally); `select(task_type, quality_threshold, cost_cap)` returns `{model_id, rung, confidence, source}`; stdlib only (json, pathlib, random, statistics, sys) (core implementation planned — Phase 3: Native Core Services)
 - `.claude/contracts/schemas/bandit_routing_decision.schema.json` — JSON Schema for BanditRouter inputs (task_type, quality_threshold, cost_cap, epsilon, ladder_name) and outputs (model_id, rung, confidence, source enum: bandit|static|fallback)
 - `.claude/contracts/examples/bandit_routing_decision.example.json` — example showing a bandit routing decision for task_type='code_review' with source='bandit' and confidence=0.87
 - `.claude/tools/skills/bandit_router_select.py` — Clockwork skill wrapper; `run(req)` interface; calls `BanditRouter(ladder_name, epsilon).select(task_type, quality_threshold, cost_cap)`; returns skill_result_spec

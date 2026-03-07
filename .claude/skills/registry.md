@@ -338,7 +338,7 @@ Deterministic Markdown report builder (MVP02).
 - Standalone: `python tools/skills/report.py '{"title": "My Report", "items": ["a", "b"]}'`
 
 ### 76) escalation_router
-Cheapest-first model routing with automatic escalation (wraps `llamacode/core/escalation_router.py`).
+Cheapest-first model routing with automatic escalation (wraps `.claude/tools/skills/escalation_router.py`; claudeclockwork native: planned Phase 3).
 - Input: `{"ladder": "haiku"|"sonnet", "messages": [...], "max_tokens": int, "dry_run": bool}`
 - Output: `{"model_used": str, "rung": int, "content": str, "escalated": bool, "escalation_reason": str|null}`
 - Escalates on HTTP 429/529/503/500, timeout, or empty response
@@ -416,7 +416,7 @@ Python code quality scanner (CCW-MVP13).
 - emit_plan=True adds a "plan" field with suggested remediation actions
 - Schema: `contracts/schemas/code_clean_report.schema.json`
 - Example: `contracts/examples/code_clean_example.json`
-- Standalone: `python3 tools/skills/code_clean.py '{"skill_id":"code_clean","inputs":{"root":"llamacode","scan_only":true,"emit_plan":false}}'`
+- Standalone: `python3 tools/skills/code_clean.py '{"skill_id":"code_clean","inputs":{"root":".","scan_only":true,"emit_plan":false}}'`
 
 ### 84) telemetry_summarize
 Aggregates JSONL telemetry events into grouped token/cost/quality summaries (CCW-MVP12).

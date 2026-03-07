@@ -1,63 +1,42 @@
-# Architecture Overview — OllamaCode / LlamaCode
+# Architecture Overview (Stub)
 
-_Last updated: 2026-03-02 (CCW-MVP04) — fill-in stub_
+> This is a stub. For the full system architecture see the root `ARCHITECTURE.md`.
 
-## Project identity
+## Primary Package: `claudeclockwork/`
 
-| Field            | Value                                      |
-|------------------|--------------------------------------------|
-| Project          | OllamaCode / LlamaCode                     |
-| Version          | v6.5.0-MVP9                                |
-| Primary package  | `llamacode/`                               |
-| Entry point      | `llamacode/cli.py` (Click group `oodle`)   |
-| Clockwork        | `.claude/` (methodology only — read-only)  |
-| Runtime root     | `.llama_runtime/`                          |
-| Docs root        | `docs/`                                    |
-| Plugin folder    | `plugins/`                                 |
+The canonical Python package is `claudeclockwork/`. It is the execution runtime for the Clockwork governance layer.
 
-## Key modules
+## CLI Entry Point
 
-| Module                      | Purpose                                                  |
-|-----------------------------|----------------------------------------------------------|
-| `llamacode/cli.py`          | CLI entry point; registers all command groups            |
-| `llamacode/core/runner.py`  | `TaskRunner` — executes a `Task` JSON file               |
-| `llamacode/core/planner.py` | `DeterministicPlanner` — converts `TaskSpec` → `Plan`   |
-| `llamacode/core/plan_executor.py` | `PlanExecutor` — runs a `Plan` step-by-step        |
-| `llamacode/core/snapshot.py`| `SnapshotStore` — point-in-time workspace capture        |
-| `llamacode/core/audit_log.py` | Append-only operation audit trail                      |
-| `llamacode/schemas/`        | Pydantic schemas: `Task`, `TaskSpec`, `Plan`, `Pack`, etc|
-| `llamacode/providers/`      | Provider abstraction (Ollama default; opt-in externals)  |
-| `llamacode/plugins/`        | Plugin discovery, manifests, enable/disable state        |
-| `llamacode/core/intent_router.py` | Maps `TaskSpec` to agent/team                    |
-| `llamacode/core/message_bus.py`   | Inter-agent communication channel                  |
-| `llamacode/core/budget_monitor.py`| Token/compute budget enforcement per agent         |
-
-## Directory layout (top-level)
-
-```
-llamacode/          Primary package (CLI + core + schemas + providers + plugins)
-docs/               User-facing documentation (DO NOT modify from clockwork)
-.claude/            Clockwork — methodology, skills, agents, governance (read-only)
-.llama/             Llama-branch clockwork (absent on claude branch)
-.llama_runtime/     Runtime state — snapshots, audit, artifacts (never committed)
-plugins/            Extension modules
-quellen/            Reference sources / legacy read-only archive
-scripts/            Repo tooling scripts
-tests/              Automated test suite
+```bash
+python -m claudeclockwork.cli --skill-id <skill_name> --inputs '{...}'
+python -m claudeclockwork.mcp   # MCP STDIO server (optional)
 ```
 
-## Data-flow summary
+## Key Modules
 
-```
-User → oodle CLI → TaskSpec/Task JSON
-  → DeterministicPlanner → Plan
-  → PlanExecutor (+ SnapshotStore + AuditLog)
-  → Providers (Ollama / opt-in external)
-  → TaskReport → .llama_runtime/
-```
+| Module | Purpose |
+|--------|---------|
+| `claudeclockwork/cli.py` | CLI entry point — argument parsing, skill dispatch, plugin healthcheck |
+| `claudeclockwork/runtime.py` | Runtime bootstrap — builds registry, executor, planner, loads permissions |
+| `claudeclockwork/bridge.py` | Manifest bridge — `run_manifest_skill()`, `LegacySkillAdapter` |
+| `claudeclockwork/mcp/` | Optional MCP STDIO server — exposes skills as MCP tools and resources |
+| `claudeclockwork/core/registry/` | Skill discovery — walks `.claude/skills/*/manifest.json` |
+| `claudeclockwork/core/executor/` | Execution pipeline — `SkillExecutor`, `ExecutionPipeline` |
+| `claudeclockwork/core/planner/` | Planning and routing logic |
+| `claudeclockwork/core/security/` | `PermissionManager` — permission allow/block enforcement |
+| `claudeclockwork/core/models/` | Data models — `ExecutionContext`, `SkillResult`, `SkillManifest` |
+| `claudeclockwork/core/plugin/` | Plugin loader, registry, and dependency resolver |
 
-## Further reading
+## Governance Layer: `.claude/`
 
-- Full architecture doc: `docs/tech/architecture.md`
-- System map diagram: `docs/diagrams/system_map.md`
-- CLI reference: `docs/tech/api_or_cli.md`
+The `.claude/` directory is the governance layer — agent definitions, skill manifests, config, contracts, and knowledge base. It is portable and can be deployed independently of this repository. See `.claude/DEPLOY.md`.
+
+## Two Dispatch Paths
+
+| Path | Entry point | Skills |
+|------|-------------|--------|
+| Manifest CLI | `python -m claudeclockwork.cli` | 97 manifest skills |
+| Legacy runner | `python3 .claude/tools/skills/skill_runner.py` | 97 skills (same set, all reachable) |
+
+> For full detail on the dispatch architecture see `CLAUDE.md` — "Skill Dispatch: Two Parallel Systems".

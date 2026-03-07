@@ -1,6 +1,6 @@
-# Glossary — OllamaCode Clockwork
+# Glossary — Clockwork
 
-_Last updated: 2026-03-02 (CCW-MVP04)_
+_Last updated: 2026-03-07 (Phase 13 greenfield update)_
 _Clockwork-internal terms. For project-facing terms see `docs/glossary.md`._
 
 ---
@@ -8,7 +8,7 @@ _Clockwork-internal terms. For project-facing terms see `docs/glossary.md`._
 **Agent**
 An autonomous process that performs a defined role (Planner, Executor, Docs, etc.).
 Agents communicate via a message bus and are organised in a four-level hierarchy.
-Agent definitions live in `.claude/agents/` (clockwork) or `llamacode/agents/` (runtime registry).
+Agent definitions live in `.claude/agents/` (clockwork) or `claudeclockwork/` (runtime registry). **Retired:** formerly `llamacode` agents/ — renamed during Clockwork v18 greenfield update.
 
 **Boot Check**
 A pre-flight environment verification script run before agent work begins.

@@ -23,15 +23,13 @@ returns an empty response.
 | escalated          | bool        | True if at least one escalation occurred      |
 | escalation_reason  | str \| None | Reason for last escalation, or None           |
 
-## Usage example
+## Implementation Note
 
-```python
-from llamacode.core.escalation_router import EscalationRouter, AllRungsExhausted
+The active skill implementation is the legacy wrapper:
+  `.claude/tools/skills/escalation_router.py`
 
-router = EscalationRouter("haiku")
-result = router.call([{"role": "user", "content": "Summarise this document"}])
-print(result["model_used"], result["rung"], result["content"])
-```
+A native `claudeclockwork` implementation is planned for Phase 3 (Native Core Services).
+The legacy wrapper does not import from `llamacode` — that dependency was removed in Phase 8 (H8.2).
 
 ## Escalation triggers
 
@@ -43,14 +41,12 @@ print(result["model_used"], result["rung"], result["content"])
 | poor_quality   | no                 | Output score below threshold (needs scorer)  |
 
 Config: `.claude/config/model_escalation_ladder.yaml`
-Implementation: `llamacode/core/escalation_router.py`
-Demo: `python llamacode/core/escalation_router_demo.py --dry-run`
+Demo: `python3 .claude/tools/skills/escalation_router.py '{"skill_id":"escalation_router","inputs":{"ladder":"haiku","messages":[{"role":"user","content":"hello"}],"dry_run":true}}'`
 
 ## Clockwork Skill Files
 - Schema: `.claude/contracts/schemas/escalation_router.schema.json`
 - Example: `.claude/contracts/examples/escalation_router_example.json`
 - Implementation: `.claude/tools/skills/escalation_router.py`
-- Core: `llamacode/core/escalation_router.py`
 
 ## Quick test
 ```bash
