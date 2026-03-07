@@ -6,10 +6,10 @@
 
 ## Definition of Done
 
-- [ ] Domain packages organized and documented
-- [ ] Circular dependency gate exists
-- [ ] Public surface enforcement exists
-- [ ] Refactor plan is incremental + rollbackable
-- [ ] All existing tests pass
+- [x] Domain packages organized and documented
+- [x] Circular dependency gate exists
+- [x] Public surface enforcement exists
+- [x] Refactor plan is incremental + rollbackable
+- [x] All existing tests pass
 
 ---
