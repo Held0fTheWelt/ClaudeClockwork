@@ -22,7 +22,7 @@ DR-001 (VERSION mismatch) permanently impossible to commit.
 | `Docs/versioning.md` | UPDATED | Added "Version Sync Command (Phase 72)" section with usage, DR-001 prevention rule |
 | `Docs/drift_register.md` | UPDATED | DR-001 remediation updated to use `scripts/sync_version.py`; Phase 72 added to phase history |
 | `claudeclockwork/core/gates/runtime_root_gate.py` | FIXED | Added `doc_path_leak_gate.py` to excluded prefixes (pre-existing false positive) |
-| `mvps/MVP_Phase73_*.md` | FIXED | Replaced host path example `D:\ClaudeClockwork\...` with `<DRIVE>:\ClaudeClockwork\...` (DOC_PATH_001) |
+| `mvps/MVP_Phase73_*.md` | FIXED | Replaced host path example `<DRIVE>:\ClaudeClockwork\...` with `<DRIVE>:\ClaudeClockwork\...` (DOC_PATH_001 — used placeholder form in doc) |
 
 ---
 

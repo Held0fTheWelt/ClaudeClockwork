@@ -78,6 +78,19 @@ Future PRs that reintroduce a listed drift type must include either:
 
 ---
 
+## DR-006 — Validation Artifact Path Leaks / Committed Runtime Validation Files
+
+| Field | Value |
+|-------|-------|
+| **Symptom** | `validation_runs/` or `validation_runs_redacted/` files are committed to git, or redacted manifests contain absolute host paths |
+| **Root Cause** | Validation run exports include local `run_dir` paths. Even "redacted" exports may contain absolute paths if the redaction step is skipped or incomplete. |
+| **Decision** | FORBIDDEN — `validation_runs/` and `validation_runs_redacted/` are runtime-only and gitignored. Redacted exports must use `<PROJECT_ROOT>` placeholder. |
+| **Gate** | `validation_artifact_gate` — `claudeclockwork/core/gates/validation_artifact_gate.py` |
+| **Remediation** | If accidentally committed: `git rm -r --cached validation_runs/`. If path leaks in exports: replace host paths with `<PROJECT_ROOT>` before sharing. |
+| **Phases** | 73 (gate added, policy declared, on-disk manifests redacted) |
+
+---
+
 ## Summary Table
 
 | ID | Drift Type | Decision | Gate |
@@ -87,6 +100,7 @@ Future PRs that reintroduce a listed drift type must include either:
 | DR-003 | `.claude-performance/` pollution | FORBIDDEN | `perf_artifact_gate` |
 | DR-004 | Host paths in curated docs | FORBIDDEN | `doc_path_leak_gate` |
 | DR-005 | Governance doc broken links | FORBIDDEN | `docs_link_lint` |
+| DR-006 | Validation artifact path leaks / committed runtime validation | FORBIDDEN | `validation_artifact_gate` |
 
-All five drifts are **forbidden** — no allowed-with-constraints exceptions.
+All six drifts are **forbidden** — no allowed-with-constraints exceptions.
 Every gate is deterministic and must pass before release.
