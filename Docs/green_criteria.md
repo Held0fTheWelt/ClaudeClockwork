@@ -30,6 +30,8 @@ All gates must pass (status = `pass`) with zero blockers for Green certification
 | 5 | `report_policy_gate` | Enforce `.report/` curated-only (no runtime JSON/PNG) | `claudeclockwork.core.gates.report_policy_gate` | MVP 63 | ✅ |
 | 6 | `report_redaction_gate` | No host paths or secrets in `.report/` markdown | `claudeclockwork.core.gates.report_redaction_gate` | MVP 64 | ✅ |
 | 7 | `runtime_root_gate` | `.llama_runtime` stubbed, `.clockwork_runtime` enforced | `claudeclockwork.core.gates.runtime_root_gate` | MVP 65 | ✅ |
+| 8 | `perf_artifact_gate` | No runtime outputs under `.claude-performance/` (curated-only) | `claudeclockwork.core.gates.perf_artifact_gate` | MVP 69 | ✅ |
+| 9 | `doc_path_leak_gate` | No absolute host paths in curated docs (Docs/, mvps/, .claude/) | `claudeclockwork.core.gates.doc_path_leak_gate` | MVP 70 | ✅ |
 
 ---
 
@@ -97,6 +99,26 @@ All gates must pass (status = `pass`) with zero blockers for Green certification
   - No doc references `.llama_runtime` in `.project/Docs/` (except deprecation notes)
 - **Blocker Definition**: Any violation
 
+### Gate 8: `perf_artifact_gate`
+- **Inputs**: `project_root`
+- **Pass Condition**: `pass=true`, `errors=[]`
+- **Checks**:
+  - No `reports/` or `events/` subdirectories under `.claude-performance/`
+  - No machine-generated filenames (run-*, timestamped, _report_, performance_toggle)
+- **Blocker Definition**: Any error
+- **Drift Register**: DR-003
+
+### Gate 9: `doc_path_leak_gate`
+- **Inputs**: `project_root`
+- **Pass Condition**: `pass=true`, `errors=[]`
+- **Scans**: `Docs/`, `.project/Docs/`, `.claude/governance/`, `.claude/agents/`, `mvps/`
+- **Checks**:
+  - No Windows drive paths (`C:\`, `D:\`, etc.)
+  - No Unix home paths (`/home/<user>/`, `/Users/<user>/`)
+  - No WSL mount paths (`/mnt/<drive>/<path>`)
+- **Blocker Definition**: Any error
+- **Drift Register**: DR-004
+
 ---
 
 ## Certificate Output Format
@@ -117,7 +139,7 @@ Certificate is generated as deterministic markdown (`Docs/green_run_certificate.
 [version convergence status]
 
 ## Release Readiness
-**Passing**: N/7 gates
+**Passing**: N/9 gates
 **Failing**: 0 gates
 **Pass Rate**: 100%
 
@@ -146,7 +168,7 @@ All evidence paths must be absolute and redacted of host paths.
 
 1. **Version-locked**: Canonical version from `.claude/VERSION` recorded exactly
 2. **Timestamp-only variance**: ISO 8601 issue date is only non-deterministic element
-3. **Stable ordering**: Gate execution order is always: qa_gate → planning_drift → release_check → docs_gate → report_policy_gate → report_redaction_gate → runtime_root_gate
+3. **Stable ordering**: Gate execution order is always: qa_gate → planning_drift → release_check → docs_gate → report_policy_gate → report_redaction_gate → runtime_root_gate → perf_artifact_gate → doc_path_leak_gate
 4. **No side effects**: Gate functions read-only; no state modification
 5. **Re-runnable**: Same inputs → identical results (except timestamp)
 
@@ -166,13 +188,13 @@ python3 claudeclockwork/qa/reports/green_run.py /path/to/project
 ## Escalation
 
 ### Automatic Passes (Level 0)
-- All 7 gates pass: Write certificate, export evidence bundle
+- All 9 gates pass: Write certificate, export evidence bundle
 
 ### Partial Pass (Level 1)
-- 6/7 gates pass: Warn, write certificate as "CONDITIONAL RC", escalate to review
+- 8/9 gates pass: Warn, write certificate as "CONDITIONAL RC", escalate to review
 
 ### Failure (Level 2)
-- <6/7 gates pass: Fail, block certificate, list blockers, escalate to design review
+- <8/9 gates pass: Fail, block certificate, list blockers, escalate to design review
 
 ### Critical Failure (Level 3)
 - Core gate unavailable (qa_gate, planning_drift): Stop, require manual diagnostic
@@ -190,6 +212,8 @@ python3 claudeclockwork/qa/reports/green_run.py /path/to/project
 | report_policy_gate | `run_report_policy_gate(project_root: Path\|str\|None) -> dict` | returns {pass, violations, report_dir} | dict |
 | report_redaction_gate | `run_report_redaction_gate(project_root: Path\|str\|None) -> dict` | returns {pass, violations, scanned_files, report_dir} | dict |
 | runtime_root_gate | `run_runtime_root_gate(project_root: Path\|str\|None) -> dict` | returns {pass, violations, message} | dict |
+| perf_artifact_gate | `run_perf_artifact_gate(project_root: Path\|str) -> dict` | returns {pass, errors, warnings} | dict |
+| doc_path_leak_gate | `run_doc_path_leak_gate(project_root: Path\|str) -> dict` | returns {pass, errors, warnings} | dict |
 
 ---
 
@@ -200,6 +224,7 @@ python3 claudeclockwork/qa/reports/green_run.py /path/to/project
 - `Docs/report_vs_runtime_policy.md` — `.report/` vs `.clockwork_runtime/` separation
 - `Docs/green_run_certificate.md` — Generated certificate (auto-updated)
 - `Docs/quality_reaudit_from_mvp18.md` — Historical audit trail
+- `Docs/drift_register.md` — Recurring drift types, gates, and remediation (Phase 71)
 
 ---
 

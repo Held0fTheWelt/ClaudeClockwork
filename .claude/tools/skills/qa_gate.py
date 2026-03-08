@@ -230,6 +230,46 @@ def check_pointers(project_root: Path) -> CheckResult:
     )
 
 
+def check_perf_artifact(project_root: Path) -> CheckResult:
+    """PERF_001: perf_artifact_gate — no runtime outputs under .claude-performance/ (Phase 69)."""
+    try:
+        from claudeclockwork.core.gates.perf_artifact_gate import run_perf_artifact_gate
+    except ImportError:
+        return CheckResult(
+            "PERF_001", "fail",
+            "perf_artifact_gate unavailable (claudeclockwork.core.gates not importable)", True
+        )
+    result = run_perf_artifact_gate(project_root)
+    if result.get("pass"):
+        return CheckResult(
+            "PERF_001", "pass",
+            ".claude-performance/ contains no blocked runtime artifacts", False
+        )
+    errors = result.get("errors", [])
+    msg = "; ".join(errors[:3]) if errors else "perf artifact violation detected"
+    return CheckResult("PERF_001", "fail", msg, True)
+
+
+def check_doc_path_leak(project_root: Path) -> CheckResult:
+    """DOC_PATH_001: doc_path_leak_gate — no absolute host paths in curated docs (Phase 70)."""
+    try:
+        from claudeclockwork.core.gates.doc_path_leak_gate import run_doc_path_leak_gate
+    except ImportError:
+        return CheckResult(
+            "DOC_PATH_001", "fail",
+            "doc_path_leak_gate unavailable (claudeclockwork.core.gates not importable)", True
+        )
+    result = run_doc_path_leak_gate(project_root)
+    if result.get("pass"):
+        return CheckResult(
+            "DOC_PATH_001", "pass",
+            "no absolute host path leaks in curated docs", False
+        )
+    errors = result.get("errors", [])
+    msg = "; ".join(errors[:3]) if errors else "host path leak detected"
+    return CheckResult("DOC_PATH_001", "fail", msg, True)
+
+
 def check_planning_drift(project_root: Path) -> CheckResult:
     """DRIFT_001: planning_drift_scan — version convergence, milestone links, roadmap phase files."""
     try:
@@ -537,8 +577,10 @@ CHECKS = [
     ("COVERAGE_001","skill_runner.py dispatch coverage vs .py files",              check_skill_dispatch_coverage),
     ("ADDON_001",   "addon pack skills have .py implementations",                  check_addon_completeness),
     ("AGENT_001",   "agent registry not far behind methodology .md count",         check_agent_registry_consistency),
-    ("DRIFT_001",   "planning drift scan (version, milestone links, roadmap)",     check_planning_drift),
-    ("RELEASE_001", "release check (version drift, changelog for current version)", check_release),
+    ("DRIFT_001",    "planning drift scan (version, milestone links, roadmap)",      check_planning_drift),
+    ("RELEASE_001",  "release check (version drift, changelog for current version)", check_release),
+    ("PERF_001",     "perf artifact gate (.claude-performance/ curated-only)",       check_perf_artifact),
+    ("DOC_PATH_001", "doc path leak gate (no host paths in curated docs)",           check_doc_path_leak),
 ]
 
 ALL_CHECK_IDS = [c[0] for c in CHECKS]
