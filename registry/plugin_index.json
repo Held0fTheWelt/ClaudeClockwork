@@ -1,5 +1,5 @@
 {
-  "count": 3,
+  "count": 4,
   "plugins": [
     {
       "id": "example_hello",
@@ -50,6 +50,17 @@
       ],
       "enabled": true,
       "path": "plugins/git/plugin.json"
+    },
+    {
+      "id": "mp_plugin",
+      "name": "mp_plugin",
+      "version": "0.1.0",
+      "description": "",
+      "permissions": [],
+      "capabilities": [],
+      "requires_plugins": [],
+      "enabled": true,
+      "path": "plugins/mp_plugin/plugin.json"
     }
   ]
 }

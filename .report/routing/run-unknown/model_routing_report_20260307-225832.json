@@ -1,0 +1,24 @@
+{
+  "type": "model_routing_report",
+  "generated_at": "2026-03-07T22:58:32Z",
+  "run_id": "run-unknown",
+  "task": "unknown",
+  "scope": {},
+  "decision": {
+    "model": "unknown",
+    "tier": "low",
+    "reason": "tier=low; pick cheapest meeting trust/success if available; proxy_tokens=15000; insufficient trusted history -> cheapest fallback within tier",
+    "expected_cost_range_usd": [
+      0,
+      0,
+      0
+    ]
+  },
+  "alternatives": [],
+  "stats_snapshot": {
+    "task_type": "general",
+    "rules": {},
+    "candidates": []
+  },
+  "notes": []
+}
