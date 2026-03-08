@@ -9,11 +9,11 @@
 
 ## Definition of Done
 
-- [ ] A single canonical version file is chosen and documented
-- [ ] All secondary version markers either derive from canonical source, or are removed with updated policy docs
-- [ ] `planning_drift_scan` fails on mismatches and passes when aligned
-- [ ] `release_check` uses canonical version source
-- [ ] All existing tests pass
+- [x] ✅ A single canonical version file is chosen and documented
+- [x] ✅ All secondary version markers either derive from canonical source, or are removed with updated policy docs
+- [x] ✅ `planning_drift_scan` fails on mismatches and passes when aligned
+- [x] ✅ `release_check` uses canonical version source
+- [x] ✅ All existing tests pass
 
 ---
 
