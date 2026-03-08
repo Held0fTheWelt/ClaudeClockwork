@@ -20,8 +20,9 @@ Future PRs that reintroduce a listed drift type must include either:
 | **Root Cause** | `.claude/VERSION` is auto-incremented on each agent invocation. Root `VERSION` must be manually synced. NTFS/WSL2 file visibility issues can also cause `.claude/VERSION` to disappear from the filesystem while remaining git-tracked. |
 | **Decision** | FORBIDDEN — both files must match at commit time |
 | **Gate** | `planning_drift_scan` (DRIFT_001) — `claudeclockwork/core/gates/planning_drift.py` |
-| **Remediation** | `cat .claude/VERSION > VERSION` then re-run `python3 -m pytest tests/test_gates.py::test_planning_drift_scan_clean_repo` |
-| **Phases** | 62 (introduced gate), 62-re-run (fixed NTFS issue) |
+| **Remediation** | `python3 scripts/sync_version.py` then re-run `python3 -m pytest tests/test_gates.py::test_planning_drift_scan_clean_repo` |
+| **Auto-Sync** | `scripts/sync_version.py` (Phase 72) — run before each commit to keep root `VERSION` in sync with `.claude/VERSION` SSOT |
+| **Phases** | 62 (introduced gate), 62-re-run (fixed NTFS issue), 72 (sync utility added, DR-001 kill) |
 
 ---
 

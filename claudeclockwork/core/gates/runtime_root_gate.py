@@ -71,6 +71,7 @@ def _check_code_references(project_root: Path) -> list[str]:
         ".project/Docs/References",
         "tests/test_runtime_root_gate.py",  # Gate test legitimately references .llama_runtime
         "claudeclockwork/core/gates/runtime_root_gate.py",  # Gate itself mentions .llama_runtime
+        "claudeclockwork/core/gates/doc_path_leak_gate.py",  # Documents excluded dirs (including llama_runtime)
     )
 
     for check_path in check_paths:

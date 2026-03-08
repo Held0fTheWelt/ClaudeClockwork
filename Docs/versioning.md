@@ -69,7 +69,7 @@ Version bumps flow through this workflow:
 
 1. **Never edit root `VERSION` directly** — it mirrors the canonical source
 2. **Always edit `.claude/VERSION` first** when bumping the product version
-3. **Sync root `VERSION`** manually or via `scripts/sync_version.py` if your workflow uses it
+3. **Sync root `VERSION`** via `python3 scripts/sync_version.py` (Phase 72 — canonical sync utility)
 4. **Update `.claude/CHANGELOG.md`** with the new version in the first line:
    ```markdown
    <!-- current-version: 17.7.295 -->
@@ -102,6 +102,29 @@ With DRIFT_001 + RELEASE_001 hard locks enforced:
 - **Guarantee:** Changelog is synchronized with released version
 - **Guarantee:** No orphaned or duplicate version files
 - **Safeguard:** Both gates must pass or deployment is blocked
+
+## Version Sync Command (Phase 72)
+
+`scripts/sync_version.py` is the canonical auto-sync utility. It reads `.claude/VERSION` and
+writes root `VERSION` to match. Running it twice is idempotent.
+
+```bash
+# Sync (dry-run first to preview)
+python3 scripts/sync_version.py --dry-run
+python3 scripts/sync_version.py
+
+# Verify convergence
+python3 -m pytest tests/test_gates.py::test_planning_drift_scan_clean_repo -v
+```
+
+**When to run:** Before any commit where `.claude/VERSION` may have been auto-incremented.
+Run it as the last step before `git add VERSION && git commit`.
+
+**DR-001 Prevention:** This sync tool is the enforcement mechanism for DR-001. Any mismatch
+is caught by `planning_drift_scan` (DRIFT_001) at gate time. If DRIFT_001 fails, run
+`python3 scripts/sync_version.py` to fix instantly.
+
+---
 
 ## Migration from Old Workflow
 
