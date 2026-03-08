@@ -12,10 +12,10 @@ Short, executable steps for upgrading Clockwork versions.
 - If your repo has a root `VERSION` file, set it to the same value as `.claude/VERSION` (single source of truth is `.claude/VERSION`).
 - Run: `python -c "from claudeclockwork.core.gates import run_planning_drift_scan; from pathlib import Path; print('OK' if run_planning_drift_scan(Path('.'))['pass'] else 'FAIL')"` to verify no version drift.
 
-## 3. Runtime migration (if applicable)
+## 3. Runtime paths
 
-- If the release notes mention runtime root or path changes: run `python scripts/migrate_runtime_root.py` if you still use `.llama_runtime/` (Phase 19).
-- Artifacts live under `.clockwork_runtime/` (telemetry, reports, evidence, redacted_exports).
+- The canonical runtime root is `.clockwork_runtime/` (Phase 19+). The legacy `.llama_runtime/` was deprecated in Phase 65 and must not be used.
+- All artifacts live under `.clockwork_runtime/` (telemetry, reports, evidence, redacted_exports).
 
 ## 4. Validation
 

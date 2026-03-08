@@ -9,11 +9,11 @@
 
 ## Definition of Done
 
-- [ ] `.llama_runtime/` is removed OR replaced with a tiny legacy stub (README + .gitkeep)
-- [ ] All runtime writes go to `.clockwork_runtime/`
-- [ ] A gate blocks reintroducing `.llama_runtime/` usage
-- [ ] References to `.llama_runtime/` removed from docs/code/tests (except legacy note)
-- [ ] All existing tests pass
+- [x] ✅ `.llama_runtime/` is removed OR replaced with a tiny legacy stub (README + .gitkeep)
+- [x] ✅ All runtime writes go to `.clockwork_runtime/`
+- [x] ✅ A gate blocks reintroducing `.llama_runtime/` usage
+- [x] ✅ References to `.llama_runtime/` removed from docs/code/tests (except legacy note)
+- [x] ✅ All existing tests pass
 
 ---
 

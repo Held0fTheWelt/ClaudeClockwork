@@ -1,7 +1,0 @@
-{
-  "plugin_count": 2,
-  "plugin_ids": [
-    "filesystem",
-    "git"
-  ]
-}
