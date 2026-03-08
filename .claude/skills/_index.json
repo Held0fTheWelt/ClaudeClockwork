@@ -1,0 +1,902 @@
+{
+  "metadata": {
+    "version": "17.7.275",
+    "generated": "2026-03-08T00:15:11.167509Z",
+    "total_skills": 109,
+    "categories_count": 18
+  },
+  "skills": [
+    {
+      "id": "code_assimilate",
+      "category": "analysis",
+      "description": "Assimilate and summarise a code module or directory for agent context.",
+      "entrypoint": "skills.analysis.code_assimilate.skill:CodeAssimilateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/analysis/code_assimilate"
+    },
+    {
+      "id": "dependency_graph",
+      "category": "analysis",
+      "description": "Scan skill files and task files for run_manifest_skill() call patterns and build a directed dependency graph.",
+      "entrypoint": "skills.analysis.dependency_graph.skill:DependencyGraphSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/analysis/dependency_graph"
+    },
+    {
+      "id": "limitation_harvest_scan",
+      "category": "analysis",
+      "description": "Scan the codebase for documented limitations and known issues.",
+      "entrypoint": "skills.analysis.limitation_harvest_scan.skill:LimitationHarvestScanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/analysis/limitation_harvest_scan"
+    },
+    {
+      "id": "mechanic_explain",
+      "category": "analysis",
+      "description": "Explain how a skill or system component works in plain language.",
+      "entrypoint": "skills.analysis.mechanic_explain.skill:MechanicExplainSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/analysis/mechanic_explain"
+    },
+    {
+      "id": "mutation_detect",
+      "category": "analysis",
+      "description": "Detect unintended mutations between two versions of a file or data structure.",
+      "entrypoint": "skills.analysis.mutation_detect.skill:MutationDetectSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/analysis/mutation_detect"
+    },
+    {
+      "id": "pattern_detect",
+      "category": "analysis",
+      "description": "Detect recurring patterns in a set of skill outputs or log entries.",
+      "entrypoint": "skills.analysis.pattern_detect.skill:PatternDetectSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/analysis/pattern_detect"
+    },
+    {
+      "id": "system_map",
+      "category": "analysis",
+      "description": "Build a dependency and interaction map for the current system.",
+      "entrypoint": "skills.analysis.system_map.skill:SystemMapSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/analysis/system_map"
+    },
+    {
+      "id": "last_train",
+      "category": "archive",
+      "description": "Run the last-train knowledge consolidation pass.",
+      "entrypoint": "skills.archive.last_train.skill:LastTrainSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/archive/last_train"
+    },
+    {
+      "id": "last_train_merge",
+      "category": "archive",
+      "description": "Merge last-train output into the knowledge base.",
+      "entrypoint": "skills.archive.last_train_merge.skill:LastTrainMergeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/archive/last_train_merge"
+    },
+    {
+      "id": "evidence_bundle_build",
+      "category": "bundle",
+      "description": "Build evidence bundles as a reusable artifact capability.",
+      "entrypoint": "skills.bundle.evidence_bundle_build.skill:EvidenceBundleBuildSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/bundle/evidence_bundle_build"
+    },
+    {
+      "id": "evidence_init",
+      "category": "bundle",
+      "description": "Initialize an evidence bundle workspace.",
+      "entrypoint": "skills.bundle.evidence_init.skill:EvidenceInitSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/bundle/evidence_init"
+    },
+    {
+      "id": "evidence_router",
+      "category": "bundle",
+      "description": "Route evidence tasks to the correct evidence workflow.",
+      "entrypoint": "skills.bundle.evidence_router.skill:EvidenceRouterSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/bundle/evidence_router"
+    },
+    {
+      "id": "cleanup_apply",
+      "category": "cleanup",
+      "description": "Apply cleanup changes from an approved cleanup plan.",
+      "entrypoint": "skills.cleanup.cleanup_apply.skill:CleanupApplySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/cleanup/cleanup_apply"
+    },
+    {
+      "id": "cleanup_plan_apply",
+      "category": "cleanup",
+      "description": "Build and apply a cleanup plan using the legacy implementation.",
+      "entrypoint": "skills.cleanup.cleanup_plan_apply.skill:CleanupPlanApplySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/cleanup/cleanup_plan_apply"
+    },
+    {
+      "id": "code_clean",
+      "category": "cleanup",
+      "description": "Perform code cleanup through the legacy cleaner.",
+      "entrypoint": "skills.cleanup.code_clean.skill:CodeCleanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/cleanup/code_clean"
+    },
+    {
+      "id": "code_clean_scan",
+      "category": "cleanup",
+      "description": "Scan the codebase for cleanup opportunities.",
+      "entrypoint": "skills.cleanup.code_clean_scan.skill:CodeCleanScanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/cleanup/code_clean_scan"
+    },
+    {
+      "id": "repo_clean",
+      "category": "cleanup",
+      "description": "Perform repository cleanup through the legacy cleaner.",
+      "entrypoint": "skills.cleanup.repo_clean.skill:RepoCleanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/cleanup/repo_clean"
+    },
+    {
+      "id": "repo_clean_scan",
+      "category": "cleanup",
+      "description": "Scan the repository for cleanup opportunities.",
+      "entrypoint": "skills.cleanup.repo_clean_scan.skill:RepoCleanScanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/cleanup/repo_clean_scan"
+    },
+    {
+      "id": "hello",
+      "category": "demo",
+      "description": "Hello-world demo skill.",
+      "entrypoint": "skills.demo.hello.skill:HelloSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/demo/hello"
+    },
+    {
+      "id": "report",
+      "category": "demo",
+      "description": "Generate a simple status report (demo skill).",
+      "entrypoint": "skills.demo.report.skill:ReportSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/demo/report"
+    },
+    {
+      "id": "scan",
+      "category": "demo",
+      "description": "Scan the repository for a quick health summary (demo skill).",
+      "entrypoint": "skills.demo.scan.skill:ScanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/demo/scan"
+    },
+    {
+      "id": "autodocs_generate",
+      "category": "docs",
+      "description": "Auto-generate documentation from code, manifests, and inline comments.",
+      "entrypoint": "skills.docs.autodocs_generate.skill:AutodocsGenerateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/autodocs_generate"
+    },
+    {
+      "id": "changelog_generate",
+      "category": "docs",
+      "description": "Generate a structured CHANGELOG entry from git log, classifying commits by conventional commit prefixes. Optionally writes to a file.",
+      "entrypoint": "skills.docs.changelog_generate.skill:ChangelogGenerateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/changelog_generate"
+    },
+    {
+      "id": "copyright_standardize",
+      "category": "docs",
+      "description": "Standardise copyright headers across all source files.",
+      "entrypoint": "skills.docs.copyright_standardize.skill:CopyrightStandardizeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/copyright_standardize"
+    },
+    {
+      "id": "doc_review",
+      "category": "docs",
+      "description": "Review a document for completeness, accuracy, and policy compliance.",
+      "entrypoint": "skills.docs.doc_review.skill:DocReviewSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/doc_review"
+    },
+    {
+      "id": "doc_ssot_resolver",
+      "category": "docs",
+      "description": "Resolve conflicting SSoT references across documentation.",
+      "entrypoint": "skills.docs.doc_ssot_resolver.skill:DocSsotResolverSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/doc_ssot_resolver"
+    },
+    {
+      "id": "doc_write",
+      "category": "docs",
+      "description": "Write a new document from a structured brief.",
+      "entrypoint": "skills.docs.doc_write.skill:DocWriteSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/doc_write"
+    },
+    {
+      "id": "log_standardize",
+      "category": "docs",
+      "description": "Standardise log file format and line structure across the repository.",
+      "entrypoint": "skills.docs.log_standardize.skill:LogStandardizeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/log_standardize"
+    },
+    {
+      "id": "pdf_export",
+      "category": "docs",
+      "description": "Export a markdown document to a formatted PDF file.",
+      "entrypoint": "skills.docs.pdf_export.skill:PdfExportSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/pdf_export"
+    },
+    {
+      "id": "pdf_quality",
+      "category": "docs",
+      "description": "Score PDF quality and checklist compliance.",
+      "entrypoint": "skills.docs.pdf_quality.skill:PdfQualitySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/pdf_quality"
+    },
+    {
+      "id": "pdf_render",
+      "category": "docs",
+      "description": "Render PDFs from prepared markdown and diagram inputs.",
+      "entrypoint": "skills.docs.pdf_render.skill:PdfRenderSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/pdf_render"
+    },
+    {
+      "id": "reference_fix",
+      "category": "docs",
+      "description": "Fix broken backtick path references in documentation files.",
+      "entrypoint": "skills.docs.reference_fix.skill:ReferenceFixSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/reference_fix"
+    },
+    {
+      "id": "repo_compare",
+      "category": "docs",
+      "description": "Compare repositories or snapshots and summarize changes.",
+      "entrypoint": "skills.docs.repo_compare.skill:RepoCompareSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/repo_compare"
+    },
+    {
+      "id": "screencast_script",
+      "category": "docs",
+      "description": "Generate a screencast narration script from a feature description.",
+      "entrypoint": "skills.docs.screencast_script.skill:ScreencastScriptSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/screencast_script"
+    },
+    {
+      "id": "tutorial_write",
+      "category": "docs",
+      "description": "Write a step-by-step tutorial for a skill or workflow.",
+      "entrypoint": "skills.docs.tutorial_write.skill:TutorialWriteSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/docs/tutorial_write"
+    },
+    {
+      "id": "outcome_event_generate",
+      "category": "evidence",
+      "description": "Generate structured outcome event records from skill execution.",
+      "entrypoint": "skills.evidence.outcome_event_generate.skill:OutcomeEventGenerateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/evidence/outcome_event_generate"
+    },
+    {
+      "id": "outcome_ledger_append",
+      "category": "evidence",
+      "description": "Append an outcome event to the persistent outcome ledger.",
+      "entrypoint": "skills.evidence.outcome_ledger_append.skill:OutcomeLedgerAppendSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/evidence/outcome_ledger_append"
+    },
+    {
+      "id": "explain",
+      "category": "kb",
+      "description": "Explain with file path citations.",
+      "entrypoint": "skills.kb.explain.skill:KbExplainSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/kb/explain"
+    },
+    {
+      "id": "search",
+      "category": "kb",
+      "description": "Search knowledge base; returns path, snippet, score with citations.",
+      "entrypoint": "skills.kb.search.skill:KbSearchSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/kb/search"
+    },
+    {
+      "id": "audio_asr",
+      "category": "localai",
+      "description": "Local speech-to-text (audio.asr). Returns contract-shaped result; dependency_missing when whisper not installed.",
+      "entrypoint": "skills.localai.audio_asr.skill:AudioAsrSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/localai/audio_asr"
+    },
+    {
+      "id": "embed_text",
+      "category": "localai",
+      "description": "Local text embeddings (embed.text). Returns contract-shaped result; dependency_missing when sentence_transformers not installed.",
+      "entrypoint": "skills.localai.embed_text.skill:EmbedTextSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/localai/embed_text"
+    },
+    {
+      "id": "localai_run",
+      "category": "localai",
+      "description": "Run a LocalAI capability by id (embed.text, audio.asr). Returns contract-shaped result.",
+      "entrypoint": "skills.localai.localai_run.skill:LocalaiRunSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/localai/localai_run"
+    },
+    {
+      "id": "capability_map_build",
+      "category": "meta",
+      "description": "Build a unified capability map from manifest skills, legacy skills, contracts and agents.",
+      "entrypoint": "skills.meta.capability_map_build.skill:CapabilityMapBuildSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/capability_map_build"
+    },
+    {
+      "id": "dead_file_scan",
+      "category": "meta",
+      "description": "Scan the repository for files that have lost their context — superseded, duplicate, orphaned pointer, or dead-reference files. Always runs in dry_run mode (never deletes).",
+      "entrypoint": "skills.meta.dead_file_scan.skill:DeadFileScanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/dead_file_scan"
+    },
+    {
+      "id": "legacy_skill_inventory",
+      "category": "meta",
+      "description": "Inventory runnable legacy skills and summarize migration coverage against manifest-based skills.",
+      "entrypoint": "skills.meta.legacy_skill_inventory.skill:LegacySkillInventorySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/legacy_skill_inventory"
+    },
+    {
+      "id": "manifest_registry_export",
+      "category": "meta",
+      "description": "Export the current manifest registry into registry/skill_index.json.",
+      "entrypoint": "skills.meta.manifest_registry_export.skill:ManifestRegistryExportSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/manifest_registry_export"
+    },
+    {
+      "id": "manifest_validate",
+      "category": "meta",
+      "description": "Validate manifest-based skill packages for required fields and importability.",
+      "entrypoint": "skills.meta.manifest_validate.skill:ManifestValidateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/manifest_validate"
+    },
+    {
+      "id": "refactor_bridge_scan",
+      "category": "meta",
+      "description": "Scan the repo for legacy bridge markers and migration hotspots.",
+      "entrypoint": "skills.meta.refactor_bridge_scan.skill:RefactorBridgeScanSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/refactor_bridge_scan"
+    },
+    {
+      "id": "reference_skill_catalog",
+      "category": "meta",
+      "description": "Catalog SKILL.md reference skills and execution manifests to support MCP/plugin planning.",
+      "entrypoint": "skills.meta.reference_skill_catalog.skill:ReferenceSkillCatalogSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/reference_skill_catalog"
+    },
+    {
+      "id": "skill_gap_detect",
+      "category": "meta",
+      "description": "Detect capability gaps and suggest the next manifest-based skill to add.",
+      "entrypoint": "skills.meta.skill_gap_detect.skill:SkillGapDetectSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/skill_gap_detect"
+    },
+    {
+      "id": "skill_registry_search",
+      "category": "meta",
+      "description": "Search both manifest-based skills and the legacy registry to find candidate skills.",
+      "entrypoint": "skills.meta.skill_registry_search.skill:SkillRegistrySearchSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/skill_registry_search"
+    },
+    {
+      "id": "skill_scaffold",
+      "category": "meta",
+      "description": "Scaffold a new manifest-based skill package and optional legacy bridge notes.",
+      "entrypoint": "skills.meta.skill_scaffold.skill:SkillScaffoldSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/meta/skill_scaffold"
+    },
+    {
+      "id": "clockwork_version_bump",
+      "category": "misc",
+      "description": "Bump the Clockwork version string and update the changelog.",
+      "entrypoint": "skills.misc.clockwork_version_bump.skill:ClockworkVersionBumpSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/misc/clockwork_version_bump"
+    },
+    {
+      "id": "critics_board_review",
+      "category": "misc",
+      "description": "Run a full critics board review for a plan or implementation.",
+      "entrypoint": "skills.misc.critics_board_review.skill:CriticsBoardReviewSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/misc/critics_board_review"
+    },
+    {
+      "id": "exec_dryrun",
+      "category": "misc",
+      "description": "Dry-run an execution plan without applying any changes.",
+      "entrypoint": "skills.misc.exec_dryrun.skill:ExecDryrunSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/misc/exec_dryrun"
+    },
+    {
+      "id": "review_panel",
+      "category": "misc",
+      "description": "Convene a review panel for multi-perspective evaluation.",
+      "entrypoint": "skills.misc.review_panel.skill:ReviewPanelSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/misc/review_panel"
+    },
+    {
+      "id": "config_validate",
+      "category": "ops",
+      "description": "Parse all JSON and YAML config files in the specified directories and report any files that fail to load.",
+      "entrypoint": "skills.ops.config_validate.skill:ConfigValidateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/ops/config_validate"
+    },
+    {
+      "id": "eval_run",
+      "category": "ops",
+      "description": "Execute the evaluation harness and summarize regressions.",
+      "entrypoint": "skills.ops.eval_run.skill:EvalRunSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/ops/eval_run"
+    },
+    {
+      "id": "git_summary",
+      "category": "ops",
+      "description": "Return a structured summary of recent git commits and changed files. Optionally includes a unified diff.",
+      "entrypoint": "skills.ops.git_summary.skill:GitSummarySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/ops/git_summary"
+    },
+    {
+      "id": "release_cut",
+      "category": "ops",
+      "description": "Create a release-cut package through the legacy release flow.",
+      "entrypoint": "skills.ops.release_cut.skill:ReleaseCutSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/ops/release_cut"
+    },
+    {
+      "id": "skill_health",
+      "category": "ops",
+      "description": "Check every manifest skill for missing bridges, bad entrypoints, invalid manifest JSON, and missing required metadata fields.",
+      "entrypoint": "skills.ops.skill_health.skill:SkillHealthSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/ops/skill_health"
+    },
+    {
+      "id": "test_run",
+      "category": "ops",
+      "description": "Run pytest against a specified test path and return structured pass/fail/error counts. Skipped when CLOCKWORK_CI env var is set.",
+      "entrypoint": "skills.ops.test_run.skill:TestRunSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/ops/test_run"
+    },
+    {
+      "id": "efficiency_review",
+      "category": "performance",
+      "description": "Review token efficiency and cost metrics for a set of skill runs.",
+      "entrypoint": "skills.performance.efficiency_review.skill:EfficiencyReviewSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/efficiency_review"
+    },
+    {
+      "id": "performance_finalize",
+      "category": "performance",
+      "description": "Export and persist the current session performance report.",
+      "entrypoint": "skills.performance.performance_finalize.skill:PerformanceFinalizeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/performance_finalize"
+    },
+    {
+      "id": "performance_toggle",
+      "category": "performance",
+      "description": "Enable or disable the token budgeting performance layer.",
+      "entrypoint": "skills.performance.performance_toggle.skill:PerformanceToggleSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/performance_toggle"
+    },
+    {
+      "id": "prompt_debt_capture",
+      "category": "performance",
+      "description": "Capture prompt debt observations for future prompt engineering work.",
+      "entrypoint": "skills.performance.prompt_debt_capture.skill:PromptDebtCaptureSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/prompt_debt_capture"
+    },
+    {
+      "id": "shadow_prompt",
+      "category": "performance",
+      "description": "Generate a shadow (minimised) prompt for a given skill or workflow.",
+      "entrypoint": "skills.performance.shadow_prompt.skill:ShadowPromptSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/shadow_prompt"
+    },
+    {
+      "id": "shadow_prompt_minify",
+      "category": "performance",
+      "description": "Minify a shadow prompt to its smallest effective form.",
+      "entrypoint": "skills.performance.shadow_prompt_minify.skill:ShadowPromptMinifySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/shadow_prompt_minify"
+    },
+    {
+      "id": "telemetry_summarize",
+      "category": "performance",
+      "description": "Summarize token usage and cost from telemetry event logs.",
+      "entrypoint": "skills.performance.telemetry_summarize.skill:TelemetrySummarizeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/telemetry_summarize"
+    },
+    {
+      "id": "token_event_log",
+      "category": "performance",
+      "description": "Log a token-usage event to the performance ledger.",
+      "entrypoint": "skills.performance.token_event_log.skill:TokenEventLogSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/performance/token_event_log"
+    },
+    {
+      "id": "create_mvp",
+      "category": "planning",
+      "description": "Scaffold a new MVP document from a goal description.",
+      "entrypoint": "skills.planning.create_mvp.skill:CreateMvpSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/create_mvp"
+    },
+    {
+      "id": "creativity_burst",
+      "category": "planning",
+      "description": "Generate a rapid creative ideation burst for a given problem.",
+      "entrypoint": "skills.planning.creativity_burst.skill:CreativityBurstSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/creativity_burst"
+    },
+    {
+      "id": "decision_feedback",
+      "category": "planning",
+      "description": "Capture structured feedback on a decision for future reference.",
+      "entrypoint": "skills.planning.decision_feedback.skill:DecisionFeedbackSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/decision_feedback"
+    },
+    {
+      "id": "deliberation_pack_build",
+      "category": "planning",
+      "description": "Build a deliberation pack with options, tradeoffs, and recommendation.",
+      "entrypoint": "skills.planning.deliberation_pack_build.skill:DeliberationPackBuildSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/deliberation_pack_build"
+    },
+    {
+      "id": "economics_regression",
+      "category": "planning",
+      "description": "Run cost/value regression analysis on a set of options.",
+      "entrypoint": "skills.planning.economics_regression.skill:EconomicsRegressionSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/economics_regression"
+    },
+    {
+      "id": "edge_case_selector",
+      "category": "planning",
+      "description": "Identify and prioritise edge cases for a given feature or change.",
+      "entrypoint": "skills.planning.edge_case_selector.skill:EdgeCaseSelectorSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/edge_case_selector"
+    },
+    {
+      "id": "hypothesis_builder",
+      "category": "planning",
+      "description": "Build a structured hypothesis from an observation and supporting evidence.",
+      "entrypoint": "skills.planning.hypothesis_builder.skill:HypothesisBuilderSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/hypothesis_builder"
+    },
+    {
+      "id": "idea_dedupe",
+      "category": "planning",
+      "description": "Deduplicate a list of ideas by semantic similarity.",
+      "entrypoint": "skills.planning.idea_dedupe.skill:IdeaDedupeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/idea_dedupe"
+    },
+    {
+      "id": "idea_scoring",
+      "category": "planning",
+      "description": "Score and rank ideas by feasibility, impact, and alignment.",
+      "entrypoint": "skills.planning.idea_scoring.skill:IdeaScoringSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/idea_scoring"
+    },
+    {
+      "id": "parity_scan_and_mvp_planner",
+      "category": "planning",
+      "description": "Audit parity and produce MVP implementation backlog files.",
+      "entrypoint": "skills.planning.parity_scan_and_mvp_planner.skill:ParityScanAndMvpPlannerSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/parity_scan_and_mvp_planner"
+    },
+    {
+      "id": "plan_diff_apply",
+      "category": "planning",
+      "description": "Apply a structured diff to an existing plan document.",
+      "entrypoint": "skills.planning.plan_diff_apply.skill:PlanDiffApplySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/plan_diff_apply"
+    },
+    {
+      "id": "plan_lint",
+      "category": "planning",
+      "description": "Lint a plan document for missing sections and policy violations.",
+      "entrypoint": "skills.planning.plan_lint.skill:PlanLintSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/plan_lint"
+    },
+    {
+      "id": "plan_mutate",
+      "category": "planning",
+      "description": "Apply a targeted mutation to a plan section.",
+      "entrypoint": "skills.planning.plan_mutate.skill:PlanMutateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/plan_mutate"
+    },
+    {
+      "id": "triad_build",
+      "category": "planning",
+      "description": "Build a message triad (work_brief, constraints, goal) from a raw task.",
+      "entrypoint": "skills.planning.triad_build.skill:TriadBuildSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/triad_build"
+    },
+    {
+      "id": "triad_ref_lint",
+      "category": "planning",
+      "description": "Lint a triad for reference consistency and completeness.",
+      "entrypoint": "skills.planning.triad_ref_lint.skill:TriadRefLintSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/triad_ref_lint"
+    },
+    {
+      "id": "work_scope_assess",
+      "category": "planning",
+      "description": "Assess the scope and complexity of a proposed work item.",
+      "entrypoint": "skills.planning.work_scope_assess.skill:WorkScopeAssessSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/planning/work_scope_assess"
+    },
+    {
+      "id": "plugin_registry_export",
+      "category": "plugins",
+      "description": "Export installed plugin metadata from plugins/*/plugin.json into registry/plugin_index.json.",
+      "entrypoint": "skills.plugins.plugin_registry_export.skill:PluginRegistryExportSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/plugins/plugin_registry_export"
+    },
+    {
+      "id": "plugin_scaffold",
+      "category": "plugins",
+      "description": "Scaffold a plugin package with plugin.json and a starter README for ClaudeClockwork.",
+      "entrypoint": "skills.plugins.plugin_scaffold.skill:PluginScaffoldSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/plugins/plugin_scaffold"
+    },
+    {
+      "id": "contract_drift_sentinel",
+      "category": "qa",
+      "description": "Detect contract drift between docs, schemas and implementation.",
+      "entrypoint": "skills.qa.contract_drift_sentinel.skill:ContractDriftSentinelSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/contract_drift_sentinel"
+    },
+    {
+      "id": "determinism_harness",
+      "category": "qa",
+      "description": "Run the determinism harness to compare repeated runs.",
+      "entrypoint": "skills.qa.determinism_harness.skill:DeterminismHarnessSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/determinism_harness"
+    },
+    {
+      "id": "determinism_proof",
+      "category": "qa",
+      "description": "Verify determinism of skill outputs via SHA-256 digest chains.",
+      "entrypoint": "skills.qa.determinism_proof.skill:DeterminismProofSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/determinism_proof"
+    },
+    {
+      "id": "drift_semantic_check",
+      "category": "qa",
+      "description": "Detect semantic drift across related files in the repository.",
+      "entrypoint": "skills.qa.drift_semantic_check.skill:DriftSemanticCheckSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/drift_semantic_check"
+    },
+    {
+      "id": "hardening_scan_fix",
+      "category": "qa",
+      "description": "Scan codebase for security anti-patterns and emit fix suggestions.",
+      "entrypoint": "skills.qa.hardening_scan_fix.skill:HardeningScanFixSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/hardening_scan_fix"
+    },
+    {
+      "id": "policy_gatekeeper",
+      "category": "qa",
+      "description": "Run deterministic policy checks before risky operations.",
+      "entrypoint": "skills.qa.policy_gatekeeper.skill:PolicyGatekeeperSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/policy_gatekeeper"
+    },
+    {
+      "id": "qa_gate",
+      "category": "qa",
+      "description": "Run the existing QA gate through the new manifest system.",
+      "entrypoint": "skills.qa.qa_gate.skill:QaGateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/qa_gate"
+    },
+    {
+      "id": "repo_validate",
+      "category": "qa",
+      "description": "Validate repository consistency and pointer integrity.",
+      "entrypoint": "skills.qa.repo_validate.skill:RepoValidateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/repo_validate"
+    },
+    {
+      "id": "schema_batch_validate",
+      "category": "qa",
+      "description": "Validate batches of schemas through the legacy validator.",
+      "entrypoint": "skills.qa.schema_batch_validate.skill:SchemaBatchValidateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/schema_batch_validate"
+    },
+    {
+      "id": "spec_validate",
+      "category": "qa",
+      "description": "Validate JSON examples against JSON Schema documents.",
+      "entrypoint": "skills.qa.spec_validate.skill:SpecValidateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/spec_validate"
+    },
+    {
+      "id": "team_topology_verify",
+      "category": "qa",
+      "description": "Validate agent hierarchy and team topology definitions.",
+      "entrypoint": "skills.qa.team_topology_verify.skill:TeamTopologyVerifySkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/qa/team_topology_verify"
+    },
+    {
+      "id": "bandit_router_select",
+      "category": "routing",
+      "description": "Select the optimal model tier using multi-armed bandit routing logic.",
+      "entrypoint": "skills.routing.bandit_router_select.skill:BanditRouterSelectSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/bandit_router_select"
+    },
+    {
+      "id": "budget_analyze",
+      "category": "routing",
+      "description": "Analyse token and cost budget consumption across recent runs.",
+      "entrypoint": "skills.routing.budget_analyze.skill:BudgetAnalyzeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/budget_analyze"
+    },
+    {
+      "id": "budget_router",
+      "category": "routing",
+      "description": "Route tasks based on token budget and cost constraints.",
+      "entrypoint": "skills.routing.budget_router.skill:BudgetRouterSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/budget_router"
+    },
+    {
+      "id": "escalation_router",
+      "category": "routing",
+      "description": "Route escalations to the appropriate agent tier based on severity.",
+      "entrypoint": "skills.routing.escalation_router.skill:EscalationRouterSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/escalation_router"
+    },
+    {
+      "id": "model_routing_record_outcome",
+      "category": "routing",
+      "description": "Record the outcome of a model routing decision for future tuning.",
+      "entrypoint": "skills.routing.model_routing_record_outcome.skill:ModelRoutingRecordOutcomeSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/model_routing_record_outcome"
+    },
+    {
+      "id": "model_routing_select",
+      "category": "routing",
+      "description": "Select the best model for a given task using the routing matrix.",
+      "entrypoint": "skills.routing.model_routing_select.skill:ModelRoutingSelectSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/model_routing_select"
+    },
+    {
+      "id": "route_autotune_suggest",
+      "category": "routing",
+      "description": "Suggest routing profile adjustments based on historical outcome data.",
+      "entrypoint": "skills.routing.route_autotune_suggest.skill:RouteAutotuneSuggestSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/route_autotune_suggest"
+    },
+    {
+      "id": "route_profile_patch_pack",
+      "category": "routing",
+      "description": "Build a patch pack for updating a routing profile in bulk.",
+      "entrypoint": "skills.routing.route_profile_patch_pack.skill:RouteProfilePatchPackSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/route_profile_patch_pack"
+    },
+    {
+      "id": "route_profile_update",
+      "category": "routing",
+      "description": "Write updated routing profile settings to the registry.",
+      "entrypoint": "skills.routing.route_profile_update.skill:RouteProfileUpdateSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/routing/route_profile_update"
+    },
+    {
+      "id": "security_redactor",
+      "category": "security",
+      "description": "Create redacted copies of evidence bundles and reports.",
+      "entrypoint": "skills.security.security_redactor.skill:SecurityRedactorSkill",
+      "frequency": "extended",
+      "path": "/mnt/d/ClaudeClockwork/.claude/skills/security/security_redactor"
+    }
+  ],
+  "categories": {
+    "analysis": 7,
+    "archive": 2,
+    "bundle": 3,
+    "cleanup": 6,
+    "demo": 3,
+    "docs": 14,
+    "evidence": 2,
+    "kb": 2,
+    "localai": 3,
+    "meta": 10,
+    "misc": 4,
+    "ops": 6,
+    "performance": 8,
+    "planning": 16,
+    "plugins": 2,
+    "qa": 11,
+    "routing": 9,
+    "security": 1
+  }
+}
