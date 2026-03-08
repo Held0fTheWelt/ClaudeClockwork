@@ -91,6 +91,19 @@ Future PRs that reintroduce a listed drift type must include either:
 
 ---
 
+## DR-007 — Policy Doc Says to Write Runtime Outputs into `.report/`
+
+| Field | Value |
+|-------|-------|
+| **Symptom** | A documentation file instructs writing raw telemetry, budget reports, or machine-generated outputs directly into `.report/performance/` or `.report/routing/` |
+| **Root Cause** | `.claude-performance/README.md` described the old (Phase 63-era) write path where `budget_analyze.py` defaulted to `.report/performance/`. The doc was not updated when Phase 63 migrated write paths. |
+| **Decision** | FORBIDDEN — `.report/` is curated-only. Only an explicit exporter (or manual user step) may publish redacted summaries there. |
+| **Gate** | `doc_policy_consistency_gate` — `claudeclockwork/core/gates/doc_policy_consistency_gate.py` |
+| **Remediation** | Update the offending doc to route runtime outputs to `.clockwork_runtime/<category>/`. Update the curated summary instructions to say "via explicit exporter only". |
+| **Phases** | 74 (gate added, `.claude-performance/README.md` rewritten) |
+
+---
+
 ## Summary Table
 
 | ID | Drift Type | Decision | Gate |
@@ -101,6 +114,7 @@ Future PRs that reintroduce a listed drift type must include either:
 | DR-004 | Host paths in curated docs | FORBIDDEN | `doc_path_leak_gate` |
 | DR-005 | Governance doc broken links | FORBIDDEN | `docs_link_lint` |
 | DR-006 | Validation artifact path leaks / committed runtime validation | FORBIDDEN | `validation_artifact_gate` |
+| DR-007 | Policy doc instructs writing runtime outputs into `.report/` | FORBIDDEN | `doc_policy_consistency_gate` |
 
-All six drifts are **forbidden** — no allowed-with-constraints exceptions.
+All seven drifts are **forbidden** — no allowed-with-constraints exceptions.
 Every gate is deterministic and must pass before release.
