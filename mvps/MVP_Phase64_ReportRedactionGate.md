@@ -9,11 +9,11 @@
 
 ## Definition of Done
 
-- [ ] Redaction gate exists and runs in CI
-- [ ] `.report/**/*.md` contains zero absolute host paths
-- [ ] `.report/**/*.md` contains zero detected secret patterns (if defined)
-- [ ] Any runtime-generated `.md` moved out of `.report/` (Phase 63)
-- [ ] All existing tests pass
+- [x] ✅ Redaction gate exists and runs in CI
+- [x] ✅ `.report/**/*.md` contains zero absolute host paths
+- [x] ✅ `.report/**/*.md` contains zero detected secret patterns (if defined)
+- [x] ✅ Any runtime-generated `.md` moved out of `.report/` (Phase 63)
+- [x] ✅ All existing tests pass
 
 ---
 
