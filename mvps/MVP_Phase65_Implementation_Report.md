@@ -214,7 +214,7 @@ The `.gitignore` already ignored both directories, so deployment is transparent.
 
 **Run the gate locally:**
 ```bash
-python3 /mnt/d/ClaudeClockwork/claudeclockwork/core/gates/runtime_root_gate.py
+python3 <PROJECT_ROOT>/claudeclockwork/core/gates/runtime_root_gate.py
 ```
 
 **Run all tests:**

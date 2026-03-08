@@ -16,8 +16,8 @@ MVP Phase 64 implements a comprehensive redaction gate to ensure all curated mar
 
 **Completed:**
 - Defined 4 block pattern categories with examples
-- Windows drive paths: `^[A-Z]:\` (e.g., `D:\ClaudeClockwork\`)
-- Unix home paths: `/Users/`, `/home/` (e.g., `/Users/alice/`)
+- Windows drive paths: `^[A-Z]:\` (e.g., `<PROJECT_ROOT>\`)
+- Unix home paths: `/Users/`, `/home/` (e.g., `/Users/<username>/`)
 - Generic absolute paths: `/opt/`, `/mnt/`, `/var/`, `/workspace/`, etc.
 - Secret patterns: `api_key=`, `secret:`, `token=`, `password=`, `credentials=`
 - Documented rationale and testing approach
@@ -90,8 +90,8 @@ MVP Phase 64 implements a comprehensive redaction gate to ensure all curated mar
   - `performance/run-unknown/budget_budget_run-unknown_report_20260308T093409Z.md`
 
 **Redaction Method:**
-- Replaced `D:\ClaudeClockwork\` with `<PROJECT_ROOT>` placeholder
-- Used: `sed -i 's#D:\\ClaudeClockwork\\#<PROJECT_ROOT>#g' <files>`
+- Replaced `<PROJECT_ROOT>\` with `<PROJECT_ROOT>` placeholder
+- Used: `sed -i 's#<PROJECT_ROOT>\\#<PROJECT_ROOT>#g' <files>`
 
 **Scanning Results (After):**
 - ✅ 10 markdown files scanned
@@ -112,7 +112,7 @@ MVP Phase 64 implements a comprehensive redaction gate to ensure all curated mar
 | Detects system absolute paths | ✅ | Test: `test_detects_opt_path`, `test_detects_workspace_path`, etc. |
 | Detects secret patterns | ✅ | Test: `test_detects_api_key_assignment`, `test_detects_bearer_token`, etc. |
 | Synthetic path leak triggers failure | ✅ | Test: `test_real_world_performance_report_scenario` |
-| .report/**/*.md zero host paths | ✅ | All `D:\ClaudeClockwork\` redacted to `<PROJECT_ROOT>` |
+| .report/**/*.md zero host paths | ✅ | All `<PROJECT_ROOT>\` redacted to `<PROJECT_ROOT>` |
 | .report/**/*.md zero secret patterns | ✅ | No secret patterns detected in any file |
 | Gate passes cleanly on fixed repo | ✅ | `run_report_redaction_gate()` returns `pass=True` |
 | All tests pass | ✅ | 40/40 tests passing |
@@ -122,13 +122,13 @@ MVP Phase 64 implements a comprehensive redaction gate to ensure all curated mar
 ## Files Created/Modified
 
 ### New Files
-1. `/mnt/d/ClaudeClockwork/.project/Docs/redaction_rules.md` — Redaction rules documentation
-2. `/mnt/d/ClaudeClockwork/claudeclockwork/core/gates/report_redaction_gate.py` — Gate implementation
-3. `/mnt/d/ClaudeClockwork/tests/test_report_redaction_gate.py` — Comprehensive test suite
+1. `<PROJECT_ROOT>/.project/Docs/redaction_rules.md` — Redaction rules documentation
+2. `<PROJECT_ROOT>/claudeclockwork/core/gates/report_redaction_gate.py` — Gate implementation
+3. `<PROJECT_ROOT>/tests/test_report_redaction_gate.py` — Comprehensive test suite
 
 ### Modified Files
-1. `/mnt/d/ClaudeClockwork/claudeclockwork/core/gates/__init__.py` — Added `run_report_redaction_gate` export
-2. `/mnt/d/ClaudeClockwork/.report/performance/run-unknown/*.md` — Redacted Windows drive paths (10 files)
+1. `<PROJECT_ROOT>/claudeclockwork/core/gates/__init__.py` — Added `run_report_redaction_gate` export
+2. `<PROJECT_ROOT>/.report/performance/run-unknown/*.md` — Redacted Windows drive paths (10 files)
 
 ---
 
@@ -139,7 +139,7 @@ MVP Phase 64 implements a comprehensive redaction gate to ensure all curated mar
 3. **Relative Path Safety:** System path patterns use negative lookahead to allow `./data/` but block `/data/`
 4. **Context Width:** 80-character context window around violations for readability
 5. **Multiple Matches:** Uses `re.finditer()` to find all violations per line, not just first
-6. **Case Sensitivity:** Windows drive pattern is case-insensitive `[A-Za-z]:\\` to catch both `D:\` and `d:\`
+6. **Case Sensitivity:** Windows drive pattern is case-insensitive `[A-Za-z]:\\` to catch both `<DRIVE>:\` and `<DRIVE>:\`
 
 ---
 

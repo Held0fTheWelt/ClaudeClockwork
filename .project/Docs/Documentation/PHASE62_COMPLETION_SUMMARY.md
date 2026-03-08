@@ -49,7 +49,7 @@ Overall: 4/4 PASS in 2.06s
 - Migration path provided
 
 **Evidence:**
-- File created: `/mnt/d/ClaudeClockwork/Docs/versioning.md` (4.5 KB)
+- File created: `<PROJECT_ROOT>/Docs/versioning.md` (4.5 KB)
 - Contains: Hard lock guarantees, propagation workflow, deterministic testing guide
 - Audience: Developers, release engineers, deployment teams
 

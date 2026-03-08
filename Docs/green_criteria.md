@@ -80,7 +80,7 @@ All gates must pass (status = `pass`) with zero blockers for Green certification
 - **Pass Condition**: `pass=true`, `violations=[]`
 - **Scans**: `.report/**/*.md`
 - **Redaction Rules**:
-  - Windows drive paths (D:\, C:\)
+  - Windows drive paths (`<DRIVE>:\`, e.g. <DRIVE>:\, <DRIVE>:\)
   - Unix home paths (/Users/, /home/)
   - WSL mount paths (/mnt/[a-z]/)
   - System absolute paths (/opt/, /srv/, /var/, /workspace/, /work/, /project/, /app/)

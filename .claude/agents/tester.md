@@ -84,7 +84,7 @@ Skipped when Ollama is not available — not an error, but "skip" in report.
 ### 4. Pattern Check
 Checks mechanically (not semantically):
 - Type hints on all public functions (`def foo(` without `:` return type → warn)
-- Hardcoded paths (`<PROJECT_ROOT>/`, `D:\\`, `C:\\` → fail)
+- Hardcoded paths (`<PROJECT_ROOT>/`, `<DRIVE>:\\`, `<DRIVE>:\\` → fail)
 - File length > 300 lines → warn
 - `OllamaUnavailableError` in try/except without re-raise → fail
 

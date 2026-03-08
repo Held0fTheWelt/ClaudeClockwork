@@ -3,7 +3,7 @@
 **Goal:** Ensure curated content is share-safe: no absolute host paths and no secret-like strings in `.report/` markdown.
 
 **Observed (repo scan 2026-03-08):**
-- Many `.report/*.md` files contain absolute Windows paths (e.g., `C:\`, `D:\`).
+- Many `.report/*.md` files contain absolute Windows paths (e.g., `<DRIVE>:\`, `<DRIVE>:\`).
 
 ---
 

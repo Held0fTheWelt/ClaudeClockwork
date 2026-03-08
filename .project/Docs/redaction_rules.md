@@ -16,11 +16,11 @@
 
 ### 1. Windows Drive Paths
 **Pattern:** `^[A-Z]:\\`
-**Description:** Detects Windows absolute paths starting with drive letters (e.g., `D:\ClaudeClockwork\`)
+**Description:** Detects Windows absolute paths starting with drive letters (e.g., `<PROJECT_ROOT>\`)
 **Example violations:**
-- `D:\ClaudeClockwork\.claude\config\`
-- `C:\Users\username\project\`
-- `E:\data\reports\`
+- `<PROJECT_ROOT>\.claude\config\`
+- `<ABS_PATH>\...`
+- `<DRIVE>:\data\reports\`
 
 **Reasoning:** Drive-letter paths reveal Windows machine configuration and directory structure.
 
@@ -30,9 +30,9 @@
 **Pattern:** `/Users/` or `/home/`
 **Description:** Detects Unix/macOS home directory paths that may leak usernames
 **Example violations:**
-- `/Users/alice/projects/clockwork/`
-- `/home/bob/.config/`
-- `/Users/developer/workspace/`
+- `/Users/<username>/projects/clockwork/`
+- `/home/<username>/.config/`
+- `/Users/<username>/workspace/`
 
 **Reasoning:** Home paths leak actual usernames and home directory structure.
 
@@ -53,7 +53,7 @@
 - `/app/` — application directories
 
 **Example violations:**
-- `/mnt/d/ClaudeClockwork/`
+- `<PROJECT_ROOT>/`
 - `/opt/claude/`
 - `/var/lib/reports/`
 - `/workspace/clockwork/data/`

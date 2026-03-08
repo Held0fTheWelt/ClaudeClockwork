@@ -5,7 +5,7 @@ A) Curated-only (preferred), with runtime outputs moved to `.clockwork_runtime/p
 B) Explicitly justified as a curated artifact root (must be documented and gated).
 
 **Observed (repo scan 2026-03-08):**
-- `.claude-performance/` contains many `.md` files with absolute host paths (e.g., `D:\ClaudeClockwork\...`) and `run-unknown` style output, consistent with runtime/perf logs.
+- `.claude-performance/` contains many `.md` files with absolute host paths (e.g., `<PROJECT_ROOT>\...`) and `run-unknown` style output, consistent with runtime/perf logs.
 
 ---
 

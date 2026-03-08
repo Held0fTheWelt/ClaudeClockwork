@@ -201,7 +201,7 @@ curl -s http://localhost:11434/api/tags \
   | python3 -c "import sys,json; [print(m['name']) for m in json.load(sys.stdin)['models']]"
 
 # Or: directly via binary
-OLLAMA="/c/Users/YvesT/AppData/Local/Programs/Ollama/ollama.exe"
+OLLAMA="/c/Users/<username>/AppData/Local/Programs/Ollama/ollama.exe"
 "$OLLAMA" list
 ```
 
