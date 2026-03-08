@@ -19,3 +19,8 @@ validation_runs_redacted/
 # Runtime roots (Phase 19+)
 .clockwork_runtime/
 .llama_runtime/
+
+# Performance telemetry runtime outputs (Phase 69)
+# .claude-performance/ is curated-only; these subdirs are machine-generated
+.claude-performance/reports/
+.claude-performance/events/
