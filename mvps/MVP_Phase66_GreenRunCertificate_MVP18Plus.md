@@ -8,7 +8,7 @@
 
 ## Definition of Done
 
-- [ ] Gate suite for scope MVP18+ runs and passes:
+- [x] ✅ Gate suite for scope MVP18+ runs and passes:
   - `qa_gate`
   - `planning_drift_scan`
   - `release_check`
@@ -16,10 +16,10 @@
   - report policy gate
   - report redaction gate
   - runtime root gate
-- [ ] A redacted evidence bundle is exported successfully
-- [ ] `Docs/green_run_certificate.md` generated in stable format
-- [ ] Certificate includes canonical version and evidence bundle id/hash
-- [ ] All existing tests pass
+- [x] ✅ A redacted evidence bundle is exported successfully
+- [x] ✅ `Docs/green_run_certificate.md` generated in stable format
+- [x] ✅ Certificate includes canonical version and evidence bundle id/hash
+- [x] ✅ All existing tests pass
 
 ---
 
