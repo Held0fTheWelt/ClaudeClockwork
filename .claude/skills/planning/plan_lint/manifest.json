@@ -20,5 +20,6 @@
   "outputs": {},
   "metadata": {
     "legacy_bridge": false
-  }
+  },
+  "user_invocable": true
 }

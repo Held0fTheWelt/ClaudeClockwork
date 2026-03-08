@@ -5,21 +5,54 @@
   "category": "ops",
   "description": "Return a structured summary of recent git commits and changed files. Optionally includes a unified diff.",
   "entrypoint": "skills.ops.git_summary.skill:GitSummarySkill",
-  "permissions": ["repo:read", "git:read"],
-  "aliases": ["git_log_summary"],
-  "tags": ["git", "history", "diff", "ops"],
+  "permissions": [
+    "repo:read",
+    "git:read"
+  ],
+  "aliases": [
+    "git_log_summary"
+  ],
+  "tags": [
+    "git",
+    "history",
+    "diff",
+    "ops"
+  ],
   "enabled": true,
   "trust_level": "local",
   "inputs": {
-    "root": {"type": "string", "optional": true},
-    "max_commits": {"type": "integer", "optional": true, "default": 10},
-    "include_diff": {"type": "boolean", "optional": true, "default": false}
+    "root": {
+      "type": "string",
+      "optional": true
+    },
+    "max_commits": {
+      "type": "integer",
+      "optional": true,
+      "default": 10
+    },
+    "include_diff": {
+      "type": "boolean",
+      "optional": true,
+      "default": false
+    }
   },
   "outputs": {
-    "commits": {"type": "array"},
-    "files_changed": {"type": "array"},
-    "commit_count": {"type": "integer"},
-    "diff_text": {"type": "string", "optional": true}
+    "commits": {
+      "type": "array"
+    },
+    "files_changed": {
+      "type": "array"
+    },
+    "commit_count": {
+      "type": "integer"
+    },
+    "diff_text": {
+      "type": "string",
+      "optional": true
+    }
   },
-  "metadata": {"legacy_bridge": false}
+  "metadata": {
+    "legacy_bridge": false
+  },
+  "user_invocable": true
 }

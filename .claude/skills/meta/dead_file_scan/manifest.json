@@ -3,7 +3,7 @@
   "name": "dead_file_scan",
   "version": "0.1.0",
   "category": "meta",
-  "description": "Scan the repository for files that have lost their context — superseded, duplicate, orphaned pointer, or dead-reference files. Always runs in dry_run mode (never deletes).",
+  "description": "Scan the repository for files that have lost their context \u2014 superseded, duplicate, orphaned pointer, or dead-reference files. Always runs in dry_run mode (never deletes).",
   "entrypoint": "skills.meta.dead_file_scan.skill:DeadFileScanSkill",
   "permissions": [
     "repo:read"
@@ -21,16 +21,37 @@
   "enabled": true,
   "trust_level": "local",
   "inputs": {
-    "root": {"type": "string", "optional": true, "description": "Repo root (defaults to working directory)"},
-    "scan_paths": {"type": "array", "optional": true, "description": "Subdirectories to scan (defaults to Docs/, roadmaps/, mvps/, .claude-development/)"},
-    "dry_run": {"type": "boolean", "optional": true, "default": true, "description": "Must be true. Skill never deletes files."}
+    "root": {
+      "type": "string",
+      "optional": true,
+      "description": "Repo root (defaults to working directory)"
+    },
+    "scan_paths": {
+      "type": "array",
+      "optional": true,
+      "description": "Subdirectories to scan (defaults to Docs/, roadmaps/, mvps/, .claude-development/)"
+    },
+    "dry_run": {
+      "type": "boolean",
+      "optional": true,
+      "default": true,
+      "description": "Must be true. Skill never deletes files."
+    }
   },
   "outputs": {
-    "candidates": {"type": "array", "description": "List of {path, reason, confidence} objects"},
-    "candidate_count": {"type": "integer"},
-    "high_confidence_count": {"type": "integer"}
+    "candidates": {
+      "type": "array",
+      "description": "List of {path, reason, confidence} objects"
+    },
+    "candidate_count": {
+      "type": "integer"
+    },
+    "high_confidence_count": {
+      "type": "integer"
+    }
   },
   "metadata": {
     "legacy_bridge": false
-  }
+  },
+  "user_invocable": true
 }

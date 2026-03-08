@@ -1,7 +1,7 @@
 # Skills Navigation Index
 
-**Generated:** 2026-03-08T00:15:11.167509Z
-**Version:** 17.7.275
+**Generated:** 2026-03-08T00:17:43.200762Z
+**Version:** 17.7.277
 **Total Skills:** 109
 
 ---
@@ -364,4 +364,4 @@ python3 -m json.tool .claude/skills/_index.json
 
 ---
 
-**Last Updated:** 2026-03-08T00:15:11.167509Z
+**Last Updated:** 2026-03-08T00:17:43.200762Z

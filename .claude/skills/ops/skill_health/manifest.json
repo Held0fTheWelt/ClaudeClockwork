@@ -5,19 +5,42 @@
   "category": "ops",
   "description": "Check every manifest skill for missing bridges, bad entrypoints, invalid manifest JSON, and missing required metadata fields.",
   "entrypoint": "skills.ops.skill_health.skill:SkillHealthSkill",
-  "permissions": ["repo:read"],
-  "aliases": ["manifest_health_check"],
-  "tags": ["health", "manifest", "qa", "ops"],
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [
+    "manifest_health_check"
+  ],
+  "tags": [
+    "health",
+    "manifest",
+    "qa",
+    "ops"
+  ],
   "enabled": true,
   "trust_level": "local",
   "inputs": {
-    "root": {"type": "string", "optional": true}
+    "root": {
+      "type": "string",
+      "optional": true
+    }
   },
   "outputs": {
-    "total": {"type": "integer"},
-    "healthy": {"type": "integer"},
-    "unhealthy": {"type": "integer"},
-    "issues": {"type": "array"}
+    "total": {
+      "type": "integer"
+    },
+    "healthy": {
+      "type": "integer"
+    },
+    "unhealthy": {
+      "type": "integer"
+    },
+    "issues": {
+      "type": "array"
+    }
   },
-  "metadata": {"legacy_bridge": false}
+  "metadata": {
+    "legacy_bridge": false
+  },
+  "user_invocable": true
 }
