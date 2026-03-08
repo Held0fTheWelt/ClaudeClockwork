@@ -121,7 +121,7 @@ def run(req: dict) -> dict:
         "notes": notes
     }
 
-    out_dir = Path(".report")/"routing"/run_id
+    out_dir = Path(".clockwork_runtime")/"reports"/"routing"/run_id
     out_dir.mkdir(parents=True, exist_ok=True)
     out_json = out_dir/f"model_routing_report_{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}.json"
     out_md = out_dir/out_json.with_suffix(".md").name

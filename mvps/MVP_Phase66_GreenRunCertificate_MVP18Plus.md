@@ -2,7 +2,7 @@
 
 **Goal:** Produce a deterministic certificate proving the repo is “green”: required gates pass, evidence bundle is exportable (redacted), and the report is stable and reproducible.
 
-**Why now:** After applying drift/report/runtime fixes (62–65), the project needs a single verified “green” snapshot.
+**Prerequisite:** Phase 62 + 63 + 67 + 68 must be green.
 
 ---
 
@@ -61,5 +61,11 @@
 
 **Acceptance:**
 - Export produces a bundle with manifest and redaction markers.
+
+---
+
+## Rules to Complete (if incomplete)
+- Ensure there is a single canonical list of “required gates” and where it lives.
+- Ensure `qa_gate` documents its stable ordering and scoping rules.
 
 ---

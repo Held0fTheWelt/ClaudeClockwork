@@ -1,7 +1,7 @@
 # Green Run Release Candidate Certificate
 
-**Issue Date**: 2026-03-08T09:51:44Z
-**Canonical Version**: 17.7.324
+**Issue Date**: 2026-03-08T11:12:12Z
+**Canonical Version**: 17.7.349
 **Certified By**: Automated QA Gate Suite (MVP 18+)
 
 ---
@@ -31,7 +31,7 @@ All mandatory quality gates pass. No blockers. No critical warnings.
 ## Canonical Version
 
 ```
-.claude/VERSION: 17.7.324
+.claude/VERSION: 17.7.349
 ```
 
 **Version Status**: ✅ CONVERGED
@@ -52,7 +52,7 @@ All mandatory quality gates pass. No blockers. No critical warnings.
 ## Certificate Validation
 
 **Signed by**: Automated Quality Assurance Pipeline
-**Timestamp**: 2026-03-08T09:51:44Z
+**Timestamp**: 2026-03-08T11:12:12Z
 **Validity**: This certificate is valid until superseded by a newer certificate.
 
 ---

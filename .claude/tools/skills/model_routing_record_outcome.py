@@ -44,7 +44,7 @@ def run(req: dict) -> dict:
 
     _save(stats_path, stats)
 
-    out_dir = Path(".report")/"routing"/run_id
+    out_dir = Path(".clockwork_runtime")/"reports"/"routing"/run_id
     out_dir.mkdir(parents=True, exist_ok=True)
     out = out_dir/f"model_routing_outcome_{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}.json"
     out.write_text(json.dumps({
