@@ -9,11 +9,11 @@
 
 ## Definition of Done
 
-- [ ] `.report/` contains curated markdown only (plus minimal structure files)
-- [ ] Runtime outputs are moved to `.clockwork_runtime/` (reports/telemetry/eval as appropriate)
-- [ ] A checker gate prevents new runtime writes into `.report/`
-- [ ] Optional: curated exporter can intentionally generate redacted summaries into `.report/`
-- [ ] All existing tests pass
+- [x] ✅ `.report/` contains curated markdown only (plus minimal structure files)
+- [x] ✅ Runtime outputs are moved to `.clockwork_runtime/` (reports/telemetry/eval as appropriate)
+- [x] ✅ A checker gate prevents new runtime writes into `.report/`
+- [x] ✅ Optional: curated exporter can intentionally generate redacted summaries into `.report/`
+- [x] ✅ All existing tests pass
 
 ---
 
