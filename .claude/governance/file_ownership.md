@@ -75,7 +75,7 @@ Every agent spawn via the Task tool must include:
 ```
 ## Project Context
 Python Orchestrator: Console application for autonomous Ollama/Claude agent orchestration.
-Module hierarchy: main → orchestrator → agents/* → ollama_client/claude_client → config
+Module hierarchy: main -> orchestrator -> agents/* -> ollama_client/claude_client -> config
 Dependency direction: main → orchestrator → agents → clients (never reverse)
 Patterns: OllamaFreeze, SelfContainedSpawn, StructuredOutput, AvailabilityGuard
 PEP 8, Type Hints for all public functions, max 300 lines per file.
