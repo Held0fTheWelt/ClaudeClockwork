@@ -9,11 +9,11 @@
 
 ## Definition of Done
 
-- [x] ✅ A single canonical version file is chosen and documented
-- [x] ✅ All secondary version markers either derive from canonical source, or are removed with updated policy docs
-- [x] ✅ `planning_drift_scan` fails on mismatches and passes when aligned
-- [x] ✅ `release_check` uses canonical version source
-- [x] ✅ All existing tests pass
+- [ ] A single canonical version file is chosen and documented
+- [ ] All secondary version markers either derive from canonical source, or are removed with updated policy docs
+- [ ] `planning_drift_scan` fails on mismatches and passes when aligned
+- [ ] `release_check` uses canonical version source
+- [ ] All existing tests pass
 
 ---
 
@@ -58,5 +58,14 @@
 
 **Acceptance:**
 - Release check output includes canonical version and passes when aligned.
+
+---
+
+## Rules to Complete (if incomplete)
+- Ensure `Docs/versioning.md` explicitly states:
+  - canonical version file
+  - whether root `VERSION` is required or forbidden
+  - how build numbers (if any) are handled
+- Ensure `release_check` policy references this doc.
 
 ---

@@ -3,17 +3,17 @@
 **Goal:** Restore `.report/` as curated human-facing summaries only. Move runtime outputs into `.clockwork_runtime/` and prevent regressions.
 
 **Observed (repo scan 2026-03-08):**
-- `.report/` contains large amounts of runtime artifacts (JSON/JSONL and run-unknown outputs).
+- `.report/` contains non-curated artifacts (JSON/PNG) and machine-run folders.
 
 ---
 
 ## Definition of Done
 
-- [x] ✅ `.report/` contains curated markdown only (plus minimal structure files)
-- [x] ✅ Runtime outputs are moved to `.clockwork_runtime/` (reports/telemetry/eval as appropriate)
-- [x] ✅ A checker gate prevents new runtime writes into `.report/`
-- [x] ✅ Optional: curated exporter can intentionally generate redacted summaries into `.report/`
-- [x] ✅ All existing tests pass
+- [ ] `.report/` contains curated markdown only (plus minimal structure files)
+- [ ] Runtime outputs are moved to `.clockwork_runtime/` (reports/telemetry/eval as appropriate)
+- [ ] A checker gate prevents new runtime writes into `.report/`
+- [ ] Optional: curated exporter can intentionally generate redacted summaries into `.report/`
+- [ ] All existing tests pass
 
 ---
 
@@ -38,7 +38,7 @@
 - Update references that pointed into `.report/`.
 
 **Acceptance:**
-- After migration, `.report/` contains no JSON/JSONL and no machine-run folders.
+- After migration, `.report/` contains no JSON/JSONL/PNG and no machine-run folders.
 
 ---
 
@@ -53,5 +53,14 @@
 
 **Acceptance:**
 - Synthetic runtime file in `.report/` triggers deterministic failure.
+
+---
+
+## Rules to Complete (if incomplete)
+- Ensure `Docs/report_vs_runtime_policy.md` explicitly states:
+  - what file types are allowed in `.report/`
+  - where screenshots/images belong (usually runtime)
+  - how curated exports are generated (manual vs automated)
+- Add link-lint exemptions only if absolutely necessary (prefer real fixes).
 
 ---
