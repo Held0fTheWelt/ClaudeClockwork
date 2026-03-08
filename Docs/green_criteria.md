@@ -32,6 +32,8 @@ All gates must pass (status = `pass`) with zero blockers for Green certification
 | 7 | `runtime_root_gate` | `.llama_runtime` stubbed, `.clockwork_runtime` enforced | `claudeclockwork.core.gates.runtime_root_gate` | MVP 65 | ✅ |
 | 8 | `perf_artifact_gate` | No runtime outputs under `.claude-performance/` (curated-only) | `claudeclockwork.core.gates.perf_artifact_gate` | MVP 69 | ✅ |
 | 9 | `doc_path_leak_gate` | No absolute host paths in curated docs (Docs/, mvps/, .claude/) | `claudeclockwork.core.gates.doc_path_leak_gate` | MVP 70 | ✅ |
+| 10 | `validation_artifact_gate` | `validation_runs/` gitignored; no path leaks in redacted manifests | `claudeclockwork.core.gates.validation_artifact_gate` | MVP 73 | ✅ |
+| 11 | `doc_policy_consistency_gate` | No docs instruct writing runtime outputs into `.report/*` | `claudeclockwork.core.gates.doc_policy_consistency_gate` | MVP 74 | ✅ |
 
 ---
 
@@ -119,6 +121,26 @@ All gates must pass (status = `pass`) with zero blockers for Green certification
 - **Blocker Definition**: Any error
 - **Drift Register**: DR-004
 
+### Gate 10: `validation_artifact_gate` (Phase 73)
+- **Inputs**: `project_root`
+- **Pass Condition**: `pass=true`, `errors=[]`
+- **Checks**:
+  - `validation_runs/` and `validation_runs_redacted/` are listed in `.gitignore`
+  - Neither directory has any git-tracked files
+  - On-disk redacted manifests contain no absolute host path leaks
+- **Blocker Definition**: Any error
+- **Drift Register**: DR-006
+
+### Gate 11: `doc_policy_consistency_gate` (Phase 74)
+- **Inputs**: `project_root`
+- **Pass Condition**: `pass=true`, `errors=[]`
+- **Scans**: `.claude-performance/README.md`, `Docs/report_vs_runtime_policy.md`, `.claude/**/*.md`
+- **Checks**:
+  - No instructions to write runtime outputs into `.report/*` as a default behavior
+  - Negation/restriction phrases (Do NOT, never, forbidden, Only via explicit exporter) are exempt
+- **Blocker Definition**: Any error (file + line reported)
+- **Drift Register**: DR-007
+
 ---
 
 ## Certificate Output Format
@@ -139,7 +161,7 @@ Certificate is generated as deterministic markdown (`Docs/green_run_certificate.
 [version convergence status]
 
 ## Release Readiness
-**Passing**: N/9 gates
+**Passing**: N/11 gates
 **Failing**: 0 gates
 **Pass Rate**: 100%
 
@@ -168,7 +190,7 @@ All evidence paths must be absolute and redacted of host paths.
 
 1. **Version-locked**: Canonical version from `.claude/VERSION` recorded exactly
 2. **Timestamp-only variance**: ISO 8601 issue date is only non-deterministic element
-3. **Stable ordering**: Gate execution order is always: qa_gate → planning_drift → release_check → docs_gate → report_policy_gate → report_redaction_gate → runtime_root_gate → perf_artifact_gate → doc_path_leak_gate
+3. **Stable ordering**: Gate execution order is always: qa_gate → planning_drift → release_check → docs_gate → report_policy_gate → report_redaction_gate → runtime_root_gate → perf_artifact_gate → doc_path_leak_gate → validation_artifact_gate → doc_policy_consistency_gate
 4. **No side effects**: Gate functions read-only; no state modification
 5. **Re-runnable**: Same inputs → identical results (except timestamp)
 
@@ -188,13 +210,13 @@ python3 claudeclockwork/qa/reports/green_run.py /path/to/project
 ## Escalation
 
 ### Automatic Passes (Level 0)
-- All 9 gates pass: Write certificate, export evidence bundle
+- All 11 gates pass: Write certificate, export evidence bundle
 
 ### Partial Pass (Level 1)
-- 8/9 gates pass: Warn, write certificate as "CONDITIONAL RC", escalate to review
+- 10/11 gates pass: Warn, write certificate as "CONDITIONAL RC", escalate to review
 
 ### Failure (Level 2)
-- <8/9 gates pass: Fail, block certificate, list blockers, escalate to design review
+- <10/11 gates pass: Fail, block certificate, list blockers, escalate to design review
 
 ### Critical Failure (Level 3)
 - Core gate unavailable (qa_gate, planning_drift): Stop, require manual diagnostic
@@ -214,6 +236,8 @@ python3 claudeclockwork/qa/reports/green_run.py /path/to/project
 | runtime_root_gate | `run_runtime_root_gate(project_root: Path\|str\|None) -> dict` | returns {pass, violations, message} | dict |
 | perf_artifact_gate | `run_perf_artifact_gate(project_root: Path\|str) -> dict` | returns {pass, errors, warnings} | dict |
 | doc_path_leak_gate | `run_doc_path_leak_gate(project_root: Path\|str) -> dict` | returns {pass, errors, warnings} | dict |
+| validation_artifact_gate | `run_validation_artifact_gate(project_root: Path\|str) -> dict` | returns {pass, errors, warnings} | dict |
+| doc_policy_consistency_gate | `run_doc_policy_consistency_gate(project_root: Path\|str) -> dict` | returns {pass, errors, warnings} | dict |
 
 ---
 
