@@ -5,6 +5,7 @@ from .docs_gate import run_docs_gate
 from .planning_drift import run_planning_drift_scan
 from .public_surface_gate import run_public_surface_gate
 from .release_check import run_release_check
+from .report_policy_gate import run_report_policy_gate
 from .report_redaction_gate import run_report_redaction_gate
 from .runtime_root_gate import run_runtime_root_gate
 
@@ -15,6 +16,7 @@ __all__ = [
     "run_planning_drift_scan",
     "run_public_surface_gate",
     "run_release_check",
+    "run_report_policy_gate",
     "run_report_redaction_gate",
     "run_runtime_root_gate",
 ]
