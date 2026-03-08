@@ -1,0 +1,11 @@
+{
+  "type": "model_routing_outcome",
+  "generated_at": "2026-03-08T00:04:57Z",
+  "run_id": "run-unknown",
+  "task_type": "general",
+  "model": "unknown",
+  "success": false,
+  "quality_0_10": 0.0,
+  "total_tokens": 0,
+  "notes": ""
+}

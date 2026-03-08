@@ -4,7 +4,7 @@
 
 Clockwork is a comprehensive framework for autonomous AI agent orchestration, providing structured governance, deterministic skills, and a robust contract system for coordinating multiple AI models (Claude API and local Ollama models).
 
-**Current Version:** 17.7.28 (see [.claude/VERSION](.claude/VERSION))
+**Current Version:** See [.claude/VERSION](.claude/VERSION). Phases 0–61 complete (see [roadmaps/Roadmap_ClockworkV18.md](roadmaps/Roadmap_ClockworkV18.md)).
 
 ---
 
@@ -14,7 +14,7 @@ Clockwork solves the challenge of **coordinating multiple AI agents** working on
 
 - **Governance Protocols** — Clear escalation paths, file ownership rules, and decision policies
 - **Agent Hierarchy** — Structured roles from Team Lead to specialized workers
-- **Deterministic Skills** — 90+ tool-first micro-workflows that reduce token usage
+- **Deterministic Skills** — 109+ manifest skills plus direct-runner tool scripts
 - **JSON Contracts** — Typed inter-agent communication specifications (~95 schemas)
 - **Local-First Architecture** — Ollama models handle bulk work; Claude handles coordination
 
@@ -45,17 +45,23 @@ python3 .claude/tools/test_ollama.py
 
 Ollama is recommended for L2+ tasks (architecture decisions, new modules). If unavailable, the freeze protocol applies.
 
-### 3. Run a Skill
+### 3. First Run (create runtime root)
 
 ```bash
-# Legacy runner (97+ skills in .claude/tools/skills/)
-python3 .claude/tools/skills/skill_runner.py <skill_name> [args]
-
-# Manifest CLI (104 manifest skills, registry discovery)
-python3 -m claudeclockwork.cli --skill-id <skill_name> --inputs '{}'
+python3 -m claudeclockwork.cli first-run --project-root .
 ```
 
-### 4. Run Tests
+### 4. Run a Skill
+
+```bash
+# Manifest CLI (109 skills, registry-based)
+python3 -m claudeclockwork.cli --project-root . --skill-id <skill_name> --inputs '{}'
+
+# Direct runner (scripting / .claude/tools/skills/)
+python3 .claude/tools/skills/skill_runner.py <skill_name> [args]
+```
+
+### 6. Run Tests
 
 ```bash
 python3 -m pytest tests/ -v
@@ -91,12 +97,22 @@ python3 -m pytest tests/ -v
   Docs/                   # Plans, Reviews, Critics, Documentation
 
 claudeclockwork/          # Python Package
-  cli.py                  # CLI entry point
+  cli/                    # CLI (main, first-run, env-check, migrate, ops, plugin)
   runtime.py              # Runtime builder
   bridge.py               # Manifest bridge
-  core/                   # Core modules (executor, planner, registry)
+  core/                   # Executor, planner, registry, gates, autopilot
+  cas/                    # Content-addressed store, smart cache
+  workgraph/              # Work graph engine, cross-project
+  scheduler/              # Job queue, priorities, telemetry
+  plugins/                # Loader, registry, signing, certification, publish
+  migrations/             # Config/schema migration engine
+  workspace/              # Policy resolver, dependency graph, federation
+  optimizer/              # Cost model, calibration, telemetry
+  workers/                # Dispatcher, local worker, remote stub
 
-mvps/                     # MVP Phase Documentation (16 phases)
+mvps/                     # MVP Phase Documentation (Phases 0–61)
+docs/                     # Platform docs (see Docs/INDEX.md)
+roadmaps/                 # Roadmap_ClockworkV18.md
 ```
 
 ### Agent Hierarchy
@@ -201,12 +217,12 @@ Clockwork includes **90+ deterministic skills** — tool-first micro-workflows t
 | `code_clean_scan` | Find orphan modules, markers |
 | `cleanup_plan_apply` | Apply cleanup plans (archive-first) |
 
-### Two Dispatch Systems
+### Skill Dispatch
 
 | System | Entry Point | Skills | Description |
-|---|---|---|---|
-| Legacy Runner | `python3 .claude/tools/skills/skill_runner.py <skill>` | 97+ | Direct function dispatch |
-| Manifest CLI | `python3 -m claudeclockwork.cli --skill-id <skill>` | 104 | Registry-discovered manifests |
+|--------|-------------|-------|-------------|
+| **Manifest CLI** | `python3 -m claudeclockwork.cli --project-root . --skill-id <skill>` | 109 | Registry discovers `.claude/skills/**/manifest.json`; run any registered skill. |
+| **Direct runner** | `python3 .claude/tools/skills/skill_runner.py <skill>` | ~100+ | Runs skill scripts in `.claude/tools/skills/` directly (e.g. for scripting). |
 
 ---
 
@@ -264,30 +280,79 @@ All inter-agent communication uses typed JSON specs (~95 schemas in `.claude/con
 
 ## MVP Roadmap
 
-Clockwork development follows a phased MVP approach:
+Clockwork development follows a phased MVP approach. **Phases 0–61 are complete.** Each phase has a dedicated MVP document in [mvps/](mvps/):
 
-| Phase | Focus | Description |
-|---|---|---|
-| 0 | Foundation Cleanup | Base repo and tooling cleanup |
-| 1 | Manifest Hardening | Manifest validation and consistency |
-| 2 | Wrapper Wave 3 | CLI/runtime wrapper improvements |
-| 3 | Native Core Services | SkillBase, ExecutionContext, core models |
-| 4 | Plugin Runtime | Hot-reload plugin system |
-| 5 | MCP Layer | Model Context Protocol integration |
-| 6 | CI Eval Gates | Eval format (D6.7), baseline gates |
-| 7 | Wrapper Wave 4 | Further wrapper and dispatch improvements |
-| 8 | Code Hygiene | Cleanup scans, markers, orphans |
-| 9 | Test Hardening | Test coverage and stability |
-| 10 | Compaction | Plan/document compaction |
-| 11 | Legacy Doc Migration | Docs/ → .project/Docs/ migration |
-| 12 | Duplicate Elimination | Remove duplicate artifacts |
-| 13 | Greenfield Update | Greenfield project alignment |
-| 14 | Native Skills | Promote 6 high-value skills to native SkillBase |
-| 15 | Obsolete Data Prune | Remove superseded/orphaned files; `dead_file_scan` skill; `file_lifecycle` governance |
-| 16 | Skill Discovery Wave | 6 new native skills: git_summary, test_run, skill_health, changelog_generate, dependency_graph, config_validate |
-| 17 | Adapter Elimination | Promote all 84 LegacySkillAdapter skills to native; remove LegacySkillAdapter entirely |
+| Phase | Name | MVP |
+|-------|------|-----|
+| 0 | Foundation & Cleanup | [MVP_Phase0](mvps/MVP_Phase0_FoundationCleanup.md) |
+| 1 | Manifest Hardening | [MVP_Phase1](mvps/MVP_Phase1_ManifestHardening.md) |
+| 2 | Wrapper Wave 3 | [MVP_Phase2](mvps/MVP_Phase2_WrapperWave3.md) |
+| 3 | Native Core Services | [MVP_Phase3](mvps/MVP_Phase3_NativeCoreServices.md) |
+| 4 | Plugin Runtime | [MVP_Phase4](mvps/MVP_Phase4_PluginRuntime.md) |
+| 5 | MCP Layer | [MVP_Phase5](mvps/MVP_Phase5_MCPLayer.md) |
+| 6 | CI / Eval / Quality Gates | [MVP_Phase6](mvps/MVP_Phase6_CIEvalGates.md) |
+| 7 | Wrapper Wave 4 (Legacy CLI Gap) | [MVP_Phase7](mvps/MVP_Phase7_WrapperWave4.md) |
+| 8 | Code & Governance Hygiene | [MVP_Phase8](mvps/MVP_Phase8_CodeHygiene.md) |
+| 9 | Test Hardening | [MVP_Phase9](mvps/MVP_Phase9_TestHardening.md) |
+| 10 | Compaction & Pluggability | [MVP_Phase10](mvps/MVP_Phase10_Compaction.md) |
+| 11 | Legacy Doc Migration | [MVP_Phase11](mvps/MVP_Phase11_LegacyDocMigration.md) |
+| 12 | Duplicate Elimination | [MVP_Phase12](mvps/MVP_Phase12_DuplicateElimination.md) |
+| 13 | Greenfield Content Update | [MVP_Phase13](mvps/MVP_Phase13_GreenfieldUpdate.md) |
+| 14 | Native Skill Promotion | [MVP_Phase14](mvps/MVP_Phase14_NativeSkills.md) |
+| 15 | Obsolete Data Prune | [MVP_Phase15](mvps/MVP_Phase15_ObsoleteDataPrune.md) |
+| 16 | Skill Discovery Wave | [MVP_Phase16](mvps/MVP_Phase16_SkillDiscovery.md) |
+| 17 | Adapter Elimination | [MVP_Phase17](mvps/MVP_Phase17_AdapterElimination.md) |
+| 18 | Planning Drift Guard & Single Source of Truth | [MVP_Phase18](mvps/MVP_Phase18_PlanningDriftGuard.md) |
+| 18F | Re-Audit from MVP 18 (Quality Gates Baseline) | [MVP_Phase18F](mvps/MVP_Phase18F_ReAuditFromMVP18.md) |
+| 18G | Version & Pointer Consistency | [MVP_Phase18G](mvps/MVP_Phase18G_VersionPointerConsistency.md) |
+| 18H | `.report/` Curated-Only + Runtime Migration | [MVP_Phase18H](mvps/MVP_Phase18H_ReportCuratedOnly_RuntimeMigration.md) |
+| 18I | Skill Coverage Repair + Registry Sync | [MVP_Phase18I](mvps/MVP_Phase18I_SkillCoverageRepair_ChangelogEntry.md) |
+| 18J | Gate Stabilization & Green Run (RC Minimum) | [MVP_Phase18J](mvps/MVP_Phase18J_GreenRunRC.md) |
+| 19 | Runtime Root Normalization | [MVP_Phase19](mvps/MVP_Phase19_RuntimeRootNormalization.md) |
+| 20 | Local Non-LLM Tooling (LocalAI) v1 | [MVP_Phase20](mvps/MVP_Phase20_LocalNonLLMTooling.md) |
+| 21 | Adapter Elimination Accelerator | [MVP_Phase21](mvps/MVP_Phase21_AdapterEliminationAccelerator.md) |
+| 22 | Release Discipline & Upgrade Pipeline | [MVP_Phase22](mvps/MVP_Phase22_ReleaseDiscipline_UpgradePipeline.md) |
+| 23 | Evidence & Redaction Pipeline | [MVP_Phase23](mvps/MVP_Phase23_EvidenceRedactionPipeline.md) |
+| 24 | Tool/Model Governance (Capability Policy 2.0) | [MVP_Phase24](mvps/MVP_Phase24_ToolModelGovernance_CapabilityPolicy2.md) |
+| 25 | Eval Harness v2 (Scoreboards, Trends) | [MVP_Phase25](mvps/MVP_Phase25_EvalHarnessV2_Scoreboards.md) |
+| 26 | Router v3 (Bandit + Budget Toggle) | [MVP_Phase26](mvps/MVP_Phase26_RouterV3_BanditBudget.md) |
+| 27 | Adapter Elimination at Scale | [MVP_Phase27](mvps/MVP_Phase27_AdapterEliminationAtScale.md) |
+| 28 | Distribution & Installation (Packaging) | [MVP_Phase28](mvps/MVP_Phase28_DistributionPackaging.md) |
+| 29 | Plugin Marketplace / Extension API | [MVP_Phase29](mvps/MVP_Phase29_PluginExtensionAPI.md) |
+| 30 | Work Graph Engine (Tasks as DAG) | [MVP_Phase30](mvps/MVP_Phase30_WorkGraphEngine.md) |
+| 31 | Learning Layer (Router + Policy Training) | [MVP_Phase31](mvps/MVP_Phase31_LearningLayer.md) |
+| 32 | Observability (Telemetry, Debug, Forensics) | [MVP_Phase32](mvps/MVP_Phase32_Observability.md) |
+| 33 | Multi-Repo / Multi-Project Orchestration | [MVP_Phase33](mvps/MVP_Phase33_MultiRepoWorkspaces.md) |
+| 34 | Security Hardening & Sandboxing | [MVP_Phase34](mvps/MVP_Phase34_SecurityHardening_Sandboxing.md) |
+| 35 | Distributed Workers (Remote Execution) | [MVP_Phase35](mvps/MVP_Phase35_DistributedWorkers.md) |
+| 36 | Deterministic Caching & CAS | [MVP_Phase36](mvps/MVP_Phase36_ContentAddressedStore.md) |
+| 37 | Workspace UX & Project Templates | [MVP_Phase37](mvps/MVP_Phase37_WorkspaceUX_ProjectTemplates.md) |
+| 38 | Knowledge Base Layer | [MVP_Phase38](mvps/MVP_Phase38_KnowledgeBaseLayer.md) |
+| 39 | Reliability Engineering (Chaos, Recovery) | [MVP_Phase39](mvps/MVP_Phase39_ReliabilityEngineering.md) |
+| 40 | Plugin Ecosystem v2 (Signing, Compatibility) | [MVP_Phase40](mvps/MVP_Phase40_PluginEcosystemV2.md) |
+| 41 | Performance & Cost Optimizer | [MVP_Phase41](mvps/MVP_Phase41_PerfCostOptimizer.md) |
+| 42 | Operational UX v2 (Incidents, Dashboards) | [MVP_Phase42](mvps/MVP_Phase42_OperationalUXv2.md) |
+| 43 | Multi-Repo Orchestrator v2 | [MVP_Phase43](mvps/MVP_Phase43_MultiRepoOrchestratorV2.md) |
+| 44 | Stable Public Surface (CLI/API, SemVer) | [MVP_Phase44](mvps/MVP_Phase44_StablePublicSurface.md) |
+| 45 | Documentation Suite v2 (Runbooks, Troubleshooting) | [MVP_Phase45](mvps/MVP_Phase45_DocumentationSuiteV2.md) |
+| 46 | One-Command Demo Pipelines | [MVP_Phase46](mvps/MVP_Phase46_OneCommandDemoPipelines.md) |
+| 47 | Community/Registry Ready | [MVP_Phase47](mvps/MVP_Phase47_RegistryReadyPlugins.md) |
+| 48 | Scheduler v2 (Queues, Priorities, Fairness) | [MVP_Phase48](mvps/MVP_Phase48_SchedulerV2.md) |
+| 49 | Cost Model Calibration | [MVP_Phase49](mvps/MVP_Phase49_CostModelCalibration.md) |
+| 50 | Smart Caching (Cross-Project, Safe Sharing) | [MVP_Phase50](mvps/MVP_Phase50_SmartCaching_CrossProject.md) |
+| 51 | SLO Autopilot (Self-Healing Policies) | [MVP_Phase51](mvps/MVP_Phase51_SLOAutopilot.md) |
+| 52 | Repo Refactor & Module Boundaries | [MVP_Phase52](mvps/MVP_Phase52_RepoRefactor_ModuleBoundaries.md) |
+| 53 | Test Pyramid Upgrade (Unit → Integration → E2E) | [MVP_Phase53](mvps/MVP_Phase53_TestPyramidUpgrade.md) |
+| 54 | Migration System (Config/Schema Migrations) | [MVP_Phase54](mvps/MVP_Phase54_MigrationSystem.md) |
+| 55 | Operator Toolkit (CLI/TUI, Quick Ops) | [MVP_Phase55](mvps/MVP_Phase55_OperatorToolkit.md) |
+| 56 | Workspace Federation v2 (Policies per Project) | [MVP_Phase56](mvps/MVP_Phase56_WorkspaceFederationV2_PoliciesPerProject.md) |
+| 57 | Cross-Repo Dependency Graph | [MVP_Phase57](mvps/MVP_Phase57_CrossRepoDependencyGraph.md) |
+| 58 | Inter-Project Pipelines | [MVP_Phase58](mvps/MVP_Phase58_InterProjectPipelines.md) |
+| 59 | Plugin Certification (Quality Tiers) | [MVP_Phase59](mvps/MVP_Phase59_PluginCertification.md) |
+| 60 | Remote Worker Fleet (Networking + Auth) | [MVP_Phase60](mvps/MVP_Phase60_RemoteWorkerFleet.md) |
+| 61 | Marketplace UX (Local Registry UI) | [MVP_Phase61](mvps/MVP_Phase61_MarketplaceUX_LocalRegistryUI.md) |
 
-See `mvps/` directory for detailed phase documentation. Phases 15 and 16 are complete; Phase 17 is in progress.
+See **[roadmaps/Roadmap_ClockworkV18.md](roadmaps/Roadmap_ClockworkV18.md)** for detailed phase descriptions and current state.
 
 ---
 
@@ -296,10 +361,11 @@ See `mvps/` directory for detailed phase documentation. Phases 15 and 16 are com
 ### For Humans
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) — Project architecture, runtime layout
-- [ROADMAP.md](ROADMAP.md) — Phases and milestones
+- [ROADMAP.md](ROADMAP.md) — Milestones (see also [roadmaps/Roadmap_ClockworkV18.md](roadmaps/Roadmap_ClockworkV18.md))
 - [MODEL_POLICY.md](MODEL_POLICY.md) — Model tiers and triggers
-- [MEMORY.md](MEMORY.md) — Cross-session context
+- [.project/MEMORY.md](.project/MEMORY.md) — Cross-session context
 - [QUALITY_TRACKING.md](QUALITY_TRACKING.md) — Quality tracking
+- [Docs/INDEX.md](Docs/INDEX.md) — Platform docs index (runbooks, troubleshooting, contracts)
 
 ### For Claude/Agents
 
@@ -353,11 +419,25 @@ echo "task description" | python3 .claude/tools/ollama_brief.py [model] [type]
 # Show help
 python3 -m claudeclockwork.cli --help
 
-# Run skill via manifest system
-python3 -m claudeclockwork.cli --skill-id <skill_name> --inputs '{}'
+# First-run, env-check
+python3 -m claudeclockwork.cli --project-root . first-run
+python3 -m claudeclockwork.cli --project-root . env-check
 
-# Build capability map
-python3 -m claudeclockwork.cli --skill-id capability_map_build --inputs '{}'
+# Run skill via manifest system
+python3 -m claudeclockwork.cli --project-root . --skill-id <skill_name> --inputs '{}'
+
+# Migrate config (dry-run / apply)
+python3 -m claudeclockwork.cli --project-root . migrate [--dry-run | --apply]
+
+# Operator toolkit (bundles, plugins, budget, cache, graph, impact)
+python3 -m claudeclockwork.cli --project-root . ops <bundles|plugins|budget|cache|graph|impact>
+
+# Plugin marketplace (search, info, install, update, uninstall)
+python3 -m claudeclockwork.cli --project-root . plugin search [--query ...]
+python3 -m claudeclockwork.cli --project-root . plugin info <plugin_id>
+
+# Run work graph
+python3 -m claudeclockwork.cli.run_graph demos/smoke/graph.json --project-root .
 ```
 
 ### Tests
@@ -391,52 +471,13 @@ python3 .claude/tools/skills/skill_runner.py doc_review '{"target_path": "docs/"
 
 ---
 
-## Planned / Not Yet Implemented Skills
+## Current State
 
-### Phase 17 — Adapter Elimination (Current Focus)
-
-**Goal:** Promote all 84 remaining `LegacySkillAdapter` skills to native `SkillBase` implementations and remove the `LegacySkillAdapter` class entirely.
-
-| Metric | Baseline (v18.3) | Target (v19.0) |
-|---|---|---|
-| Manifest skills | 104 | 104 |
-| Native (SkillBase) | 20 | 104 |
-| Legacy adapters | 84 | 0 |
-
-**Definition of done:** Every manifest skill subclasses `SkillBase` directly; `legacy_bridge: false` in all manifests; `claudeclockwork/legacy/adapter.py` removed; `skill_health` returns zero unhealthy skills.
-
-See [mvps/MVP_Phase17_AdapterElimination.md](mvps/MVP_Phase17_AdapterElimination.md) for migration pattern and file list.
-
-### Phase 14 — Native Skill Promotion (Partial)
-
-These skills may still use `LegacySkillAdapter`; Phase 14 promoted 6 to native. Remaining legacy-backed skills are migrated in Phase 17.
-
-| Skill | Description |
-|---|---|
-| `capability_map_build` | Build map of available capabilities |
-| `skill_registry_search` | Search skills by keywords |
-| `qa_gate` | PR-blocking QA checks |
-| `eval_run` | Eval harness runner (D6.7 format) |
-| `budget_router` | Deterministic cost/latency routing |
-| `plan_lint` | Plan document linter |
-
-### Completed Phases (Skills Added)
-
-| Phase | Skills / outcome |
-|---|---|
-| **15 — Obsolete Data Prune** | `dead_file_scan` (orphan/superseded detection); governance rule `.claude/governance/file_lifecycle.md` |
-| **16 — Skill Discovery** | `git_summary`, `test_run`, `skill_health`, `changelog_generate`, `dependency_graph`, `config_validate` (all native) |
-
-### Other Planned Improvements
-
-| Item | Description | Phase |
-|---|---|---|
-| `doc_write` native | Structured output contract needed | Deferred |
-| `system_map` native | Structured output contract needed | Deferred |
-| MCP Server skills | Model Context Protocol integration | Phase 5 |
-| Plugin runtime | Hot-reload plugin system | Phase 4 |
-
-See `mvps/` directory for detailed phase documentation.
+- **Phases 0–61** are complete (see [roadmaps/Roadmap_ClockworkV18.md](roadmaps/Roadmap_ClockworkV18.md) and [mvps/](mvps/)).
+- **Skill dispatch:** Manifest CLI (109 skills, registry-based) and direct runner for scripting.
+- **Stable surface:** CLI contract, public API map, SemVer policy, and compatibility tests in [Docs/](Docs/) (cli_contract.md, public_api.md, semver_policy.md).
+- **Operator toolkit:** `clockwork ops` (bundles, plugins, budget, cache, graph, impact) and `clockwork plugin` (search, info, install, update, uninstall).
+- **Demo pipelines:** One-command demos under `demos/smoke`, `demos/gate_pipeline`, `demos/incident_export`.
 
 ---
 

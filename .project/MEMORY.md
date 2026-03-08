@@ -7,8 +7,8 @@
 
 ## Stable Findings
 
-- **Entrypoint namespace is correct.** `.claude` is added to `sys.path` by `SkillRegistry._ensure_import_paths()`. `.claude/skills/__init__.py` exists, making `skills.*` the correct import prefix for all manifests. All 34 skill classes load successfully.
-- **Dual skill dispatch.** `skill_runner.py` (97 skills, direct dispatch) and `claudeclockwork.cli` (34 manifest skills via `LegacySkillAdapter`) are parallel systems with different coverage. 63 skills are only reachable via the legacy runner.
+- **Entrypoint namespace is correct.** `.claude` is added to `sys.path` by `SkillRegistry._ensure_import_paths()`. `.claude/skills/__init__.py` exists, making `skills.*` the correct import prefix for all manifests. All 109 manifest skill classes load successfully (SkillBase; no LegacySkillAdapter — removed in Phase 17).
+- **Dual skill dispatch.** Manifest CLI (109 skills via registry, all native SkillBase) and `skill_runner.py` (direct dispatch to `.claude/tools/skills/*.py`) are two entry points. No legacy adapter; manifest skills are the forward path.
 - **Plugin system is scaffolded only.** `plugins/` and `registry/` contain JSON metadata but zero Python loader code. Plugins cannot execute. Planned for Phase 4.
 - **~170 files had German content** as of 2026-03-06. Root docs, SYSTEM.md, and agent/governance files were the highest-risk group (agents read these every session). Phase 0 translation is underway.
 
@@ -34,4 +34,4 @@
 
 ---
 
-*Last updated: 2026-03-06 — Phase 0 (Foundation & Cleanup)*
+*Last updated: 2026-03-07 — Skill dispatch docs corrected (109 manifest skills, no LegacySkillAdapter)*

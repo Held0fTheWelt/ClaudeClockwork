@@ -77,20 +77,19 @@ python3 -m pytest tests/ --cov=claudeclockwork
 
 **Project workspace:** `.project/` — documentation, plans, reviews, memory across sessions.
 
-### Skill Dispatch: Two Parallel Systems
+### Skill Dispatch: Two Entry Points
 
-There are currently **two distinct skill dispatch paths**. They serve different skill sets and must not be confused:
+There are **two ways** to run skills. Neither uses a legacy adapter (LegacySkillAdapter was removed in Phase 17).
 
-| System | Entry point | Skills covered | How it works |
-|--------|-------------|---------------|--------------|
-| **Legacy runner** | `python3 .claude/tools/skills/skill_runner.py <skill>` | 97 skills (full set) | Direct function dispatch — imports `<skill>.py` and calls `run(req)` |
-| **Manifest CLI** | `python3 -m claudeclockwork.cli --skill-id <skill>` | 34 skills (subset) | Registry discovers `manifest.json` files; uses `LegacySkillAdapter` to call the same `.py` files |
+| System | Entry point | Skills | How it works |
+|--------|-------------|--------|--------------|
+| **Manifest CLI** | `python3 -m claudeclockwork.cli --skill-id <skill>` | 109 | Registry discovers `.claude/skills/**/manifest.json`; each skill is a **SkillBase** subclass (native or inline delegation to tool scripts). Recommended path. |
+| **Legacy runner** | `python3 .claude/tools/skills/skill_runner.py <skill>` | ~100+ | Direct dispatch: imports `<skill>.py` from `.claude/tools/skills/` and calls `run(req)`. No manifest; useful for scripting. |
 
 **Key facts:**
-- 63 skills exist **only** in the legacy runner and are unreachable via the manifest CLI.
-- All 34 manifest skills currently delegate to legacy `.py` modules via `LegacySkillAdapter`; 4 have native implementations.
-- The manifest CLI is the forward path; the legacy runner is not deprecated but is the only route to the remaining 63 skills.
-- When adding a new skill, add it to `.claude/tools/skills/` first, then optionally wrap it with a `manifest.json` + `skill.py` in `.claude/skills/` to expose it via the CLI.
+- All 109 manifest skills are **native** (SkillBase); there is no LegacySkillAdapter.
+- The manifest CLI is the forward path; the legacy runner remains for direct scripting and backward compatibility.
+- When adding a new skill: implement in `.claude/tools/skills/<skill>.py` if needed, then add `.claude/skills/<category>/<skill>/manifest.json` + `skill.py` (SkillBase) to expose it via the CLI.
 
 ## Execution Protocol
 

@@ -1,8 +1,8 @@
 # Clockwork v18 Roadmap
 
 **Baseline:** v17.7.0 — 94 legacy skills, 34 manifest skills (28 adapters + 6 native), 5 passing tests
-**Current:** v18.3 — 104 manifest skills (93 adapters + 11 native), 376 passing tests, MCP layer, full plugin runtime, 7 CI gates, file lifecycle enforced
-**Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md
+**Current:** v18.3+ — Phases 0–61 complete; stable public surface, docs suite v2, demo pipelines, registry ready, scheduler v2, cost calibration, smart caching, SLO autopilot, module boundaries, test pyramid, migrations, ops toolkit, workspace federation v2, dependency graph, inter-project pipelines, plugin certification, remote worker stubs, marketplace UX
+**Sources:** skill_system_audit_and_roadmap.md · skill_system_legacy_migration_matrix.md · mvps/MVP_Phase*.md
 **Updated:** 2026-03-07
 
 ---
@@ -29,6 +29,55 @@
 | 15 | Obsolete Data Prune | **Complete** | [MVP_Phase15](../mvps/MVP_Phase15_ObsoleteDataPrune.md) |
 | 16 | Skill Discovery Wave | **Complete** | [MVP_Phase16](../mvps/MVP_Phase16_SkillDiscovery.md) |
 | 17 | Adapter Elimination | **Complete** | [MVP_Phase17](../mvps/MVP_Phase17_AdapterElimination.md) |
+| 18 | Planning Drift Guard & Single Source of Truth | **Complete** | [MVP_Phase18](../mvps/MVP_Phase18_PlanningDriftGuard.md) |
+| 18F | Re-Audit from MVP 18 (Quality Gates Baseline) | **Complete** | [MVP_Phase18F](../mvps/MVP_Phase18F_ReAuditFromMVP18.md) |
+| 18G | Version & Pointer Consistency | **Complete** | [MVP_Phase18G](../mvps/MVP_Phase18G_VersionPointerConsistency.md) |
+| 18H | `.report/` Curated-Only + Runtime Migration | **Complete** | [MVP_Phase18H](../mvps/MVP_Phase18H_ReportCuratedOnly_RuntimeMigration.md) |
+| 18I | Skill Coverage Repair + Registry Sync | **Complete** | [MVP_Phase18I](../mvps/MVP_Phase18I_SkillCoverageRepair_ChangelogEntry.md) |
+| 18J | Gate Stabilization & Green Run (RC Minimum) | **Complete** | [MVP_Phase18J](../mvps/MVP_Phase18J_GreenRunRC.md) |
+| 19 | Runtime Root Normalization | **Complete** | [MVP_Phase19](../mvps/MVP_Phase19_RuntimeRootNormalization.md) |
+| 20 | Local Non-LLM Tooling (LocalAI) v1 | **Complete** | [MVP_Phase20](../mvps/MVP_Phase20_LocalNonLLMTooling.md) |
+| 21 | Adapter Elimination Accelerator | **Complete** | [MVP_Phase21](../mvps/MVP_Phase21_AdapterEliminationAccelerator.md) |
+| 22 | Release Discipline & Upgrade Pipeline | **Complete** | [MVP_Phase22](../mvps/MVP_Phase22_ReleaseDiscipline_UpgradePipeline.md) |
+| 23 | Evidence & Redaction Pipeline | **Complete** | [MVP_Phase23](../mvps/MVP_Phase23_EvidenceRedactionPipeline.md) |
+| 24 | Tool/Model Governance (Capability Policy 2.0) | **Complete** | [MVP_Phase24](../mvps/MVP_Phase24_ToolModelGovernance_CapabilityPolicy2.md) |
+| 25 | Eval Harness v2 (Scoreboards, Trends) | **Complete** | [MVP_Phase25](../mvps/MVP_Phase25_EvalHarnessV2_Scoreboards.md) |
+| 26 | Router v3 (Bandit + Budget Toggle) | **Complete** | [MVP_Phase26](../mvps/MVP_Phase26_RouterV3_BanditBudget.md) |
+| 27 | Adapter Elimination at Scale | **Complete** | [MVP_Phase27](../mvps/MVP_Phase27_AdapterEliminationAtScale.md) |
+| 28 | Distribution & Installation (Packaging) | **Complete** | [MVP_Phase28](../mvps/MVP_Phase28_DistributionPackaging.md) |
+| 29 | Plugin Marketplace / Extension API | **Complete** | [MVP_Phase29](../mvps/MVP_Phase29_PluginExtensionAPI.md) |
+| 30 | Work Graph Engine (Tasks as DAG) | **Complete** | [MVP_Phase30](../mvps/MVP_Phase30_WorkGraphEngine.md) |
+| 31 | Learning Layer (Router + Policy Training) | **Complete** | [MVP_Phase31](../mvps/MVP_Phase31_LearningLayer.md) |
+| 32 | Observability (Telemetry, Debug, Forensics) | **Complete** | [MVP_Phase32](../mvps/MVP_Phase32_Observability.md) |
+| 33 | Multi-Repo / Multi-Project Orchestration | **Complete** | [MVP_Phase33](../mvps/MVP_Phase33_MultiRepoWorkspaces.md) |
+| 34 | Security Hardening & Sandboxing | **Complete** | [MVP_Phase34](../mvps/MVP_Phase34_SecurityHardening_Sandboxing.md) |
+| 35 | Distributed Workers (Remote Execution) | **Complete** | [MVP_Phase35](../mvps/MVP_Phase35_DistributedWorkers.md) |
+| 36 | Deterministic Caching & CAS | **Complete** | [MVP_Phase36](../mvps/MVP_Phase36_ContentAddressedStore.md) |
+| 37 | Workspace UX & Project Templates | **Complete** | [MVP_Phase37](../mvps/MVP_Phase37_WorkspaceUX_ProjectTemplates.md) |
+| 38 | Knowledge Base Layer | **Complete** | [MVP_Phase38](../mvps/MVP_Phase38_KnowledgeBaseLayer.md) |
+| 39 | Reliability Engineering (Chaos, Recovery) | **Complete** | [MVP_Phase39](../mvps/MVP_Phase39_ReliabilityEngineering.md) |
+| 40 | Plugin Ecosystem v2 (Signing, Compatibility) | **Complete** | [MVP_Phase40](../mvps/MVP_Phase40_PluginEcosystemV2.md) |
+| 41 | Performance & Cost Optimizer | **Complete** | [MVP_Phase41](../mvps/MVP_Phase41_PerfCostOptimizer.md) |
+| 42 | Operational UX v2 (Incidents, Dashboards) | **Complete** | [MVP_Phase42](../mvps/MVP_Phase42_OperationalUXv2.md) |
+| 43 | Multi-Repo Orchestrator v2 | **Complete** | [MVP_Phase43](../mvps/MVP_Phase43_MultiRepoOrchestratorV2.md) |
+| 44 | Stable Public Surface (CLI/API, SemVer) | **Complete** | [MVP_Phase44](../mvps/MVP_Phase44_StablePublicSurface.md) |
+| 45 | Documentation Suite v2 (Runbooks, Troubleshooting) | **Complete** | [MVP_Phase45](../mvps/MVP_Phase45_DocumentationSuiteV2.md) |
+| 46 | One-Command Demo Pipelines | **Complete** | [MVP_Phase46](../mvps/MVP_Phase46_OneCommandDemoPipelines.md) |
+| 47 | Community/Registry Ready | **Complete** | [MVP_Phase47](../mvps/MVP_Phase47_RegistryReadyPlugins.md) |
+| 48 | Scheduler v2 (Queues, Priorities, Fairness) | **Complete** | [MVP_Phase48](../mvps/MVP_Phase48_SchedulerV2.md) |
+| 49 | Cost Model Calibration | **Complete** | [MVP_Phase49](../mvps/MVP_Phase49_CostModelCalibration.md) |
+| 50 | Smart Caching (Cross-Project, Safe Sharing) | **Complete** | [MVP_Phase50](../mvps/MVP_Phase50_SmartCaching_CrossProject.md) |
+| 51 | SLO Autopilot (Self-Healing Policies) | **Complete** | [MVP_Phase51](../mvps/MVP_Phase51_SLOAutopilot.md) |
+| 52 | Repo Refactor & Module Boundaries | **Complete** | [MVP_Phase52](../mvps/MVP_Phase52_RepoRefactor_ModuleBoundaries.md) |
+| 53 | Test Pyramid Upgrade (Unit → Integration → E2E) | **Complete** | [MVP_Phase53](../mvps/MVP_Phase53_TestPyramidUpgrade.md) |
+| 54 | Migration System (Config/Schema Migrations) | **Complete** | [MVP_Phase54](../mvps/MVP_Phase54_MigrationSystem.md) |
+| 55 | Operator Toolkit (CLI/TUI, Quick Ops) | **Complete** | [MVP_Phase55](../mvps/MVP_Phase55_OperatorToolkit.md) |
+| 56 | Workspace Federation v2 (Policies per Project) | **Complete** | [MVP_Phase56](../mvps/MVP_Phase56_WorkspaceFederationV2_PoliciesPerProject.md) |
+| 57 | Cross-Repo Dependency Graph | **Complete** | [MVP_Phase57](../mvps/MVP_Phase57_CrossRepoDependencyGraph.md) |
+| 58 | Inter-Project Pipelines | **Complete** | [MVP_Phase58](../mvps/MVP_Phase58_InterProjectPipelines.md) |
+| 59 | Plugin Certification (Quality Tiers) | **Complete** | [MVP_Phase59](../mvps/MVP_Phase59_PluginCertification.md) |
+| 60 | Remote Worker Fleet (Networking + Auth) | **Complete** | [MVP_Phase60](../mvps/MVP_Phase60_RemoteWorkerFleet.md) |
+| 61 | Marketplace UX (Local Registry UI) | **Complete** | [MVP_Phase61](../mvps/MVP_Phase61_MarketplaceUX_LocalRegistryUI.md) |
 
 **Principle:** No big-bang rewrites. Each phase delivers a working, tested increment. Legacy runner stays operational throughout.
 
@@ -293,6 +342,20 @@ These 60 skills are in the legacy runner only and have no phase assignment yet. 
 
 ---
 
+## Phases 18–61 at a glance
+
+| Phase | Goal (one line) |
+|-------|------------------|
+| 18–18J | Planning drift guard, re-audit, version consistency, report/runtime migration, skill coverage, green run RC |
+| 19 | Runtime root normalization (`.clockwork_runtime/`) |
+| 20–29 | LocalAI, adapter acceleration, release/upgrade, evidence/redaction, capability policy, eval v2, router v3, adapter at scale, packaging, plugin extension API |
+| 30–39 | Work graph engine, learning layer, observability, multi-repo, security/sandboxing, distributed workers, CAS, workspace UX, knowledge base, reliability |
+| 40–43 | Plugin ecosystem v2, cost optimizer, operational UX v2, multi-repo orchestrator v2 |
+| 44–54 | Stable public surface, docs v2, demo pipelines, registry ready, scheduler v2, cost calibration, smart caching, SLO autopilot, module boundaries, test pyramid, migration system |
+| 55–61 | Operator toolkit, workspace federation v2, dependency graph, inter-project pipelines, plugin certification, remote worker fleet, marketplace UX |
+
+---
+
 ## Recommended session order
 
 1. Phase 0 remaining tasks (language migration, entrypoint fix)
@@ -302,3 +365,5 @@ These 60 skills are in the legacy runner only and have no phase assignment yet. 
 5. Phase 4 (plugin runtime — enables MCP boundary)
 6. Phase 5 (MCP layer)
 7. Phase 6 (CI gates — seal quality permanently)
+8. Phases 7–17 (hygiene, test hardening, compaction, discovery, adapter elimination)
+9. Phases 18–61 (see Phase Overview table and MVP links above)
