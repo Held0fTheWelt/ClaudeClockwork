@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BanditRoutingDecision",
+  "description": "Schema for BanditRouter.select() inputs and outputs (CCW-MVP18).",
+  "type": "object",
+  "required": ["inputs", "outputs"],
+  "properties": {
+    "inputs": {
+      "type": "object",
+      "required": ["task_type"],
+      "properties": {
+        "task_type": {
+          "type": "string",
+          "description": "Task category used to look up historical outcomes in the ledger (e.g. 'code_review', 'qa_campaign')."
+        },
+        "quality_threshold": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 0.7,
+          "description": "Minimum acceptable quality_score for a model to be considered good."
+        },
+        "cost_cap": {
+          "type": "number",
+          "minimum": 0.0,
+          "default": 0.05,
+          "description": "Maximum acceptable estimated cost in USD per call (reserved for future cost-aware filtering)."
+        },
+        "epsilon": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 0.1,
+          "description": "Exploration probability for epsilon-greedy bandit. 0.1 = 10% random exploration."
+        },
+        "ladder_name": {
+          "type": "string",
+          "default": "sonnet",
+          "description": "Escalation ladder to use for static fallback (e.g. 'sonnet' or 'haiku')."
+        }
+      },
+      "additionalProperties": false
+    },
+    "outputs": {
+      "type": "object",
+      "required": ["model_id", "rung", "confidence", "source"],
+      "properties": {
+        "model_id": {
+          "type": "string",
+          "description": "The model identifier selected by the router."
+        },
+        "rung": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position of the selected model in the escalation ladder (0 = cheapest)."
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Mean quality_score of the selected model from historical ledger data; 0.0 for static/fallback selections."
+        },
+        "source": {
+          "type": "string",
+          "enum": ["bandit", "static", "fallback"],
+          "description": "bandit = selected by epsilon-greedy algorithm from ledger data; static = selected from YAML ladder (insufficient ledger data); fallback = selected from hardcoded defaults (no YAML available)."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

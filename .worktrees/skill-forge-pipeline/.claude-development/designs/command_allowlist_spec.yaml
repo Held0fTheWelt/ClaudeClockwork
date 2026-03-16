@@ -1,0 +1,40 @@
+# command_allowlist.yaml — SPEC (MVP23-D)
+# Enforced by: llamacode/core/sandbox_runner.py (MVP24).
+# Addresses T-003 (arbitrary command execution).
+
+version: "1.0"
+enforcement: strict  # deny unlisted commands
+
+allowed_commands:
+  - pattern: "python"
+    args_allowlist: ["-m", "pytest", "-c", "-u"]
+    args_denylist: ["-c 'import os; os.system'", "-c 'import subprocess'"]
+  - pattern: "pytest"
+    args_allowlist: ["--tb", "--co", "-v", "-x", "-q", "--cov", "-k"]
+  - pattern: "git"
+    args_allowlist: ["status", "log", "diff", "branch", "show", "add", "commit", "rev-parse"]
+    requires_escalation: ["push", "reset", "rebase", "merge", "checkout"]
+  - pattern: "pip"
+    args_allowlist: ["list", "show", "check", "install", "--user"]
+    requires_escalation: ["uninstall"]
+  - pattern: "ls"
+  - pattern: "wc"
+  - pattern: "file"
+  - pattern: "stat"
+  - pattern: "cat"
+    args_allowlist: []  # path still subject to path_allowlist
+
+denied_commands:
+  - "rm -rf"
+  - "curl"
+  - "wget"
+  - "nc"
+  - "ssh"
+  - "scp"
+  - "eval"
+  - "exec"
+  - "bash -c"
+  - "powershell -EncodedCommand"
+
+# Escalation: when requires_escalation is set, sandbox_runner checks
+# current escalation_level from context; L4/L5 may allow (configurable).

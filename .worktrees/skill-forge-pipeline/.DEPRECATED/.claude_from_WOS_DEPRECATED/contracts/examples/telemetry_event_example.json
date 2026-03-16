@@ -1,0 +1,14 @@
+{
+  "ts": "2026-03-02T14:00:00Z",
+  "run_id": "mvp12-test-001",
+  "role": "team_lead",
+  "model": "claude-sonnet-4-6",
+  "task": "code_review",
+  "phase": "execute",
+  "prompt_tokens": 2500,
+  "completion_tokens": 800,
+  "total_tokens": 3300,
+  "quality_score": 0.85,
+  "duration_ms": 1200,
+  "escalation_level": "L1"
+}

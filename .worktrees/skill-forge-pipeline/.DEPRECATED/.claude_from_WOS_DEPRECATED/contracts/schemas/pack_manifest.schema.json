@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PackManifest",
+  "type": "object",
+  "required": [
+    "type",
+    "run_id",
+    "pack_type",
+    "items",
+    "size_estimate_kb"
+  ],
+  "properties": {
+    "type": {
+      "const": "pack_manifest"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "pack_type": {
+      "enum": [
+        "codepack",
+        "docpack",
+        "testpack",
+        "incidentpack",
+        "securitypack"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "ref"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "file",
+              "doc",
+              "log",
+              "snippet",
+              "summary"
+            ]
+          },
+          "ref": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "size_estimate_kb": {
+      "type": "number",
+      "minimum": 0
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

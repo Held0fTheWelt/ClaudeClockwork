@@ -1,0 +1,9 @@
+{
+  "root": "./",
+  "docs_root": "./docs",
+  "dry_run": true,
+  "move_map": {
+    "docs/old/": "docs/new/"
+  },
+  "output_path": "docs/broken_links.md"
+}

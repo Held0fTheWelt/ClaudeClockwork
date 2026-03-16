@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qa_gate_request.schema.json",
+  "title": "QA Gate Request",
+  "description": "Input schema for the qa_gate skill (CCW-MVP10).",
+  "type": "object",
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "const": "qa_gate",
+      "description": "Must be 'qa_gate'."
+    },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "project_root": {
+          "type": "string",
+          "description": "Absolute or relative path to the project root. Default: '.'",
+          "default": "."
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "BOOT_001",
+              "LAYOUT_001",
+              "SCHEMA_001",
+              "SKILL_001",
+              "POLICY_001",
+              "REPORT_001",
+              "POINTER_001",
+              "VERSION_001"
+            ]
+          },
+          "description": "List of check IDs to run. Default: all checks.",
+          "uniqueItems": true
+        },
+        "output_dir": {
+          "type": "string",
+          "description": "Directory path (relative to project_root) to write the JSON report when write_report=true. Default: '.report/qa/'",
+          "default": ".report/qa/"
+        },
+        "write_report": {
+          "type": "boolean",
+          "description": "If true, write a timestamped JSON report to output_dir. Default: false.",
+          "default": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["skill_id", "inputs"],
+  "additionalProperties": false
+}

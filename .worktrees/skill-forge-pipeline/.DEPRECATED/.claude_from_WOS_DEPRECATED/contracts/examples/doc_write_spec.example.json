@@ -1,0 +1,13 @@
+{
+  "type": "doc_write_spec",
+  "project_root": ".",
+  "overwrite": true,
+  "dry_run": false,
+  "files": [
+    {
+      "doc_type": "user_guide",
+      "path": "Docs/Documentation/User_Guide.md",
+      "content": "# User Guide\n\n(Example content)\n"
+    }
+  ]
+}

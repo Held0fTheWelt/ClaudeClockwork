@@ -1,0 +1,80 @@
+# WorldOfShadows: Using ClaudeClockwork Agents
+
+WorldOfShadows is a **consumer project** that uses agents created and maintained in ClaudeClockwork.
+
+## Quick Start
+
+### Run an existing agent
+
+```bash
+python /mnt/d/ClaudeClockwork/.ollama/agent_name.py
+```
+
+### Common agents
+
+- **Fix bugs**: `master_corrective_agent_v3.py`
+- **Add features**: `implement_taskexecutor_integration.py`
+- **Validate**: `validate_claudeclockwork_patterns.py`
+
+## How agents work in your project
+
+1. Agent runs in ClaudeClockwork directory
+2. Agent accesses WorldOfShadows files via absolute paths
+3. Changes are made directly to WorldOfShadows
+4. Commits are made to WorldOfShadows repo
+5. Session memory shared via `.claude/` folder
+
+## Example: Fix a bug in WorldOfShadows
+
+```python
+# In ClaudeClockwork/.ollama/fix_my_bug.py
+from claudeclockwork.agents.base_agent import BaseAgent
+from pathlib import Path
+
+class BugFixAgent(BaseAgent):
+    def run(self):
+        wos = Path("/mnt/c/Users/YvesT/PycharmProjects/WorldOfShadows")
+
+        # Read WOS file
+        content = (wos / "backend/app/services/myservice.py").read_text()
+
+        # Fix using Ollama
+        prompt = f"Fix the bug in: {content[:500]}"
+        fixed = self.run_ollama(prompt)
+
+        # Write back to WOS
+        (wos / "backend/app/services/myservice.py").write_text(fixed)
+
+        # Commit in WOS repo
+        self.git_add(["backend/app/services/myservice.py"])
+        self.git_commit("fix: bug fixed")
+```
+
+## Knowledge Source
+
+**Do not modify agents in WorldOfShadows .ollama/ folder.**
+
+All agent development and updates happen in ClaudeClockwork:
+- `/mnt/d/ClaudeClockwork/.ollama/` — Agent scripts
+- `/mnt/d/ClaudeClockwork/KNOWLEDGE/` — Patterns & documentation
+- `/mnt/d/ClaudeClockwork/DEVELOPMENT.md` — Development guide
+
+## Reporting Issues
+
+If you need a new agent or modification:
+1. Create issue/task in ClaudeClockwork
+2. Agent is developed and tested in ClaudeClockwork
+3. Agent is then available for WorldOfShadows use
+
+## One-Way Knowledge Flow
+
+```
+ClaudeClockwork (source)
+        ↓
+    Agents
+        ↓
+WorldOfShadows (consumer)
+```
+
+WorldOfShadows USES agents from ClaudeClockwork,
+but does NOT contribute back to the framework.

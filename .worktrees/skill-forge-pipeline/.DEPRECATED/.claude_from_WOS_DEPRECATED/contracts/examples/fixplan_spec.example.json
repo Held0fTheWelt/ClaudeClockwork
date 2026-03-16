@@ -1,0 +1,11 @@
+{
+  "type": "fixplan_spec",
+  "run_id": "2026-02-28",
+  "issues": ["Example issue"],
+  "plan": [
+    {"step": "1", "action": "Do something", "files": ["src/example.py"], "acceptance": ["Pass"]}
+  ],
+  "rerun": {"commands": ["pytest -q"], "expected": "all green"},
+  "confidence": 0.7,
+  "notes": ""
+}

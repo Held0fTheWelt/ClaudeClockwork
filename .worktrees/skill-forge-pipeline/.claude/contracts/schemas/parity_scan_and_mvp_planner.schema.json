@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "parity_scan_and_mvp_planner",
+  "description": "Skill request spec for parity_scan_and_mvp_planner: scans the repo to build a capability parity matrix, identifies gaps, and produces a prioritized MVP pre-plan.",
+  "type": "object",
+  "required": ["skill_id", "inputs"],
+  "additionalProperties": false,
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "const": "parity_scan_and_mvp_planner",
+      "description": "Must be exactly 'parity_scan_and_mvp_planner'"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "Unique identifier for this skill request (for tracing and deduplication)"
+    },
+    "inputs": {
+      "type": "object",
+      "required": ["run_date"],
+      "additionalProperties": false,
+      "properties": {
+        "run_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the scan run (YYYY-MM-DD); used in output file names"
+        },
+        "scan_scope": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of directories to scan. If omitted, full repo is scanned.",
+          "default": [".claude", "llamacode", "tests", "scripts", "plugins", "docs", "quellen"]
+        },
+        "reference_mvp_chain": {
+          "type": "string",
+          "description": "Path to the MVP chain specification document",
+          "default": ".claude-development/Clockwork_MVP_Chain.md"
+        },
+        "output_dir": {
+          "type": "string",
+          "description": "Directory where parity matrix and backlog are written",
+          "default": ".claude-development/audits/parity/"
+        },
+        "generate_mvp_plan": {
+          "type": "boolean",
+          "description": "Whether to also generate an M* pre-plan for the next milestone",
+          "default": true
+        },
+        "mvp_plan_output_dir": {
+          "type": "string",
+          "description": "Directory where the generated M* plan is written",
+          "default": ".claude-development/milestones/"
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "description": "skill_result_spec — populated by the skill after execution",
+      "additionalProperties": false,
+      "properties": {
+        "parity_matrix": {
+          "type": "string",
+          "description": "Absolute path to the written parity matrix file"
+        },
+        "backlog": {
+          "type": "string",
+          "description": "Absolute path to the written missing features backlog file"
+        },
+        "mvp_plan": {
+          "type": ["string", "null"],
+          "description": "Absolute path to the written M* pre-plan (null if generate_mvp_plan is false)"
+        },
+        "gap_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of GAP items found in the parity matrix"
+        },
+        "partial_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of PARTIAL items found in the parity matrix"
+        },
+        "full_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of FULL items found in the parity matrix"
+        },
+        "p0_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of P0-priority (security/correctness) backlog items"
+        },
+        "p1_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of P1-priority (high leverage) backlog items"
+        },
+        "p2_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of P2-priority (standard improvements) backlog items"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ok", "partial", "error"],
+          "description": "Execution status: ok = all outputs written successfully; partial = some outputs written; error = failure"
+        },
+        "errors": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of error messages if status is 'error' or 'partial'"
+        }
+      }
+    }
+  }
+}

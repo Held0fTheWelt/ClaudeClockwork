@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WorkScopeReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "task",
+    "complexity_score_0_10",
+    "tier",
+    "reasons"
+  ],
+  "properties": {
+    "type": {
+      "const": "work_scope_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "task": {
+      "type": "string"
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "complexity_score_0_10": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "signals": {
+      "type": "object"
+    }
+  }
+}

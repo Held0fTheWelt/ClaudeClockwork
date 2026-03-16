@@ -1,0 +1,13 @@
+{
+  "type": "tasklist_spec",
+  "run_id": "2026-02-28",
+  "confidence": 0.8,
+  "tasks": [
+    {"id": "T1", "capability": "qa", "acceptance": ["Gate ok"], "notes": ""}
+  ],
+  "unknowns": [],
+  "assumptions": [],
+  "pack_hints": [],
+  "digest": "",
+  "notes": ""
+}

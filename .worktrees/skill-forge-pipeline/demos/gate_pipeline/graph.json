@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    { "id": "release_check", "type": "gate_check", "inputs": {}, "config": {} },
+    { "id": "run_skill", "type": "skill_call", "inputs": {}, "config": {} }
+  ],
+  "edges": [
+    { "from_node": "release_check", "to_node": "run_skill", "artifact_key": "gate_ok" }
+  ]
+}

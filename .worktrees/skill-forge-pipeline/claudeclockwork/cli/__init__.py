@@ -1,0 +1,168 @@
+"""Phase 28 — CLI package: main entry, first-run, env-check."""
+from __future__ import annotations
+
+import argparse
+import importlib
+import json
+from pathlib import Path
+
+from claudeclockwork.bridge import run_manifest_skill
+from claudeclockwork.core.executor.pipeline import ExecutionPipeline
+from claudeclockwork.runtime import build_executor, build_planner, build_plugin_registry
+
+
+def _run_plugin_healthcheck(plugin_id: str, project_root: Path) -> int:
+    registry = build_plugin_registry(project_root)
+    manifest = registry.get_manifest(plugin_id)
+    if manifest is None:
+        print(json.dumps({"status": "fail", "errors": [f"Unknown plugin: {plugin_id!r}"]}))
+        return 1
+    hook = manifest.lifecycle.get("healthcheck")
+    if not hook:
+        print(json.dumps({"status": "ok", "plugin": plugin_id, "detail": "no healthcheck hook declared"}))
+        return 0
+    try:
+        module_path, fn_name = hook.rsplit(":", 1)
+        module = importlib.import_module(module_path)
+        fn = getattr(module, fn_name)
+        result = fn()
+        ok = result is None or bool(result)
+        print(json.dumps({"status": "ok" if ok else "fail", "plugin": plugin_id, "detail": str(result)}))
+        return 0 if ok else 1
+    except Exception as exc:
+        print(json.dumps({"status": "fail", "plugin": plugin_id, "errors": [str(exc)]}))
+        return 1
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="ClaudeClockwork Full Skill System CLI")
+    parser.add_argument("--project-root", default=".")
+    parser.add_argument("--skill-id", default="")
+    parser.add_argument("--user-input", default="")
+    parser.add_argument("--inputs", default="{}", help="JSON object for skill inputs")
+    parser.add_argument("--plugin-healthcheck", default="", metavar="PLUGIN_ID",
+                        help="Run the healthcheck hook for the named plugin")
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
+    subparsers.add_parser("first-run", help="Create runtime root, validate (Phase 28)")
+    subparsers.add_parser("env-check", help="Verify environment (Phase 28)")
+    migrate_p = subparsers.add_parser("migrate", help="Config/schema migration (Phase 54)")
+    migrate_p.add_argument("--dry-run", action="store_true", help="Do not write")
+    migrate_p.add_argument("--apply", action="store_true", help="Write migrated config")
+    ops_p = subparsers.add_parser("ops", help="Operator toolkit (Phase 55)")
+    ops_sub = ops_p.add_subparsers(dest="ops_command")
+    ops_sub.add_parser("bundles", help="List imported bundles")
+    ops_sub.add_parser("plugins", help="List plugins")
+    ops_sub.add_parser("budget", help="Show budget profile")
+    ops_sub.add_parser("cache", help="Cache stats")
+    ops_sub.add_parser("tui", help="Optional minimal TUI")
+    ops_sub.add_parser("graph", help="Dependency graph (Phase 57)")
+    impact_p = ops_sub.add_parser("impact", help="Impact analysis")
+    impact_p.add_argument("--node", default="root", help="Node id")
+    plugin_p = subparsers.add_parser("plugin", help="Marketplace UX (Phase 61)")
+    plugin_sub = plugin_p.add_subparsers(dest="plugin_command")
+    search_p = plugin_sub.add_parser("search", help="Search plugins")
+    search_p.add_argument("--query", default="")
+    info_p = plugin_sub.add_parser("info", help="Plugin info")
+    info_p.add_argument("plugin_id", nargs="?", default="")
+    install_p = plugin_sub.add_parser("install", help="Install plugin")
+    install_p.add_argument("plugin_id", nargs="?", default="")
+    install_p.add_argument("--bundle", default="")
+    update_p = plugin_sub.add_parser("update", help="Update plugin")
+    update_p.add_argument("plugin_id", nargs="?", default="")
+    update_p.add_argument("--bundle", default="")
+    uninstall_p = plugin_sub.add_parser("uninstall", help="Uninstall plugin")
+    uninstall_p.add_argument("plugin_id", nargs="?", default="")
+    args = parser.parse_args()
+
+    project_root = Path(args.project_root).resolve()
+    inputs = json.loads(args.inputs)
+
+    if args.command == "first-run":
+        from claudeclockwork.cli.first_run import run_first_run
+        result = run_first_run(project_root)
+        print(json.dumps(result, indent=2))
+        return 0
+    if args.command == "env-check":
+        from claudeclockwork.cli.env_check import run_env_check
+        code, errors, info = run_env_check(project_root)
+        print(json.dumps({"ok": code == 0, "errors": errors, "info": info}, indent=2))
+        return code
+
+    if args.command == "migrate":
+        from claudeclockwork.migrations.engine import MigrationRegistry, run_migrations
+        reg = MigrationRegistry()
+        reg.register(1, 2, lambda d: {**d, "schema_version": 2, "migrated_v1": True})
+        cfg_path = project_root / ".clockwork_runtime" / "config.json"
+        result = run_migrations(cfg_path, reg, target_version=2, dry_run=not getattr(args, "apply", False))
+        print(json.dumps(result, indent=2))
+        return 0 if not result.get("error") else 1
+
+    if args.command == "plugin":
+        from claudeclockwork.cli.plugin_marketplace import plugin_search, plugin_info, plugin_install, plugin_update, plugin_uninstall
+        pc = getattr(args, "plugin_command", None)
+        pid = getattr(args, "plugin_id", "") or ""
+        if pc == "search":
+            out = plugin_search(project_root, getattr(args, "query", "") or "")
+        elif pc == "info":
+            out = plugin_info(project_root, pid)
+        elif pc == "install":
+            bundle = getattr(args, "bundle", "") or ""
+            out = plugin_install(project_root, pid, bundle) if pid and bundle else {"ok": False, "errors": ["plugin_id and --bundle required"]}
+        elif pc == "update":
+            bundle = getattr(args, "bundle", "") or ""
+            out = plugin_update(project_root, pid, bundle) if pid and bundle else {"ok": False, "errors": ["plugin_id and --bundle required"]}
+        elif pc == "uninstall":
+            out = plugin_uninstall(project_root, pid)
+        else:
+            print(json.dumps({"error": "unknown plugin command", "usage": "plugin search|info|install|update|uninstall"}))
+            return 1
+        print(json.dumps(out, indent=2))
+        return 0
+
+    if args.command == "ops":
+        from claudeclockwork.cli.ops import run_ops_bundles, run_ops_plugins, run_ops_budget, run_ops_cache
+        oc = getattr(args, "ops_command", None)
+        if oc == "tui":
+            print(json.dumps({"tui": "optional", "status": "not_implemented"}))
+            return 0
+        if oc == "bundles":
+            out = run_ops_bundles(project_root)
+        elif oc == "plugins":
+            out = run_ops_plugins(project_root)
+        elif oc == "budget":
+            out = run_ops_budget(project_root)
+        elif oc == "cache":
+            out = run_ops_cache(project_root)
+        elif oc == "graph":
+            from claudeclockwork.workspace.dependency_graph import build_dependency_graph
+            out = build_dependency_graph(project_root)
+        elif oc == "impact":
+            from claudeclockwork.workspace.dependency_graph import build_dependency_graph, impact_analysis
+            g = build_dependency_graph(project_root)
+            node = getattr(args, "node", "root")
+            out = {"node": node, "downstream": impact_analysis(g, node)}
+        else:
+            print(json.dumps({"error": "unknown ops command", "usage": "ops bundles|plugins|budget|cache|tui|graph|impact"}))
+            return 1
+        print(json.dumps(out, indent=2))
+        return 0
+
+    if args.plugin_healthcheck:
+        return _run_plugin_healthcheck(args.plugin_healthcheck, project_root)
+
+    if args.skill_id:
+        req = {"request_id": "cli", "skill_id": args.skill_id, "inputs": inputs}
+        result = run_manifest_skill(req, project_root)
+        if result is None:
+            print(json.dumps({"status": "fail", "errors": [f"Unknown skill_id: {args.skill_id}"]}, indent=2))
+            return 1
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0 if result.get("status") == "ok" else 1
+
+    pipeline = ExecutionPipeline(build_planner(project_root), build_executor(project_root), working_directory=str(project_root))
+    result = pipeline.run(args.user_input, **inputs)
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    return 0 if result.get("status") == "ok" else 1
+
+
+__all__ = ["main"]

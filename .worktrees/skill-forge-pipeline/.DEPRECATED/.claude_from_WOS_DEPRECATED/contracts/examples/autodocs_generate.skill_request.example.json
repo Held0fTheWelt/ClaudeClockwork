@@ -1,0 +1,14 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "autodocs-001",
+  "skill_id": "autodocs_generate",
+  "inputs": {
+    "root": ".",
+    "skills_tools_dir": ".claude/tools/skills",
+    "skills_docs_dir": ".claude/skills",
+    "registry_path": ".claude/skills/registry.md",
+    "addons_map_path": ".claude/addons/map.yaml",
+    "mode": "write_missing_only",
+    "max_chars": 3500
+  }
+}

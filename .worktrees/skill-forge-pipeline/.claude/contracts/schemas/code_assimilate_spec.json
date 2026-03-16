@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": [
+    "foreign_root",
+    "host_root"
+  ],
+  "properties": {
+    "foreign_root": {
+      "type": "string"
+    },
+    "host_root": {
+      "type": "string"
+    },
+    "target_namespace": {
+      "type": "string"
+    },
+    "output_path": {
+      "type": "string"
+    }
+  }
+}

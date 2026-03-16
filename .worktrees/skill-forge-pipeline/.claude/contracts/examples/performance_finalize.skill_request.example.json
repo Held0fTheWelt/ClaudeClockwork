@@ -1,0 +1,12 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "perf-finalize-001",
+  "skill_id": "performance_finalize",
+  "inputs": {
+    "run_id": "run-20260301-001",
+    "config_path": ".claude/config/performance_budgeting.yaml",
+    "events_sources": [],
+    "panels_path": ".claude-performance/reviews/run-EXAMPLE_panels.json",
+    "do_review": true
+  }
+}

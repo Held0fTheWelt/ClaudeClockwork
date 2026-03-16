@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "clockwork_version_bump.schema.json",
+  "title": "ClockworkVersionBumpSkillRequest",
+  "description": "Schema for the clockwork_version_bump skill (CCW-MVP21). Bumps the Clockwork semver, writes changelog entry, and optionally creates a git tag. Also covers the clockwork_changelog_entry companion skill.",
+  "oneOf": [
+    {
+      "title": "clockwork_version_bump request",
+      "type": "object",
+      "required": ["skill_id", "inputs"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "skill_request_spec"
+        },
+        "request_id": { "type": "string" },
+        "skill_id": {
+          "type": "string",
+          "const": "clockwork_version_bump"
+        },
+        "inputs": {
+          "type": "object",
+          "required": ["bump_type", "summary"],
+          "properties": {
+            "bump_type": {
+              "type": "string",
+              "enum": ["major", "minor", "patch"],
+              "description": "Semver bump level."
+            },
+            "summary": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Short description of what changed (written to changelog)."
+            },
+            "affected_mvps": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "List of MVP IDs that triggered this bump (e.g. ['CCW-MVP20', 'CCW-MVP21']).",
+              "default": []
+            },
+            "tag_git": {
+              "type": "boolean",
+              "default": false,
+              "description": "If true (and not dry_run), create an annotated git tag for the new version."
+            },
+            "dry_run": {
+              "type": "boolean",
+              "default": false,
+              "description": "If true, compute the new version and return it without writing any files."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "title": "clockwork_changelog_entry request",
+      "type": "object",
+      "required": ["skill_id", "inputs"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "skill_request_spec"
+        },
+        "request_id": { "type": "string" },
+        "skill_id": {
+          "type": "string",
+          "const": "clockwork_changelog_entry"
+        },
+        "inputs": {
+          "type": "object",
+          "required": ["version", "entry_text", "category"],
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "The version string this entry applies to (e.g. '17.7.0')."
+            },
+            "entry_text": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The changelog line text."
+            },
+            "category": {
+              "type": "string",
+              "enum": ["added", "changed", "fixed", "removed"],
+              "description": "Keep-a-Changelog category."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

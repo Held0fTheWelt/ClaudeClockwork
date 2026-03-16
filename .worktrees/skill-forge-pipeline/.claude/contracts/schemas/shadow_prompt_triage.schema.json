@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShadowPromptTriage",
+  "type": "object",
+  "required": [
+    "type",
+    "accept_sections",
+    "flagged_sections",
+    "rejected_sections",
+    "ranked_fixes",
+    "quality_gate_pass",
+    "status"
+  ],
+  "properties": {
+    "type": {
+      "const": "shadow_prompt_triage"
+    },
+    "accept_sections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Section names whose quality_score >= min_quality_score"
+    },
+    "flagged_sections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Section names with 0.3 <= quality_score < min_quality_score"
+    },
+    "rejected_sections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Section names with quality_score < 0.3"
+    },
+    "ranked_fixes": {
+      "type": "array",
+      "description": "Flagged and rejected sections sorted by score ascending (worst first)",
+      "items": {
+        "type": "object",
+        "required": ["section", "current_score", "suggested_action"],
+        "properties": {
+          "section": { "type": "string" },
+          "current_score": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "suggested_action": {
+            "type": "string",
+            "enum": ["rewrite", "expand", "remove"]
+          }
+        }
+      }
+    },
+    "quality_gate_pass": {
+      "type": "boolean",
+      "description": "True when rejected_sections is empty"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "error"]
+    },
+    "written_to": {
+      "type": "string",
+      "description": "Path of written triage file if write_triage was true"
+    }
+  }
+}

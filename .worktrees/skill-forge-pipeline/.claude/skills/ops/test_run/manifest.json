@@ -1,0 +1,28 @@
+{
+  "id": "test_run",
+  "name": "test_run",
+  "version": "0.1.0",
+  "category": "ops",
+  "description": "Run pytest against a specified test path and return structured pass/fail/error counts. Skipped when CLOCKWORK_CI env var is set.",
+  "entrypoint": "skills.ops.test_run.skill:TestRunSkill",
+  "permissions": ["repo:read"],
+  "aliases": ["run_tests", "pytest_run"],
+  "tags": ["test", "pytest", "qa", "ops"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "test_path": {"type": "string", "optional": true, "default": "tests/"},
+    "marker": {"type": "string", "optional": true},
+    "coverage": {"type": "boolean", "optional": true, "default": false}
+  },
+  "outputs": {
+    "passed": {"type": "integer"},
+    "failed": {"type": "integer"},
+    "errors": {"type": "integer"},
+    "duration_ms": {"type": "number"},
+    "failures": {"type": "array"},
+    "exit_code": {"type": "integer"},
+    "coverage_pct": {"type": "number", "optional": true}
+  },
+  "metadata": {"legacy_bridge": false}
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PdfExportRequest",
+  "type": "object",
+  "required": ["doc_files"],
+  "properties": {
+    "project_root": {
+      "type": "string",
+      "default": ".",
+      "description": "Repository root directory (resolved to absolute path)"
+    },
+    "doc_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Relative paths to source files (Markdown or .mmd)"
+    },
+    "output_dir": {
+      "type": "string",
+      "default": "docs/_exports/pdf",
+      "description": "Relative output directory for exported files"
+    },
+    "naming_scheme": {
+      "type": "string",
+      "enum": ["flat_underscore", "hierarchical"],
+      "default": "flat_underscore"
+    },
+    "fallback_fmt": {
+      "type": "string",
+      "enum": ["html", "markdown"],
+      "default": "html",
+      "description": "Format to use when no PDF tool is available"
+    },
+    "mermaid": {
+      "type": "string",
+      "enum": ["embed_as_text", "skip"],
+      "default": "embed_as_text",
+      "description": "How to handle .mmd diagram files"
+    },
+    "dry_run": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true, plan export without writing files"
+    }
+  },
+  "additionalProperties": false
+}

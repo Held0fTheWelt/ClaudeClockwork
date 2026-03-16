@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LastTrainReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "inputs",
+    "combined_zip_path",
+    "timeline",
+    "warnings",
+    "limitations"
+  ],
+  "properties": {
+    "type": {
+      "const": "last_train_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object",
+      "required": [
+        "zip_paths",
+        "root_out_dir",
+        "ignore_globs",
+        "critical_paths"
+      ],
+      "properties": {
+        "zip_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "root_out_dir": {
+          "type": "string"
+        },
+        "ignore_globs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "critical_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "combined_zip_path": {
+      "type": "string"
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "index",
+          "zip_path",
+          "fingerprint",
+          "stats",
+          "diff_vs_prev",
+          "verdict"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "zip_path": {
+            "type": "string"
+          },
+          "fingerprint": {
+            "type": "object",
+            "required": [
+              "file_count",
+              "sha256"
+            ],
+            "properties": {
+              "file_count": {
+                "type": "integer"
+              },
+              "sha256": {
+                "type": "string"
+              }
+            }
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "files_total": {
+                "type": "integer"
+              },
+              "files_ignored": {
+                "type": "integer"
+              },
+              "bytes_total": {
+                "type": "integer"
+              },
+              "critical_present": {
+                "type": "integer"
+              },
+              "critical_missing": {
+                "type": "integer"
+              }
+            }
+          },
+          "diff_vs_prev": {
+            "type": "object",
+            "properties": {
+              "added": {
+                "type": "integer"
+              },
+              "removed": {
+                "type": "integer"
+              },
+              "changed": {
+                "type": "integer"
+              },
+              "critical_removed": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "critical_added": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "verdict": {
+            "type": "object",
+            "required": [
+              "classification",
+              "confidence",
+              "reasons"
+            ],
+            "properties": {
+              "classification": {
+                "type": "string",
+                "enum": [
+                  "evolution",
+                  "loss",
+                  "mixed",
+                  "unknown"
+                ]
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "reasons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

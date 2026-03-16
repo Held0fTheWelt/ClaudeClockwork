@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "intent"
+  ],
+  "properties": {
+    "repo_root": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "min_match": {
+      "type": "integer"
+    }
+  }
+}

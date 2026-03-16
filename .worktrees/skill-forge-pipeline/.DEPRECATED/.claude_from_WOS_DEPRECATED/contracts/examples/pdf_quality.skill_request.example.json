@@ -1,0 +1,13 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "pdf-quality-001",
+  "skill_id": "pdf_quality",
+  "inputs": {
+    "manuscript_path": "docs/README.md",
+    "scope": "general",
+    "target_audience": "developer",
+    "max_fixes": 10,
+    "write_report": false,
+    "report_dir": ".report/"
+  }
+}

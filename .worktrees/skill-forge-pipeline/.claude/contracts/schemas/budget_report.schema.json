@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BudgetReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "run_id",
+    "inputs",
+    "totals",
+    "breakdowns",
+    "insights",
+    "artifacts",
+    "limitations"
+  ],
+  "properties": {
+    "type": {
+      "const": "budget_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "totals": {
+      "type": "object"
+    },
+    "breakdowns": {
+      "type": "object"
+    },
+    "insights": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

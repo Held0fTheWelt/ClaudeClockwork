@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExperimentSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "experiments",
+    "budget"
+  ],
+  "properties": {
+    "type": {
+      "const": "experiment_spec"
+    },
+    "id": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "object",
+      "required": [
+        "max_experiments",
+        "max_minutes_each"
+      ],
+      "properties": {
+        "max_experiments": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "max_minutes_each": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30
+        }
+      },
+      "additionalProperties": false
+    },
+    "experiments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "hypothesis_id",
+          "steps",
+          "evidence",
+          "pass_condition"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "hypothesis_id": {
+            "type": "string"
+          },
+          "steps": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "pass_condition": {
+            "type": "string"
+          },
+          "command": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

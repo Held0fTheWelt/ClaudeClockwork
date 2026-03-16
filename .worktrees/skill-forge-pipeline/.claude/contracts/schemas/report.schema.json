@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportSkill",
+  "description": "Schema for the report skill (MVP02). Accepts a title and a list of items, returns a Markdown report.",
+  "type": "object",
+  "required": ["title", "items"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Report title."
+    },
+    "items": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of line items to include in the report."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "output": {
+      "type": "object",
+      "required": ["report", "item_count", "status"],
+      "properties": {
+        "report": {
+          "type": "string",
+          "description": "Generated Markdown report text."
+        },
+        "item_count": {
+          "type": "integer",
+          "description": "Number of items included in the report."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ok", "fail"],
+          "description": "Execution status."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

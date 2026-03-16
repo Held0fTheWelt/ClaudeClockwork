@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeedbackEvent",
+  "description": "Phase 31 — Router/outcome feedback: manual rating, reason codes, latency.",
+  "type": "object",
+  "required": ["event_type", "timestamp_iso"],
+  "properties": {
+    "event_type": { "const": "feedback" },
+    "timestamp_iso": { "type": "string" },
+    "run_id": { "type": "string" },
+    "node_id": { "type": "string" },
+    "option_id": { "type": "string" },
+    "success": { "type": "boolean" },
+    "quality_rating": { "type": "number" },
+    "latency_satisfaction": { "type": "boolean" },
+    "reason_codes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

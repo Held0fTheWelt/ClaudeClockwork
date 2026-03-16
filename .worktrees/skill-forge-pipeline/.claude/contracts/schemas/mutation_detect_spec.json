@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "left_root",
+    "right_root"
+  ],
+  "properties": {
+    "left_root": {
+      "type": "string"
+    },
+    "right_root": {
+      "type": "string"
+    },
+    "include_ext": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output_path": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EfficiencyReview",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "run_id",
+    "inputs",
+    "panels",
+    "final_judgement",
+    "artifacts",
+    "limitations"
+  ],
+  "properties": {
+    "type": {
+      "const": "efficiency_review"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "panels": {
+      "type": "object"
+    },
+    "final_judgement": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

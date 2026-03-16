@@ -1,0 +1,5 @@
+{
+  "root": "./",
+  "template_regex": "Copyright\\s*\\(c\\)\\s*\\d{4}\\s+MyCompany",
+  "output_path": "docs/copyright.md"
+}

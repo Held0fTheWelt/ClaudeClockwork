@@ -1,0 +1,16 @@
+{
+  "planning": {
+    "max_plan_tasks_default": 12,
+    "max_plan_tasks": 12
+  },
+  "modes": {
+    "no_llm": false
+  },
+  "feedback": {
+    "defaults": {},
+    "overrides": {}
+  },
+  "experiment": {
+    "max_per_run": 3
+  }
+}

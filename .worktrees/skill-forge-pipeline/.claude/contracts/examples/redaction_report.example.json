@@ -1,0 +1,10 @@
+{
+  "type": "redaction_report",
+  "input_dir": "validation_runs/2026-02-28",
+  "output_dir": "validation_runs/2026-02-28_redacted",
+  "files_copied": 10,
+  "total_hits": 2,
+  "redactions": [
+    {"file": "logs/run.log", "hits": 2}
+  ]
+}

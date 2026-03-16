@@ -1,0 +1,49 @@
+{
+  "core": [
+    "skill_runner",
+    "pdf_render",
+    "repo_clean_scan",
+    "cleanup_plan_apply",
+    "code_clean_scan",
+    "last_train_merge",
+    "shadow_prompt_minify",
+    "autodocs_generate",
+    "hardening_scan_fix"
+  ],
+  "addons": {
+    "docforge_pdf_quality": [
+      "pdf_render"
+    ],
+    "cleaning_suite": [
+      "repo_clean_scan",
+      "code_clean_scan",
+      "cleanup_plan_apply"
+    ],
+    "last_train_suite": [
+      "last_train_merge"
+    ],
+    "shadow_prompts": [
+      "shadow_prompt_minify"
+    ],
+    "meta_doc_ops": [
+      "autodocs_generate",
+      "hardening_scan_fix",
+      "limitation_harvest_scan"
+    ],
+    "performance_budgeting": [
+      "budget_analyze",
+      "efficiency_review",
+      "performance_finalize",
+      "performance_toggle",
+      "token_event_log"
+    ],
+    "critics_suite": [
+      "critics_board_review"
+    ],
+    "model_routing_personaler": [
+      "model_routing_record_outcome",
+      "model_routing_select",
+      "work_scope_assess"
+    ]
+  }
+}

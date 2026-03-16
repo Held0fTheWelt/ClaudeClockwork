@@ -1,0 +1,92 @@
+# capabilities.yaml — FULL SPEC (MVP23-D)
+# Per-agent capability matrix. Enforced by: file_gateway + sandbox_runner (MVP24).
+# Create .claude/policies/capabilities.yaml from this spec in implementation.
+#
+# Addresses: T-003 (arbitrary command execution), T-004 (file system traversal)
+
+version: "1.0"
+default_deny: true  # Everything not explicitly allowed is forbidden
+
+agents:
+  team_lead:
+    description: "Orchestration — routes tasks, coordinates agents"
+    capabilities:
+      file_read: ["**/*.md", "**/*.json", "**/*.yaml", ".claude/**", "llamacode/**", "tests/**"]
+      file_write: []
+      commands: ["git status", "git log", "git diff", "git branch", "git show"]
+      network: false
+      git_write: false
+    escalation_level: L1
+
+  tester:
+    description: "Test execution"
+    capabilities:
+      file_read: ["tests/**", "qa_tests/**", "llamacode/**", "oodle/**", "*.toml", "*.json"]
+      file_write: ["tests/**", "qa_tests/**", ".llama_runtime/eval/**"]
+      commands: ["pytest", "python", "python -m pytest"]
+      network: false
+      git_write: false
+    escalation_level: L0
+
+  designer:
+    description: "Architecture and design"
+    capabilities:
+      file_read: ["**/*"]
+      file_write: ["docs/**", "quellen/**", ".claude-development/**", "*.md"]
+      commands: []
+      network: false
+      git_write: false
+    escalation_level: L2
+
+  critic_dispatcher:
+    description: "Multi-critic orchestration"
+    capabilities:
+      file_read: ["**/*"]
+      file_write: []
+      commands: []
+      network: false
+      git_write: false
+    escalation_level: L3
+
+  implementation:
+    description: "Code implementation"
+    capabilities:
+      file_read: ["**/*"]
+      file_write: ["llamacode/**", "oodle/**", "tests/**", "qa_tests/**", "scripts/**"]
+      commands: ["pytest", "python", "git add", "git commit", "git status", "git diff"]
+      network: false
+      git_write: true
+    escalation_level: L1
+
+  builder:
+    description: "Build and artifact production"
+    capabilities:
+      file_read: ["**/*"]
+      file_write: ["llamacode/**", "tests/**", "dist/**", ".llama_runtime/**"]
+      commands: ["python", "pip list", "pip show"]
+      network: false
+      git_write: false
+    escalation_level: L1
+
+  librarian:
+    description: "Knowledge and index maintenance"
+    capabilities:
+      file_read: [".claude/**", "docs/**", "quellen/**"]
+      file_write: [".claude/knowledge/**", ".llama_runtime/knowledge/**"]
+      commands: []
+      network: false
+      git_write: false
+    escalation_level: L0
+
+  context_packer:
+    description: "Context assembly only"
+    capabilities:
+      file_read: ["**/*"]
+      file_write: []
+      commands: []
+      network: false
+      git_write: false
+    escalation_level: L0
+
+# Violation audit format (for enforcement layer)
+# violation_report: { agent_id, action, target, policy_ref, result: "denied", timestamp }

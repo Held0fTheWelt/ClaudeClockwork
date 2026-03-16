@@ -1,0 +1,16 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "scope-001",
+  "skill_id": "work_scope_assess",
+  "inputs": {
+    "task": "Generate DocForge PDF from existing docs; add limitation sections; update routing pack.",
+    "task_type": "docs+planning",
+    "signals": {
+      "files_touched": 18,
+      "has_security_impact": false,
+      "has_legal_impact": true,
+      "requires_code_changes": true,
+      "ambiguity_high": true
+    }
+  }
+}

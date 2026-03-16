@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": [
+    "name",
+    "evidence_paths"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output_path": {
+      "type": "string"
+    }
+  }
+}

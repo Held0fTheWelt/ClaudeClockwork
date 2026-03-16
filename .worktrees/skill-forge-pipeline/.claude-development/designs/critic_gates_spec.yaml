@@ -1,0 +1,37 @@
+# critic_gates.yaml — SPEC (MVP22-D)
+# Defines which runtime critics run at which escalation level and gate thresholds.
+# Implementation: create .claude/eval/critic_gates.yaml or similar from this spec.
+#
+# Schema (conceptual):
+#   version: string
+#   critics: map of critic_id -> { escalation_levels: list, gate_threshold: severity | "any" }
+#   gate_defaults: { fail_on: severity, warn_only: list }
+
+version: "1.0"
+description: "Runtime critic activation and gate thresholds"
+
+# Which critics run at which escalation levels (L0 = always, L1+ = when escalation >= L1, etc.)
+critics:
+  drift_critic:
+    escalation_levels: ["L1", "L2", "L3", "L4", "L5"]
+    trigger: "post_qa_gate"  # run after qa_gate when gate writes report
+    gate_threshold: "med"   # gate fails if severity_max >= med
+  regression_critic:
+    escalation_levels: ["L0", "L1", "L2", "L3", "L4", "L5"]
+    trigger: "post_eval_run" # run after eval_runner or eval_run skill
+    gate_threshold: "high"   # gate fails if severity_max >= high
+
+# Default behaviour when no critic-specific threshold applies
+gate_defaults:
+  fail_on: "high"           # any critic with severity_max >= high fails the gate
+  warn_only: ["low", "med"] # low/med are warnings unless overridden per critic
+
+# Optional: map critic result to quality_signal (for telemetry/routing)
+emit_quality_signal:
+  when: "fail"              # only emit when status == fail
+  severity_map:
+    none: "low"
+    low: "low"
+    med: "medium"
+    high: "high"
+    critical: "high"

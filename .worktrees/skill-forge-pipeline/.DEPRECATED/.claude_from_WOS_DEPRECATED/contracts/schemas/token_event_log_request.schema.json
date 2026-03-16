@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TokenEventLogRequest",
+  "type": "object",
+  "required": [
+    "type",
+    "request_id",
+    "skill_id",
+    "inputs"
+  ],
+  "properties": {
+    "type": {
+      "const": "skill_request_spec"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "skill_id": {
+      "const": "token_event_log"
+    },
+    "inputs": {
+      "type": "object",
+      "required": [
+        "run_id",
+        "role",
+        "model",
+        "task",
+        "total_tokens"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "task": {
+          "type": "string"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "prompt_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "completion_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "string"
+        },
+        "events_file": {
+          "type": "string",
+          "description": "Override events file path"
+        },
+        "ts": {
+          "type": "string",
+          "description": "Override timestamp (ISO); default now"
+        }
+      }
+    }
+  }
+}

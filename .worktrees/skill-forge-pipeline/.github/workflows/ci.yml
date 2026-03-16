@@ -1,0 +1,42 @@
+name: Clockwork CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  gates:
+    name: Quality Gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install pytest pytest-cov mcp jsonschema
+
+      - name: Boot check
+        run: python3 .claude/tools/boot_check.py
+
+      - name: Run all gates and tests
+        run: |
+          python3 -m pytest tests/ -v --tb=short \
+            --ignore=tests/test_gates.py \
+            -q
+          python3 -m pytest tests/test_gates.py -v --tb=short \
+            -k "not test_skill_smoke" -q
+          python3 -m pytest tests/test_gates.py::test_skill_smoke -v --tb=short -q
+
+      - name: Upload eval snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: .llama_runtime/eval/results/
+          if-no-files-found: ignore

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RoutingSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "run_id",
+    "department",
+    "risk",
+    "trust",
+    "oodle_tier",
+    "claude_tier",
+    "agents"
+  ],
+  "properties": {
+    "type": {
+      "const": "routing_spec"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risk": {
+      "enum": [
+        "low",
+        "med",
+        "high",
+        "critical"
+      ]
+    },
+    "trust": {
+      "enum": [
+        "inherit",
+        "verify",
+        "rebuild"
+      ]
+    },
+    "oodle_tier": {
+      "enum": [
+        "O0",
+        "O1",
+        "O2",
+        "O3"
+      ]
+    },
+    "claude_tier": {
+      "enum": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ]
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

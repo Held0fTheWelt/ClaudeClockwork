@@ -1,0 +1,9 @@
+{
+  "id": "example_hello",
+  "name": "Example Hello",
+  "version": "0.1.0",
+  "description": "Phase 29 example plugin with a simple skill.",
+  "clockwork_compat": ">=17",
+  "capabilities": ["skill"],
+  "permissions": ["repo:read"]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CriticResult",
+  "description": "Single runtime critic run output. One record per critic per invocation.",
+  "type": "object",
+  "required": [
+    "type",
+    "critic_id",
+    "run_id",
+    "status",
+    "severity_max",
+    "timestamp"
+  ],
+  "properties": {
+    "type": {
+      "const": "critic_result"
+    },
+    "critic_id": {
+      "type": "string",
+      "description": "e.g. drift_critic, regression_critic"
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Unique run identifier (e.g. gate run id or eval run filename)"
+    },
+    "status": {
+      "enum": ["pass", "fail", "error"],
+      "description": "pass = no findings above threshold; fail = findings; error = critic crashed"
+    },
+    "severity_max": {
+      "enum": ["none", "low", "med", "high", "critical"],
+      "description": "Highest severity among findings"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601"
+    },
+    "findings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Human-readable finding messages"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Critic-specific metrics (e.g. drift_count, regression_count, pass_rate_delta)",
+      "additionalProperties": true
+    },
+    "escalation_level": {
+      "type": "string",
+      "description": "Escalation level at which this critic was run (L0–L5)"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "type": "plan_spec",
+  "goal": "Add skill-based planning policy controls (max_plan_tasks) and a lint step.",
+  "constraints": [
+    "Do not modify frozen MVPs",
+    "Prefer tool-first skills",
+    "Keep agent usage minimal"
+  ],
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "Add planning policy config + menu tool",
+      "steps": [
+        "Add menu script",
+        "Persist settings.local.json"
+      ]
+    },
+    {
+      "id": "T2",
+      "title": "Add plan_lint skill",
+      "steps": [
+        "Implement plan_lint.py",
+        "Integrate into skill runner"
+      ]
+    },
+    {
+      "id": "T3",
+      "title": "Add PlanSpec schema",
+      "steps": [
+        "Add schema file",
+        "Add example file",
+        "Add docs references"
+      ]
+    }
+  ],
+  "acceptance": [
+    "Menu can set max_plan_tasks between 8 and 12",
+    "Plan lint fails when tasks exceed max_plan_tasks"
+  ],
+  "risk": "low",
+  "trust_mode": "inherit"
+}

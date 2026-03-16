@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeedbackRequestSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "request_id",
+    "recipient_role",
+    "feedback_mode",
+    "budget"
+  ],
+  "properties": {
+    "type": {
+      "const": "feedback_request_spec"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "recipient_role": {
+      "type": "string"
+    },
+    "feedback_mode": {
+      "enum": [
+        "strict",
+        "balanced",
+        "creative"
+      ]
+    },
+    "budget": {
+      "enum": [
+        "tool_only",
+        "tool_then_deep_oodle"
+      ]
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "routing_spec": {
+          "type": "string"
+        },
+        "ops_ledger_summary": {
+          "type": "string"
+        },
+        "quality_signal": {
+          "type": "string"
+        },
+        "critic_report": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

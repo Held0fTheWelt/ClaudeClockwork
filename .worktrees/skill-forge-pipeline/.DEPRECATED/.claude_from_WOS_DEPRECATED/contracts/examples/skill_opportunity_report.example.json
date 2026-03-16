@@ -1,0 +1,27 @@
+{
+  "type": "skill_opportunity_report",
+  "report_id": "skill-scout-001",
+  "candidates": [
+    {
+      "id": "skill_repo_validate",
+      "title": "Repo Consistency Validator (links/json/secrets)",
+      "trigger_pattern": "Repeated QA runs required manual link checks and JSON validity checks.",
+      "expected_savings": "high",
+      "risk": "low",
+      "recommendation": "build_skill",
+      "inputs": [
+        "repo root path"
+      ],
+      "outputs": [
+        "broken_links list",
+        "invalid_json list",
+        "secret_hits list"
+      ],
+      "checks": [
+        "exit non-zero on failures",
+        "ignore code fences for markdown parsing"
+      ],
+      "notes": "Tool-first; no heavy LLM needed."
+    }
+  ]
+}

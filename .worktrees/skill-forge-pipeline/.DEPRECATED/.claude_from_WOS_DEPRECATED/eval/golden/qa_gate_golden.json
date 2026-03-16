@@ -1,0 +1,8 @@
+{
+  "test_id": "golden_qa_gate_001",
+  "skill_id": "qa_gate",
+  "input": {"skill_id": "qa_gate", "inputs": {"project_root": ".", "write_report": false}},
+  "expected": {"type": "skill_result_spec"},
+  "match_fields": ["type"],
+  "description": "QA gate runs without error (returns a skill_result_spec)"
+}

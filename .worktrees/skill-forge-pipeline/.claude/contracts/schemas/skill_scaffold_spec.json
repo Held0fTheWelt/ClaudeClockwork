@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "skill_name",
+    "description"
+  ],
+  "properties": {
+    "repo_root": {
+      "type": "string"
+    },
+    "skill_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "schema": {
+      "type": "object"
+    },
+    "example": {
+      "type": "object"
+    },
+    "task_id": {
+      "type": "integer"
+    },
+    "dry_run": {
+      "type": "boolean"
+    }
+  }
+}

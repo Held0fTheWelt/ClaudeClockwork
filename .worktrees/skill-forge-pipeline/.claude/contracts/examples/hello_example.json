@@ -1,0 +1,9 @@
+{
+  "input": {
+    "name": "World"
+  },
+  "expected_output": {
+    "message": "Hello, World!",
+    "status": "ok"
+  }
+}

@@ -1,0 +1,29 @@
+# Model routing policy — tier-based cheapest-first selection.
+# For version-level escalation within a tier (e.g. haiku-3 → haiku-3.5 → haiku-4.5),
+# see the companion config: model_escalation_ladder.yaml
+
+enabled: true
+
+default_tiers:
+  low:
+    - "claude-haiku-3"
+    - "claude-haiku-3-5"
+    - "claude-haiku-4-5"
+  medium:
+    - "claude-sonnet-3-7"
+    - "claude-sonnet-4"
+    - "claude-sonnet-4-6"
+  high:
+    - "claude-opus-3"
+    - "claude-opus-4"
+    - "claude-opus-4-6"
+
+rules:
+  pick_cheapest_that_meets_tier: true
+  min_success_rate: 0.55
+  min_trials_for_trust: 8
+
+assess:
+  max_low_complexity_score: 3.0
+  max_medium_complexity_score: 6.0
+  assumed_output_ratio_for_cost_range: 0.25

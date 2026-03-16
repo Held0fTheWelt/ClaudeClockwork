@@ -1,0 +1,9 @@
+{
+  "type": "capability_map",
+  "clock_root": ".claude",
+  "skills": [{"skill_id": "repo_validate", "path": "tools/skills/repo_validate.py", "hint": ""}],
+  "agents": [{"agent": "team_lead", "path": "agents/team_lead.md"}],
+  "contracts": {"schemas": ["contracts/schemas/tasklist_spec.schema.json"], "examples": ["contracts/examples/plan_spec.example.json"]},
+  "governance": ["governance/execution_protocol.md"],
+  "tasks": ["tasks/000_MASTER_PROMPT.md"]
+}

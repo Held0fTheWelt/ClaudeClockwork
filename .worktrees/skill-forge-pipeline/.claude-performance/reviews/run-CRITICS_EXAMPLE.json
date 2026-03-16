@@ -1,0 +1,59 @@
+{
+  "run_id": "run-20260301-001",
+  "systemic": {
+    "risk_0_10": 6.0,
+    "confidence_0_10": 7.5,
+    "notes": "Architecture mostly consistent, but add-on boundaries need more enforcement.",
+    "recommendations": [
+      "Enforce addons/map.yaml via hardening on every release."
+    ]
+  },
+  "technical": {
+    "risk_0_10": 5.5,
+    "confidence_0_10": 7.0,
+    "notes": "Deterministic skills are good; add more tests for path policies.",
+    "recommendations": [
+      "Add unit tests for src origin enforcement."
+    ]
+  },
+  "legal": {
+    "risk_0_10": 7.0,
+    "confidence_0_10": 6.5,
+    "notes": "GDPR considerations should be explicit; add disclaimers and data handling notes.",
+    "recommendations": [
+      "Document data retention policy for logs."
+    ]
+  },
+  "security": {
+    "risk_0_10": 7.5,
+    "confidence_0_10": 7.0,
+    "notes": "Ensure secrets are never logged; add scrubber for events.",
+    "recommendations": [
+      "Add secret scrub step before writing events."
+    ]
+  },
+  "moral": {
+    "risk_0_10": 4.0,
+    "confidence_0_10": 6.0,
+    "notes": "Low harm, but note misuse of automation; add guardrails.",
+    "recommendations": [
+      "Add policy about destructive actions requiring confirmation."
+    ]
+  },
+  "creative": {
+    "risk_0_10": 3.0,
+    "confidence_0_10": 6.0,
+    "notes": "Consider a 'template kit' generator for new projects to accelerate adoption.",
+    "recommendations": [
+      "Add starter templates for common projects."
+    ]
+  },
+  "methodical": {
+    "risk_0_10": 6.5,
+    "confidence_0_10": 7.5,
+    "notes": "Performance budgeting is great but could be too expensive; auto-disable thresholds help.",
+    "recommendations": [
+      "Tune thresholds per machine."
+    ]
+  }
+}

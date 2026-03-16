@@ -1,0 +1,15 @@
+{
+  "input": {
+    "title": "MVP02 Skill Summary",
+    "items": [
+      "hello skill: greeting via JSON I/O",
+      "scan skill: directory glob scanner",
+      "report skill: Markdown report builder"
+    ]
+  },
+  "expected_output": {
+    "report": "# MVP02 Skill Summary\n\n- hello skill: greeting via JSON I/O\n- scan skill: directory glob scanner\n- report skill: Markdown report builder\n",
+    "item_count": 3,
+    "status": "ok"
+  }
+}

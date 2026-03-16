@@ -1,0 +1,23 @@
+{
+  "id": "config_validate",
+  "name": "config_validate",
+  "version": "0.1.0",
+  "category": "ops",
+  "description": "Parse all JSON and YAML config files in the specified directories and report any files that fail to load.",
+  "entrypoint": "skills.ops.config_validate.skill:ConfigValidateSkill",
+  "permissions": ["repo:read"],
+  "aliases": ["validate_configs"],
+  "tags": ["config", "validation", "json", "yaml", "ops"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "config_paths": {"type": "array", "optional": true, "default": [".claude/config/", "configs/"]}
+  },
+  "outputs": {
+    "files_checked": {"type": "integer"},
+    "valid": {"type": "integer"},
+    "invalid": {"type": "integer"},
+    "issues": {"type": "array"}
+  },
+  "metadata": {"legacy_bridge": false}
+}

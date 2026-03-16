@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReviewPanelRequest",
+  "description": "Input to the review_panel skill — consolidates worker/team_lead/judge verdicts into a final panel decision",
+  "type": "object",
+  "required": ["reviews", "task_ref"],
+  "properties": {
+    "reviews": {
+      "type": "array",
+      "description": "One entry per reviewer participating in the panel",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["reviewer", "role", "verdict"],
+        "properties": {
+          "reviewer": {
+            "type": "string",
+            "description": "Unique name or ID of the reviewer"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["worker", "team_lead", "judge"],
+            "description": "Reviewer role — determines weighting in the 'weighted' consolidation strategy"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": ["pass", "warn", "fail"],
+            "description": "This reviewer's verdict for the artifact under review"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Optional numeric quality score [0.0–1.0] — used by the 'weighted' consolidation strategy"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Free-form rationale; warn/fail notes become recommendations in the panel output"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "task_ref": {
+      "type": "string",
+      "description": "Reference to the task, artifact, or PR being reviewed (used verbatim in output)"
+    },
+    "consolidation": {
+      "type": "string",
+      "enum": ["majority", "unanimous", "weighted"],
+      "default": "majority",
+      "description": "Strategy for consolidating individual verdicts into a final panel verdict. majority: most common verdict wins (tie-break by severity). unanimous: pass only if all pass. weighted: worker=0.3, team_lead=0.5, judge=0.2 on scores; threshold 0.6=pass, 0.4=warn."
+    }
+  },
+  "additionalProperties": false
+}

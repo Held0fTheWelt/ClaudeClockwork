@@ -1,0 +1,8 @@
+{
+  "type": "critic_report",
+  "run_id": "2026-02-28",
+  "severity": "low",
+  "findings": ["Example finding"],
+  "recommendations": ["Example recommendation"],
+  "notes": ""
+}

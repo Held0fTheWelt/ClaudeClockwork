@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    { "id": "prepare", "type": "skill_call", "inputs": {}, "config": {} },
+    { "id": "export", "type": "export_bundle", "inputs": {}, "config": {} }
+  ],
+  "edges": [
+    { "from_node": "prepare", "to_node": "export", "artifact_key": "artifacts" }
+  ]
+}

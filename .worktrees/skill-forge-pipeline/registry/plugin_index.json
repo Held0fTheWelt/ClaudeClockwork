@@ -1,0 +1,66 @@
+{
+  "count": 4,
+  "plugins": [
+    {
+      "id": "example_hello",
+      "name": "Example Hello",
+      "version": "0.1.0",
+      "description": "Phase 29 example plugin with a simple skill.",
+      "permissions": [
+        "repo:read"
+      ],
+      "capabilities": [
+        "skill"
+      ],
+      "requires_plugins": [],
+      "enabled": true,
+      "path": "plugins/example_hello/plugin.json"
+    },
+    {
+      "id": "filesystem",
+      "name": "filesystem",
+      "version": "0.1.0",
+      "description": "Core local filesystem skills for ClaudeClockwork.",
+      "permissions": [
+        "fs:read",
+        "fs:write"
+      ],
+      "capabilities": [
+        "filesystem",
+        "local_io"
+      ],
+      "requires_plugins": [],
+      "enabled": true,
+      "path": "plugins/filesystem/plugin.json"
+    },
+    {
+      "id": "git",
+      "name": "git",
+      "version": "0.1.0",
+      "description": "Core Git and repository analysis plugin for ClaudeClockwork.",
+      "permissions": [
+        "git:read"
+      ],
+      "capabilities": [
+        "git",
+        "repo_analysis"
+      ],
+      "requires_plugins": [
+        "filesystem"
+      ],
+      "enabled": true,
+      "path": "plugins/git/plugin.json"
+    },
+    {
+      "id": "mp_plugin",
+      "name": "mp_plugin",
+      "version": "0.1.0",
+      "description": "",
+      "permissions": [],
+      "capabilities": [],
+      "requires_plugins": [],
+      "enabled": true,
+      "path": "plugins/mp_plugin/plugin.json"
+    }
+  ]
+}

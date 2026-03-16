@@ -1,0 +1,17 @@
+{
+  "name": "filesystem",
+  "version": "0.1.0",
+  "display_name": "Filesystem Plugin",
+  "description": "Core local filesystem skills for ClaudeClockwork.",
+  "enabled_by_default": true,
+  "trust_level": "local",
+  "skills_root": "skills",
+  "requires_plugins": [],
+  "optional_plugins": [],
+  "permissions": ["fs:read", "fs:write"],
+  "capabilities": ["filesystem", "local_io"],
+  "compatibility": {
+    "core_min": "0.1.0",
+    "core_max": "0.9.999"
+  }
+}

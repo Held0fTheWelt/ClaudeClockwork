@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpsLedgerEvent",
+  "type": "object",
+  "required": [
+    "type",
+    "run_id",
+    "step",
+    "agent",
+    "models",
+    "status",
+    "signals"
+  ],
+  "properties": {
+    "type": {
+      "const": "ops_ledger_event"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "step": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "object",
+      "required": [
+        "name",
+        "department",
+        "role"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "models": {
+      "type": "object",
+      "required": [
+        "oodle_tier",
+        "claude_tier"
+      ],
+      "properties": {
+        "oodle_tier": {
+          "enum": [
+            "O0",
+            "O1",
+            "O2",
+            "O3"
+          ]
+        },
+        "claude_tier": {
+          "enum": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4"
+          ]
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "fail",
+        "retry",
+        "escalated",
+        "blocked"
+      ]
+    },
+    "signals": {
+      "type": "object",
+      "required": [
+        "error_class",
+        "drift_flag",
+        "pack_bloat",
+        "redundant_reread"
+      ],
+      "properties": {
+        "error_class": {
+          "enum": [
+            "none",
+            "lint",
+            "tests",
+            "build",
+            "spec_mismatch",
+            "context_missing",
+            "tooling",
+            "unknown"
+          ]
+        },
+        "drift_flag": {
+          "type": "boolean"
+        },
+        "pack_bloat": {
+          "type": "boolean"
+        },
+        "redundant_reread": {
+          "type": "boolean"
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "clockwork_version_bump_example_001",
+  "skill_id": "clockwork_version_bump",
+  "inputs": {
+    "bump_type": "minor",
+    "summary": "Added Create MVP skill and Clockwork Versioning skill",
+    "affected_mvps": ["CCW-MVP20", "CCW-MVP21"],
+    "tag_git": false,
+    "dry_run": true
+  }
+}

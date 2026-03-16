@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PromptDebtItem",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "symptom",
+    "repro",
+    "suspected_root",
+    "proposed_fix"
+  ],
+  "properties": {
+    "type": {
+      "const": "prompt_debt_item"
+    },
+    "id": {
+      "type": "string"
+    },
+    "symptom": {
+      "type": "string"
+    },
+    "repro": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "suspected_root": {
+      "type": "string"
+    },
+    "proposed_fix": {
+      "type": "string"
+    },
+    "priority": {
+      "enum": [
+        "low",
+        "med",
+        "high"
+      ],
+      "default": "med"
+    }
+  },
+  "additionalProperties": false
+}

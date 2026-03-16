@@ -1,0 +1,13 @@
+# Phase 20 — LocalAI capability/tool registry.
+# Maps capabilities to runner type and optional model/tool id.
+# Runners are in claudeclockwork.localai.runners; missing deps return structured error.
+
+capabilities:
+  embed.text:
+    runner: embed
+    tool_id: embed_text
+    description: Local text embeddings
+  audio.asr:
+    runner: asr
+    tool_id: audio_asr
+    description: Local speech-to-text (ASR)

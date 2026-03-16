@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PolicyGateDecision",
+  "type": "object",
+  "required": [
+    "type",
+    "request_id",
+    "requested_action",
+    "allowed",
+    "reason"
+  ],
+  "properties": {
+    "type": {
+      "const": "policy_gate_decision"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "requested_action": {
+      "type": "string"
+    },
+    "allowed": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "alternative": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

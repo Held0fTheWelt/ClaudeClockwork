@@ -1,0 +1,8 @@
+{
+  "test_id": "golden_hello_001",
+  "skill_id": "hello",
+  "input": {"skill_id": "hello", "inputs": {"name": "World"}},
+  "expected": {"status": "ok", "outputs": {"message": "Hello, World!", "status": "ok"}},
+  "match_fields": ["outputs.message", "outputs.status"],
+  "description": "Basic hello skill smoke test"
+}

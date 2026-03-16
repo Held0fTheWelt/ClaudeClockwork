@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "idea_dedupe",
+  "description": "Skill request spec for idea_dedupe: deterministically removes duplicate ideas from a list using exact, normalized, or levenshtein comparison.",
+  "type": "object",
+  "required": ["skill_id", "inputs"],
+  "additionalProperties": false,
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "const": "idea_dedupe",
+      "description": "Must be exactly 'idea_dedupe'"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "Unique identifier for this skill request (for tracing and deduplication)"
+    },
+    "inputs": {
+      "type": "object",
+      "required": ["ideas"],
+      "additionalProperties": false,
+      "properties": {
+        "ideas": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of idea strings to deduplicate"
+        },
+        "similarity_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.8,
+          "description": "Minimum similarity ratio (0–1) to consider two ideas duplicates. Used only by the levenshtein method."
+        },
+        "method": {
+          "type": "string",
+          "enum": ["exact", "normalized", "levenshtein"],
+          "default": "normalized",
+          "description": "Comparison method: exact (byte-identical), normalized (case+punctuation-insensitive), levenshtein (edit-distance similarity)"
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "description": "skill_result_spec — populated by the skill after execution",
+      "additionalProperties": false,
+      "properties": {
+        "unique_ideas": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Deduplicated list of ideas (canonical form, first occurrence preserved)"
+        },
+        "duplicate_groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["canonical", "duplicates"],
+            "properties": {
+              "canonical": {
+                "type": "string",
+                "description": "The first/canonical occurrence of the idea"
+              },
+              "duplicates": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Later occurrences judged to be duplicates of canonical"
+              }
+            }
+          },
+          "description": "Groups of duplicate ideas, each with a canonical representative"
+        },
+        "removed_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of duplicate ideas removed"
+        }
+      }
+    }
+  }
+}
