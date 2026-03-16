@@ -1,0 +1,19 @@
+{
+  "doc_name": "NanoBanana_Lastentext",
+  "score": 78,
+  "level": "good",
+  "top_gaps": [
+    {
+      "gap": "Nicht-funktionale Anforderungen fehlen (Security/Performance)",
+      "impact": "high",
+      "next_action": "Füge Abschnitt 5 mit konkreten SLOs, Threat Model und Datenschutz-Constraints hinzu."
+    },
+    {
+      "gap": "Diagramme sind zu komplex (zu viele Knoten)",
+      "impact": "medium",
+      "next_action": "Systemübersicht splitten: High-Level + Detaildiagramm für Routing."
+    }
+  ],
+  "most_leverage_improvement": "Ergänze NFRs + Abnahmekriterien, damit das Lastenheft testbar wird.",
+  "iterations_recommended": 1
+}

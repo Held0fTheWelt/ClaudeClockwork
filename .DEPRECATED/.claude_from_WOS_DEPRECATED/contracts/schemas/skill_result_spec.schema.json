@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillResultSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "request_id",
+    "skill_id",
+    "status",
+    "outputs"
+  ],
+  "properties": {
+    "type": {
+      "const": "skill_result_spec"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "fail"
+      ]
+    },
+    "outputs": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

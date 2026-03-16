@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "create_mvp.schema.json",
+  "title": "CreateMvpSkillRequest",
+  "description": "Schema for the create_mvp skill (CCW-MVP20). Autonomously generates and appends a new MVP entry to the Clockwork MVP chain.",
+  "type": "object",
+  "required": ["skill_id", "inputs"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "skill_request_spec"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "skill_id": {
+      "type": "string",
+      "const": "create_mvp"
+    },
+    "inputs": {
+      "type": "object",
+      "required": ["trigger", "domain"],
+      "properties": {
+        "trigger": {
+          "type": "string",
+          "enum": ["user_instruction", "audit_gap", "defect", "parity_scan", "manual"],
+          "description": "What initiated this MVP creation request."
+        },
+        "trigger_ref": {
+          "type": ["string", "null"],
+          "description": "Path to the triggering artifact (e.g. parity_matrix or defect report). May be null."
+        },
+        "mvp_name": {
+          "type": ["string", "null"],
+          "description": "Proposed MVP name. If omitted, the skill infers a name from trigger and domain."
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Domain or area of the MVP (e.g. 'routing', 'testing', 'documentation')."
+        },
+        "scope": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of skill IDs or capability gap labels this MVP will address.",
+          "default": []
+        },
+        "dry_run": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true, return the draft MVP entry without writing to disk."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

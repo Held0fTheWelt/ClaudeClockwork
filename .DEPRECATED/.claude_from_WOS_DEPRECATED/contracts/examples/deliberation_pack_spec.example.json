@@ -1,0 +1,27 @@
+{
+  "type": "deliberation_pack_spec",
+  "pack_id": "dp-001",
+  "purpose": "Deep Oodle review for routing and planning improvements.",
+  "inputs": {
+    "plan": "validation_runs/DATE/specs/plan.json",
+    "routing_spec": "validation_runs/DATE/specs/routing.json",
+    "quality_signal": "validation_runs/DATE/reports/quality_signal.json",
+    "ops_ledger_summary": "validation_runs/DATE/reports/ops_ledger_summary.json",
+    "logs": [
+      "validation_runs/DATE/logs/test.log"
+    ]
+  },
+  "summary": [
+    "Routing escalated to Claude without repeat failures.",
+    "Pack bloat detected once."
+  ],
+  "snippets": [
+    {
+      "source": "validation_runs/DATE/logs/test.log",
+      "content": "...error snippet..."
+    }
+  ],
+  "questions": [
+    "What minimal routing change reduces cost without lowering quality?"
+  ]
+}

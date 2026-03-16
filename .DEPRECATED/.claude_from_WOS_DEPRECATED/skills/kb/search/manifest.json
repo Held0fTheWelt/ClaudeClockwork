@@ -1,0 +1,16 @@
+{
+  "id": "kb_search",
+  "name": "kb.search",
+  "version": "1.0.0",
+  "category": "kb",
+  "description": "Search knowledge base; returns path, snippet, score with citations.",
+  "entrypoint": "skills.kb.search.skill:KbSearchSkill",
+  "permissions": ["repo:read"],
+  "aliases": [],
+  "tags": ["kb", "search"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": { "query": {}, "top_k": {} },
+  "outputs": {},
+  "metadata": { "legacy_bridge": false }
+}

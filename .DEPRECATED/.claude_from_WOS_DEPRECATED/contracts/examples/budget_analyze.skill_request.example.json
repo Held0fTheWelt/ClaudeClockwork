@@ -1,0 +1,16 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "budget-001",
+  "skill_id": "budget_analyze",
+  "inputs": {
+    "run_id": "run-20260301-001",
+    "events_sources": [
+      ".claude-performance/events/run-20260301-001.jsonl"
+    ],
+    "output_dir": ".claude-performance/reports",
+    "export_prefix": "budget_run-20260301-001",
+    "top_n": 10,
+    "print_cli": true,
+    "export_charts": true
+  }
+}

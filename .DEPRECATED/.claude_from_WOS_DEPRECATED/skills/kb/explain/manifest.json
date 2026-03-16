@@ -1,0 +1,16 @@
+{
+  "id": "kb_explain",
+  "name": "kb.explain",
+  "version": "1.0.0",
+  "category": "kb",
+  "description": "Explain with file path citations.",
+  "entrypoint": "skills.kb.explain.skill:KbExplainSkill",
+  "permissions": ["repo:read"],
+  "aliases": [],
+  "tags": ["kb", "explain"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": { "question": {}, "top_k": {} },
+  "outputs": {},
+  "metadata": { "legacy_bridge": false }
+}

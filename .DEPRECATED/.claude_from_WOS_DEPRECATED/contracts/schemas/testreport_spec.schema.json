@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TestReportSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "run_id",
+    "status",
+    "suite",
+    "failures"
+  ],
+  "properties": {
+    "type": {
+      "const": "testreport_spec"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "fail",
+        "blocked"
+      ]
+    },
+    "suite": {
+      "type": "string"
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "summary"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "log_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "duration_s": {
+      "type": "number"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "perf-toggle-001",
+  "skill_id": "performance_toggle",
+  "inputs": {
+    "config_path": ".claude/config/performance_budgeting.yaml",
+    "enabled": false,
+    "reason": "TeamLead: performance budgeting too expensive for current run"
+  }
+}

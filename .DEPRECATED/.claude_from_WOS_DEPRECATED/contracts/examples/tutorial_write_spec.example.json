@@ -1,0 +1,19 @@
+{
+  "type": "tutorial_write_spec",
+  "project_root": ".",
+  "path": "Docs/Tutorials/01_Quickstart.md",
+  "overwrite": true,
+  "tutorial_spec": {
+    "title": "Quickstart",
+    "audience": "End users",
+    "goal": "Run the first workflow",
+    "prerequisites": ["Python 3.11+"],
+    "quickstart": ["Install dependencies", "Run the CLI"],
+    "steps": [
+      {"step": "Configure", "action": "Edit config file", "expected": "Config loads"}
+    ],
+    "verification": ["Confirm expected output"],
+    "troubleshooting": ["If X happens, do Y"],
+    "next_steps": ["Read the user guide"]
+  }
+}

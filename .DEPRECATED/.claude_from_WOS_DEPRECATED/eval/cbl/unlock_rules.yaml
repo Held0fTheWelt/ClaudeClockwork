@@ -1,0 +1,27 @@
+# .claude/eval/cbl/unlock_rules.yaml (MVP24-D)
+# CBL rung progression protocol. Source: Report 08 §2.
+
+version: "1.0"
+
+progression:
+  requirements:
+    - All tasks at current rung must pass (100%)
+    - No P0 defects open
+    - At least 1 week at current rung (stability period)
+    - Regression score < 2% over stability period
+
+  unlock_ceremony:
+    1: "Run core suite; verify 80%+ pass rate"
+    2: "Run multi-agent suite; verify coordination; budget tracked"
+    3: "Deploy 2 automated critics; run for 1 week; regression < 5%"
+    4: "Deploy adaptive router; A/B test for 2 weeks; measurable improvement"
+    5: "Run 3 mutation cycles; all shadow-validated; no regression"
+    6: "Load 3 plugins successfully; run plugin tasks; no errors"
+    7: "Deploy knowledge graph; query-driven routing for 1 week; audit trail"
+    8: "Full policy enforcement; external security audit; zero violations"
+
+  demotion_rules:
+    - Core pass rate drops below rung threshold → demote 1 rung
+    - P0 defect opened → demote to rung min(current-1, rung where defect class was introduced)
+    - Regression score > 5% for 3 consecutive days → demote 1 rung
+    - Security critic fails → demote to min(current-1, Rung 2)

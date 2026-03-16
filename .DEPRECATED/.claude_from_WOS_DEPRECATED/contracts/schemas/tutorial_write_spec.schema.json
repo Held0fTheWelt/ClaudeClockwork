@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TutorialWriteSpec",
+  "type": "object",
+  "required": ["type", "path"],
+  "properties": {
+    "type": {"const": "tutorial_write_spec"},
+    "project_root": {"type": "string"},
+    "path": {"type": "string", "minLength": 1},
+    "overwrite": {"type": "boolean"},
+    "dry_run": {"type": "boolean"},
+    "tutorial_spec": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "audience": {"type": "string"},
+        "goal": {"type": "string"},
+        "prerequisites": {"type": "array", "items": {"type": "string"}},
+        "quickstart": {"type": "array", "items": {}},
+        "steps": {"type": "array", "items": {}},
+        "verification": {"type": "array", "items": {}},
+        "troubleshooting": {"type": "array", "items": {"type": "string"}},
+        "next_steps": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "content": {"type": "string"}
+  }
+}

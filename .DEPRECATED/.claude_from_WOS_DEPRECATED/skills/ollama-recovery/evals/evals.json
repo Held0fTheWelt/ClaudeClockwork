@@ -1,0 +1,23 @@
+{
+  "skill_name": "ollama-recovery",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have an updated Task.md file at C:\\Users\\YvesT\\PycharmProjects\\WorldOfShadows\\Task.md with a 6-phase Ollama recovery plan. Can you run it using Claude Agents? Execute all phases sequentially and produce comprehensive reports.",
+      "expected_output": "Skill reads Task.md, executes all 6 phases using Claude Agents, produces phase reports (PHASE_1_* through PHASE_6_*) and final aggregated report with status summary.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I need to diagnose and fix a PostgreSQL performance issue. I've documented a 5-phase troubleshooting workflow in my project's RunbookPostgres.md file. The phases are: 1) Assess current state, 2) Identify bottlenecks, 3) Apply fixes, 4) Validate improvements, 5) Document changes. Can you execute this task plan using autonomous agents for each phase?",
+      "expected_output": "Skill reads RunbookPostgres.md, executes all 5 phases autonomously, produces phase reports for each diagnostic/remediation step with findings and recommendations.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Run phase 2 of our Ollama recovery plan (the clean recovery phase where we restart the service and verify APIs). We're at C:\\Users\\YvesT\\PycharmProjects\\WorldOfShadows\\Task.md and I want to execute just that one phase to verify the service is healthy.",
+      "expected_output": "Skill identifies Phase 2 from Task.md, executes that phase specifically, produces PHASE_2_CLEAN_RECOVERY.md report with results from service restart, API validation, etc.",
+      "files": []
+    }
+  ]
+}

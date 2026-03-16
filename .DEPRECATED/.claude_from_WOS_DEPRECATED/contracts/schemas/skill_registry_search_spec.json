@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "repo_root": {
+      "type": "string"
+    },
+    "query": {
+      "type": "string"
+    },
+    "max_results": {
+      "type": "integer"
+    }
+  }
+}

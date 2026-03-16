@@ -1,0 +1,10 @@
+{
+  "type": "skill_request_spec",
+  "request_id": "repo-clean-001",
+  "skill_id": "repo_clean",
+  "inputs": {
+    "root": ".",
+    "scan_only": true,
+    "patterns": ["*.tmp", "*.bak"]
+  }
+}

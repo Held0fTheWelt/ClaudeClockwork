@@ -1,0 +1,13 @@
+{
+  "type": "hypothesis_spec",
+  "id": "hyp-001",
+  "context": "We want more creativity without more tokens.",
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "Creativity Burst + tool clustering yields better idea diversity in <2 minutes.",
+      "success_signal": "Top picks cover >=3 distinct clusters",
+      "risk": "low"
+    }
+  ]
+}

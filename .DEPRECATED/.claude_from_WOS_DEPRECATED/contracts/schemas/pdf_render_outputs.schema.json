@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PdfRenderOutputs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["output_pdf_path", "status"],
+  "properties": {
+    "output_pdf_path": {"type": "string"},
+    "status": {"type": "string", "enum": ["ok", "fail"]},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "rendered_diagrams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path"],
+        "properties": {
+          "id": {"type": "string"},
+          "path": {"type": "string"}
+        }
+      }
+    }
+  }
+}

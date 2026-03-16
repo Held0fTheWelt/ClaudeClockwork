@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DecisionMemoSpec",
+  "type": "object",
+  "required": [
+    "type",
+    "memo_id",
+    "audience",
+    "bullets"
+  ],
+  "properties": {
+    "type": {
+      "const": "decision_memo_spec"
+    },
+    "memo_id": {
+      "type": "string"
+    },
+    "audience": {
+      "enum": [
+        "team_lead",
+        "personaler",
+        "general"
+      ]
+    },
+    "bullets": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 10,
+      "items": {
+        "type": "string"
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

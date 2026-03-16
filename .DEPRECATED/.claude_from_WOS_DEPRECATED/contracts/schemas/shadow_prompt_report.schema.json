@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShadowPromptReport",
+  "type": "object",
+  "required": [
+    "type",
+    "generated_at",
+    "inputs",
+    "outputs",
+    "quality_gap",
+    "warnings",
+    "limitations"
+  ],
+  "properties": {
+    "type": {
+      "const": "shadow_prompt_report"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object",
+      "required": [
+        "source_docs",
+        "shadow_root",
+        "max_chars_per_file",
+        "mode"
+      ],
+      "properties": {
+        "source_docs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shadow_root": {
+          "type": "string"
+        },
+        "max_chars_per_file": {
+          "type": "integer",
+          "minimum": 500
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "deterministic_minify",
+            "llm_refine_playbook"
+          ]
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "required": [
+        "written_files",
+        "index_path"
+      ],
+      "properties": {
+        "written_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "index_path": {
+          "type": "string"
+        }
+      }
+    },
+    "quality_gap": {
+      "type": "object",
+      "required": [
+        "score_0_100",
+        "biggest_gaps",
+        "next_actions"
+      ],
+      "properties": {
+        "score_0_100": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "biggest_gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "next_actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

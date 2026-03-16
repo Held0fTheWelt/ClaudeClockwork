@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CriticsPanels",
+  "type": "object",
+  "required": [
+    "run_id"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "systemic": {
+      "$ref": "#/definitions/panel"
+    },
+    "technical": {
+      "$ref": "#/definitions/panel"
+    },
+    "legal": {
+      "$ref": "#/definitions/panel"
+    },
+    "security": {
+      "$ref": "#/definitions/panel"
+    },
+    "moral": {
+      "$ref": "#/definitions/panel"
+    },
+    "creative": {
+      "$ref": "#/definitions/panel"
+    },
+    "methodical": {
+      "$ref": "#/definitions/panel"
+    }
+  },
+  "definitions": {
+    "panel": {
+      "type": "object",
+      "required": [
+        "risk_0_10",
+        "confidence_0_10",
+        "notes"
+      ],
+      "properties": {
+        "risk_0_10": {
+          "type": "number"
+        },
+        "confidence_0_10": {
+          "type": "number"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

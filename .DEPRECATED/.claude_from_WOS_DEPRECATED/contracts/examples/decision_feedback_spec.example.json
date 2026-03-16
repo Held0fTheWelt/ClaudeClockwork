@@ -1,0 +1,17 @@
+{
+  "type": "decision_feedback_spec",
+  "request_id": "fb-001",
+  "recipient_role": "personaler",
+  "verdict": "adjust",
+  "issues": [
+    {
+      "code": "over_escalation",
+      "severity": "med",
+      "summary": "Claude tier escalated without repeat failures."
+    }
+  ],
+  "recommendations": [
+    "Prefer Oodle-first verifier before raising Claude tier."
+  ],
+  "notes": "Tool-first feedback"
+}

@@ -1,0 +1,25 @@
+{
+  "skill_id": "parity_scan_and_mvp_planner",
+  "request_id": "mvp08-run-001",
+  "inputs": {
+    "run_date": "2026-03-02",
+    "reference_mvp_chain": ".claude-development/Clockwork_MVP_Chain.md",
+    "output_dir": ".claude-development/audits/parity/",
+    "mvp_plan_output_dir": ".claude-development/milestones/",
+    "generate_mvp_plan": true,
+    "scan_scope": [".claude", "llamacode", "tests", "scripts", "plugins", "docs", "quellen"]
+  },
+  "outputs": {
+    "parity_matrix": ".claude-development/audits/parity/parity_matrix_2026-03-02.md",
+    "backlog": ".claude-development/audits/parity/missing_features_backlog_2026-03-02.md",
+    "mvp_plan": ".claude-development/milestones/M1_parity_followup_plan_2026-03-02.md",
+    "gap_count": 12,
+    "partial_count": 7,
+    "full_count": 16,
+    "p0_count": 4,
+    "p1_count": 10,
+    "p2_count": 8,
+    "status": "ok",
+    "errors": []
+  }
+}

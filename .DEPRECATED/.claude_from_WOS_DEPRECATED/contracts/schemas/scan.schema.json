@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ScanSkill",
+  "description": "Schema for the scan skill (MVP02). Accepts a path and a glob pattern, returns matching files.",
+  "type": "object",
+  "required": ["path", "pattern"],
+  "properties": {
+    "path": {
+      "type": "string",
+      "description": "Root directory to search in."
+    },
+    "pattern": {
+      "type": "string",
+      "description": "Glob pattern to match files against (e.g. '**/*.py')."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "output": {
+      "type": "object",
+      "required": ["files", "count", "status"],
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of matching file paths (relative to the given path)."
+        },
+        "count": {
+          "type": "integer",
+          "description": "Number of files found."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ok", "fail"],
+          "description": "Execution status."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

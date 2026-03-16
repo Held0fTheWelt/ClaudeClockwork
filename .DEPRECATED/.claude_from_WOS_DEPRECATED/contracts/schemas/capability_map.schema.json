@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapabilityMap",
+  "type": "object",
+  "required": ["type", "clock_root", "skills", "agents", "contracts", "governance", "tasks"],
+  "properties": {
+    "type": {"const": "capability_map"},
+    "clock_root": {"type": "string"},
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["skill_id", "path"],
+        "properties": {
+          "skill_id": {"type": "string"},
+          "path": {"type": "string"},
+          "hint": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agent", "path"],
+        "properties": {
+          "agent": {"type": "string"},
+          "path": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "contracts": {
+      "type": "object",
+      "required": ["schemas", "examples"],
+      "properties": {
+        "schemas": {"type": "array", "items": {"type": "string"}},
+        "examples": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "governance": {"type": "array", "items": {"type": "string"}},
+    "tasks": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

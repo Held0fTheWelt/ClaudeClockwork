@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvalRunSkill",
+  "description": "Schema for the eval_run skill (CCW-MVP11). Runs golden tests and returns pass/fail/regression counts.",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "golden_dir": {
+      "type": "string",
+      "description": "Path to directory containing golden test JSON fixtures. Default: .claude/eval/golden"
+    },
+    "output_dir": {
+      "type": "string",
+      "description": "Path to directory for writing timestamped result files. Default: .claude/eval/results"
+    },
+    "skills_dir": {
+      "type": "string",
+      "description": "Path to directory containing skill .py implementations. Default: .claude/tools/skills"
+    },
+    "compare_previous": {
+      "type": "boolean",
+      "description": "Whether to compare against the most recent previous run for regression detection. Default: true"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "output": {
+      "type": "object",
+      "required": ["tests_run", "pass_count", "fail_count", "error_count", "regression_count", "results_file"],
+      "properties": {
+        "tests_run": {
+          "type": "integer",
+          "description": "Total number of golden tests executed."
+        },
+        "pass_count": {
+          "type": "integer",
+          "description": "Number of tests that passed."
+        },
+        "fail_count": {
+          "type": "integer",
+          "description": "Number of tests that failed (field mismatch)."
+        },
+        "error_count": {
+          "type": "integer",
+          "description": "Number of tests that errored (skill load/runtime failure)."
+        },
+        "regression_count": {
+          "type": "integer",
+          "description": "Number of tests that regressed versus the previous run."
+        },
+        "results_file": {
+          "type": "string",
+          "description": "Absolute path to the saved run result JSON file."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
