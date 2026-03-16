@@ -7,6 +7,11 @@ capabilities:
     runner: asr
     tool_id: audio_asr
     description: Local speech-to-text (ASR)
+  code.plan:
+    runner: plan
+    tool_id: code_plan
+    description: Generate architecture plan from task description
+
   code.forge:
     runner: forge
     tool_id: code_forge
