@@ -6,6 +6,7 @@ class ExampleAgent(BaseAgent):
     """Example agent demonstrating autonomous execution."""
 
     def execute(self, task):
+        self.section("Executing Task")
         """Execute the task."""
         print(f"\n  Executing: {task['description']}")
 

@@ -1,0 +1,526 @@
+{
+  "phase": 4,
+  "date": "2026-03-16",
+  "title": "ClaudeClockwork Model Selection Guide",
+  "system": {
+    "ram_total_gb": 64,
+    "vram_total_gb": 10,
+    "vram_free_at_baseline_gb": 5.5,
+    "ollama_num_parallel": 1,
+    "ollama_keep_alive": "5m_default"
+  },
+  "tiers": {
+    "tier_1_embeddings": {
+      "name": "Ultra-Small (Embeddings)",
+      "parameter_range": "<500M",
+      "models": [
+        {
+          "name": "nomic-embed-text:latest",
+          "size_gb": 0.26,
+          "params": "137M",
+          "use_case": "Vector indexing, semantic search",
+          "vram_gb": 0.5,
+          "ram_gb": 0.5,
+          "max_concurrent": 99,
+          "keep_alive_min": 1,
+          "inference_speed_sec_per_token": 0.05
+        },
+        {
+          "name": "mxbai-embed-large:latest",
+          "size_gb": 0.62,
+          "params": "334M",
+          "use_case": "Large embedding model, semantic similarity",
+          "vram_gb": 0.8,
+          "ram_gb": 0.8,
+          "max_concurrent": 99,
+          "keep_alive_min": 1,
+          "inference_speed_sec_per_token": 0.1
+        }
+      ]
+    },
+    "tier_2_small": {
+      "name": "Small (≤8.5B)",
+      "parameter_range": "4-8B",
+      "vram_gb_min": 2,
+      "ram_gb_min": 8,
+      "max_concurrent_with_num_parallel_1": 1,
+      "serialization_required": false,
+      "keep_alive_recommended_min": 30,
+      "inference_speed_sec_per_token": 2.5,
+      "use_cases": [
+        "Fast context packing",
+        "Quick summarization",
+        "Planning outlines",
+        "Validation gates"
+      ],
+      "models": [
+        {
+          "name": "gemma3:latest",
+          "size_gb": 3.11,
+          "params": "4.3B",
+          "vram_gb": 3.5,
+          "ram_gb": 5,
+          "clockwork_role": "fast_validator",
+          "priority": "L0"
+        },
+        {
+          "name": "qwen3:8b",
+          "size_gb": 4.87,
+          "params": "8.2B",
+          "vram_gb": 5,
+          "ram_gb": 8,
+          "clockwork_role": "general_reasoning",
+          "priority": "L0"
+        },
+        {
+          "name": "qwen3-8b:validator",
+          "size_gb": 4.87,
+          "params": "8.2B",
+          "vram_gb": 5,
+          "ram_gb": 8,
+          "clockwork_role": "input_validation",
+          "priority": "L0"
+        },
+        {
+          "name": "qwen3-8b:reasoning",
+          "size_gb": 4.87,
+          "params": "8.2B",
+          "vram_gb": 5,
+          "ram_gb": 8,
+          "clockwork_role": "small_reasoning",
+          "priority": "L0"
+        }
+      ]
+    },
+    "tier_3_medium": {
+      "name": "Medium (9-16B)",
+      "parameter_range": "10-15B",
+      "vram_gb_min": 3,
+      "ram_gb_min": 16,
+      "max_concurrent_with_num_parallel_1": 1,
+      "serialization_required": true,
+      "serialization_note": "Must wait for previous model to unload",
+      "keep_alive_recommended_min": 45,
+      "inference_speed_sec_per_token": 1.5,
+      "use_cases": [
+        "Documentation generation",
+        "Secondary code review",
+        "Creative tasks",
+        "Architecture sketches"
+      ],
+      "models": [
+        {
+          "name": "qwen2.5-14b:creative",
+          "size_gb": 8.37,
+          "params": "14.8B",
+          "vram_gb": 8,
+          "ram_gb": 14,
+          "clockwork_role": "creative_worker",
+          "priority": "L1"
+        },
+        {
+          "name": "qwen2.5-14b:docs",
+          "size_gb": 8.37,
+          "params": "14.8B",
+          "vram_gb": 8,
+          "ram_gb": 14,
+          "clockwork_role": "documentation",
+          "priority": "L1"
+        },
+        {
+          "name": "qwen2.5-14b:agent",
+          "size_gb": 8.37,
+          "params": "14.8B",
+          "vram_gb": 8,
+          "ram_gb": 14,
+          "clockwork_role": "task_analysis",
+          "priority": "L1"
+        },
+        {
+          "name": "phi4-14b:reviewer",
+          "size_gb": 8.43,
+          "params": "14.7B",
+          "vram_gb": 8,
+          "ram_gb": 14,
+          "clockwork_role": "secondary_review",
+          "priority": "L1"
+        },
+        {
+          "name": "phi4-14b:docs",
+          "size_gb": 8.43,
+          "params": "14.7B",
+          "vram_gb": 8,
+          "ram_gb": 14,
+          "clockwork_role": "documentation",
+          "priority": "L1"
+        },
+        {
+          "name": "phi4-14b:validator",
+          "size_gb": 8.43,
+          "params": "14.7B",
+          "vram_gb": 8,
+          "ram_gb": 14,
+          "clockwork_role": "validation_gate",
+          "priority": "L1"
+        },
+        {
+          "name": "deepseek-r1:14b",
+          "size_gb": 8.37,
+          "params": "14.8B",
+          "vram_gb": 8,
+          "ram_gb": 14,
+          "clockwork_role": "detailed_reasoning",
+          "priority": "L1"
+        },
+        {
+          "name": "llama3.2-vision:11b",
+          "size_gb": 7.28,
+          "params": "10.7B",
+          "vram_gb": 7,
+          "ram_gb": 12,
+          "clockwork_role": "vision_analysis",
+          "priority": "L1"
+        }
+      ]
+    },
+    "tier_4_large": {
+      "name": "Large (15-36B)",
+      "parameter_range": "24-36B",
+      "vram_gb_min": 4,
+      "ram_gb_min": 20,
+      "max_concurrent_with_num_parallel_1": 1,
+      "serialization_required": true,
+      "serialization_note": "STRICT: Never load 2 Tier 4 models in parallel",
+      "keep_alive_recommended_min": 120,
+      "inference_speed_sec_per_token": 0.8,
+      "warning_level": "CAUTION - requires resource planning",
+      "use_cases": [
+        "Main code implementation",
+        "Architecture design",
+        "Complex code review",
+        "Planning & orchestration"
+      ],
+      "models": [
+        {
+          "name": "qwen2.5-coder-32b:coding",
+          "size_gb": 18.49,
+          "params": "32.8B",
+          "vram_gb": 18,
+          "ram_gb": 26,
+          "clockwork_role": "primary_coder",
+          "priority": "L2"
+        },
+        {
+          "name": "qwen2.5-coder-32b:reviewer",
+          "size_gb": 18.49,
+          "params": "32.8B",
+          "vram_gb": 18,
+          "ram_gb": 26,
+          "clockwork_role": "independent_review",
+          "priority": "L2"
+        },
+        {
+          "name": "deepseek-coder-33b:coding",
+          "size_gb": 18.57,
+          "params": "33.3B",
+          "vram_gb": 18,
+          "ram_gb": 26,
+          "clockwork_role": "alternative_coder",
+          "priority": "L3"
+        },
+        {
+          "name": "deepseek-coder-33b:reviewer",
+          "size_gb": 18.57,
+          "params": "33.3B",
+          "vram_gb": 18,
+          "ram_gb": 26,
+          "clockwork_role": "alternative_reviewer",
+          "priority": "L3"
+        },
+        {
+          "name": "qwen3.5-35b:reasoning",
+          "size_gb": 22.23,
+          "params": "36.0B",
+          "vram_gb": 22,
+          "ram_gb": 32,
+          "clockwork_role": "complex_reasoning",
+          "priority": "L2"
+        },
+        {
+          "name": "qwen3.5-35b:planner",
+          "size_gb": 22.23,
+          "params": "36.0B",
+          "vram_gb": 22,
+          "ram_gb": 32,
+          "clockwork_role": "orchestration",
+          "priority": "L2"
+        },
+        {
+          "name": "qwen3.5-35b:agent",
+          "size_gb": 22.23,
+          "params": "36.0B",
+          "vram_gb": 22,
+          "ram_gb": 32,
+          "clockwork_role": "task_agent",
+          "priority": "L2"
+        },
+        {
+          "name": "deepseek-r1:32b",
+          "size_gb": 18.49,
+          "params": "32.8B",
+          "vram_gb": 18,
+          "ram_gb": 26,
+          "clockwork_role": "reasoning_path",
+          "priority": "L3"
+        },
+        {
+          "name": "devstral-small-2:latest",
+          "size_gb": 14.14,
+          "params": "24.0B",
+          "vram_gb": 14,
+          "ram_gb": 20,
+          "clockwork_role": "coding_specialist",
+          "priority": "L2"
+        },
+        {
+          "name": "glm-4.7-flash:latest",
+          "size_gb": 17.71,
+          "params": "29.9B",
+          "vram_gb": 18,
+          "ram_gb": 26,
+          "clockwork_role": "coding_alternative",
+          "priority": "L2"
+        }
+      ]
+    },
+    "tier_5_xlarge": {
+      "name": "XLarge (>36B)",
+      "parameter_range": "70-72B",
+      "vram_gb_min": 5,
+      "ram_gb_min": 25,
+      "max_concurrent_with_num_parallel_1": 1,
+      "serialization_required": true,
+      "serialization_note": "EXTREME: Only for tier-5 escalations, blocks everything",
+      "keep_alive_recommended_min": 0,
+      "keep_alive_note": "Unload immediately after use, do not keep resident",
+      "inference_speed_sec_per_token": 0.4,
+      "warning_level": "EXTREME - Use only for escalation",
+      "use_cases": [
+        "Strategic arbitration",
+        "Escalation judgment",
+        "Architectural review",
+        "Rare deep reasoning"
+      ],
+      "models": [
+        {
+          "name": "qwen2.5-72b:escalation",
+          "size_gb": 44.16,
+          "params": "72.7B",
+          "vram_gb": 40,
+          "ram_gb": 50,
+          "clockwork_role": "escalation_arbitration",
+          "priority": "L4+"
+        },
+        {
+          "name": "qwen2.5-72b:reasoning",
+          "size_gb": 44.16,
+          "params": "72.7B",
+          "vram_gb": 40,
+          "ram_gb": 50,
+          "clockwork_role": "deep_reasoning",
+          "priority": "L4+"
+        },
+        {
+          "name": "llama3.3-70b:escalation",
+          "size_gb": 46.52,
+          "params": "70.6B",
+          "vram_gb": 42,
+          "ram_gb": 52,
+          "clockwork_role": "escalation_alternative",
+          "priority": "L5"
+        },
+        {
+          "name": "llama3.3-70b:reasoning",
+          "size_gb": 46.52,
+          "params": "70.6B",
+          "vram_gb": 42,
+          "ram_gb": 52,
+          "clockwork_role": "reasoning_alternative",
+          "priority": "L5"
+        }
+      ]
+    }
+  },
+  "operating_rules": {
+    "core_principle": "Maximum 1 heavy inference at a time (OLLAMA_NUM_PARALLEL=1 enforces this)",
+    "rule_1_load_hierarchy": [
+      "Priority 1 (ONLY): TIER 5 (>36B) escalations",
+      "Priority 2: TIER 4 (15-36B) implementation/review",
+      "Priority 3: TIER 3 (9-16B) docs/creative",
+      "Priority 4: TIER 2 (≤8.5B) validation/packing",
+      "Priority 5: TIER 1 (embeddings) anytime"
+    ],
+    "rule_2_never_concurrent": [
+      "NEVER load Tier 2 + Tier 2",
+      "NEVER load Tier 2 + Tier 3+",
+      "NEVER load Tier 3 + Tier 3+",
+      "NEVER load Tier 4 + Tier 4+",
+      "NEVER load Tier 5 + anything (except unloading first)"
+    ],
+    "rule_3_resource_guardrails": {
+      "tier_2": {
+        "max_active": 1,
+        "min_free_ram_gb": 8,
+        "min_free_vram_gb": 2,
+        "timeout_sec": 120,
+        "recovery": "automatic"
+      },
+      "tier_3": {
+        "max_active": 1,
+        "min_free_ram_gb": 16,
+        "min_free_vram_gb": 3,
+        "timeout_sec": 180,
+        "recovery": "manual"
+      },
+      "tier_4": {
+        "max_active": 1,
+        "min_free_ram_gb": 20,
+        "min_free_vram_gb": 4,
+        "timeout_sec": 300,
+        "recovery": "manual"
+      },
+      "tier_5": {
+        "max_active": 1,
+        "min_free_ram_gb": 25,
+        "min_free_vram_gb": 5,
+        "timeout_sec": 600,
+        "recovery": "restart_recommended"
+      }
+    },
+    "rule_4_serialization": {
+      "when_tier_4_requested": [
+        "1. Check status: curl http://localhost:11434/api/ps",
+        "2. If empty: load model, wait for ready",
+        "3. If busy: wait for current model to finish (up to timeout)",
+        "4. If timeout: manual intervention required"
+      ]
+    }
+  },
+  "clockwork_escalation_mapping": {
+    "L0_specialist": {
+      "description": "Specialist autonomous, 1 file, no API change",
+      "recommended_tier": 2,
+      "recommended_models": [
+        "qwen3:8b",
+        "phi4-14b:validator"
+      ]
+    },
+    "L1_team_lead": {
+      "description": "Team Lead, 2-5 files, clear boundaries",
+      "recommended_tier": 3,
+      "recommended_models": [
+        "qwen2.5-14b:agent",
+        "phi4-14b:reviewer"
+      ]
+    },
+    "L2_architecture_agent": {
+      "description": "Architecture Agent, new module/dependency",
+      "recommended_tier": 4,
+      "recommended_models": [
+        "qwen2.5-coder-32b:coding",
+        "qwen2.5-coder-32b:reviewer",
+        "deepseek-coder-33b:coding"
+      ]
+    },
+    "L3_technical_critic": {
+      "description": "Technical Critic, performance/external API",
+      "recommended_tier": 4,
+      "recommended_models": [
+        "deepseek-coder-33b:reviewer",
+        "qwen3.5-35b:reasoning"
+      ]
+    },
+    "L4_systemic_critic": {
+      "description": "Systemic Critic, governance/new agents",
+      "recommended_tier": "4_escalation_to_5",
+      "recommended_models": [
+        "qwen3.5-35b:reasoning",
+        "llama3.3-70b:escalation"
+      ]
+    },
+    "L5_user": {
+      "description": "User redesign/backend changes",
+      "action": "STOP & ASK USER",
+      "if_approved_tier": 5,
+      "recommended_models": [
+        "qwen2.5-72b:escalation",
+        "llama3.3-70b:reasoning"
+      ]
+    }
+  },
+  "timeout_recovery": {
+    "tier_2_120_seconds": {
+      "action": "auto_recover",
+      "procedure": "kill inference, unload model, free resources",
+      "manual_action": "none"
+    },
+    "tier_3_180_seconds": {
+      "action": "alert_operator",
+      "procedure": "model timeout, manual unload required",
+      "manual_action": "ollama rm <model_name>"
+    },
+    "tier_4_300_seconds": {
+      "action": "critical_alert",
+      "procedure": "system may be hung",
+      "manual_action": "restart_ollama"
+    },
+    "tier_5_600_seconds": {
+      "action": "critical_alert",
+      "procedure": "system may be severely hung",
+      "manual_action": "restart_system_recommended"
+    }
+  },
+  "memory_guardrails": {
+    "check_before_tier_4_load": {
+      "available_ram_gb": 20,
+      "action_if_insufficient": "reject_request"
+    },
+    "check_before_tier_5_load": {
+      "available_ram_gb": 25,
+      "action_if_insufficient": "reject_request"
+    }
+  },
+  "environment_variables": {
+    "required": {
+      "OLLAMA_NUM_PARALLEL": "1",
+      "OLLAMA_MMAP": "1",
+      "OLLAMA_GPU": "1",
+      "GGML_CUDA_NO_PINNED": "1"
+    },
+    "recommended": {
+      "OLLAMA_KEEP_ALIVE": "30m",
+      "OLLAMA_FLASH_ATTENTION": "1",
+      "OLLAMA_LOAD_TIMEOUT": "120s"
+    }
+  },
+  "status_checks": {
+    "current_models_running": "curl http://localhost:11434/api/ps",
+    "available_models_list": "curl http://localhost:11434/api/tags",
+    "gpu_status": "nvidia-smi",
+    "ollama_health": "curl http://localhost:11434/api/tags"
+  },
+  "three_core_rules": [
+    {
+      "rule": "Only 1 Tier 4+ Model at a Time",
+      "detail": "OLLAMA_NUM_PARALLEL=1 enforces this. Never try to load 2 large models in parallel."
+    },
+    {
+      "rule": "Check Resources Before Tier 4+",
+      "detail": "Verify free RAM (20GB minimum) and free VRAM (5GB minimum). Reject request if guardrails violated."
+    },
+    {
+      "rule": "Unload Tier 5 Immediately After Use",
+      "detail": "Don't keep it resident. Set keep_alive=0 for cleanup. System is stable only with tier 5 unloaded."
+    }
+  ]
+}

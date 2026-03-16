@@ -1,17 +1,16 @@
-"""Base agent framework for autonomous task execution."""
-
-import ollama
-from pathlib import Path
+import os
 import subprocess
-import json
+from pathlib import Path
 
 class BaseAgent:
-    """Base class for autonomous agents."""
+    def __init__(self, root: Path):
+        self.root = root
 
-    def __init__(self, project_root: Path = None):
-        self.root = project_root or Path.cwd()
-        self.modified_files = []
-        self.results = {}
+    def section(self, title: str):
+        '''Format section headers with separators.'''
+        print(f"\n{'-'*70}")
+        print(f"  {title}")
+        print(f"{'-'*70}")
 
     def log(self, msg: str):
         print(f"    {msg}")
@@ -28,55 +27,67 @@ class BaseAgent:
         full_path = self.root / path
         full_path.parent.mkdir(parents=True, exist_ok=True)
         full_path.write_text(content)
-        self.modified_files.append(path)
-        return True
 
     def run_ollama(self, prompt: str, model: str = "gemma3:latest") -> str:
-        """Call Ollama with prompt."""
+        """Calls ollama.generate() with given prompt and returns response content."""
         try:
-            response = ollama.generate(
-                model=model,
-                prompt=prompt,
-                stream=False,
+            result = subprocess.run(
+                ["ollama", "generate", prompt, "-m", model],
+                capture_output=True,
+                text=True,
+                check=True
             )
-            return response.get("response", "").strip()
+            return result.stdout.strip()
+        except FileNotFoundError:
+            self.log("Error: ollama command not found.  Make sure ollama is installed and in your PATH.")
+            return ""
+        except subprocess.CalledProcessError as e:
+            self.log(f"Error running ollama: {e}")
+            self.log(f"Stderr: {e.stderr}")
+            return ""
         except Exception as e:
-            return f"[ERROR: {str(e)[:100]}]"
+            self.log(f"An unexpected error occurred: {e}")
+            return ""
 
     def git_add(self, files: list = None) -> bool:
-        """Stage files for commit."""
-        files_to_add = files or self.modified_files
-        if not files_to_add:
-            return False
+        """Stages files for commit using subprocess.run(["git", "add", ...])."""
         try:
-            subprocess.run(
-                ["git", "add"] + files_to_add,
-                cwd=str(self.root),
-                capture_output=True,
-                check=True,
-            )
+            if files is None:
+                files = ["."]  # Default to adding current directory if no files are specified
+            cmd = ["git", "add"] + files
+            result = subprocess.run(cmd, cwd=self.root, check=True, capture_output=True, text=True)
+            self.log(result.stdout)
             return True
-        except:
+        except subprocess.CalledProcessError as e:
+            self.log(f"Error running git add: {e}")
+            self.log(f"Stderr: {e.stderr}")
+            return False
+        except FileNotFoundError:
+            self.log("Error: git command not found. Make sure git is installed and in your PATH.")
+            return False
+        except Exception as e:
+            self.log(f"An unexpected error occurred: {e}")
             return False
 
     def git_commit(self, message: str) -> bool:
-        """Commit staged changes."""
+        """Commits staged changes with subprocess.run(["git", "commit", "-m", message])."""
         try:
-            subprocess.run(
+            result = subprocess.run(
                 ["git", "commit", "-m", message],
-                cwd=str(self.root),
-                capture_output=True,
+                cwd=self.root,
                 check=True,
+                capture_output=True,
+                text=True
             )
+            self.log(result.stdout)
             return True
-        except:
+        except subprocess.CalledProcessError as e:
+            self.log(f"Error running git commit: {e}")
+            self.log(f"Stderr: {e.stderr}")
             return False
-
-    def report(self):
-        """Print results summary."""
-        print(f"\n{'─'*70}")
-        print("  RESULTS")
-        print(f"{'─'*70}")
-        for key, val in self.results.items():
-            print(f"  {key}: {val}")
-        print(f"  Files modified: {len(self.modified_files)}")
+        except FileNotFoundError:
+            self.log("Error: git command not found. Make sure git is installed and in your PATH.")
+            return False
+        except Exception as e:
+            self.log(f"An unexpected error occurred: {e}")
+            return False

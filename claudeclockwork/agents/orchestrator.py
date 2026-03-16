@@ -11,6 +11,7 @@ class TaskOrchestrator:
         self.agents = {}
         self.completed = []
         self.failed = []
+        self.files_modified = []
 
     def register_agent(self, name: str, agent_class):
         """Register an agent type."""
