@@ -1,6 +1,4 @@
 """Mode CLI skill: manage execution modes (default, adaptive, claude-min)."""
-import subprocess
-import sys
 from pathlib import Path
 
 from claudeclockwork.core.base.skill_base import SkillBase
@@ -20,7 +18,7 @@ class ModeCliSkill(SkillBase):
 
         # If no action or action is "menu", show interactive menu
         if action == "menu" or action == "":
-            return self._show_menu()
+            return self._show_menu(manager)
 
         if action == "list":
             return self._action_list(manager)
@@ -153,32 +151,47 @@ class ModeCliSkill(SkillBase):
             },
         )
 
-    def _show_menu(self) -> SkillResult:
+    def _show_menu(self, manager: ModeManager) -> SkillResult:
         """Show interactive mode selection menu."""
-        menu_script = Path(__file__).parent.parent.parent / "tools" / "menus" / "mode_menu.py"
+        active = manager.get_active_mode()
 
-        if not menu_script.exists():
-            return SkillResult(
-                False,
-                "mode_cli",
-                error="Mode menu script not found",
-                data={"action": "menu"},
-            )
+        modes_list = [
+            {
+                "number": 1,
+                "key": "default",
+                "name": "Pure Ollama Agent Mode",
+                "description": "Execute all skills with local Ollama agents only",
+                "active": active == "default"
+            },
+            {
+                "number": 2,
+                "key": "adaptive",
+                "name": "Adaptive Mode",
+                "description": "Support both Ollama and Claude agents, optimize per task",
+                "active": active == "adaptive"
+            },
+            {
+                "number": 3,
+                "key": "claude-min",
+                "name": "Claude Minimal Mode",
+                "description": "Execute with Claude API agents only (minimized costs)",
+                "active": active == "claude-min"
+            }
+        ]
 
-        try:
-            subprocess.run([sys.executable, str(menu_script)], check=False)
-            return SkillResult(
-                True,
-                "mode_cli",
-                data={
-                    "action": "menu",
-                    "message": "Mode menu closed",
-                },
-            )
-        except Exception as e:
-            return SkillResult(
-                False,
-                "mode_cli",
-                error=f"Failed to launch menu: {str(e)}",
-                data={"action": "menu"},
-            )
+        return SkillResult(
+            True,
+            "mode_cli",
+            data={
+                "action": "menu",
+                "active_mode": active,
+                "modes": modes_list,
+                "message": "Mode selection menu",
+                "interactive": True,
+                "choices": {
+                    "1": {"mode": "default", "name": "Pure Ollama Agent Mode"},
+                    "2": {"mode": "adaptive", "name": "Adaptive Mode"},
+                    "3": {"mode": "claude-min", "name": "Claude Minimal Mode"}
+                }
+            },
+        )
