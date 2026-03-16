@@ -128,17 +128,18 @@ echo ""
 
 # Execute the generic forge agent
 TEMP_OUTPUT=$(mktemp)
-trap "rm -f $TEMP_OUTPUT" EXIT
+TEMP_STDERR=$(mktemp)
+trap "rm -f $TEMP_OUTPUT $TEMP_STDERR" EXIT
 
-if python -m claudeclockwork.localai.agents.generic_forge_agent "$FORGE_REQUEST" > "$TEMP_OUTPUT" 2>&1; then
+if python -m claudeclockwork.localai.agents.generic_forge_agent "$FORGE_REQUEST" > "$TEMP_OUTPUT" 2>"$TEMP_STDERR"; then
     echo -e "${GREEN}✓ Pipeline executed successfully${NC}"
     echo ""
 
-    # Parse and display results
-    RESULT_JSON=$(cat "$TEMP_OUTPUT")
-    SUCCESS=$(echo "$RESULT_JSON" | python3 -c "import sys, json; print(json.load(sys.stdin).get('success', False))" 2>/dev/null || echo "false")
+    # Parse and display results (extract JSON from output, skipping warnings)
+    RESULT_JSON=$(cat "$TEMP_OUTPUT" | python3 -c "import sys; lines = sys.stdin.read(); json_start = lines.find('{'); print(lines[json_start:] if json_start >= 0 else '')" 2>/dev/null)
+    SUCCESS=$(echo "$RESULT_JSON" | python3 -c "import sys, json; print(str(json.load(sys.stdin).get('success', False)).lower())" 2>/dev/null || echo "false")
 
-    if [[ "$SUCCESS" == "True" ]] || [[ "$SUCCESS" == "true" ]]; then
+    if [[ "$SUCCESS" == "true" ]]; then
         echo -e "${GREEN}✓ Task completed successfully${NC}"
         echo ""
 
