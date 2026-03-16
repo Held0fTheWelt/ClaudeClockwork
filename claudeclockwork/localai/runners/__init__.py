@@ -4,5 +4,6 @@ from __future__ import annotations
 from claudeclockwork.localai.runners.base import BaseRunner
 from claudeclockwork.localai.runners.embed import EmbedRunner
 from claudeclockwork.localai.runners.asr import AsrRunner
+from claudeclockwork.localai.runners.code_plan import CodePlanRunner
 
-__all__ = ["BaseRunner", "EmbedRunner", "AsrRunner"]
+__all__ = ["BaseRunner", "EmbedRunner", "AsrRunner", "CodePlanRunner"]

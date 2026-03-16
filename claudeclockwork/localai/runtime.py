@@ -5,9 +5,10 @@ from pathlib import Path
 from typing import Any
 
 from claudeclockwork.localai.registry import load_registry
-from claudeclockwork.localai.runners import EmbedRunner, AsrRunner
+from claudeclockwork.localai.runners import EmbedRunner, AsrRunner, CodePlanRunner
 
 _RUNNERS: dict[str, Any] = {
+    "code.plan": CodePlanRunner(),
     "embed.text": EmbedRunner(),
     "audio.asr": AsrRunner(),
 }
