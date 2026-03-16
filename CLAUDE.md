@@ -23,6 +23,13 @@ python3 .claude/tools/skills/skill_runner.py <skill_name> [args]
 # Ollama briefing
 echo "task description" | python3 .claude/tools/ollama_brief.py [model] [type]
 # Types: brief | draft | architecture | review | quick
+
+# Ollama model selection (canonical — no script editing)
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "list"}'
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "get"}'
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "set", "model": "qwen2.5-14b:research"}'
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "profiles"}'
+# Policy: .claude/config/ollama.yaml. State: .claude/state/ollama_model_state.json (default_model).
 ```
 
 ## Development

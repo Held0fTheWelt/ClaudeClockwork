@@ -74,6 +74,46 @@ OLLAMA_NUM_GPU=99 ollama run qwen2.5-coder:14b
 
 ---
 
+## Ollama model selection (first-class)
+
+**Canonical policy (static):** `.claude/config/ollama.yaml` — version, state_file path, default_model, global_prompt_budget_chars, global_num_ctx_tokens, runtime options, and profiles (default, execution, coding, review, planning, etc.). One source of truth for policy.
+
+**Canonical runtime state (mutable):** `.claude/state/ollama_model_state.json` — holds `default_model` only. Path may be overridden in config via `state_file`. Changed via the skill or manager, not by editing scripts.
+
+**Skill:** `ollama_model_manage` — actions: list, get, set, validate, profiles. Script-based model switching is not the primary mechanism; use the skill or runtime.
+
+```bash
+# List installed models and global default
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "list"}'
+
+# Get global default model
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "get"}'
+
+# Set global default (validates via /api/tags only; alias resolved to installed tag; no auto_pull)
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "set", "model": "qwen2.5-14b:research"}'
+
+# Validate model without switching
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "validate", "model": "phi4:14b"}'
+
+# Show configured profiles and global default
+python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "profiles"}'
+```
+
+**Resolution order (canonical):**
+- **Model:** per-invocation override > profile.model > state.default_model > config.default_model
+- **Prompt budget (chars):** per-invocation override > profile.prompt_budget_chars > global_prompt_budget_chars
+- **num_ctx (tokens):** per-invocation override > profile.num_ctx_tokens > global_num_ctx_tokens
+
+Unknown profiles fall back to global default when `unknown_profile_fallback_to_default: true`. Per-call override does not mutate persistent state. Different agent setups (profiles) keep different configured defaults; the global default does not override profile-specific models.
+
+**Alias-safe validation:** Validation and set use `/api/tags` only; alias is resolved to an installed tag. No `/api/show` or auto_pull; missing models fail clearly.
+
+**Bounded context:** Prompts are limited by profile or global prompt_budget_chars; oversized context is truncated before dispatch. Conservative context defaults are used for CPU-heavy and large models (e.g. planning, reasoning profiles use 7k chars / 4k ctx). Prefer narrow, task-local context over broad repo dumps.
+
+`OllamaAgent(..., model=..., profile=...)` uses the above resolution; `reason()` applies the budget before dispatch. See `claudeclockwork.core.agents.ollama_agent.OllamaAgent`, `claudeclockwork.core.ollama.OllamaModelManager`, and `claudeclockwork.core.ollama.context_budget.apply_budget`.
+
+---
+
 ## Tool Invocation
 
 **Importable module:** `<PROJECT_ROOT>/src/ollama_client.py`

@@ -1,0 +1,42 @@
+{
+  "name": "ollama_model_manage",
+  "version": "1.0.0",
+  "category": "localai",
+  "description": "First-class Ollama model management: list available models, get/set active model, validate. Persists to .claude/state/ollama_model_state.json. No script editing required.",
+  "entrypoint": "skills.localai.ollama_model_manage.skill:OllamaModelManageSkill",
+  "permissions": ["repo:read"],
+  "aliases": ["ollama_model", "ollama_switch"],
+  "tags": ["ollama", "localai", "model", "runtime"],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "action": {
+      "type": "string",
+      "optional": true,
+      "description": "One of: list, get, set, validate, profiles. Default: get"
+    },
+    "model": {
+      "type": "string",
+      "optional": true,
+      "description": "Model name (required for action=set or action=validate)"
+    },
+    "root": {
+      "type": "string",
+      "optional": true,
+      "description": "Project root for state file"
+    }
+  },
+  "outputs": {
+    "action": {"type": "string"},
+    "active_model": {"type": "string"},
+    "available_models": {"type": "array"},
+    "message": {"type": "string"},
+    "error": {"type": "string"}
+  },
+  "metadata": {
+    "legacy_bridge": false,
+    "mode_requirements": {
+      "agent_type": "ollama"
+    }
+  }
+}

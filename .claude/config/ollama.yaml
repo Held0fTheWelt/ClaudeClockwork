@@ -1,0 +1,278 @@
+version: 1
+
+# Static policy / baseline config
+# Runtime-selected global default is stored separately in:
+# .claude/state/ollama_model_state.json
+
+state_file: ".claude/state/ollama_model_state.json"
+
+strict_model_validation: true
+strict_prompt_budget_enforcement: true
+unknown_profile_fallback_to_default: true
+
+# Safe global fallback for your CPU-heavy setup.
+# Do not use a 32B coding model as the global default.
+default_model: "qwen2.5-14b:research"
+
+# Practical global ceilings for your machine.
+global_num_ctx_tokens: 8192
+global_prompt_budget_chars: 12000
+
+runtime:
+  max_loaded_runners: 1
+  prefer_warm_reuse: true
+  avoid_parallel_heavy_models: true
+  auto_pull_missing_models: false
+  validate_via_tags_before_show: true
+  require_alias_resolution: true
+
+resolution:
+  model_order:
+    - per_invocation_override
+    - profile_model
+    - state_default_model
+    - config_default_model
+  prompt_budget_order:
+    - per_invocation_override
+    - profile_prompt_budget_chars
+    - global_prompt_budget_chars
+  num_ctx_order:
+    - per_invocation_override
+    - profile_num_ctx_tokens
+    - global_num_ctx_tokens
+
+profiles:
+  default:
+    model: "qwen2.5-14b:research"
+    fallback_models:
+      - "qwen2.5-14b:summarize"
+    prompt_budget_chars: 10000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.12
+      top_p: 0.90
+      top_k: 30
+      repeat_penalty: 1.02
+      min_p: 0.05
+      num_thread: 16
+
+  execution:
+    # Keep this conservative.
+    # Intentionally no dedicated heavy default here.
+    fallback_models:
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 8000
+    num_ctx_tokens: 4096
+    params:
+      temperature: 0.05
+      top_p: 0.85
+      top_k: 10
+      repeat_penalty: 1.00
+      min_p: 0.10
+      num_thread: 16
+
+  coding:
+    model: "qwen2.5-coder-32b:coding"
+    fallback_models:
+      - "deepseek-coder-33b:coding"
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 10000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.10
+      top_p: 0.90
+      top_k: 20
+      repeat_penalty: 1.00
+      min_p: 0.05
+      num_thread: 16
+
+  unreal:
+    model: "qwen2.5-coder-32b:unreal"
+    fallback_models:
+      - "qwen2.5-coder-32b:coding"
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 9000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.08
+      top_p: 0.90
+      top_k: 20
+      repeat_penalty: 1.00
+      min_p: 0.05
+      num_thread: 16
+
+  review:
+    model: "deepseek-coder-33b:review"
+    fallback_models:
+      - "qwen2.5-coder-32b:review"
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 8000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.10
+      top_p: 0.90
+      top_k: 20
+      repeat_penalty: 1.05
+      min_p: 0.05
+      num_thread: 16
+
+  planning:
+    model: "qwen2.5-72b:planning"
+    fallback_models:
+      - "llama3.3-70b:planning"
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 7000
+    num_ctx_tokens: 4096
+    params:
+      temperature: 0.25
+      top_p: 0.92
+      top_k: 40
+      repeat_penalty: 1.05
+      min_p: 0.03
+      num_thread: 16
+
+  reasoning:
+    model: "llama3.3-70b:reasoning"
+    fallback_models:
+      - "qwen2.5-72b:reasoning"
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 7000
+    num_ctx_tokens: 4096
+    params:
+      temperature: 0.20
+      top_p: 0.92
+      top_k: 40
+      repeat_penalty: 1.05
+      min_p: 0.03
+      num_thread: 16
+
+  docs:
+    model: "qwen2.5-14b:docs"
+    fallback_models:
+      - "qwen2.5-14b:summarize"
+    prompt_budget_chars: 10000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.15
+      top_p: 0.90
+      top_k: 30
+      repeat_penalty: 1.03
+      min_p: 0.04
+      num_thread: 16
+
+  summarize:
+    model: "qwen2.5-14b:summarize"
+    fallback_models:
+      - "qwen2.5-14b:packing"
+    prompt_budget_chars: 9000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.10
+      top_p: 0.90
+      top_k: 20
+      repeat_penalty: 1.02
+      min_p: 0.05
+      num_thread: 16
+
+  packing:
+    model: "qwen2.5-14b:packing"
+    fallback_models:
+      - "qwen2.5-14b:summarize"
+    prompt_budget_chars: 8000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.08
+      top_p: 0.88
+      top_k: 20
+      repeat_penalty: 1.02
+      min_p: 0.05
+      num_thread: 16
+
+  integration:
+    model: "qwen2.5-coder-32b:integration"
+    fallback_models:
+      - "qwen3-coder-30b:integration"
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 9000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.10
+      top_p: 0.90
+      top_k: 20
+      repeat_penalty: 1.02
+      min_p: 0.05
+      num_thread: 16
+
+  judge:
+    model: "deepseek-r1-14b:judge"
+    fallback_models:
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 8000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.08
+      top_p: 0.88
+      top_k: 20
+      repeat_penalty: 1.05
+      min_p: 0.05
+      num_thread: 16
+
+  autopsy:
+    model: "deepseek-r1-14b:autopsy"
+    fallback_models:
+      - "qwen2.5-14b:research"
+      - "llama3.3-70b:reasoning"
+    prompt_budget_chars: 8000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.08
+      top_p: 0.90
+      top_k: 20
+      repeat_penalty: 1.05
+      min_p: 0.05
+      num_thread: 16
+
+  creative:
+    model: "llama3.3-70b:creative"
+    fallback_models:
+      - "qwen2.5-72b:creative"
+      - "qwen2.5-14b:research"
+    prompt_budget_chars: 8000
+    num_ctx_tokens: 4096
+    params:
+      temperature: 0.70
+      top_p: 0.95
+      top_k: 60
+      repeat_penalty: 1.03
+      min_p: 0.02
+      num_thread: 16
+
+  vision:
+    model: "gemma3-12b:vision"
+    prompt_budget_chars: 6000
+    num_ctx_tokens: 4096
+    params:
+      temperature: 0.10
+      top_p: 0.90
+      top_k: 20
+      repeat_penalty: 1.02
+      min_p: 0.05
+      num_thread: 8
+
+  research:
+    model: "qwen2.5-14b:research"
+    fallback_models:
+      - "qwen2.5-14b:summarize"
+    prompt_budget_chars: 10000
+    num_ctx_tokens: 8192
+    params:
+      temperature: 0.18
+      top_p: 0.90
+      top_k: 30
+      repeat_penalty: 1.03
+      min_p: 0.04
+      num_thread: 16
+
+embeddings:
+  primary: "mxbai-embed-large"
+  long_context: "nomic-embed-text"
