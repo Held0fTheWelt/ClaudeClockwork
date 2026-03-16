@@ -35,8 +35,19 @@
     "constraints": {
       "type": "object",
       "description": "Constraints and requirements for the skill",
+      "required": ["allowed_write_roots", "forbidden_patterns"],
       "additionalProperties": true,
       "properties": {
+        "allowed_write_roots": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of directory paths where the generated skill is allowed to write files"
+        },
+        "forbidden_patterns": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of regex patterns for code operations explicitly forbidden in the generated skill"
+        },
         "max_complexity": {
           "type": "string",
           "description": "Maximum allowed code complexity level (simple, moderate, complex)"
