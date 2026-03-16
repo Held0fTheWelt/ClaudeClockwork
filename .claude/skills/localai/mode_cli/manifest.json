@@ -12,8 +12,8 @@
       "name": "action",
       "type": "string",
       "required": false,
-      "default": "get",
-      "description": "Action: list (show all modes), get (show current), set (change mode), info (detailed info)"
+      "default": "menu",
+      "description": "Action: menu (interactive), list (show all modes), get (show current), set (change mode), info (detailed info)"
     },
     {
       "name": "mode",
@@ -28,10 +28,12 @@
       "requires_mode": []
     },
     "category": "system",
-    "tags": ["mode", "cli", "agent-routing"],
+    "tags": ["mode", "cli", "agent-routing", "interactive-menu"],
     "examples": [
-      "/mode - Get current mode",
+      "/mode - Launch interactive mode menu",
+      "/mode menu - Launch interactive mode menu",
       "/mode list - Show all available modes",
+      "/mode get - Show current mode",
       "/mode set default - Switch to Pure Ollama mode",
       "/mode set adaptive - Switch to Adaptive mode",
       "/mode set claude-min - Switch to Claude Minimal mode",

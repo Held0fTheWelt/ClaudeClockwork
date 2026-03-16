@@ -1,4 +1,6 @@
 """Mode CLI skill: manage execution modes (default, adaptive, claude-min)."""
+import subprocess
+import sys
 from pathlib import Path
 
 from claudeclockwork.core.base.skill_base import SkillBase
@@ -12,9 +14,13 @@ class ModeCliSkill(SkillBase):
 
     def run(self, context: ExecutionContext, **kwargs) -> SkillResult:
         root = kwargs.get("root") or context.working_directory
-        action = (kwargs.get("action") or "get").strip().lower()
+        action = (kwargs.get("action") or "menu").strip().lower()
         mode = (kwargs.get("mode") or "").strip().lower()
         manager = ModeManager(project_root=Path(root))
+
+        # If no action or action is "menu", show interactive menu
+        if action == "menu" or action == "":
+            return self._show_menu()
 
         if action == "list":
             return self._action_list(manager)
@@ -146,3 +152,33 @@ class ModeCliSkill(SkillBase):
                 "message": f"Mode info retrieved. Current mode: {active}",
             },
         )
+
+    def _show_menu(self) -> SkillResult:
+        """Show interactive mode selection menu."""
+        menu_script = Path(__file__).parent.parent.parent / "tools" / "menus" / "mode_menu.py"
+
+        if not menu_script.exists():
+            return SkillResult(
+                False,
+                "mode_cli",
+                error="Mode menu script not found",
+                data={"action": "menu"},
+            )
+
+        try:
+            subprocess.run([sys.executable, str(menu_script)], check=False)
+            return SkillResult(
+                True,
+                "mode_cli",
+                data={
+                    "action": "menu",
+                    "message": "Mode menu closed",
+                },
+            )
+        except Exception as e:
+            return SkillResult(
+                False,
+                "mode_cli",
+                error=f"Failed to launch menu: {str(e)}",
+                data={"action": "menu"},
+            )
