@@ -1,0 +1,57 @@
+{
+  "name": "skill_forge_run",
+  "version": "1.0.0",
+  "description": "Orchestrate the full skill-forge pipeline (code.plan -> code.forge -> code.review -> code.validate)",
+  "author": "ClaudeClockwork",
+  "tags": ["forge", "code-generation", "pipeline", "localai"],
+  "interface": {
+    "invoke": "skill_forge_run",
+    "parameters": {
+      "archetype": {
+        "type": "string",
+        "description": "One of: scanner, validator, reporter, transformer, registry_helper",
+        "required": true
+      },
+      "purpose": {
+        "type": "string",
+        "description": "Human-readable task description",
+        "required": true
+      },
+      "allowed_write_roots": {
+        "type": "array",
+        "description": "List of paths where code may write. None = use policy-derived safe defaults",
+        "required": false
+      },
+      "target_root": {
+        "type": "string",
+        "description": "Final destination for validated artifacts. None = auto-generate in .claude/forge_outputs/<run_id>",
+        "required": false
+      },
+      "report_file": {
+        "type": "string",
+        "description": "Where to write the run report. None = auto-generate as report_file within target_root",
+        "required": false
+      },
+      "mode": {
+        "type": "string",
+        "description": "Execution mode: 'full', 'plan_only', 'through_forge', 'through_review', 'validate_only'",
+        "required": false,
+        "default": "full"
+      },
+      "publish": {
+        "type": "boolean",
+        "description": "If True, move validated artifacts to target_root after validation",
+        "required": false,
+        "default": true
+      }
+    }
+  },
+  "returns": {
+    "type": "object",
+    "description": "Stage-structured result with run_id, all stage outputs, and final_status"
+  },
+  "dependencies": {
+    "capabilities": ["code.plan", "code.forge", "code.review", "code.validate"],
+    "runtime": "localai"
+  }
+}
