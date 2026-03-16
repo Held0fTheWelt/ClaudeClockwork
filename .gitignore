@@ -23,4 +23,4 @@ validation_runs_redacted/
 # Performance telemetry runtime outputs (Phase 69)
 # .claude-performance/ is curated-only; these subdirs are machine-generated
 .claude-performance/reports/
-.claude-performance/events/
+.claude-performance/events/.worktrees/
