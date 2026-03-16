@@ -24,3 +24,6 @@ validation_runs_redacted/
 # .claude-performance/ is curated-only; these subdirs are machine-generated
 .claude-performance/reports/
 .claude-performance/events/.worktrees/
+
+# Git worktrees for feature development
+.worktrees/
