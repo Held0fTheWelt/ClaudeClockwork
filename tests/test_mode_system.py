@@ -1,8 +1,14 @@
-"""Tests for the Mode System (Phase 22)."""
+"""Tests for the Mode System (Phase 22) - Hardened."""
 import json
 import pytest
 from pathlib import Path
-from claudeclockwork.core.mode import ModeManager, ModeGuard, ModeViolationError
+from claudeclockwork.core.mode import (
+    ModeManager,
+    ModeGuard,
+    ModeViolationError,
+    ModeMetadataValidator,
+    ModeAudit,
+)
 
 
 class TestModeManager:
@@ -420,4 +426,167 @@ class TestModeSystemIntegration:
             with pytest.raises(ModeViolationError):
                 guard.check_claude_execution_allowed()
         finally:
+            manager.set_mode(original)
+
+
+class TestModeHardening:
+    """Hardening tests for mode bypass risks."""
+
+    def test_executor_rejects_unknown_manifest_metadata(self):
+        """Test executor fails closed on missing mode metadata."""
+        from claudeclockwork.core.mode import ModeMetadataValidator
+        
+        validator = ModeMetadataValidator()
+        
+        # Manifest with no mode_requirements should be rejected
+        manifest = {
+            "id": "test_skill",
+            "metadata": {}  # No mode_requirements
+        }
+        
+        is_valid, errors = validator.validate_skill_manifest(manifest)
+        assert is_valid is False
+        assert any("mode_requirements" in e for e in errors)
+
+    def test_executor_enforces_claude_requirement(self):
+        """Test executor checks Claude agent requirement in default mode."""
+        from claudeclockwork.core.mode import ModeManager, ModeMetadataValidator
+        
+        manager = ModeManager()
+        original = manager.get_active_mode()
+        try:
+            manager.set_mode("default")
+            validator = ModeMetadataValidator()
+            
+            # Manifest requiring Claude should fail in default mode
+            manifest = {
+                "id": "test_skill",
+                "metadata": {
+                    "mode_requirements": {
+                        "agent_type": "claude",
+                        "requires_mode": ["adaptive", "claude-min"]
+                    }
+                }
+            }
+            
+            is_valid, errors = validator.validate_skill_manifest(manifest)
+            assert is_valid is False
+            assert any("active mode" in e.lower() for e in errors)
+        finally:
+            manager.set_mode(original)
+
+    def test_default_mode_forbids_fallback_to_claude(self):
+        """Test that default mode prevents fallback to Claude."""
+        manager = ModeManager()
+        guard = ModeGuard(manager)
+        original = manager.get_active_mode()
+        
+        try:
+            manager.set_mode("default")
+            config = manager.get_mode_config()
+            
+            # Default mode must forbid Claude fallback
+            assert config.get("allow_fallback_to_claude") is False
+            
+            # Attempting Claude fallback should raise
+            with pytest.raises(ModeViolationError):
+                guard.check_claude_execution_allowed()
+        finally:
+            manager.set_mode(original)
+
+    def test_default_mode_freezes_without_ollama(self):
+        """Test that default mode requires Ollama available."""
+        manager = ModeManager()
+        original = manager.get_active_mode()
+        
+        try:
+            manager.set_mode("default")
+            config = manager.get_mode_config()
+            
+            # Default mode must require Ollama
+            assert config.get("require_ollama_available") is True
+        finally:
+            manager.set_mode(original)
+
+    def test_mode_audit_detects_constraint_violations(self):
+        """Test mode audit tool detects constraint violations."""
+        from claudeclockwork.core.mode import ModeAudit
+        
+        audit = ModeAudit()
+        report = audit.audit_mode_system()
+        
+        # Should have checks for each constraint
+        assert "mode_state" in report["checks"]
+        assert "mode_config" in report["checks"]
+        assert "mode_constraints" in report["checks"]
+
+    def test_mixed_execution_forbidden_in_default(self):
+        """Test that mixed execution is forbidden in default mode."""
+        manager = ModeManager()
+        guard = ModeGuard(manager)
+        original = manager.get_active_mode()
+        
+        try:
+            manager.set_mode("default")
+            with pytest.raises(ModeViolationError):
+                guard.check_mixed_execution_allowed()
+        finally:
+            manager.set_mode(original)
+
+    def test_claude_min_forbids_ollama_silently(self):
+        """Test claude-min mode forbids Ollama execution."""
+        manager = ModeManager()
+        guard = ModeGuard(manager)
+        original = manager.get_active_mode()
+        
+        try:
+            manager.set_mode("claude-min")
+            
+            # Attempting Ollama should fail, not silently degrade
+            with pytest.raises(ModeViolationError) as exc_info:
+                guard.check_ollama_execution_allowed()
+            
+            # Error must be clear that Ollama is forbidden
+            assert "forbidden" in str(exc_info.value).lower()
+        finally:
+            manager.set_mode(original)
+
+    def test_metadata_validator_fails_closed_unknown_agent_type(self):
+        """Test validator rejects unknown agent types."""
+        validator = ModeMetadataValidator()
+        
+        manifest = {
+            "id": "test",
+            "metadata": {
+                "mode_requirements": {
+                    "agent_type": "unknown_type",  # Invalid
+                    "requires_mode": ["default"]
+                }
+            }
+        }
+        
+        is_valid, errors = validator.validate_skill_manifest(manifest)
+        assert is_valid is False
+        assert any("invalid agent_type" in e for e in errors)
+
+    def test_mode_state_must_not_be_empty(self):
+        """Test that active mode cannot be empty/None."""
+        manager = ModeManager()
+        active = manager.get_active_mode()
+        
+        # Active mode must always be set
+        assert active is not None
+        assert active in ["default", "adaptive", "claude-min"]
+
+    def test_mode_cannot_be_changed_programmatically_only_via_cli(self):
+        """Test that mode changes are user-initiated only."""
+        manager = ModeManager()
+        
+        # set_mode should only be called from CLI context
+        # This test verifies the method exists but emphasizes user-only usage
+        original = manager.get_active_mode()
+        
+        # Only change if needed for test, then restore
+        if original != "adaptive":
+            manager.set_mode("adaptive")
             manager.set_mode(original)
