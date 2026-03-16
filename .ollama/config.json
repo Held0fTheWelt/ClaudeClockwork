@@ -1,0 +1,23 @@
+{
+  "chromadb_path": "/home/heldofthewelt/.ollama_swarm/chromadb",
+  "embedding_model": "mxbai-embed-large",
+  "embedding_model_longctx": "nomic-embed-text",
+  "ollama_host": "http://127.0.0.1:11434",
+  "swarm": {
+    "orchestrator": "llama3.3-70b:reasoning",
+    "planner": "llama3.3-70b:planner",
+    "task_creator": "qwen3.5-35b:agent",
+    "validator": "phi4-14b:validator",
+    "taskrunner": "qwen3.5-35b:taskrunner",
+    "coder": "qwen2.5-coder-32b:coding",
+    "integrator": "qwen3.5-35b:integrator",
+    "reviewer": "deepseek-coder-33b:reviewer",
+    "tester": "qwen2.5-coder-32b:coding",
+    "docs": "qwen3.5-35b:docs",
+    "summarizer": "llama3.3-70b:summarizer",
+    "escalation": "llama3.3-70b:escalation",
+    "creative": "llama3.3-70b:creative",
+    "research": "qwen3.5-35b:research",
+    "vision": "llama3.2-vision:reviewer"
+  }
+}
