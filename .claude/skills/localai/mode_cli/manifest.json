@@ -1,0 +1,41 @@
+{
+  "id": "mode_cli",
+  "name": "Mode CLI",
+  "version": "1.0.0",
+  "description": "CLI interface for managing ClaudeClockwork execution modes (default, adaptive, claude-min)",
+  "author": "ClaudeClockwork",
+  "user_invocable": true,
+  "skill_invocation_type": "slash_command",
+  "slash_command": "mode",
+  "parameters": [
+    {
+      "name": "action",
+      "type": "string",
+      "required": false,
+      "default": "get",
+      "description": "Action: list (show all modes), get (show current), set (change mode), info (detailed info)"
+    },
+    {
+      "name": "mode",
+      "type": "string",
+      "required": false,
+      "description": "Mode name for set action: default, adaptive, or claude-min"
+    }
+  ],
+  "metadata": {
+    "mode_requirements": {
+      "agent_type": "ollama",
+      "requires_mode": []
+    },
+    "category": "system",
+    "tags": ["mode", "cli", "agent-routing"],
+    "examples": [
+      "/mode - Get current mode",
+      "/mode list - Show all available modes",
+      "/mode set default - Switch to Pure Ollama mode",
+      "/mode set adaptive - Switch to Adaptive mode",
+      "/mode set claude-min - Switch to Claude Minimal mode",
+      "/mode info - Show detailed mode information"
+    ]
+  }
+}
