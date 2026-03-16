@@ -1,0 +1,5 @@
+{
+  "root": "./",
+  "output_path": "docs/<skill_name>_report.md",
+  "dry_run": true
+}
