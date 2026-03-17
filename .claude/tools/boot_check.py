@@ -241,6 +241,42 @@ def check_execution_consistency() -> tuple[bool, str]:
     except Exception as e:
         return False, f"[FAIL] Error checking execution consistency: {e}"
 
+def check_manifest_mode_drift(contract: dict) -> tuple[bool, str]:
+    """Verify all skill manifests have valid mode_requirements metadata."""
+    try:
+        from skill_registry import load_skill_registry
+        from manifest_loader import load_all_manifests
+        
+        skills = load_skill_registry(contract, Path(PROJECT_ROOT))
+        manifests = load_all_manifests(skills)
+        
+        errors = []
+        valid_types = {'claude', 'ollama', 'mixed', 'external'}
+        
+        for skill_id, (manifest, load_errors) in manifests.items():
+            if load_errors:
+                continue
+            metadata = manifest.get('metadata', {})
+            mode_req = metadata.get('mode_requirements')
+            if not mode_req:
+                errors.append(f"{skill_id}: missing mode_requirements")
+            elif mode_req.get('agent_type') not in valid_types:
+                agent_type = mode_req.get('agent_type')
+                errors.append(f"{skill_id}: unsupported agent_type '{agent_type}'")
+        
+        if errors:
+            msg = f"[FAIL] Manifest mode drift: {len(errors)} invalid\n"
+            for e in errors[:10]:
+                msg += f"  {e}\n"
+            msg += f"Summary: Fix {len(errors)} manifest(s)"
+            return False, msg
+        
+        return True, "[PASS] All manifests have valid mode_requirements"
+    except Exception as e:
+        return False, f"[FAIL] Mode drift check error: {e}"
+
+
+
 def main() -> int:
     print("=== Clockwork Boot Check (Contract-Aware) ===")
     print(f"Project root: {PROJECT_ROOT}")
@@ -300,6 +336,12 @@ def main() -> int:
 
     # Check 8: Manifest validity
     ok, msg = check_manifests(contract)
+    print(msg)
+    if not ok:
+        all_pass = False
+
+    # Check 13: Manifest mode drift
+    ok, msg = check_manifest_mode_drift(contract)
     print(msg)
     if not ok:
         all_pass = False
