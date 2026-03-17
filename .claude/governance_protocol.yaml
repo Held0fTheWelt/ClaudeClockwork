@@ -1,0 +1,111 @@
+governance_protocol:
+  roles:
+    - id: orchestrator
+      name: Orchestrator
+      description: Responsible for managing skills and agents, orchestrating workflows.
+      access_level: high
+      
+    - id: specialist
+      name: Specialist
+      description: Provides expertise in specific areas, executes skills as needed.
+      access_level: medium
+    
+    - id: critic
+      name: Critic
+      description: Evaluates reports and validates contracts to ensure compliance and accuracy.
+      access_level: medium
+
+    - id: worker
+      name: Worker
+      description: Executes tasks and writes reports based on skill execution.
+      access_level: low
+
+    - id: admin
+      name: Admin
+      description: Has full system access, capable of making all changes and approvals.
+      access_level: highest
+    
+    - id: read_only
+      name: Read Only
+      description: Can view all resources but cannot make any modifications.
+      access_level: lowest
+
+  permissions:
+    skills:
+      - read
+      - write
+      - execute
+      - delete
+      
+    config:
+      - read
+      - write
+      - validate
+      
+    agents:
+      - spawn
+      - terminate
+      - configure
+    
+    reports:
+      - read
+      - write
+      - archive
+
+    contracts:
+      - validate
+      - update
+
+  role_permissions:
+    orchestrator:
+      skills: [read, write, execute, delete]
+      config: [read, write, validate]
+      agents: [spawn, terminate, configure]
+
+    specialist:
+      skills: [read, execute]
+      config: [read]
+
+    critic:
+      reports: [read, archive]
+      contracts: [validate]
+
+    worker:
+      skills: [execute]
+      reports: [write]
+
+    admin:
+      skills: [read, write, execute, delete]
+      config: [read, write, validate]
+      agents: [spawn, terminate, configure]
+      reports: [read, write, archive]
+      contracts: [validate, update]
+
+    read_only:
+      skills: [read]
+      config: [read]
+      agents: []
+      reports: [read]
+      contracts: []
+
+  decision_protocols:
+    - description: Changes to system_contract.yaml require admin review.
+      responsible_role: admin
+    
+    - description: Skill registration requires validation gate.
+      approval_needed_by_roles:
+        - critic
+
+    - description: Agent escalation requires critic approval.
+      approval_needed_by_roles:
+        - critic
+
+  accountability:
+    action_logging:
+      - All actions logged with timestamp, agent, resource.
+
+    critical_changes:
+      - Critical changes require approval audit trail.
+
+    role_permission_validation:
+      - Regular validation of role-permission consistency is conducted to ensure alignment and compliance.

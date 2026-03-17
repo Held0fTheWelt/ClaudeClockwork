@@ -1,5 +1,5 @@
 {
-  "default_model": "qwen2.5-14b:agent",
-  "last_updated": "2026-03-17T00:02:00.253495",
+  "default_model": "qwen3.5-35b:research",
+  "last_updated": "2026-03-17T17:17:54.135703",
   "last_updated_by": "ollama_model_manager"
 }

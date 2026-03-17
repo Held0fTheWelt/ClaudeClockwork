@@ -1,0 +1,131 @@
+execution_framework:
+  agents:
+    orchestrator_agent:
+      id: agent-001
+      name: Orchestrator Agent
+      role: orchestrator
+      description: Coordinates and manages the execution of workflows.
+      max_concurrent_tasks: 5
+    specialist_agent:
+      id: agent-002
+      name: Specialist Agent
+      role: specialist
+      description: Handles specialized tasks with expertise in specific domains.
+      max_concurrent_tasks: 3
+    critic_agent:
+      id: agent-003
+      name: Critic Agent
+      role: critic
+      description: Reviews and provides feedback on task outputs.
+      max_concurrent_tasks: 4
+    worker_agent:
+      id: agent-004
+      name: Worker Agent
+      role: worker
+      description: Executes general tasks as part of workflows.
+      max_concurrent_tasks: 6
+  task_templates:
+    implementation:
+      id: template-001
+      name: Implementation Task
+      steps:
+      - Setup environment
+      - Develop feature
+      - Initial testing
+    review:
+      id: template-002
+      name: Review Task
+      steps:
+      - Code review
+      - Feedback loop
+    documentation:
+      id: template-003
+      name: Documentation Task
+      steps:
+      - Draft documentation
+      - Peer review
+    testing:
+      id: template-004
+      name: Testing Task
+      steps:
+      - Unit tests
+      - Integration tests
+      - System tests
+  workflow_definitions:
+    standard_implementation:
+      id: workflow-001
+      name: Standard Implementation Workflow
+      steps:
+      - implementation
+      - review
+    rapid_review:
+      id: workflow-002
+      name: Rapid Review Workflow
+      steps:
+      - review
+    full_validation:
+      id: workflow-003
+      name: Full Validation Workflow
+      steps:
+      - implementation
+      - testing
+  quality_gates:
+    code_review:
+      id: gate-001
+      name: Code Review Quality Gate
+      required: true
+      threshold: 90
+      enabled: true
+    test_coverage:
+      id: gate-002
+      name: Test Coverage Quality Gate
+      required: true
+      threshold: 80
+      enabled: true
+    documentation:
+      id: gate-003
+      name: Documentation Quality Gate
+      required: false
+      threshold: 70
+      enabled: true
+    security_scan:
+      id: gate-004
+      name: Security Scan Quality Gate
+      required: true
+      threshold: 95
+      enabled: true
+    performance_check:
+      id: gate-005
+      name: Performance Check Quality Gate
+      required: false
+      threshold: 85
+      enabled: true
+  performance_budgets:
+    implementation:
+      token_budget: 8000
+      time_budget_seconds: 3600
+      max_parallel_tasks: 2
+      max_memory_mb: 1024
+    review:
+      token_budget: 4000
+      time_budget_seconds: 1800
+      max_parallel_tasks: 1
+      max_memory_mb: 512
+    documentation:
+      token_budget: 3000
+      time_budget_seconds: 1200
+      max_parallel_tasks: 1
+      max_memory_mb: 256
+  logging_configuration:
+    log_level: info
+    log_destinations:
+    - file
+    - console
+    log_retention_days: 30
+    log_retention_max_size_mb: 500
+    capture:
+    - timestamps
+    - agent_id
+    - task_id
+    - resource_usage
+    - errors
