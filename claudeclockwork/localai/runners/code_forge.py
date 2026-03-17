@@ -27,7 +27,7 @@ class CodeForgeRunner(BaseRunner):
         Run code.forge capability.
 
         Args:
-            inputs: Request dict
+            inputs: Dict with keys: plan, request, output_dir
 
         Returns:
             Contract-shaped result dict
@@ -43,7 +43,11 @@ class CodeForgeRunner(BaseRunner):
             }
 
         try:
-            result = self._capability.forge(inputs)
+            plan = inputs.get("plan", {})
+            request = inputs.get("request", {})
+            output_dir = inputs.get("output_dir", "/tmp/forge_output")
+
+            result = self._capability.forge(plan, request, output_dir)
             return {
                 "status": "ok",
                 "capability": "code.forge",
