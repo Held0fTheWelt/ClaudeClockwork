@@ -5,12 +5,29 @@
   "category": "kb",
   "description": "Search knowledge base; returns path, snippet, score with citations.",
   "entrypoint": "skills.kb.search.skill:KbSearchSkill",
-  "permissions": ["repo:read"],
+  "permissions": [
+    "repo:read"
+  ],
   "aliases": [],
-  "tags": ["kb", "search"],
+  "tags": [
+    "kb",
+    "search"
+  ],
   "enabled": true,
   "trust_level": "local",
-  "inputs": { "query": {}, "top_k": {} },
+  "inputs": {
+    "query": {},
+    "top_k": {}
+  },
   "outputs": {},
-  "metadata": { "legacy_bridge": false }
+  "metadata": {
+    "legacy_bridge": false,
+    "mode_requirements": {
+      "requires_mode": [
+        "default",
+        "adaptive"
+      ],
+      "agent_type": "ollama"
+    }
+  }
 }
