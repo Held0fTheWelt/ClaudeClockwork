@@ -41,10 +41,41 @@ HELLO_WORLD_PROMPT = (
     "Just the function body, no imports needed."
 )
 
+# Detect environment and get appropriate Ollama URL
+def get_ollama_url_for_environment():
+    """Get Windows native Ollama URL appropriate for current environment (Windows or WSL)."""
+    import socket
+    import os
+
+    # Detect if running in WSL
+    try:
+        with open("/proc/version") as f:
+            is_wsl = "microsoft" in f.read().lower()
+    except:
+        is_wsl = False
+
+    if is_wsl:
+        # In WSL: prefer Windows gateway (172.22.128.1) to reach Windows native Ollama
+        try:
+            sock = socket.create_connection(("172.22.128.1", 11434), timeout=2)
+            sock.close()
+            return "http://172.22.128.1:11434"
+        except:
+            pass
+
+    # Not in WSL, or Windows gateway unavailable: try localhost
+    try:
+        sock = socket.create_connection(("127.0.0.1", 11434), timeout=2)
+        sock.close()
+        return "http://127.0.0.1:11434"
+    except:
+        # Fallback to SSOT canonical
+        return "http://127.0.0.1:11434"
+
 # Load canonical config
 try:
     config = LocalOllamaRuntimeConfig.load()
-    OLLAMA_BASE_URL = LocalOllamaRuntimeConfig.get_base_url()
+    OLLAMA_BASE_URL = get_ollama_url_for_environment()
     DEFAULT_MODEL = LocalOllamaRuntimeConfig.get_default_model()
     FALLBACK_MODEL = LocalOllamaRuntimeConfig.get_fallback_model()
     CONNECT_TIMEOUT = LocalOllamaRuntimeConfig.get_timeout("connect")

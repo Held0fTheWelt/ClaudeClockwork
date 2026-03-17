@@ -20,6 +20,7 @@ import json
 import urllib.request
 import urllib.error
 import time
+import socket
 from pathlib import Path
 
 # Add repo root to path
@@ -33,10 +34,27 @@ except ImportError as e:
     print(f"[ERROR] Cannot import LocalOllamaRuntimeConfig: {e}", file=sys.stderr)
     sys.exit(1)
 
+# Detect environment and get appropriate Ollama URL
+def get_ollama_url_for_environment():
+    """Get Windows native Ollama URL for current environment (Windows or WSL)."""
+    try:
+        # Try localhost first (works from Windows)
+        sock = socket.create_connection(("127.0.0.1", 11434), timeout=2)
+        sock.close()
+        return "http://127.0.0.1:11434"
+    except:
+        try:
+            # If localhost fails, try Windows gateway (from WSL)
+            sock = socket.create_connection(("172.22.128.1", 11434), timeout=2)
+            sock.close()
+            return "http://172.22.128.1:11434"
+        except:
+            return "http://127.0.0.1:11434"  # fallback to SSOT canonical
+
 # Load canonical config
 try:
     config = LocalOllamaRuntimeConfig.load()
-    BASE_URL = LocalOllamaRuntimeConfig.get_base_url()
+    BASE_URL = get_ollama_url_for_environment()
     DEFAULT_MODEL = LocalOllamaRuntimeConfig.get_default_model()
     FALLBACK_MODEL = LocalOllamaRuntimeConfig.get_fallback_model()
     CONNECT_TIMEOUT = LocalOllamaRuntimeConfig.get_timeout("connect")
