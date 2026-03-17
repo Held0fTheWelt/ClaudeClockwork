@@ -8,7 +8,8 @@
       "Bash(git commit -m \"feat: hardened mode enforcement with comprehensive tests:*)",
       "Bash(python3 -m pytest tests/test_mode_enforcement.py tests/test_mode_system.py -v --tb=short)",
       "Bash(python3 -m pytest tests/test_mode_system.py::TestSkillForgeRunManifestIntegration -xvs)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(git commit:*)"
     ]
   },
   "planning": {

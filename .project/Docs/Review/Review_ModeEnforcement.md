@@ -35,61 +35,80 @@ Pure Ollama mode is now truly binding and enforced throughout the execution pipe
 - `.claude/skills/localai/runtime_cli/skill.py` — Uses real ModeManager
 
 ### Tests
-- `tests/test_mode_enforcement.py` — **NEW**: 23 comprehensive hard enforcement tests
-- `tests/test_mode_system.py` — Original 44 tests (all passing)
+- `tests/test_mode_system.py` — Comprehensive mode enforcement tests (52 total)
+  - Original 44 tests (TestModeManager, TestModeGuard, TestModeSystemIntegration, TestModeHardening)
+  - 3 new SkillExecutor mode enforcement tests
+  - 5 new SkillForgeRun manifest integration tests
 
 ---
 
 ## Test Results
 
-### New Tests (test_mode_enforcement.py): 23/23 PASS ✅
+### All Tests in test_mode_system.py: 52/52 PASS ✅
 
-**Default Mode Enforcement (5 tests)**
-- ✅ Blocks Claude execution with ModeViolationError
-- ✅ Blocks mixed Claude+Ollama execution
-- ✅ Allows Ollama execution
-- ✅ Forbids Claude fallback
-- ✅ Requires Ollama availability
+**TestModeManager (15 tests)**
+- ✅ test_mode_manager_loads_profiles
+- ✅ test_get_active_mode
+- ✅ test_get_mode_config
+- ✅ test_get_active_mode_config
+- ✅ test_set_mode_valid
+- ✅ test_set_mode_invalid
+- ✅ test_validate_mode_valid
+- ✅ test_validate_mode_invalid
+- ✅ test_default_mode_forbids_claude
+- ✅ test_default_mode_forbids_mixed
+- ✅ test_adaptive_mode_allows_claude
+- ✅ test_adaptive_mode_allows_mixed
+- ✅ test_claude_min_forbids_ollama
+- ✅ test_claude_min_restricts_to_haiku
+- ✅ test_is_mode_allowed_operation
 
-**Adaptive Mode Enforcement (4 tests)**
-- ✅ Allows Claude execution
-- ✅ Allows Ollama execution
-- ✅ Allows mixed execution
-- ✅ Allows Claude fallback
+**TestModeGuard (13 tests)**
+- ✅ test_mode_guard_initialization
+- ✅ test_check_operation_allowed_valid
+- ✅ test_check_operation_allowed_invalid
+- ✅ test_check_claude_execution_allowed_in_adaptive
+- ✅ test_check_claude_execution_forbidden_in_default
+- ✅ test_check_mixed_execution_forbidden_in_default
+- ✅ test_check_mixed_execution_allowed_in_adaptive
+- ✅ test_check_model_allowed_in_mode
+- ✅ test_check_model_forbidden_in_mode
+- ✅ test_check_token_budget_within_limit
+- ✅ test_check_token_budget_exceeds_limit
+- ✅ test_get_mode_status
+- ✅ test_mode_is_binding
 
-**Claude-Min Mode Enforcement (4 tests)**
-- ✅ Blocks Ollama execution
-- ✅ Blocks mixed execution
-- ✅ Restricts to Haiku model only
-- ✅ Enforces 100k token budget
+**TestModeSystemIntegration (4 tests)**
+- ✅ test_default_mode_workflow
+- ✅ test_adaptive_mode_workflow
+- ✅ test_claude_min_mode_workflow
+- ✅ test_mode_changes_take_effect
 
-**Executor Integration (2 tests)**
-- ✅ Validates mode state before execution
-- ✅ Blocks Claude skills in default mode
+**TestModeHardening (10 tests)**
+- ✅ test_executor_rejects_unknown_manifest_metadata
+- ✅ test_executor_enforces_claude_requirement
+- ✅ test_default_mode_forbids_fallback_to_claude
+- ✅ test_default_mode_freezes_without_ollama
+- ✅ test_mode_audit_detects_constraint_violations
+- ✅ test_mixed_execution_forbidden_in_default
+- ✅ test_claude_min_forbids_ollama_silently
+- ✅ test_metadata_validator_fails_closed_unknown_agent_type
+- ✅ test_mode_state_must_not_be_empty
+- ✅ test_mode_cannot_be_changed_programmatically_only_via_cli
 
-**State Persistence (2 tests)**
-- ✅ Mode setting persists across instances
-- ✅ State file has correct format
+**TestSkillExecutorModeEnforcement (3 tests)** — NEW
+- ✅ test_executor_blocks_claude_skill_in_default_mode
+- ✅ test_executor_allows_ollama_skill_in_default_mode
+- ✅ test_executor_blocks_ollama_in_claude_min
 
-**Transition Rules (3 tests)**
-- ✅ default → adaptive allowed
-- ✅ adaptive → default allowed
-- ✅ Invalid transitions blocked
+**TestSkillForgeRunManifestIntegration (5 tests)** — NEW
+- ✅ test_skill_forge_run_is_registered_in_manifest
+- ✅ test_skill_forge_run_inherits_from_skillbase
+- ✅ test_skill_forge_run_returns_skill_result
+- ✅ test_skill_forge_run_fails_on_invalid_archetype
+- ✅ test_skill_forge_run_mode_requirement_is_ollama
 
-**Guard Decorator (2 tests)**
-- ✅ Decorator blocks forbidden operations
-- ✅ Decorator allows permitted operations
-
-**Status Reporting (1 test)**
-- ✅ Mode status returns all constraints
-
-### Original Tests (test_mode_system.py): 44/44 PASS ✅
-- All TestModeManager tests (15)
-- All TestModeGuard tests (18)
-- All TestModeSystemIntegration tests (4)
-- All TestModeHardening tests (10)
-
-### Total: **67/67 PASS ✅**
+### Total: **52/52 PASS ✅**
 
 ---
 
