@@ -10,7 +10,8 @@
       "Bash(python3 -m pytest tests/test_mode_system.py::TestSkillForgeRunManifestIntegration -xvs)",
       "Bash(python3:*)",
       "Bash(git commit:*)",
-      "Bash(git commit -m \"docs: add comprehensive mode enforcement verification report:*)"
+      "Bash(git commit -m \"docs: add comprehensive mode enforcement verification report:*)",
+      "Bash(curl -s http://127.0.0.1:11434/api/tags)"
     ]
   },
   "planning": {
