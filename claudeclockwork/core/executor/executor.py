@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from dataclasses import asdict
+
 from claudeclockwork.core.models.execution_context import ExecutionContext
 from claudeclockwork.core.models.skill_result import SkillResult
 from claudeclockwork.core.registry.skill_registry import SkillRegistry
@@ -56,7 +58,8 @@ class SkillExecutor:
             return SkillResult(False, skill_id, error="Skill not found")
 
         # GATE 2: Validate manifest has required mode metadata (fail closed)
-        metadata_valid, metadata_errors = self.mode_validator.validate_skill_manifest(manifest)
+        manifest_dict = asdict(manifest)
+        metadata_valid, metadata_errors = self.mode_validator.validate_skill_manifest(manifest_dict)
         if not metadata_valid:
             return SkillResult(
                 False,
@@ -66,7 +69,7 @@ class SkillExecutor:
 
         # GATE 3: Check if skill is compatible with active mode
         try:
-            mode_requirements = manifest.get("metadata", {}).get("mode_requirements", {})
+            mode_requirements = manifest.metadata.get("mode_requirements", {})
             agent_type = mode_requirements.get("agent_type")
 
             if agent_type == "claude":

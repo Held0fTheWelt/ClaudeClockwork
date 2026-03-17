@@ -12,5 +12,10 @@
   },
   "experiment": {
     "max_per_run": 3
+  },
+  "permissions": {
+    "allow": [
+      "Bash(find /mnt/d/ClaudeClockwork -name *skill_forge* -type f)"
+    ]
   }
 }

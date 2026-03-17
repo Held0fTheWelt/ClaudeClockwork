@@ -1,0 +1,12 @@
+{
+  "type": "skill_result_spec",
+  "request_id": "cleanup-001",
+  "skill_id": "skill_forge_run",
+  "status": "fail",
+  "outputs": {},
+  "errors": [
+    "Skill mode metadata error: Skill None missing mode_requirements. Unknown skills default to requiring explicit mode declaration."
+  ],
+  "warnings": [],
+  "metrics": {}
+}

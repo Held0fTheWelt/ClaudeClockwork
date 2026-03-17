@@ -1,7 +1,10 @@
 {
+  "id": "localai_run",
   "name": "localai_run",
   "version": "1.0.0",
+  "category": "localai",
   "description": "Run LocalAI runtime capabilities: text embedding, audio transcription, and code generation (plan, forge, review, validate)",
+  "entrypoint": "skills.localai.localai_run.skill:LocalaiRunSkill",
   "author": "ClaudeClockwork",
   "tags": ["localai", "runtime", "embedding", "asr", "code-generation"],
   "interface": {

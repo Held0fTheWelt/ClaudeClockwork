@@ -1,8 +1,10 @@
 {
   "id": "runtime_cli",
-  "name": "Runtime CLI",
+  "name": "runtime_cli",
   "version": "1.0.0",
+  "category": "system",
   "description": "CLI interface for managing ClaudeClockwork execution runtimes (default, adaptive, claude-min)",
+  "entrypoint": "skills.localai.runtime_cli.skill:RuntimeCliSkill",
   "author": "ClaudeClockwork",
   "user_invocable": true,
   "skill_invocation_type": "slash_command",

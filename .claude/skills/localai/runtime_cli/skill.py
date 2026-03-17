@@ -11,10 +11,9 @@ class RuntimeCliSkill(SkillBase):
     """CLI interface for mode management."""
 
     def run(self, context: ExecutionContext, **kwargs) -> SkillResult:
-        root = kwargs.get("root") or context.working_directory
         action = (kwargs.get("action") or "menu").strip().lower()
         runtime = (kwargs.get("runtime") or "").strip().lower()
-        manager = ModeManager(project_root=Path(root))
+        manager = ModeManager()
 
         # If no action or action is "menu", show interactive menu
         if action == "menu" or action == "":

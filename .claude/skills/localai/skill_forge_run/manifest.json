@@ -1,7 +1,10 @@
 {
+  "id": "skill_forge_run",
   "name": "skill_forge_run",
   "version": "1.0.0",
+  "category": "localai",
   "description": "Orchestrate the full skill-forge pipeline (code.plan -> code.forge -> code.review -> code.validate)",
+  "entrypoint": "skills.localai.skill_forge_run.skill:SkillForgeRun",
   "author": "ClaudeClockwork",
   "tags": ["forge", "code-generation", "pipeline", "localai"],
   "interface": {

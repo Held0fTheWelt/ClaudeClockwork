@@ -1,8 +1,10 @@
 {
   "id": "mode_cli",
-  "name": "Mode CLI",
+  "name": "mode_cli",
   "version": "1.0.0",
+  "category": "system",
   "description": "CLI interface for managing ClaudeClockwork execution modes (default, adaptive, claude-min)",
+  "entrypoint": "skills.localai.mode_cli.skill:ModeCliSkill",
   "author": "ClaudeClockwork",
   "user_invocable": true,
   "skill_invocation_type": "slash_command",
