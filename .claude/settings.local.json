@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(find /mnt/d/ClaudeClockwork -name *skill_forge* -type f)",
+      "Bash(python3 -m pytest tests/test_mode_enforcement.py -v)",
+      "Bash(python3 -m pytest tests/test_mode_system.py -v)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"feat: hardened mode enforcement with comprehensive tests:*)"
+    ]
+  },
   "planning": {
     "max_plan_tasks_default": 12,
     "max_plan_tasks": 12
@@ -12,10 +21,5 @@
   },
   "experiment": {
     "max_per_run": 3
-  },
-  "permissions": {
-    "allow": [
-      "Bash(find /mnt/d/ClaudeClockwork -name *skill_forge* -type f)"
-    ]
   }
 }

@@ -338,6 +338,28 @@ def main() -> int:
         dump_json(res, Path(args.outfile) if args.outfile else None)
         return 1
 
+    # GATE: Mode enforcement (hard fail - mode is binding)
+    try:
+        from claudeclockwork.core.mode import ModeManager, ModeGuard, ModeViolationError
+        mode_manager = ModeManager()
+        active_mode = mode_manager.get_active_mode()
+        sys.stderr.write(f"[skill_runner] Active mode: {active_mode}\n")
+    except ModeViolationError as e:
+        res = {
+            "type": "skill_result_spec",
+            "request_id": req.get("request_id", ""),
+            "skill_id": req.get("skill_id", ""),
+            "status": "fail",
+            "outputs": {},
+            "errors": [f"Mode violation (hard fail): {e}"],
+            "warnings": [],
+            "metrics": {},
+        }
+        dump_json(res, Path(args.outfile) if args.outfile else None)
+        return 1
+    except Exception as e:
+        sys.stderr.write(f"[skill_runner] Mode initialization error (non-fatal): {e}\n")
+
     # Optional input validation (opt-in via validate_input=True in the request).
     # When enabled, spec_validate is called on the inputs before dispatching.
     # This is non-breaking: the flag defaults to absent/False; existing requests

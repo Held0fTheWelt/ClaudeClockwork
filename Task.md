@@ -1,69 +1,117 @@
-You are Claude running inside ClaudeClockwork.
+You are Claude running Claude angents inside ClaudeClockwork.
 
 Mission:
-Run the repo from MVP Phase 72 onward (72 → 73 → 74 → 75). Fix all drift issues and prove each phase is complete by running the required gates. After each phase, create a git commit with a clear message and a short summary of evidence.
+Repair the Ollama-only execution kernel so that pure LocalAI work can actually run through the intended guarded path.
 
-Hard rules:
-- English only for all project-facing artifacts (docs, rules, prompts, code comments).
-- Repo-local only. Do not reference external repos or paths.
-- Deterministic changes only (stable ordering, seeded where needed, no timestamps in committed artifacts unless explicitly required).
-- Never proceed to the next phase unless the current phase is fully green.
-- After each phase, run the gate suite for scope MVP18+ (or the closest available “green suite”), and ensure it is green.
-- Commit after each completed phase. Do not bundle multiple phases into one commit.
+Scope:
+Fix only the narrow kernel issues below.
+Do not broaden the task.
+Do not redesign unrelated systems.
+Do not touch docs except where strictly necessary to reflect the repaired behavior.
+Do not implement new features beyond what is required to make the existing mode/runtime path work correctly.
 
-Before you start:
-- Confirm you are in the correct repo root.
-- Ensure you can run git commands locally (status, diff, commit).
-- Do not commit runtime artifacts. Only commit curated docs/code/config.
+Repository:
+D:\ClaudeClockwork
 
-Global execution loop (repeat per phase):
-1) Read the MVP document for the phase (mvps/MVP_PhaseXX_*.md).
-2) Implement exactly what it requires (minimal changes).
-3) Run the required gates:
-   - qa_gate (MVP18+ scope, if supported)
-   - planning_drift_scan
-   - release_check
-   - docs link-lint
-   - report policy gate
-   - report redaction / doc path leak gate
-   - runtime root gate
-   - any new phase-specific gate (e.g., validation_artifact_gate, doc_policy_consistency_gate)
-4) Collect evidence:
-   - Save gate outputs (as short summaries) into `Docs/phaseXX_completion_report.md`
-   - Update `Docs/drift_register.md` when the phase requires it
-5) Git commit:
-   - `git status` must show only intended changes
-   - Commit message format:
-     - "Phase XX: <short title>"
-   - Commit body must include:
-     - key files changed
-     - gates run + pass summary
-6) Only then continue to the next phase.
+Critical constraints:
+- Work only in D:\ClaudeClockwork
+- Do not use or create project-local .claude folders in other repos
+- Do not bypass the system by doing the task directly
+- Do not create ad-hoc helper scripts as a substitute for fixing the runtime path
+- Do not use Claude subagents for implementation
+- Commit after each completed repair step with descriptive commit messages
 
-Phase 72 — Version Sync Automation
-- Enforce SSOT for versioning (recommended: `.claude/VERSION`).
-- Implement `clockwork version sync` (or equivalent) OR remove the mirror file cleanly.
-- Tighten gates so drift cannot pass.
-- Update `Docs/versioning.md` and `Docs/drift_register.md` accordingly.
-- Verify: `VERSION` and `.claude/VERSION` cannot drift without gates failing.
+Repair only these kernel defects:
 
-Phase 73 — Validation Artifacts: Placement + Redaction Fix
-- Decide policy for `validation_runs/` and `validation_runs_redacted/` (runtime-only preferred).
-- Remove absolute host paths from any redacted manifests (placeholders only).
-- Add `validation_artifact_gate` and tests.
-- Ensure the repo does not commit runtime validation artifacts unintentionally.
+1) Add missing mode metadata for manifest skills
+Problem:
+The guarded manifest path rejects key LocalAI skills because metadata.mode_requirements is missing.
 
-Phase 74 — Performance Policy Convergence
-- Make `.claude-performance/README.md` fully consistent with curated-only `.report/`.
-- Add `doc_policy_consistency_gate` + tests.
-- Ensure no docs instruct writing runtime outputs into `.report/*`.
+Required fixes:
+- Patch .claude/skills/localai/skill_forge_run/manifest.json
+- Patch .claude/skills/localai/localai_run/manifest.json
 
-Phase 75 — Re-run Phase 66 (Green Run Certificate)
-- Update green criteria to include Phase 72–74 gates.
-- Re-run the full MVP18+ green suite.
-- Export a strict redacted evidence bundle (no host paths).
-- Generate `Docs/green_run_certificate.md` in a stable format.
+Requirements:
+- Add valid metadata.mode_requirements
+- Ensure the declarations match intended LocalAI usage
+- These skills must pass ModeMetadataValidator on the official manifest path
+- Do not weaken validation logic globally just to make them pass
 
-Stop condition:
-- If any gate fails, fix the cause within the current phase until all required gates pass.
-- Do not advance and do not commit until the phase is fully green.
+2) Point skill_forge_run at the real implementation
+Problem:
+The active manifest entrypoint for skill_forge_run points at the stub implementation in .claude/... instead of the more complete implementation in claudeclockwork/localai/skills/skill_forge_run.py
+
+Required fixes:
+- Inspect both implementations:
+  - .claude/skills/localai/skill_forge_run/skill.py
+  - claudeclockwork/localai/skills/skill_forge_run.py
+- Make the manifest-backed execution path use the real implementation
+
+Requirements:
+- Prefer correcting the manifest entrypoint or consolidating to one canonical implementation
+- Remove or neutralize the stub path so it cannot silently be used again
+- Do not keep two divergent active implementations
+- Final behavior must execute the real LocalAI pipeline or fail honestly
+
+3) Make skill_forge_run non-stub in practice
+Problem:
+Current active behavior ends in partial_success placeholder behavior instead of real execution.
+
+Required fixes:
+- Ensure skill_forge_run actually runs the intended staged LocalAI flow
+- Ensure it does not return fake success or placeholder partial success
+- If a required stage is unavailable, fail explicitly with a real error
+- Publish behavior must be honest and based on actual outputs
+
+Requirements:
+- No fake temp workspace success path
+- No placeholder final_status
+- No “looks implemented” surface with non-executing core
+
+4) Make localai_run usable through the guarded manifest path
+Problem:
+localai_run currently fails mode metadata validation on the official path.
+
+Required fixes:
+- Ensure localai_run is manifest-valid
+- Ensure it executes through the real bridge/runtime path under mode enforcement
+- Ensure it does not bypass mode checks
+
+5) Keep mode enforcement intact
+Problem:
+The goal is not to weaken the guard, but to make the intended LocalAI skills compliant.
+
+Requirements:
+- Do not disable ModeMetadataValidator
+- Do not add broad fallback exceptions
+- Do not make unknown or underspecified skills auto-pass
+- Preserve the hard contract that mode declarations are required
+
+6) Add narrow regression tests
+Add focused tests only for the repaired kernel behavior.
+
+Must prove:
+- skill_forge_run manifest metadata is accepted by the validator
+- localai_run manifest metadata is accepted by the validator
+- skill_forge_run resolves to the intended non-stub implementation
+- invoking skill_forge_run through the official skill runner / bridge path does not return placeholder partial_success
+- invoking localai_run through the official guarded path works or fails honestly
+- default mode still enforces the guarded LocalAI path rather than weakening checks
+
+7) Verification
+At the end, report only:
+- changed files
+- what was repaired
+- exact tests run
+- test results
+- one concrete proof that skill_forge_run now uses the real implementation
+- one concrete proof that localai_run now passes the guarded manifest path
+
+Definition of done:
+- skill_forge_run manifest has valid mode metadata
+- localai_run manifest has valid mode metadata
+- skill_forge_run no longer routes to the stub implementation
+- skill_forge_run executes a real LocalAI path or fails honestly
+- localai_run executes through the official guarded manifest path
+- validation remains strict
+- regression tests prove the repaired kernel behavior

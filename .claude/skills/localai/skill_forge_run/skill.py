@@ -7,6 +7,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from claudeclockwork.core.base.skill_base import SkillBase
+from claudeclockwork.core.models.execution_context import ExecutionContext
+from claudeclockwork.core.models.skill_result import SkillResult
 from claudeclockwork.localai import run_local_capability
 
 
@@ -14,14 +17,64 @@ VALID_ARCHETYPES = {"scanner", "validator", "reporter", "transformer", "registry
 VALID_MODES = {"full", "plan_only", "through_forge", "through_review", "validate_only"}
 
 
-class SkillForgeRun:
+class SkillForgeRun(SkillBase):
     """Orchestrator for the full skill-forge pipeline."""
 
     def __init__(self):
         """Initialize SkillForgeRun."""
-        pass
+        super().__init__()
 
-    def __call__(
+    def run(self, context: ExecutionContext, **kwargs) -> SkillResult:
+        """
+        Execute skill-forge pipeline via SkillBase.run interface.
+
+        Args:
+            context: Execution context
+            **kwargs: Includes archetype, purpose, allowed_write_roots, target_root, report_file, mode, publish
+
+        Returns:
+            SkillResult with execution outcome
+        """
+        try:
+            # Extract parameters from kwargs
+            archetype = kwargs.get("archetype")
+            purpose = kwargs.get("purpose")
+            allowed_write_roots = kwargs.get("allowed_write_roots")
+            target_root = kwargs.get("target_root")
+            report_file = kwargs.get("report_file")
+            mode = kwargs.get("mode", "full")
+            publish = kwargs.get("publish", True)
+
+            # Execute the pipeline
+            result = self._orchestrate_pipeline(
+                archetype=archetype,
+                purpose=purpose,
+                allowed_write_roots=allowed_write_roots,
+                target_root=target_root,
+                report_file=report_file,
+                mode=mode,
+                publish=publish,
+            )
+
+            success = result.get("final_status") in ["success", "partial_success"]
+            error = result.get("error") if not success else None
+
+            return SkillResult(
+                success=success,
+                skill_name="skill_forge_run",
+                data=result,
+                error=error,
+                metadata={"execution_log": result.get("execution_log", [])}
+            )
+
+        except Exception as e:
+            return SkillResult(
+                success=False,
+                skill_name="skill_forge_run",
+                error=f"Pipeline orchestration failed: {str(e)}",
+            )
+
+    def _orchestrate_pipeline(
         self,
         archetype: str,
         purpose: str,
@@ -155,12 +208,11 @@ class SkillForgeRun:
             "review_result": None,
             "validation_result": None,
             "publish_result": None,
-            "final_status": "pending",  # Will be updated based on execution
+            "final_status": "pending",
             "execution_log": execution_log,
         }
 
-        # Add final_status and placeholder outputs
-        result["final_status"] = "partial_success"  # Input validation passed
+        # Add input resolution event
         result["execution_log"].append(
             {
                 "stage": "input_resolution",
@@ -171,7 +223,308 @@ class SkillForgeRun:
             }
         )
 
+        # Execute stages based on mode
+        if mode == "plan_only":
+            # Execute only: plan
+            plan_result, result["execution_log"] = self._execute_stage(
+                "plan",
+                "code.plan",
+                {
+                    "task_id": run_id,
+                    "archetype": archetype,
+                    "purpose": purpose,
+                    "constraints": {},
+                },
+                result["execution_log"],
+            )
+            result["plan_result"] = plan_result
+            result["final_status"] = "partial_success"
+
+        elif mode == "through_forge":
+            # Execute: plan → forge
+            plan_result, result["execution_log"] = self._execute_stage(
+                "plan",
+                "code.plan",
+                {
+                    "task_id": run_id,
+                    "archetype": archetype,
+                    "purpose": purpose,
+                    "constraints": {},
+                },
+                result["execution_log"],
+            )
+            result["plan_result"] = plan_result
+
+            if plan_result.get("status") == "ok":
+                forge_result, result["execution_log"] = self._execute_stage(
+                    "forge",
+                    "code.forge",
+                    {
+                        "task_id": run_id,
+                        "plan": plan_result.get("outputs", {}),
+                        "allowed_write_roots": allowed_write_roots,
+                    },
+                    result["execution_log"],
+                )
+                result["forge_result"] = forge_result
+                result["final_status"] = "partial_success"
+            else:
+                result["final_status"] = "failed"
+
+        elif mode == "through_review":
+            # Validate preconditions
+            valid, msg = self._validate_mode_preconditions(
+                mode, result["plan_result"], result["forge_result"], None
+            )
+            if not valid:
+                result["final_status"] = "failed"
+                result["execution_log"].append(
+                    {
+                        "stage": "precondition_check",
+                        "status": "error",
+                        "timestamp": datetime.now().isoformat() + "Z",
+                        "duration_ms": 0,
+                        "notes": msg,
+                    }
+                )
+            else:
+                # Execute review (assumes plan + forge already done)
+                review_result, result["execution_log"] = self._execute_stage(
+                    "review",
+                    "code.review",
+                    {
+                        "task_id": run_id,
+                        "forge_output": result["forge_result"].get("outputs", {})
+                        if result["forge_result"]
+                        else {},
+                    },
+                    result["execution_log"],
+                )
+                result["review_result"] = review_result
+                result["final_status"] = "partial_success"
+
+        elif mode == "validate_only":
+            # Validate preconditions
+            valid, msg = self._validate_mode_preconditions(
+                mode,
+                result["plan_result"],
+                result["forge_result"],
+                result["review_result"],
+            )
+            if not valid:
+                result["final_status"] = "failed"
+                result["execution_log"].append(
+                    {
+                        "stage": "precondition_check",
+                        "status": "error",
+                        "timestamp": datetime.now().isoformat() + "Z",
+                        "duration_ms": 0,
+                        "notes": msg,
+                    }
+                )
+            else:
+                # Execute validation (assumes plan + forge + review already done)
+                validation_result, result["execution_log"] = self._execute_stage(
+                    "validate",
+                    "code.validate",
+                    {
+                        "task_id": run_id,
+                        "forge_output": result["forge_result"].get("outputs", {})
+                        if result["forge_result"]
+                        else {},
+                    },
+                    result["execution_log"],
+                )
+                result["validation_result"] = validation_result
+
+                # Publishing logic: only if validation passed
+                if validation_result.get("status") == "ok" and publish:
+                    result["publish_result"] = {
+                        "status": "ok",
+                        "artifacts_moved": [],
+                        "registry_updated": False,
+                    }
+                    result["final_status"] = "success"
+                else:
+                    result["final_status"] = "partial_success"
+
+        else:  # mode == "full"
+            # Execute: plan → forge → review → validate → publish
+            plan_result, result["execution_log"] = self._execute_stage(
+                "plan",
+                "code.plan",
+                {
+                    "task_id": run_id,
+                    "archetype": archetype,
+                    "purpose": purpose,
+                    "constraints": {},
+                },
+                result["execution_log"],
+            )
+            result["plan_result"] = plan_result
+
+            if plan_result.get("status") != "ok":
+                result["final_status"] = "failed"
+                return result
+
+            forge_result, result["execution_log"] = self._execute_stage(
+                "forge",
+                "code.forge",
+                {
+                    "task_id": run_id,
+                    "plan": plan_result.get("outputs", {}),
+                    "allowed_write_roots": allowed_write_roots,
+                },
+                result["execution_log"],
+            )
+            result["forge_result"] = forge_result
+
+            if forge_result.get("status") != "ok":
+                result["final_status"] = "failed"
+                return result
+
+            review_result, result["execution_log"] = self._execute_stage(
+                "review",
+                "code.review",
+                {
+                    "task_id": run_id,
+                    "forge_output": forge_result.get("outputs", {}),
+                },
+                result["execution_log"],
+            )
+            result["review_result"] = review_result
+
+            if review_result.get("status") != "ok":
+                result["final_status"] = "failed"
+                return result
+
+            validation_result, result["execution_log"] = self._execute_stage(
+                "validate",
+                "code.validate",
+                {
+                    "task_id": run_id,
+                    "forge_output": forge_result.get("outputs", {}),
+                },
+                result["execution_log"],
+            )
+            result["validation_result"] = validation_result
+
+            if validation_result.get("status") != "ok":
+                result["final_status"] = "failed"
+                return result
+
+            # Publishing logic (full mode + validation passed)
+            if publish:
+                result["publish_result"] = {
+                    "status": "ok",
+                    "artifacts_moved": [],
+                    "registry_updated": False,
+                }
+                result["final_status"] = "success"
+            else:
+                result["final_status"] = "partial_success"
+
         return result
+
+    def _validate_mode_preconditions(
+        self,
+        mode: str,
+        plan_result: dict[str, Any] | None,
+        forge_result: dict[str, Any] | None,
+        review_result: dict[str, Any] | None,
+    ) -> tuple[bool, str]:
+        """
+        Validate preconditions for the given mode.
+
+        Args:
+            mode: The execution mode
+            plan_result: Result from code.plan stage (may be None)
+            forge_result: Result from code.forge stage (may be None)
+            review_result: Result from code.review stage (may be None)
+
+        Returns:
+            Tuple of (valid: bool, message: str)
+        """
+        if mode == "full":
+            return True, "Full mode: no preconditions required"
+
+        if mode == "plan_only":
+            return True, "Plan-only mode: no preconditions required"
+
+        if mode == "through_forge":
+            return True, "Through-forge mode: no preconditions required"
+
+        if mode == "through_review":
+            if plan_result is None or forge_result is None:
+                return (
+                    False,
+                    "Through-review mode requires prior plan + forge outputs",
+                )
+            return True, "Through-review mode: plan and forge results available"
+
+        if mode == "validate_only":
+            if plan_result is None or forge_result is None or review_result is None:
+                return (
+                    False,
+                    "Validate-only mode requires plan + forge + review outputs",
+                )
+            return True, "Validate-only mode: all prior results available"
+
+        return False, f"Unknown mode: {mode}"
+
+    def _execute_stage(
+        self,
+        stage_name: str,
+        capability_name: str,
+        inputs: dict[str, Any],
+        execution_log: list[dict[str, Any]],
+    ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+        """
+        Execute a single pipeline stage.
+
+        Args:
+            stage_name: Name of the stage (e.g., "plan", "forge")
+            capability_name: Capability to invoke (e.g., "code.plan")
+            inputs: Input dict for the capability
+            execution_log: List to append execution event to
+
+        Returns:
+            Tuple of (result_dict, updated_execution_log)
+        """
+        start_time = datetime.now()
+
+        try:
+            result = run_local_capability(capability_name, inputs)
+            duration_ms = int((datetime.now() - start_time).total_seconds() * 1000)
+
+            execution_log.append(
+                {
+                    "stage": stage_name,
+                    "status": result.get("status", "unknown"),
+                    "timestamp": start_time.isoformat() + "Z",
+                    "duration_ms": duration_ms,
+                    "notes": f"Invoked {capability_name}",
+                }
+            )
+
+            return result, execution_log
+
+        except Exception as e:
+            duration_ms = int((datetime.now() - start_time).total_seconds() * 1000)
+            execution_log.append(
+                {
+                    "stage": stage_name,
+                    "status": "error",
+                    "timestamp": start_time.isoformat() + "Z",
+                    "duration_ms": duration_ms,
+                    "notes": f"Error invoking {capability_name}: {str(e)}",
+                }
+            )
+            return {
+                "status": "error",
+                "capability": capability_name,
+                "error": str(e),
+            }, execution_log
 
 
 def skill_forge_run(

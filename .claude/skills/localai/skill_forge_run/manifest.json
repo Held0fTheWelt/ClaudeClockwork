@@ -56,5 +56,12 @@
   "dependencies": {
     "capabilities": ["code.plan", "code.forge", "code.review", "code.validate"],
     "runtime": "localai"
+  },
+  "permissions": [],
+  "metadata": {
+    "mode_requirements": {
+      "agent_type": "ollama",
+      "requires_mode": []
+    }
   }
 }
