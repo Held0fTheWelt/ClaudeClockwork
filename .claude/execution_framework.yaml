@@ -1,104 +1,85 @@
 execution_framework:
   agents:
-    orchestrator_agent:
-      id: agent-001
-      name: Orchestrator Agent
-      role: orchestrator
-      description: Coordinates and manages the execution of workflows.
+    orchestrator:
+      id: "agent-001"
+      name: "Orchestrator Agent"
+      role: "orchestrator"
       max_concurrent_tasks: 5
-    specialist_agent:
-      id: agent-002
-      name: Specialist Agent
-      role: specialist
-      description: Handles specialized tasks with expertise in specific domains.
+    specialist:
+      id: "agent-002"
+      name: "Specialist Agent"
+      role: "specialist"
       max_concurrent_tasks: 3
-    critic_agent:
-      id: agent-003
-      name: Critic Agent
-      role: critic
-      description: Reviews and provides feedback on task outputs.
+    critic:
+      id: "agent-003"
+      name: "Critic Agent"
+      role: "critic"
       max_concurrent_tasks: 4
-    worker_agent:
-      id: agent-004
-      name: Worker Agent
-      role: worker
-      description: Executes general tasks as part of workflows.
+    worker:
+      id: "agent-004"
+      name: "Worker Agent"
+      role: "worker"
       max_concurrent_tasks: 6
   task_templates:
     implementation:
-      id: template-001
-      name: Implementation Task
-      steps:
-      - Setup environment
-      - Develop feature
-      - Initial testing
+      id: "tpl-001"
+      name: "Implementation"
+      steps: [setup, develop, test]
     review:
-      id: template-002
-      name: Review Task
-      steps:
-      - Code review
-      - Feedback loop
+      id: "tpl-002"
+      name: "Review"
+      steps: [analyze, feedback]
     documentation:
-      id: template-003
-      name: Documentation Task
-      steps:
-      - Draft documentation
-      - Peer review
+      id: "tpl-003"
+      name: "Documentation"
+      steps: [draft, review]
     testing:
-      id: template-004
-      name: Testing Task
-      steps:
-      - Unit tests
-      - Integration tests
-      - System tests
+      id: "tpl-004"
+      name: "Testing"
+      steps: [unit, integration, system]
   workflow_definitions:
     standard_implementation:
-      id: workflow-001
-      name: Standard Implementation Workflow
-      steps:
-      - implementation
-      - review
+      id: "wf-001"
+      name: "Standard Implementation"
+      steps: [implementation, review]
     rapid_review:
-      id: workflow-002
-      name: Rapid Review Workflow
-      steps:
-      - review
+      id: "wf-002"
+      name: "Rapid Review"
+      steps: [review]
     full_validation:
-      id: workflow-003
-      name: Full Validation Workflow
-      steps:
-      - implementation
-      - testing
+      id: "wf-003"
+      name: "Full Validation"
+      steps: [implementation, testing]
   quality_gates:
     code_review:
-      id: gate-001
-      name: Code Review Quality Gate
-      required: true
+      id: "gate-001"
+      name: "Code Review"
       threshold: 90
+      required: true
       enabled: true
     test_coverage:
-      id: gate-002
-      name: Test Coverage Quality Gate
-      required: true
+      id: "gate-002"
+      name: "Test Coverage"
       threshold: 80
+      required: true
       enabled: true
     documentation:
-      id: gate-003
-      name: Documentation Quality Gate
-      required: false
+      id: "gate-003"
+      name: "Documentation"
       threshold: 70
+      required: false
       enabled: true
     security_scan:
-      id: gate-004
-      name: Security Scan Quality Gate
-      required: true
+      id: "gate-004"
+      name: "Security Scan"
       threshold: 95
+      required: true
       enabled: true
-    performance_check:
-      id: gate-005
-      name: Performance Check Quality Gate
-      required: false
+    performance:
+      id: "gate-005"
+      name: "Performance"
       threshold: 85
+      required: false
       enabled: true
   performance_budgets:
     implementation:
@@ -117,15 +98,8 @@ execution_framework:
       max_parallel_tasks: 1
       max_memory_mb: 256
   logging_configuration:
-    log_level: info
-    log_destinations:
-    - file
-    - console
+    log_level: "info"
+    log_destinations: [file, console]
     log_retention_days: 30
     log_retention_max_size_mb: 500
-    capture:
-    - timestamps
-    - agent_id
-    - task_id
-    - resource_usage
-    - errors
+    capture: [timestamps, agent_id, task_id, resource_usage, errors]
