@@ -27,7 +27,7 @@ class CodeValidateRunner(BaseRunner):
         Run code.validate capability.
 
         Args:
-            inputs: Request dict
+            inputs: Dict with keys: code, archetype
 
         Returns:
             Contract-shaped result dict
@@ -43,7 +43,10 @@ class CodeValidateRunner(BaseRunner):
             }
 
         try:
-            result = self._capability.validate(inputs)
+            code = inputs.get("code", "")
+            archetype = inputs.get("archetype", "transformer")
+
+            result = self._capability.validate(code, archetype)
             return {
                 "status": "ok",
                 "capability": "code.validate",

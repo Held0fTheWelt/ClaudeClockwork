@@ -27,7 +27,7 @@ class CodeReviewRunner(BaseRunner):
         Run code.review capability.
 
         Args:
-            inputs: Request dict
+            inputs: Dict with keys: code, archetype
 
         Returns:
             Contract-shaped result dict
@@ -43,7 +43,10 @@ class CodeReviewRunner(BaseRunner):
             }
 
         try:
-            result = self._capability.review(inputs)
+            code = inputs.get("code", "")
+            archetype = inputs.get("archetype", "transformer")
+
+            result = self._capability.review(code, archetype)
             return {
                 "status": "ok",
                 "capability": "code.review",
