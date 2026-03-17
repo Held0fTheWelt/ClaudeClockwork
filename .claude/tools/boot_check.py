@@ -12,7 +12,7 @@ import sys
 # Project root is two levels up from this file (.claude/tools/boot_check.py)
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
-# Import system contract loader
+# Import system contract loader and version manager
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "lib"))
 from system_contract import (
     load_contract,
@@ -21,6 +21,7 @@ from system_contract import (
     get_canonical_version_path,
     get_runtime_artifact_dirs,
 )
+from version_manager import VersionManager
 
 
 def check_contract_loads() -> tuple[bool, str]:
@@ -61,18 +62,17 @@ def check_required_paths(mode: str) -> tuple[bool, str]:
 
 
 def check_version_file() -> tuple[bool, str]:
-    """Verify VERSION file exists at canonical location."""
+    """Verify VERSION file at canonical location and check for drift."""
     try:
-        contract = load_contract(os.path.join(PROJECT_ROOT, ".claude", "system_contract.yaml"))
-        version_path = get_canonical_version_path(contract)
-        full_path = os.path.join(PROJECT_ROOT, version_path)
+        from pathlib import Path
+        canonical_version = VersionManager.get_canonical_version(Path(PROJECT_ROOT))
+        is_consistent, errors = VersionManager.check_drift(Path(PROJECT_ROOT))
 
-        if not os.path.isfile(full_path):
-            return False, f"[FAIL] {version_path} not found"
-
-        with open(full_path, "r", encoding="utf-8") as fh:
-            contents = fh.read().strip()
-        return True, f"[PASS] {version_path} — {contents}"
+        if is_consistent:
+            return True, f"[PASS] VERSION {canonical_version} (canonical, no drift)"
+        else:
+            error_msg = "; ".join(errors) if errors else "VERSION mismatch detected"
+            return False, f"[FAIL] {error_msg}"
     except Exception as e:
         return False, f"[FAIL] Error checking VERSION: {e}"
 

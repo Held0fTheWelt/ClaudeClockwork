@@ -52,5 +52,13 @@
       "description": "Deterministic safety validation with 6 gates"
     }
   ],
-  "tags": ["localai", "embed", "asr", "forge", "code-generation", "first-class-capability"]
+  "tags": ["localai", "embed", "asr", "forge", "code-generation", "first-class-capability"],
+  "metadata": {
+    "legacy_bridge": false,
+    "ollama_binding": true,
+    "mode_requirements": {
+      "requires_mode": ["default", "adaptive"],
+      "agent_type": "ollama"
+    }
+  }
 }
