@@ -126,7 +126,7 @@ class ModeMetadataValidator:
         agent_type = mode_requirements.get("agent_type", None)
         if not agent_type:
             errors.append(f"Skill {manifest.get('id')} missing agent_type")
-        elif agent_type not in ["ollama", "claude", "hybrid"]:
+        elif agent_type not in ["local", "ollama", "claude", "hybrid"]:
             errors.append(
                 f"Skill {manifest.get('id')} has invalid agent_type: {agent_type}"
             )

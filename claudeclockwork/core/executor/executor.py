@@ -79,6 +79,9 @@ class SkillExecutor:
             elif agent_type == "hybrid":
                 self.mode_guard.check_mixed_execution_allowed()
 
+            elif agent_type == "local":
+                # Local execution: metadata required but no execution gates
+                pass
         except ModeViolationError as e:
             return SkillResult(False, skill_id, error=str(e))
 
