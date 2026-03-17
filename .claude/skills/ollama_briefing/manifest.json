@@ -1,0 +1,92 @@
+{
+  "id": "ollama_briefing",
+  "name": "ollama_briefing",
+  "version": "1.0.0",
+  "description": "Generate structured content using Ollama models",
+  "entrypoint": "skills.ollama_briefing.skill:OllamaBriefingSkill",
+  "inputs": {
+    "prompt": {
+      "type": "string",
+      "required": true
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "brief",
+        "draft",
+        "architecture",
+        "review",
+        "quick"
+      ],
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "default": "qwen3:8b"
+    },
+    "base_url": {
+      "type": "string",
+      "default": "http://127.0.0.1:11434"
+    },
+    "timeout_seconds": {
+      "type": "number",
+      "default": 300
+    },
+    "num_ctx": {
+      "type": "number",
+      "default": 4096
+    },
+    "num_predict": {
+      "type": "number",
+      "default": 512
+    },
+    "temperature": {
+      "type": "number",
+      "default": 0.7
+    },
+    "write_output_path": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "outputs": {
+    "status": {
+      "type": "string"
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "task_type": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "base_url": {
+      "type": "string"
+    },
+    "timeout_seconds": {
+      "type": "number"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "metadata": {
+    "mode_requirements": {
+      "requires_mode": [
+        "default",
+        "adaptive"
+      ],
+      "agent_type": "ollama"
+    }
+  }
+}
