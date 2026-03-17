@@ -22,7 +22,7 @@ class SkillForgeRun(SkillBase):
 
     def __init__(self):
         """Initialize SkillForgeRun."""
-        super().__init__()
+        pass
 
     def run(self, context: ExecutionContext, **kwargs) -> SkillResult:
         """
@@ -537,12 +537,15 @@ def skill_forge_run(
     publish: bool = True,
 ) -> dict[str, Any]:
     """
-    Invoke the skill-forge pipeline (entry point).
+    Invoke the skill-forge pipeline (legacy function entry point).
 
-    See SkillForgeRun.__call__ for documentation.
+    DEPRECATED: Use SkillForgeRun as a SkillBase skill through the manifest CLI.
+    This function is kept for backward compatibility only.
+
+    See SkillForgeRun._orchestrate_pipeline for documentation.
     """
     orchestrator = SkillForgeRun()
-    return orchestrator(
+    return orchestrator._orchestrate_pipeline(
         archetype=archetype,
         purpose=purpose,
         allowed_write_roots=allowed_write_roots,

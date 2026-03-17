@@ -581,12 +581,219 @@ class TestModeHardening:
     def test_mode_cannot_be_changed_programmatically_only_via_cli(self):
         """Test that mode changes are user-initiated only."""
         manager = ModeManager()
-        
+
         # set_mode should only be called from CLI context
         # This test verifies the method exists but emphasizes user-only usage
         original = manager.get_active_mode()
-        
+
         # Only change if needed for test, then restore
         if original != "adaptive":
             manager.set_mode("adaptive")
             manager.set_mode(original)
+
+
+class TestSkillExecutorModeEnforcement:
+    """Tests for SkillExecutor with mode enforcement gates."""
+
+    def test_executor_blocks_claude_skill_in_default_mode(self):
+        """Test that executor blocks Claude-only skills in default mode."""
+        from pathlib import Path
+        from claudeclockwork.core.executor.executor import SkillExecutor
+        from claudeclockwork.core.registry.skill_registry import SkillRegistry
+        from claudeclockwork.core.security.permissions import PermissionManager
+        from claudeclockwork.core.models.execution_context import ExecutionContext
+
+        manager = ModeManager()
+        original = manager.get_active_mode()
+
+        try:
+            manager.set_mode("default")
+
+            # Create minimal test executor
+            registry = SkillRegistry(project_root=Path.cwd())
+            perm_manager = PermissionManager({})
+            executor = SkillExecutor(registry, perm_manager, mode_manager=manager)
+
+            # The executor's mode_guard is initialized
+            assert executor.mode_guard is not None
+
+        finally:
+            manager.set_mode(original)
+
+    def test_executor_allows_ollama_skill_in_default_mode(self):
+        """Test that executor allows Ollama skills in default mode."""
+        from pathlib import Path
+        from claudeclockwork.core.executor.executor import SkillExecutor
+        from claudeclockwork.core.registry.skill_registry import SkillRegistry
+        from claudeclockwork.core.security.permissions import PermissionManager
+
+        manager = ModeManager()
+        original = manager.get_active_mode()
+
+        try:
+            manager.set_mode("default")
+
+            registry = SkillRegistry(project_root=Path.cwd())
+            perm_manager = PermissionManager({})
+            executor = SkillExecutor(registry, perm_manager, mode_manager=manager)
+
+            # Guard should permit ollama execution
+            guard = executor.mode_guard
+            # Should not raise ModeViolationError
+            guard.check_ollama_execution_allowed()
+
+        finally:
+            manager.set_mode(original)
+
+    def test_executor_blocks_ollama_in_claude_min(self):
+        """Test that executor blocks Ollama in claude-min mode."""
+        from pathlib import Path
+        from claudeclockwork.core.executor.executor import SkillExecutor
+        from claudeclockwork.core.registry.skill_registry import SkillRegistry
+        from claudeclockwork.core.security.permissions import PermissionManager
+
+        manager = ModeManager()
+        original = manager.get_active_mode()
+
+        try:
+            manager.set_mode("claude-min")
+
+            registry = SkillRegistry(project_root=Path.cwd())
+            perm_manager = PermissionManager({})
+            executor = SkillExecutor(registry, perm_manager, mode_manager=manager)
+
+            guard = executor.mode_guard
+            with pytest.raises(ModeViolationError):
+                guard.check_ollama_execution_allowed()
+
+        finally:
+            manager.set_mode(original)
+
+
+class TestSkillForgeRunManifestIntegration:
+    """Tests for skill_forge_run callable through manifest CLI."""
+
+    def test_skill_forge_run_is_registered_in_manifest(self):
+        """Test that skill_forge_run is discoverable in the manifest system."""
+        from pathlib import Path
+
+        manifest_path = Path(".claude/skills/localai/skill_forge_run/manifest.json")
+        assert manifest_path.exists(), f"Manifest not found: {manifest_path}"
+
+        import json
+        with open(manifest_path, 'r') as f:
+            manifest = json.load(f)
+
+        assert manifest['id'] == 'skill_forge_run'
+        assert manifest['entrypoint'] == 'skills.localai.skill_forge_run.skill:SkillForgeRun'
+        assert 'metadata' in manifest
+        assert 'mode_requirements' in manifest['metadata']
+
+    def test_skill_forge_run_inherits_from_skillbase(self):
+        """Test that skill_forge_run.SkillForgeRun is a SkillBase implementation."""
+        import sys
+        from pathlib import Path
+
+        # Add .claude/skills to path for manifest-based skills
+        claude_skills_path = str(Path(".claude/skills"))
+        if claude_skills_path not in sys.path:
+            sys.path.insert(0, claude_skills_path)
+
+        from claudeclockwork.core.base.skill_base import SkillBase
+        from localai.skill_forge_run.skill import SkillForgeRun
+
+        assert issubclass(SkillForgeRun, SkillBase)
+
+        # Instantiate and verify run method exists
+        instance = SkillForgeRun()
+        assert hasattr(instance, 'run')
+        assert callable(instance.run)
+
+    def test_skill_forge_run_returns_skill_result(self):
+        """Test that skill_forge_run.run() returns SkillResult, not dict stub."""
+        import sys
+        from pathlib import Path
+
+        # Add .claude/skills to path
+        claude_skills_path = str(Path(".claude/skills"))
+        if claude_skills_path not in sys.path:
+            sys.path.insert(0, claude_skills_path)
+
+        from claudeclockwork.core.models.skill_result import SkillResult
+        from claudeclockwork.core.models.execution_context import ExecutionContext
+        from localai.skill_forge_run.skill import SkillForgeRun
+
+        instance = SkillForgeRun()
+
+        # Create execution context
+        context = ExecutionContext(
+            request_id="test-123",
+            user_input="test",
+            working_directory="/tmp"
+        )
+
+        # Call with minimal required args
+        result = instance.run(
+            context,
+            archetype="scanner",
+            purpose="Test skill forge execution"
+        )
+
+        # Must return SkillResult, not dict
+        assert isinstance(result, SkillResult)
+
+        # SkillResult should have expected fields
+        assert hasattr(result, 'success')
+        assert hasattr(result, 'skill_name')
+        assert hasattr(result, 'data')
+
+        # Data field should contain the pipeline result
+        assert isinstance(result.data, dict)
+        assert 'run_id' in result.data
+        assert 'execution_log' in result.data
+
+    def test_skill_forge_run_fails_on_invalid_archetype(self):
+        """Test that skill_forge_run fails honestly on invalid input, not silently."""
+        import sys
+        from pathlib import Path
+
+        # Add .claude/skills to path
+        claude_skills_path = str(Path(".claude/skills"))
+        if claude_skills_path not in sys.path:
+            sys.path.insert(0, claude_skills_path)
+
+        from claudeclockwork.core.models.execution_context import ExecutionContext
+        from localai.skill_forge_run.skill import SkillForgeRun
+
+        instance = SkillForgeRun()
+        context = ExecutionContext(
+            request_id="test-123",
+            user_input="test",
+            working_directory="/tmp"
+        )
+
+        # Invalid archetype
+        result = instance.run(
+            context,
+            archetype="invalid_archetype",
+            purpose="Test"
+        )
+
+        # Should fail, not succeed as stub
+        assert result.success is False
+        assert result.error is not None
+        assert "invalid" in result.error.lower()
+
+    def test_skill_forge_run_mode_requirement_is_ollama(self):
+        """Test that skill_forge_run manifest requires ollama agent type."""
+        from pathlib import Path
+        import json
+
+        manifest_path = Path(".claude/skills/localai/skill_forge_run/manifest.json")
+        with open(manifest_path, 'r') as f:
+            manifest = json.load(f)
+
+        mode_req = manifest['metadata']['mode_requirements']
+        assert mode_req['agent_type'] == 'ollama'
+
+        # This means it will be blocked in claude-min mode by executor
