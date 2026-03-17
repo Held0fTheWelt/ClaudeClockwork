@@ -1,0 +1,6 @@
+[wsl2]
+memory=56GB
+processors=16
+swap=8GB
+gpuSupport=true
+networkingMode=mirrored
