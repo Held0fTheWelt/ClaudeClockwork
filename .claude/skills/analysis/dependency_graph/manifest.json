@@ -5,20 +5,54 @@
   "category": "analysis",
   "description": "Scan skill files and task files for run_manifest_skill() call patterns and build a directed dependency graph.",
   "entrypoint": "skills.analysis.dependency_graph.skill:DependencyGraphSkill",
-  "permissions": ["repo:read"],
-  "aliases": ["skill_dependency_graph"],
-  "tags": ["dependency", "graph", "analysis", "skills"],
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [
+    "skill_dependency_graph"
+  ],
+  "tags": [
+    "dependency",
+    "graph",
+    "analysis",
+    "skills"
+  ],
   "enabled": true,
   "trust_level": "local",
   "inputs": {
-    "root": {"type": "string", "optional": true},
-    "format": {"type": "string", "optional": true, "default": "json"}
+    "root": {
+      "type": "string",
+      "optional": true
+    },
+    "format": {
+      "type": "string",
+      "optional": true,
+      "default": "json"
+    }
   },
   "outputs": {
-    "nodes": {"type": "array"},
-    "edges": {"type": "array"},
-    "edge_count": {"type": "integer"},
-    "graph_text": {"type": "string", "optional": true}
+    "nodes": {
+      "type": "array"
+    },
+    "edges": {
+      "type": "array"
+    },
+    "edge_count": {
+      "type": "integer"
+    },
+    "graph_text": {
+      "type": "string",
+      "optional": true
+    }
   },
-  "metadata": {"legacy_bridge": false}
+  "metadata": {
+    "legacy_bridge": false,
+    "mode_requirements": {
+      "requires_mode": [
+        "default",
+        "adaptive"
+      ],
+      "agent_type": "ollama"
+    }
+  }
 }
