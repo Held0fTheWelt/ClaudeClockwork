@@ -156,7 +156,17 @@ Give a 3–5 sentence technical assessment. Focus on the single most important p
 
 # ── Ollama API ─────────────────────────────────────────────────────────────────
 
-def call_ollama(model: str, task_type: str, user_message: str, timeout: int = 300) -> str:
+def call_ollama(model: str, task_type: str, user_message: str, timeout: int = None) -> str:
+    # Dynamic timeout based on model size and task type
+    # All models need adequate timeout; smaller models still take 1-3 min for draft tasks
+    if timeout is None:
+        if "72b" in model or "70b" in model or "68b" in model:
+            timeout = 900  # 15 minutes for large models
+        elif "35b" in model or "32b" in model or "33b" in model or "30b" in model:
+            timeout = 900  # 15 minutes for medium-large models
+        else:
+            timeout = 600  # 10 minutes for all smaller models (8b, 14b, etc.)
+
     system     = SYSTEM_PROMPTS.get(task_type, SYSTEM_PROMPTS["brief"])
     num_tokens = TOKEN_LIMITS.get(task_type, 1024)
 
@@ -184,8 +194,10 @@ def call_ollama(model: str, task_type: str, user_message: str, timeout: int = 30
         with urllib.request.urlopen(req, timeout=timeout) as response:
             result = json.loads(response.read())
             return result["message"]["content"]
-    except urllib.error.URLError as e:
-        print(f"[ollama] Ollama not reachable at localhost:11434 — {e}", file=sys.stderr)
+    except (urllib.error.URLError, TimeoutError) as e:
+        # TimeoutError can occur at socket level, URLError at HTTP level
+        error_type = "timeout" if isinstance(e, TimeoutError) else "unreachable"
+        print(f"[ollama] Ollama {error_type} at localhost:11434 (timeout={timeout}s) — {e}", file=sys.stderr)
         sys.exit(1)
     except (KeyError, json.JSONDecodeError) as e:
         print(f"[ollama] Unexpected response format — {e}", file=sys.stderr)

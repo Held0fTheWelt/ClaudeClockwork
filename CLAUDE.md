@@ -12,10 +12,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Test Ollama availability (run at start of session or after Ollama restart)
+# Uses canonical settings from .claude/config/local_ollama_runtime.yaml
 python3 .claude/tools/test_ollama.py
 
-# Check Ollama status manually
-curl -s http://localhost:11434/api/tags | python3 -c "import sys,json; [print(m['name']) for m in json.load(sys.stdin)['models']]"
+# Check Ollama status manually (canonical Windows native URL: 127.0.0.1:11434)
+curl -s http://127.0.0.1:11434/api/tags | python3 -c "import sys,json; [print(m['name']) for m in json.load(sys.stdin)['models']]"
 
 # Run a skill tool
 python3 .claude/tools/skills/skill_runner.py <skill_name> [args]
@@ -29,8 +30,28 @@ python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action
 python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "get"}'
 python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "set", "model": "qwen2.5-14b:research"}'
 python3 -m claudeclockwork.cli --skill-id ollama_model_manage --inputs '{"action": "profiles"}'
-# Policy: .claude/config/ollama.yaml. State: .claude/state/ollama_model_state.json (default_model).
+# Policy: .claude/config/ollama.yaml (models). State: .claude/state/ollama_model_state.json.
+# Runtime: .claude/config/local_ollama_runtime.yaml (SSOT for connection, timeouts, constraints).
 ```
+
+### Local Ollama Runtime (Phase 22+)
+
+**Canonical backend:** Windows native Ollama at `http://127.0.0.1:11434` (GPU-first)
+
+**Single source of truth:** `.claude/config/local_ollama_runtime.yaml`
+- Mandatory for default mode
+- All timeouts defined here
+- All model constraints enforced
+- CPU-only execution marked as degraded
+
+**Key settings:**
+- Default model: `qwen3:8b`
+- Fallback model: `phi4`
+- Forbidden escalations: 32B/70B/72B models (GPU-first constraint)
+- Timeouts: connect=10s, health=15s, request=300s, agent_step=420s
+- Runtime: single GPU, single model (`num_parallel=1`, `max_loaded_models=1`)
+
+**Governance:** `.claude/governance/local_ollama_runtime.md` (binding enforcement rules)
 
 ## Development
 

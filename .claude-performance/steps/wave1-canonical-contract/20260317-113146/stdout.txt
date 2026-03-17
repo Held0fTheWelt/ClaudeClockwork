@@ -1,0 +1,43 @@
+=== WAVE 1: CANONICAL SYSTEM CONTRACT ===
+# Wave 1: Canonical System Contract Architecture
+
+## Task
+Create the foundational system contract that defines canonical paths, configurations, and validation rules.
+
+## Deliverables (execute in order)
+
+### 1. Create .claude/system_contract.yaml
+A YAML file that serves as the single source of truth for:
+- VERSION location
+- Package modes (repo vs .claude-only)
+- Required/optional paths
+- Runtime artifacts
+- Canonical config file locations
+
+### 2. Create .claude/tools/lib/system_contract.py
+Python module with functions:
+- `load_contract() -> dict`
+- `validate_package_mode(mode: str) -> tuple[bool, list[str]]`
+- `validate_repo_structure(mode: str, root: Path) -> tuple[bool, list[str]]`
+
+### 3. Update .claude/tools/boot_check.py
+Refactor to use the new contract loader instead of hardcoded paths.
+
+### 4. Unify VERSION
+- Identify all current VERSION locations
+- Choose .claude/VERSION as canonical
+- Create if needed
+
+## Success Criteria
+- .claude/system_contract.yaml is valid YAML
+- .claude/tools/lib/system_contract.py imports and validates correctly
+- boot_check.py uses the contract loader
+- Tests pass for both repo and .claude-only modes
+
+
+OLLAMA AGENT TASK: Implement Wave 1 deliverables
+Files to create/modify:
+1. .claude/system_contract.yaml
+2. .claude/tools/lib/system_contract.py
+3. Update .claude/tools/boot_check.py
+4. Unify VERSION handling

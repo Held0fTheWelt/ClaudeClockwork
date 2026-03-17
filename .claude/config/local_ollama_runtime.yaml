@@ -1,0 +1,151 @@
+# Local Ollama Runtime Contract — Single Source of Truth (SSOT)
+# Phase 22+: Hard local GPU-first execution on Windows native Ollama
+#
+# This is the canonical definition of how ClaudeClockwork executes against local Ollama.
+# Do not override these constraints from routing configs or Claude tier settings.
+# Mode is law. Runtime is binding.
+#
+# Last updated: 2026-03-17
+
+version: 1
+canonical_backend: "windows_native_ollama"
+
+# === Connection ===
+connection:
+  # Windows native Ollama is the canonical local backend.
+  # Do not use WSL, Docker, or remote Ollama for the default path.
+  base_url: "http://127.0.0.1:11434"
+  protocol: "http"
+  host: "127.0.0.1"
+  port: 11434
+
+  # Hard requirement: all Ollama operations must start from this URL.
+  # If unavailable, local execution fails closed (no fallback to Claude).
+  is_mandatory_for_default_mode: true
+
+# === Model Selection & Constraints ===
+models:
+  # Primary execution model: fast, compact, GPU-friendly
+  default_model: "qwen3:8b"
+
+  # Automatic fallback if primary unavailable (same tier)
+  fallback_model: "phi4"
+
+  # Constraint: forbid automatic escalation to large models
+  # These require unmanaged CPU offload and violate GPU-first principle
+  forbidden_escalations:
+    - "qwen2.5:32b"
+    - "qwen2.5-coder:32b"
+    - "qwen2.5:70b"
+    - "qwen2.5-72b"
+    - "llama3.3:70b"
+    - "llama2:70b"
+  forbidden_escalation_policy: "HARD_FAIL"
+  forbidden_escalation_error_message: "Automatic escalation to 32B/70B/72B models is forbidden in default mode. GPU-first execution required."
+
+  # Constraint: no CPU-only models as defaults
+  # These are degraded paths and must be explicitly chosen
+  cpu_only_models_degraded: true
+  cpu_only_models_require_explicit_override: true
+
+# === Context & Token Limits ===
+token_limits:
+  default_num_ctx: 4096
+  max_num_ctx: 8192
+  min_num_ctx: 1024
+
+  # Enforce context windows per GPU tier
+  # 8B models: max 4096 tokens (standard)
+  # Larger models would violate single-GPU single-model constraint
+  tier_limits:
+    "8b":
+      max_num_ctx: 4096
+    "14b":
+      max_num_ctx: 4096
+    "32b":
+      max_num_ctx: 0  # Forbidden (see forbidden_escalations)
+    "70b":
+      max_num_ctx: 0  # Forbidden (see forbidden_escalations)
+
+# === Runtime Constraints ===
+runtime:
+  # Single GPU, single model loaded at a time
+  num_parallel: 1
+  max_loaded_models: 1
+
+  # GPU-first execution mandate
+  gpu_first_required: true
+  gpu_first_policy: "HARD_FAIL"
+  gpu_first_error_message: "Local Ollama must use GPU. CPU-only execution not permitted in canonical path."
+
+  # No automatic model juggling
+  auto_unload_inactive: false
+  prefer_warm_reuse: true
+
+# === Timeouts (seconds) ===
+# Hard limits: no request exceeds these without explicit acknowledgment
+timeouts:
+  # Health check and connection establishment
+  connect_timeout_seconds: 10
+  health_timeout_seconds: 15
+
+  # Normal request execution
+  request_timeout_seconds: 300
+
+  # Heavy inference (70B models would be here, but they're forbidden)
+  heavy_request_timeout_seconds: 600
+
+  # Model warmup and initialization
+  warmup_timeout_seconds: 120
+
+  # Single agent reasoning step (e.g., planning, review)
+  agent_step_timeout_seconds: 420
+
+# === Fallback Policy ===
+fallback:
+  # In default mode: fail closed if local Ollama unavailable
+  default_mode_unavailable_action: "FAIL_CLOSED"
+  default_mode_unavailable_error: "Local Ollama required in default mode and is unavailable."
+
+  # In adaptive mode: may escalate to Claude (not forced)
+  adaptive_mode_unavailable_action: "ALLOW_ESCALATION"
+
+  # Never automatically downgrade to CPU-only as fallback
+  no_degraded_fallback: true
+
+# === Governance ===
+governance:
+  # Only the canonical Windows Ollama path is the default for local execution
+  windows_native_is_canonical: true
+
+  # CPU-only local execution (existing setup) is marked as degraded
+  cpu_only_is_degraded: true
+
+  # Status tracking for governance and audits
+  enforcement_level: "HARD"
+  enforcement_gates:
+    - "connection_validation"
+    - "model_whitelist"
+    - "forbidden_escalation_check"
+    - "gpu_first_check"
+    - "timeout_enforcement"
+
+  # Violations are non-recoverable errors
+  violation_mode: "HARD_FAIL"
+
+  # Documentation reference
+  documentation_root: ".claude/governance"
+  local_runtime_governance_file: "local_ollama_runtime.md"
+
+# === Diagnostics & Health ===
+health:
+  # Periodic health checks
+  enable_health_checks: true
+  health_check_interval_seconds: 300
+  health_check_on_startup: true
+  health_check_model: "default_model"
+
+  # Diagnostic modes
+  enable_detailed_logging: true
+  log_all_timeouts: true
+  log_all_escalation_attempts: true

@@ -9,7 +9,8 @@
       "Bash(python3 -m pytest tests/test_mode_enforcement.py tests/test_mode_system.py -v --tb=short)",
       "Bash(python3 -m pytest tests/test_mode_system.py::TestSkillForgeRunManifestIntegration -xvs)",
       "Bash(python3:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git commit -m \"docs: add comprehensive mode enforcement verification report:*)"
     ]
   },
   "planning": {

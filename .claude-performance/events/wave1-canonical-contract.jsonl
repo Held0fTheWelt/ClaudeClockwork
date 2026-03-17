@@ -1,0 +1,1 @@
+{"ts": "2026-03-17T11:31:46Z", "run_id": "wave1-canonical-contract", "role": "Implementation", "model": "qwen2.5-coder:32b", "task": "wave1-system-contract", "phase": "implement", "prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0, "tool_uses": 0, "duration_sec": 0.0, "notes": "tokens_unavailable"}
