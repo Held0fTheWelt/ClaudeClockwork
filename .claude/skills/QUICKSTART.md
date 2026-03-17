@@ -134,3 +134,34 @@ Run:
   }
 }
 ```
+## Ollama Briefing Skill
+The `ollama_briefing` skill generates structured content using Ollama models.
+
+### Usage
+To use the skill:
+```json
+{
+  "type": "skill_request_spec",
+  "skill_id": "ollama_briefing",
+  "inputs": {
+    "prompt": "...",
+    "task_type": "brief"
+  }
+}
+```
+
+### Task Types
+- `brief`: Quick summary of content.
+- `draft`: Detailed draft generation.
+- `architecture`: In-depth analysis of system architecture.
+- `review`: Code or content review.
+- `quick`: Fast, high-level assessment.
+
+### Inputs
+- **prompt** (required): The input text for the skill to process.
+- **task_type** (required): Specifies the type of output desired. Default: `brief`.
+- **model** (optional): Ollama model to use. Default: `qwen3:8b`.
+- **base_url** (optional): URL of the Ollama server. Default: `http://127.0.0.1:11434`.
+- **timeout_seconds** (optional): Maximum time for request processing. Default: 300 seconds.
+
+This skill provides flexible options to generate structured content based on your requirements.

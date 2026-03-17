@@ -309,3 +309,26 @@ python3 <PROJECT_ROOT>/src/main.py --task "test ollama"
 - `1` — FAIL: Ollama not reachable
 - `2` — FAIL: No model installed
 - `3` — FAIL: Inference failed
+# Canonical Ollama Briefing Skill Governance
+
+## Overview
+The canonical `ollama_briefing` skill is a standardized mechanism for configuring interactions between Claude and Ollama models. It ensures consistent, secure, and efficient communication across different environments by enforcing best practices and predefined policies.
+
+## Usage
+This skill must be used whenever integrating Claude with Ollama models to ensure alignment with governance requirements. Developers and system administrators are responsible for defining model parameters, input/output formats, and error handling in the briefing configuration files.
+
+## Configuration
+The `ollama_briefing` skill is configured via a YAML file located at `.claude/config/ollama_briefing.yml`. Required fields include:
+- `model_name`: The name of the Ollama model to be used.
+- `temperature`: Controls randomness in responses (0.0–1.0).
+- `max_tokens`: Maximum output length.
+
+Changes to this configuration must follow the organization's change control process for governance compliance.
+
+## Runtime Policy
+The skill is activated during initial setup or when updating Ollama integrations. Runtime monitoring includes:
+- Success rate of model calls.
+- Response time thresholds.
+- Error rates and handling.
+
+Compliance audits are conducted periodically to ensure adherence to predefined policies, with non-compliant instances requiring corrective action within 72 hours.
