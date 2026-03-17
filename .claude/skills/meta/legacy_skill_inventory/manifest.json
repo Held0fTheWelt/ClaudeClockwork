@@ -21,5 +21,14 @@
   "trust_level": "local",
   "inputs": {},
   "outputs": {},
-  "metadata": {"legacy_bridge": false}
+  "metadata": {
+    "legacy_bridge": false,
+    "mode_requirements": {
+      "requires_mode": [
+        "default",
+        "adaptive"
+      ],
+      "agent_type": "ollama"
+    }
+  }
 }

@@ -5,19 +5,53 @@
   "category": "ops",
   "description": "Parse all JSON and YAML config files in the specified directories and report any files that fail to load.",
   "entrypoint": "skills.ops.config_validate.skill:ConfigValidateSkill",
-  "permissions": ["repo:read"],
-  "aliases": ["validate_configs"],
-  "tags": ["config", "validation", "json", "yaml", "ops"],
+  "permissions": [
+    "repo:read"
+  ],
+  "aliases": [
+    "validate_configs"
+  ],
+  "tags": [
+    "config",
+    "validation",
+    "json",
+    "yaml",
+    "ops"
+  ],
   "enabled": true,
   "trust_level": "local",
   "inputs": {
-    "config_paths": {"type": "array", "optional": true, "default": [".claude/config/", "configs/"]}
+    "config_paths": {
+      "type": "array",
+      "optional": true,
+      "default": [
+        ".claude/config/",
+        "configs/"
+      ]
+    }
   },
   "outputs": {
-    "files_checked": {"type": "integer"},
-    "valid": {"type": "integer"},
-    "invalid": {"type": "integer"},
-    "issues": {"type": "array"}
+    "files_checked": {
+      "type": "integer"
+    },
+    "valid": {
+      "type": "integer"
+    },
+    "invalid": {
+      "type": "integer"
+    },
+    "issues": {
+      "type": "array"
+    }
   },
-  "metadata": {"legacy_bridge": false}
+  "metadata": {
+    "legacy_bridge": false,
+    "mode_requirements": {
+      "requires_mode": [
+        "default",
+        "adaptive"
+      ],
+      "agent_type": "ollama"
+    }
+  }
 }
