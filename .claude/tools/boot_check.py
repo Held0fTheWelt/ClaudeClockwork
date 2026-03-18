@@ -251,7 +251,7 @@ def check_manifest_mode_drift(contract: dict) -> tuple[bool, str]:
         manifests = load_all_manifests(skills)
         
         errors = []
-        valid_types = {'claude', 'ollama', 'mixed', 'external'}
+        valid_types = {'local', 'ollama', 'claude', 'hybrid'}
         
         for skill_id, (manifest, load_errors) in manifests.items():
             if load_errors:
