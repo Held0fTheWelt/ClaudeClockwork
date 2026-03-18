@@ -266,6 +266,10 @@ class OllamaModelManager:
         self._save_state(model)
         return model
 
+    def is_model_forbidden_for_default_mode(self, model_name: str) -> bool:
+    forbidden = self._get_forbidden_models()
+    return model_name in forbidden
+
     def validate_model(self, model: str) -> tuple[bool, str]:
         """
         Check if model is available via /api/tags only. Alias resolved to installed tag.

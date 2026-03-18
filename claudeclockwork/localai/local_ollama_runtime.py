@@ -240,6 +240,13 @@ class LocalOllamaRuntimeConfig:
         config = cls.load()
         return yaml.dump(config, default_flow_style=False)
 
+    @staticmethod
+    def is_model_forbidden_for_default_mode(model_name: str) -> bool:
+        """Check if model is forbidden in default mode (GPU-first constraint).
+        Returns True if forbidden, False if allowed."""
+        forbidden_list = ['qwen2.5:32b', 'qwen2.5-coder:32b', 'qwen2.5:70b', 'qwen2.5-72b', 'llama3.3:70b', 'llama2:70b']
+        return model_name in forbidden_list
+
 
 def get_canonical_ollama_base_url() -> str:
     """Convenience function: get canonical Ollama URL."""
@@ -257,8 +264,6 @@ def validate_model_not_forbidden(model_name: str) -> None:
             f"Model '{model_name}' is in forbidden escalations. "
             + LocalOllamaRuntimeConfig.get_forbidden_escalation_error()
         )
-
-
 def get_operation_timeout(operation_type: str) -> int:
     """Convenience function: get timeout for operation type."""
     return LocalOllamaRuntimeConfig.get_timeout(operation_type)

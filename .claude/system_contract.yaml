@@ -1,51 +1,42 @@
-canonical_version_location: ".claude/VERSION"
-
-supported_package_modes:
-  - "repo_mode"
-  - "claude_only_mode"
-
-repo_mode_required_paths:
-  - ".claude"
-  - "claudeclockwork"
-  - "tests"
-  - ".project"
-
-repo_mode_optional_paths:
-  - ".report"
-  - ".clockwork_runtime"
-  - "mvps"
-  - "roadmaps"
-
-claude_only_mode_required_paths:
-  - ".claude"
-  - "claudeclockwork"
-
-claude_only_mode_optional_paths:
-  - ".report"
-
-runtime_artifacts:
-  ".report":
-    type: "optional_runtime_output"
-    auto_create: true
-  ".clockwork_runtime":
-    type: "optional_runtime_output"
-    auto_create: true
-
-canonical_model_runtime_config: ".claude/config/ollama.yaml"
-canonical_skill_registry_output: ".claude/skills/registry.json"
-
 auto_create_runtime_dirs: true
-
+canonical_model_runtime_config: .claude/config/ollama.yaml
+canonical_skill_registry_output: .claude/skills/_index.json
+canonical_version_location: .claude/VERSION
+claude_only_mode_optional_paths:
+- .report
+claude_only_mode_required_paths:
+- .claude
+- claudeclockwork
+repo_mode_optional_paths:
+- .report
+- .clockwork_runtime
+- mvps
+- roadmaps
+repo_mode_required_paths:
+- .claude
+- claudeclockwork
+- tests
+- .project
+runtime_artifacts:
+  .clockwork_runtime:
+    auto_create: true
+    type: optional_runtime_output
+  .report:
+    auto_create: true
+    type: optional_runtime_output
 skill_registry:
-  canonical_skill_registry_path: ".claude/skills"
-  skill_manifest_extension: ".json"
-  skill_entrypoint_package: "skills"
-  required_manifest_fields:
-    - "id"
-    - "name"
-    - "version"
-    - "description"
-    - "entrypoint"
-  skill_discovery_pattern: "**/**/manifest.json"
   auto_register_skills: true
+  canonical_skill_registry_path: .claude/skills
   manifest_validation_strict: true
+  required_manifest_fields:
+  - id
+  - name
+  - version
+  - description
+  - entrypoint
+  skill_discovery_pattern: '**/**/manifest.json'
+  skill_entrypoint_package: skills
+  skill_manifest_extension: .json
+supported_package_modes:
+- repo_mode
+- claude_only_mode

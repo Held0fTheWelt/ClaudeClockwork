@@ -1,0 +1,13 @@
+{
+  "id": "hello",
+  "name": "hello",
+  "version": "1.0.0",
+  "description": "Simple greeting skill",
+  "entrypoint": "skills.hello.skill:HelloSkill",
+  "metadata": {
+    "mode_requirements": {
+      "requires_mode": ["default"],
+      "agent_type": "local"
+    }
+  }
+}

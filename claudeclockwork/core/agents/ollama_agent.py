@@ -16,6 +16,7 @@ from typing import Any
 
 from claudeclockwork.core.mode import ModeManager
 from claudeclockwork.core.ollama import OllamaModelManager, apply_budget
+from claudeclockwork.localai.local_ollama_runtime import LocalOllamaRuntimeConfig
 
 
 class OllamaAgent:
@@ -95,7 +96,7 @@ class OllamaAgent:
                     input=bounded_prompt,
                     capture_output=True,
                     text=True,
-                    timeout=1800,
+                    timeout=LocalOllamaRuntimeConfig.get_timeout('agent_step'),
                 )
             else:
                 result = subprocess.run(
@@ -103,7 +104,7 @@ class OllamaAgent:
                     input=bounded_prompt,
                     capture_output=True,
                     text=True,
-                    timeout=1800,
+                    timeout=LocalOllamaRuntimeConfig.get_timeout('agent_step'),
                 )
 
             reasoning = result.stdout.strip() if result.returncode == 0 else result.stderr

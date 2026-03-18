@@ -1,5 +1,6 @@
 import json
 import requests
+from claudeclockwork.localai.local_ollama_runtime import LocalOllamaRuntimeConfig
 from claudeclockwork.core.base.skill_base import SkillBase
 from claudeclockwork.core.models.execution_context import ExecutionContext
 from claudeclockwork.core.models.skill_result import SkillResult
@@ -30,9 +31,9 @@ class OllamaBriefingSkill(SkillBase):
         try:
             prompt = kwargs.get('prompt', '')
             task_type = kwargs.get('task_type', 'brief')
-            model = kwargs.get('model', 'qwen3:8b')
-            base_url = kwargs.get('base_url', 'http://127.0.0.1:11434')
-            timeout_seconds = int(kwargs.get('timeout_seconds', 300))
+            model = kwargs.get('model', LocalOllamaRuntimeConfig.get_default_model())
+            base_url = kwargs.get('base_url', LocalOllamaRuntimeConfig.get_base_url())
+            timeout_seconds = int(kwargs.get('timeout_seconds', LocalOllamaRuntimeConfig.get_timeout('request')))
             num_ctx = int(kwargs.get('num_ctx', 4096))
             num_predict = int(kwargs.get('num_predict', 512))
             temperature = float(kwargs.get('temperature', 0.7))

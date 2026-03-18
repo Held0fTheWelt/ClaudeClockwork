@@ -18,6 +18,7 @@ class CodeApplySkill(SkillBase):
             if not file_path or not content:
                 return SkillResult(
                     success=False,
+                    skill_name="code_apply",
                     error="file_path and content are required"
                 )
 
@@ -29,6 +30,7 @@ class CodeApplySkill(SkillBase):
             if not path_parts or path_parts[0] not in allowed_roots:
                 return SkillResult(
                     success=False,
+                    skill_name="code_apply",
                     error=f"file_path must be within: {', '.join(allowed_roots)}"
                 )
 
@@ -44,16 +46,19 @@ class CodeApplySkill(SkillBase):
 
                 return SkillResult(
                     success=True,
-                    file_path=os.path.abspath(normalized_path)
+                    skill_name="code_apply",
+                    data={"path": os.path.abspath(normalized_path)}
                 )
             else:
                 return SkillResult(
                     success=False,
+                    skill_name="code_apply",
                     error=f"File does not exist: {normalized_path}"
                 )
 
         except Exception as e:
             return SkillResult(
                 success=False,
+                skill_name="code_apply",
                 error=f"Error writing file: {str(e)}"
             )
