@@ -24,43 +24,28 @@ Report format:
    - No Claude agents
    - No mixed execution
 
-
-Any Claude-written patch or any Claude-agent use fails the task.
-
-Rules:
-- Use pure Ollama clients only
-- Delegate all implementation work to Ollama agents
-- Do not write or modify code yourself
-- Do not use Claude agents
-- Do not use mixed execution
-- If Ollama is unavailable or unhealthy, fail
-- Do not broaden scope
-
 Task:
 Edit exactly one file:
-- .claude/skills/demo/hello/manifest.json
+- .claude/python/README.md
 
 Goal:
-Correct the manifest agent_type based on the actual execution path.
+Make the pointer text consistent with the current registry split.
 
 Required change:
-1. Inspect .claude/skills/demo/hello/skill.py
-2. Inspect the legacy tool path it invokes
-3. Set metadata.mode_requirements.agent_type to the single correct canonical value
-4. Do not change any other field unless absolutely required for consistency
-
-Expected result:
-- agent_type should reflect a local deterministic execution path, not a Claude LLM path
+1. Keep the file as a deprecated pointer
+2. Replace the current “Skills registry” wording so it no longer implies registry.md is the sole canonical registry
+3. Clarify:
+   - skills/_index.json = machine-readable canonical registry output
+   - skills/registry.md = human-readable catalog
 
 Validation:
-- show before/after for metadata.mode_requirements
-- briefly state why the chosen value matches the implementation path
+- show old line
+- show new line
 
 Report:
 - Ollama agents used
 - files changed
 - exact before/after
-- exact reasoning
 - confirmation:
   - No Claude direct implementation
   - No Claude agents
