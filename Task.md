@@ -15,31 +15,25 @@ Rules:
 
 Task:
 Edit exactly one file:
-- .claude/tools/boot_check.py
+- .claude/MODEL_POLICY.md
 
 Goal:
-Update the manifest mode validation to use the canonical agent_type values.
+Fix the broken pointer so it no longer points to a missing root file.
 
 Required change:
-- Replace the current valid_types set
-- Old values include mixed and external
-- New allowed values must be exactly:
-  local
-  ollama
-  claude
-  hybrid
+- Remove the pointer to:
+  ../MODEL_POLICY.md
+- Replace it with pointer text that references real files inside .claude only
+- Keep the file as a pointer, not a full policy rewrite
 
 Do not:
-- edit any manifest
 - edit any other file
-- refactor boot_check broadly
+- rewrite policy content broadly
 
 Validation:
-- show the old valid_types line
-- show the new valid_types line
-- run:
-  python3 .claude/tools/boot_check.py
-- show exact output
+- show old pointer line
+- show new pointer line
+- prove each referenced target exists
 
 Report:
 - Ollama agents used

@@ -2,7 +2,7 @@
 
 > **Pointer:** This file is a reference to the canonical model policy document.
 
-See the main model policy at: [`MODEL_POLICY.md`](../MODEL_POLICY.md)
+For the authoritative model policy definition, see:
 
 For detailed model routing and escalation rules, see:
 - `.claude/config/model_escalation_ladder.yaml` — model tier definitions
