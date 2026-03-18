@@ -19,6 +19,7 @@ import urllib.error
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+from claudeclockwork.localai.local_ollama_runtime import LocalOllamaRuntimeConfig
 
 DEFAULT_MODEL_FALLBACK = "qwen2.5-14b:research"
 DEFAULT_PROMPT_BUDGET_CHARS = 12_000
@@ -184,7 +185,10 @@ class OllamaModelManager:
             prof = self.get_profile_config(profile)
             if prof.get("model"):
                 return prof["model"], "profile_model"
-        return self.get_global_default(), "state_default_model" if self._load_state().get("default_model") else "config_default_model"
+        model = self.get_global_default()
+        if LocalOllamaRuntimeConfig.is_model_forbidden_for_default_mode(model):
+            raise RuntimeError(f"Model {model} is forbidden for default mode.")
+        return model, "state_default_model" if self._load_state().get("default_model") else "config_default_model"
 
     def get_prompt_budget(
         self,
@@ -265,10 +269,6 @@ class OllamaModelManager:
 
         self._save_state(model)
         return model
-
-    def is_model_forbidden_for_default_mode(self, model_name: str) -> bool:
-    forbidden = self._get_forbidden_models()
-    return model_name in forbidden
 
     def validate_model(self, model: str) -> tuple[bool, str]:
         """
