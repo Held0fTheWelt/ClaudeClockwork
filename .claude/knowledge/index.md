@@ -284,7 +284,8 @@ Primary sources:
 | `.claude/governance/artifacts_and_paths.md` | Artifacts and paths | Implementation Agent | artifacts, paths |
 | `.claude/governance/message_triad_protocol.md` | Message triad protocol | Team Lead, Input Tasks | input, triad |
 | `.claude/governance/path_semantics.md` | Path semantics | All agents | paths, governance |
-| `.claude/skills/registry.md` | Skill registry (catalog of all skills) | Skill Scout, Team Lead | skills, registry |
+| `.claude/skills/_index.json` | Skill registry (machine-readable canonical) | Skill Scout, Team Lead | skills, registry |
+| `.claude/skills/registry.md` | Skill catalog (human-readable) | Skill Scout, Team Lead | skills, registry |
 | `.claude/skills/playbooks/` | Playbooks (e.g., qa_campaign, documentation_pipeline) | Team Lead, Agents | skills, playbooks |
 | `.claude/skills.md` | Pointer to registry + playbooks | All agents | skills, pointer |
 | `.claude/tools/menus/planning_policy_menu.py` | Planning policy menu | Team Lead | planning, tools |
