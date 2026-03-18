@@ -114,34 +114,29 @@ Mandatory enforcement:
 - If needed, use Claude only to route, invoke, inspect, and report on Ollama agent work.
 
 Task:
-Implement only the smallest helper or guard needed to decide whether a model is forbidden for default mode.
+Improve only the explicit failure message for forbidden default-mode model selection.
 
 Scope:
-- claudeclockwork/localai/local_ollama_runtime.py
-- or claudeclockwork/core/ollama/model_manager.py
-- one file only if possible
+- the single file/function already responsible for the failure
+- no logic redesign
 
 Requirements:
-1. Do not wire the guard into the full resolution path yet.
-2. Implement only the minimum logic needed to answer:
-   - allowed in default mode
-   - forbidden in default mode
-3. Keep names explicit and narrow.
-4. No refactor.
-5. No doc changes.
+1. Do not change model routing logic except for message text if needed.
+2. The failure message must clearly name:
+   - selected model
+   - active mode
+   - why it is forbidden
+3. Keep the patch tiny.
 
 Validation:
-- show one allowed example
-- show one forbidden example
-- show exact command/snippet
+- trigger one forbidden example
 - show exact output
 
 Report:
 1. Ollama agents used
 2. Files changed
-3. Exact helper/guard added
-4. Exact validation output
-5. Confirmation:
+3. Exact validation output
+4. Confirmation:
    - No Claude direct implementation
    - No Claude agents
    - No mixed execution

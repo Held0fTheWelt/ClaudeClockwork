@@ -187,7 +187,7 @@ class OllamaModelManager:
                 return prof["model"], "profile_model"
         model = self.get_global_default()
         if LocalOllamaRuntimeConfig.is_model_forbidden_for_default_mode(model):
-            raise RuntimeError(f"Model {model} is forbidden for default mode.")
+            raise RuntimeError(f"Model {model} is prohibited in default mode due to GPU-first constraints that prevent the use of 32B, 70B, and 72B models.")
         return model, "state_default_model" if self._load_state().get("default_model") else "config_default_model"
 
     def get_prompt_budget(
