@@ -1,5 +1,6 @@
 auto_create_runtime_dirs: true
-canonical_model_runtime_config: .claude/config/ollama.yaml
+canonical_runtime_enforcement_config: .claude/config/local_ollama_runtime.yaml
+canonical_model_routing_config: .claude/config/ollama.yaml
 canonical_skill_registry_output: .claude/skills/_index.json
 canonical_version_location: .claude/VERSION
 claude_only_mode_optional_paths:
@@ -27,6 +28,7 @@ runtime_artifacts:
 skill_registry:
   auto_register_skills: true
   canonical_skill_registry_path: .claude/skills
+  canonical_skill_registry_machine_readable: .claude/skills/_index.json
   manifest_validation_strict: true
   required_manifest_fields:
   - id

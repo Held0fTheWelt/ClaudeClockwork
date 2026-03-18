@@ -31,5 +31,6 @@
       ],
       "agent_type": "ollama"
     }
-  }
+  },
+  "agent_type": "claude"
 }

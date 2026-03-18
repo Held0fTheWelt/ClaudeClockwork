@@ -24,7 +24,8 @@
         "default",
         "adaptive"
       ],
-      "agent_type": "mixed"
+      "agent_type": "claude"
     }
-  }
+  },
+  "agent_type": "claude"
 }

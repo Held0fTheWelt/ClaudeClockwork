@@ -30,7 +30,12 @@
       "requires_mode": []
     },
     "category": "system",
-    "tags": ["mode", "cli", "agent-routing", "interactive-menu"],
+    "tags": [
+      "mode",
+      "cli",
+      "agent-routing",
+      "interactive-menu"
+    ],
     "examples": [
       "/mode - Launch interactive mode menu",
       "/mode menu - Launch interactive mode menu",
@@ -41,5 +46,6 @@
       "/mode set claude-min - Switch to Claude Minimal mode",
       "/mode info - Show detailed mode information"
     ]
-  }
+  },
+  "agent_type": "claude"
 }

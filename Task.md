@@ -113,37 +113,36 @@ Mandatory enforcement:
 - Do not compensate for agent failure by implementing the patch yourself.
 - If needed, use Claude only to route, invoke, inspect, and report on Ollama agent work.
 
+Failure rule:
+A clear Ollama-agent failure report is required over any Claude-authored workaround.
+Do not salvage the task with direct Claude edits.
+
 Task:
-Remove or neutralize legacy Oodle terminology in the core normative governance docs only.
+Add a minimal regression suite covering only the repaired drift points.
 
 Scope:
-- .claude/governance/model_escalation_policy.md
-- .claude/governance/policy_gatekeeper.md
-- .claude/governance/deep_oodle_mode.md
-- .claude/governance/budgeting_policy.md
-- .claude/governance/routing_matrix.md
+- a small tests directory if needed
+- no network dependency
+- no broad integration matrix
 
-Requirements:
-1. Replace legacy Oodle wording where it is normative and misleading.
-2. If a concept is historical, mark it explicitly as historical instead of leaving it ambiguous.
-3. Do not do a repo-wide doc sweep.
-4. Keep edits minimal and policy-focused.
-5. Do not change unrelated content.
-6. If the files are already clean enough for the stated rule, treat the task as a successful no-op and report proof.
+Required tests:
+1. boot_check catches invalid agent_type
+2. the three former mixed manifests now use canonical values
+3. MODEL_POLICY pointer target exists
+4. canonical machine-readable skill registry path is asserted
+5. forbidden-model enforcement proof matches the repaired behavior
 
 Validation:
-- Search only the scoped files for Oodle references after the change.
-- Report remaining intentional historical mentions separately.
-- Show exact search command and exact output.
+- run only the targeted tests
+- show exact command
+- show exact result
 
-Report format:
+Report:
 1. Ollama agents used
-2. Why this task stayed Ollama-only
-3. Files changed
-4. Validation commands run
-5. Exact outputs
-6. Remaining legacy mentions, if any
-7. Confirmation:
+2. Files changed
+3. Exact validation command
+4. Exact result
+5. Confirmation:
    - No Claude direct implementation
    - No Claude agents
    - No mixed execution

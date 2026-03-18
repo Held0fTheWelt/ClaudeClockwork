@@ -19,6 +19,7 @@
   ],
   "enabled": true,
   "trust_level": "local",
+  "agent_type": "ollama",
   "inputs": {
     "root": {
       "type": "string",

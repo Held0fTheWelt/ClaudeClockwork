@@ -6,7 +6,14 @@
   "description": "Run LocalAI runtime capabilities: text embedding, audio transcription, and code generation (plan, forge, review, validate)",
   "entrypoint": "skills.localai.localai_run.skill:LocalaiRunSkill",
   "author": "ClaudeClockwork",
-  "tags": ["localai", "runtime", "embedding", "asr", "code-generation"],
+  "tags": [
+    "localai",
+    "embed",
+    "asr",
+    "forge",
+    "code-generation",
+    "first-class-capability"
+  ],
   "interface": {
     "invoke": "localai_run",
     "parameters": {
@@ -52,13 +59,16 @@
       "description": "Deterministic safety validation with 6 gates"
     }
   ],
-  "tags": ["localai", "embed", "asr", "forge", "code-generation", "first-class-capability"],
   "metadata": {
     "legacy_bridge": false,
     "ollama_binding": true,
     "mode_requirements": {
-      "requires_mode": ["default", "adaptive"],
+      "requires_mode": [
+        "default",
+        "adaptive"
+      ],
       "agent_type": "ollama"
     }
-  }
+  },
+  "agent_type": "claude"
 }

@@ -30,7 +30,13 @@
       "requires_mode": []
     },
     "category": "system",
-    "tags": ["runtime", "cli", "agent-routing", "execution-mode", "interactive-menu"],
+    "tags": [
+      "runtime",
+      "cli",
+      "agent-routing",
+      "execution-mode",
+      "interactive-menu"
+    ],
     "examples": [
       "/runtime - Launch interactive runtime menu",
       "/runtime menu - Launch interactive menu",
@@ -41,5 +47,6 @@
       "/runtime set claude-min - Switch to Claude Minimal runtime",
       "/runtime info - Show detailed runtime information"
     ]
-  }
+  },
+  "agent_type": "claude"
 }

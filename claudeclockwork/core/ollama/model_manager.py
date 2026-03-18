@@ -180,11 +180,17 @@ class OllamaModelManager:
         Returns (model_str, source). Does not mutate state.
         """
         if override and override.strip():
-            return override.strip(), "per_invocation_override"
+            model_candidate = override.strip()
+            if LocalOllamaRuntimeConfig.is_model_forbidden_for_default_mode(model_candidate):
+                raise RuntimeError(f"Model {model_candidate} is prohibited in default mode due to GPU-first constraints that prevent the use of 32B, 70B, and 72B models.")
+            return model_candidate, "per_invocation_override"
         if profile:
             prof = self.get_profile_config(profile)
             if prof.get("model"):
-                return prof["model"], "profile_model"
+                model_candidate = prof["model"]
+                if LocalOllamaRuntimeConfig.is_model_forbidden_for_default_mode(model_candidate):
+                    raise RuntimeError(f"Model {model_candidate} is prohibited in default mode due to GPU-first constraints that prevent the use of 32B, 70B, and 72B models.")
+                return model_candidate, "profile_model"
         model = self.get_global_default()
         if LocalOllamaRuntimeConfig.is_model_forbidden_for_default_mode(model):
             raise RuntimeError(f"Model {model} is prohibited in default mode due to GPU-first constraints that prevent the use of 32B, 70B, and 72B models.")

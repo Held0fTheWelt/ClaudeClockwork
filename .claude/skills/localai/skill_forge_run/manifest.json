@@ -6,7 +6,12 @@
   "description": "Orchestrate the full skill-forge pipeline (code.plan -> code.forge -> code.review -> code.validate)",
   "entrypoint": "skills.localai.skill_forge_run.skill:SkillForgeRun",
   "author": "ClaudeClockwork",
-  "tags": ["forge", "code-generation", "pipeline", "localai"],
+  "tags": [
+    "forge",
+    "code-generation",
+    "pipeline",
+    "localai"
+  ],
   "interface": {
     "invoke": "skill_forge_run",
     "parameters": {
@@ -54,7 +59,12 @@
     "description": "Stage-structured result with run_id, all stage outputs, and final_status"
   },
   "dependencies": {
-    "capabilities": ["code.plan", "code.forge", "code.review", "code.validate"],
+    "capabilities": [
+      "code.plan",
+      "code.forge",
+      "code.review",
+      "code.validate"
+    ],
     "runtime": "localai"
   },
   "permissions": [],
@@ -63,5 +73,6 @@
       "agent_type": "ollama",
       "requires_mode": []
     }
-  }
+  },
+  "agent_type": "claude"
 }

@@ -26,7 +26,18 @@ def load_all_manifests(skills: List[Dict]) -> Dict[str, Tuple[Dict, List[str]]]:
 
 
 def validate_manifest_schema(manifest: dict, contract: dict) -> Tuple[bool, List[str]]:
-    """Validate manifest - just check it's a dict."""
-    if isinstance(manifest, dict):
-        return (True, [])
-    return (False, ["Invalid manifest format"])
+    """Validate manifest - check structure, mode_requirements, agent_type."""
+    errors = []
+
+    if not isinstance(manifest, dict):
+        return False, ["Manifest is not a dictionary."]
+
+    if 'metadata' not in manifest or 'mode_requirements' not in manifest['metadata']:
+        errors.append("'metadata.mode_requirements' does not exist.")
+
+    if 'agent_type' not in manifest:
+        errors.append("'agent_type' does not exist.")
+    elif manifest['agent_type'] not in ['local', 'ollama', 'claude', 'hybrid']:
+        errors.append(f"'agent_type': '{manifest['agent_type']}' is invalid. Must be one of: local, ollama, claude, hybrid")
+
+    return (True, []) if not errors else (False, errors)

@@ -16,6 +16,7 @@
   ],
   "enabled": true,
   "trust_level": "local",
+  "agent_type": "ollama",
   "inputs": {},
   "outputs": {},
   "metadata": {

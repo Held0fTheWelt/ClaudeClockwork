@@ -30,5 +30,6 @@
       "agent_type": "ollama"
     }
   },
-  "user_invocable": true
+  "user_invocable": true,
+  "agent_type": "claude"
 }
