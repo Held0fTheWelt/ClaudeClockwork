@@ -125,6 +125,7 @@ if __name__ == "__main__":
 ## Step 4 — Add a Registry Entry
 
 Open `.claude/skills/registry.md` and append an entry following the existing numbering:
+Also update `.claude/skills/_index.json` (machine-readable canonical registry).
 
 ```markdown
 ### N) my_skill
@@ -147,7 +148,7 @@ Also add a row to the MVP02 table at the bottom of the registry:
 - [ ] Schema file exists at `.claude/contracts/schemas/<skill_name>.schema.json`
 - [ ] Example file exists at `.claude/contracts/examples/<skill_name>_example.json`
 - [ ] Implementation exists at `.claude/tools/skills/<skill_name>.py`
-- [ ] Registry entry added in `.claude/skills/registry.md`
+- [ ] Registry entry added in `.claude/skills/registry.md` (human-readable) and `.claude/skills/_index.json` (machine-readable canonical)
 - [ ] Standalone invocation works: `python .claude/tools/skills/<skill_name>.py '<json>'`
 - [ ] Output is valid JSON with `"status": "ok"` on success
 
