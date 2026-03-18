@@ -114,29 +114,36 @@ Mandatory enforcement:
 - If needed, use Claude only to route, invoke, inspect, and report on Ollama agent work.
 
 Task:
-Improve only the explicit failure message for forbidden default-mode model selection.
+Remove or neutralize legacy Oodle terminology in the core normative governance docs only.
 
 Scope:
-- the single file/function already responsible for the failure
-- no logic redesign
+- .claude/governance/model_escalation_policy.md
+- .claude/governance/policy_gatekeeper.md
+- .claude/governance/deep_oodle_mode.md
+- .claude/governance/budgeting_policy.md
+- .claude/governance/routing_matrix.md
 
 Requirements:
-1. Do not change model routing logic except for message text if needed.
-2. The failure message must clearly name:
-   - selected model
-   - active mode
-   - why it is forbidden
-3. Keep the patch tiny.
+1. Replace legacy Oodle wording where it is normative and misleading.
+2. If a concept is historical, mark it explicitly as historical instead of leaving it ambiguous.
+3. Do not do a repo-wide doc sweep.
+4. Keep edits minimal and policy-focused.
+5. Do not change unrelated content.
+6. If the files are already clean enough for the stated rule, treat the task as a successful no-op and report proof.
 
 Validation:
-- trigger one forbidden example
-- show exact output
+- Search only the scoped files for Oodle references after the change.
+- Report remaining intentional historical mentions separately.
+- Show exact search command and exact output.
 
-Report:
+Report format:
 1. Ollama agents used
-2. Files changed
-3. Exact validation output
-4. Confirmation:
+2. Why this task stayed Ollama-only
+3. Files changed
+4. Validation commands run
+5. Exact outputs
+6. Remaining legacy mentions, if any
+7. Confirmation:
    - No Claude direct implementation
    - No Claude agents
    - No mixed execution
