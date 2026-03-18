@@ -29,6 +29,7 @@ Agent definitions: `.claude/agents/` — sub-folders by domain (`docs/`, `learni
 
 ## 5. Find a skill
 
-- Registry: `.claude/skills/registry.md` — full list of all skills with descriptions.
+- Skill registry (JSON): `.claude/skills/_index.json` — machine-readable canonical registry
+- Skill catalog: `.claude/skills/registry.md` — human-readable list of all skills
 - Quick-start: `.claude/skills/QUICKSTART.md`
 - Per-skill detail: `.claude/skills/<skill_id>/README.md`

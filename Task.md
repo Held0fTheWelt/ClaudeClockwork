@@ -15,20 +15,18 @@ Rules:
 
 Task:
 Edit exactly one file:
-- .claude/docs/FIRST_STEPS.md
+- .claude/docs/DOC_SKILLS.md
 
 Goal:
-Fix the registry description so it does not imply registry.md is the machine-readable canonical registry.
+Fix the “full skill registry” wording so it does not treat registry.md as the machine-readable canonical registry.
 
 Required change:
-- Preserve human-readable wording if useful
-- Make the wording consistent with:
-  .claude/skills/_index.json = machine-readable canonical output
-  .claude/skills/registry.md = human-readable catalog
+- Keep registry.md as human-readable catalog if needed
+- Align wording with _index.json as machine-readable canonical registry output
 
 Do not:
 - edit any other file
-- broaden scope
+- rewrite the document broadly
 
 Validation:
 - show old line
