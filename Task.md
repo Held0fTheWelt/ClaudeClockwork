@@ -15,18 +15,20 @@ Rules:
 
 Task:
 Edit exactly one file:
-- .claude/INDEX.md
+- .claude/docs/FIRST_STEPS.md
 
 Goal:
-Fix the MODEL_POLICY entry so it no longer claims a canonical root MODEL_POLICY.md file.
+Fix the registry description so it does not imply registry.md is the machine-readable canonical registry.
 
 Required change:
-- Find the line that says MODEL_POLICY.md points to root MODEL_POLICY.md
-- Replace it with wording that matches the real .claude-local pointer/canonical structure
+- Preserve human-readable wording if useful
+- Make the wording consistent with:
+  .claude/skills/_index.json = machine-readable canonical output
+  .claude/skills/registry.md = human-readable catalog
 
 Do not:
 - edit any other file
-- rewrite the full index
+- broaden scope
 
 Validation:
 - show old line
