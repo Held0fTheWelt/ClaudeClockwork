@@ -42,6 +42,16 @@ class OllamaAgent:
         root = Path(project_root).resolve() if project_root else Path.cwd()
         manager = OllamaModelManager(project_root=root)
         resolved, source = manager.resolve_model(override=model, profile=profile)
+
+        # Enforce forbidden-model check in default mode
+        if mode == "default" and LocalOllamaRuntimeConfig.is_model_forbidden_for_default_mode(resolved):
+            raise RuntimeError(
+                f"Model '{resolved}' is forbidden in default mode (GPU-first constraint). "
+                f"Resolved from: {source}. "
+                f"Forbidden models: 32B/70B/72B variants. "
+                f"Use mode='adaptive' for larger models."
+            )
+
         self.model = resolved
         self._model_source = source  # 'override' | 'profile' | 'global'
         self._profile = profile
