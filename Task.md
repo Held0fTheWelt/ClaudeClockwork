@@ -24,38 +24,44 @@ Report format:
    - No Claude agents
    - No mixed execution
 
-   Task:
+
+Any Claude-written patch or any Claude-agent use fails the task.
+
+Rules:
+- Use pure Ollama clients only
+- Delegate all implementation work to Ollama agents
+- Do not write or modify code yourself
+- Do not use Claude agents
+- Do not use mixed execution
+- If Ollama is unavailable or unhealthy, fail
+- Do not broaden scope
+
+Task:
 Edit exactly one file:
-- .claude/tools/boot_check.py
+- .claude/skills/demo/hello/manifest.json
 
 Goal:
-Make boot_check validate manifest agent_type values against the canonical mode vocabulary used by the core mode system.
+Correct the manifest agent_type based on the actual execution path.
 
 Required change:
-1. Find the current valid agent_type set used by boot_check manifest validation.
-2. Replace it so the allowed values are exactly:
-   - local
-   - ollama
-   - claude
-   - hybrid
-3. Remove legacy acceptance of values such as:
-   - mixed
-   - external
-4. Keep the rest of boot_check behavior unchanged unless a tiny adjacent update is required for consistency.
+1. Inspect .claude/skills/demo/hello/skill.py
+2. Inspect the legacy tool path it invokes
+3. Set metadata.mode_requirements.agent_type to the single correct canonical value
+4. Do not change any other field unless absolutely required for consistency
 
-Non-goals:
-- do not edit manifests
-- do not edit any other file
-- do not redesign boot_check
-- do not add new policy logic beyond the valid set correction
+Expected result:
+- agent_type should reflect a local deterministic execution path, not a Claude LLM path
 
 Validation:
-1. Print the old valid_types line or block.
-2. Print the new valid_types line or block.
-3. Run:
-   python3 .claude/tools/boot_check.py
-4. Show the exact output.
+- show before/after for metadata.mode_requirements
+- briefly state why the chosen value matches the implementation path
 
-Expected outcome:
-- If invalid manifest agent_type values still exist in the repo, boot_check should now fail instead of passing.
-- If all manifests are already canonical, boot_check may pass. In that case, report that clearly.
+Report:
+- Ollama agents used
+- files changed
+- exact before/after
+- exact reasoning
+- confirmation:
+  - No Claude direct implementation
+  - No Claude agents
+  - No mixed execution

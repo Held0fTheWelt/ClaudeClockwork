@@ -24,8 +24,8 @@
         "default",
         "adaptive"
       ],
-      "agent_type": "claude"
+      "agent_type": "local"
     }
   },
-  "agent_type": "claude"
+  "agent_type": "local"
 }
