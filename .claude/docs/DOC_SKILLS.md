@@ -105,4 +105,4 @@ Falls back to HTML if pandoc/reportlab are unavailable.
 
 ---
 
-_Full skill registry: `.claude/skills/registry.md`_
+_Skill registry (machine-readable): `.claude/skills/_index.json` — canonical registry. For human-readable catalog: `.claude/skills/registry.md`_

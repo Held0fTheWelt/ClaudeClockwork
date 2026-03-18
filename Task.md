@@ -15,22 +15,23 @@ Rules:
 
 Task:
 Edit exactly one file:
-- .claude/docs/DOC_SKILLS.md
+- .claude/knowledge/index.md
 
 Goal:
-Fix the “full skill registry” wording so it does not treat registry.md as the machine-readable canonical registry.
+Fix the table entry that currently presents .claude/skills/registry.md as the skill registry without clarifying its human-readable role.
 
 Required change:
-- Keep registry.md as human-readable catalog if needed
-- Align wording with _index.json as machine-readable canonical registry output
+- Clarify:
+  .claude/skills/_index.json = machine-readable canonical registry output
+  .claude/skills/registry.md = human-readable catalog
 
 Do not:
 - edit any other file
-- rewrite the document broadly
+- rewrite the knowledge index broadly
 
 Validation:
-- show old line
-- show new line
+- show old table row
+- show new table row
 
 Report:
 - Ollama agents used
