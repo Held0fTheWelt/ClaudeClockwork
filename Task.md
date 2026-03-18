@@ -132,63 +132,41 @@ Execution contract:
 8. Do not broaden scope.
 9. Do not return only a plan.
 
-Task:
-Fix the current forbidden-model enforcement drift by removing mode-unaware blocking from model resolution and keeping mode-aware enforcement only at the actual call site.
+Ollama-only task.
+Any Claude-written patch or any Claude-agent use fails the task.
 
-Files to edit:
-- claudeclockwork/core/ollama/model_manager.py
-- claudeclockwork/core/agents/ollama_agent.py
+Edit only these two functions:
+- claudeclockwork/core/ollama/model_manager.py -> OllamaModelManager.resolve_model
+- claudeclockwork/core/agents/ollama_agent.py -> OllamaAgent.__init__
 
-Exact goal:
-- model_manager.resolve_model(...) must become mode-agnostic again
-- default-mode forbidden-model enforcement must remain active in OllamaAgent.__init__
-- adaptive mode must not be blocked by default-mode enforcement during model resolution
+Do exactly this:
+1. In resolve_model:
+   - delete the forbidden-model RuntimeError checks
+   - keep the return values and resolution order unchanged
 
-Exact required changes:
-1. In claudeclockwork/core/ollama/model_manager.py:
-   - edit only OllamaModelManager.resolve_model
-   - remove the three forbidden-model RuntimeError checks currently applied to:
-     - per-invocation override
-     - profile model
-     - global default model
-   - keep model resolution order unchanged
-   - do not redesign the function
+2. In OllamaAgent.__init__:
+   - import validate_model_not_forbidden from claudeclockwork.localai.local_ollama_runtime
+   - after model resolution and before self.model = resolved:
+     if mode == "default":
+         validate_model_not_forbidden(resolved)
 
-2. In claudeclockwork/core/agents/ollama_agent.py:
-   - keep enforcement in OllamaAgent.__init__
-   - replace the current direct check with the canonical helper:
-     validate_model_not_forbidden
-     from claudeclockwork.localai.local_ollama_runtime
-   - apply it only when mode == "default"
-   - keep the insertion point:
-     after resolved, source = manager.resolve_model(...)
-     before self.model = resolved
-
-Non-goals:
-- do not edit config files
-- do not edit docs
-- do not edit tests in this task
-- do not refactor unrelated helpers
-- do not change routing logic
-- do not add new forbidden-model lists
+Do not:
+- edit docs
+- edit config
+- edit tests
+- refactor anything else
 
 Validation:
-Run a direct Python smoke snippet that proves all three cases:
-1. mode="default" + forbidden model -> raises RuntimeError
-2. mode="adaptive" + same forbidden model -> does not fail at initialization because of default-mode enforcement
-3. mode="default" + allowed model -> initializes successfully
+- default + forbidden model must raise
+- adaptive + same model must not raise because of default-mode enforcement
+- default + allowed model must pass
 
-Report format:
-1. Ollama agents used
-2. Files changed
-3. Exact lines/functions changed
-4. Exact validation snippet
-5. Exact output
-6. Confirmation:
-   - No Claude direct implementation
-   - No Claude agents
-   - No mixed execution
-
-Failure rule:
-A clear Ollama-agent failure report is required over any Claude-authored workaround.
-Do not salvage the task with direct Claude edits.
+Report:
+- Ollama agents used
+- files changed
+- exact validation snippet
+- exact output
+- confirmation:
+  - No Claude direct implementation
+  - No Claude agents
+  - No mixed execution

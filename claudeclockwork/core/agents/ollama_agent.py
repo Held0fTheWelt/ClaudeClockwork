@@ -17,6 +17,7 @@ from typing import Any
 from claudeclockwork.core.mode import ModeManager
 from claudeclockwork.core.ollama import OllamaModelManager, apply_budget
 from claudeclockwork.localai.local_ollama_runtime import LocalOllamaRuntimeConfig
+from claudeclockwork.localai.local_ollama_runtime import validate_model_not_forbidden
 
 
 class OllamaAgent:
@@ -44,13 +45,8 @@ class OllamaAgent:
         resolved, source = manager.resolve_model(override=model, profile=profile)
 
         # Enforce forbidden-model check in default mode
-        if mode == "default" and LocalOllamaRuntimeConfig.is_model_forbidden_for_default_mode(resolved):
-            raise RuntimeError(
-                f"Model '{resolved}' is forbidden in default mode (GPU-first constraint). "
-                f"Resolved from: {source}. "
-                f"Forbidden models: 32B/70B/72B variants. "
-                f"Use mode='adaptive' for larger models."
-            )
+        if mode == "default":
+            validate_model_not_forbidden(resolved)
 
         self.model = resolved
         self._model_source = source  # 'override' | 'profile' | 'global'
