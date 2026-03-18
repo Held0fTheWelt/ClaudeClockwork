@@ -31,7 +31,7 @@ Expected output: one `[PASS]` / `[FAIL]` line per required path, then `Result: A
 - `SYSTEM.md`
 - `ARCHITECTURE.md` → canonical at root `ARCHITECTURE.md`
 - `ROADMAP.md` → canonical at root `ROADMAP.md`
-- `MODEL_POLICY.md` → canonical at root `MODEL_POLICY.md`
+- `MODEL_POLICY.md` → pointer to canonical policy files in `.claude/config/` and `.claude/governance/`
 - `skills.md`
 - `skills/registry.md` (under `.claude/skills/`)
 - `CHANGELOG.md`

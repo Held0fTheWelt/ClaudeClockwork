@@ -15,30 +15,27 @@ Rules:
 
 Task:
 Edit exactly one file:
-- .claude/MODEL_POLICY.md
+- .claude/INDEX.md
 
 Goal:
-Fix the broken pointer so it no longer points to a missing root file.
+Fix the MODEL_POLICY entry so it no longer claims a canonical root MODEL_POLICY.md file.
 
 Required change:
-- Remove the pointer to:
-  ../MODEL_POLICY.md
-- Replace it with pointer text that references real files inside .claude only
-- Keep the file as a pointer, not a full policy rewrite
+- Find the line that says MODEL_POLICY.md points to root MODEL_POLICY.md
+- Replace it with wording that matches the real .claude-local pointer/canonical structure
 
 Do not:
 - edit any other file
-- rewrite policy content broadly
+- rewrite the full index
 
 Validation:
-- show old pointer line
-- show new pointer line
-- prove each referenced target exists
+- show old line
+- show new line
 
 Report:
 - Ollama agents used
 - files changed
-- exact output
+- exact before/after
 - confirmation:
   - No Claude direct implementation
   - No Claude agents
