@@ -4,7 +4,7 @@
 
 This policy is the canonical reference for:
 
-- **Control #1:** Higher/different **local Oodle model**
+- **Control #1:** Higher/different **local Model**
 - **Control #2:** Higher **Claude model**
 
 ---
@@ -50,9 +50,9 @@ Free text is allowed in `notes`/`rationale`, but not as a substitute for core fi
 
 ---
 
-## 4) Escalation Ladder (Oodle → Claude)
+## 4) Escalation Ladder (Model → Claude)
 
-### 4.1 Oodle Model Tiers (Local)
+### 4.1 Model Model Tiers (Local)
 
 - **Tier S (small):** 7b–14b (Routing, Packing, Admin, quick reviews)
 - **Tier M (medium):** 32b–33b (Implementation, concrete fixes)
@@ -64,11 +64,11 @@ Free text is allowed in `notes`/`rationale`, but not as a substitute for core fi
 - **Claude M:** Sonnet (Plan/Review/Debug medium)
 - **Claude L:** Highest available reasoning (gate-driven only)
 
-### 4.3 Rule: Oodle First, Then Claude
+### 4.3 Rule: Model First, Then Claude
 
 When a result is insufficient, escalate in this order:
 
-1) **Oodle**: S → M → L (or switch model family, e.g., qwen → llama)
+1) **Model**: S → M → L (or switch model family, e.g., qwen → llama)
 2) **Claude**: Haiku → Sonnet → Higher
 
 ---
@@ -84,17 +84,17 @@ This happens via the **Report Worker**, which evaluates error/quality density.
 - `warning_count`
 - `recurrence` (same errors repeated?)
 - `confidence_drop` (e.g., reviewer uncertain)
-- `recommend_escalation` (none|oodle|claude)
+- `recommend_escalation` (none|model|claude)
 
 ### 5.2 Thresholds (Default)
 
-- **Escalate Oodle** when:
+- **Escalate Model** when:
   - `error_count >= 3` **or**
   - `recurrence >= 2` **or**
   - `confidence_drop` strong
 
 - **Escalate Claude** when:
-  - Oodle Tier L already used and still `error_count >= 2`
+  - Model Tier L already used and still `error_count >= 2`
   - or `risk=high` gate triggers
 
 ### 5.3 Critic as Corrective
@@ -118,7 +118,7 @@ Tests are executed deterministically. LLMs only triage logs and create fix plans
 
 ## 7) Claude Tier Policy (Full Bandwidth, Cost-Aware)
 
-**Principle:** *Small-first*, then secure via independent verification. Escalation happens **first via Oodle**, only then via Claude.
+**Principle:** *Small-first*, then secure via independent verification. Escalation happens **first via Model**, only then via Claude.
 
 ### Claude Tiers (Cloud)
 

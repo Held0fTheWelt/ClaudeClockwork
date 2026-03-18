@@ -12,7 +12,7 @@ Use `budget_router` with:
 
 ## Output
 A recommendation containing:
-- Oodle tier
+- Model Tier
 - Claude tier
 - allow_deep / allow_external
 - max_context_kb

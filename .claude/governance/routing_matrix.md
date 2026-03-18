@@ -4,7 +4,7 @@ This matrix is **default standard routing**. Changes occur via the process:
 `Report/QualitySignal -> CriticReport -> Team_Lead -> (Agent Coaching | Personaler Matrix Patch | Edge-Case Route)`.
 
 ## Escalation
-1) **Increase Oodle Tier** (O0→O1→O2/O3)
+1) **Increase Model Tier** (O0→O1→O2/O3)
 2) Only then **increase Claude Tier** (C0→C1→C2→C3)
 - **Opus 4.6 (C4) default OFF**, manual only.
 

@@ -3,7 +3,7 @@
 Purpose: central, deterministic enforcement of key policies to prevent drift.
 
 ## What it gates
-- Deep Oodle Mode
+- Deep Reasoning Mode
 - Creative feedback
 - Rebuild trust_mode
 - Experiment Budget
@@ -12,7 +12,7 @@ Purpose: central, deterministic enforcement of key policies to prevent drift.
 ## Inputs (compact)
 - settings.local.json (optional)
 - signals: repeat_failures, drift_events, over_escalations, risk, explicit flags
-- requested_action: deep_oodle / creative_feedback / rebuild / experiment / no_llm
+- requested_action: deep_reasoning / creative_feedback / rebuild / experiment / no_llm
 
 ## Output
 - allowed: true/false
@@ -21,6 +21,6 @@ Purpose: central, deterministic enforcement of key policies to prevent drift.
 
 ## Rule priority (highest first)
 1) No-LLM mode enabled => only tool-only actions allowed (except explicit relay).
-2) Safety gates: rebuild and deep_oodle require triggers.
+2) Safety gates: rebuild and deep_reasoning require triggers.
 3) Budget gates: experiment count and feedback creativity capped.
 4) Default allow: strict/balanced tool-first actions.
