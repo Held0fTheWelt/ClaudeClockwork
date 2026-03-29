@@ -1,0 +1,35 @@
+{
+  "name": "repo_how_it_works_build",
+  "version": "0.1.0",
+  "category": "analysis",
+  "description": "Generate technical and functional how-it-works guides from repository structure, UML review context, and detected runtime entry points.",
+  "entrypoint": "skills.analysis.repo_how_it_works_build.skill:RepoHowItWorksBuildSkill",
+  "permissions": [
+    "repo:read",
+    "docs:write"
+  ],
+  "aliases": [
+    "how_it_works_build",
+    "review_how_it_works_build"
+  ],
+  "tags": [
+    "uml",
+    "review",
+    "guides",
+    "documentation",
+    "how-it-works"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "output_dir": "Optional output directory for the generated guide bundle. Defaults to Docs/uml/how_it_works.",
+    "include_tests": "Whether test files should be included in the repository scan. Defaults to false.",
+    "neighbor_depth": "Optional review-context neighbor depth used when context is internally derived. Defaults to 1.",
+    "max_neighbors": "Optional limit for retained neighbor modules when context is internally derived. Defaults to 10."
+  },
+  "outputs": {
+    "payload_json": "JSON payload that describes the generated technical and functional guide pages.",
+    "guide_markdown_files": "Markdown files for the individual how-it-works guides.",
+    "summary_md": "Bundle summary markdown file."
+  }
+}

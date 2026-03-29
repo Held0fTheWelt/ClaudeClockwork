@@ -1,76 +1,44 @@
 # UML Analysis Suite Playbook
 
-## Goal
-
-Use the UML skill pack to make a repository understandable at multiple scales without manually drawing diagrams.
+Use this playbook when a repository needs both scope-level UML outputs and a navigable review experience.
 
 ## Recommended flow
 
-### 1. Repository inventory
+1. Run `uml_scope_catalog` to inventory directories, modules, and symbols.
+2. Run `uml_repo_bundle` for the broad structural overview.
+3. Run `uml_diagram_generate` or `uml_focus_bundle` for specific slices that need diagram artifacts.
+4. Run `uml_review_context_build` to assemble context cards and tooltip payloads.
+5. Run `repo_how_it_works_build` to generate technical and functional guide pages.
+6. Run `uml_review_site_build` to generate the static UML review website with integrated guides.
+7. Use `uml_review_bundle` or `uml_review_knowledge_bundle` when you want steps 4 to 6 in one pass.
 
-Run `uml_scope_catalog` first.
+## When to prefer the review website
 
-Purpose:
+Use the review explorer when you want to:
 
-- discover major directories
-- see which modules and classes exist
-- identify promising scopes for deeper diagrams
+- browse modules like documentation pages
+- move from directories to modules to symbols
+- inspect local context without opening source files immediately
+- surface tooltip-level context while navigating links
+- share a static, local artifact for architecture review
 
-### 2. Whole-repo overview
+## Scope strategy
 
-Run `uml_repo_bundle`.
+- repo scope: portfolio or architecture overview
+- directory scope: subsystem or bounded context review
+- module scope: implementation responsibility review
+- symbol scope: class-level or inheritance-level inspection
 
-Purpose:
+## Good review sequence
 
-- get a component-style repository overview
-- see dependency hotspots
-- get automatic directory slices for major areas
+- start at the overview page
+- open a hot directory
+- inspect the highest fan-in modules
+- open symbols from those modules
+- use focused UML bundles where the website suggests a hotspot
 
-### 3. Scope narrowing
+## Guide strategy
 
-Run `uml_diagram_generate` with one of these scopes:
-
-- `repo`
-- `directory`
-- `module`
-- `symbol`
-
-Good examples:
-
-- directory: `claudeclockwork/core`
-- module: `claudeclockwork.core.registry.skill_registry`
-- symbol: `SkillRegistry`
-
-### 4. Deep local inspection
-
-Run `uml_focus_bundle`.
-
-Purpose:
-
-- inspect one subsystem in context
-- include incoming and outgoing dependencies
-- create a small package of directly useful diagrams
-
-## Diagram intent by artifact
-
-- `*_component.puml`
-  - package/component style overview
-- `*_dependencies.mmd`
-  - graph-like dependency preview
-- `*_classes.puml`
-  - class-oriented scope view
-- `*_summary.json`
-  - machine-readable scope metadata
-- `README.md`
-  - navigation entry for the generated scope
-
-## Best-fit situations
-
-Use the bundle when you need:
-
-- onboarding maps
-- architecture reviews
-- refactor scoping
-- subsystem understanding
-- dependency drift checks
-- class hierarchy orientation
+- use the guide builder when diagrams alone are not enough
+- keep technical startup and hosting instructions close to the explorer
+- keep functional flow pages close to the entity pages so architecture and operation stay connected

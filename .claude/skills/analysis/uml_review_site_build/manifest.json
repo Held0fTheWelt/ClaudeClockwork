@@ -1,0 +1,40 @@
+{
+  "name": "uml_review_site_build",
+  "version": "0.1.0",
+  "category": "analysis",
+  "description": "Build a navigable static UML review website with overview, entity pages, and optional how-it-works guide pages.",
+  "entrypoint": "skills.analysis.uml_review_site_build.skill:UmlReviewSiteBuildSkill",
+  "permissions": [
+    "repo:read",
+    "docs:write"
+  ],
+  "aliases": [
+    "uml_site_build",
+    "uml_review_explorer"
+  ],
+  "tags": [
+    "uml",
+    "site",
+    "review",
+    "explorer",
+    "guides",
+    "website",
+    "tooltip"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "output_dir": "Optional output directory. Defaults to Docs/uml/review_site.",
+    "site_title": "Optional website title. Defaults to UML Review Explorer.",
+    "include_tests": "Whether test files should be included in the scan. Defaults to false.",
+    "neighbor_depth": "How far module neighborhoods should be expanded for context. Defaults to 1.",
+    "max_neighbors": "Maximum neighbor modules retained per module. Defaults to 10.",
+    "include_guides": "Whether how-it-works guide pages should be generated into the review site. Defaults to true."
+  },
+  "outputs": {
+    "site_dir": "Directory containing the generated static website.",
+    "index_html": "Entry page for the review explorer.",
+    "context_json": "Explorer data bundle used by the website.",
+    "tooltips_json": "Tooltip payload map used by the website."
+  }
+}

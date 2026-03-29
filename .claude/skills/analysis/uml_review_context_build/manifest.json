@@ -1,0 +1,34 @@
+{
+  "name": "uml_review_context_build",
+  "version": "0.1.0",
+  "category": "analysis",
+  "description": "Build a UML review context bundle with scope summaries, entity context cards, and tooltip payloads.",
+  "entrypoint": "skills.analysis.uml_review_context_build.skill:UmlReviewContextBuildSkill",
+  "permissions": [
+    "repo:read",
+    "docs:write"
+  ],
+  "aliases": [
+    "uml_context_build",
+    "uml_tooltip_context"
+  ],
+  "tags": [
+    "uml",
+    "context",
+    "review",
+    "tooltips"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "output_dir": "Optional output directory. Defaults to Docs/uml/review_context.",
+    "include_tests": "Whether test files should be included in the scan. Defaults to false.",
+    "neighbor_depth": "How far module neighborhoods should be expanded for context. Defaults to 1.",
+    "max_neighbors": "Maximum neighbor modules retained per module. Defaults to 10."
+  },
+  "outputs": {
+    "context_json": "JSON bundle with directory, module, and symbol context.",
+    "tooltips_json": "Tooltip payload map for explorer links and context chips.",
+    "summary_md": "Markdown summary of the generated review context."
+  }
+}
