@@ -1,0 +1,31 @@
+{
+  "name": "uml_scope_catalog",
+  "version": "0.1.0",
+  "category": "analysis",
+  "description": "Scan a repository and produce a UML-friendly scope catalog of modules, directories, symbols, and dependencies.",
+  "entrypoint": "skills.analysis.uml_scope_catalog.skill:UmlScopeCatalogSkill",
+  "permissions": [
+    "repo:read",
+    "docs:write"
+  ],
+  "aliases": [
+    "uml_catalog",
+    "uml_inventory"
+  ],
+  "tags": [
+    "uml",
+    "catalog",
+    "analysis",
+    "repo"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "output_dir": "Optional output directory. Defaults to Docs/uml/catalog.",
+    "include_tests": "Whether test files should be included in the scan. Defaults to false."
+  },
+  "outputs": {
+    "catalog_json": "JSON catalog with directories, modules, classes, and notes.",
+    "catalog_md": "Human-readable markdown summary of scopes and hotspots."
+  }
+}

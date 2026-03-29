@@ -1,0 +1,35 @@
+{
+  "name": "uml_focus_bundle",
+  "version": "0.1.0",
+  "category": "analysis",
+  "description": "Build a deeper UML bundle around a directory, module, or symbol including neighborhood expansion.",
+  "entrypoint": "skills.analysis.uml_focus_bundle.skill:UmlFocusBundleSkill",
+  "permissions": [
+    "repo:read",
+    "docs:write",
+    "bundle:build"
+  ],
+  "aliases": [
+    "uml_focus",
+    "uml_subgraph_bundle"
+  ],
+  "tags": [
+    "uml",
+    "focus",
+    "bundle",
+    "subgraph"
+  ],
+  "enabled": true,
+  "trust_level": "local",
+  "inputs": {
+    "scope_kind": "One of directory, module, symbol.",
+    "target": "Required scope target.",
+    "neighbor_depth": "How far incoming/outgoing dependencies should be expanded. Defaults to 2.",
+    "output_dir": "Optional output directory. Defaults to Docs/uml/focus/<scope>."
+  },
+  "outputs": {
+    "bundle_index": "Markdown bundle index.",
+    "bundle_summary": "JSON summary of the focused UML bundle.",
+    "diagrams": "Generated PlantUML and Mermaid files for the focused scope."
+  }
+}

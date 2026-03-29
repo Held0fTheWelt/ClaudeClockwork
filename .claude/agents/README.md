@@ -63,3 +63,16 @@ User trigger
 - **Sonnet (C2/C3):** planning, architecture audits, precise implementation/debug, Critic reviews.
 - **Opus (C4):** disabled by default — only on explicit manual opt-in for deep review.
 - **Local-first:** prefer Oodle Tier S→M→L before escalating to Claude (see `governance/model_escalation_policy.md`).
+
+---
+
+## Local Ollama Models
+
+**See:** `docs/ollama_model_guide.md` for comprehensive usage guide on qwen3.5-35b:agent and other local models.
+
+### qwen3.5-35b:agent Summary
+- **Cost:** $0 (local)
+- **Speed:** 20-35 min per batch
+- **Quality:** Excellent for code analysis (11/11 audit defects detected; 2 critical security issues found)
+- **Best for:** Code audits, defect detection, security reviews, multi-file analysis
+- **Context:** 4096 tokens (batch inputs to 2500 tokens for safe response buffer)
