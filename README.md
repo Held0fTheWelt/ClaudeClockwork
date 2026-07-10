@@ -1,59 +1,27 @@
-# ClaudeClockwork Agent Framework
+# Clockwork
 
-Autonomous agent framework for executing development tasks using Ollama.
+ADR/SAD/UML-anchored orchestration toolkit: Claude Code as orchestrator, a
+Python MCP tool server for deterministic architecture tooling (UML
+generation, review bundles, documentation gates), and LangGraph pipelines
+for local Ollama models.
 
-## Setup
+## Install
 
-1. Ensure Ollama is running: `ollama serve`
-2. Python 3.9+
-3. Install: `pip install ollama`
-
-## Usage
-
-```python
-from pathlib import Path
-from claudeclockwork.agents.base_agent import BaseAgent
-from claudeclockwork.agents.orchestrator import TaskOrchestrator
-
-# Create orchestrator
-orchestrator = TaskOrchestrator(Path.cwd())
-
-# Define small task
-task = {
-    "id": "task-1",
-    "description": "Generate unit tests",
-    "agent_type": "test_generator",
-    "files": ["src/module.py"],
-}
-
-# Execute
-result = orchestrator.execute_task(task)
-print(result)
+```bash
+python -m pip install -e ".[dev]"        # core + tests
+python -m pip install -e ".[dev,local]"  # + local-model pipelines
 ```
 
-## Key Principles
+## Use
 
-1. **Small Tasks Only**: Each task must be atomic (1 function, 1 file, single concern)
-2. **Fast Models**: Use `gemma3:latest` by default
-3. **Hybrid Execution**: Python for structure, Ollama for content
-4. **Autonomous**: No human decision gates
-5. **Self-Committing**: Agents commit their own work
+Register the MCP server via the checked-in `.mcp.json` (Claude Code picks it
+up automatically) or run `python -m clockwork.server` for any MCP client.
 
-## Agent Types
+## Architecture
 
-- `test_generator`: Generate unit tests
-- `doc_fixer`: Fix documentation
-- `code_fixer`: Fix bugs in code
-- `test_runner`: Execute tests and report
+Decisions live in `docs/ADR/` (catalog: `docs/ADR/ADR-CATALOG.md`),
+consolidated into arc42 SADs under `docs/architecture/`, with code-aligned
+UML in `UML/Components/`. Consistency is enforced by
+`tests/gates/test_architecture_documentation_gate.py`.
 
-## Configuration
-
-Edit `claudeclockwork/config/ollama_config.py` to:
-- Change model selection
-- Set Ollama host/port
-- Configure timeout
-- Enable/disable decomposition
-
-## Examples
-
-See `examples/` folder for working agent implementations.
+History: the pre-reboot system (v17) is archived at git tag `v17-archive`.
