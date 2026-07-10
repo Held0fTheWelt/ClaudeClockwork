@@ -1,8 +1,0 @@
-{
-  "skill_id": "telemetry_summarize",
-  "inputs": {
-    "events_dir": ".claude-performance/events/",
-    "group_by": ["role", "model"],
-    "top_n": 10
-  }
-}

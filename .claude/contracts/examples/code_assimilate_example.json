@@ -1,6 +1,0 @@
-{
-  "foreign_root": "../foreign",
-  "host_root": "./",
-  "target_namespace": "host.plugins",
-  "output_path": "docs/integration/foreign.md"
-}

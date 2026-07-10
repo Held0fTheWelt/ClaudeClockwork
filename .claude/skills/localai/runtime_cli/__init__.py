@@ -1,1 +1,0 @@
-"""Mode management CLI skill."""
