@@ -1,0 +1,16 @@
+# Local model runtime. GPU-first constraints preserved as data (ADR-CW-0007).
+ollama:
+  base_url: "http://127.0.0.1:11434"
+  default_model: "qwen3:8b"
+  fallback_model: "phi4"
+  forbidden_models:
+    - "qwen2.5:32b"
+    - "qwen2.5-coder:32b"
+    - "qwen2.5:72b"
+    - "llama3.3:70b"
+    - "llama2:70b"
+  timeouts:
+    connect: 10
+    health: 15
+    request: 300
+  num_ctx: 4096
