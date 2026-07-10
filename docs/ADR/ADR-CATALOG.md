@@ -10,3 +10,4 @@ Machine-oriented index. Search here first.
 | ADR-CW-0004 | Remove the v17 claudeclockwork package and tests | cleanup | accepted | [adr-cw-0004-remove-claudeclockwork-package.md](adr-cw-0004-remove-claudeclockwork-package.md) |
 | ADR-CW-0005 | Remove v17 development archives and root sprawl | cleanup | accepted | [adr-cw-0005-remove-dev-archives.md](adr-cw-0005-remove-dev-archives.md) |
 | ADR-CW-0006 | Remove legacy docs content and leftover dirs | cleanup | accepted | [adr-cw-0006-legacy-docs-and-leftovers.md](adr-cw-0006-legacy-docs-and-leftovers.md) |
+| ADR-CW-0007 | Local-model pipelines via LangGraph over Ollama | pipelines | accepted | [adr-cw-0007-local-pipelines.md](adr-cw-0007-local-pipelines.md) |
