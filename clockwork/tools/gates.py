@@ -86,6 +86,9 @@ def check_architecture_docs(repo_root: str | Path) -> list[str]:
         for owned in meta.get("owns-adrs") or []:
             if str(owned) not in catalog_ids:
                 violations.append(f"{rel}: owns-adrs entry {owned} not in catalog")
+        uml_package = str(meta.get("uml-package", ""))
+        if uml_package and not (repo_root / uml_package).is_dir():
+            violations.append(f"{rel}: uml-package '{uml_package}' does not exist")
         _check_links(sad, repo_root, violations)
 
     components_dir = repo_root / "UML" / "Components"

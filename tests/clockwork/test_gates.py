@@ -90,3 +90,14 @@ def test_broken_links_are_reported(tmp_path):
     adr.write_text(ADR_OK + "\nSee [missing](does-not-exist.md).\n", encoding="utf-8")
     violations = check_architecture_docs(repo)
     assert any("does-not-exist.md" in v for v in violations)
+
+
+def test_sad_uml_package_must_exist(tmp_path):
+    repo = make_docs_repo(tmp_path)
+    sad = repo / "docs" / "architecture" / "core" / "architecture.md"
+    sad.write_text(
+        SAD_OK.replace("UML/Components/test-core", "UML/Components/ghost"),
+        encoding="utf-8",
+    )
+    violations = check_architecture_docs(repo)
+    assert any("uml-package" in v and "ghost" in v for v in violations)

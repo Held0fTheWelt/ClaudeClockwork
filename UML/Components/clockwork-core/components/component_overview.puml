@@ -1,0 +1,20 @@
+@startuml
+title clockwork-core / component overview
+component "MCP client (Claude Code)" as CLIENT
+package "clockwork" {
+  component "server.py (FastMCP)" as SERVER
+  component "tools/bundles.py" as BUNDLES
+  component "tools/gates.py" as GATES
+  component "tools/uml_shared.py" as UMLC
+  component "tools/uml_review_shared.py" as REVIEW
+  component "tools/how_it_works_shared.py" as HIW
+}
+CLIENT --> SERVER : stdio
+SERVER --> BUNDLES
+SERVER --> GATES
+BUNDLES --> UMLC
+BUNDLES --> REVIEW
+BUNDLES --> HIW
+REVIEW --> UMLC
+HIW --> UMLC
+@enduml
