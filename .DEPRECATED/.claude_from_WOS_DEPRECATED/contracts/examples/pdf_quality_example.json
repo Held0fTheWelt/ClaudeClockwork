@@ -1,8 +1,0 @@
-{
-  "skill_id": "pdf_quality",
-  "inputs": {
-    "manuscript_path": "docs/README.md",
-    "scope": "general",
-    "write_report": false
-  }
-}

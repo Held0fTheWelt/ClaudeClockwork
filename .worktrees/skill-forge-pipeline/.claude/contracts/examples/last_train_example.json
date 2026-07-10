@@ -1,8 +1,0 @@
-{
-  "skill_id": "last_train",
-  "inputs": {
-    "report_path": "nonexistent_report.json",
-    "output_format": "json",
-    "write_summary": false
-  }
-}

@@ -1,5 +1,0 @@
-{
-  "skill_name": "asset_audit",
-  "description": "Audit assets for naming/folder policy compliance",
-  "dry_run": true
-}

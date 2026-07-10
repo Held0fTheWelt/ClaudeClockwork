@@ -1,4 +1,0 @@
-{
-  "skill_id": "code_clean",
-  "inputs": {"root": "llamacode", "scan_only": true, "emit_plan": false}
-}
