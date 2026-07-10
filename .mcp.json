@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "clockwork": {
+      "command": "python",
+      "args": ["-m", "clockwork.server"]
+    }
+  }
+}
