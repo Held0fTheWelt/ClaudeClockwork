@@ -87,8 +87,8 @@ def _command_candidates(repo_root: Path) -> dict[str, str]:
         candidates['legacy_skill_runner'] = 'python .claude/tools/skills/skill_runner.py <skill_name> [args]'
     if (repo_root / 'tools/skills/skill_runner.py').exists():
         candidates['legacy_skill_runner'] = 'python tools/skills/skill_runner.py --in request.json'
-    if (repo_root / 'claudeclockwork/cli.py').exists():
-        candidates['manifest_skill_runner'] = 'python -m claudeclockwork.cli --project-root . --skill-id <skill_id> --inputs "{}"'
+    if (repo_root / 'clockwork/server.py').exists():
+        candidates['mcp_server'] = 'python -m clockwork.server'
     if (repo_root / 'run_tests.py').exists():
         candidates['tests'] = 'python run_tests.py'
     elif (repo_root / 'tests').exists():
@@ -237,7 +237,7 @@ def _supporting_files(repo_root: Path) -> list[dict]:
             '.claude/tools/test_ollama.py',
             '.claude/tools/skills/skill_runner.py',
             'tools/skills/skill_runner.py',
-            'claudeclockwork/cli.py',
+            'clockwork/server.py',
         ],
     )
     for rel_path in extra:

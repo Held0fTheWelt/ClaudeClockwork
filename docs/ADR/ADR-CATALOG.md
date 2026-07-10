@@ -9,3 +9,4 @@ Machine-oriented index. Search here first.
 | ADR-CW-0003 | Retire the legacy .claude/ corpus | cleanup | accepted | [adr-cw-0003-retire-legacy-claude-corpus.md](adr-cw-0003-retire-legacy-claude-corpus.md) |
 | ADR-CW-0004 | Remove the v17 claudeclockwork package and tests | cleanup | accepted | [adr-cw-0004-remove-claudeclockwork-package.md](adr-cw-0004-remove-claudeclockwork-package.md) |
 | ADR-CW-0005 | Remove v17 development archives and root sprawl | cleanup | accepted | [adr-cw-0005-remove-dev-archives.md](adr-cw-0005-remove-dev-archives.md) |
+| ADR-CW-0006 | Remove legacy docs content and leftover dirs | cleanup | accepted | [adr-cw-0006-legacy-docs-and-leftovers.md](adr-cw-0006-legacy-docs-and-leftovers.md) |
