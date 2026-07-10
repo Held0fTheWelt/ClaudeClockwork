@@ -145,6 +145,35 @@ def architecture_gate(repo_root: str = ".") -> dict:
     return {"passed": not violations, "violations": violations}
 
 
+@mcp.tool()
+def local_health() -> dict:
+    """Check whether the local Ollama backend is reachable."""
+    from clockwork.pipelines.runtime import OllamaClient
+
+    client = OllamaClient()
+    return {
+        "available": client.is_available(),
+        "base_url": client.config.base_url,
+        "default_model": client.config.default_model,
+    }
+
+
+@mcp.tool()
+def local_brief(task: str, model: str | None = None) -> dict:
+    """Produce a short work brief via the local model."""
+    from clockwork.pipelines.briefs import run_brief
+
+    return run_brief(task, model=model)
+
+
+@mcp.tool()
+def local_draft_review_refine(task: str, model: str | None = None) -> dict:
+    """Run the draft->review->refine LangGraph pipeline on the local model."""
+    from clockwork.pipelines.draft_review_refine import run_draft_review_refine
+
+    return run_draft_review_refine(task, model=model)
+
+
 def main() -> None:
     mcp.run()
 
