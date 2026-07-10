@@ -7,6 +7,7 @@ owns-adrs:
 uml-package: UML/Components/clockwork-core
 links:
   - ../../ADR/ADR-CATALOG.md
+  - usage.md
   - ../../../UML/README.md
 ---
 
@@ -66,3 +67,5 @@ Owned: ADR-CW-0002 (three-layer architecture). Related: ADR-CW-0001
 `tests/clockwork/` unit-tests every public function against fixture
 repositories; `tests/gates/test_architecture_documentation_gate.py` runs the
 gate against this repository and must stay green.
+
+Operational examples and tool-call guidance live in [usage.md](usage.md).
